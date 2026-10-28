@@ -2,8 +2,7 @@
 
 Run once:  python profile.py
 Writes data-profile.md (comparable output) and data-profile.json beside it and
-prints the markdown. DATASF_APP_TOKEN (optional) is sent as X-App-Token to lift
-the anonymous rate limit; the queries and results are the same without it.
+prints the markdown. DataSF is queried anonymously, retrying when throttled.
 """
 
 import collections
@@ -45,9 +44,6 @@ class DataSFError(RuntimeError):
 
 def _get(url):
     headers = {"User-Agent": "campaign-finance-survey"}
-    token = os.environ.get("DATASF_APP_TOKEN", "").strip()
-    if token:
-        headers["X-App-Token"] = token
     last = None
     for attempt in range(5):
         try:

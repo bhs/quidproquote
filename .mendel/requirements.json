@@ -1,13 +1,3 @@
 {
-  "requirements": [
-    {
-      "kind": "secret",
-      "name": "DATASF_APP_TOKEN",
-      "description": "DataSF (Socrata) app token sent as X-App-Token by the campaign finance profile script; it only lifts the anonymous rate limit.",
-      "console_url": "https://data.sf.gov/profile/edit/developer_settings",
-      "optional": true,
-      "provider": "datasf",
-      "needed_by": ["results"]
-    }
-  ]
+  "requirements": []
 }
