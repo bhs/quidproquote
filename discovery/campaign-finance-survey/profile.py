@@ -15,6 +15,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
+import calaccess
 import survey_lib as lib
 
 HOST = "https://data.sf.gov"
@@ -247,6 +248,23 @@ def summarise_official(res):
     return rows
 
 
+def amendment_behaviour(since="2022-01-01"):
+    """How Form 460 reports first filed on or after `since` were amended.
+
+    A report period keeps its filing_nid; every submission is a new
+    filing_activity_nid. Submissions are typed by filing_type: FiledOriginal,
+    FiledAmendment (new data), and AttachmentsAdded / ContentsChanged (no new
+    transaction data). Reports are grouped by their first submission date, so an
+    amendment filed after `since` to a report first filed earlier is not counted.
+    Rejected submissions are left out.
+    """
+    rows = q_all(FILINGS, **{
+        "$select": "filing_nid,filing_activity_nid,filing_date,filing_type,mechanism_type",
+        "$where": "form_type='FPPC460' and (rejected is null or rejected=false) and filing_date is not null",
+        "$order": "filing_nid,filing_activity_nid"})
+    return lib.summarise_amendments(rows, since)
+
+
 def profile_cadence():
     res = {}
     res["loaded_by_day"] = q(TX, **{
@@ -266,30 +284,7 @@ def profile_cadence():
         lag["<=%d days" % days] = n
     lag["total"] = total
     res["tx_to_filing_lag"] = lag
-    # Amendment history: a filing keeps its filing_nid; each submission is a new filing_activity_nid.
-    rows = q_all(FILINGS, **{
-        "$select": "filing_nid,filing_activity_nid,filing_date,filing_version,form_type",
-        "$where": "form_type='FPPC460' and filing_date>='2022-01-01'", "$order": "filing_nid"})
-    by = collections.defaultdict(list)
-    for r in rows:
-        by[r["filing_nid"]].append(r)
-    lags, versions, amended = [], collections.Counter(), 0
-    for acts in by.values():
-        dates = sorted(a["filing_date"][:10] for a in acts)
-        versions[len(acts)] += 1
-        if len(acts) > 1:
-            amended += 1
-            d0 = time.mktime(time.strptime(dates[0], "%Y-%m-%d"))
-            d1 = time.mktime(time.strptime(dates[-1], "%Y-%m-%d"))
-            lags.append(int(round((d1 - d0) / 86400)))
-    lags.sort()
-    res["amendments"] = {
-        "form460_reports_since_2022": len(by), "amended": amended,
-        "activities_per_report": dict(sorted(versions.items())),
-        "days_first_to_last_p50": lib.percentile(lags, 50), "days_first_to_last_p90": lib.percentile(lags, 90),
-        "days_first_to_last_max": lags[-1] if lags else None,
-        "amended_over_365_days": sum(1 for x in lags if x > 365),
-    }
+    res["amendments"] = amendment_behaviour()
     return res
 
 
@@ -365,8 +360,8 @@ def profile_donors(all_filers):
         "names_seen_in_several_zip5": sum(1 for v in zips_per_name.values() if len(v) > 1),
     }
     cids = q_all(TX, **{
-        "$select": "committee_id,count(*) as n", "$where": "form_type='A' and committee_id is not null",
-        "$group": "committee_id"})
+        "$select": "committee_id,count(*) as n,sum(calculated_amount) as s",
+        "$where": "form_type='A' and committee_id is not null", "$group": "committee_id"})
     fppc = {x.get("fppc_id") for x in all_filers}
     state = {r["filer_id"] for r in q_all("3n88-2rrb", **{"$select": "filer_id", "$group": "filer_id"})}
     ids = {r["committee_id"] for r in cids}
@@ -374,6 +369,11 @@ def profile_donors(all_filers):
         "distinct_committee_ids_on_schedule_a": len(ids),
         "in_sf_filers_dataset": len(ids & fppc), "in_state_filer_dataset_only": len((ids & state) - fppc),
         "in_neither": len(ids - fppc - state)}
+    # The ids in neither dataset, looked up in California's own committee records (CAL-ACCESS).
+    unresolved = ids - fppc - state
+    by_id, by_xref = calaccess.filer_names()
+    res["committee_ids"]["unresolved_in_state_records"] = lib.resolve_committee_ids(
+        {r["committee_id"]: f(r["s"]) for r in cids if r["committee_id"] in unresolved}, by_id, by_xref)
     res["com_rows_without_id"] = one(TX, **{
         "$select": "count(*) as n,sum(calculated_amount) as s",
         "$where": "form_type='A' and entity_code='COM' and committee_id is null"})
@@ -424,7 +424,7 @@ def render(data):
     w(lib.md_table(["filer_type", "status", "Filers", "with candidate_name"],
                    [[r["filer_type"], r["status"], lib.num(r["n"]), lib.num(r["with_candidate"])] for r in data["filers"]]))
     w("\n## 5. Current officials and the committees tied to them\n")
-    w("Roster (sfbos.org, Ballotpedia): Mayor and 11 supervisors. Matching: `strong` = filer candidate_name is the "
+    w("Roster (Board of Supervisors member listing on sfbos.org; Mayor from the sf.gov profile): Mayor and 11 supervisors. Matching: `strong` = filer candidate_name is the "
       "official's; `weak` = only the committee's own name mentions the official (needs review). Money columns are "
       "Schedule A itemized + unitemized (F460ALine2) from the Transactions dataset; `gap` = that minus the sum of "
       "Form 460 summary Schedule A line 3 for the same committee (0 means the two datasets agree).\n")
@@ -460,7 +460,7 @@ def render(data):
     w(lib.md_table(["Loaded", "Rows", "Filings"], [[lib.date_only(r["data_loaded_at"]), r["n"], r["filings"]] for r in c["loaded_by_day"]]))
     w("\nFilings received per day: " + ", ".join("%s: %s" % (lib.date_only(r["filing_date"]), r["n"]) for r in c["filed_by_day"]))
     w("\nSchedule A rows since 2024 by days between transaction and filing: " + json.dumps(c["tx_to_filing_lag"]))
-    w("\nForm 460 amendment behaviour since 2022: " + json.dumps(c["amendments"]))
+    w("\nForm 460 reports first filed since 2022, counting only FiledAmendment submissions as amendments: " + json.dumps(c["amendments"]))
     w("\nForm 496 vs Schedule D overlap test since 2018: " + json.dumps(data["ie_overlap"]))
     w("\nForm 497 part 1 vs Schedule A overlap test since 2022: " + json.dumps(data["f497_overlap"]))
     w("\n## 7. Recognising the same donor\n")

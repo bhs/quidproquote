@@ -58,7 +58,7 @@ Distinct filings: 27,557; distinct filers: 2,547; rows with blank filing id: 0; 
 
 Rows by filing_type: FiledOriginal 578,151, FiledAmendment 405,236
 
-Rows by filing_version: v1 578,151, v2 241,926, v3 85,041, v4 44,239, v5 26,399, v6 3,523, v8 2,372, v7.0 1,716
+Rows by filing_version: v1 578,151, v2 241,926, v3 85,041, v4 44,239, v5.0 26,399, v6.0 3,523, v8 2,372, v7 1,716
 
 Schedule A (itemized monetary contributions) by transaction year:
 
@@ -170,7 +170,7 @@ Filing forms: FPPC460 32,713 (1998-01-27 to 2026-10-27), FPPC497 9,514 (1983-04-
 
 ## 5. Current officials and the committees tied to them
 
-Roster (sfbos.org, Ballotpedia): Mayor and 11 supervisors. Matching: `strong` = filer candidate_name is the official's; `weak` = only the committee's own name mentions the official (needs review). Money columns are Schedule A itemized + unitemized (F460ALine2) from the Transactions dataset; `gap` = that minus the sum of Form 460 summary Schedule A line 3 for the same committee (0 means the two datasets agree).
+Roster (Board of Supervisors member listing on sfbos.org; Mayor from the sf.gov profile): Mayor and 11 supervisors. Matching: `strong` = filer candidate_name is the official's; `weak` = only the committee's own name mentions the official (needs review). Money columns are Schedule A itemized + unitemized (F460ALine2) from the Transactions dataset; `gap` = that minus the sum of Form 460 summary Schedule A line 3 for the same committee (0 means the two datasets agree).
 
 ### Daniel Lurie, Mayor
 
@@ -468,7 +468,7 @@ Filings received per day: 2026-10-27: 29, 2026-10-26: 17, 2026-10-25: 1, 2026-10
 
 Schedule A rows since 2024 by days between transaction and filing: {"<=7 days": 1206, "<=30 days": 7572, "<=90 days": 34230, "<=180 days": 51827, "total": 73867}
 
-Form 460 amendment behaviour since 2022: {"form460_reports_since_2022": 3818, "amended": 1016, "activities_per_report": {"1": 2802, "2": 680, "3": 211, "4": 76, "5": 36, "6": 7, "7": 3, "8": 3}, "days_first_to_last_p50": 87, "days_first_to_last_p90": 356, "days_first_to_last_max": 1587, "amended_over_365_days": 93}
+Form 460 reports first filed since 2022, counting only FiledAmendment submissions as amendments: {"since": "2022-01-01", "form460_reports_first_filed_since": 3738, "reports_with_a_filed_amendment": 1013, "filed_amendments_per_amended_report": {"1": 677, "2": 211, "3": 76, "4": 36, "5": 7, "6": 3, "7": 3}, "reports_with_only_attachments_or_contents_changes": 0, "reports_without_a_filed_original_row": 0, "amended_reports_with_a_paper_amendment": 1, "days_first_to_last_amendment_p50": 87, "days_first_to_last_amendment_p90": 350, "days_first_to_last_amendment_max": 1587, "amended_over_365_days": 91}
 
 Form 496 vs Schedule D overlap test since 2018: {"payer_candidate_pairs_with_both": 263, "equal_within_1_dollar": 108, "pairs_496_only": 102, "pairs_d_only": 1253}
 
@@ -539,7 +539,108 @@ Form 497 part 1 vs Schedule A overlap test since 2022: {"f497p1_rows_since_2022"
   "distinct_committee_ids_on_schedule_a": 2654,
   "in_sf_filers_dataset": 1143,
   "in_state_filer_dataset_only": 96,
-  "in_neither": 1415
+  "in_neither": 1415,
+  "unresolved_in_state_records": {
+   "shapes": {
+    "state": {
+     "ids": 1156,
+     "dollars": 29508651.020000003
+    },
+    "other": {
+     "ids": 176,
+     "dollars": 2107500.13
+    },
+    "fec": {
+     "ids": 83,
+     "dollars": 314006.57
+    }
+   },
+   "state_ids_found_as_filer_id": 619,
+   "state_ids_found_as_legacy_xref": 415,
+   "state_ids_not_found": 122,
+   "dollars_of_found_state_ids": 29251234.520000003,
+   "found_by_state_filer_type": {
+    "RECIPIENT COMMITTEE": 956,
+    "MAJOR DONOR/INDEPENDENT EXPENDITURE COMMITTEE": 27,
+    "TREASURER/RESPONSIBLE OFFICER": 21,
+    "CLIENT": 13,
+    "SLATE MAILER ORGANIZATIONS": 8,
+    "CANDIDATE/OFFICEHOLDER": 6,
+    "PAYMENT TO INFLUENCE": 3
+   },
+   "found_by_state_status": {
+    "TERMINATED": 544,
+    "ACTIVE": 489,
+    "INACTIVE": 1
+   },
+   "found_names_saying_sponsored_by": 42,
+   "largest_found": [
+    {
+     "committee_id": "1344506",
+     "dollars": 9225152.54,
+     "found_as": "filer id",
+     "state_type": "RECIPIENT COMMITTEE",
+     "state_status": "ACTIVE",
+     "state_name": "AMERICAN BEVERAGE ASSOCIATION CALIFORNIA PAC (NON-PROFIT 501 (C) (6))"
+    },
+    {
+     "committee_id": "1484835",
+     "dollars": 9157447.71,
+     "found_as": "filer id",
+     "state_type": "RECIPIENT COMMITTEE",
+     "state_status": "ACTIVE",
+     "state_name": "A MORE AFFORDABLE CALIFORNIA, SPONSORED BY UBER"
+    },
+    {
+     "committee_id": "782560",
+     "dollars": 2631978.45,
+     "found_as": "legacy cross-reference id",
+     "state_type": "RECIPIENT COMMITTEE",
+     "state_status": "ACTIVE",
+     "state_name": "ISSUES MOBILIZATION POLITICAL ACTION COMMITTEE (IMPAC)"
+    },
+    {
+     "committee_id": "980162",
+     "dollars": 585000.0,
+     "found_as": "legacy cross-reference id",
+     "state_type": "RECIPIENT COMMITTEE",
+     "state_status": "ACTIVE",
+     "state_name": "MEMBERS' VOICE OF THE STATE BUILDING TRADES"
+    },
+    {
+     "committee_id": "1244414",
+     "dollars": 470000.0,
+     "found_as": "filer id",
+     "state_type": "RECIPIENT COMMITTEE",
+     "state_status": "TERMINATED",
+     "state_name": "CALIFORNIA ISSUES PAC"
+    },
+    {
+     "committee_id": "810437",
+     "dollars": 375000.0,
+     "found_as": "legacy cross-reference id",
+     "state_type": "RECIPIENT COMMITTEE",
+     "state_status": "ACTIVE",
+     "state_name": "UNITE HERE TIP STATE AND LOCAL FUND (NY SBOE ID#3370)"
+    },
+    {
+     "committee_id": "1489549",
+     "dollars": 361578.7,
+     "found_as": "filer id",
+     "state_type": "RECIPIENT COMMITTEE",
+     "state_status": "TERMINATED",
+     "state_name": "NEVADANS FOR FAIR RECOVERY, SPONSORED BY UBER TECHNOLOGIES, INC. (NV PAC ID # 11318)"
+    },
+    {
+     "committee_id": "981470",
+     "dollars": 300520.0,
+     "found_as": "legacy cross-reference id",
+     "state_type": "RECIPIENT COMMITTEE",
+     "state_status": "ACTIVE",
+     "state_name": "AT&T CALIFORNIA EMPLOYEE POLITICAL ACTION COMMITTEE"
+    }
+   ]
+  }
  },
  "com_rows_without_id": {
   "n": "469",

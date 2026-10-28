@@ -9,7 +9,7 @@
 - **Completeness is good for the committees that exist, and exact on one check:** for every committee tied to the Mayor and 11 supervisors, itemized + unitemized Schedule A in Transactions equals the Form 460 summary Schedule A total to the dollar (gap $0 for all 54 matched committees). The gaps are elsewhere: paper filings carry no transactions and are 49% of all filing rows (22% of current filings since 2012); several sitting officials' committees are terminated, so recent giving to them is not in the data; and officeholder/federal/state activity may sit outside DataSF.
 - **Double counting is the main fairness trap.** Form 497 (24-hour reports) and Form 496 / Schedule D / Form 461 report money that is also on Schedule A or on each other. Summing all transaction rows for a committee overstates it.
 - **Amendments replace, they do not append.** An amended filing keeps its `filing_nid`, gets a new `filing_activity_nid` and `filing_id_number`, and the earlier version's transactions are deleted from the Transactions dataset. A quarter of recent Form 460 reports have been amended, sometimes years later.
-- **There is no donor identifier.** Donors are free-text names; only committee donors carry an FPPC id. The same company appears under up to ten spellings.
+- **There is no donor identifier.** Donors are free-text names; only committee donors carry an FPPC id, and 1,034 of the 1,156 state-style ids found in neither SF dataset resolve in California's own committee records (the state's bulk export). The same company appears under up to ten spellings.
 
 ## 1. Datasets and record shape (criterion 1)
 
@@ -140,22 +140,22 @@ The data supports statements of the form "$X reported by committee Y (a candidat
 
 ### 4.2 How amendments appear
 
-Taken from the dataset descriptions and checked on the Mayor's committee and across all Form 460 filings since 2022:
+Taken from the dataset descriptions and checked on the Mayor's committee and across all Form 460 reports first filed since 2022:
 
 - A **report period has a stable `filing_nid`**. Every submission of it (original, amendment) is a new `filing_activity_nid` with its **own `filing_id_number`** and a `filing_version` (1 original, 2 first amendment, ...). Example: the Mayor's 2023 annual report was filed 2024-01-31 and superseded by version 4 on 2024-08-30.
 - **Filings dataset** keeps superseded submissions: 13,128 rows say "Superseded by <activity id>", 60,726 say "Most Recent (synched date)" (Filings: 76,423 rows; 61,103 distinct `filing_nid`).
 - **Transactions and Summary Totals hold only the most recent submission.** An amendment "completely replaces the original and any prior amendments"; the earlier rows are removed. In Transactions 405,236 of 983,387 rows come from amendments (v2: 241,926; v3: 85,041; v4: 44,239; up to v11).
 - Consequences: transaction `element_nid` and `transaction_id` do not persist across amendments (the dataset says they are only unique within a filing), so rows cannot be matched one-to-one before and after; **there is no change history** in the data. To stay correct, a consumer must replace all rows for a `filing_nid` whenever its `filing_activity_nid` changes.
-- Amendments are common and can be late: of 3,818 Form 460 reports first filed since 2022, 1,016 (27%) have more than one submission (2 submissions 680, 3: 211, 4: 76, up to 8). Between first and latest submission the median is 87 days, 90th percentile 356 days, maximum 1,587 days; 93 amended reports changed more than a year after the original. Totals shown for older periods can still move.
+- Amendments are common and can be late. Reports are grouped by `filing_nid` and by the date of their first submission, and only `FiledAmendment` submissions (rejected ones left out) count as amendments. Of 3,738 Form 460 reports first filed since 2022, 1,013 (27%) have at least one amendment (1 amendment: 677 reports, 2: 211, 3: 76, 4: 36, up to 7). Between the first submission and the last amendment the median is 87 days, the 90th percentile 350 days and the maximum 1,587 days; 91 amended reports were last amended more than a year after the first filing. One of the 1,013 has a paper amendment. Amendments filed since 2022 to reports first filed earlier are not in these figures. Totals shown for older periods can still move.
 - **Rejected** filings (about 164 filings in the Filings dataset) and their transactions are excluded from Transactions. A paper amendment of an electronic filing leaves `sync_flag` blank in Summary Totals until reconciled (the Commission says it is still working on that).
-- "Contents changed" and "attachments added" submissions appear in Filings with no new transaction data.
+- "Contents changed" and "attachments added" submissions appear in Filings (2,032 rows across all forms) with no new transaction data; they are not counted as amendments above. Among Form 460 reports first filed since 2022, none has such a submission without also having an amendment.
 
 ## 5. Recognising the same donor (criterion 5)
 
 ### 5.1 What identifies a giver
 
 - **No donor id exists.** Schedule A carries a name, city, state, zip, employer and occupation as typed by each committee.
-- **Committee donors (`entity_code` COM, SCC, PTY) carry `committee_id`** (an FPPC id) on 13,238 of 13,707 COM rows; 469 COM rows (about $23.5M) have none. Of 2,654 distinct committee ids on Schedule A, 1,143 are in the SF Filers dataset (`fppc_id`), 96 more appear only in the State Filer extract, and 1,415 are in neither (committees registered elsewhere, to be resolved against state records). 1,735 Filers rows have a pending, unavailable or n/a `fppc_id`.
+- **Committee donors (`entity_code` COM, SCC, PTY) carry `committee_id`** (an FPPC id) on 13,238 of 13,707 COM rows; 469 COM rows (about $23.5M) have none. Of 2,654 distinct committee ids on Schedule A, 1,143 are in the SF Filers dataset (`fppc_id`), 96 more appear only in the State Filer extract, and 1,415 are in neither; section 5.3 looks those 1,415 up in California's committee records. 1,735 Filers rows have a pending, unavailable or n/a `fppc_id`.
 - **Organisations (`OTH`) have no id at all:** the name is the only key, and employer/occupation are blank.
 - **Individuals** have first name, last name, zip, employer and occupation, but no id.
 
@@ -163,12 +163,24 @@ Taken from the dataset descriptions and checked on the Mayor's committee and acr
 
 - Organisation and committee names on Schedule A: 30,669 distinct spellings; 23,600 after lowercasing, removing punctuation, parenthetical notes and corporate suffixes; 23,046 if PAC/committee words are also dropped (the second merge is a judgement, since a company and its PAC are legally distinct givers). 4,238 normalized names still have several spellings, covering $203M of $309M.
 - Examples (spellings after normalization, dollars): Pacific Gas and Electric 10 spellings, $14.5M; Salesforce 7, $6.1M; Committee on Jobs Government Reform Fund 7, $4.1M; Airbnb 4, $9.5M; San Francisco Giants 3, $3.8M. Spellings seen include all-caps variants, "&" vs "and", "Company" vs "Corporation", parenthetical responsible-officer notes ("Google LLC and Affiliated Entities(Responsible Officer: ...)") and committee names that embed the sponsor ("Committee to Expand the Middle Class, Supported by Airbnb, Inc."), where whether it is the same giver is a policy decision.
-- Individuals since 2018: 58,362 distinct (last, first, zip) strings collapse to 49,575 after normalization; 44,461 distinct normalized names; 4,072 names appear under more than one 5-digit zip (movers or different people). Without an id, grouping individuals can both split one person and merge two, so individual donors should be shown with their committee, amount and date, and any total flagged as name-based.
+- Individuals since 2018 (`data-profile.md` section 7, `people`): 74,905 distinct raw (last, first, zip) combinations collapse to 62,682 normalised name + 5-digit-zip keys after lowercasing, dropping punctuation and keeping the first token of the first name; there are 55,734 distinct normalised names, and 5,551 of them appear under more than one 5-digit zip (movers or different people). Without an id, grouping individuals can both split one person and merge two, so individual donors should be shown with their committee, amount and date, and any total flagged as name-based.
 
 ### 5.3 Gaps filled from outside DataSF
 
-- **Recognising a committee donor** reliably needs state committee identity (California Secretary of State / FPPC committee records, which DataSF only mirrors for SF-linked committees). No outside source for organisations' parents or sponsors was surveyed, and none is implied by DataSF itself.
-- **Donor priorities** (what the donor wants, with citations) are not in campaign finance data at all; the project assumes they come from the donor's own published material.
+**The 1,415 committee ids found in neither SF dataset, looked up in California's committee records.** The state publishes its whole CAL-ACCESS database as one bulk export (https://campaignfinance.cdn.sos.ca.gov/dbwebexport.zip, last modified 2026-10-28). Its filer-name table (`FILERNAME_CD.TSV`: filer id, legacy cross-reference id, filer type, status, effective date, name, address; about 350,000 filers) was joined to every one of the 1,415 ids, not a sample (`data-profile.md` section 7, `unresolved_in_state_records`):
+
+| What the id looks like | Ids | Schedule A dollars |
+|---|---|---|
+| 6 or 7 digits (state / FPPC style) | 1,156 | $29.5M |
+| `C` + 8 digits (federal, FEC style) | 83 | $0.3M |
+| Anything else (Pending, N, requested, none, SFO-prefixed numbers, payment-app names) | 176 | $2.1M |
+
+- **1,034 of the 1,156 state-style ids resolve** ($29.25M of $29.51M): 619 as a state filer id and 415 as a legacy cross-reference id; 122 are not in the table. By state filer type: 956 recipient committees, 27 major-donor / independent-expenditure committees, 21 treasurer/responsible-officer records, 13 lobbying clients, 8 slate-mailer organisations, 6 candidate/officeholder, 3 payment-to-influence. By status: 544 terminated, 489 active, 1 inactive. The 37 records that are not committee types (treasurer, client, payment-to-influence) may be id collisions or filers with several roles; this was not checked (unverified).
+- **What a resolved id gives:** a name, a filer type and a status. The largest unresolved dollars resolve to organisations that also appear as donor names in DataSF: American Beverage Association California PAC ($9.2M under id 1344506), "A More Affordable California, Sponsored by Uber" ($9.2M), Issues Mobilization PAC ($2.6M), AT&T California Employee PAC ($0.3M). Only equality of ids was tested; agreement between the state name and the donor name written in DataSF was read for these largest ones, not tested for all (unverified).
+- **The 83 federal-style ids** and the **176 other values** cannot be looked up in this table. Federal committees would be on FEC records, which were not queried. Placeholders such as Pending cannot be resolved by any outside record; the donor's name is the only key there.
+- **Company parents and sponsors.** The state table has no parent or sponsor column. 42 of the resolved state names contain the words "sponsored by" (for example a ballot-measure committee sponsored by a named company), so a sponsor is recoverable only as text in the committee name. The state's filer-link table (`FILER_LINKS_CD.TSV`) exists in the same export and its link types were not examined. No corporate-ownership source (company parents, subsidiaries) was surveyed, and none is implied by DataSF or by the state table.
+
+**Donor priorities** (what the donor wants, with citations) are not in campaign finance data at all; the project assumes they come from the donor's own published material.
 
 ## Open questions
 
@@ -176,14 +188,15 @@ Taken from the dataset descriptions and checked on the Mayor's committee and acr
 - **Any field tying a committee to an office, district or term.** Looked in the column lists and descriptions of the four core datasets and the Data Key. Absent: office must come from `filer_name` text or Schedule D/F496 `office_code`.
 - **Any history of amended values.** Looked in Transactions, Filings and Summary: only the latest submission's rows exist.
 - **A published refresh log or a schedule beyond "nightly".** Only descriptive text and `rowsUpdatedAt` / `data_loaded_at` were used.
-- **Federal (FEC) and California state-level filings for officials.** Not queried; not on DataSF.
+- **Federal (FEC) records, and California state filings by or for the officials.** Not queried; not on DataSF. Only the state's filer-name table (committee identities) was read.
 - **Which paper filings are contribution reports.** Paper filings were counted but not split by form for each committee.
 
 ### Claims not verified
-- The roster is from sfbos.org, lwvsf.org and Ballotpedia pages read during the survey; no check against the official Registrar listing was made (unverified). The mayor's name and 2025-01-08 start come from Ballotpedia.
+- The roster (Mayor and 11 supervisors by district) rests on the Board of Supervisors member listing on sfbos.org, as quoted in a search-result excerpt of that page; the page copy fetched directly is an older one (December 2024 recess notice) that names no members, so the member names rest on the excerpt (unverified). Excerpts of the Clerk's Supervisors' Roster PDF (dated 2026-05-01, https://media.api.sf.gov/documents/Supervisors_Roster_05-01-26.pdf) agree for nine of the eleven (Chan D1, Sherrill D2, Sauter D3, Mahmood D5, Dorsey D6, Melgar D7, Mandelman D8, Fielder D9, Chen D11); the excerpt stops before Wong and Walton, and the PDF itself could not be opened. District 4 (Alan Wong) is also reported by NBC Bay Area, ABC7 and Mission Local search excerpts as appointed by the Mayor on 2025-12-01 after the recall of Joel Engardio, and by an ASAM News excerpt as winning the 2026-06-02 special election; the League of Women Voters page https://lwvsf.org/find-your-representatives, which was read, still lists Engardio for District 4 (page footer 2025) and is out of date on that seat. The Mayor, Daniel Lurie, is confirmed by the sf.gov profile page https://www.sf.gov/profile--daniel-lurie (read); his start of 2025-01-08 comes from a Wikipedia "Mayor of San Francisco" search excerpt (unverified).
 - Connie Chan's current plans (her 2028 DCCC committee exists; any other office sought) were not checked (unverified).
-- Whether Mandelman and Walton (District 8 and 10 incumbents, seats on the November 3 2026 ballot per Ballotpedia's note that all even-numbered districts are up) have opened 2026 committees under names the matcher missed was not checked beyond the Filers name search (unverified).
-- Whether the amendment lag distribution (measured on reports first filed since 2022) predicts future filings; it is an observed distribution, not a rule (unverified).
+- Whether Mandelman and Walton (District 8 and 10 incumbents; even-numbered districts are on the November 2026 ballot (recalled)) have opened 2026 committees under names the matcher missed was not checked beyond the Filers name search (unverified).
+- Whether the amendment lag distribution (measured on Form 460 reports first filed since 2022, so reports from the last months have had little time to be amended) predicts future filings; it is an observed distribution, not a rule (unverified).
+- Whether the 122 state-style committee ids missing from the state filer table, the 83 federal-style ids and the 176 placeholder values are resolvable from any record; none of the three was looked up elsewhere.
 - That the DataSF description "replaces the original and any prior amendments" holds for Summary Totals for paper amendments (the dataset itself flags this as unresolved).
 - The 2018+ Form 496 / Schedule D overlap test compares totals per payer, candidate surname and stance; it shows the forms often differ and often agree, not which is authoritative.
 
@@ -193,4 +206,4 @@ Taken from the dataset descriptions and checked on the Mayor's committee and acr
 - Should a donor appearing under several name variants be merged automatically, or only after a person confirms each merge (matching the review step already assumed for pairings)?
 
 ### How to regenerate
-`python profile.py` (from this directory; it queries DataSF anonymously, with retries on throttling) rewrites `data-profile.md` and `data-profile.json`. `python -m unittest discover -s tests` runs the helper tests. Dataset pages used: https://data.sf.gov/api/views/pitq-e56w.json, qizs-bwft, 9ggq-m8hp, 4c8t-ngau, dbak-p2fq, 9gib-7p8x, s9b2-abj2, 3n88-2rrb, wygs-cc76 (same URL pattern); roster: http://sfbos.org/, https://lwvsf.org/find-your-representatives, https://ballotpedia.org/Board_of_Supervisors_elections_in_San_Francisco,_California_(2026).
+`python profile.py` (from this directory; it queries DataSF anonymously, with retries on throttling, and reads the state's filer-name table from the bulk export by byte ranges) rewrites `data-profile.md` and `data-profile.json`. `python -m unittest discover -s tests` runs the helper tests. Dataset pages used: https://data.sf.gov/api/views/pitq-e56w.json, qizs-bwft, 9ggq-m8hp, 4c8t-ngau, dbak-p2fq, 9gib-7p8x, s9b2-abj2, 3n88-2rrb, wygs-cc76 (same URL pattern); state committee records: https://campaignfinance.cdn.sos.ca.gov/dbwebexport.zip; roster: http://sfbos.org/, https://www.sf.gov/profile--daniel-lurie, https://lwvsf.org/find-your-representatives, https://media.api.sf.gov/documents/Supervisors_Roster_05-01-26.pdf.

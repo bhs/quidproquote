@@ -4,6 +4,7 @@ import unittest
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 
+import calaccess  # noqa: E402
 import survey_lib as lib  # noqa: E402
 
 CHEN = next(o for o in lib.OFFICIALS if o["last"] == "Chen")
@@ -77,6 +78,65 @@ class FormatTests(unittest.TestCase):
     def test_money(self):
         self.assertEqual(lib.money(1234.5), "$1,234")
         self.assertEqual(lib.money(None), "-")
+
+
+class AmendmentTests(unittest.TestCase):
+    @staticmethod
+    def sub(nid, date, kind, mech="Electronic"):
+        return {"filing_nid": nid, "filing_date": date + "T00:00:00.000", "filing_type": kind, "mechanism_type": mech}
+
+    def test_only_filed_amendments_count_and_cohort_is_by_first_filing(self):
+        rows = [
+            self.sub("new-amended", "2022-03-01", "FiledOriginal"),
+            self.sub("new-amended", "2022-06-10", "FiledAmendment"),
+            self.sub("new-amended", "2022-09-01", "FiledAmendment", "Paper"),
+            self.sub("new-attach", "2023-01-01", "FiledOriginal"),
+            self.sub("new-attach", "2023-02-01", "AttachmentsAdded"),
+            self.sub("new-plain", "2024-01-01", "FiledOriginal"),
+            # first filed before the cutoff: amended later, but not in the cohort
+            self.sub("old", "2021-12-01", "FiledOriginal"),
+            self.sub("old", "2022-05-01", "FiledAmendment"),
+        ]
+        out = lib.summarise_amendments(rows, "2022-01-01")
+        self.assertEqual(out["form460_reports_first_filed_since"], 3)
+        self.assertEqual(out["reports_with_a_filed_amendment"], 1)
+        self.assertEqual(out["filed_amendments_per_amended_report"], {2: 1})
+        self.assertEqual(out["reports_with_only_attachments_or_contents_changes"], 1)
+        self.assertEqual(out["amended_reports_with_a_paper_amendment"], 1)
+        self.assertEqual(out["days_first_to_last_amendment_max"], 184)
+
+    def test_days_between(self):
+        self.assertEqual(lib.days_between("2022-01-01", "2022-03-01"), 59)
+
+
+class CommitteeIdTests(unittest.TestCase):
+    TSV = (
+        "XREF_FILER_ID\tFILER_ID\tFILER_TYPE\tSTATUS\tEFFECT_DT\tNAML\tNAMF\n"
+        "1001001\t1001001\tRECIPIENT COMMITTEE\tACTIVE\t1/1/2020 12:00:00 AM\tOLD NAME\t\n"
+        "1001001\t1001001\tRECIPIENT COMMITTEE\tACTIVE\t1/1/2024 12:00:00 AM\tNEW NAME, SPONSORED BY ACME\t\n"
+        "999999\t2002002\tRECIPIENT COMMITTEE\tTERMINATED\t5/5/2019 12:00:00 AM\tOTHER PAC\t\n"
+    )
+
+    def test_shapes(self):
+        self.assertEqual(lib.committee_id_shape("1344506"), "state")
+        self.assertEqual(lib.committee_id_shape("C00123456"), "fec")
+        self.assertEqual(lib.committee_id_shape("Pending"), "other")
+
+    def test_parse_keeps_latest_name_and_xref(self):
+        by_id, by_xref = calaccess.parse_filer_names(self.TSV.splitlines(True))
+        self.assertEqual(by_id["1001001"]["name"], "NEW NAME, SPONSORED BY ACME")
+        self.assertEqual(by_xref["999999"], "2002002")
+
+    def test_resolve(self):
+        by_id, by_xref = calaccess.parse_filer_names(self.TSV.splitlines(True))
+        out = lib.resolve_committee_ids(
+            {"1001001": 100.0, "9999900": 5.0, "099999": 7.0, "999999": 1.0, "Pending": 50.0, "C00000001": 3.0}, by_id, by_xref)
+        self.assertEqual(out["state_ids_found_as_filer_id"], 1)
+        self.assertEqual(out["state_ids_found_as_legacy_xref"], 1)
+        self.assertEqual(out["state_ids_not_found"], 2)  # 9999900 and 099999 have no record
+        self.assertEqual(out["shapes"]["other"]["ids"], 1)
+        self.assertEqual(out["shapes"]["fec"]["ids"], 1)
+        self.assertEqual(out["found_names_saying_sponsored_by"], 1)
 
 
 if __name__ == "__main__":

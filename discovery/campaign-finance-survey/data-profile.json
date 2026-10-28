@@ -387,11 +387,11 @@
     "n": "44239"
    },
    {
-    "filing_version": "5",
+    "filing_version": "5.0",
     "n": "26399"
    },
    {
-    "filing_version": "6",
+    "filing_version": "6.0",
     "n": "3523"
    },
    {
@@ -399,7 +399,7 @@
     "n": "2372"
    },
    {
-    "filing_version": "7.0",
+    "filing_version": "7",
     "n": "1716"
    }
   ],
@@ -3347,14 +3347,6 @@
      "election_date": "2026-06-02T00:00:00.000",
      "district": "4",
      "candidate": "Wong, Alan",
-     "date_of_submission": "2026-04-10T00:00:00.000",
-     "date_certified_approved": "2026-04-15T00:00:00.000",
-     "funds_approved": "15636"
-    },
-    {
-     "election_date": "2026-06-02T00:00:00.000",
-     "district": "4",
-     "candidate": "Wong, Alan",
      "date_of_submission": "2026-02-19T00:00:00.000",
      "date_certified_approved": "2026-02-24T00:00:00.000",
      "funds_approved": "60000"
@@ -3390,6 +3382,14 @@
      "date_of_submission": "2026-03-24T00:00:00.000",
      "date_certified_approved": "2026-03-27T00:00:00.000",
      "funds_approved": "10230"
+    },
+    {
+     "election_date": "2026-06-02T00:00:00.000",
+     "district": "4",
+     "candidate": "Wong, Alan",
+     "date_of_submission": "2026-04-10T00:00:00.000",
+     "date_certified_approved": "2026-04-15T00:00:00.000",
+     "funds_approved": "15636"
     },
     {
      "election_date": "2026-06-02T00:00:00.000",
@@ -6204,39 +6204,14 @@
      "s": "0.0"
     },
     {
-     "filer_nid": "6680481",
-     "y": "2013",
-     "s": "0.0"
-    },
-    {
-     "filer_nid": "134025580",
-     "y": "2015",
-     "s": "816.0"
-    },
-    {
-     "filer_nid": "182919585",
-     "y": "2020",
-     "s": "31973.0"
-    },
-    {
      "filer_nid": "158383297",
      "y": "2017",
      "s": "0.0"
     },
     {
-     "filer_nid": "134025580",
-     "y": "2013",
-     "s": "9575.0"
-    },
-    {
      "filer_nid": "6680481",
      "y": "2012",
      "s": "4137.5"
-    },
-    {
-     "filer_nid": "200878648",
-     "y": "2022",
-     "s": "80961.16"
     },
     {
      "filer_nid": "6685950",
@@ -6252,11 +6227,6 @@
      "filer_nid": "6685950",
      "y": "2010",
      "s": "92080.5"
-    },
-    {
-     "filer_nid": "10992373",
-     "y": "2010",
-     "s": "191000.0"
     },
     {
      "filer_nid": "182919585",
@@ -6277,26 +6247,6 @@
      "filer_nid": "134025580",
      "y": "2012",
      "s": "34275.7"
-    },
-    {
-     "filer_nid": "158383905",
-     "y": "2016",
-     "s": "14976.77"
-    },
-    {
-     "filer_nid": "164723772",
-     "y": "2018",
-     "s": "9839.0"
-    },
-    {
-     "filer_nid": "200878648",
-     "y": "2021",
-     "s": "149398.0"
-    },
-    {
-     "filer_nid": "182919585",
-     "y": "2023",
-     "s": "0.0"
     },
     {
      "filer_nid": "164729133",
@@ -6334,14 +6284,64 @@
      "s": "1175.0"
     },
     {
-     "filer_nid": "182919585",
-     "y": "2019",
-     "s": "11279.0"
-    },
-    {
      "filer_nid": "164729133",
      "y": "2018",
      "s": "179181.49"
+    },
+    {
+     "filer_nid": "6680481",
+     "y": "2013",
+     "s": "0.0"
+    },
+    {
+     "filer_nid": "134025580",
+     "y": "2015",
+     "s": "816.0"
+    },
+    {
+     "filer_nid": "182919585",
+     "y": "2020",
+     "s": "31973.0"
+    },
+    {
+     "filer_nid": "134025580",
+     "y": "2013",
+     "s": "9575.0"
+    },
+    {
+     "filer_nid": "200878648",
+     "y": "2022",
+     "s": "80961.16"
+    },
+    {
+     "filer_nid": "10992373",
+     "y": "2010",
+     "s": "191000.0"
+    },
+    {
+     "filer_nid": "158383905",
+     "y": "2016",
+     "s": "14976.77"
+    },
+    {
+     "filer_nid": "164723772",
+     "y": "2018",
+     "s": "9839.0"
+    },
+    {
+     "filer_nid": "200878648",
+     "y": "2021",
+     "s": "149398.0"
+    },
+    {
+     "filer_nid": "182919585",
+     "y": "2023",
+     "s": "0.0"
+    },
+    {
+     "filer_nid": "182919585",
+     "y": "2019",
+     "s": "11279.0"
     },
     {
      "filer_nid": "6680481",
@@ -8236,22 +8236,25 @@
    "total": 73867
   },
   "amendments": {
-   "form460_reports_since_2022": 3818,
-   "amended": 1016,
-   "activities_per_report": {
-    "1": 2802,
-    "2": 680,
-    "3": 211,
-    "4": 76,
-    "5": 36,
-    "6": 7,
-    "7": 3,
-    "8": 3
+   "since": "2022-01-01",
+   "form460_reports_first_filed_since": 3738,
+   "reports_with_a_filed_amendment": 1013,
+   "filed_amendments_per_amended_report": {
+    "1": 677,
+    "2": 211,
+    "3": 76,
+    "4": 36,
+    "5": 7,
+    "6": 3,
+    "7": 3
    },
-   "days_first_to_last_p50": 87,
-   "days_first_to_last_p90": 356,
-   "days_first_to_last_max": 1587,
-   "amended_over_365_days": 93
+   "reports_with_only_attachments_or_contents_changes": 0,
+   "reports_without_a_filed_original_row": 0,
+   "amended_reports_with_a_paper_amendment": 1,
+   "days_first_to_last_amendment_p50": 87,
+   "days_first_to_last_amendment_p90": 350,
+   "days_first_to_last_amendment_max": 1587,
+   "amended_over_365_days": 91
   }
  },
  "ie_overlap": {
@@ -8328,7 +8331,108 @@
    "distinct_committee_ids_on_schedule_a": 2654,
    "in_sf_filers_dataset": 1143,
    "in_state_filer_dataset_only": 96,
-   "in_neither": 1415
+   "in_neither": 1415,
+   "unresolved_in_state_records": {
+    "shapes": {
+     "state": {
+      "ids": 1156,
+      "dollars": 29508651.020000003
+     },
+     "other": {
+      "ids": 176,
+      "dollars": 2107500.13
+     },
+     "fec": {
+      "ids": 83,
+      "dollars": 314006.57
+     }
+    },
+    "state_ids_found_as_filer_id": 619,
+    "state_ids_found_as_legacy_xref": 415,
+    "state_ids_not_found": 122,
+    "dollars_of_found_state_ids": 29251234.520000003,
+    "found_by_state_filer_type": {
+     "RECIPIENT COMMITTEE": 956,
+     "MAJOR DONOR/INDEPENDENT EXPENDITURE COMMITTEE": 27,
+     "TREASURER/RESPONSIBLE OFFICER": 21,
+     "CLIENT": 13,
+     "SLATE MAILER ORGANIZATIONS": 8,
+     "CANDIDATE/OFFICEHOLDER": 6,
+     "PAYMENT TO INFLUENCE": 3
+    },
+    "found_by_state_status": {
+     "TERMINATED": 544,
+     "ACTIVE": 489,
+     "INACTIVE": 1
+    },
+    "found_names_saying_sponsored_by": 42,
+    "largest_found": [
+     {
+      "committee_id": "1344506",
+      "dollars": 9225152.54,
+      "found_as": "filer id",
+      "state_type": "RECIPIENT COMMITTEE",
+      "state_status": "ACTIVE",
+      "state_name": "AMERICAN BEVERAGE ASSOCIATION CALIFORNIA PAC (NON-PROFIT 501 (C) (6))"
+     },
+     {
+      "committee_id": "1484835",
+      "dollars": 9157447.71,
+      "found_as": "filer id",
+      "state_type": "RECIPIENT COMMITTEE",
+      "state_status": "ACTIVE",
+      "state_name": "A MORE AFFORDABLE CALIFORNIA, SPONSORED BY UBER"
+     },
+     {
+      "committee_id": "782560",
+      "dollars": 2631978.45,
+      "found_as": "legacy cross-reference id",
+      "state_type": "RECIPIENT COMMITTEE",
+      "state_status": "ACTIVE",
+      "state_name": "ISSUES MOBILIZATION POLITICAL ACTION COMMITTEE (IMPAC)"
+     },
+     {
+      "committee_id": "980162",
+      "dollars": 585000.0,
+      "found_as": "legacy cross-reference id",
+      "state_type": "RECIPIENT COMMITTEE",
+      "state_status": "ACTIVE",
+      "state_name": "MEMBERS' VOICE OF THE STATE BUILDING TRADES"
+     },
+     {
+      "committee_id": "1244414",
+      "dollars": 470000.0,
+      "found_as": "filer id",
+      "state_type": "RECIPIENT COMMITTEE",
+      "state_status": "TERMINATED",
+      "state_name": "CALIFORNIA ISSUES PAC"
+     },
+     {
+      "committee_id": "810437",
+      "dollars": 375000.0,
+      "found_as": "legacy cross-reference id",
+      "state_type": "RECIPIENT COMMITTEE",
+      "state_status": "ACTIVE",
+      "state_name": "UNITE HERE TIP STATE AND LOCAL FUND (NY SBOE ID#3370)"
+     },
+     {
+      "committee_id": "1489549",
+      "dollars": 361578.7,
+      "found_as": "filer id",
+      "state_type": "RECIPIENT COMMITTEE",
+      "state_status": "TERMINATED",
+      "state_name": "NEVADANS FOR FAIR RECOVERY, SPONSORED BY UBER TECHNOLOGIES, INC. (NV PAC ID # 11318)"
+     },
+     {
+      "committee_id": "981470",
+      "dollars": 300520.0,
+      "found_as": "legacy cross-reference id",
+      "state_type": "RECIPIENT COMMITTEE",
+      "state_status": "ACTIVE",
+      "state_name": "AT&T CALIFORNIA EMPLOYEE POLITICAL ACTION COMMITTEE"
+     }
+    ]
+   }
   },
   "com_rows_without_id": {
    "n": "469",
