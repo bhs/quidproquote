@@ -1,0 +1,7 @@
+services:
+  app:
+    build:
+      context: ../discovery/campaign-finance-survey
+    environment:
+      - DATASF_APP_TOKEN
+    command: ["sleep", "infinity"]
