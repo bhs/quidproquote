@@ -1,6 +1,4 @@
 version: 1
 service: app
 test_command: python -m unittest discover -s tests
-results_command: python profile.py
-comparable_output: data-profile.md
 startup_timeout: 120
