@@ -1,0 +1,30 @@
+{
+  "about": "Hand-written sample table behind findings.md section 2. 22 donors from the Ethics Commission 2026 top-contributor tables and press. Class A = donor's own statement about a local-government issue at a stable URL; B = own statement of general (non-local) priorities, or first-party source seen only via a third party; C = third-party material only; D = nothing found. 'Nothing found' reflects a shallow search, not proof none exists.",
+  "individuals": [
+    {"donor": "Jeremy Stoppelman", "class": "A", "own_source": "https://x.com/jeremys", "source_kind": "social profile and posts", "note": "Bio states a stance on housing and streets; funded Prop G (Great Highway)."},
+    {"donor": "John Doerr", "class": "B", "own_source": null, "source_kind": "own book and climate plan", "note": "Climate plan; nothing about San Francisco government."},
+    {"donor": "Michael Moritz (with Harriet Heyman)", "class": "B", "own_source": null, "source_kind": "foundation focus areas (Crankstart site not opened)", "note": "Aims for City Hall are in interviews only (third party)."},
+    {"donor": "Chris Larsen and Lyna Lam", "class": "C", "own_source": null, "source_kind": "news interviews; community foundation donor story", "note": "https://www.svcf.org/annual-reports/donor-2025/donor-stories-2025-26-larsenlam"},
+    {"donor": "John Pritzker", "class": "C", "own_source": null, "source_kind": "news on philanthropy", "note": "Do not confuse with the Pritzker Pucker Family Foundation, a different family branch."},
+    {"donor": "Dagmar Dolby", "class": "C", "own_source": null, "source_kind": "third-party reports of family fund giving", "note": "Mood disorders and dementia research; nothing political."},
+    {"donor": "Jean-Pierre Conte", "class": "C", "own_source": null, "source_kind": "self-written bio pages", "note": "Healthcare, education, science philanthropy; no San Francisco issue."},
+    {"donor": "Jan Koum", "class": "C", "own_source": null, "source_kind": "news on donations", "note": "$250K to a pro-Mayor PAC (Mission Local, 2026-04)."},
+    {"donor": "John Wolthuis", "class": "D", "own_source": null, "source_kind": null, "note": "Listed as $500K contributor to Measures D, E, F."},
+    {"donor": "Michael Seibel", "class": "D", "own_source": null, "source_kind": null, "note": "Listed as $450K contributor to Measures D, E, F."}
+  ],
+  "organisations": [
+    {"donor": "GrowSF", "class": "A", "own_source": "https://growsf.org/voter-guide/", "source_kind": "per-election voter guide", "note": "New URL per election (June and November 2026)."},
+    {"donor": "San Francisco Chamber of Commerce (SF Forward)", "class": "A", "own_source": "https://sfchamber.com/advocacy/agenda/", "source_kind": "legislative agenda page", "note": "Undated; opens with COVID-19 period, may be stale (unverified)."},
+    {"donor": "SEIU Local 1021", "class": "A", "own_source": "https://www.seiu1021.org/issues-legislation", "source_kind": "issues and endorsement pages", "note": "Per-election endorsement pages; issues page carries older items."},
+    {"donor": "Airbnb", "class": "A", "own_source": "https://news.airbnb.com/an-update-about-our-community-in-san-francisco", "source_kind": "newsroom post", "note": "Company-wide, old; the sponsored committee has no page of its own."},
+    {"donor": "Neighbors for a Better San Francisco", "class": "A", "own_source": "https://finance.yahoo.com/news/neighbors-better-san-francisco-launches-140200587.html", "source_kind": "launch release (own site not opened)", "note": "Blueprint for a Better San Francisco; IRS mission on GuideStar."},
+    {"donor": "Emerson Collective", "class": "B", "own_source": "https://www.emersoncollective.com/index.php?p=about-us", "source_kind": "mission page", "note": "Education, immigration reform, environment, health."},
+    {"donor": "Ripple Labs", "class": "C", "own_source": null, "source_kind": "news", "note": "Gifts follow Larsen's causes in press."},
+    {"donor": "San Francisco Police Officers Association", "class": "C", "own_source": null, "source_kind": "Ballotpedia endorsements and news", "note": "Own site not opened."},
+    {"donor": "Anthropic", "class": "D", "own_source": null, "source_kind": null, "note": "$500K to Muni measure committee; no statement found."},
+    {"donor": "OpenAI", "class": "D", "own_source": null, "source_kind": null, "note": "$500K to Muni measure committee; no statement found."},
+    {"donor": "San Francisco Association of Realtors", "class": "D", "own_source": null, "source_kind": "home page only", "note": "No priorities page seen."},
+    {"donor": "San Francisco Labor Council", "class": "D", "own_source": null, "source_kind": "committee page on Ethics site", "note": "No own-site priorities page found."}
+  ],
+  "not_assessed": ["Visa", "Williams-Sonoma", "Google", "PG&E", "Sergey Brin", "Tony Xu", "Saikat Chakrabarti", "Jeffrey Lawson", "Laura Yakovenko", "Emmett Shear"]
+}
