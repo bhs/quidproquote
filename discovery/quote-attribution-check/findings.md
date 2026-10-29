@@ -1,12 +1,12 @@
 # Quote attribution check: can a 2026 transcript quote be tied to the official and the recorded moment?
 
-**Kind of hop: a survey** of sources outside the project (the city's captions, calendar and archive, plus two third-party transcript sites), read against the three charter questions. It records what was observed and how well it is sourced; it makes no decisions. **No audio or video was played in this research**, so nothing below was checked by listening. Where the charter asks for a comparison "with what is heard", the finding is what the transcript text itself gives away, and a clear statement of what remains untested.
+**Kind of hop: a survey** of sources outside the project (the city's captions, calendar and archive, plus two third-party transcript sites and published figures on live-caption delay), read against the three charter questions. It records what was observed and how well it is sourced; it makes no decisions. **No audio or video was played in this research**, so nothing below was checked by listening. Where the charter asks for a comparison "with what is heard", the finding is what the transcript text itself gives away, and a clear statement of what remains untested.
 
 Builds on `discovery/speech-sources-survey/findings.md` (called "the speech survey" below). Funding and donor questions are out of scope.
 
 ## Summary by charter question
 
-1. **Tying an unnamed passage to the official.** Not reliably from the city transcript alone. The `>>` marker is neither a complete nor a clean speaker-change signal in the 21 April 2026 Board transcript: speakers change with no `>>`, and `>>` appears inside one person's remarks. What does work as a *candidate* generator is the spoken cue ("Supervisor X", "District N Supervisor X") that the chair or clerk says just before a member speaks, but the captions garble those very names (the Board President's surname was never rendered correctly in any of nine roll calls read). Strength of the cue depends on the kind of segment (see the table). Every route found gives a *proposed* speaker; confirming it needs the agenda, the minutes or the video. Answered in part: the routes and their failure modes are mapped; their hit rate was not measured.
+1. **Tying an unnamed passage to the official.** Not reliably from the city transcript alone. The `>>` marker is neither a complete nor a clean speaker-change signal in the 21 April 2026 Board transcript: speakers change with no `>>`, and `>>` appears inside one person's remarks. What does work as a *candidate* generator is the spoken cue ("Supervisor X", "District N Supervisor X") that the chair or clerk says just before a member speaks, but the captions garble those very names (the Board President's surname was never rendered correctly in any of nine roll calls read). 
 2. **Time stamps and meeting references.** Partly. The stamp structure is clear (line-start stamps counted from `00:00:00` of the recording, with gaps where nothing is captioned), and the transcript's own spoken opening ("the April 21st 2026 regular meeting") can validate a meeting reference. Whether a stamp lands on the same second of the archived video was **not** tested, because no archive player page could be opened. The calendar rows do not expose the recording link in their static HTML, and the Legistar calendar's meeting ids are a different number from the transcript id, so the "calendar row to recording" step is unresolved. Ids of transcripts and clips rise together with meeting date, which is consistent with, not proof of, one shared id.
 3. **Transcript wording against the recording.** Not measurable here (no audio). What the text shows without audio: a dense set of caption-grade errors in names, titles, numbers and small words, including one passage whose own numbers contradict each other. The earlier conclusion stands, now with more examples: transcript wording cannot be published as "word for word" without listening at the stamped moment. A rate of difference per quote is **not found**.
 
@@ -17,10 +17,11 @@ Builds on `discovery/speech-sources-survey/findings.md` (called "the speech surv
 | 1 | Legistar `Transcript.aspx?ID1=52251` | Full caption transcript of the Board of Supervisors regular meeting of 21 April 2026; read from `00:00:13` to `01:49:14` (the page text was cut there) | Attribution and error audit |
 | 2 | Legistar calendar (`Calendar.aspx`), October 2026 view | 16 meeting rows with Agenda, Minutes, Video, Audio, Transcript columns | Meeting reference |
 | 3 | Granicus listings and RSS (search extracts of `ViewPublisher.php?view_id=192` and `view_id=10`, `ViewPublisherRSS.php?view_id=10`) | Clip ids, dates, durations | Id and date relation |
-| 4 | `sfgovernmentconnection.com` SmartTranscripts (search extracts for 3 Feb, 10 Feb 2026 and 29 Jul 2025 Board meetings) and its open-source README (`github.com/ang-eichhorst/legitalk`, a fork of the pipeline) | Independent machine transcripts with speaker names | Attribution aid, independence check |
-| 5 | `sfbos.org`, `lwvsf.org` (search extracts) | Current Board roster | Name mapping |
+| 4 | `sfgovernmentconnection.com` SmartTranscripts: the full page for the 3 February 2026 Board meeting (read from the opening roll call to the start of the SFO airport-plan appeal hearing, about 2 h 35 m of a 5 h 37 m meeting), plus search extracts for 10 Feb 2026 and 29 Jul 2025; and its open-source README (`github.com/ang-eichhorst/legitalk`, a fork of the pipeline) | Independent machine transcripts with speaker names | Attribution aid, hit rate of the cue rule, independence check |
+| 5 | `sfbos.archive.sf.gov/roster-members` (search extract), `growsf.org/sf-district-supervisor-map` and Wikipedia's page for Myrna Melgar (search extracts), `sfbos.org`, `lwvsf.org` (search extracts) | Current Board roster | Name-to-district mapping |
+| 6 | Live-caption delay: SyncWords "latency" page (vendor, full page), Amira Labs article on caption QC (vendor, full page, 30 Aug 2026), search extracts of Kushalnagar, Lasecki and Bigham (2014) on classroom captions | Published figures for how far captions trail speech | Time-stamp lag |
 
-Not read: the Legistar transcript of the 9 July 2026 committee meeting used in the speech survey (only its recorded findings are used), any minutes PDF, any Granicus player or transcript-viewer page (only search extracts), any Mayor press-conference caption.
+Not read: the minutes of the 21 April 2026 Board meeting (no address for them surfaced; minutes for other 2026 meetings exist as `bag<MMDDYY>_minutes.pdf` on the Board's sites), any SmartTranscripts page for 21 April 2026, the Legistar transcript of the 9 July 2026 committee meeting used in the speech survey (only its recorded findings are used), any Granicus player or transcript-viewer page (only search extracts), any Mayor press-conference caption. The 21 April city captions were therefore not lined up against any speaker-labeled transcript of the same meeting.
 
 ## Q1. Tying a passage to the official who said it
 
@@ -61,7 +62,7 @@ Not read: the Legistar transcript of the 9 July 2026 committee meeting used in t
 | Chyanne Chen (D11) | "CHEN", "CHEYENNE CHEN", "CHAD", "CHIN", "JEN" |
 | Connie Chan (D1) | "CHAN"; read as a different member when the caption says "CHEN" (the two surnames differ by one letter) |
 
-Roster source: current members by district, `sfbos.org` and `lwvsf.org` (Chan D1, Sherrill D2, Sauter D3, Wong D4, Mahmood D5, Dorsey D6); Mandelman D8, Fielder D9 and Walton D10 appear in the SmartTranscripts labels; Melgar D7 and Chen D11 (the latter also on her Wikipedia page) are not in the extracts read for D7 (recalled). A one-letter surname pair (Chan, Chen) means a fuzzy-matching attribution can silently pick the wrong official.
+Roster source: the Board's roster page on `sfbos.archive.sf.gov` (search extract) lists Chan D1, Sauter D3, Mahmood D5, Dorsey D6, Melgar D7, Mandelman D8 (marked with an asterisk), Fielder D9 and Chen D11; `sfbos.org` and `lwvsf.org` extracts give Sherrill D2 and Wong D4, and the SmartTranscripts labels of 3 February 2026 give Walton D10 as well as every other district above. Melgar as the District 7 member is also stated by Wikipedia's page for her (in office since 8 January 2021) and by GrowSF's district page. The roster page itself was read only as a search extract. A one-letter surname pair (Chan D1, Chen D11) means a fuzzy-matching attribution can silently pick the wrong official.
 
 ### Routes to a speaker, from what was found
 
@@ -70,9 +71,30 @@ Roster source: current members by district, `sfbos.org` and `lwvsf.org` (Chan D1
 | A. Spoken cue before the passage, matched to the roster by district and fuzzy name | A proposed speaker for floor remarks | Captions garble names (table above); cue sits at the end of the previous turn; roll-call names are not speakers |
 | B. Agenda order and item numbers (agenda PDFs are on Legistar) | Which items and which sponsors are on the floor at a stamp | Does not say who spoke inside an item |
 | C. Action minutes (moved by, seconded by, vote) | Confirms who moved and how members voted | No words or times (speech survey) |
-| D. Independent diarized transcript with names (SmartTranscripts shows `[Rafael Mandelman, Board President (District 8)]`, `[Angela Calvillo, Clerk of the Board]`) | Named turns for many passages | The README of its open-source pipeline says an automatic speech-to-text service transcribes the audio and a language model identifies the speakers, so the names are inferred, and unidentified turns show as "Speaker 22.0" and similar. The labels are a hint, not a record |
+| D. Independent diarized transcript with names (SmartTranscripts shows `[Rafael Mandelman, Board President (District 8)]`, `[Angela Calvillo, Clerk of the Board]`) | Named turns for many passages | The README of its open-source pipeline says an automatic speech-to-text service transcribes the audio and a language model identifies the speakers, so the names are inferred, and unidentified turns show as "Speaker 22.0" and similar. The labels are a hint, not a record; the 3 February 2026 page shows wrong labels on short turns (next section) |
 | E. Watching the video at the stamp | The speaker is visible at the podium or in the chamber | Needs a person; whether the broadcast carries name captions was not seen |
-| F. Voice matching against known members | Not tried | (recalled) a technique used in speaker diarization; accuracy on this chamber's audio unknown |
+| F. Voice matching against known members | Not tried | A technique used in speaker diarization (recalled); accuracy on this chamber's audio unknown |
+
+### Rough hit rate: the spoken-cue rule against SmartTranscripts labels (3 February 2026 Board meeting)
+
+The one meeting for which a full speaker-labeled transcript was read is 3 February 2026, not 21 April. The test: take each point where the presiding officer or clerk calls a member to speak and check whether the next turn is labeled with that member. The cues here are in SmartTranscripts' own text, which renders names more legibly than the city captions do, so this is a best case for route A.
+
+| Measure | Result (part of the meeting read: opening to the start of the SFO appeal hearing) |
+|---|---|
+| Floor calls ("Supervisor Wong", "Chair Chan", "District ten supervisor Walton", "District five, supervisor Mahmood" and the like) | 17 found; in all 17 the next turn is labeled with the member called |
+| Long remarks by members (Wong, Walton, Chan, Fielder, Sauter, Dorsey, Melgar, Mahmood and the commendation speeches) | Every one read carries the label of the member the cue named; no long member remark under another person's label was seen |
+| Turns whose label the text itself contradicts | About ten, among several hundred labeled turns (turns were not counted exactly) |
+| Of those, on short turns by officials | The President's call "Supervisor Fielder" labeled Supervisor Mahmood; the President's calls "Supervisor Sauter" and "Supervisor Fielder" labeled Supervisor Dorsey; the roll-call reply "I" after "Supervisor Mandelman" labeled Supervisor Walton; one-word interjections ("go", "I know, but") labeled as Supervisors Walton and Sauter inside other people's speech |
+| Of those, on non-officials | A public speaker's "Hello supervisors, Peter Stevens, Build Affordable Faster California" labeled as the Board President; a speaker who says her name is "Novia Marshall" labeled with a different name and an SFO job title; the end of a department speaker's sentence labeled as the appellant; sentence fragments ("will close", "by") in the middle of the President's speech under other labels |
+| Label reuse | "Speaker 17.0", "Speaker 24.0" and "Speaker 44.0" each name two different people at different points |
+
+What this says about the routes:
+
+- The cue rule found the right member every time a clean call preceded a member's remarks. Its failures are elsewhere: turns with no cue (question-and-answer exchanges such as a supervisor questioning a department's staff, where the order alternates with no names), the person *being called* versus the person speaking in roll calls, and non-officials, whom a cue rule assigns to nobody.
+- A label that agrees with the cue is weak confirmation, because the labeler works from the same words. The wrong labels cluster where no cue exists, which is where the cue rule is silent too, so the two routes are not independent checks of each other on those turns.
+- SmartTranscripts' speech-to-text makes the same kind of name errors as the city captions in the roll calls it renders ("Supervisor Cheryl" for Sherrill, "Supervisor Soder" for Sauter, "Supervisor Meltzer" for Melgar, "Chan present" for Chen's reply), while its labels show the correct names, so the labeler is correcting names from the roster, not reading them from the audio. A cue rule run on caption text alone has no such correction.
+- Whether the 3 February labels are right on the video was not checked, so each figure above is agreement or contradiction within text, not accuracy against what is heard.
+- Not obtained for 21 April: the minutes, and a speaker-labeled transcript of that meeting. A moved-by/seconded-by and vote check of cue-based guesses for that meeting is untested. For 3 February, the text read contains motions ("Second by Dorsey"; "a second from Supervisor Melgar") that the minutes could confirm; those minutes were not read.
 
 ## Q2. Time stamps and meeting references
 
@@ -81,7 +103,7 @@ Roster source: current members by district, `sfbos.org` and `lwvsf.org` (Chan D1
 - Stamps are line starts counted from the beginning of the recording. In the 21 April transcript the first caption is at `00:00:13` and the text read runs to at least `01:49:14`.
 - Caption rows are a few seconds apart (for example `00:05:23`, `00:05:25`, `00:05:27`, `00:05:30`); two rows can share nearly the same second (`00:02:18` and `00:02:19`).
 - Stamps follow media time, not speech: there are silent or music stretches with no captions (`00:43:43` to `00:44:42`, a sung passage ending at `01:16:14` followed by `01:17:39`, and `01:41:49` to `01:42:04`). A reader can therefore not infer position from the amount of text.
-- The text of a row is captioned live, so a row's stamp is when the caption appeared (my reading, since the agendas say meetings are real-time captioned, per the speech survey). A live caption normally trails the words it renders by some seconds (recalled). A quote's stamp therefore likely points a few seconds **after** the speech began, not at it. This lag was not measured.
+- The text of a row is captioned live, so a row's stamp is when the caption appeared (my reading, since the agendas say meetings are real-time captioned, per the speech survey). Published figures for live-caption delay (none measured on SFGovTV): a classroom measurement of caption delay per word found a mean of 4.2 s for a human stenographer (CART) and 7.9 s for automatic speech recognition (Kushalnagar, Lasecki and Bigham 2014, search extracts); a caption vendor's page says typical captioning solutions show live captions within 4 to 8 seconds, with roughly 5 seconds behind program audio in HLS delivery when no buffer is used, and that a deliberate video delay of 3 to 5 seconds can hide the lag (a vendor's own account); UK regulator Ofcom's guidance, as relayed by a second vendor's article, aims for a mean of no more than 4.5 seconds across live programming, a target for the mean and not a limit on any one caption (the Ofcom document itself was not read; a third-party article states Ofcom's own measurement rounds found 5.1 to 5.6 seconds, which is unverified). The same article separates lag measured at the broadcaster's origination point from lag seen at the viewer's screen, so a figure needs its measuring point. A quote's stamp therefore probably points several seconds **after** the speech began, in the order of 4 to 8 seconds on those figures; the lag in SF's captions, and whether the archived recording was re-synchronized after the live event, are not known.
 - A quote that spans rows needs the stamp of the first row, and a safe link would start earlier than the stamp. How many seconds earlier is untested.
 
 ### Whether the stamp equals the archived recording's second: untested
@@ -142,18 +164,20 @@ The mix is the same as in the speech survey's committee sample (names, short wor
 
 **Looked for and not found**
 - Any measurement of how many words differ between caption and audio, or a per-quote rate. Looked at: the 21 April 2026 Board transcript, the speech survey's committee sample. No audio could be played.
-- Whether a stamp lands at the same second in the archived video, and the size of the caption lag. Looked at: Legistar transcript text, Granicus listings and extracts. No player page was opened.
+- Whether a stamp lands at the same second in the archived video, and the size of the caption lag on SF's own recordings. Looked at: Legistar transcript text, Granicus listings and extracts, and published delay figures from other settings (classroom studies, vendor pages, a UK guideline as relayed). No player page was opened.
 - The recording link behind the calendar's Video, Audio and Transcript cells; the static calendar HTML holds `#` only. The meeting detail page for a row was not opened.
 - Whether the archived video is ever trimmed after captioning (Granicus lists a trimming tool; SFGovTV practice unknown).
 - Whether the broadcast video shows member names on screen, or whether the chamber's seating or nameplates are visible enough to identify speakers.
-- Minutes for the 21 April 2026 Board meeting (to test how far moved-by and vote lines confirm cue-based speakers).
+- Minutes for the 21 April 2026 Board meeting (to test how far moved-by and vote lines confirm cue-based speakers), and a SmartTranscripts page for that meeting (to line its speaker labels up with the city captions' cues). No address for either surfaced; the cue-rule hit rate above is for 3 February 2026 instead.
+- The Ofcom guideline text and the Board's roster page as full pages; both were read through other pages or search extracts.
 
 **Claims not verified**
 - That the Legistar transcript id equals the Granicus clip id (unverified): ids and dates rise together across the pairs listed above, but no single pair was checked in both systems.
-- That the caption stamp lags the speech (my reading, from the text being live captions).
+- That the caption stamp lags the speech in SF's archive (my reading, from the text being live captions): the published figures are from other settings and the archive may have been re-synchronized after the event.
+- The Ofcom measurement of 5.1 to 5.6 seconds (unverified): stated only by a third-party article seen as a search extract.
+- The 3 February label counts (my reading): "contradicted by its own text" is a judgment from reading, the turns were not counted exactly, and nothing was checked against the video.
 - That `>>` over-marks pauses inside a speech (my reading from context; no audio).
 - That the Board listing's epoch "Date" is the only date field on the archive page (unverified; seen in search extracts).
-- That Melgar is District 7 (recalled).
 - The Privacy Act date (recalled).
 - The 2013 appointment term being an error (my reading).
 
