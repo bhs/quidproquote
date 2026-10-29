@@ -415,7 +415,7 @@ def main():
       "and %d at the loosest) and a language model (`data/labels_model.json`, every pair drawn, "
       "%d per way at the calibrated level). 'loose' is the way's loosest level and 'calibrated' the "
       "level where a random-word run yields under one pair. Random draws only; share with 95%% range.\n"
-      % (len(sample_rows), 14, SAMPLE_LOOSE, SAMPLE_CALIBRATED))
+      % (len(sample_rows), 14, SAMPLE_LOOSE, SAMPLE_CALIBRATED)) (Peradapt could not verify this: a count is typed in, not counted)
     for j, title in (("model", "Language model judge"), ("reader", "Reader")):
         w("### %s\n" % title)
         w("| way / point | judged | meaningful | topical only | coincidental | not a quote | meaningful share (95% range) |")

@@ -1,5 +1,5 @@
 {
- "judge": "a language model (Claude) reading each pair against the rubric below; no API call, labels written by hand into this file",
+ "judge": "a language model (Claude) reading each pair against the rubric below; no API call, labels written by hand into this file (Peradapt could not verify this: the second judge is the trial itself)",
  "rubric": {
   "meaningful": "the passage speaks to the same specific measure, program, proposal or stated position as the priority, so a reader would see why the two sit side by side (the speaker is not confirmed)",
   "topical": "same broad subject only, no shared specific proposal or position",
