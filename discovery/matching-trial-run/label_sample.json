@@ -113,6 +113,7 @@
  {
   "pair": "51452@01:49:16|P060",
   "drawn_for": [
+   "both/calibrated",
    "tfidf/calibrated"
   ],
   "scores": {
@@ -137,7 +138,9 @@
  {
   "pair": "51452@01:49:16|P095",
   "drawn_for": [
-   "both/top"
+   "both/top",
+   "phrase/calibrated",
+   "tfidf/calibrated"
   ],
   "scores": {
    "tfidf": 0.33,
@@ -177,6 +180,27 @@
    "section": "Vote YES on Prop 50: California labor kicks off campaign to defend democracy",
    "url": "https://www.seiu1021.org/issues-legislation",
    "text": "Vote YES on Prop 50: California labor kicks off campaign to defend democracy. The fight has just begun Union members across California hit the streets and the phones this past weekend for the Yes on Prop 50 Labor Kickoff, launching canvassing and phone banking efforts in San Francisco, Berkeley, Fairfield, Sacramento, and Santa Clara."
+  }
+ },
+ {
+  "pair": "52251@01:01:44|P028",
+  "drawn_for": [
+   "tfidf/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.295
+  },
+  "quote": {
+   "meeting": "Board of Supervisors, 2026-04-21",
+   "stamp": "01:01:44",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52251",
+   "text": "THIS WEEKEND THEY'RE PRESENTING COOL ARTS BURDEN OF PROOF WHICH HAS RECEIVED A GREAT REVIEW FROM S.F. CHRONICLE. SO WE HOPE WE GET OUT. YOU CAN CHECK IT OUT. COOL ARTS HAS BEEN AROUND FOR OVER 40 YEARS AND HAS BEEN REALLY MAKING CULTURE AND SHIFTING CULTURE IN SOMA FOR DECADES."
+  },
+  "priority": {
+   "donor": "San Francisco Chamber of Commerce",
+   "section": "Treat arts and culture as economic drivers",
+   "url": "https://sfchamber.com/agenda/",
+   "text": "Recognize the support for tourism, foot traffic, and neighborhood vitality that arts and culture bring"
   }
  },
  {
@@ -255,6 +279,7 @@
  {
   "pair": "52800@00:06:27|P071",
   "drawn_for": [
+   "phrase/calibrated",
    "phrase/top",
    "tfidf/calibrated"
   ],
@@ -326,9 +351,59 @@
   }
  },
  {
+  "pair": "52800@00:06:27|P080",
+  "drawn_for": [
+   "tfidf/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.251,
+   "phrase": 4.0,
+   "anchor": 2.0,
+   "both": 0.251
+  },
+  "quote": {
+   "meeting": "Board of Supervisors, 2026-07-07",
+   "stamp": "00:06:27",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52800",
+   "text": "THE CHARTER OF THE CITY AND COUNTY TO AUTHORIZE THE ESTABLISHMENT OF A MUNICIPAL FINANCE CORPORATION AND PUBLIC BANK AS NONPROFIT CORPORATIONS AND TO SET FORTH THE MISSION PRINCIPLES AND GOVERNANCE STRUCTURE OF THOSE CORPORATIONS AT AN ELECTION TO BE HELD ON NOVEMBER 3RD, 2026."
+  },
+  "priority": {
+   "donor": "GrowSF",
+   "section": "Proposition B — Establishing a Municipal Finance Corporation and a Public Bank",
+   "url": "https://growsf.org/voter-guide/san-francisco-voter-guide-november-2026-election/measures/prop-b/",
+   "text": "And after all these errors, remember what Prop B actually provides toward building a bank: nothing. Its own text concedes the corporation \"cannot be established unless the City secures the required capitalization,\" and the tax that would have supplied the money was withdrawn in March. San Francisco is facing a $643M two-year deficit, and the Controller prices the corporation and bank at $310M to $460M over eight years. Let's at least get our own finances in order before trying to run a bank. Vote no on Prop B."
+  }
+ },
+ {
+  "pair": "52800@00:13:03|P034",
+  "drawn_for": [
+   "tfidf/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.259,
+   "phrase": 1.0,
+   "topic": 1.0,
+   "anchor": 1.0,
+   "both": 0.259
+  },
+  "quote": {
+   "meeting": "Board of Supervisors, 2026-07-07",
+   "stamp": "00:13:03",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52800",
+   "text": "NINE THIS IS A CHARTER AMENDMENT TO AMEND THE CHARTER OF THE CITY AND COUNTY BY REQUIRING OR AUTHORIZING THE BOARD OF SUPERVISORS TO AMEND SPECIFIED INITIATIVE ORDINANCES TRANSFER FROM THE CHARTER TO THE MUNICIPAL CODE CERTAIN COMMISSIONS AND ADVISORY BODIES IN SOME CASES WITH MODIFIED FUNCTIONS AND OTHER VARIOUS CHANGES."
+  },
+  "priority": {
+   "donor": "San Francisco Chamber of Commerce",
+   "section": "Proposition A – Charter Changes Affecting Various City Departments & Commissions",
+   "url": "https://sfchamber.com/november-2026-voter-guide/",
+   "text": "Prop A would allow for Supervisors to update the scope of duties for current advisory bodies, commissions and departments. The Controller estimates that savings from this ballot measure would be between $365,000 to $450,000 a year. The Chamber supports Prop A because it works to trim outdated bureaucratic language and modernizing operations to create a Charter that offers greater accountability."
+  }
+ },
+ {
   "pair": "52800@00:14:48|P036",
   "drawn_for": [
-   "anchor/calibrated"
+   "anchor/calibrated",
+   "tfidf/calibrated"
   ],
   "scores": {
    "tfidf": 0.256,
@@ -374,9 +449,82 @@
   }
  },
  {
+  "pair": "52800@00:15:56|P024",
+  "drawn_for": [
+   "both/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.216,
+   "phrase": 2.0,
+   "both": 0.216
+  },
+  "quote": {
+   "meeting": "Board of Supervisors, 2026-07-07",
+   "stamp": "00:15:56",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52800",
+   "text": "EARLIER THIS YEAR I ASKED TO BE ABLE TO CONDUCT AN INDEPENDENT ANALYSIS TO IDENTIFY FUNDING AND FUND FINANCING MECHANISMS FOR AFFORDABLE HOUSING. THIS AFFORDABLE HOUSING TRUST FUND IS ONE OF THOSE STRATEGY THAT IS NEEDED IN ORDER TO BRING OUR AFFORDABLE HOUSING PRODUCTION TO SCALE IN COMING YEARS AS WELL AS MY CHARTER AMENDMENT TO ESTABLISH A MUNICIPAL FINANCIAL CORPORATION AND PUBLIC BANK AND OTHER STRATEGY TO EVENTS, SOCIAL HOUSING MODELS AND FINANCING TOOLS."
+  },
+  "priority": {
+   "donor": "San Francisco Chamber of Commerce",
+   "section": "Housing Supply & Downtown Revitalization",
+   "url": "https://sfchamber.com/agenda/",
+   "text": "Support federal housing policies that expand housing production, affordability, and homelessness prevention, including the Housing BOOM Act, which strengthens financing tools, rental assistance, and pathways to build and preserve housing at scale"
+  }
+ },
+ {
+  "pair": "52800@00:15:56|P035",
+  "drawn_for": [
+   "both/calibrated",
+   "tfidf/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.307,
+   "phrase": 3.0,
+   "anchor": 1.0,
+   "both": 0.307
+  },
+  "quote": {
+   "meeting": "Board of Supervisors, 2026-07-07",
+   "stamp": "00:15:56",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52800",
+   "text": "EARLIER THIS YEAR I ASKED TO BE ABLE TO CONDUCT AN INDEPENDENT ANALYSIS TO IDENTIFY FUNDING AND FUND FINANCING MECHANISMS FOR AFFORDABLE HOUSING. THIS AFFORDABLE HOUSING TRUST FUND IS ONE OF THOSE STRATEGY THAT IS NEEDED IN ORDER TO BRING OUR AFFORDABLE HOUSING PRODUCTION TO SCALE IN COMING YEARS AS WELL AS MY CHARTER AMENDMENT TO ESTABLISH A MUNICIPAL FINANCIAL CORPORATION AND PUBLIC BANK AND OTHER STRATEGY TO EVENTS, SOCIAL HOUSING MODELS AND FINANCING TOOLS."
+  },
+  "priority": {
+   "donor": "San Francisco Chamber of Commerce",
+   "section": "Proposition B – Establishing a Municipal Finance Corporation & Public Bank",
+   "url": "https://sfchamber.com/november-2026-voter-guide/",
+   "text": "Prop B would allow for a Municipal Finance Corporation to be established in San Francisco. Once adequate funding exists, this could become a public bank. The Controller estimates that over $300M would be required to fund these institutions in the first 3 years. The Chamber opposes Prop B because it creates a rigid requirement within the charter and poses potential fiscal risk to the City."
+  }
+ },
+ {
+  "pair": "52800@00:15:56|P055",
+  "drawn_for": [
+   "phrase/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.182,
+   "phrase": 3.0,
+   "anchor": 1.0,
+   "both": 0.182
+  },
+  "quote": {
+   "meeting": "Board of Supervisors, 2026-07-07",
+   "stamp": "00:15:56",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52800",
+   "text": "EARLIER THIS YEAR I ASKED TO BE ABLE TO CONDUCT AN INDEPENDENT ANALYSIS TO IDENTIFY FUNDING AND FUND FINANCING MECHANISMS FOR AFFORDABLE HOUSING. THIS AFFORDABLE HOUSING TRUST FUND IS ONE OF THOSE STRATEGY THAT IS NEEDED IN ORDER TO BRING OUR AFFORDABLE HOUSING PRODUCTION TO SCALE IN COMING YEARS AS WELL AS MY CHARTER AMENDMENT TO ESTABLISH A MUNICIPAL FINANCIAL CORPORATION AND PUBLIC BANK AND OTHER STRATEGY TO EVENTS, SOCIAL HOUSING MODELS AND FINANCING TOOLS."
+  },
+  "priority": {
+   "donor": "Neighbors for a Better San Francisco (Blueprint)",
+   "section": "Prop B - Establishing a Municipal Finance Corporation and a Public Bank",
+   "url": "https://sfblueprint.org/advocacy/november-2026-voter-guide",
+   "text": "We recommend voting No on B. There's good reason to be skeptical that a public bank would be well-run in SF, especially given that the city's current deficit stems from overspending. Financial experts have also warned that the conditions that make the Bank of North Dakota successful (a state economy that benefited from a fracking boom) don't exist in San Francisco, making the comparison a weak basis for the proposal."
+  }
+ },
+ {
   "pair": "52800@00:15:56|P071",
   "drawn_for": [
    "both/calibrated",
+   "phrase/calibrated",
    "tfidf/calibrated"
   ],
   "scores": {
@@ -448,6 +596,54 @@
   }
  },
  {
+  "pair": "52800@00:16:27|P083",
+  "drawn_for": [
+   "anchor/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.141,
+   "phrase": 3.0,
+   "anchor": 3.0,
+   "both": 0.141
+  },
+  "quote": {
+   "meeting": "Board of Supervisors, 2026-07-07",
+   "stamp": "00:16:27",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52800",
+   "text": "I WANT TO APPRECIATE THE LEADERSHIP OF SUPERVISOR MELGAR AND THE MAYOR'S OFFICE AND MANY ADVOCATES AND PARTNERS THAT HAVE CRAFTED THIS AFFORDABLE HOUSING TRUST FUND CHARTER AMENDMENT AND PLEASED AT ME AS THE CO-SPONSOR FOR THIS THANK YOU CHAIR WALTON THANK YOU SO MUCH PRESIDENT MADAM AND I KNOW YOU DO SEE MY NAME LISTED AS A CO-SPONSOR AND I DO WANT TO SAY I'M GOING TO SUPPORT THIS THIS AFTERNOON BUT I DO THINK THAT IT'S ARBITRARY TO SUPPORT THIS LEGISLATION TO SUPPORT MORE RESOURCES GOING TO THE"
+  },
+  "priority": {
+   "donor": "GrowSF",
+   "section": "Proposition C — Contributions to the Housing Fund",
+   "url": "https://growsf.org/voter-guide/san-francisco-voter-guide-november-2026-election/measures/prop-c/",
+   "text": "In May 2026, Supervisor Melgar and Mayor Lurie made a deal with the nonprofits who build low-income housing: the nonprofits would stop fighting a cut to the tax, and in exchange the City would grow the Housing Trust Fund. The Board delivered the first half on July 14, 2026, when it cut the tax from 15% to 5%. Prop C is the second half."
+  }
+ },
+ {
+  "pair": "52800@00:16:58|P036",
+  "drawn_for": [
+   "both/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.222,
+   "phrase": 3.0,
+   "anchor": 3.0,
+   "both": 0.222
+  },
+  "quote": {
+   "meeting": "Board of Supervisors, 2026-07-07",
+   "stamp": "00:16:58",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52800",
+   "text": "HOUSING TRUST FUND AND THEN TURN AROUND AND SUPPORT REDUCING THE AMOUNT OF AFFORDABLE HOUSING. I MEAN IT JUST DOESN'T MAKE SENSE. SO I CAN SAY THAT I SUPPORT THIS TODAY BUT I CANNOT SAY THAT I WON'T ADVOCATE AGAINST THIS IN THE NEXT COUPLE OF WEEKS AS WE MOVE FORWARD."
+  },
+  "priority": {
+   "donor": "San Francisco Chamber of Commerce",
+   "section": "Proposition C – Contributions to the Housing Trust Fund",
+   "url": "https://sfchamber.com/november-2026-voter-guide/",
+   "text": "Prop C would enable the city to increase its annual Housing Trust Fund contributions from $50 million to $125 million, and extends the Fund to 2058. The Chamber supports Prop C because it bolsters efforts to increase affordable housing stock and helps enable workers in San Francisco to stay in the city."
+  }
+ },
+ {
   "pair": "52800@00:16:58|P105",
   "drawn_for": [
    "both/loose"
@@ -496,8 +692,54 @@
   }
  },
  {
+  "pair": "52800@00:26:22|P015",
+  "drawn_for": [
+   "tfidf/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.264
+  },
+  "quote": {
+   "meeting": "Board of Supervisors, 2026-07-07",
+   "stamp": "00:26:22",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52800",
+   "text": "THE CALIFORNIA COASTAL PROTECTION ACT IS ESSENTIAL TO PRESERVE THE STATE'S COASTLINE, SAFEGUARD OUR ECONOMY, PROTECT MARINE ENVIRONMENT AND PUBLIC HEALTH AND ADVANCE CALIFORNIA'S CLIMATE RESILIENCE GOALS AND THE REST I SUBMIT."
+  },
+  "priority": {
+   "donor": "San Francisco Chamber of Commerce",
+   "section": "Public Safety Infrastructure",
+   "url": "https://sfchamber.com/agenda/",
+   "text": "Position resilience investments as essential to protecting lives, safeguarding economic continuity, and ensuring effective emergency response"
+  }
+ },
+ {
+  "pair": "52800@01:07:31|P129",
+  "drawn_for": [
+   "both/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.206,
+   "phrase": 1.0,
+   "both": 0.206
+  },
+  "quote": {
+   "meeting": "Board of Supervisors, 2026-07-07",
+   "stamp": "01:07:31",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52800",
+   "text": "SHE FOCUSED ON PARTNERSHIPS WITH LOCAL ORGANIZATIONS ADDRESSING QUALITY OF LIFE CONCERNS INCLUDING TRAFFIC SAFETY, HOMELESSNESS AND WORKING WITH CITY PARTNERS ON PUBLIC SPACE MAINTENANCE. PRIOR TO COMMANDING PARK STATION, THE CAPTAIN SPENT TEN YEARS IN THE TENDERLOIN AS AN OFFICER FOR ALMOST HER ENTIRE PATROL TIME."
+  },
+  "priority": {
+   "donor": "San Francisco Police Officers Association",
+   "section": "Mission",
+   "url": "https://sfpoa.org/",
+   "text": "The SFPOA focuses on ensuring our police officers have a safe, quality work environment. Additionally, we are actively involved and invested in improving the quality of life for everyone who lives, works, and visits our city."
+  }
+ },
+ {
   "pair": "52800@01:17:37|P048",
   "drawn_for": [
+   "both/calibrated",
+   "phrase/calibrated",
    "tfidf/calibrated"
   ],
   "scores": {
@@ -537,6 +779,52 @@
    "section": "Regional Transit Measure (RTM) – Sales Tax for Transit Operations",
    "url": "https://sfchamber.com/november-2026-voter-guide/",
    "text": "The Regional Transit Measure would create a 14-year sales tax of 1% in San Francisco and 0.5% in four neighboring counties, generating an anticipated $980M in revenue to fund Muni, BART, and CalTrans operations. The Chamber supports this measure because Bay Area transit is an essential service, bringing workers and customers to businesses in San Francisco."
+  }
+ },
+ {
+  "pair": "52804@00:26:02|P029",
+  "drawn_for": [
+   "phrase/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.149,
+   "phrase": 2.0,
+   "both": 0.149
+  },
+  "quote": {
+   "meeting": "Budget and Finance Committee, 2026-07-08",
+   "stamp": "00:26:02",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52804",
+   "text": "MADAM CHAIR, THANK YOU AND RISE OR WOULD YOU LIKE TO HAVE OPENING REMARKS? THANK YOU CHAIR AND YOU KNOW THIS IS A PROJECT THAT WE'VE BEEN WORKING ON FOR FOR A NUMBER OF YEARS NOW AND YOU KNOW, I REALLY APPRECIATE HOW THIS HAS BEEN A PUBLIC AND PRIVATE PARTNERSHIP AND YOU'LL SEE THAT REPRESENTED IN THE FUNDING SOURCE HERE IN PARTICULAR TODAY CONTEMPLATING THE ACCEPT AND EXPEND FROM THE DOWNTOWN DEVELOPMENT CORPORATION."
+  },
+  "priority": {
+   "donor": "San Francisco Chamber of Commerce",
+   "section": "Treat arts and culture as economic drivers",
+   "url": "https://sfchamber.com/agenda/",
+   "text": "Leverage public-private partnerships to activate streets, plazas, downtown spaces, and commercial corridors"
+  }
+ },
+ {
+  "pair": "52804@00:27:36|P091",
+  "drawn_for": [
+   "both/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.203,
+   "phrase": 1.0,
+   "both": 0.203
+  },
+  "quote": {
+   "meeting": "Budget and Finance Committee, 2026-07-08",
+   "stamp": "00:27:36",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52804",
+   "text": "THERE'S ALREADY A WONDERFUL PLAYGROUND THERE BUT THIS WILL BRING IN ADDITIONAL AMENITIES THAT WILL REALLY SERVE NEIGHBORS FIRST AND FOREMOST LIKE A NEW FITNESS AREA AND AND DOG PARK. SO THERE'S A LOT OF EXCITEMENT FOR THIS AND I WANT TO THANK REC PARK FOR THEIR WORK TO PIECE ALL OF THIS TOGETHER."
+  },
+  "priority": {
+   "donor": "GrowSF",
+   "section": "Proposition E — City Administrator's Authority and Changes to City Contracting",
+   "url": "https://growsf.org/voter-guide/san-francisco-voter-guide-november-2026-election/measures/prop-e/",
+   "text": "A 2024 law that simplified purchasing for small projects shows that better rules lead to better outcomes. Rec and Park says the new method cuts playground delivery from several years to 12 to 18 months, and its first project, Bernal Heights Playground, was renewed for $1.3M."
   }
  },
  {
@@ -649,6 +937,30 @@
    "section": "Prop I - Changes to Real Property Transfer Tax",
    "url": "https://sfblueprint.org/advocacy/november-2026-voter-guide",
    "text": "We recommend voting No on I. This measure moves General Fund money into an earmarked fund, which means the city loses flexibility to use those dollars where they're needed most, like covering budget shortfalls. The city is already facing a General Fund budget deficit. This will only make it worse."
+  }
+ },
+ {
+  "pair": "52804@00:45:27|P042",
+  "drawn_for": [
+   "both/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.215,
+   "phrase": 1.0,
+   "topic": 1.0,
+   "both": 0.215
+  },
+  "quote": {
+   "meeting": "Budget and Finance Committee, 2026-07-08",
+   "stamp": "00:45:27",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52804",
+   "text": "SALES TAX THROUGH PROPOSITION L WHICH HAS PREVIOUSLY BEEN APPROVED BUT NOW NEEDS TO BE APPROPRIATED IN THE PORT'S BUDGET. SO WITH THAT WE ARE SEEKING TODAY TWO RESOLUTIONS RELATED TO THE FUNDING. SO FIRST APPROVAL OF THE UCSF GRANT OF $4 MILLION AND YOU AND THE S.F."
+  },
+  "priority": {
+   "donor": "San Francisco Chamber of Commerce",
+   "section": "Proposition I – Changes to Real Property Transfer Tax",
+   "url": "https://sfchamber.com/november-2026-voter-guide/",
+   "text": "Prop I would shift $120 million a year in transfer tax revenue from the General Fund to a dedicated affordable housing fund, and remove the ability for the Board to lower the tax without voter approval. The Chamber opposes Prop I because it carves out critical funding from the General Fund for narrow social housing programs without a requirement that any new affordable housing be built."
   }
  },
  {
@@ -788,7 +1100,8 @@
  {
   "pair": "52816@01:20:57|P050",
   "drawn_for": [
-   "anchor/loose"
+   "anchor/loose",
+   "both/calibrated"
   ],
   "scores": {
    "tfidf": 0.201,
@@ -967,6 +1280,29 @@
   }
  },
  {
+  "pair": "52831@00:49:12|P042",
+  "drawn_for": [
+   "phrase/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.11,
+   "phrase": 2.0,
+   "both": 0.11
+  },
+  "quote": {
+   "meeting": "Rules Committee, 2026-07-13",
+   "stamp": "00:49:12",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52831",
+   "text": "IN FACT MY FIRST PLANNING JOB WHEN I WAS IN GRAD SCHOOL WAS AT THE OAKLAND COMMUNITY ECONOMIC DEVELOPMENT AGENCY. IN THE YEAR THAT REDEVELOPMENT WAS ENDED. SO THAT WAS AN INTERESTING VIEW INTO THAT PROCESS AND IN MY WORK IN NONPROFIT ADVOCACY ON AFFORDABLE HOUSING FUNDING AND POLICY."
+  },
+  "priority": {
+   "donor": "San Francisco Chamber of Commerce",
+   "section": "Proposition I – Changes to Real Property Transfer Tax",
+   "url": "https://sfchamber.com/november-2026-voter-guide/",
+   "text": "Prop I would shift $120 million a year in transfer tax revenue from the General Fund to a dedicated affordable housing fund, and remove the ability for the Board to lower the tax without voter approval. The Chamber opposes Prop I because it carves out critical funding from the General Fund for narrow social housing programs without a requirement that any new affordable housing be built."
+  }
+ },
+ {
   "pair": "52831@00:49:12|P056",
   "drawn_for": [
    "phrase/calibrated"
@@ -1013,9 +1349,35 @@
   }
  },
  {
+  "pair": "52831@00:49:28|P083",
+  "drawn_for": [
+   "anchor/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.143,
+   "phrase": 2.0,
+   "anchor": 3.0,
+   "both": 0.143
+  },
+  "quote": {
+   "meeting": "Rules Committee, 2026-07-13",
+   "stamp": "00:49:28",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52831",
+   "text": "I WAS WORKING WITH MANY CITIES AND COUNTIES AROUND THE STATE AS THEY WERE TRYING TO FIND FIND NEW STRATEGIES TO FUND AFFORDABLE HOUSING. FOR EXAMPLE, HERE IN SAN FRANCISCO WE CREATED THE HOUSING TRUST FUND IN 2012 AND PASSED OUR FIRST GENERAL OBLIGATION BOND ON AFFORDABLE HOUSING 2015."
+  },
+  "priority": {
+   "donor": "GrowSF",
+   "section": "Proposition C — Contributions to the Housing Fund",
+   "url": "https://growsf.org/voter-guide/san-francisco-voter-guide-november-2026-election/measures/prop-c/",
+   "text": "In May 2026, Supervisor Melgar and Mayor Lurie made a deal with the nonprofits who build low-income housing: the nonprofits would stop fighting a cut to the tax, and in exchange the City would grow the Housing Trust Fund. The Board delivered the first half on July 14, 2026, when it cut the tax from 15% to 5%. Prop C is the second half."
+  }
+ },
+ {
   "pair": "52831@00:51:31|P012",
   "drawn_for": [
-   "phrase/calibrated"
+   "both/calibrated",
+   "phrase/calibrated",
+   "tfidf/calibrated"
   ],
   "scores": {
    "tfidf": 0.295,
@@ -1039,6 +1401,7 @@
   "pair": "52838@00:14:34|P007",
   "drawn_for": [
    "both/calibrated",
+   "tfidf/calibrated",
    "tfidf/loose"
   ],
   "scores": {
@@ -1062,7 +1425,8 @@
  {
   "pair": "52838@00:16:37|P044",
   "drawn_for": [
-   "both/loose"
+   "both/loose",
+   "phrase/calibrated"
   ],
   "scores": {
    "tfidf": 0.159,
@@ -1101,6 +1465,30 @@
    "section": "Proposition H – Parcel Tax to Fund Public Muni Operations",
    "url": "https://sfchamber.com/november-2026-voter-guide/",
    "text": "Prop H would introduce a parcel tax from 2027-2042 to assist in funding San Francisco Municipal Transportation Agency operations. The anticipated revenue generated from this tax would be about $177 million. The Chamber supports Prop H as public transit is a critical driver of the San Francisco economy, helping workers, residents, and businesses stay connected."
+  }
+ },
+ {
+  "pair": "52849@01:06:55|P036",
+  "drawn_for": [
+   "anchor/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.24,
+   "phrase": 2.0,
+   "anchor": 3.0,
+   "both": 0.24
+  },
+  "quote": {
+   "meeting": "Board of Supervisors, 2026-07-14",
+   "stamp": "01:06:55",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52849",
+   "text": "IS A CHARTER AMENDMENT SECOND DRAFT TO AMEND THE CHARTER OF THE CITY AND COUNTY TO INCREASE THE AMOUNT OF FUNDING THE CITY MUST APPROPRIATE TO THE HOUSING TRUST FUND EACH FISCAL YEAR THAT IS USED FOR THE CREATION ACQUISITION AND REHABILITATION OF AFFORDABLE RENTAL AND OWNERSHIP HOUSING FOR DOWNPAYMENT LOANS AND HOUSING STABILIZATION FOR CERTAIN HOUSEHOLDS AND FOR HOUSING RELATED INFRASTRUCTURE TO PROVIDE FOR A TEMPORARY FREEZE AND TEMPORARY REDUCTION IN THE ANNUAL APPROPRIATION TO THE HOUSING TRUST FUND UNDER CERTAIN CIRCUMSTANCES TO EXTEND THE SUNSET DATE OF THE"
+  },
+  "priority": {
+   "donor": "San Francisco Chamber of Commerce",
+   "section": "Proposition C – Contributions to the Housing Trust Fund",
+   "url": "https://sfchamber.com/november-2026-voter-guide/",
+   "text": "Prop C would enable the city to increase its annual Housing Trust Fund contributions from $50 million to $125 million, and extends the Fund to 2058. The Chamber supports Prop C because it bolsters efforts to increase affordable housing stock and helps enable workers in San Francisco to stay in the city."
   }
  },
  {
@@ -1155,6 +1543,7 @@
  {
   "pair": "52849@01:12:28|P024",
   "drawn_for": [
+   "both/calibrated",
    "tfidf/calibrated"
   ],
   "scores": {
@@ -1173,6 +1562,30 @@
    "section": "Housing Supply & Downtown Revitalization",
    "url": "https://sfchamber.com/agenda/",
    "text": "Support federal housing policies that expand housing production, affordability, and homelessness prevention, including the Housing BOOM Act, which strengthens financing tools, rental assistance, and pathways to build and preserve housing at scale"
+  }
+ },
+ {
+  "pair": "52849@01:12:28|P036",
+  "drawn_for": [
+   "anchor/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.191,
+   "phrase": 2.0,
+   "anchor": 3.0,
+   "both": 0.191
+  },
+  "quote": {
+   "meeting": "Board of Supervisors, 2026-07-14",
+   "stamp": "01:12:28",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52849",
+   "text": "THE HOUSING TRUST FUND HAS HELPED CREATE AND PRESERVE AFFORDABLE HOMES AND SUPPORT OPPORTUNITIES FOR FIRST TIME HOMEBUYERS. THIS MEASURE WILL STRENGTHEN THAT FUND OVER TIME WHILE INCLUDING REASONABLE PROTECTIONS WHEN THE CITY FACES A SERIOUS BUDGET SHORTFALL. THIS IS A BALANCED APPROACH. IT SUPPORTS MORE HOUSING PRODUCTION WHILE MAKING A LONG TERM COMMITMENT TO AFFORDABILITY AND NEIGHBORHOOD STABILITY."
+  },
+  "priority": {
+   "donor": "San Francisco Chamber of Commerce",
+   "section": "Proposition C – Contributions to the Housing Trust Fund",
+   "url": "https://sfchamber.com/november-2026-voter-guide/",
+   "text": "Prop C would enable the city to increase its annual Housing Trust Fund contributions from $50 million to $125 million, and extends the Fund to 2058. The Chamber supports Prop C because it bolsters efforts to increase affordable housing stock and helps enable workers in San Francisco to stay in the city."
   }
  },
  {
@@ -1197,6 +1610,54 @@
    "section": "Proposition C — Contributions to the Housing Fund",
    "url": "https://growsf.org/voter-guide/san-francisco-voter-guide-november-2026-election/measures/prop-c/",
    "text": "In May 2026, Supervisor Melgar and Mayor Lurie made a deal with the nonprofits who build low-income housing: the nonprofits would stop fighting a cut to the tax, and in exchange the City would grow the Housing Trust Fund. The Board delivered the first half on July 14, 2026, when it cut the tax from 15% to 5%. Prop C is the second half."
+  }
+ },
+ {
+  "pair": "52849@01:40:08|P036",
+  "drawn_for": [
+   "anchor/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.17,
+   "phrase": 3.0,
+   "anchor": 3.0,
+   "both": 0.17
+  },
+  "quote": {
+   "meeting": "Board of Supervisors, 2026-07-14",
+   "stamp": "01:40:08",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52849",
+   "text": "THE INCREASE IN THE THRESHOLD FOR INCLUSIONARY FEES FROM TEN UNITS TO 25 UNITS IN PARTICULAR WILL HELP WITH THE EXACT KIND OF MIDSIZED PROJECTS ENCOURAGED BY THE FAMILY ZONING PLAN WHEN PAIRED WITH THE HOUSING TRUST FUND EXPANSION SUPERVISOR MELGAR HAS PROPOSED THESE POLICIES GO A LONG WAY IN HELPING US MEET OUR PRODUCTION GOALS AROUND SUBSIDIZED AFFORDABLE HOUSING WHILE ALSO STEMMING THE TIDE OF RISING RENTS FOR RESIDENTS ON THE OPEN MARKET."
+  },
+  "priority": {
+   "donor": "San Francisco Chamber of Commerce",
+   "section": "Proposition C – Contributions to the Housing Trust Fund",
+   "url": "https://sfchamber.com/november-2026-voter-guide/",
+   "text": "Prop C would enable the city to increase its annual Housing Trust Fund contributions from $50 million to $125 million, and extends the Fund to 2058. The Chamber supports Prop C because it bolsters efforts to increase affordable housing stock and helps enable workers in San Francisco to stay in the city."
+  }
+ },
+ {
+  "pair": "52849@01:40:34|P036",
+  "drawn_for": [
+   "phrase/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.145,
+   "phrase": 2.0,
+   "anchor": 3.0,
+   "both": 0.145
+  },
+  "quote": {
+   "meeting": "Board of Supervisors, 2026-07-14",
+   "stamp": "01:40:34",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52849",
+   "text": "AS WAS NOTED, THIS WAS DONE AS AN EXCHANGE ON THE RECOMMENDATION BY THE TAC BETWEEN THE HOUSING TRUST FUND AND INCLUSIONARY REQUIREMENTS AND HAD AMENDMENTS MOVE FORWARD TO ACTUALLY COUPLE THOSE MEASURES. I WAS SUPPORTIVE. AS FOR SUPERVISOR FIELDERS AMENDMENT I WILL ALSO BE VOTING IN SUPPORT."
+  },
+  "priority": {
+   "donor": "San Francisco Chamber of Commerce",
+   "section": "Proposition C – Contributions to the Housing Trust Fund",
+   "url": "https://sfchamber.com/november-2026-voter-guide/",
+   "text": "Prop C would enable the city to increase its annual Housing Trust Fund contributions from $50 million to $125 million, and extends the Fund to 2058. The Chamber supports Prop C because it bolsters efforts to increase affordable housing stock and helps enable workers in San Francisco to stay in the city."
   }
  },
  {
@@ -1275,6 +1736,29 @@
   }
  },
  {
+  "pair": "52849@01:45:58|P010",
+  "drawn_for": [
+   "both/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.217,
+   "phrase": 1.0,
+   "both": 0.217
+  },
+  "quote": {
+   "meeting": "Board of Supervisors, 2026-07-14",
+   "stamp": "01:45:58",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52849",
+   "text": "IT WILL CREATE JOBS, IT WILL CREATE NEEDED HOUSING THAT WE HAVE COMMITTED TO THE STATE AND THE ACTION THAT WE JUST TOOK WILL ALSO PROVIDE FINANCING FOR AFFORDABLE HOUSING WHICH IS HALF OF OUR OBLIGATION TO THE STATE IN TERMS OF THE PRODUCTION OF UNITS."
+  },
+  "priority": {
+   "donor": "San Francisco Chamber of Commerce",
+   "section": "Human Infrastructure",
+   "url": "https://sfchamber.com/agenda/",
+   "text": "Align education and workforce systems with housing and transit growth so residents can access opportunity where jobs are being created"
+  }
+ },
+ {
   "pair": "52849@01:46:33|P083",
   "drawn_for": [
    "anchor/calibrated",
@@ -1319,6 +1803,52 @@
    "section": "Proposition I — Changes to Real Property Transfer Tax",
    "url": "https://growsf.org/voter-guide/san-francisco-voter-guide-november-2026-election/measures/prop-i/",
    "text": "We support real money for subsidized housing. That's why we endorsed Prop C, which grows the Housing Trust Fund to $125M per year and lets the Board pause contributions in bad budget years."
+  }
+ },
+ {
+  "pair": "52849@01:49:55|P036",
+  "drawn_for": [
+   "anchor/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.129,
+   "phrase": 3.0,
+   "anchor": 3.0,
+   "both": 0.129
+  },
+  "quote": {
+   "meeting": "Board of Supervisors, 2026-07-14",
+   "stamp": "01:49:55",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52849",
+   "text": "THE TECHNICAL ADVISORY COMMITTEES OWN REPORT CONFIRMS THAT THERE IS NO RAY OF INCLUSIONARY HOUSING THAT IS FEASIBLE UNDER CURRENT MARKET CONDITION. AND BOTH ANALYSIS CONFIRM THAT MACRO ECONOMIC FACTORS SUCH AS LABOR MATERIALS AND FINANCING COSTS ARE THE REAL DRIVERS OF DEVELOPMENT ACTIVITY. I UNDERSTAND THAT THIS LEGISLATION IS PART OF A PACKAGE BUT PLACING THE AFFORDABLE HOUSING TRUST FUND ON THE BALLOT AND APPROVING IT ARE TWO VERY DIFFERENT THINGS."
+  },
+  "priority": {
+   "donor": "San Francisco Chamber of Commerce",
+   "section": "Proposition C – Contributions to the Housing Trust Fund",
+   "url": "https://sfchamber.com/november-2026-voter-guide/",
+   "text": "Prop C would enable the city to increase its annual Housing Trust Fund contributions from $50 million to $125 million, and extends the Fund to 2058. The Chamber supports Prop C because it bolsters efforts to increase affordable housing stock and helps enable workers in San Francisco to stay in the city."
+  }
+ },
+ {
+  "pair": "52849@01:49:55|P083",
+  "drawn_for": [
+   "anchor/calibrated"
+  ],
+  "scores": {
+   "phrase": 2.0,
+   "anchor": 3.0
+  },
+  "quote": {
+   "meeting": "Board of Supervisors, 2026-07-14",
+   "stamp": "01:49:55",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52849",
+   "text": "THE TECHNICAL ADVISORY COMMITTEES OWN REPORT CONFIRMS THAT THERE IS NO RAY OF INCLUSIONARY HOUSING THAT IS FEASIBLE UNDER CURRENT MARKET CONDITION. AND BOTH ANALYSIS CONFIRM THAT MACRO ECONOMIC FACTORS SUCH AS LABOR MATERIALS AND FINANCING COSTS ARE THE REAL DRIVERS OF DEVELOPMENT ACTIVITY. I UNDERSTAND THAT THIS LEGISLATION IS PART OF A PACKAGE BUT PLACING THE AFFORDABLE HOUSING TRUST FUND ON THE BALLOT AND APPROVING IT ARE TWO VERY DIFFERENT THINGS."
+  },
+  "priority": {
+   "donor": "GrowSF",
+   "section": "Proposition C — Contributions to the Housing Fund",
+   "url": "https://growsf.org/voter-guide/san-francisco-voter-guide-november-2026-election/measures/prop-c/",
+   "text": "In May 2026, Supervisor Melgar and Mayor Lurie made a deal with the nonprofits who build low-income housing: the nonprofits would stop fighting a cut to the tax, and in exchange the City would grow the Housing Trust Fund. The Board delivered the first half on July 14, 2026, when it cut the tax from 15% to 5%. Prop C is the second half."
   }
  },
  {
@@ -1395,6 +1925,7 @@
  {
   "pair": "52849@02:26:43|P066",
   "drawn_for": [
+   "tfidf/calibrated",
    "tfidf/top"
   ],
   "scores": {
@@ -1417,6 +1948,7 @@
   "pair": "52849@02:40:33|P038",
   "drawn_for": [
    "both/top",
+   "tfidf/calibrated",
    "tfidf/top"
   ],
   "scores": {
@@ -1485,6 +2017,7 @@
  {
   "pair": "52849@02:57:26|P083",
   "drawn_for": [
+   "anchor/calibrated",
    "phrase/calibrated"
   ],
   "scores": {
@@ -1525,6 +2058,30 @@
    "section": "Proposition C — Contributions to the Housing Fund",
    "url": "https://growsf.org/voter-guide/san-francisco-voter-guide-november-2026-election/measures/prop-c/",
    "text": "In May 2026, Supervisor Melgar and Mayor Lurie made a deal with the nonprofits who build low-income housing: the nonprofits would stop fighting a cut to the tax, and in exchange the City would grow the Housing Trust Fund. The Board delivered the first half on July 14, 2026, when it cut the tax from 15% to 5%. Prop C is the second half."
+  }
+ },
+ {
+  "pair": "52853@00:18:51|P006",
+  "drawn_for": [
+   "both/calibrated",
+   "tfidf/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.254,
+   "phrase": 1.0,
+   "both": 0.254
+  },
+  "quote": {
+   "meeting": "Budget and Finance Committee, 2026-07-15",
+   "stamp": "00:18:51",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52853",
+   "text": "AND SO I THINK THAT THE PERFORM THE SERVICE AND OUTCOME OBJECTIVES NEED TO HAVE QUANTITY OF TARGETS ASSOCIATED WITH THEM TO DEFINE TIMELY AND ALSO TO EVALUATE HOW ACCURATE THE PAYMENTS ARE, FOR EXAMPLE AND THOSE TARGET PERFORMANCE SHOULD BE MEASURED AGAINST THOSE TARGETS ON AN ANNUAL BASIS."
+  },
+  "priority": {
+   "donor": "San Francisco Chamber of Commerce",
+   "section": "Housing & Homelessness",
+   "url": "https://sfchamber.com/agenda/",
+   "text": "Promote clear, consistent accountability targets and performance metrics for homelessness outcomes rather than year-to-year resets"
   }
  },
  {
@@ -1595,6 +2152,27 @@
   }
  },
  {
+  "pair": "52853@01:32:49|P016",
+  "drawn_for": [
+   "tfidf/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.298
+  },
+  "quote": {
+   "meeting": "Budget and Finance Committee, 2026-07-15",
+   "stamp": "01:32:49",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52853",
+   "text": "SO I'M JUST I'M STOWING IT OUT THERE TOO. YEAH, I TOTALLY UNDERSTAND THAT. YOU KNOW, THE FUNDING IS SCARS AND SO WE NEED TO FIGURE OUT HOW TO BE COMPETITIVE AND IF THERE'S ANY WAY THAT WE CAN MAKE OUR LOCAL PROJECT MORE COMPETITIVE, WE SHOULD AS A CITY SHOULD EXPLORE."
+  },
+  "priority": {
+   "donor": "San Francisco Chamber of Commerce",
+   "section": "Keep San Francisco and California Competitive",
+   "url": "https://sfchamber.com/agenda/",
+   "text": "Maintain a competitive business climate that attracts investment and expands economic opportunity."
+  }
+ },
+ {
   "pair": "52853@02:06:41|P041",
   "drawn_for": [
    "topic/loose"
@@ -1613,6 +2191,30 @@
    "section": "Proposition H – Parcel Tax to Fund Public Muni Operations",
    "url": "https://sfchamber.com/november-2026-voter-guide/",
    "text": "Prop H would introduce a parcel tax from 2027-2042 to assist in funding San Francisco Municipal Transportation Agency operations. The anticipated revenue generated from this tax would be about $177 million. The Chamber supports Prop H as public transit is a critical driver of the San Francisco economy, helping workers, residents, and businesses stay connected."
+  }
+ },
+ {
+  "pair": "52853@02:10:34|P069",
+  "drawn_for": [
+   "anchor/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.139,
+   "phrase": 3.0,
+   "anchor": 3.0,
+   "both": 0.139
+  },
+  "quote": {
+   "meeting": "Budget and Finance Committee, 2026-07-15",
+   "stamp": "02:10:34",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52853",
+   "text": "THERE COULD BE DETAILED ASSIGNMENTS OR THERE COULD BE TEMPORARY OVERTIME ASSIGNMENTS TO FILL IN THE SHIFTS WHERE WE'RE NOT MEETING THE MINIMUM REQUIREMENTS. SO I KNOW THAT THE CIVIL GRAND JURY REPORT RELEASED LAST MONTH HIGHLIGHTED THAT THE DEPARTMENT EXCEEDS ITS OVERTIME BUDGETS AND THAT'S AS WE HEARD IT'S COMING AT THE EXPENSE OF CAPITAL PROJECTS AND MAINTENANCE."
+  },
+  "priority": {
+   "donor": "GrowSF",
+   "section": "Proposition A — Charter Changes Affecting Various City Departments and Commissions",
+   "url": "https://growsf.org/voter-guide/san-francisco-voter-guide-november-2026-election/measures/prop-a/",
+   "text": "A San Francisco Civil Grand Jury report counted 152 commissions cluttering City Hall. Every commission and unaccountable layer of bureaucracy blurs responsibility, so when something fails nobody is responsible and nothing is fixed. Two decades of well-intentioned but poorly executed ballot measures built this broken system, and it's time to fix it."
   }
  },
  {
@@ -1728,6 +2330,30 @@
   }
  },
  {
+  "pair": "52853@02:54:00|P105",
+  "drawn_for": [
+   "phrase/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.106,
+   "phrase": 2.0,
+   "anchor": 1.0,
+   "both": 0.106
+  },
+  "quote": {
+   "meeting": "Budget and Finance Committee, 2026-07-15",
+   "stamp": "02:54:00",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52853",
+   "text": "HISTORICALLY THE FORECLOSURE EXEMPTION WAS PRIMARILY USED IN TRADITIONAL LENDER FORECLOSURES WHERE A BANK TOOK TITLE TO A PROPERTY AND TRANSFER TAX WOULD GENERALLY BE PAID LATER WHEN THE LENDER ULTIMATELY SOLD THE PROPERTY. ACCORDING TO THE ASSESSOR RECORDER, THAT WAS THE PREDOMINANT PATTERN FOR MANY YEARS."
+  },
+  "priority": {
+   "donor": "GrowSF",
+   "section": "Proposition I — Changes to Real Property Transfer Tax",
+   "url": "https://growsf.org/voter-guide/san-francisco-voter-guide-november-2026-election/measures/prop-i/",
+   "text": "We support real money for subsidized housing. That's why we endorsed Prop C, which grows the Housing Trust Fund to $125M per year and lets the Board pause contributions in bad budget years."
+  }
+ },
+ {
   "pair": "52853@02:54:00|P106",
   "drawn_for": [
    "phrase/calibrated"
@@ -1749,6 +2375,31 @@
    "section": "Proposition J — Removal of Foreclosure Exemption for Real Property Transfer Tax",
    "url": "https://growsf.org/voter-guide/san-francisco-voter-guide-november-2026-election/measures/prop-j/",
    "text": "When you sell your condo, San Francisco taxes the full sale price, whether you made money or lost it. When Madison Capital bought the defaulted loan on the 34-story tower at 45 Fremont for $238M this year and took the building, it paid no transfer tax. Under Prop J it would have owed 6% of what the building is worth, roughly $14M at the price it paid."
+  }
+ },
+ {
+  "pair": "52853@02:54:00|P107",
+  "drawn_for": [
+   "anchor/calibrated",
+   "tfidf/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.283,
+   "phrase": 3.0,
+   "anchor": 3.0,
+   "both": 0.283
+  },
+  "quote": {
+   "meeting": "Budget and Finance Committee, 2026-07-15",
+   "stamp": "02:54:00",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52853",
+   "text": "HISTORICALLY THE FORECLOSURE EXEMPTION WAS PRIMARILY USED IN TRADITIONAL LENDER FORECLOSURES WHERE A BANK TOOK TITLE TO A PROPERTY AND TRANSFER TAX WOULD GENERALLY BE PAID LATER WHEN THE LENDER ULTIMATELY SOLD THE PROPERTY. ACCORDING TO THE ASSESSOR RECORDER, THAT WAS THE PREDOMINANT PATTERN FOR MANY YEARS."
+  },
+  "priority": {
+   "donor": "GrowSF",
+   "section": "Proposition J — Removal of Foreclosure Exemption for Real Property Transfer Tax",
+   "url": "https://growsf.org/voter-guide/san-francisco-voter-guide-november-2026-election/measures/prop-j/",
+   "text": "The exemption was written in 1967 for a bank stuck with a building it never wanted, and for decades it mostly covered homes. Then investors learned to buy the loan instead of the building, and the Assessor now counts $450M in foreclosure exemptions claimed in the last three years, against $50M in the fifteen years before that. The tax they skip is the one every ordinary buyer pays, and homes and small buildings keep the exemption either way."
   }
  },
  {
@@ -1802,7 +2453,8 @@
  {
   "pair": "52853@02:55:50|P042",
   "drawn_for": [
-   "anchor/top"
+   "anchor/top",
+   "both/calibrated"
   ],
   "scores": {
    "tfidf": 0.208,
@@ -1827,6 +2479,7 @@
  {
   "pair": "52853@02:55:50|P043",
   "drawn_for": [
+   "anchor/calibrated",
    "anchor/top"
   ],
   "scores": {
@@ -1876,7 +2529,8 @@
  {
   "pair": "52853@02:55:50|P063",
   "drawn_for": [
-   "anchor/top"
+   "anchor/top",
+   "tfidf/calibrated"
   ],
   "scores": {
    "tfidf": 0.27,
@@ -1896,6 +2550,82 @@
    "section": "Prop J - Removal of Foreclosure Exemption for Real Property Transfer Tax",
    "url": "https://sfblueprint.org/advocacy/november-2026-voter-guide",
    "text": "We recommend voting No on J. Originally, this measure was supposed to be paired with a reduction in the real transfer tax to be part of a revenue-neutral package. But now that it’s not, all this measure does is raise taxes, hampering Downtown’s recovery. And by just raising revenue, this measure doesn't address the real cause of SF's deficit: overspending. SF doesn't have a revenue problem. It has a spending problem. Reaching for more revenue avoids tackling that fundamental issue."
+  }
+ },
+ {
+  "pair": "52853@02:55:50|P103",
+  "drawn_for": [
+   "anchor/calibrated",
+   "phrase/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.142,
+   "phrase": 3.0,
+   "topic": 1.0,
+   "anchor": 5.0,
+   "both": 0.142
+  },
+  "quote": {
+   "meeting": "Budget and Finance Committee, 2026-07-15",
+   "stamp": "02:55:50",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52853",
+   "text": "IN THEIR OPINION, THE MEASURE WOULD SIGNIFICANTLY INCREASE THE CITY'S REAL ESTATE REAL PROPERTY TRANSFER TAX REVENUES WITH AN ESTIMATED AVERAGE OF 100 TO $150 MILLION ANNUALLY OVER THE FIRST OR NEXT FIVE YEARS. GIVEN THE BUDGET CHALLENGES WE ARE NAVIGATING THAT IS MEANINGFUL REVENUE THAT WE CANNOT AFFORD TO LEAVE ON THE TABLE."
+  },
+  "priority": {
+   "donor": "GrowSF",
+   "section": "Proposition I — Changes to Real Property Transfer Tax",
+   "url": "https://growsf.org/voter-guide/san-francisco-voter-guide-november-2026-election/measures/prop-i/",
+   "text": "Prop I would remove $120M per year from the City's General Fund (the account that pays for most city services), and dedicate it to a small list of preferred housing programs. The City already projects a $741.7M deficit, so every rerouted dollar is a cut to parks, street cleaning, or public safety. It would be the City's 24th voter-mandated spending requirement."
+  }
+ },
+ {
+  "pair": "52853@02:55:50|P104",
+  "drawn_for": [
+   "anchor/calibrated",
+   "phrase/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.165,
+   "phrase": 3.0,
+   "anchor": 5.0,
+   "both": 0.165
+  },
+  "quote": {
+   "meeting": "Budget and Finance Committee, 2026-07-15",
+   "stamp": "02:55:50",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52853",
+   "text": "IN THEIR OPINION, THE MEASURE WOULD SIGNIFICANTLY INCREASE THE CITY'S REAL ESTATE REAL PROPERTY TRANSFER TAX REVENUES WITH AN ESTIMATED AVERAGE OF 100 TO $150 MILLION ANNUALLY OVER THE FIRST OR NEXT FIVE YEARS. GIVEN THE BUDGET CHALLENGES WE ARE NAVIGATING THAT IS MEANINGFUL REVENUE THAT WE CANNOT AFFORD TO LEAVE ON THE TABLE."
+  },
+  "priority": {
+   "donor": "GrowSF",
+   "section": "Proposition I — Changes to Real Property Transfer Tax",
+   "url": "https://growsf.org/voter-guide/san-francisco-voter-guide-november-2026-election/measures/prop-i/",
+   "text": "Prop I also locks in San Francisco's transfer tax (the second highest in the state!). Today the Board of Supervisors can lower it by ordinance. Under Prop I, only voters could, and the measure even reverses any cut the Board makes before it takes effect. When Los Angeles taxed big property sales this way, sales fell 38%, and the lost property taxes offset much of what it raised."
+  }
+ },
+ {
+  "pair": "52853@02:55:50|P105",
+  "drawn_for": [
+   "anchor/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.192,
+   "phrase": 3.0,
+   "topic": 1.0,
+   "anchor": 5.0,
+   "both": 0.192
+  },
+  "quote": {
+   "meeting": "Budget and Finance Committee, 2026-07-15",
+   "stamp": "02:55:50",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52853",
+   "text": "IN THEIR OPINION, THE MEASURE WOULD SIGNIFICANTLY INCREASE THE CITY'S REAL ESTATE REAL PROPERTY TRANSFER TAX REVENUES WITH AN ESTIMATED AVERAGE OF 100 TO $150 MILLION ANNUALLY OVER THE FIRST OR NEXT FIVE YEARS. GIVEN THE BUDGET CHALLENGES WE ARE NAVIGATING THAT IS MEANINGFUL REVENUE THAT WE CANNOT AFFORD TO LEAVE ON THE TABLE."
+  },
+  "priority": {
+   "donor": "GrowSF",
+   "section": "Proposition I — Changes to Real Property Transfer Tax",
+   "url": "https://growsf.org/voter-guide/san-francisco-voter-guide-november-2026-election/measures/prop-i/",
+   "text": "We support real money for subsidized housing. That's why we endorsed Prop C, which grows the Housing Trust Fund to $125M per year and lets the Board pause contributions in bad budget years."
   }
  },
  {
@@ -1923,6 +2653,28 @@
   }
  },
  {
+  "pair": "52853@02:55:50|P109",
+  "drawn_for": [
+   "phrase/calibrated"
+  ],
+  "scores": {
+   "phrase": 3.0,
+   "anchor": 5.0
+  },
+  "quote": {
+   "meeting": "Budget and Finance Committee, 2026-07-15",
+   "stamp": "02:55:50",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52853",
+   "text": "IN THEIR OPINION, THE MEASURE WOULD SIGNIFICANTLY INCREASE THE CITY'S REAL ESTATE REAL PROPERTY TRANSFER TAX REVENUES WITH AN ESTIMATED AVERAGE OF 100 TO $150 MILLION ANNUALLY OVER THE FIRST OR NEXT FIVE YEARS. GIVEN THE BUDGET CHALLENGES WE ARE NAVIGATING THAT IS MEANINGFUL REVENUE THAT WE CANNOT AFFORD TO LEAVE ON THE TABLE."
+  },
+  "priority": {
+   "donor": "GrowSF",
+   "section": "Proposition J — Removal of Foreclosure Exemption for Real Property Transfer Tax",
+   "url": "https://growsf.org/voter-guide/san-francisco-voter-guide-november-2026-election/measures/prop-j/",
+   "text": "New York and Florida have taxed foreclosures and deeds in lieu for decades, on the full unpaid debt rather than on what the building is worth, and banks still lend there. But those rules are statewide, so no city there loses a loan to the town next door. California exempts foreclosures statewide, and San Francisco would be the only major city in the state taxing them, unless Oakland passes the same fix this November."
+  }
+ },
+ {
   "pair": "52853@02:55:50|P110",
   "drawn_for": [
    "anchor/calibrated"
@@ -1944,6 +2696,54 @@
    "section": "Proposition J — Removal of Foreclosure Exemption for Real Property Transfer Tax",
    "url": "https://growsf.org/voter-guide/san-francisco-voter-guide-november-2026-election/measures/prop-j/",
    "text": "Prop J started as half of a plan. Mayor Lurie and Supervisor Mahmood wanted to cut the transfer tax on big sales roughly in half so stalled housing gets built, and Prop J was the revenue to pay for it. We want that cut, and the Board can pass it by ordinance. We believe that if Prop J passes, the transfer tax will be cut in the next Board of Supervisors session."
+  }
+ },
+ {
+  "pair": "52853@02:56:42|P043",
+  "drawn_for": [
+   "both/calibrated",
+   "tfidf/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.313,
+   "phrase": 1.0,
+   "both": 0.313
+  },
+  "quote": {
+   "meeting": "Budget and Finance Committee, 2026-07-15",
+   "stamp": "02:56:42",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52853",
+   "text": "IMPORTANTLY, THIS PROPOSAL DOES NOT ELIMINATE THE EXEMPTION FOR HOMEOWNERS OR SMALL RESIDENTIAL PROPERTIES. THE EXEMPTION WOULD REMAIN IN PLACE FOR SINGLE FAMILY HOMES. SMALLER MULTIFAMILY PROPERTIES WITH FEWER THAN FIVE RESIDENTIAL UNITS AND QUALIFYING SMALL MIXED USE PROPERTIES."
+  },
+  "priority": {
+   "donor": "San Francisco Chamber of Commerce",
+   "section": "Proposition J – Removal of Foreclosure Exemption for Real Property Transfer Tax",
+   "url": "https://sfchamber.com/november-2026-voter-guide/",
+   "text": "Prop J would eliminate the existing transfer tax exemption for foreclosed properties or deeds in lieu of transactions, starting March 1, 2027. Residential and mixed use buildings under five units would keep this transfer tax. While highly dependent on conditions, the Controller estimates that the tax could bring in $100M to $150M over the first five years. The Chamber has abstained from taking a position on Prop J."
+  }
+ },
+ {
+  "pair": "52853@02:57:57|P086",
+  "drawn_for": [
+   "both/calibrated",
+   "tfidf/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.313,
+   "phrase": 1.0,
+   "both": 0.313
+  },
+  "quote": {
+   "meeting": "Budget and Finance Committee, 2026-07-15",
+   "stamp": "02:57:57",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52853",
+   "text": "BECAUSE EVEN IF YOU DISAGREE WITH THE OTHER MEASURES ON THE BALLOT, WE NEED TO MOVE BEYOND THE POISON PILL FIGHTS OF THE PAST AND INSTEAD ALLOW THE BALLOT MEASURES TO BE VOTED ON ON THEIR OWN MERITS. THE AMENDMENTS READ ON PAGE TWO LINES SIX THROUGH SEVEN."
+  },
+  "priority": {
+   "donor": "GrowSF",
+   "section": "Proposition D — Changes to Ballot Measure Process",
+   "url": "https://growsf.org/voter-guide/san-francisco-voter-guide-november-2026-election/measures/prop-d/",
+   "text": "San Francisco is forced to vote on too many ballot measures. This year we have 10, in 2024 and 2022 we had 15, and in 2016 we voted on 24!"
   }
  },
  {
@@ -1974,6 +2774,7 @@
  {
   "pair": "52853@02:58:12|P043",
   "drawn_for": [
+   "anchor/calibrated",
    "phrase/calibrated"
   ],
   "scores": {
@@ -1996,8 +2797,33 @@
   }
  },
  {
+  "pair": "52853@02:58:12|P062",
+  "drawn_for": [
+   "both/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.216,
+   "phrase": 3.0,
+   "anchor": 5.0,
+   "both": 0.216
+  },
+  "quote": {
+   "meeting": "Budget and Finance Committee, 2026-07-15",
+   "stamp": "02:58:12",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52853",
+   "text": "WE'RE DELETING QUOTE AND THE TAX IT IMPOSES SHALL BE KNOWN AS THE QUOTE REAL PROPERTY TRANSFER TAX QUOTE UNQUOTE ON PAGE THREE LINE 15 THROUGH 17 WE WOULD REPLACE THE REAL PROPERTY TRANSFER TAX AS A GENERAL TAX WITH THE FOLLOWING EXCEPT AS PROVIDED IN ANY BALLOT MEASURE AMENDING THE THIS ARTICLE 12 C THAT THE VOTERS APPROVE AT THE NOVEMBER 3RD, 2026 ELECTION."
+  },
+  "priority": {
+   "donor": "Neighbors for a Better San Francisco (Blueprint)",
+   "section": "Prop I - Changes to Real Property Transfer Tax",
+   "url": "https://sfblueprint.org/advocacy/november-2026-voter-guide",
+   "text": "We recommend voting No on I. This measure moves General Fund money into an earmarked fund, which means the city loses flexibility to use those dollars where they're needed most, like covering budget shortfalls. The city is already facing a General Fund budget deficit. This will only make it worse."
+  }
+ },
+ {
   "pair": "52853@02:58:12|P063",
   "drawn_for": [
+   "anchor/calibrated",
    "phrase/calibrated"
   ],
   "scores": {
@@ -2022,7 +2848,8 @@
  {
   "pair": "52853@02:58:12|P104",
   "drawn_for": [
-   "both/calibrated"
+   "both/calibrated",
+   "tfidf/calibrated"
   ],
   "scores": {
    "tfidf": 0.256,
@@ -2044,9 +2871,83 @@
   }
  },
  {
+  "pair": "52853@02:58:12|P105",
+  "drawn_for": [
+   "phrase/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.203,
+   "phrase": 3.0,
+   "anchor": 5.0,
+   "both": 0.203
+  },
+  "quote": {
+   "meeting": "Budget and Finance Committee, 2026-07-15",
+   "stamp": "02:58:12",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52853",
+   "text": "WE'RE DELETING QUOTE AND THE TAX IT IMPOSES SHALL BE KNOWN AS THE QUOTE REAL PROPERTY TRANSFER TAX QUOTE UNQUOTE ON PAGE THREE LINE 15 THROUGH 17 WE WOULD REPLACE THE REAL PROPERTY TRANSFER TAX AS A GENERAL TAX WITH THE FOLLOWING EXCEPT AS PROVIDED IN ANY BALLOT MEASURE AMENDING THE THIS ARTICLE 12 C THAT THE VOTERS APPROVE AT THE NOVEMBER 3RD, 2026 ELECTION."
+  },
+  "priority": {
+   "donor": "GrowSF",
+   "section": "Proposition I — Changes to Real Property Transfer Tax",
+   "url": "https://growsf.org/voter-guide/san-francisco-voter-guide-november-2026-election/measures/prop-i/",
+   "text": "We support real money for subsidized housing. That's why we endorsed Prop C, which grows the Housing Trust Fund to $125M per year and lets the Board pause contributions in bad budget years."
+  }
+ },
+ {
+  "pair": "52853@02:58:12|P107",
+  "drawn_for": [
+   "anchor/calibrated",
+   "phrase/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.135,
+   "phrase": 3.0,
+   "anchor": 5.0,
+   "both": 0.135
+  },
+  "quote": {
+   "meeting": "Budget and Finance Committee, 2026-07-15",
+   "stamp": "02:58:12",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52853",
+   "text": "WE'RE DELETING QUOTE AND THE TAX IT IMPOSES SHALL BE KNOWN AS THE QUOTE REAL PROPERTY TRANSFER TAX QUOTE UNQUOTE ON PAGE THREE LINE 15 THROUGH 17 WE WOULD REPLACE THE REAL PROPERTY TRANSFER TAX AS A GENERAL TAX WITH THE FOLLOWING EXCEPT AS PROVIDED IN ANY BALLOT MEASURE AMENDING THE THIS ARTICLE 12 C THAT THE VOTERS APPROVE AT THE NOVEMBER 3RD, 2026 ELECTION."
+  },
+  "priority": {
+   "donor": "GrowSF",
+   "section": "Proposition J — Removal of Foreclosure Exemption for Real Property Transfer Tax",
+   "url": "https://growsf.org/voter-guide/san-francisco-voter-guide-november-2026-election/measures/prop-j/",
+   "text": "The exemption was written in 1967 for a bank stuck with a building it never wanted, and for decades it mostly covered homes. Then investors learned to buy the loan instead of the building, and the Assessor now counts $450M in foreclosure exemptions claimed in the last three years, against $50M in the fifteen years before that. The tax they skip is the one every ordinary buyer pays, and homes and small buildings keep the exemption either way."
+  }
+ },
+ {
+  "pair": "52853@02:58:12|P108",
+  "drawn_for": [
+   "anchor/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.157,
+   "phrase": 3.0,
+   "anchor": 5.0,
+   "both": 0.157
+  },
+  "quote": {
+   "meeting": "Budget and Finance Committee, 2026-07-15",
+   "stamp": "02:58:12",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52853",
+   "text": "WE'RE DELETING QUOTE AND THE TAX IT IMPOSES SHALL BE KNOWN AS THE QUOTE REAL PROPERTY TRANSFER TAX QUOTE UNQUOTE ON PAGE THREE LINE 15 THROUGH 17 WE WOULD REPLACE THE REAL PROPERTY TRANSFER TAX AS A GENERAL TAX WITH THE FOLLOWING EXCEPT AS PROVIDED IN ANY BALLOT MEASURE AMENDING THE THIS ARTICLE 12 C THAT THE VOTERS APPROVE AT THE NOVEMBER 3RD, 2026 ELECTION."
+  },
+  "priority": {
+   "donor": "GrowSF",
+   "section": "Proposition J — Removal of Foreclosure Exemption for Real Property Transfer Tax",
+   "url": "https://growsf.org/voter-guide/san-francisco-voter-guide-november-2026-election/measures/prop-j/",
+   "text": "The San Francisco Taxpayers Association argues Prop J would make lending here \"significantly riskier and more expensive than anywhere else in the state\", and we raised the same worry in June. But a lender pays only when a loan has failed and the building changes hands, a small extra cost on a loss it is taking anyway, so the premium is the tax times the odds of that happening."
+  }
+ },
+ {
   "pair": "52853@02:58:12|P110",
   "drawn_for": [
-   "both/calibrated"
+   "both/calibrated",
+   "phrase/calibrated"
   ],
   "scores": {
    "tfidf": 0.215,
@@ -2138,6 +3039,28 @@
   }
  },
  {
+  "pair": "52871@00:29:06|P083",
+  "drawn_for": [
+   "phrase/calibrated"
+  ],
+  "scores": {
+   "phrase": 2.0,
+   "anchor": 1.0
+  },
+  "quote": {
+   "meeting": "Government Audit and Oversight Committee, 2026-07-16",
+   "stamp": "00:29:06",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52871",
+   "text": "IT RELATES TO ELECTIONS, THE DISCLOSURE, THE FILINGS THAT ARE REQUIRED FOR PEOPLE SEEKING ELECTION TO THE RETIREMENT BOARD, THE HEALTH SERVICE BOARD ,THE RETIREE HEALTH CARE TRUST FUND BOARD. AS I UNDERSTAND, THESE ARE ALMOST NEVER OFFICES MAYBE NEVER BUT CERTAINLY ALMOST NEVER OFFICES THAT INVOLVE RAISING MONEY AND YET PEOPLE WHO ARE SEEKING THOSE OFFICES HAVE TO FILL OUT CAMPAIGN FINANCE DISCLOSURES AND ETHICS STAFF IS SAYING AND THEIR COMMISSION THAT OVERSEES THEM IS SAYING WE CAN LET GO OF THIS ONE."
+  },
+  "priority": {
+   "donor": "GrowSF",
+   "section": "Proposition C — Contributions to the Housing Fund",
+   "url": "https://growsf.org/voter-guide/san-francisco-voter-guide-november-2026-election/measures/prop-c/",
+   "text": "In May 2026, Supervisor Melgar and Mayor Lurie made a deal with the nonprofits who build low-income housing: the nonprofits would stop fighting a cut to the tax, and in exchange the City would grow the Housing Trust Fund. The Board delivered the first half on July 14, 2026, when it cut the tax from 15% to 5%. Prop C is the second half."
+  }
+ },
+ {
   "pair": "52871@00:44:16|P085",
   "drawn_for": [
    "anchor/loose"
@@ -2180,6 +3103,53 @@
    "section": "SEIU 1021 members rally to support SF Prop B to upgrade public health facilities",
    "url": "https://www.seiu1021.org/issues-legislation",
    "text": "SEIU 1021 members rally to support SF Prop B to upgrade public health facilities. The bond measure won't raise taxes, but will ensure the safety and the future of SF General Hospital, Laguna Honda Hospital, clinics, and others. SEIU 1021 members, including President Theresa Rutherford and Vice President of Organizing Brandon Dawkins, were among dozens of community members and union workers who came out to Portsmouth Square in Chinatown in San Francisco last Wednesday, September 24."
+  }
+ },
+ {
+  "pair": "52901@01:03:57|P068",
+  "drawn_for": [
+   "phrase/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.183,
+   "phrase": 2.0,
+   "both": 0.183
+  },
+  "quote": {
+   "meeting": "Board of Supervisors, 2026-07-21",
+   "stamp": "01:03:57",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52901",
+   "text": "THESE YOUNG PEOPLE COME FROM EVERY DISTRICT IN OUR CITY, YOU KNOW? AND AS I LEAVE I WANT TO ENCOURAGE YOU TO NOT FORGET ABOUT THEM. AND LIKE I SAID, I KNOW THIS JOB IS HARD BUT WE MUST HOLD THE INDIVIDUALS ACCOUNTABLE THE TECH COMPANIES, THE PROPERTY MANAGERS AND ALL THAT."
+  },
+  "priority": {
+   "donor": "GrowSF",
+   "section": "Proposition A — Charter Changes Affecting Various City Departments and Commissions",
+   "url": "https://growsf.org/voter-guide/san-francisco-voter-guide-november-2026-election/measures/prop-a/",
+   "text": "Prop A is a common-sense solution to an obvious problem: City Hall has too much bureaucracy that slows everything down. Complex organizations with tens of thousands of employees need Directly Responsible Individuals who can be held accountable for failures. The ultimate Directly Responsible Individual is the Mayor, and voters decide if he or she has done a good job. But currently the Mayor lacks the power to hold individuals accountable in many departments because they are shielded by commissions that don't answer to the Mayor."
+  }
+ },
+ {
+  "pair": "52901@03:44:00|P029",
+  "drawn_for": [
+   "both/calibrated"
+  ],
+  "scores": {
+   "tfidf": 0.25,
+   "phrase": 1.0,
+   "topic": 1.0,
+   "both": 0.25
+  },
+  "quote": {
+   "meeting": "Board of Supervisors, 2026-07-21",
+   "stamp": "03:44:00",
+   "url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52901",
+   "text": "RENEWAL IS NOT SIMPLY ABOUT CONTINUING EXISTING SERVICES. IT IS ABOUT EVOLVING THE DISTRICT'S TO MEET THE FUTURE OF DOWNTOWN EXPANSION ALLOWS US TO BRING IN ADDITIONAL NEIGHBORHOODS, COMMERCIAL CORRIDORS AND STAKEHOLDERS TO A UNIFIED STRATEGY FOCUS ON A CLEAN AND SAFE SERVICES ECONOMIC DEVELOPMENT, PUBLIC SPACE ACTIVATION AND ADVOCACY."
+  },
+  "priority": {
+   "donor": "San Francisco Chamber of Commerce",
+   "section": "Treat arts and culture as economic drivers",
+   "url": "https://sfchamber.com/agenda/",
+   "text": "Leverage public-private partnerships to activate streets, plazas, downtown spaces, and commercial corridors"
   }
  },
  {

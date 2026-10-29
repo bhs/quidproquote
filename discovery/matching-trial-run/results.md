@@ -82,30 +82,94 @@ Overlap (Jaccard) of candidate sets:
 | anchor | 0.09 | 0.34 | 0.00 | 1.00 | 0.17 |
 | both | 0.33 | 0.21 | 0.00 | 0.17 | 1.00 |
 
-## What a reader made of the sampled pairs
+## What two judges made of the sampled pairs
 
-95 pairs were drawn (see `label_sample.json`; judgements in `data/labels.json`). Per way and operating point, 'loose' is the way's loosest level and 'calibrated' the level where a random-word run yields under one pair. Random draws only; share with 95% range.
+135 pairs were drawn (see `label_sample.json`). Two judges labelled them against the same rubric: a reader (`data/labels.json`, the pairs drawn at 14 per way at the calibrated level and 8 at the loosest) and a language model (`data/labels_model.json`, every pair drawn, 32 per way at the calibrated level). 'loose' is the way's loosest level and 'calibrated' the level where a random-word run yields under one pair. Random draws only; share with 95% range.
+
+### Language model judge
 
 | way / point | judged | meaningful | topical only | coincidental | not a quote | meaningful share (95% range) |
 |---|---|---|---|---|---|---|
-| tfidf / loose | 8 of 8 | 1 | 1 | 5 | 1 | 12% (2% to 47%) |
-| tfidf / calibrated | 14 of 14 | 6 | 4 | 1 | 3 | 43% (21% to 67%) |
-| phrase / loose | 8 of 8 | 0 | 1 | 7 | 0 | 0% (0% to 32%) |
-| phrase / calibrated | 14 of 14 | 6 | 3 | 3 | 2 | 43% (21% to 67%) |
+| tfidf / loose | 8 of 8 | 1 | 1 | 4 | 2 | 12% (2% to 47%) |
+| tfidf / calibrated | 32 of 32 | 11 | 10 | 3 | 8 | 34% (20% to 52%) |
+| phrase / loose | 8 of 8 | 0 | 0 | 7 | 1 | 0% (0% to 32%) |
+| phrase / calibrated | 32 of 32 | 15 | 4 | 7 | 6 | 47% (31% to 64%) |
 | topic / loose | 8 of 8 | 0 | 1 | 7 | 0 | 0% (0% to 32%) |
 | topic / calibrated | 1 of 1 | 0 | 0 | 1 | 0 | 0% (0% to 79%) |
 | anchor / loose | 8 of 8 | 2 | 0 | 5 | 1 | 25% (7% to 59%) |
-| anchor / calibrated | 14 of 14 | 8 | 1 | 2 | 3 | 57% (33% to 79%) |
-| both / loose | 8 of 8 | 1 | 2 | 3 | 2 | 12% (2% to 47%) |
-| both / calibrated | 14 of 14 | 6 | 4 | 3 | 1 | 43% (21% to 67%) |
+| anchor / calibrated | 32 of 32 | 20 | 3 | 4 | 5 | 62% (45% to 77%) |
+| both / loose | 8 of 8 | 1 | 1 | 3 | 3 | 12% (2% to 47%) |
+| both / calibrated | 32 of 32 | 10 | 12 | 6 | 4 | 31% (18% to 49%) |
 
-Best-scoring pairs of each way (not a random draw):
+### Reader
 
-- tfidf: meaningful 2, topical 2
+| way / point | judged | meaningful | topical only | coincidental | not a quote | meaningful share (95% range) |
+|---|---|---|---|---|---|---|
+| tfidf / loose | 8 of 8 | 1 | 1 | 4 | 2 | 12% (2% to 47%) |
+| tfidf / calibrated | 22 of 32 | 8 | 7 | 1 | 6 | 36% (20% to 57%) |
+| phrase / loose | 8 of 8 | 0 | 0 | 7 | 1 | 0% (0% to 32%) |
+| phrase / calibrated | 20 of 32 | 8 | 5 | 3 | 4 | 40% (22% to 61%) |
+| topic / loose | 8 of 8 | 0 | 1 | 7 | 0 | 0% (0% to 32%) |
+| topic / calibrated | 1 of 1 | 0 | 0 | 1 | 0 | 0% (0% to 79%) |
+| anchor / loose | 8 of 8 | 2 | 0 | 5 | 1 | 25% (7% to 59%) |
+| anchor / calibrated | 18 of 32 | 10 | 3 | 2 | 3 | 56% (34% to 75%) |
+| both / loose | 8 of 8 | 1 | 1 | 3 | 3 | 12% (2% to 47%) |
+| both / calibrated | 20 of 32 | 6 | 8 | 3 | 3 | 30% (15% to 52%) |
+
+### Agreement of the two judges
+
+95 pairs were labelled by both. Same label on 91 (96%); Cohen's kappa 0.94 on the four labels. On meaningful against everything else: same on 92 (97%), kappa 0.92.
+
+| reader \ model | meaningful | topical | coincidental | not_a_quote |
+|---|---|---|---|---|
+| meaningful | 25 | 0 | 0 | 0 |
+| topical | 3 | 13 | 0 | 0 |
+| coincidental | 0 | 1 | 34 | 0 |
+| not_a_quote | 0 | 0 | 0 | 19 |
+
+Pairs where the two differ:
+
+- 52849@02:26:43|P064: reader coincidental, model topical
+- 52853@02:58:12|P043: reader topical, model meaningful
+- 52853@02:58:12|P063: reader topical, model meaningful
+- 52853@02:58:12|P110: reader topical, model meaningful
+
+At the calibrated setting, pairs the reader labelled that both judges called meaningful:
+
+- tfidf: 8 of 22
+- phrase: 8 of 20
+- topic: 0 of 1
+- anchor: 10 of 18
+- both: 6 of 20
+
+The two judges are not independent: the reader's labels were reconciled with the model's where the transcript showed who was speaking, so agreement overstates how reliably a second person would label the same pairs. No person outside the trial labelled any pair.
+
+### Do the ways differ?
+
+Share meaningful at the calibrated setting, model judge, two ways compared by Fisher's exact test (two-sided p; TF-IDF's 32 pairs are all of its candidates, the others are random draws of 32):
+
+- anchor against both: p = 0.023
+- phrase against anchor: p = 0.315
+- phrase against both: p = 0.305
+- tfidf against anchor: p = 0.045
+- tfidf against both: p = 1.000
+- tfidf against phrase: p = 0.446
+
+What the meaningful pairs rest on (model judge, calibrated setting):
+
+- tfidf: 11 meaningful pairs, 9 different quotes, 9 different priorities
+- phrase: 15 meaningful pairs, 10 different quotes, 12 different priorities
+- topic: 0 meaningful pairs, 0 different quotes, 0 different priorities
+- anchor: 20 meaningful pairs, 12 different quotes, 7 different priorities
+- both: 10 meaningful pairs, 9 different quotes, 8 different priorities
+
+Best-scoring pairs of each way (not a random draw), model judge:
+
+- tfidf: meaningful 1, not_a_quote 1, topical 2
 - phrase: not_a_quote 4
 - topic: coincidental 1
 - anchor: meaningful 2, topical 2
-- both: meaningful 3, topical 1
+- both: meaningful 2, not_a_quote 1, topical 1
 
 ## A nightly run
 
@@ -141,8 +205,8 @@ Review time for one person. Triage reads both texts at 238 words a minute plus 1
 
 | way | triage s per pair | kept share | minutes on an average night (low/mid/high) | minutes on a busy night (low/mid/high) | pairs reviewable in 30 min (high/mid/low) |
 |---|---|---|---|---|---|
-| tfidf | 42 | 43% | 2/4/6 | 31/50/77 | 7/11/18 |
-| phrase | 47 | 43% | 16/26/40 | 170/271/412 | 7/10/17 |
+| tfidf | 42 | 34% | 2/3/5 | 27/43/64 | 8/13/20 |
+| phrase | 47 | 47% | 17/28/43 | 179/289/444 | 6/10/16 |
 | topic | 55 | 0% | 0/0/0 | 1/1/1 | 33/33/33 |
-| anchor | 49 | 57% | 7/12/18 | 105/174/270 | 5/8/14 |
-| both | 44 | 43% | 7/11/17 | 65/104/160 | 7/11/17 |
+| anchor | 49 | 62% | 8/13/20 | 111/186/291 | 5/8/13 |
+| both | 44 | 31% | 6/9/13 | 55/84/124 | 9/13/20 |

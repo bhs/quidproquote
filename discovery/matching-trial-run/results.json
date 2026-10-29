@@ -445,317 +445,733 @@
   "both|both": 1.0
  },
  "judged_random_draws": {
-  "tfidf/loose": {
-   "sampled": 8,
-   "judged": 8,
-   "tally": {
-    "not_a_quote": 1,
-    "coincidental": 5,
-    "topical": 1,
-    "meaningful": 1
+  "reader": {
+   "tfidf/loose": {
+    "sampled": 8,
+    "judged": 8,
+    "tally": {
+     "not_a_quote": 2,
+     "coincidental": 4,
+     "topical": 1,
+     "meaningful": 1
+    },
+    "meaningful_share": [
+     0.125,
+     0.02241690886329618,
+     0.4708948057698615
+    ],
+    "topical_share": [
+     0.125,
+     0.02241690886329618,
+     0.4708948057698615
+    ],
+    "coincidental_share": [
+     0.5,
+     0.2152125268244419,
+     0.7847874731755581
+    ],
+    "not_a_quote_share": [
+     0.25,
+     0.07147768885802765,
+     0.5907301208974108
+    ]
    },
-   "meaningful_share": [
-    0.125,
-    0.02241690886329618,
-    0.4708948057698615
-   ],
-   "topical_share": [
-    0.125,
-    0.02241690886329618,
-    0.4708948057698615
-   ],
-   "coincidental_share": [
-    0.625,
-    0.3057378545838018,
-    0.863158240538479
-   ],
-   "not_a_quote_share": [
-    0.125,
-    0.02241690886329618,
-    0.4708948057698615
-   ]
+   "tfidf/calibrated": {
+    "sampled": 32,
+    "judged": 22,
+    "tally": {
+     "not_a_quote": 6,
+     "meaningful": 8,
+     "topical": 7,
+     "coincidental": 1
+    },
+    "meaningful_share": [
+     0.36363636363636365,
+     0.19732972772607896,
+     0.5704865065628195
+    ],
+    "topical_share": [
+     0.3181818181818182,
+     0.16360387354692477,
+     0.5268177721716065
+    ],
+    "coincidental_share": [
+     0.045454545454545456,
+     0.008069219301147859,
+     0.21798489499518056
+    ],
+    "not_a_quote_share": [
+     0.2727272727272727,
+     0.13150582015814438,
+     0.48152123699001975
+    ]
+   },
+   "phrase/loose": {
+    "sampled": 8,
+    "judged": 8,
+    "tally": {
+     "coincidental": 7,
+     "not_a_quote": 1
+    },
+    "meaningful_share": [
+     0.0,
+     0.0,
+     0.3244156195108769
+    ],
+    "topical_share": [
+     0.0,
+     0.0,
+     0.3244156195108769
+    ],
+    "coincidental_share": [
+     0.875,
+     0.5291051942301385,
+     0.9775830911367039
+    ],
+    "not_a_quote_share": [
+     0.125,
+     0.02241690886329618,
+     0.4708948057698615
+    ]
+   },
+   "phrase/calibrated": {
+    "sampled": 32,
+    "judged": 20,
+    "tally": {
+     "meaningful": 8,
+     "not_a_quote": 4,
+     "topical": 5,
+     "coincidental": 3
+    },
+    "meaningful_share": [
+     0.4,
+     0.21880396741419272,
+     0.613422057684794
+    ],
+    "topical_share": [
+     0.25,
+     0.11186005278940306,
+     0.4687050099580635
+    ],
+    "coincidental_share": [
+     0.15,
+     0.05236779195949582,
+     0.36042329588695743
+    ],
+    "not_a_quote_share": [
+     0.2,
+     0.08065635327119998,
+     0.4160217220257599
+    ]
+   },
+   "topic/loose": {
+    "sampled": 8,
+    "judged": 8,
+    "tally": {
+     "coincidental": 7,
+     "topical": 1
+    },
+    "meaningful_share": [
+     0.0,
+     0.0,
+     0.3244156195108769
+    ],
+    "topical_share": [
+     0.125,
+     0.02241690886329618,
+     0.4708948057698615
+    ],
+    "coincidental_share": [
+     0.875,
+     0.5291051942301385,
+     0.9775830911367039
+    ],
+    "not_a_quote_share": [
+     0.0,
+     0.0,
+     0.3244156195108769
+    ]
+   },
+   "topic/calibrated": {
+    "sampled": 1,
+    "judged": 1,
+    "tally": {
+     "coincidental": 1
+    },
+    "meaningful_share": [
+     0.0,
+     0.0,
+     0.7934567085261071
+    ],
+    "topical_share": [
+     0.0,
+     0.0,
+     0.7934567085261071
+    ],
+    "coincidental_share": [
+     1.0,
+     0.20654329147389294,
+     1.0
+    ],
+    "not_a_quote_share": [
+     0.0,
+     0.0,
+     0.7934567085261071
+    ]
+   },
+   "anchor/loose": {
+    "sampled": 8,
+    "judged": 8,
+    "tally": {
+     "coincidental": 5,
+     "meaningful": 2,
+     "not_a_quote": 1
+    },
+    "meaningful_share": [
+     0.25,
+     0.07147768885802765,
+     0.5907301208974108
+    ],
+    "topical_share": [
+     0.0,
+     0.0,
+     0.3244156195108769
+    ],
+    "coincidental_share": [
+     0.625,
+     0.3057378545838018,
+     0.863158240538479
+    ],
+    "not_a_quote_share": [
+     0.125,
+     0.02241690886329618,
+     0.4708948057698615
+    ]
+   },
+   "anchor/calibrated": {
+    "sampled": 32,
+    "judged": 18,
+    "tally": {
+     "not_a_quote": 3,
+     "meaningful": 10,
+     "coincidental": 2,
+     "topical": 3
+    },
+    "meaningful_share": [
+     0.5555555555555556,
+     0.33716069428251627,
+     0.7544076889861088
+    ],
+    "topical_share": [
+     0.16666666666666666,
+     0.058364704004657555,
+     0.3922249963835924
+    ],
+    "coincidental_share": [
+     0.1111111111111111,
+     0.031018868453582777,
+     0.3280024486660421
+    ],
+    "not_a_quote_share": [
+     0.16666666666666666,
+     0.058364704004657555,
+     0.3922249963835924
+    ]
+   },
+   "both/loose": {
+    "sampled": 8,
+    "judged": 8,
+    "tally": {
+     "not_a_quote": 3,
+     "meaningful": 1,
+     "coincidental": 3,
+     "topical": 1
+    },
+    "meaningful_share": [
+     0.125,
+     0.02241690886329618,
+     0.4708948057698615
+    ],
+    "topical_share": [
+     0.125,
+     0.02241690886329618,
+     0.4708948057698615
+    ],
+    "coincidental_share": [
+     0.375,
+     0.13684175946152105,
+     0.6942621454161982
+    ],
+    "not_a_quote_share": [
+     0.375,
+     0.13684175946152105,
+     0.6942621454161982
+    ]
+   },
+   "both/calibrated": {
+    "sampled": 32,
+    "judged": 20,
+    "tally": {
+     "meaningful": 6,
+     "coincidental": 3,
+     "topical": 8,
+     "not_a_quote": 3
+    },
+    "meaningful_share": [
+     0.3,
+     0.14547527396899385,
+     0.5189767762289793
+    ],
+    "topical_share": [
+     0.4,
+     0.21880396741419272,
+     0.613422057684794
+    ],
+    "coincidental_share": [
+     0.15,
+     0.05236779195949582,
+     0.36042329588695743
+    ],
+    "not_a_quote_share": [
+     0.15,
+     0.05236779195949582,
+     0.36042329588695743
+    ]
+   }
   },
-  "tfidf/calibrated": {
-   "sampled": 14,
-   "judged": 14,
-   "tally": {
-    "meaningful": 6,
-    "not_a_quote": 3,
-    "topical": 4,
-    "coincidental": 1
+  "model": {
+   "tfidf/loose": {
+    "sampled": 8,
+    "judged": 8,
+    "tally": {
+     "not_a_quote": 2,
+     "coincidental": 4,
+     "topical": 1,
+     "meaningful": 1
+    },
+    "meaningful_share": [
+     0.125,
+     0.02241690886329618,
+     0.4708948057698615
+    ],
+    "topical_share": [
+     0.125,
+     0.02241690886329618,
+     0.4708948057698615
+    ],
+    "coincidental_share": [
+     0.5,
+     0.2152125268244419,
+     0.7847874731755581
+    ],
+    "not_a_quote_share": [
+     0.25,
+     0.07147768885802765,
+     0.5907301208974108
+    ]
    },
-   "meaningful_share": [
-    0.42857142857142855,
-    0.21380509930400526,
-    0.6740973309713064
-   ],
-   "topical_share": [
-    0.2857142857142857,
-    0.11721187910109102,
-    0.546495411724844
-   ],
-   "coincidental_share": [
-    0.07142857142857142,
-    0.012721886112291648,
-    0.3146926955395781
-   ],
-   "not_a_quote_share": [
-    0.21428571428571427,
-    0.07571248336916371,
-    0.4758972377320828
-   ]
-  },
-  "phrase/loose": {
-   "sampled": 8,
-   "judged": 8,
-   "tally": {
-    "coincidental": 7,
-    "topical": 1
+   "tfidf/calibrated": {
+    "sampled": 32,
+    "judged": 32,
+    "tally": {
+     "not_a_quote": 8,
+     "meaningful": 11,
+     "topical": 10,
+     "coincidental": 3
+    },
+    "meaningful_share": [
+     0.34375,
+     0.2041023335432855,
+     0.5168922649121406
+    ],
+    "topical_share": [
+     0.3125,
+     0.17952352116618736,
+     0.4856699969803239
+    ],
+    "coincidental_share": [
+     0.09375,
+     0.032400962626319516,
+     0.24218499335778834
+    ],
+    "not_a_quote_share": [
+     0.25,
+     0.13252243982621553,
+     0.42106891770246624
+    ]
    },
-   "meaningful_share": [
-    0.0,
-    0.0,
-    0.3244156195108769
-   ],
-   "topical_share": [
-    0.125,
-    0.02241690886329618,
-    0.4708948057698615
-   ],
-   "coincidental_share": [
-    0.875,
-    0.5291051942301385,
-    0.9775830911367039
-   ],
-   "not_a_quote_share": [
-    0.0,
-    0.0,
-    0.3244156195108769
-   ]
-  },
-  "phrase/calibrated": {
-   "sampled": 14,
-   "judged": 14,
-   "tally": {
-    "coincidental": 3,
-    "not_a_quote": 2,
-    "meaningful": 6,
-    "topical": 3
+   "phrase/loose": {
+    "sampled": 8,
+    "judged": 8,
+    "tally": {
+     "coincidental": 7,
+     "not_a_quote": 1
+    },
+    "meaningful_share": [
+     0.0,
+     0.0,
+     0.3244156195108769
+    ],
+    "topical_share": [
+     0.0,
+     0.0,
+     0.3244156195108769
+    ],
+    "coincidental_share": [
+     0.875,
+     0.5291051942301385,
+     0.9775830911367039
+    ],
+    "not_a_quote_share": [
+     0.125,
+     0.02241690886329618,
+     0.4708948057698615
+    ]
    },
-   "meaningful_share": [
-    0.42857142857142855,
-    0.21380509930400526,
-    0.6740973309713064
-   ],
-   "topical_share": [
-    0.21428571428571427,
-    0.07571248336916371,
-    0.4758972377320828
-   ],
-   "coincidental_share": [
-    0.21428571428571427,
-    0.07571248336916371,
-    0.4758972377320828
-   ],
-   "not_a_quote_share": [
-    0.14285714285714285,
-    0.04009307373792117,
-    0.399419077638637
-   ]
-  },
-  "topic/loose": {
-   "sampled": 8,
-   "judged": 8,
-   "tally": {
-    "coincidental": 7,
-    "topical": 1
+   "phrase/calibrated": {
+    "sampled": 32,
+    "judged": 32,
+    "tally": {
+     "meaningful": 15,
+     "not_a_quote": 6,
+     "topical": 4,
+     "coincidental": 7
+    },
+    "meaningful_share": [
+     0.46875,
+     0.3086912990168234,
+     0.6355076206742618
+    ],
+    "topical_share": [
+     0.125,
+     0.049700538444743,
+     0.28068649784827965
+    ],
+    "coincidental_share": [
+     0.21875,
+     0.11023696931531854,
+     0.3875533079044484
+    ],
+    "not_a_quote_share": [
+     0.1875,
+     0.08889423936162782,
+     0.3530949575492244
+    ]
    },
-   "meaningful_share": [
-    0.0,
-    0.0,
-    0.3244156195108769
-   ],
-   "topical_share": [
-    0.125,
-    0.02241690886329618,
-    0.4708948057698615
-   ],
-   "coincidental_share": [
-    0.875,
-    0.5291051942301385,
-    0.9775830911367039
-   ],
-   "not_a_quote_share": [
-    0.0,
-    0.0,
-    0.3244156195108769
-   ]
-  },
-  "topic/calibrated": {
-   "sampled": 1,
-   "judged": 1,
-   "tally": {
-    "coincidental": 1
+   "topic/loose": {
+    "sampled": 8,
+    "judged": 8,
+    "tally": {
+     "coincidental": 7,
+     "topical": 1
+    },
+    "meaningful_share": [
+     0.0,
+     0.0,
+     0.3244156195108769
+    ],
+    "topical_share": [
+     0.125,
+     0.02241690886329618,
+     0.4708948057698615
+    ],
+    "coincidental_share": [
+     0.875,
+     0.5291051942301385,
+     0.9775830911367039
+    ],
+    "not_a_quote_share": [
+     0.0,
+     0.0,
+     0.3244156195108769
+    ]
    },
-   "meaningful_share": [
-    0.0,
-    0.0,
-    0.7934567085261071
-   ],
-   "topical_share": [
-    0.0,
-    0.0,
-    0.7934567085261071
-   ],
-   "coincidental_share": [
-    1.0,
-    0.20654329147389294,
-    1.0
-   ],
-   "not_a_quote_share": [
-    0.0,
-    0.0,
-    0.7934567085261071
-   ]
-  },
-  "anchor/loose": {
-   "sampled": 8,
-   "judged": 8,
-   "tally": {
-    "coincidental": 5,
-    "meaningful": 2,
-    "not_a_quote": 1
+   "topic/calibrated": {
+    "sampled": 1,
+    "judged": 1,
+    "tally": {
+     "coincidental": 1
+    },
+    "meaningful_share": [
+     0.0,
+     0.0,
+     0.7934567085261071
+    ],
+    "topical_share": [
+     0.0,
+     0.0,
+     0.7934567085261071
+    ],
+    "coincidental_share": [
+     1.0,
+     0.20654329147389294,
+     1.0
+    ],
+    "not_a_quote_share": [
+     0.0,
+     0.0,
+     0.7934567085261071
+    ]
    },
-   "meaningful_share": [
-    0.25,
-    0.07147768885802765,
-    0.5907301208974108
-   ],
-   "topical_share": [
-    0.0,
-    0.0,
-    0.3244156195108769
-   ],
-   "coincidental_share": [
-    0.625,
-    0.3057378545838018,
-    0.863158240538479
-   ],
-   "not_a_quote_share": [
-    0.125,
-    0.02241690886329618,
-    0.4708948057698615
-   ]
-  },
-  "anchor/calibrated": {
-   "sampled": 14,
-   "judged": 14,
-   "tally": {
-    "not_a_quote": 3,
-    "meaningful": 8,
-    "coincidental": 2,
-    "topical": 1
+   "anchor/loose": {
+    "sampled": 8,
+    "judged": 8,
+    "tally": {
+     "coincidental": 5,
+     "meaningful": 2,
+     "not_a_quote": 1
+    },
+    "meaningful_share": [
+     0.25,
+     0.07147768885802765,
+     0.5907301208974108
+    ],
+    "topical_share": [
+     0.0,
+     0.0,
+     0.3244156195108769
+    ],
+    "coincidental_share": [
+     0.625,
+     0.3057378545838018,
+     0.863158240538479
+    ],
+    "not_a_quote_share": [
+     0.125,
+     0.02241690886329618,
+     0.4708948057698615
+    ]
    },
-   "meaningful_share": [
-    0.5714285714285714,
-    0.3259026690286935,
-    0.7861949006959947
-   ],
-   "topical_share": [
-    0.07142857142857142,
-    0.012721886112291648,
-    0.3146926955395781
-   ],
-   "coincidental_share": [
-    0.14285714285714285,
-    0.04009307373792117,
-    0.399419077638637
-   ],
-   "not_a_quote_share": [
-    0.21428571428571427,
-    0.07571248336916371,
-    0.4758972377320828
-   ]
-  },
-  "both/loose": {
-   "sampled": 8,
-   "judged": 8,
-   "tally": {
-    "topical": 2,
-    "not_a_quote": 2,
-    "meaningful": 1,
-    "coincidental": 3
+   "anchor/calibrated": {
+    "sampled": 32,
+    "judged": 32,
+    "tally": {
+     "not_a_quote": 5,
+     "meaningful": 20,
+     "coincidental": 4,
+     "topical": 3
+    },
+    "meaningful_share": [
+     0.625,
+     0.4525410058952512,
+     0.7706633153404079
+    ],
+    "topical_share": [
+     0.09375,
+     0.032400962626319516,
+     0.24218499335778834
+    ],
+    "coincidental_share": [
+     0.125,
+     0.049700538444743,
+     0.28068649784827965
+    ],
+    "not_a_quote_share": [
+     0.15625,
+     0.06864319106627216,
+     0.31754492553566527
+    ]
    },
-   "meaningful_share": [
-    0.125,
-    0.02241690886329618,
-    0.4708948057698615
-   ],
-   "topical_share": [
-    0.25,
-    0.07147768885802765,
-    0.5907301208974108
-   ],
-   "coincidental_share": [
-    0.375,
-    0.13684175946152105,
-    0.6942621454161982
-   ],
-   "not_a_quote_share": [
-    0.25,
-    0.07147768885802765,
-    0.5907301208974108
-   ]
-  },
-  "both/calibrated": {
-   "sampled": 14,
-   "judged": 14,
-   "tally": {
-    "coincidental": 3,
-    "meaningful": 6,
-    "not_a_quote": 1,
-    "topical": 4
+   "both/loose": {
+    "sampled": 8,
+    "judged": 8,
+    "tally": {
+     "not_a_quote": 3,
+     "meaningful": 1,
+     "coincidental": 3,
+     "topical": 1
+    },
+    "meaningful_share": [
+     0.125,
+     0.02241690886329618,
+     0.4708948057698615
+    ],
+    "topical_share": [
+     0.125,
+     0.02241690886329618,
+     0.4708948057698615
+    ],
+    "coincidental_share": [
+     0.375,
+     0.13684175946152105,
+     0.6942621454161982
+    ],
+    "not_a_quote_share": [
+     0.375,
+     0.13684175946152105,
+     0.6942621454161982
+    ]
    },
-   "meaningful_share": [
-    0.42857142857142855,
-    0.21380509930400526,
-    0.6740973309713064
-   ],
-   "topical_share": [
-    0.2857142857142857,
-    0.11721187910109102,
-    0.546495411724844
-   ],
-   "coincidental_share": [
-    0.21428571428571427,
-    0.07571248336916371,
-    0.4758972377320828
-   ],
-   "not_a_quote_share": [
-    0.07142857142857142,
-    0.012721886112291648,
-    0.3146926955395781
-   ]
+   "both/calibrated": {
+    "sampled": 32,
+    "judged": 32,
+    "tally": {
+     "meaningful": 10,
+     "coincidental": 6,
+     "topical": 12,
+     "not_a_quote": 4
+    },
+    "meaningful_share": [
+     0.3125,
+     0.17952352116618736,
+     0.4856699969803239
+    ],
+    "topical_share": [
+     0.375,
+     0.2293366846595921,
+     0.5474589941047487
+    ],
+    "coincidental_share": [
+     0.1875,
+     0.08889423936162782,
+     0.3530949575492244
+    ],
+    "not_a_quote_share": [
+     0.125,
+     0.049700538444743,
+     0.28068649784827965
+    ]
+   }
   }
  },
  "judged_top_ranked": {
+  "reader": {
+   "tfidf": {
+    "not_a_quote": 1,
+    "topical": 2,
+    "meaningful": 1
+   },
+   "phrase": {
+    "not_a_quote": 4
+   },
+   "topic": {
+    "coincidental": 1
+   },
+   "anchor": {
+    "topical": 2,
+    "meaningful": 2
+   },
+   "both": {
+    "not_a_quote": 1,
+    "meaningful": 2,
+    "topical": 1
+   }
+  },
+  "model": {
+   "tfidf": {
+    "not_a_quote": 1,
+    "topical": 2,
+    "meaningful": 1
+   },
+   "phrase": {
+    "not_a_quote": 4
+   },
+   "topic": {
+    "coincidental": 1
+   },
+   "anchor": {
+    "topical": 2,
+    "meaningful": 2
+   },
+   "both": {
+    "not_a_quote": 1,
+    "meaningful": 2,
+    "topical": 1
+   }
+  }
+ },
+ "judge_agreement": {
+  "pairs": 95,
+  "same_label": 91,
+  "kappa_four_labels": 0.9419847328244276,
+  "same_on_meaningful_or_not": 92,
+  "kappa_meaningful_or_not": 0.9215955983493811,
+  "confusion": {
+   "coincidental|coincidental": 34,
+   "coincidental|topical": 1,
+   "meaningful|meaningful": 25,
+   "not_a_quote|not_a_quote": 19,
+   "topical|meaningful": 3,
+   "topical|topical": 13
+  }
+ },
+ "judge_disagreements": [
+  {
+   "pair": "52849@02:26:43|P064",
+   "reader": "coincidental",
+   "model": "topical"
+  },
+  {
+   "pair": "52853@02:58:12|P043",
+   "reader": "topical",
+   "model": "meaningful"
+  },
+  {
+   "pair": "52853@02:58:12|P063",
+   "reader": "topical",
+   "model": "meaningful"
+  },
+  {
+   "pair": "52853@02:58:12|P110",
+   "reader": "topical",
+   "model": "meaningful"
+  }
+ ],
+ "way_comparison_fisher_p": {
+  "tfidf|phrase": 0.4455030680006155,
+  "tfidf|anchor": 0.044566814293361526,
+  "tfidf|both": 1.0,
+  "phrase|anchor": 0.31524333931754195,
+  "phrase|both": 0.30549719812701687,
+  "anchor|both": 0.023413854718282796
+ },
+ "meaningful_pair_clusters": {
   "tfidf": {
-   "meaningful": 2,
-   "topical": 2
+   "meaningful_pairs": 11,
+   "distinct_quotes": 9,
+   "distinct_priorities": 9
   },
   "phrase": {
-   "not_a_quote": 4
+   "meaningful_pairs": 15,
+   "distinct_quotes": 10,
+   "distinct_priorities": 12
   },
   "topic": {
-   "coincidental": 1
+   "meaningful_pairs": 0,
+   "distinct_quotes": 0,
+   "distinct_priorities": 0
   },
   "anchor": {
-   "topical": 2,
-   "meaningful": 2
+   "meaningful_pairs": 20,
+   "distinct_quotes": 12,
+   "distinct_priorities": 7
   },
   "both": {
-   "meaningful": 3,
-   "topical": 1
+   "meaningful_pairs": 10,
+   "distinct_quotes": 9,
+   "distinct_priorities": 8
+  }
+ },
+ "both_judges_meaningful_at_calibrated": {
+  "tfidf": {
+   "judged_by_both": 22,
+   "both_meaningful": 8
+  },
+  "phrase": {
+   "judged_by_both": 20,
+   "both_meaningful": 8
+  },
+  "topic": {
+   "judged_by_both": 1,
+   "both_meaningful": 0
+  },
+  "anchor": {
+   "judged_by_both": 18,
+   "both_meaningful": 10
+  },
+  "both": {
+   "judged_by_both": 20,
+   "both_meaningful": 6
   }
  },
  "volume": {
@@ -980,12 +1396,12 @@
   "tfidf": {
    "triage_s_per_pair": 41.65966386554622,
    "audio_s_per_pair": 21.2875,
-   "kept_share": 0.42857142857142855
+   "kept_share": 0.34375
   },
   "phrase": {
    "triage_s_per_pair": 46.877040971829146,
    "audio_s_per_pair": 24.089119170984457,
-   "kept_share": 0.42857142857142855
+   "kept_share": 0.46875
   },
   "topic": {
    "triage_s_per_pair": 55.08403361344538,
@@ -995,24 +1411,24 @@
   "anchor": {
    "triage_s_per_pair": 48.5179526355997,
    "audio_s_per_pair": 24.957575757575757,
-   "kept_share": 0.5714285714285714
+   "kept_share": 0.625
   },
   "both": {
    "triage_s_per_pair": 44.13127413127413,
    "audio_s_per_pair": 22.08108108108108,
-   "kept_share": 0.42857142857142855
+   "kept_share": 0.3125
   }
  },
  "review_capacity_pairs_in_30_min": {
   "tfidf": {
-   "low": 17.61055153213648,
-   "mid": 10.81099496357535,
-   "high": 7.017621453871302
+   "low": 19.94962896226618,
+   "mid": 12.694853483265481,
+   "high": 8.412109546114843
   },
   "phrase": {
-   "low": 16.570081408662542,
-   "mid": 10.409724747605608,
-   "high": 6.846313035717462
+   "low": 15.731678315536156,
+   "mid": 9.743881238094875,
+   "high": 6.356632160545762
   },
   "topic": {
    "low": 32.67734553775744,
@@ -1020,14 +1436,14 @@
    "high": 32.67734553775744
   },
   "anchor": {
-   "low": 13.70375568905739,
-   "mid": 8.292441661031695,
-   "high": 5.340214079985206
+   "low": 12.93880171569177,
+   "mid": 7.729752812158783,
+   "high": 4.94347361090689
   },
   "both": {
-   "low": 17.139075769273187,
-   "mid": 10.631456523226381,
-   "high": 6.941528565685442
+   "low": 20.331720613287906,
+   "mid": 13.293294720427713,
+   "high": 8.953815682861688
   }
  },
  "parameters": {

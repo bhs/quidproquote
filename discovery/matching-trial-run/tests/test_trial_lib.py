@@ -5,6 +5,7 @@ import unittest
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 
+import analyze  # noqa: E402
 import trial_lib as lib  # noqa: E402
 
 PRIORITIES = [
@@ -133,6 +134,30 @@ class SampleTests(unittest.TestCase):
         keys = [(i, i + 1) for i in range(20)]
         self.assertEqual(lib.stable_order(keys, "a"), lib.stable_order(keys, "a"))
         self.assertNotEqual(lib.stable_order(keys, "a"), lib.stable_order(keys, "b"))
+
+
+class JudgeTests(unittest.TestCase):
+    def test_kappa_is_one_for_identical_labels_and_zero_for_chance_level(self):
+        same = [("meaningful", "meaningful"), ("topical", "topical"), ("coincidental", "coincidental")]
+        self.assertAlmostEqual(analyze.kappa(same), 1.0)
+        chance = [("meaningful", "meaningful"), ("meaningful", "topical"),
+                  ("topical", "meaningful"), ("topical", "topical")]
+        self.assertAlmostEqual(analyze.kappa(chance), 0.0)
+
+    def test_fisher_is_one_for_equal_shares_and_small_for_a_clear_gap(self):
+        self.assertAlmostEqual(analyze.fisher_two_sided(5, 10, 5, 10), 1.0)
+        self.assertLess(analyze.fisher_two_sided(10, 10, 0, 10), 0.001)
+
+    def test_every_judged_pair_is_in_the_sample_and_labels_are_from_the_rubric(self):
+        import json
+        here = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
+        with open(os.path.join(here, "label_sample.json"), encoding="utf-8") as f:
+            sample = {r["pair"] for r in json.load(f)}
+        for name in ("labels.json", "labels_model.json"):
+            with open(os.path.join(here, "data", name), encoding="utf-8") as f:
+                d = json.load(f)
+            self.assertTrue(set(d["labels"]) <= sample, name)
+            self.assertTrue({v["label"] for v in d["labels"].values()} <= set(analyze.CLASSES), name)
 
 
 if __name__ == "__main__":

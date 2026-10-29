@@ -1,0 +1,426 @@
+{
+ "judge": "a language model (Claude) reading each pair against the rubric below; no API call, labels written by hand into this file",
+ "rubric": {
+  "meaningful": "the passage speaks to the same specific measure, program, proposal or stated position as the priority, so a reader would see why the two sit side by side (the speaker is not confirmed)",
+  "topical": "same broad subject only, no shared specific proposal or position",
+  "coincidental": "shared words or numbers but different subjects",
+  "not_a_quote": "related, but the passage is a clerk reading a title or agenda, a public comment, an applicant, or a department presentation rather than an official stating a view"
+ },
+ "labels": {
+  "51452@00:36:04|P015": {
+   "label": "coincidental"
+  },
+  "51452@00:59:17|P065": {
+   "label": "not_a_quote",
+   "note": "department head's year-in-review address to the Board (context: thanks the Mayor for the opportunity to serve as chief of police); broad theme only"
+  },
+  "51452@00:59:17|P129": {
+   "label": "not_a_quote",
+   "note": "same address, department head"
+  },
+  "51452@01:10:26|P128": {
+   "label": "coincidental"
+  },
+  "51452@01:30:28|P012": {
+   "label": "coincidental"
+  },
+  "51452@01:49:16|P060": {
+   "label": "meaningful",
+   "note": "speaker names the Great Highway ballot measure"
+  },
+  "51452@01:49:16|P095": {
+   "label": "meaningful",
+   "note": "speaker names the Great Highway ballot measure"
+  },
+  "52251@00:51:04|P115": {
+   "label": "coincidental"
+  },
+  "52251@01:01:44|P028": {
+   "label": "topical"
+  },
+  "52251@01:03:19|P001": {
+   "label": "coincidental"
+  },
+  "52800@00:06:27|P035": {
+   "label": "not_a_quote"
+  },
+  "52800@00:06:27|P055": {
+   "label": "not_a_quote"
+  },
+  "52800@00:06:27|P071": {
+   "label": "not_a_quote"
+  },
+  "52800@00:06:27|P072": {
+   "label": "not_a_quote"
+  },
+  "52800@00:06:27|P079": {
+   "label": "not_a_quote"
+  },
+  "52800@00:06:27|P080": {
+   "label": "not_a_quote"
+  },
+  "52800@00:13:03|P034": {
+   "label": "not_a_quote"
+  },
+  "52800@00:14:48|P036": {
+   "label": "not_a_quote",
+   "note": "clerk reads the measure title"
+  },
+  "52800@00:14:48|P083": {
+   "label": "not_a_quote"
+  },
+  "52800@00:15:56|P024": {
+   "label": "topical"
+  },
+  "52800@00:15:56|P035": {
+   "label": "meaningful"
+  },
+  "52800@00:15:56|P055": {
+   "label": "meaningful"
+  },
+  "52800@00:15:56|P071": {
+   "label": "meaningful"
+  },
+  "52800@00:15:56|P083": {
+   "label": "meaningful"
+  },
+  "52800@00:16:27|P036": {
+   "label": "meaningful"
+  },
+  "52800@00:16:27|P083": {
+   "label": "meaningful"
+  },
+  "52800@00:16:58|P036": {
+   "label": "meaningful"
+  },
+  "52800@00:16:58|P105": {
+   "label": "meaningful"
+  },
+  "52800@00:24:51|P130": {
+   "label": "coincidental"
+  },
+  "52800@00:26:22|P015": {
+   "label": "coincidental"
+  },
+  "52800@01:07:31|P129": {
+   "label": "topical"
+  },
+  "52800@01:17:37|P048": {
+   "label": "topical"
+  },
+  "52800@01:47:12|P044": {
+   "label": "coincidental"
+  },
+  "52804@00:26:02|P029": {
+   "label": "not_a_quote"
+  },
+  "52804@00:27:36|P091": {
+   "label": "coincidental"
+  },
+  "52804@00:28:30|P029": {
+   "label": "not_a_quote"
+  },
+  "52804@00:29:49|P052": {
+   "label": "not_a_quote"
+  },
+  "52804@00:36:57|P013": {
+   "label": "coincidental"
+  },
+  "52804@00:42:16|P103": {
+   "label": "coincidental"
+  },
+  "52804@00:44:34|P062": {
+   "label": "coincidental"
+  },
+  "52804@00:45:27|P042": {
+   "label": "coincidental"
+  },
+  "52816@00:06:09|P069": {
+   "label": "coincidental"
+  },
+  "52816@00:09:19|P129": {
+   "label": "coincidental"
+  },
+  "52816@00:10:40|P069": {
+   "label": "coincidental"
+  },
+  "52816@00:10:56|P013": {
+   "label": "coincidental"
+  },
+  "52816@01:00:32|P070": {
+   "label": "coincidental"
+  },
+  "52816@01:04:53|P066": {
+   "label": "not_a_quote"
+  },
+  "52816@01:20:57|P050": {
+   "label": "not_a_quote"
+  },
+  "52816@01:25:58|P061": {
+   "label": "coincidental"
+  },
+  "52816@01:31:57|P068": {
+   "label": "coincidental"
+  },
+  "52816@01:32:44|P082": {
+   "label": "topical"
+  },
+  "52816@01:37:39|P004": {
+   "label": "topical"
+  },
+  "52831@00:09:01|P086": {
+   "label": "coincidental"
+  },
+  "52831@00:14:19|P088": {
+   "label": "topical",
+   "note": "about the Affordable Grocery Fund ballot placement, not the ballot-measure process measure"
+  },
+  "52831@00:48:47|P020": {
+   "label": "coincidental"
+  },
+  "52831@00:49:12|P042": {
+   "label": "not_a_quote"
+  },
+  "52831@00:49:12|P056": {
+   "label": "not_a_quote"
+  },
+  "52831@00:49:28|P013": {
+   "label": "coincidental"
+  },
+  "52831@00:49:28|P083": {
+   "label": "not_a_quote"
+  },
+  "52831@00:51:31|P012": {
+   "label": "not_a_quote"
+  },
+  "52838@00:14:34|P007": {
+   "label": "topical"
+  },
+  "52838@00:16:37|P044": {
+   "label": "not_a_quote"
+  },
+  "52838@00:37:47|P041": {
+   "label": "not_a_quote",
+   "note": "BART general manager's presentation"
+  },
+  "52849@01:06:55|P036": {
+   "label": "not_a_quote"
+  },
+  "52849@01:07:28|P083": {
+   "label": "not_a_quote"
+  },
+  "52849@01:07:44|P036": {
+   "label": "meaningful"
+  },
+  "52849@01:12:28|P024": {
+   "label": "topical"
+  },
+  "52849@01:12:28|P036": {
+   "label": "meaningful"
+  },
+  "52849@01:12:28|P083": {
+   "label": "meaningful"
+  },
+  "52849@01:40:08|P036": {
+   "label": "meaningful"
+  },
+  "52849@01:40:34|P036": {
+   "label": "meaningful"
+  },
+  "52849@01:40:34|P083": {
+   "label": "meaningful"
+  },
+  "52849@01:43:59|P036": {
+   "label": "meaningful"
+  },
+  "52849@01:43:59|P083": {
+   "label": "meaningful"
+  },
+  "52849@01:45:58|P010": {
+   "label": "topical"
+  },
+  "52849@01:46:33|P083": {
+   "label": "meaningful"
+  },
+  "52849@01:46:33|P105": {
+   "label": "meaningful"
+  },
+  "52849@01:49:55|P036": {
+   "label": "meaningful"
+  },
+  "52849@01:49:55|P083": {
+   "label": "meaningful"
+  },
+  "52849@01:49:55|P105": {
+   "label": "meaningful"
+  },
+  "52849@02:23:07|P066": {
+   "label": "topical"
+  },
+  "52849@02:26:43|P064": {
+   "label": "topical"
+  },
+  "52849@02:26:43|P066": {
+   "label": "topical"
+  },
+  "52849@02:40:33|P038": {
+   "label": "meaningful",
+   "note": "speaker describes the City Administrator measure"
+  },
+  "52849@02:41:38|P039": {
+   "label": "meaningful"
+  },
+  "52849@02:45:24|P120": {
+   "label": "coincidental"
+  },
+  "52849@02:57:26|P083": {
+   "label": "meaningful"
+  },
+  "52853@00:09:42|P083": {
+   "label": "coincidental"
+  },
+  "52853@00:18:51|P006": {
+   "label": "coincidental"
+  },
+  "52853@00:59:47|P082": {
+   "label": "coincidental"
+  },
+  "52853@01:25:40|P040": {
+   "label": "coincidental"
+  },
+  "52853@01:31:21|P061": {
+   "label": "coincidental"
+  },
+  "52853@01:32:49|P016": {
+   "label": "coincidental"
+  },
+  "52853@02:06:41|P041": {
+   "label": "coincidental"
+  },
+  "52853@02:10:34|P069": {
+   "label": "coincidental"
+  },
+  "52853@02:28:58|P042": {
+   "label": "coincidental"
+  },
+  "52853@02:35:46|P097": {
+   "label": "coincidental"
+  },
+  "52853@02:53:17|P122": {
+   "label": "coincidental"
+  },
+  "52853@02:54:00|P043": {
+   "label": "meaningful"
+  },
+  "52853@02:54:00|P104": {
+   "label": "topical",
+   "note": "same tax, different measure (Prop J passage, Prop I statement)"
+  },
+  "52853@02:54:00|P105": {
+   "label": "coincidental"
+  },
+  "52853@02:54:00|P106": {
+   "label": "meaningful"
+  },
+  "52853@02:54:00|P107": {
+   "label": "meaningful"
+  },
+  "52853@02:54:00|P108": {
+   "label": "meaningful"
+  },
+  "52853@02:54:18|P107": {
+   "label": "meaningful"
+  },
+  "52853@02:55:50|P042": {
+   "label": "topical"
+  },
+  "52853@02:55:50|P043": {
+   "label": "meaningful"
+  },
+  "52853@02:55:50|P062": {
+   "label": "topical"
+  },
+  "52853@02:55:50|P063": {
+   "label": "meaningful"
+  },
+  "52853@02:55:50|P103": {
+   "label": "topical"
+  },
+  "52853@02:55:50|P104": {
+   "label": "topical"
+  },
+  "52853@02:55:50|P105": {
+   "label": "coincidental"
+  },
+  "52853@02:55:50|P108": {
+   "label": "meaningful"
+  },
+  "52853@02:55:50|P109": {
+   "label": "meaningful"
+  },
+  "52853@02:55:50|P110": {
+   "label": "meaningful"
+  },
+  "52853@02:56:42|P043": {
+   "label": "meaningful"
+  },
+  "52853@02:57:57|P086": {
+   "label": "topical"
+  },
+  "52853@02:58:12|P042": {
+   "label": "topical"
+  },
+  "52853@02:58:12|P043": {
+   "label": "meaningful"
+  },
+  "52853@02:58:12|P062": {
+   "label": "topical"
+  },
+  "52853@02:58:12|P063": {
+   "label": "meaningful"
+  },
+  "52853@02:58:12|P104": {
+   "label": "topical"
+  },
+  "52853@02:58:12|P105": {
+   "label": "coincidental"
+  },
+  "52853@02:58:12|P107": {
+   "label": "meaningful"
+  },
+  "52853@02:58:12|P108": {
+   "label": "meaningful"
+  },
+  "52853@02:58:12|P110": {
+   "label": "meaningful"
+  },
+  "52871@00:03:43|P042": {
+   "label": "coincidental"
+  },
+  "52871@00:03:43|P056": {
+   "label": "coincidental"
+  },
+  "52871@00:26:38|P048": {
+   "label": "coincidental"
+  },
+  "52871@00:29:06|P083": {
+   "label": "coincidental"
+  },
+  "52871@00:44:16|P085": {
+   "label": "coincidental"
+  },
+  "52901@00:42:51|P122": {
+   "label": "coincidental"
+  },
+  "52901@01:03:57|P068": {
+   "label": "coincidental"
+  },
+  "52901@03:44:00|P029": {
+   "label": "not_a_quote"
+  },
+  "52901@04:02:41|P025": {
+   "label": "not_a_quote",
+   "note": "public comment"
+  }
+ }
+}

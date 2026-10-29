@@ -5,7 +5,8 @@ Reads data/ (a snapshot made by collect.py), tries five ways of comparing a quot
 priority, counts the candidate pairings each finds, counts how many a random-word model finds
 at the same settings, estimates what a nightly run would produce and how long one person
 would take to review it, and prints the result. Writes results.md and results.json beside it,
-and label_sample.json (the pairs a reader judged; data/labels.json holds the judgements).
+and label_sample.json (the pairs two judges read; data/labels.json holds one reader's judgements
+and data/labels_model.json a language model's, both against the same written rubric).
 """
 
 import json
@@ -23,7 +24,7 @@ DATA = os.path.join(HERE, "data")
 NULL_DRAWS = 20          # random-word runs per chance model
 SEED = 20261029
 SAMPLE_LOOSE = 8         # pairs drawn at random at each way's loosest level, for a reader
-SAMPLE_CALIBRATED = 14   # pairs drawn at random at each way's calibrated level
+SAMPLE_CALIBRATED = 32   # pairs drawn at random at each way's calibrated level (all 32 for TF-IDF)
 TOP_PER_METHOD = 4       # plus the best-scoring pairs of each way
 
 # Reviewer-time model. READ_WPM is a published figure; the rest are stated assumptions,
@@ -54,10 +55,12 @@ def load():
     with open(os.path.join(DATA, "priorities.json"), encoding="utf-8") as f:
         priorities = json.load(f)
     labels = {}
-    path = os.path.join(DATA, "labels.json")
-    if os.path.exists(path):
-        with open(path, encoding="utf-8") as f:
-            labels = json.load(f).get("labels", {})
+    for judge, name in (("reader", "labels.json"), ("model", "labels_model.json")):
+        labels[judge] = {}
+        path = os.path.join(DATA, name)
+        if os.path.exists(path):
+            with open(path, encoding="utf-8") as f:
+                labels[judge] = json.load(f).get("labels", {})
     return meetings, quotes, priorities, labels
 
 
@@ -69,6 +72,33 @@ def wilson(k, n, z=1.96):
     c = p + z * z / (2 * n)
     r = z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n))
     return ((c - r) / d, (c + r) / d)
+
+
+CLASSES = ("meaningful", "topical", "coincidental", "not_a_quote")
+
+
+def kappa(pairs):
+    """Cohen's kappa for two judges' labels, a list of (label_a, label_b)."""
+    n = len(pairs)
+    if n == 0:
+        return None
+    observed = sum(1 for a, b in pairs if a == b) / n
+    ca, cb = Counter(a for a, _ in pairs), Counter(b for _, b in pairs)
+    expected = sum(ca[c] * cb[c] for c in CLASSES) / (n * n)
+    return (observed - expected) / (1 - expected) if expected < 1 else None
+
+
+def fisher_two_sided(a, n1, b, n2):
+    """Two-sided Fisher exact p for a of n1 against b of n2 (small samples, no libraries)."""
+    k = a + b
+    total = math.comb(n1 + n2, k)
+
+    def prob(x):
+        return math.comb(n1, x) * math.comb(n2, k - x) / total
+
+    p_obs = prob(a)
+    lo, hi = max(0, k - n2), min(n1, k)
+    return min(1.0, sum(prob(x) for x in range(lo, hi + 1) if prob(x) <= p_obs + 1e-12))
 
 
 def pct(x):
@@ -171,23 +201,82 @@ def main():
     with open(os.path.join(HERE, "label_sample.json"), "w", encoding="utf-8") as f:
         json.dump(sample_rows, f, indent=1, ensure_ascii=False)
 
-    # ---- readers' judgements, per way and operating point (pairs drawn at random only)
-    judged = {}
+    # ---- judges' labels, per way and operating point (pairs drawn at random only)
+    def judge_tables(lab):
+        judged = {}
+        for m in names:
+            for point in ("loose", "calibrated"):
+                tag = "%s/%s" % (m, point)
+                rows = [r for r in sample_rows if tag in r["drawn_for"]]
+                tally = Counter(lab[r["pair"]]["label"] for r in rows if r["pair"] in lab)
+                n = sum(tally.values())
+                entry = {"sampled": len(rows), "judged": n, "tally": dict(tally)}
+                for c in CLASSES:
+                    lo, hi = wilson(tally.get(c, 0), n)
+                    entry[c + "_share"] = [tally.get(c, 0) / n if n else None, lo, hi]
+                judged[tag] = entry
+        top = {}
+        for m in names:
+            rows = [r for r in sample_rows if "%s/top" % m in r["drawn_for"]]
+            top[m] = dict(Counter(lab[r["pair"]]["label"] for r in rows if r["pair"] in lab))
+        return judged, top
+
+    judges = ("reader", "model")
+    judged_by, top_by = {}, {}
+    for j in judges:
+        judged_by[j], top_by[j] = judge_tables(labels[j])
+    judged, top_judged = judged_by["model"], top_by["model"]
+
+    # ---- agreement of the two judges on the pairs both labelled
+    both_labelled = [r["pair"] for r in sample_rows
+                     if r["pair"] in labels["reader"] and r["pair"] in labels["model"]]
+    lab_pairs = [(labels["reader"][k]["label"], labels["model"][k]["label"]) for k in both_labelled]
+    confusion = Counter(lab_pairs)
+    mean_pairs = [("meaningful" if a == "meaningful" else "other",
+                   "meaningful" if b == "meaningful" else "other") for a, b in lab_pairs]
+    agreement = {
+        "pairs": len(lab_pairs),
+        "same_label": sum(1 for a, b in lab_pairs if a == b),
+        "kappa_four_labels": kappa(lab_pairs),
+        "same_on_meaningful_or_not": sum(1 for a, b in mean_pairs if a == b),
+        "kappa_meaningful_or_not": None,
+        "confusion": {"%s|%s" % k: v for k, v in sorted(confusion.items())},
+    }
+    if mean_pairs:
+        po = agreement["same_on_meaningful_or_not"] / len(mean_pairs)
+        ca = Counter(a for a, _ in mean_pairs)
+        cb = Counter(b for _, b in mean_pairs)
+        pe = sum(ca[c] * cb[c] for c in ("meaningful", "other")) / len(mean_pairs) ** 2
+        agreement["kappa_meaningful_or_not"] = (po - pe) / (1 - pe) if pe < 1 else None
+    # does one way's share of meaningful pairs differ from another's? (model judge, calibrated setting)
+    working = [m for m in names if judged["%s/calibrated" % m]["judged"] >= 10]
+    way_tests = {}
+    for i, a_ in enumerate(working):
+        for b_ in working[i + 1:]:
+            ja, jb = judged["%s/calibrated" % a_], judged["%s/calibrated" % b_]
+            way_tests["%s|%s" % (a_, b_)] = fisher_two_sided(
+                ja["tally"].get("meaningful", 0), ja["judged"], jb["tally"].get("meaningful", 0), jb["judged"])
+    # how many different quotes and priorities the meaningful pairs rest on, per way
+    clusters = {}
     for m in names:
-        for point in ("loose", "calibrated"):
-            tag = "%s/%s" % (m, point)
-            rows = [r for r in sample_rows if tag in r["drawn_for"]]
-            tally = Counter(labels[r["pair"]]["label"] for r in rows if r["pair"] in labels)
-            n = sum(tally.values())
-            entry = {"sampled": len(rows), "judged": n, "tally": dict(tally)}
-            for lab in ("meaningful", "topical", "coincidental", "not_a_quote"):
-                lo, hi = wilson(tally.get(lab, 0), n)
-                entry[lab + "_share"] = [tally.get(lab, 0) / n if n else None, lo, hi]
-            judged["%s/%s" % (m, point)] = entry
-    top_judged = {}
+        rows = [r for r in sample_rows if "%s/calibrated" % m in r["drawn_for"]
+                and labels["model"].get(r["pair"], {}).get("label") == "meaningful"]
+        clusters[m] = {"meaningful_pairs": len(rows),
+                       "distinct_quotes": len({r["pair"].split("|")[0] for r in rows}),
+                       "distinct_priorities": len({r["pair"].split("|")[1] for r in rows})}
+    disagreements = [{"pair": k, "reader": labels["reader"][k]["label"], "model": labels["model"][k]["label"]}
+                     for k in both_labelled if labels["reader"][k]["label"] != labels["model"][k]["label"]]
+    # pairs both judges labelled meaningful, per way at the calibrated setting
+    sample_by_pair = {r["pair"]: r for r in sample_rows}
+    both_meaningful = {}
     for m in names:
-        rows = [r for r in sample_rows if "%s/top" % m in r["drawn_for"]]
-        top_judged[m] = dict(Counter(labels[r["pair"]]["label"] for r in rows if r["pair"] in labels))
+        keys = [r["pair"] for r in sample_rows if "%s/calibrated" % m in r["drawn_for"]
+                and r["pair"] in labels["reader"]]
+        both_meaningful[m] = {
+            "judged_by_both": len(keys),
+            "both_meaningful": sum(1 for k in keys if labels["reader"][k]["label"] == "meaningful"
+                                   and labels["model"].get(k, {}).get("label") == "meaningful"),
+        }
 
     # ---- volume of a nightly run
     def volume_for(cset):
@@ -258,8 +347,13 @@ def main():
         "calibrated": calibrated,
         "shape": shape,
         "overlap_jaccard": overlap,
-        "judged_random_draws": judged,
-        "judged_top_ranked": top_judged,
+        "judged_random_draws": judged_by,
+        "judged_top_ranked": top_by,
+        "judge_agreement": agreement,
+        "judge_disagreements": disagreements,
+        "way_comparison_fisher_p": way_tests,
+        "meaningful_pair_clusters": clusters,
+        "both_judges_meaningful_at_calibrated": both_meaningful,
         "volume": volume,
         "volume_at_loosest_level": volume_loose,
         "per_meeting_candidates": per_meeting,
@@ -315,22 +409,59 @@ def main():
     w("|---|" + "---|" * len(names))
     for a in names:
         w("| %s | " % a + " | ".join("%.2f" % overlap["%s|%s" % (a, b)] for b in names) + " |")
-    w("\n## What a reader made of the sampled pairs\n")
-    w("%d pairs were drawn (see `label_sample.json`; judgements in `data/labels.json`). Per way and "
-      "operating point, 'loose' is the way's loosest level and 'calibrated' the level where a "
-      "random-word run yields under one pair. Random draws only; share with 95%% range.\n" % len(sample_rows))
-    w("| way / point | judged | meaningful | topical only | coincidental | not a quote | meaningful share (95% range) |")
-    w("|---|---|---|---|---|---|---|")
+    w("\n## What two judges made of the sampled pairs\n")
+    w("%d pairs were drawn (see `label_sample.json`). Two judges labelled them against the same "
+      "rubric: a reader (`data/labels.json`, the pairs drawn at %d per way at the calibrated level "
+      "and %d at the loosest) and a language model (`data/labels_model.json`, every pair drawn, "
+      "%d per way at the calibrated level). 'loose' is the way's loosest level and 'calibrated' the "
+      "level where a random-word run yields under one pair. Random draws only; share with 95%% range.\n"
+      % (len(sample_rows), 14, SAMPLE_LOOSE, SAMPLE_CALIBRATED))
+    for j, title in (("model", "Language model judge"), ("reader", "Reader")):
+        w("### %s\n" % title)
+        w("| way / point | judged | meaningful | topical only | coincidental | not a quote | meaningful share (95% range) |")
+        w("|---|---|---|---|---|---|---|")
+        for m in names:
+            for point in ("loose", "calibrated"):
+                e = judged_by[j]["%s/%s" % (m, point)]
+                t = e["tally"]
+                sh_, lo, hi = e["meaningful_share"]
+                w("| %s / %s | %d of %d | %d | %d | %d | %d | %s |" % (
+                    m, point, e["judged"], e["sampled"], t.get("meaningful", 0), t.get("topical", 0),
+                    t.get("coincidental", 0), t.get("not_a_quote", 0),
+                    "n/a" if sh_ is None else "%s (%s to %s)" % (pct(sh_), pct(lo), pct(hi))))
+        w("")
+    w("### Agreement of the two judges\n")
+    ag = agreement
+    w("%d pairs were labelled by both. Same label on %d (%s); Cohen's kappa %.2f on the four labels. "
+      "On meaningful against everything else: same on %d (%s), kappa %.2f.\n" % (
+          ag["pairs"], ag["same_label"], pct(ag["same_label"] / ag["pairs"]), ag["kappa_four_labels"],
+          ag["same_on_meaningful_or_not"], pct(ag["same_on_meaningful_or_not"] / ag["pairs"]),
+          ag["kappa_meaningful_or_not"]))
+    w("| reader \\ model | " + " | ".join(CLASSES) + " |")
+    w("|---|" + "---|" * len(CLASSES))
+    for a_ in CLASSES:
+        w("| %s | " % a_ + " | ".join(str(confusion.get((a_, b_), 0)) for b_ in CLASSES) + " |")
+    w("\nPairs where the two differ:\n")
+    for d in disagreements:
+        w("- %s: reader %s, model %s" % (d["pair"], d["reader"], d["model"]))
+    w("\nAt the calibrated setting, pairs the reader labelled that both judges called meaningful:\n")
     for m in names:
-        for point in ("loose", "calibrated"):
-            j = judged["%s/%s" % (m, point)]
-            t = j["tally"]
-            sh_, lo, hi = j["meaningful_share"]
-            w("| %s / %s | %d of %d | %d | %d | %d | %d | %s |" % (
-                m, point, j["judged"], j["sampled"], t.get("meaningful", 0), t.get("topical", 0),
-                t.get("coincidental", 0), t.get("not_a_quote", 0),
-                "n/a" if sh_ is None else "%s (%s to %s)" % (pct(sh_), pct(lo), pct(hi))))
-    w("\nBest-scoring pairs of each way (not a random draw):\n")
+        bm = both_meaningful[m]
+        w("- %s: %d of %d" % (m, bm["both_meaningful"], bm["judged_by_both"]))
+    w("\nThe two judges are not independent: the reader's labels were reconciled with the model's "
+      "where the transcript showed who was speaking, so agreement overstates how reliably a second "
+      "person would label the same pairs. No person outside the trial labelled any pair.\n")
+    w("### Do the ways differ?\n")
+    w("Share meaningful at the calibrated setting, model judge, two ways compared by Fisher's exact test "
+      "(two-sided p; TF-IDF's 32 pairs are all of its candidates, the others are random draws of 32):\n")
+    for k, v in sorted(way_tests.items()):
+        w("- %s: p = %.3f" % (k.replace("|", " against "), v))
+    w("\nWhat the meaningful pairs rest on (model judge, calibrated setting):\n")
+    for m in names:
+        c = clusters[m]
+        w("- %s: %d meaningful pairs, %d different quotes, %d different priorities" % (
+            m, c["meaningful_pairs"], c["distinct_quotes"], c["distinct_priorities"]))
+    w("\nBest-scoring pairs of each way (not a random draw), model judge:\n")
     for m in names:
         w("- %s: %s" % (m, ", ".join("%s %d" % (k, v) for k, v in sorted(top_judged[m].items())) or "none"))
     w("\n## A nightly run\n")
@@ -378,17 +509,18 @@ def main():
     with open(os.path.join(HERE, "results.md"), "w", encoding="utf-8") as f:
         f.write(text)
     print(text)
-    print("## Pairs a reader judged, with their judgements\n")
+    print("## Pairs the judges read, with their labels\n")
     for r in sample_rows:
-        lab = labels.get(r["pair"], {})
-        print("[%s] %s  ways=%s scores=%s" % (lab.get("label", "unjudged"), r["pair"],
-                                              ",".join(r["drawn_for"]), r["scores"]))
+        rl, ml = labels["reader"].get(r["pair"], {}), labels["model"].get(r["pair"], {})
+        print("[reader: %s | model: %s] %s  ways=%s scores=%s" % (
+            rl.get("label", "-"), ml.get("label", "-"), r["pair"], ",".join(r["drawn_for"]), r["scores"]))
         print("  QUOTE (%s, %s): %s" % (r["quote"]["meeting"], r["quote"]["stamp"],
                                        r["quote"]["text"]))
         print("  PRIORITY (%s, %s): %s" % (r["priority"]["donor"], r["priority"]["section"],
                                           r["priority"]["text"]))
-        if lab.get("note"):
-            print("  NOTE: %s" % lab["note"])
+        for who, lab in (("reader", rl), ("model", ml)):
+            if lab.get("note"):
+                print("  NOTE (%s): %s" % (who, lab["note"]))
 
 
 if __name__ == "__main__":

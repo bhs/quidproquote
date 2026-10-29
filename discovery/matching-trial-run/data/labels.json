@@ -1,5 +1,5 @@
 {
- "rater": "one reader (the author of this trial); see findings.md for the rubric and its limits",
+ "rater": "one reader (the author of this trial), judging each pair against the rubric below and the transcript around the passage where the words alone do not show who is speaking",
  "rubric": {
   "meaningful": "the passage speaks to the same specific measure, program, proposal or stated position as the priority, so a reader would see why the two sit side by side (the speaker is not confirmed)",
   "topical": "same broad subject only, no shared specific proposal or position",
@@ -11,11 +11,12 @@
    "label": "coincidental"
   },
   "51452@00:59:17|P065": {
-   "label": "meaningful",
-   "note": "broad theme; near-identical wording \"clean and safe streets\""
+   "label": "not_a_quote",
+   "note": "department head's year-in-review address (the speaker thanks the Mayor for the opportunity to serve as chief of police); broad theme only"
   },
   "51452@00:59:17|P129": {
-   "label": "topical"
+   "label": "not_a_quote",
+   "note": "same address, department head"
   },
   "51452@01:10:26|P128": {
    "label": "coincidental"
@@ -113,8 +114,8 @@
    "label": "coincidental"
   },
   "52831@00:14:19|P088": {
-   "label": "meaningful",
-   "note": "Rules Committee on the ballot-measure process charter amendment"
+   "label": "topical",
+   "note": "about the Affordable Grocery Fund's place on the ballot, not the ballot-measure process measure"
   },
   "52831@00:48:47|P020": {
    "label": "coincidental"
@@ -131,7 +132,8 @@
    "note": "department head presenting"
   },
   "52838@00:37:47|P041": {
-   "label": "topical"
+   "label": "not_a_quote",
+   "note": "BART general manager's presentation"
   },
   "52849@01:07:28|P083": {
    "label": "not_a_quote",
@@ -255,7 +257,8 @@
    "label": "coincidental"
   },
   "52901@04:02:41|P025": {
-   "label": "coincidental"
+   "label": "not_a_quote",
+   "note": "public comment"
   },
   "52816@01:25:58|P061": {
    "label": "coincidental",
