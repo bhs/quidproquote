@@ -1,3 +1,12 @@
 {
-  "requirements": []
+  "requirements": [
+    {
+      "kind": "secret",
+      "name": "ANTHROPIC_API_KEY",
+      "description": "API key for the AI judge that reads each quote and donor priority pair (and confirms the embedding shortlist).",
+      "console_url": "https://platform.claude.com/settings/keys",
+      "provider": "anthropic",
+      "needed_by": ["results"]
+    }
+  ]
 }
