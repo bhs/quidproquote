@@ -90,6 +90,28 @@ class Sources(unittest.TestCase):
         for key in ("blueprint", "sf-realtors", "sf-apartment-association"):
             self.assertIn(key, fams)
 
+    def test_every_family_has_an_own_statement_or_a_reported_priority(self):
+        own = {s["family"] for s in self.data["prio"].values()}
+        reported = {s["family"] for s in self.data["reported"]}
+        for f in self.data["fams"]:
+            self.assertIn(f["key"], own | reported, f["key"])
+
+    def test_reported_priorities_are_sourced_short_and_kept_apart(self):
+        keys = {f["key"] for f in self.data["fams"]}
+        ids = set()
+        for r in self.data["reported"]:
+            self.assertIn(r["family"], keys)
+            self.assertNotIn(r["id"], ids)
+            ids.add(r["id"])
+            self.assertTrue(r["url"].startswith("http") and r["retrieved"] and r["outlet"] and r["speaker"] and r["read"])
+            self.assertTrue(r["quote"] and len(r["quote"].split()) < 25, r["id"])
+            self.assertNotIn(r["id"], self.data["prio"])
+        self.assertIn("### 4a. Priorities reported by others", self.map_md)
+
+    def test_reported_quote_check_ignores_spacing_and_punctuation(self):
+        import collect_pages as cp
+        self.assertEqual(cp.plain("San Francisco, Proposition H\u00a0 Yes on Prop H"), cp.plain("San Francisco, Proposition HYes on Prop H"))
+
     def test_govern_for_california_tie_names_its_sources(self):
         fam = next(f for f in self.data["fams"] if f["key"] == "govern-for-california")
         for url in ("governforcalifornia.org/who-we-are", "transparencyusa.org", "missionlocal.org"):

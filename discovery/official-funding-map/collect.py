@@ -212,7 +212,9 @@ def main(argv=None):
             collect_money()
         if args.pages or both:
             import collect_pages
-            if not collect_pages.collect_pages():
+            ok = collect_pages.collect_pages()
+            collect_pages.check_reported()
+            if not ok:
                 return 1
     except fl.QueryError as exc:
         print("QUERY FAILED: %s" % exc, file=sys.stderr)

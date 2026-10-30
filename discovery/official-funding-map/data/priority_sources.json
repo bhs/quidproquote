@@ -1,5 +1,5 @@
 {
- "about": "Where each donor family publishes a priority in its own words. Each entry names the family, the page and the first words of the line to quote; collect_pages.py fetches the page, takes the line (the first `sentences` sentences of it) exactly as the page shows it, with typographic quotes and dashes straightened, and refuses to write a statement it cannot find. Only a donor's own page is used: a news report of what a donor said is not.",
+ "about": "Where each donor family publishes a priority in its own words. Each entry names the family, the page and the first words of the line to quote; collect_pages.py fetches the page, takes the line (the first `sentences` sentences of it) exactly as the page shows it, with typographic quotes and dashes straightened, and refuses to write a statement it cannot find. Only a donor's own page is read here. Priorities reported by news outlets, a league guide or city records are kept apart in data/priorities_reported.json and checked by collect_pages.check_reported.",
  "pages": [
   {
    "family": "sf-chamber",

@@ -28,6 +28,15 @@ def jload(name):
         return json.load(f)
 
 
+def reported_check():
+    """Status of each reported priority as last re-read by collect_pages.check_reported (empty if never run)."""
+    path = os.path.join(DATA, "reported_check.json")
+    if not os.path.exists(path):
+        return {}
+    with open(path, encoding="utf-8") as f:
+        return {r["id"]: r for r in json.load(f)["results"]}
+
+
 def load_all():
     snap, fams = jload("money_snapshot.json"), jload("families.json")["families"]
     # a family's rows are those that family_of gives to that family (precedence and exclusions applied)
@@ -37,6 +46,8 @@ def load_all():
         c["relation"], c["relation_words"] = fl.relation_of(c)
     return {"snap": snap, "fams": fams,
             "prio": {s["id"]: s for s in jload("priorities.json")["statements"]},
+            "reported": jload("priorities_reported.json")["entries"],
+            "reported_check": reported_check(),
             "picks": json.load(open(os.path.join(HERE, "picks.json"), encoding="utf-8")),
             "meetings": {m["id"]: m for m in jload("meetings.json")},
             "sample": jload("donor_sample.json")}
@@ -434,18 +445,40 @@ def render_map_md(data, agg, indep, routes, ind_check, st, ex):
     for f in fams:
         if ex.get(f["key"]):
             L.append("| %s | %s |" % (f["name"], "; ".join(sorted(ex[f["key"]]))[:300]))
-    L += ["", "## 4. Donor families, whether they publish a priority, and where their money reached", "",
-          "| Family | Kind | Publishes a priority in its own words (retrieved) | Gifts by receiving committee (Schedule A) | Outside spending (form 496) naming an official |", "|---|---|---|---|---|"]
     prio_by_fam = collections.defaultdict(list)
     for s in data["prio"].values():
         prio_by_fam[s["family"]].append(s)
+    rep_by_fam = collections.defaultdict(list)
+    for s in data["reported"]:
+        rep_by_fam[s["family"]].append(s)
+    own = [f for f in fams if prio_by_fam.get(f["key"])]
+    rep_only = [f for f in fams if not prio_by_fam.get(f["key"]) and rep_by_fam.get(f["key"])]
+    neither = [f for f in fams if not prio_by_fam.get(f["key"]) and not rep_by_fam.get(f["key"])]
+    L += ["", "## 4. Donor families, whether they publish a priority, and where their money reached", "",
+          "Two kinds of source are kept apart. **In the donor's own words**: a statement on the donor's own page (`data/priorities.json`), re-read from the page at collection. **Reported by others**: a news outlet, a league voter guide or a city record that states or suggests the donor's position (`data/priorities_reported.json`); the words are the reporter's or a third party's unless the entry names a person of the donor who is quoted, and each is listed in section 4a with its link, dates and what it does not show. Of %d families, %d have a statement in their own words (%s); %d more have only a report by others (%s); %d have neither." % (
+              len(fams), len(own), ", ".join(f["name"] for f in own), len(rep_only), ", ".join(f["name"] for f in rep_only), len(neither)), "",
+          "| Family | Kind | Own words (link, retrieved) | Reported by others (outlet, published) | Gifts by receiving committee (Schedule A) | Outside spending (form 496) naming an official |", "|---|---|---|---|---|---|"]
     for f in fams:
         ps = prio_by_fam.get(f["key"], [])
         link = "; ".join(sorted({"<%s> (%s)" % (p["url"], p["retrieved"]) for p in ps})) or "none found"
+        rp = "; ".join(sorted({"%s (%s)" % (p["outlet"], (p["published"] or "date not read").split(" (")[0]) for p in rep_by_fam.get(f["key"], [])})) or "none found"
         r = routes.get(f["key"], {})
         gifts = ", ".join("%s %s" % (k, fl.dollars(v)) for k, v in sorted(r.items()) if not k.startswith("outside")) or "none"
         out = fl.dollars(r.get("outside spending (form 496)", 0)) if r.get("outside spending (form 496)") else "none"
-        L.append("| %s | %s | %s | %s | %s |" % (f["name"], f["kind"], link, gifts, out))
+        L.append("| %s | %s | %s | %s | %s | %s |" % (f["name"], f["kind"], link, rp, gifts, out))
+    L += ["", "### 4a. Priorities reported by others, apart from the donors' own words", "",
+          "Each entry: the quote as the source prints it (typographic quotes straightened), who the words belong to, where it was read, what priority it points to (my reading) and what it does not show. 'Page check' is whether `collect_pages.py` found the quote on the page when it last re-fetched it. A source that was only a search-result extract is marked; the page was not read in full.", ""]
+    for f in fams:
+        es = rep_by_fam.get(f["key"], [])
+        if not es:
+            continue
+        L += ["**%s**" % f["name"], ""]
+        for e in es:
+            chk = data["reported_check"].get(e["id"])
+            L.append("- `%s` (%s). \"%s\" Speaker: %s. Source: <%s>, %s, published %s, retrieved %s; %s. Page check: %s. Points to (my reading): %s %s" % (
+                e["id"], e["tier"], e["quote"], e["speaker"], e["url"], e["outlet"], e["published"] or "date not read", e["retrieved"], e["read"],
+                ("%s (%s)" % (chk["status"], chk["checked"])) if chk else "not yet run", e["suggests"], e["caveat"]))
+        L.append("")
     L += ["", "Families with no money in these committees (none found) are still listed so a reader sees the search. Individuals:", ""]
     if ind_check:
         L += ["| Official | Giver | Amount | Survey class of own statement | Own source |", "|---|---|---|---|---|"]

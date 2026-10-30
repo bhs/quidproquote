@@ -15,6 +15,8 @@ import fmap_lib as fl
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, "data")
 OUT = os.path.join(DATA, "priorities.json")
+REPORTED = os.path.join(DATA, "priorities_reported.json")
+REPORTED_CHECK = os.path.join(DATA, "reported_check.json")
 
 
 def first_sentences(line, n):
@@ -63,5 +65,39 @@ def collect_pages():
     return not missing
 
 
+def plain(text):
+    """Letters and digits only, lower case: a quote is found on a page whatever its spacing, quotes or dashes."""
+    return re.sub(r"[^a-z0-9]", "", fl.squash(text).lower())
+
+
+def check_reported():
+    """Re-fetches each page behind a reported priority (data/priorities_reported.json) and records whether the
+    quote is on it (data/reported_check.json). A page that cannot be fetched or does not hold the quote is
+    recorded as such and the entry stays marked, never silently kept as re-read. Returns nothing: these are
+    reports by others, shown with their check status."""
+    with open(REPORTED, encoding="utf-8") as f:
+        entries = json.load(f)["entries"]
+    pages, out = {}, []
+    for e in entries:
+        if e["url"] not in pages:
+            try:
+                pages[e["url"]] = plain(fl.page_text(fl.fetch_page(e["url"])))
+            except (OSError, ValueError) as exc:
+                pages[e["url"]] = "ERR %s: %s" % (type(exc).__name__, exc)
+        page = pages[e["url"]]
+        if page.startswith("ERR "):
+            status = "page not fetched (%s)" % page[4:]
+        elif plain(e["quote"]) in page:
+            status = "quote found on the page"
+        else:
+            status = "quote not found on the page as fetched"
+        out.append({"id": e["id"], "checked": fl.today(), "status": status})
+        print("  %s: %s" % (e["id"], status))
+    with open(REPORTED_CHECK, "w", encoding="utf-8") as f:
+        json.dump({"checked": fl.today(), "results": out}, f, indent=1)
+
+
 if __name__ == "__main__":
-    sys.exit(0 if collect_pages() else 1)
+    ok = collect_pages()
+    check_reported()
+    sys.exit(0 if ok else 1)
