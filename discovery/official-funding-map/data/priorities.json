@@ -160,6 +160,126 @@
    "page_date": null,
    "retrieved": "2026-10-30",
    "text": "Political and Legislative Advocacy at the State and Local Level: San Francisco's landlord-tenant and housing laws are heavily regulated, with new legislation impacting rental housing providers introduced almost every week at City Hall and the state Capitol."
+  },
+  {
+   "id": "SFAA-PAC",
+   "family": "sf-apartment-association",
+   "url": "https://www.sfaa.org/advocacy",
+   "kind": "advocacy page on the organisation's own site",
+   "section": "Legislative Advocacy",
+   "page_date": null,
+   "retrieved": "2026-10-30",
+   "text": "The SFAA's Political Action Committee (SFAA PAC) supports candidates for local political office like the SF School Board, the Board of Supervisors and Mayor, the City Attorney, state representatives, and more. SFAA's PAC works to identify and cultivate relationships with promising recruits for elected office. The SFAA PAC also supports ballot initiatives which benefit property owners, while also working in conjunction with other Political Action Committees and organizations to oppose ballot measures and tax increases which are harmful for property owners."
+  },
+  {
+   "id": "BLUEPRINT-RECOVERY",
+   "family": "blueprint",
+   "url": "https://www.sfblueprint.org/issues/recovery",
+   "kind": "issue page on the organisation's own site",
+   "section": "Road to Recovery",
+   "page_date": null,
+   "retrieved": "2026-10-30",
+   "text": "At Blueprint, we acknowledge that the first step of San Francisco's next great act starts with a full recovery from the Pandemic."
+  },
+  {
+   "id": "BLUEPRINT-GOVERNMENT",
+   "family": "blueprint",
+   "url": "https://www.sfblueprint.org/issues/government",
+   "kind": "issue page on the organisation's own site",
+   "section": "Good Government",
+   "page_date": null,
+   "retrieved": "2026-10-30",
+   "text": "When working at its best, local government actually helps people! But we've seen what happens when a bloated bureaucracy and red tape gets in the way."
+  },
+  {
+   "id": "BLUEPRINT-VIBRANCY",
+   "family": "blueprint",
+   "url": "https://www.sfblueprint.org/issues/vibrancy",
+   "kind": "issue page on the organisation's own site",
+   "section": "Vision of Vibrancy",
+   "page_date": null,
+   "retrieved": "2026-10-30",
+   "text": "Reduce our reliance on onerous business taxes to fund social welfare programs"
+  },
+  {
+   "id": "BLUEPRINT-D",
+   "family": "blueprint",
+   "url": "https://www.sfblueprint.org/advocacy/november-2026-voter-guide",
+   "kind": "voter guide on the organisation's own site",
+   "section": "Prop D - Changes to Ballot Measure Process",
+   "page_date": "2026-10",
+   "retrieved": "2026-10-30",
+   "text": "We recommend voting Yes on D. We support this measure because San Francisco's current ballot measure system is flawed and results in overly long ballots in which residents are asked to vote on a wide variety of measures that can be quite complex in nature."
+  },
+  {
+   "id": "BLUEPRINT-E",
+   "family": "blueprint",
+   "url": "https://www.sfblueprint.org/advocacy/november-2026-voter-guide",
+   "kind": "voter guide on the organisation's own site",
+   "section": "Prop E - City Administrator's Authority and Changes to City Contracting",
+   "page_date": "2026-10",
+   "retrieved": "2026-10-30",
+   "text": "We recommend voting Yes on E. This charter amendment makes critical reforms to our City government's contracting system."
+  },
+  {
+   "id": "BLUEPRINT-F",
+   "family": "blueprint",
+   "url": "https://www.sfblueprint.org/advocacy/november-2026-voter-guide",
+   "kind": "voter guide on the organisation's own site",
+   "section": "Prop F - Changes to Executive Branch Management",
+   "page_date": "2026-10",
+   "retrieved": "2026-10-30",
+   "text": "We recommend voting Yes on F. This charter amendment makes much-needed changes to SF's government structure as recommended both by 2023's Rose Report (sponsored by our predecessor organization TogetherSF) and by good government think tank SPUR."
+  },
+  {
+   "id": "BLUEPRINT-H",
+   "family": "blueprint",
+   "url": "https://www.sfblueprint.org/advocacy/november-2026-voter-guide",
+   "kind": "voter guide on the organisation's own site",
+   "section": "Prop H - Parcel Tax to Fund Public Muni Operations",
+   "page_date": "2026-10",
+   "retrieved": "2026-10-30",
+   "text": "We recommend voting No on H. Transit is important. But so is everything the city provides -that doesn't mean we keep charging taxpayers more instead of fixing the city budget."
+  },
+  {
+   "id": "BLUEPRINT-I",
+   "family": "blueprint",
+   "url": "https://www.sfblueprint.org/advocacy/november-2026-voter-guide",
+   "kind": "voter guide on the organisation's own site",
+   "section": "Prop I - Changes to Real Property Transfer Tax",
+   "page_date": "2026-10",
+   "retrieved": "2026-10-30",
+   "text": "We recommend voting No on I. This measure moves General Fund money into an earmarked fund, which means the city loses flexibility to use those dollars where they're needed most, like covering budget shortfalls."
+  },
+  {
+   "id": "BLUEPRINT-J",
+   "family": "blueprint",
+   "url": "https://www.sfblueprint.org/advocacy/november-2026-voter-guide",
+   "kind": "voter guide on the organisation's own site",
+   "section": "Prop J - Removal of Foreclosure Exemption for Real Property Transfer Tax",
+   "page_date": "2026-10",
+   "retrieved": "2026-10-30",
+   "text": "We recommend voting No on J. Originally, this measure was supposed to be paired with a reduction in the real transfer tax to be part of a revenue-neutral package. But now that it's not, all this measure does is raise taxes, hampering Downtown's recovery."
+  },
+  {
+   "id": "SFAR-ABOUT",
+   "family": "sf-realtors",
+   "url": "https://sfrealtors.com/about-us/",
+   "kind": "about page on the organisation's own site",
+   "section": "About Us",
+   "page_date": null,
+   "retrieved": "2026-10-30",
+   "text": "SFAR represents more than 4,000 REALTORS\u00ae in San Francisco who are committed to fairness, honesty, integrity, and promoting the rights of homeowners."
+  },
+  {
+   "id": "SFAR-ADVOCACY",
+   "family": "sf-realtors",
+   "url": "https://sfrealtors.com/about-us/",
+   "kind": "about page on the organisation's own site",
+   "section": "About Us",
+   "page_date": null,
+   "retrieved": "2026-10-30",
+   "text": "We provide wide-ranging educational opportunities and industry-leading technology, including SFARMLS, to our members; advocate at the local, state, and national levels for legislation supporting our members and their business; and actively give back in the San Francisco community through the SFAR Foundation and the Welcome Home Project."
   }
  ],
  "missing": []

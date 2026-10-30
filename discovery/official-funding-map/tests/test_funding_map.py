@@ -75,5 +75,35 @@ class Pairings(unittest.TestCase):
             self.assertNotIn(w, text)
 
 
+class Sources(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.data = bm.load_all()
+        cls.map_md = open(os.path.join(bm.HERE, "funding-map.md"), encoding="utf-8").read()
+
+    def test_every_statement_has_link_and_date(self):
+        for s in self.data["prio"].values():
+            self.assertTrue(s["url"].startswith("http") and s["retrieved"] and s["text"])
+
+    def test_families_with_statements_include_blueprint_realtors_and_apartment_association(self):
+        fams = {s["family"] for s in self.data["prio"].values()}
+        for key in ("blueprint", "sf-realtors", "sf-apartment-association"):
+            self.assertIn(key, fams)
+
+    def test_govern_for_california_tie_names_its_sources(self):
+        fam = next(f for f in self.data["fams"] if f["key"] == "govern-for-california")
+        for url in ("governforcalifornia.org/who-we-are", "transparencyusa.org", "missionlocal.org"):
+            self.assertIn(url, fam["link_note"])
+        self.assertIn("Form 410", fam["link_note"])
+
+    def test_commission_vote_cited_to_the_commission(self):
+        self.assertIn("sfethics.org/ethics/2026/08/meeting-summary", self.map_md)
+        self.assertNotIn("growsf.org/news", self.map_md)
+
+    def test_committee_control_basis_stated(self):
+        self.assertIn("18402(c)(1)", self.map_md)
+        self.assertIn("Form 410", self.map_md)
+
+
 if __name__ == "__main__":
     unittest.main()

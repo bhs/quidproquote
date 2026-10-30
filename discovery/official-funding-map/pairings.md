@@ -68,7 +68,7 @@ Outside spending apart: no form 496 report naming this official was filed by a c
 ### 1.6 What this does not say
 
 Two things shown side by side for a reader to check. Nothing here says why anyone said or gave anything, and the order of the dates is not an explanation.
-The family is read from names as filed ('San Francisco Forward sponsored by San Francisco Chamber of Commerce' is a committee that names the Chamber as sponsor; the bare name 'SF Forward' carries no sponsor in the filing name); a reader should confirm each is the organisation.
+The family is read from names as filed. 'San Francisco Forward sponsored by San Francisco Chamber of Commerce' is a committee that names the Chamber as sponsor; the bare name 'SF Forward' carries no sponsor in the filing name. A reader should confirm each is the organisation.
 
 ## Pairing 2: Daniel Lurie and San Francisco Police Officers Association on The city budget and the general fund
 
@@ -128,7 +128,7 @@ Outside spending apart: no form 496 report naming this official was filed by a c
 ### 2.6 What this does not say
 
 Two things shown side by side for a reader to check. Nothing here says why anyone said or gave anything, and the order of the dates is not an explanation.
-The family is read from names as filed (The association's PAC and its Issues PAC are the association's own committees); a reader should confirm each is the organisation.
+The family is read from names as filed. The association's PAC and its Issues PAC are the association's own committees. A reader should confirm each is the organisation.
 
 ## Pairing 3: Matt Dorsey and San Francisco Police Officers Association on The inclusionary housing fee vote and the Prop C package
 
@@ -192,7 +192,7 @@ Outside spending apart: no form 496 report naming this official was filed by a c
 ### 3.6 What this does not say
 
 Two things shown side by side for a reader to check. Nothing here says why anyone said or gave anything, and the order of the dates is not an explanation.
-The family is read from names as filed (The association's PAC and its Issues PAC are the association's own committees); a reader should confirm each is the organisation.
+The family is read from names as filed. The association's PAC and its Issues PAC are the association's own committees. A reader should confirm each is the organisation.
 
 ## Pairing 4: Bilal Mahmood and Govern For California on Prop J, the foreclosure exemption in the transfer tax
 
@@ -278,7 +278,7 @@ Outside spending apart: no form 496 report naming this official was filed by a c
 ### 4.6 What this does not say
 
 Two things shown side by side for a reader to check. Nothing here says why anyone said or gave anything, and the order of the dates is not an explanation.
-The family is read from names as filed (The 'GFC Courage Committee' chapters are read as Govern For California's political committees by name; the organisation's own pages were read for the name 'GFC' (see priorities)); a reader should confirm each is the organisation.
+The family is read from names as filed. The 'GFC Courage Committee' chapters are tied to Govern For California by the organisation's own pages, by press and by third-party records of the state filings, not by a registration read here. (1) Its 'Who We Are' page lists its independent political action committee chapters (Statewide, SF Public Schools, Southern California, Housing For Californians, San Francisco, Peninsula South Bay, East Bay) and its footer names 'Govern For California, a registered 501(c)(4) non-profit organization' (<https://www.governforcalifornia.org/who-we-are>, read 2026-10-30); its San Francisco voter guide says it was put together by 'GFC's San Francisco Chapter' (<https://www.governforcalifornia.org/news/2026/10/21/sf-voter-guide>). (2) Mission Local reported in 2024 that Govern for California gave $500 each to supervisor candidates through eight chapters, and that a complaint to the Ethics Commission alleged the payments came from one legal entity, which is an allegation and not a finding (<https://missionlocal.org/2024/09/s-f-ethics-complaint-targets-govern-for-california-group-that-bundles-political-donations/>). (3) Transparency USA's record of the state Govern for California Network Committee (id 1383984) lists payments to the San Francisco, Sierra, California Business Coalition, Palo Alto, Marin, Excellence in Education, Bay Area, Southern California and Golden Gate chapter committees (<https://www.transparencyusa.org/ca/committee/govern-for-california-network-committee-1383984-rcp>). (4) CalMatters' Digital Democracy lists chapter committee names, including Santa Cruz, Santa Barbara, Future Generations and Common Sense, under the organisation Govern for California (<https://calmatters.digitaldemocracy.org/organizations/-15028>). The chapter committees are state committees: the Ethics Commission's list of active committees for the 2 June 2026 election shows them as state-level committees with Cal-Access ids that match the ids on the filed rows (for example 1416440, the San Francisco chapter; <https://campaign.sfethics.org/elections/2026-06-02/committees/CA1433436>), but their Cal-Access registrations (Form 410), which name the sponsor, were not read, so the tie for each chapter rests on (1) to (4) and the name. A reader should confirm each is the organisation.
 
 ## Pairing 5: Shamann Walton and SEIU Local 1021 on The Mayor's three charter measures (Props D, E and F)
 
