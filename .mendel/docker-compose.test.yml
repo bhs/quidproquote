@@ -1,5 +1,5 @@
 services:
   app:
     build:
-      context: ../discovery/matching-methods-comparison
+      context: ../discovery/worked-pairing-examples
     command: ["sleep", "infinity"]
