@@ -1,0 +1,1502 @@
+{
+ "retrieved": "2026-10-30",
+ "money": {
+  "San Francisco Chamber of Commerce|Myrna Melgar": {
+   "rows": [],
+   "url": "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+transaction_first_name%2C+transaction_last_name%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27A%27%2C%27F497P1%27%29+AND+filer_nid+in+%28%27159911091%27%2C%27186079773%27%2C%27204210736%27%2C%27208194309%27%29+AND+%28%28upper%28transaction_last_name%29+like+%27%25SAN+FRANCISCO+CHAMBER+OF+COMMERCE%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25SF+CHAMBER%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25SF+FORWARD%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000",
+   "error": null,
+   "data_loaded_at": null,
+   "independent": {
+    "rows": [],
+    "url": "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+support_oppose_code%2C+candidate_last_name%2C+office_description%2C+district_number%2C+transaction_description%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27F496%27%2C%27F465P3%27%29+AND+upper%28candidate_last_name%29+like+%27%25MELGAR%25%27+AND+%28%28upper%28filer_name%29+like+%27%25SAN+FRANCISCO+CHAMBER+OF+COMMERCE%25%27%29+OR+%28upper%28filer_name%29+like+%27%25SF+CHAMBER%25%27%29+OR+%28upper%28filer_name%29+like+%27%25SF+FORWARD%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000",
+    "error": null
+   },
+   "control": {
+    "by_committee": {
+     "159911091": 19,
+     "186079773": 817,
+     "208194309": 635
+    },
+    "url": "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+count%28%2A%29+as+rows_a&%24where=form_type+%3D+%27A%27+AND+filer_nid+in+%28%27159911091%27%2C%27186079773%27%2C%27204210736%27%2C%27208194309%27%29&%24group=filer_nid&%24limit=500",
+    "error": null
+   },
+   "loose": {
+    "error": null,
+    "patterns": [
+     "CHAMBER OF COMMERCE",
+     "SF FORWARD",
+     "SAN FRANCISCO FORWARD"
+    ],
+    "contribution_rows": 0,
+    "independent_rows": 0,
+    "urls": [
+     "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+transaction_first_name%2C+transaction_last_name%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27A%27%2C%27F497P1%27%29+AND+filer_nid+in+%28%27159911091%27%2C%27186079773%27%2C%27204210736%27%2C%27208194309%27%29+AND+%28%28upper%28transaction_last_name%29+like+%27%25CHAMBER+OF+COMMERCE%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25SF+FORWARD%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25SAN+FRANCISCO+FORWARD%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000",
+     "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+support_oppose_code%2C+candidate_last_name%2C+office_description%2C+district_number%2C+transaction_description%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27F496%27%2C%27F465P3%27%29+AND+upper%28candidate_last_name%29+like+%27%25MELGAR%25%27+AND+%28%28upper%28filer_name%29+like+%27%25CHAMBER+OF+COMMERCE%25%27%29+OR+%28upper%28filer_name%29+like+%27%25SF+FORWARD%25%27%29+OR+%28upper%28filer_name%29+like+%27%25SAN+FRANCISCO+FORWARD%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000"
+    ],
+    "unlisted_committees": [],
+    "unlisted_url": "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+filer_type%2C+count%28%2A%29+as+rows_n&%24where=upper%28filer_name%29+like+%27%25MELGAR%25%27&%24group=filer_nid%2C+filer_name%2C+filer_type&%24order=filer_nid&%24limit=500"
+   }
+  },
+  "Neighbors for a Better San Francisco (Blueprint)|Chyanne Chen": {
+   "rows": [],
+   "url": "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+transaction_first_name%2C+transaction_last_name%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27A%27%2C%27F497P1%27%29+AND+filer_nid+in+%28%27210823617%27%29+AND+%28%28upper%28transaction_last_name%29+like+%27%25NEIGHBORS+FOR+A+BETTER+SAN+FRANCISCO%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000",
+   "error": null,
+   "data_loaded_at": null,
+   "independent": {
+    "rows": [],
+    "url": "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+support_oppose_code%2C+candidate_last_name%2C+office_description%2C+district_number%2C+transaction_description%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27F496%27%2C%27F465P3%27%29+AND+upper%28candidate_last_name%29+like+%27%25CHEN%25%27+AND+%28%28upper%28filer_name%29+like+%27%25NEIGHBORS+FOR+A+BETTER+SAN+FRANCISCO%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000",
+    "error": null
+   },
+   "control": {
+    "by_committee": {
+     "210823617": 678
+    },
+    "url": "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+count%28%2A%29+as+rows_a&%24where=form_type+%3D+%27A%27+AND+filer_nid+in+%28%27210823617%27%29&%24group=filer_nid&%24limit=500",
+    "error": null
+   },
+   "loose": {
+    "error": null,
+    "patterns": [
+     "NEIGHBORS FOR A BETTER",
+     "BLUEPRINT"
+    ],
+    "contribution_rows": 0,
+    "independent_rows": 0,
+    "urls": [
+     "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+transaction_first_name%2C+transaction_last_name%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27A%27%2C%27F497P1%27%29+AND+filer_nid+in+%28%27210823617%27%29+AND+%28%28upper%28transaction_last_name%29+like+%27%25NEIGHBORS+FOR+A+BETTER%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25BLUEPRINT%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000",
+     "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+support_oppose_code%2C+candidate_last_name%2C+office_description%2C+district_number%2C+transaction_description%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27F496%27%2C%27F465P3%27%29+AND+upper%28candidate_last_name%29+like+%27%25CHEN%25%27+AND+%28%28upper%28filer_name%29+like+%27%25NEIGHBORS+FOR+A+BETTER%25%27%29+OR+%28upper%28filer_name%29+like+%27%25BLUEPRINT%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000"
+    ],
+    "unlisted_committees": [
+     {
+      "filer_nid": "158359410",
+      "filer_name": "Jean Chen",
+      "filer_type": "Major Donor"
+     },
+     {
+      "filer_nid": "183244106",
+      "filer_name": "Queena Chen for San Francisco Democratic County Central Committee 2020",
+      "filer_type": "Candidate or Officeholder"
+     },
+     {
+      "filer_nid": "183385842",
+      "filer_name": "Michael Chen for Democratic County Central Committee 2020",
+      "filer_type": "Candidate or Officeholder"
+     },
+     {
+      "filer_nid": "205693494",
+      "filer_name": "Maurice Chenier for San Francisco District Attorney Committee 2022",
+      "filer_type": "Candidate or Officeholder"
+     },
+     {
+      "filer_nid": "208649873",
+      "filer_name": "Mike Chen for Democratic County Central Committee 2024",
+      "filer_type": "Candidate or Officeholder"
+     },
+     {
+      "filer_nid": "208689319",
+      "filer_name": "Queena Chen for SF Democratic County Central Committee 2024",
+      "filer_type": "Candidate or Officeholder"
+     },
+     {
+      "filer_nid": "211723815",
+      "filer_name": "Herald Chen",
+      "filer_type": "Major Donor"
+     },
+     {
+      "filer_nid": "212255667",
+      "filer_name": "Courtney Chenette",
+      "filer_type": "Major Donor"
+     },
+     {
+      "filer_nid": "6666878",
+      "filer_name": "Committee to Elect Claudine Cheng for District 3 Supervisor",
+      "filer_type": "Candidate or Officeholder"
+     }
+    ],
+    "unlisted_url": "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+filer_type%2C+count%28%2A%29+as+rows_n&%24where=upper%28filer_name%29+like+%27%25CHEN%25%27&%24group=filer_nid%2C+filer_name%2C+filer_type&%24order=filer_nid&%24limit=500"
+   }
+  },
+  "GrowSF|Bilal Mahmood": {
+   "rows": [],
+   "url": "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+transaction_first_name%2C+transaction_last_name%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27A%27%2C%27F497P1%27%29+AND+filer_nid+in+%28%27208655996%27%2C%27209865652%27%29+AND+%28%28upper%28transaction_last_name%29+like+%27%25GROWSF%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25GROW+SF%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000",
+   "error": null,
+   "data_loaded_at": null,
+   "independent": {
+    "rows": [
+     {
+      "filer_nid": "201619433",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC",
+      "form_type": "F496",
+      "filing_id_number": "209989944",
+      "filing_date": "2024-01-31T00:00:00.000",
+      "filing_type": "FiledOriginal",
+      "filing_version": "1",
+      "calculated_date": "2024-01-21T00:00:00.000",
+      "calculated_amount": "19.59",
+      "support_oppose_code": "S",
+      "candidate_last_name": "Bilal Mahmood",
+      "office_description": "Board Member",
+      "district_number": "17",
+      "transaction_description": "Online Ads",
+      "memo_code": false,
+      "data_loaded_at": "2024-02-01T00:00:00.000"
+     },
+     {
+      "filer_nid": "201619433",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC",
+      "form_type": "F496",
+      "filing_id_number": "209989944",
+      "filing_date": "2024-01-31T00:00:00.000",
+      "filing_type": "FiledOriginal",
+      "filing_version": "1",
+      "calculated_date": "2024-01-24T00:00:00.000",
+      "calculated_amount": "14.11",
+      "support_oppose_code": "S",
+      "candidate_last_name": "Bilal Mahmood",
+      "office_description": "Board Member",
+      "district_number": "17",
+      "transaction_description": "Online Ads",
+      "memo_code": false,
+      "data_loaded_at": "2024-02-01T00:00:00.000"
+     },
+     {
+      "filer_nid": "201619433",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC",
+      "form_type": "F496",
+      "filing_id_number": "209989944",
+      "filing_date": "2024-01-31T00:00:00.000",
+      "filing_type": "FiledOriginal",
+      "filing_version": "1",
+      "calculated_date": "2024-01-26T00:00:00.000",
+      "calculated_amount": "156.79",
+      "support_oppose_code": "S",
+      "candidate_last_name": "Bilal Mahmood",
+      "office_description": "Board Member",
+      "district_number": "17",
+      "transaction_description": "Online Ads",
+      "memo_code": false,
+      "data_loaded_at": "2024-02-01T00:00:00.000"
+     },
+     {
+      "filer_nid": "201619433",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC",
+      "form_type": "F496",
+      "filing_id_number": "209989944",
+      "filing_date": "2024-01-31T00:00:00.000",
+      "filing_type": "FiledOriginal",
+      "filing_version": "1",
+      "calculated_date": "2024-01-30T00:00:00.000",
+      "calculated_amount": "391.97",
+      "support_oppose_code": "S",
+      "candidate_last_name": "Bilal Mahmood",
+      "office_description": "Board Member",
+      "district_number": "17",
+      "transaction_description": "Online Ads",
+      "memo_code": false,
+      "data_loaded_at": "2024-02-01T00:00:00.000"
+     },
+     {
+      "filer_nid": "201619433",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC",
+      "form_type": "F496",
+      "filing_id_number": "209989944",
+      "filing_date": "2024-01-31T00:00:00.000",
+      "filing_type": "FiledOriginal",
+      "filing_version": "1",
+      "calculated_date": "2024-01-30T00:00:00.000",
+      "calculated_amount": "1749.79",
+      "support_oppose_code": "S",
+      "candidate_last_name": "Bilal Mahmood",
+      "office_description": "Board Member",
+      "district_number": "17",
+      "transaction_description": "Online Ads",
+      "memo_code": false,
+      "data_loaded_at": "2024-02-01T00:00:00.000"
+     },
+     {
+      "filer_nid": "201619433",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC",
+      "form_type": "F496",
+      "filing_id_number": "209989944",
+      "filing_date": "2024-01-31T00:00:00.000",
+      "filing_type": "FiledOriginal",
+      "filing_version": "1",
+      "calculated_date": "2024-01-31T00:00:00.000",
+      "calculated_amount": "47.03",
+      "support_oppose_code": "S",
+      "candidate_last_name": "Bilal Mahmood",
+      "office_description": "Board Member",
+      "district_number": "17",
+      "transaction_description": "Design services",
+      "memo_code": false,
+      "data_loaded_at": "2024-02-01T00:00:00.000"
+     },
+     {
+      "filer_nid": "201619433",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC",
+      "form_type": "F496",
+      "filing_id_number": "212211516",
+      "filing_date": "2024-09-30T00:00:00.000",
+      "filing_type": "FiledOriginal",
+      "filing_version": "1",
+      "calculated_date": "2024-09-29T00:00:00.000",
+      "calculated_amount": "1470.59",
+      "support_oppose_code": "S",
+      "candidate_last_name": "BILAL MAHMOOD",
+      "office_description": "SUPERVISOR",
+      "district_number": "5",
+      "transaction_description": "IND EXP OF DIGITAL ADVERTISEMENT.",
+      "memo_code": false,
+      "data_loaded_at": "2024-10-01T00:00:00.000"
+     },
+     {
+      "filer_nid": "201619433",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC",
+      "form_type": "F496",
+      "filing_id_number": "212232415",
+      "filing_date": "2024-10-02T00:00:00.000",
+      "filing_type": "FiledOriginal",
+      "filing_version": "1",
+      "calculated_date": "2024-10-01T00:00:00.000",
+      "calculated_amount": "35.29",
+      "support_oppose_code": "S",
+      "candidate_last_name": "BILAL MAHMOOD",
+      "office_description": "SUPERVISOR",
+      "district_number": "5",
+      "transaction_description": "IND EXP OF TRANSLATION SERVICES.",
+      "memo_code": false,
+      "data_loaded_at": "2024-10-03T00:00:00.000"
+     },
+     {
+      "filer_nid": "201619433",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC",
+      "form_type": "F496",
+      "filing_id_number": "212232415",
+      "filing_date": "2024-10-02T00:00:00.000",
+      "filing_type": "FiledOriginal",
+      "filing_version": "1",
+      "calculated_date": "2024-10-01T00:00:00.000",
+      "calculated_amount": "1955.52",
+      "support_oppose_code": "S",
+      "candidate_last_name": "BILAL MAHMOOD",
+      "office_description": "SUPERVISOR",
+      "district_number": "5",
+      "transaction_description": "IND EXP OF TELEVISION ADVERTISEMENT.",
+      "memo_code": false,
+      "data_loaded_at": "2024-10-03T00:00:00.000"
+     },
+     {
+      "filer_nid": "201619433",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC",
+      "form_type": "F496",
+      "filing_id_number": "212232415",
+      "filing_date": "2024-10-02T00:00:00.000",
+      "filing_type": "FiledOriginal",
+      "filing_version": "1",
+      "calculated_date": "2024-10-01T00:00:00.000",
+      "calculated_amount": "2627.45",
+      "support_oppose_code": "S",
+      "candidate_last_name": "BILAL MAHMOOD",
+      "office_description": "SUPERVISOR",
+      "district_number": "5",
+      "transaction_description": "IND EXP OF DIGITAL ADVERTISEMENT.",
+      "memo_code": false,
+      "data_loaded_at": "2024-10-03T00:00:00.000"
+     },
+     {
+      "filer_nid": "201619433",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC",
+      "form_type": "F496",
+      "filing_id_number": "212232415",
+      "filing_date": "2024-10-02T00:00:00.000",
+      "filing_type": "FiledOriginal",
+      "filing_version": "1",
+      "calculated_date": "2024-10-01T00:00:00.000",
+      "calculated_amount": "3431.37",
+      "support_oppose_code": "S",
+      "candidate_last_name": "BILAL MAHMOOD",
+      "office_description": "SUPERVISOR",
+      "district_number": "5",
+      "transaction_description": "IND EXP OF TELEVISION ADVERTISEMENT.",
+      "memo_code": false,
+      "data_loaded_at": "2024-10-03T00:00:00.000"
+     },
+     {
+      "filer_nid": "201619433",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC",
+      "form_type": "F496",
+      "filing_id_number": "212232415",
+      "filing_date": "2024-10-02T00:00:00.000",
+      "filing_type": "FiledOriginal",
+      "filing_version": "1",
+      "calculated_date": "2024-10-01T00:00:00.000",
+      "calculated_amount": "156.86",
+      "support_oppose_code": "S",
+      "candidate_last_name": "BILAL MAHMOOD",
+      "office_description": "SUPERVISOR",
+      "district_number": "5",
+      "transaction_description": "IND EXP OF DESIGN SERVICES.",
+      "memo_code": false,
+      "data_loaded_at": "2024-10-03T00:00:00.000"
+     },
+     {
+      "filer_nid": "201619433",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC",
+      "form_type": "F496",
+      "filing_id_number": "212259496",
+      "filing_date": "2024-10-07T00:00:00.000",
+      "filing_type": "FiledAmendment",
+      "filing_version": "2",
+      "calculated_date": "2024-10-03T00:00:00.000",
+      "calculated_amount": "243.11",
+      "support_oppose_code": "S",
+      "candidate_last_name": "BILAL MAHMOOD",
+      "office_description": "SUPERVISOR",
+      "district_number": "5",
+      "transaction_description": "IND EXP OF ADVERTISEMENT PRODUCTION.",
+      "memo_code": false,
+      "data_loaded_at": "2024-10-08T00:00:00.000"
+     },
+     {
+      "filer_nid": "201619433",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC",
+      "form_type": "F496",
+      "filing_id_number": "212259496",
+      "filing_date": "2024-10-07T00:00:00.000",
+      "filing_type": "FiledAmendment",
+      "filing_version": "2",
+      "calculated_date": "2024-10-03T00:00:00.000",
+      "calculated_amount": "784.31",
+      "support_oppose_code": "S",
+      "candidate_last_name": "BILAL MAHMOOD",
+      "office_description": "SUPERVISOR",
+      "district_number": "5",
+      "transaction_description": "IND EXP OF DIGITAL ADVERTISEMENT.",
+      "memo_code": false,
+      "data_loaded_at": "2024-10-08T00:00:00.000"
+     },
+     {
+      "filer_nid": "201619433",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC",
+      "form_type": "F496",
+      "filing_id_number": "212453813",
+      "filing_date": "2024-10-29T00:00:00.000",
+      "filing_type": "FiledOriginal",
+      "filing_version": "1",
+      "calculated_date": "2024-10-28T00:00:00.000",
+      "calculated_amount": "4235.29",
+      "support_oppose_code": "S",
+      "candidate_last_name": "BILAL MAHMOOD",
+      "office_description": "SUPERVISOR",
+      "district_number": "5",
+      "transaction_description": "IND EXP OF DIGITAL ADVERTISEMENT.",
+      "memo_code": false,
+      "data_loaded_at": "2024-10-30T00:00:00.000"
+     },
+     {
+      "filer_nid": "205575753",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC Opposing Preston for Supervisor 2024",
+      "form_type": "F496",
+      "filing_id_number": "212139607",
+      "filing_date": "2024-09-23T00:00:00.000",
+      "filing_type": "FiledAmendment",
+      "filing_version": "6",
+      "calculated_date": "2024-09-05T00:00:00.000",
+      "calculated_amount": "6590.0",
+      "support_oppose_code": "S",
+      "candidate_last_name": "Bilal Mahmood",
+      "office_description": "Supervisor",
+      "district_number": "5",
+      "transaction_description": "Marketing Research - Swayable, $7640",
+      "memo_code": false,
+      "data_loaded_at": "2024-09-24T00:00:00.000"
+     },
+     {
+      "filer_nid": "205575753",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC Opposing Preston for Supervisor 2024",
+      "form_type": "F496",
+      "filing_id_number": "212139607",
+      "filing_date": "2024-09-23T00:00:00.000",
+      "filing_type": "FiledAmendment",
+      "filing_version": "6",
+      "calculated_date": "2024-09-05T00:00:00.000",
+      "calculated_amount": "2500.0",
+      "support_oppose_code": "S",
+      "candidate_last_name": "Bilal Mahmood",
+      "office_description": "Supervisor",
+      "district_number": "5",
+      "transaction_description": "Poll - Fairbank, Maslin, Maullin, Metz, & Associates (FM3 Research), $2500",
+      "memo_code": false,
+      "data_loaded_at": "2024-09-24T00:00:00.000"
+     },
+     {
+      "filer_nid": "205575753",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC Opposing Preston for Supervisor 2024",
+      "form_type": "F496",
+      "filing_id_number": "212139607",
+      "filing_date": "2024-09-23T00:00:00.000",
+      "filing_type": "FiledAmendment",
+      "filing_version": "6",
+      "calculated_date": "2024-09-05T00:00:00.000",
+      "calculated_amount": "61185.25",
+      "support_oppose_code": "S",
+      "candidate_last_name": "Bilal Mahmood",
+      "office_description": "Supervisor",
+      "district_number": "5",
+      "transaction_description": "Billboards - Clear Channel Outdoor, $61185.25",
+      "memo_code": false,
+      "data_loaded_at": "2024-09-24T00:00:00.000"
+     },
+     {
+      "filer_nid": "205575753",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC Opposing Preston for Supervisor 2024",
+      "form_type": "F496",
+      "filing_id_number": "212139607",
+      "filing_date": "2024-09-23T00:00:00.000",
+      "filing_type": "FiledAmendment",
+      "filing_version": "6",
+      "calculated_date": "2024-09-05T00:00:00.000",
+      "calculated_amount": "9900.0",
+      "support_oppose_code": "S",
+      "candidate_last_name": "Bilal Mahmood",
+      "office_description": "Supervisor",
+      "district_number": "5",
+      "transaction_description": "Online ads - Google, $9900",
+      "memo_code": false,
+      "data_loaded_at": "2024-09-24T00:00:00.000"
+     },
+     {
+      "filer_nid": "205575753",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC Opposing Preston for Supervisor 2024",
+      "form_type": "F496",
+      "filing_id_number": "212139607",
+      "filing_date": "2024-09-23T00:00:00.000",
+      "filing_type": "FiledAmendment",
+      "filing_version": "6",
+      "calculated_date": "2024-09-05T00:00:00.000",
+      "calculated_amount": "4904.75",
+      "support_oppose_code": "S",
+      "candidate_last_name": "Bilal Mahmood",
+      "office_description": "Supervisor",
+      "district_number": "5",
+      "transaction_description": "Online ads - Three Point Media, LLC, video production, $4904.75",
+      "memo_code": false,
+      "data_loaded_at": "2024-09-24T00:00:00.000"
+     },
+     {
+      "filer_nid": "205575753",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC Opposing Preston for Supervisor 2024",
+      "form_type": "F496",
+      "filing_id_number": "212139607",
+      "filing_date": "2024-09-23T00:00:00.000",
+      "filing_type": "FiledAmendment",
+      "filing_version": "6",
+      "calculated_date": "2024-09-05T00:00:00.000",
+      "calculated_amount": "0.01",
+      "support_oppose_code": "S",
+      "candidate_last_name": "Bilal Mahmood",
+      "office_description": "Supervisor",
+      "district_number": "5",
+      "transaction_description": "Online ads",
+      "memo_code": false,
+      "data_loaded_at": "2024-09-24T00:00:00.000"
+     },
+     {
+      "filer_nid": "205575753",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC Opposing Preston for Supervisor 2024",
+      "form_type": "F496",
+      "filing_id_number": "212128086",
+      "filing_date": "2024-09-21T00:00:00.000",
+      "filing_type": "FiledOriginal",
+      "filing_version": "1",
+      "calculated_date": "2024-09-20T00:00:00.000",
+      "calculated_amount": "10000.0",
+      "support_oppose_code": "S",
+      "candidate_last_name": "Bilal Mahmood",
+      "office_description": "Supervisor",
+      "district_number": "5",
+      "transaction_description": "Online ads - META Platforms, $10,000",
+      "memo_code": false,
+      "data_loaded_at": "2024-09-22T00:00:00.000"
+     },
+     {
+      "filer_nid": "205575753",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC Opposing Preston for Supervisor 2024",
+      "form_type": "F496",
+      "filing_id_number": "212242874",
+      "filing_date": "2024-10-04T00:00:00.000",
+      "filing_type": "FiledOriginal",
+      "filing_version": "1",
+      "calculated_date": "2024-10-03T00:00:00.000",
+      "calculated_amount": "0.01",
+      "support_oppose_code": "S",
+      "candidate_last_name": "Bilal Mahmood",
+      "office_description": "Supervisor",
+      "district_number": "5",
+      "transaction_description": "Mailer",
+      "memo_code": false,
+      "data_loaded_at": "2024-10-05T00:00:00.000"
+     },
+     {
+      "filer_nid": "205575753",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC Opposing Preston for Supervisor 2024",
+      "form_type": "F496",
+      "filing_id_number": "212242874",
+      "filing_date": "2024-10-04T00:00:00.000",
+      "filing_type": "FiledOriginal",
+      "filing_version": "1",
+      "calculated_date": "2024-10-03T00:00:00.000",
+      "calculated_amount": "6130.34",
+      "support_oppose_code": "S",
+      "candidate_last_name": "Bilal Mahmood",
+      "office_description": "Supervisor",
+      "district_number": "5",
+      "transaction_description": "Mailer - Snap Pack Mail, printing, shipping and postage, $6130.34",
+      "memo_code": false,
+      "data_loaded_at": "2024-10-05T00:00:00.000"
+     },
+     {
+      "filer_nid": "205575753",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC Opposing Preston for Supervisor 2024",
+      "form_type": "F496",
+      "filing_id_number": "212242874",
+      "filing_date": "2024-10-04T00:00:00.000",
+      "filing_type": "FiledOriginal",
+      "filing_version": "1",
+      "calculated_date": "2024-10-03T00:00:00.000",
+      "calculated_amount": "0.01",
+      "support_oppose_code": "S",
+      "candidate_last_name": "Bilal Mahmood",
+      "office_description": "Supervisor",
+      "district_number": "5",
+      "transaction_description": "Mailer",
+      "memo_code": false,
+      "data_loaded_at": "2024-10-05T00:00:00.000"
+     },
+     {
+      "filer_nid": "205575753",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC Opposing Preston for Supervisor 2024",
+      "form_type": "F496",
+      "filing_id_number": "212242874",
+      "filing_date": "2024-10-04T00:00:00.000",
+      "filing_type": "FiledOriginal",
+      "filing_version": "1",
+      "calculated_date": "2024-10-03T00:00:00.000",
+      "calculated_amount": "0.01",
+      "support_oppose_code": "S",
+      "candidate_last_name": "Bilal Mahmood",
+      "office_description": "Supervisor",
+      "district_number": "5",
+      "transaction_description": "Mailer",
+      "memo_code": false,
+      "data_loaded_at": "2024-10-05T00:00:00.000"
+     },
+     {
+      "filer_nid": "205575753",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC Opposing Preston for Supervisor 2024",
+      "form_type": "F496",
+      "filing_id_number": "212249096",
+      "filing_date": "2024-10-05T00:00:00.000",
+      "filing_type": "FiledOriginal",
+      "filing_version": "1",
+      "calculated_date": "2024-10-04T00:00:00.000",
+      "calculated_amount": "10230.0",
+      "support_oppose_code": "S",
+      "candidate_last_name": "Bilal Mahmood",
+      "office_description": "Supervisor",
+      "district_number": "5",
+      "transaction_description": "Online ads - YouTube, $10230",
+      "memo_code": false,
+      "data_loaded_at": "2024-10-06T00:00:00.000"
+     },
+     {
+      "filer_nid": "205575753",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC Opposing Preston for Supervisor 2024",
+      "form_type": "F496",
+      "filing_id_number": "212255368",
+      "filing_date": "2024-10-07T00:00:00.000",
+      "filing_type": "FiledOriginal",
+      "filing_version": "1",
+      "calculated_date": "2024-10-07T00:00:00.000",
+      "calculated_amount": "3349.01",
+      "support_oppose_code": "S",
+      "candidate_last_name": "Bilal Mahmood",
+      "office_description": "Supervisor",
+      "district_number": "5",
+      "transaction_description": "Video Production - Three Point Media, LLC, $3349.01",
+      "memo_code": false,
+      "data_loaded_at": "2024-10-08T00:00:00.000"
+     },
+     {
+      "filer_nid": "205575753",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC Opposing Preston for Supervisor 2024",
+      "form_type": "F496",
+      "filing_id_number": "212271053",
+      "filing_date": "2024-10-09T00:00:00.000",
+      "filing_type": "FiledOriginal",
+      "filing_version": "1",
+      "calculated_date": "2024-10-08T00:00:00.000",
+      "calculated_amount": "6270.0",
+      "support_oppose_code": "S",
+      "candidate_last_name": "Bilal Mahmood",
+      "office_description": "Supervisor",
+      "district_number": "5",
+      "transaction_description": "Online ads - YouTube, $6270",
+      "memo_code": false,
+      "data_loaded_at": "2024-10-10T00:00:00.000"
+     },
+     {
+      "filer_nid": "205575753",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC Opposing Preston for Supervisor 2024",
+      "form_type": "F496",
+      "filing_id_number": "212343992",
+      "filing_date": "2024-10-20T00:00:00.000",
+      "filing_type": "FiledOriginal",
+      "filing_version": "1",
+      "calculated_date": "2024-10-10T00:00:00.000",
+      "calculated_amount": "1491.07",
+      "support_oppose_code": "S",
+      "candidate_last_name": "Bilal Mahmood",
+      "office_description": "Supervisor",
+      "district_number": "5",
+      "transaction_description": "Voter guide",
+      "memo_code": false,
+      "data_loaded_at": "2024-10-21T00:00:00.000"
+     },
+     {
+      "filer_nid": "205575753",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC Opposing Preston for Supervisor 2024",
+      "form_type": "F496",
+      "filing_id_number": "212343992",
+      "filing_date": "2024-10-20T00:00:00.000",
+      "filing_type": "FiledOriginal",
+      "filing_version": "1",
+      "calculated_date": "2024-10-10T00:00:00.000",
+      "calculated_amount": "211.78",
+      "support_oppose_code": "S",
+      "candidate_last_name": "Bilal Mahmood",
+      "office_description": "Supervisor",
+      "district_number": "5",
+      "transaction_description": "Staff time",
+      "memo_code": false,
+      "data_loaded_at": "2024-10-21T00:00:00.000"
+     },
+     {
+      "filer_nid": "205575753",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC Opposing Preston for Supervisor 2024",
+      "form_type": "F496",
+      "filing_id_number": "212343992",
+      "filing_date": "2024-10-20T00:00:00.000",
+      "filing_type": "FiledOriginal",
+      "filing_version": "1",
+      "calculated_date": "2024-10-20T00:00:00.000",
+      "calculated_amount": "8407.99",
+      "support_oppose_code": "S",
+      "candidate_last_name": "Bilal Mahmood",
+      "office_description": "Supervisor",
+      "district_number": "5",
+      "transaction_description": "Mailer - Snap Pack Mail, printing and postage, $8407.99",
+      "memo_code": false,
+      "data_loaded_at": "2024-10-21T00:00:00.000"
+     }
+    ],
+    "url": "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+support_oppose_code%2C+candidate_last_name%2C+office_description%2C+district_number%2C+transaction_description%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27F496%27%2C%27F465P3%27%29+AND+upper%28candidate_last_name%29+like+%27%25MAHMOOD%25%27+AND+%28%28upper%28filer_name%29+like+%27%25GROWSF%25%27%29+OR+%28upper%28filer_name%29+like+%27%25GROW+SF%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000",
+    "error": null
+   },
+   "control": {
+    "by_committee": {
+     "208655996": 162,
+     "209865652": 922
+    },
+    "url": "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+count%28%2A%29+as+rows_a&%24where=form_type+%3D+%27A%27+AND+filer_nid+in+%28%27208655996%27%2C%27209865652%27%29&%24group=filer_nid&%24limit=500",
+    "error": null
+   },
+   "loose": {
+    "error": null,
+    "patterns": [
+     "GROWSF",
+     "GROW SF",
+     "GROW SAN FRANCISCO"
+    ],
+    "contribution_rows": 0,
+    "independent_rows": 32,
+    "urls": [
+     "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+transaction_first_name%2C+transaction_last_name%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27A%27%2C%27F497P1%27%29+AND+filer_nid+in+%28%27208655996%27%2C%27209865652%27%29+AND+%28%28upper%28transaction_last_name%29+like+%27%25GROWSF%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25GROW+SF%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25GROW+SAN+FRANCISCO%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000",
+     "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+support_oppose_code%2C+candidate_last_name%2C+office_description%2C+district_number%2C+transaction_description%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27F496%27%2C%27F465P3%27%29+AND+upper%28candidate_last_name%29+like+%27%25MAHMOOD%25%27+AND+%28%28upper%28filer_name%29+like+%27%25GROWSF%25%27%29+OR+%28upper%28filer_name%29+like+%27%25GROW+SF%25%27%29+OR+%28upper%28filer_name%29+like+%27%25GROW+SAN+FRANCISCO%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000"
+    ],
+    "unlisted_committees": [],
+    "unlisted_url": "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+filer_type%2C+count%28%2A%29+as+rows_n&%24where=upper%28filer_name%29+like+%27%25MAHMOOD%25%27&%24group=filer_nid%2C+filer_name%2C+filer_type&%24order=filer_nid&%24limit=500"
+   }
+  },
+  "Neighbors for a Better San Francisco (Blueprint)|Bilal Mahmood": {
+   "rows": [],
+   "url": "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+transaction_first_name%2C+transaction_last_name%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27A%27%2C%27F497P1%27%29+AND+filer_nid+in+%28%27208655996%27%2C%27209865652%27%29+AND+%28%28upper%28transaction_last_name%29+like+%27%25NEIGHBORS+FOR+A+BETTER+SAN+FRANCISCO%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000",
+   "error": null,
+   "data_loaded_at": null,
+   "independent": {
+    "rows": [],
+    "url": "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+support_oppose_code%2C+candidate_last_name%2C+office_description%2C+district_number%2C+transaction_description%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27F496%27%2C%27F465P3%27%29+AND+upper%28candidate_last_name%29+like+%27%25MAHMOOD%25%27+AND+%28%28upper%28filer_name%29+like+%27%25NEIGHBORS+FOR+A+BETTER+SAN+FRANCISCO%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000",
+    "error": null
+   },
+   "control": {
+    "by_committee": {
+     "208655996": 162,
+     "209865652": 922
+    },
+    "url": "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+count%28%2A%29+as+rows_a&%24where=form_type+%3D+%27A%27+AND+filer_nid+in+%28%27208655996%27%2C%27209865652%27%29&%24group=filer_nid&%24limit=500",
+    "error": null
+   },
+   "loose": {
+    "error": null,
+    "patterns": [
+     "NEIGHBORS FOR A BETTER",
+     "BLUEPRINT"
+    ],
+    "contribution_rows": 0,
+    "independent_rows": 0,
+    "urls": [
+     "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+transaction_first_name%2C+transaction_last_name%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27A%27%2C%27F497P1%27%29+AND+filer_nid+in+%28%27208655996%27%2C%27209865652%27%29+AND+%28%28upper%28transaction_last_name%29+like+%27%25NEIGHBORS+FOR+A+BETTER%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25BLUEPRINT%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000",
+     "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+support_oppose_code%2C+candidate_last_name%2C+office_description%2C+district_number%2C+transaction_description%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27F496%27%2C%27F465P3%27%29+AND+upper%28candidate_last_name%29+like+%27%25MAHMOOD%25%27+AND+%28%28upper%28filer_name%29+like+%27%25NEIGHBORS+FOR+A+BETTER%25%27%29+OR+%28upper%28filer_name%29+like+%27%25BLUEPRINT%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000"
+    ],
+    "unlisted_committees": [],
+    "unlisted_url": "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+filer_type%2C+count%28%2A%29+as+rows_n&%24where=upper%28filer_name%29+like+%27%25MAHMOOD%25%27&%24group=filer_nid%2C+filer_name%2C+filer_type&%24order=filer_nid&%24limit=500"
+   }
+  },
+  "San Francisco Chamber of Commerce|Shamann Walton": {
+   "rows": [],
+   "url": "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+transaction_first_name%2C+transaction_last_name%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27A%27%2C%27F497P1%27%29+AND+filer_nid+in+%28%27130665917%27%2C%27147120072%27%2C%27163932080%27%2C%27174388788%27%2C%27183835609%27%2C%27197031455%27%29+AND+%28%28upper%28transaction_last_name%29+like+%27%25SAN+FRANCISCO+CHAMBER+OF+COMMERCE%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25SF+CHAMBER%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25SF+FORWARD%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000",
+   "error": null,
+   "data_loaded_at": null,
+   "independent": {
+    "rows": [],
+    "url": "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+support_oppose_code%2C+candidate_last_name%2C+office_description%2C+district_number%2C+transaction_description%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27F496%27%2C%27F465P3%27%29+AND+upper%28candidate_last_name%29+like+%27%25WALTON%25%27+AND+%28%28upper%28filer_name%29+like+%27%25SAN+FRANCISCO+CHAMBER+OF+COMMERCE%25%27%29+OR+%28upper%28filer_name%29+like+%27%25SF+CHAMBER%25%27%29+OR+%28upper%28filer_name%29+like+%27%25SF+FORWARD%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000",
+    "error": null
+   },
+   "control": {
+    "by_committee": {
+     "130665917": 70,
+     "147120072": 355,
+     "163932080": 767,
+     "174388788": 4,
+     "183835609": 56,
+     "197031455": 472
+    },
+    "url": "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+count%28%2A%29+as+rows_a&%24where=form_type+%3D+%27A%27+AND+filer_nid+in+%28%27130665917%27%2C%27147120072%27%2C%27163932080%27%2C%27174388788%27%2C%27183835609%27%2C%27197031455%27%29&%24group=filer_nid&%24limit=500",
+    "error": null
+   },
+   "loose": {
+    "error": null,
+    "patterns": [
+     "CHAMBER OF COMMERCE",
+     "SF FORWARD",
+     "SAN FRANCISCO FORWARD"
+    ],
+    "contribution_rows": 0,
+    "independent_rows": 0,
+    "urls": [
+     "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+transaction_first_name%2C+transaction_last_name%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27A%27%2C%27F497P1%27%29+AND+filer_nid+in+%28%27130665917%27%2C%27147120072%27%2C%27163932080%27%2C%27174388788%27%2C%27183835609%27%2C%27197031455%27%29+AND+%28%28upper%28transaction_last_name%29+like+%27%25CHAMBER+OF+COMMERCE%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25SF+FORWARD%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25SAN+FRANCISCO+FORWARD%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000",
+     "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+support_oppose_code%2C+candidate_last_name%2C+office_description%2C+district_number%2C+transaction_description%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27F496%27%2C%27F465P3%27%29+AND+upper%28candidate_last_name%29+like+%27%25WALTON%25%27+AND+%28%28upper%28filer_name%29+like+%27%25CHAMBER+OF+COMMERCE%25%27%29+OR+%28upper%28filer_name%29+like+%27%25SF+FORWARD%25%27%29+OR+%28upper%28filer_name%29+like+%27%25SAN+FRANCISCO+FORWARD%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000"
+    ],
+    "unlisted_committees": [
+     {
+      "filer_nid": "132671132",
+      "filer_name": "Samuel Rawlings Walton",
+      "filer_type": "Major Donor"
+     }
+    ],
+    "unlisted_url": "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+filer_type%2C+count%28%2A%29+as+rows_n&%24where=upper%28filer_name%29+like+%27%25WALTON%25%27&%24group=filer_nid%2C+filer_name%2C+filer_type&%24order=filer_nid&%24limit=500"
+   }
+  },
+  "GrowSF|Chyanne Chen": {
+   "rows": [],
+   "url": "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+transaction_first_name%2C+transaction_last_name%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27A%27%2C%27F497P1%27%29+AND+filer_nid+in+%28%27210823617%27%29+AND+%28%28upper%28transaction_last_name%29+like+%27%25GROWSF%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25GROW+SF%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000",
+   "error": null,
+   "data_loaded_at": null,
+   "independent": {
+    "rows": [
+     {
+      "filer_nid": "201619433",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC",
+      "form_type": "F496",
+      "filing_id_number": "209992026",
+      "filing_date": "2024-01-31T00:00:00.000",
+      "filing_type": "FiledOriginal",
+      "filing_version": "1",
+      "calculated_date": "2024-01-21T00:00:00.000",
+      "calculated_amount": "20.19",
+      "support_oppose_code": "S",
+      "candidate_last_name": "Mike Chen",
+      "office_description": "Board Member",
+      "district_number": "19",
+      "transaction_description": "Online Ads",
+      "memo_code": false,
+      "data_loaded_at": "2024-02-01T00:00:00.000"
+     },
+     {
+      "filer_nid": "201619433",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC",
+      "form_type": "F496",
+      "filing_id_number": "209992026",
+      "filing_date": "2024-01-31T00:00:00.000",
+      "filing_type": "FiledOriginal",
+      "filing_version": "1",
+      "calculated_date": "2024-01-22T00:00:00.000",
+      "calculated_amount": "1368.75",
+      "support_oppose_code": "S",
+      "candidate_last_name": "Mike Chen",
+      "office_description": "Board Member",
+      "district_number": "19",
+      "transaction_description": "Newspaper ads",
+      "memo_code": false,
+      "data_loaded_at": "2024-02-01T00:00:00.000"
+     },
+     {
+      "filer_nid": "201619433",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC",
+      "form_type": "F496",
+      "filing_id_number": "209992026",
+      "filing_date": "2024-01-31T00:00:00.000",
+      "filing_type": "FiledOriginal",
+      "filing_version": "1",
+      "calculated_date": "2024-01-24T00:00:00.000",
+      "calculated_amount": "14.53",
+      "support_oppose_code": "S",
+      "candidate_last_name": "Mike Chen",
+      "office_description": "Board Member",
+      "district_number": "19",
+      "transaction_description": "Online Ads",
+      "memo_code": false,
+      "data_loaded_at": "2024-02-01T00:00:00.000"
+     },
+     {
+      "filer_nid": "201619433",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC",
+      "form_type": "F496",
+      "filing_id_number": "209992026",
+      "filing_date": "2024-01-31T00:00:00.000",
+      "filing_type": "FiledOriginal",
+      "filing_version": "1",
+      "calculated_date": "2024-01-26T00:00:00.000",
+      "calculated_amount": "161.55",
+      "support_oppose_code": "S",
+      "candidate_last_name": "Mike Chen",
+      "office_description": "Board Member",
+      "district_number": "19",
+      "transaction_description": "Online Ads",
+      "memo_code": false,
+      "data_loaded_at": "2024-02-01T00:00:00.000"
+     },
+     {
+      "filer_nid": "201619433",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC",
+      "form_type": "F496",
+      "filing_id_number": "209992026",
+      "filing_date": "2024-01-31T00:00:00.000",
+      "filing_type": "FiledOriginal",
+      "filing_version": "1",
+      "calculated_date": "2024-01-30T00:00:00.000",
+      "calculated_amount": "403.87",
+      "support_oppose_code": "S",
+      "candidate_last_name": "Mike Chen",
+      "office_description": "Board Member",
+      "district_number": "19",
+      "transaction_description": "Online Ads",
+      "memo_code": false,
+      "data_loaded_at": "2024-02-01T00:00:00.000"
+     },
+     {
+      "filer_nid": "201619433",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC",
+      "form_type": "F496",
+      "filing_id_number": "209992026",
+      "filing_date": "2024-01-31T00:00:00.000",
+      "filing_type": "FiledOriginal",
+      "filing_version": "1",
+      "calculated_date": "2024-01-30T00:00:00.000",
+      "calculated_amount": "1802.89",
+      "support_oppose_code": "S",
+      "candidate_last_name": "Mike Chen",
+      "office_description": "Board Member",
+      "district_number": "19",
+      "transaction_description": "Online Ads",
+      "memo_code": false,
+      "data_loaded_at": "2024-02-01T00:00:00.000"
+     },
+     {
+      "filer_nid": "201619433",
+      "filer_name": "Coalition to Grow San Francisco - Grow SF PAC",
+      "form_type": "F496",
+      "filing_id_number": "209992026",
+      "filing_date": "2024-01-31T00:00:00.000",
+      "filing_type": "FiledOriginal",
+      "filing_version": "1",
+      "calculated_date": "2024-01-31T00:00:00.000",
+      "calculated_amount": "48.46",
+      "support_oppose_code": "S",
+      "candidate_last_name": "Mike Chen",
+      "office_description": "Board Member",
+      "district_number": "19",
+      "transaction_description": "Design services",
+      "memo_code": false,
+      "data_loaded_at": "2024-02-01T00:00:00.000"
+     }
+    ],
+    "url": "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+support_oppose_code%2C+candidate_last_name%2C+office_description%2C+district_number%2C+transaction_description%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27F496%27%2C%27F465P3%27%29+AND+upper%28candidate_last_name%29+like+%27%25CHEN%25%27+AND+%28%28upper%28filer_name%29+like+%27%25GROWSF%25%27%29+OR+%28upper%28filer_name%29+like+%27%25GROW+SF%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000",
+    "error": null
+   },
+   "control": {
+    "by_committee": {
+     "210823617": 678
+    },
+    "url": "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+count%28%2A%29+as+rows_a&%24where=form_type+%3D+%27A%27+AND+filer_nid+in+%28%27210823617%27%29&%24group=filer_nid&%24limit=500",
+    "error": null
+   },
+   "loose": {
+    "error": null,
+    "patterns": [
+     "GROWSF",
+     "GROW SF",
+     "GROW SAN FRANCISCO"
+    ],
+    "contribution_rows": 0,
+    "independent_rows": 0,
+    "urls": [
+     "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+transaction_first_name%2C+transaction_last_name%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27A%27%2C%27F497P1%27%29+AND+filer_nid+in+%28%27210823617%27%29+AND+%28%28upper%28transaction_last_name%29+like+%27%25GROWSF%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25GROW+SF%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25GROW+SAN+FRANCISCO%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000",
+     "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+support_oppose_code%2C+candidate_last_name%2C+office_description%2C+district_number%2C+transaction_description%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27F496%27%2C%27F465P3%27%29+AND+upper%28candidate_last_name%29+like+%27%25CHEN%25%27+AND+%28%28upper%28filer_name%29+like+%27%25GROWSF%25%27%29+OR+%28upper%28filer_name%29+like+%27%25GROW+SF%25%27%29+OR+%28upper%28filer_name%29+like+%27%25GROW+SAN+FRANCISCO%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000"
+    ],
+    "unlisted_committees": [
+     {
+      "filer_nid": "158359410",
+      "filer_name": "Jean Chen",
+      "filer_type": "Major Donor"
+     },
+     {
+      "filer_nid": "183244106",
+      "filer_name": "Queena Chen for San Francisco Democratic County Central Committee 2020",
+      "filer_type": "Candidate or Officeholder"
+     },
+     {
+      "filer_nid": "183385842",
+      "filer_name": "Michael Chen for Democratic County Central Committee 2020",
+      "filer_type": "Candidate or Officeholder"
+     },
+     {
+      "filer_nid": "205693494",
+      "filer_name": "Maurice Chenier for San Francisco District Attorney Committee 2022",
+      "filer_type": "Candidate or Officeholder"
+     },
+     {
+      "filer_nid": "208649873",
+      "filer_name": "Mike Chen for Democratic County Central Committee 2024",
+      "filer_type": "Candidate or Officeholder"
+     },
+     {
+      "filer_nid": "208689319",
+      "filer_name": "Queena Chen for SF Democratic County Central Committee 2024",
+      "filer_type": "Candidate or Officeholder"
+     },
+     {
+      "filer_nid": "211723815",
+      "filer_name": "Herald Chen",
+      "filer_type": "Major Donor"
+     },
+     {
+      "filer_nid": "212255667",
+      "filer_name": "Courtney Chenette",
+      "filer_type": "Major Donor"
+     },
+     {
+      "filer_nid": "6666878",
+      "filer_name": "Committee to Elect Claudine Cheng for District 3 Supervisor",
+      "filer_type": "Candidate or Officeholder"
+     }
+    ],
+    "unlisted_url": "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+filer_type%2C+count%28%2A%29+as+rows_n&%24where=upper%28filer_name%29+like+%27%25CHEN%25%27&%24group=filer_nid%2C+filer_name%2C+filer_type&%24order=filer_nid&%24limit=500"
+   }
+  }
+ },
+ "census": {
+  "San Francisco Chamber of Commerce": {
+   "error": null,
+   "patterns": [
+    "CHAMBER OF COMMERCE",
+    "SF FORWARD",
+    "SAN FRANCISCO FORWARD"
+   ],
+   "urls": [
+    "https://data.sf.gov/resource/pitq-e56w.json?%24select=upper%28trim%28transaction_last_name%29%29+as+name%2C+form_type%2C+count%28%2A%29+as+rows_n%2C+sum%28calculated_amount%29+as+total&%24where=form_type+in+%28%27A%27%2C%27F497P1%27%29+AND+%28upper%28transaction_last_name%29+like+%27%25CHAMBER+OF+COMMERCE%25%27+OR+upper%28transaction_last_name%29+like+%27%25SF+FORWARD%25%27+OR+upper%28transaction_last_name%29+like+%27%25SAN+FRANCISCO+FORWARD%25%27%29&%24group=name%2C+form_type&%24order=rows_n+desc%2C+name&%24limit=200",
+    "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+count%28%2A%29+as+rows_n&%24where=upper%28filer_name%29+like+%27%25CHAMBER+OF+COMMERCE%25%27+OR+upper%28filer_name%29+like+%27%25SF+FORWARD%25%27+OR+upper%28filer_name%29+like+%27%25SAN+FRANCISCO+FORWARD%25%27&%24group=filer_nid%2C+filer_name&%24order=rows_n+desc%2C+filer_name&%24limit=40"
+   ],
+   "contributors": [
+    {
+     "name": "SAN FRANCISCO CHAMBER OF COMMERCE 21ST CENTURY COMMITTEE",
+     "form_type": "A",
+     "rows_n": "36",
+     "total": "193190.93",
+     "used": true
+    },
+    {
+     "name": "SAN FRANCISCO FORWARD SPONSORED BY SAN FRANCISCO CHAMBER OF COMMERCE",
+     "form_type": "A",
+     "rows_n": "34",
+     "total": "1171000.0",
+     "used": true
+    },
+    {
+     "name": "SF FORWARD",
+     "form_type": "A",
+     "rows_n": "27",
+     "total": "545500.0",
+     "used": true
+    },
+    {
+     "name": "SAN FRANCISCO FORWARD SPONSORED BY SAN FRANCISCO CHAMBER OF COMMERCE",
+     "form_type": "F497P1",
+     "rows_n": "24",
+     "total": "1029133.62",
+     "used": true
+    },
+    {
+     "name": "SAN FRANCISCO CHAMBER OF COMMERCE",
+     "form_type": "A",
+     "rows_n": "21",
+     "total": "110450.0",
+     "used": true
+    },
+    {
+     "name": "SF FORWARD SPONSORED BY SAN FRANCISCO CHAMBER OF COMMERCE",
+     "form_type": "A",
+     "rows_n": "19",
+     "total": "653999.0",
+     "used": true
+    },
+    {
+     "name": "SF FORWARD SPONSORED BY SAN FRANCISCO CHAMBER OF COMMERCE",
+     "form_type": "F497P1",
+     "rows_n": "17",
+     "total": "737000.0",
+     "used": true
+    },
+    {
+     "name": "SF FORWARD",
+     "form_type": "F497P1",
+     "rows_n": "16",
+     "total": "386500.0",
+     "used": true
+    },
+    {
+     "name": "SF CHAMBER OF COMMERCE 21ST CENTURY COMMITTEE",
+     "form_type": "A",
+     "rows_n": "11",
+     "total": "106489.22",
+     "used": true
+    },
+    {
+     "name": "SAN FRANCISCO FORWARD",
+     "form_type": "A",
+     "rows_n": "10",
+     "total": "57500.0",
+     "used": false
+    },
+    {
+     "name": "SAN FRANCISCO FORWARD, SPONSORED BY SAN FRANCISCO CHAMBER OF COMMERCE",
+     "form_type": "A",
+     "rows_n": "10",
+     "total": "202500.0",
+     "used": true
+    },
+    {
+     "name": "SAN FRANCISCO FORWARD, SPONSORED BY SAN FRANCISCO CHAMBER OF COMMERCE",
+     "form_type": "F497P1",
+     "rows_n": "9",
+     "total": "192500.0",
+     "used": true
+    },
+    {
+     "name": "SF FORWARD, SPONSORED BY SAN FRANCISCO CHAMBER OF COMMERCE",
+     "form_type": "A",
+     "rows_n": "9",
+     "total": "110000.0",
+     "used": true
+    },
+    {
+     "name": "SAN FRANCISCO CHAMBER OF COMMERCE - 21ST CENTURY COMMITTEE",
+     "form_type": "A",
+     "rows_n": "8",
+     "total": "43256.99",
+     "used": true
+    },
+    {
+     "name": "SAN FRANCISCO CHAMBER OF COMMERCE 21ST CENTURY COMMITTEE",
+     "form_type": "F497P1",
+     "rows_n": "7",
+     "total": "56666.67",
+     "used": true
+    },
+    {
+     "name": "SF CHAMBER OF COMMERCE",
+     "form_type": "A",
+     "rows_n": "4",
+     "total": "34735.9",
+     "used": true
+    },
+    {
+     "name": "SAN FRANCISCO CHAMBER OF COMMERCE",
+     "form_type": "F497P1",
+     "rows_n": "3",
+     "total": "19600.0",
+     "used": true
+    },
+    {
+     "name": "SAN FRANCISCO FORWARD",
+     "form_type": "F497P1",
+     "rows_n": "3",
+     "total": "9000.0",
+     "used": false
+    },
+    {
+     "name": "SAN FRANCISCO BLACK CHAMBER OF COMMERCE",
+     "form_type": "A",
+     "rows_n": "2",
+     "total": "800.0",
+     "used": false
+    },
+    {
+     "name": "CALIFORNIA CHAMBER OF COMMERCE",
+     "form_type": "A",
+     "rows_n": "1",
+     "total": "5000.0",
+     "used": false
+    },
+    {
+     "name": "CALIFORNIA CHAMBER OF COMMERCE",
+     "form_type": "F497P1",
+     "rows_n": "1",
+     "total": "5000.0",
+     "used": false
+    },
+    {
+     "name": "NO ON I, SPONSORED BY THE SAN FRANCISCO CHAMBER OF COMMERCE",
+     "form_type": "A",
+     "rows_n": "1",
+     "total": "71577.06",
+     "used": true
+    },
+    {
+     "name": "NORTH BEACH CHAMBER OF COMMERCE",
+     "form_type": "A",
+     "rows_n": "1",
+     "total": "100.0",
+     "used": false
+    },
+    {
+     "name": "SAN FRANCISCO CHAMBER OF COMMERCE 21ST CENTURY CMTE",
+     "form_type": "A",
+     "rows_n": "1",
+     "total": "10000.0",
+     "used": true
+    },
+    {
+     "name": "SAN FRANCISCO CHAMBER OF COMMERCE 21ST CENTURY COMMITTEE (ID #891575)",
+     "form_type": "A",
+     "rows_n": "1",
+     "total": "5000.0",
+     "used": true
+    },
+    {
+     "name": "SF CHAMBER OF COMMERCE 21ST CENTURY COMM.",
+     "form_type": "A",
+     "rows_n": "1",
+     "total": "5000.0",
+     "used": true
+    },
+    {
+     "name": "SF CHAMBER OF COMMERCE 21ST CENTURY COMMITTEE",
+     "form_type": "F497P1",
+     "rows_n": "1",
+     "total": "1666.67",
+     "used": true
+    },
+    {
+     "name": "SF FORWARD SPONSORED BY THE SAN FRANCISCO CHAMBER OF COMMERCE",
+     "form_type": "A",
+     "rows_n": "1",
+     "total": "20000.0",
+     "used": true
+    },
+    {
+     "name": "YES ON Q WITH MAJOR FUNDING BY COMMITTEE ON JOBS GOVERNMENT REFORM FUND AND SF FORWARD SPONSORED BY THE SAN FRANCISCO CHAMBER OF COMMERCE",
+     "form_type": "A",
+     "rows_n": "1",
+     "total": "1000.0",
+     "used": true
+    }
+   ],
+   "committees": [
+    {
+     "filer_nid": "6668151",
+     "filer_name": "SF FORWARD SPONSORED BY THE SAN FRANCISCO CHAMBER OF COMMERCE",
+     "rows_n": "5723",
+     "used": true
+    },
+    {
+     "filer_nid": "9293044",
+     "filer_name": "SAN FRANCISCANS FOR A BETTER MUNI, YES ON G, WITH SUPPORT FROM SF FORWARD, PLAN C SAN FRANCISCO, SFAR, COMMITTEE ON JOBS GOVERNMENT REFORM FUND COMMITTEE, SF COALITIONFOR RESPONSIBLE GROWTH AND SPUR",
+     "rows_n": "669",
+     "used": true
+    },
+    {
+     "filer_nid": "191766883",
+     "filer_name": "No On I, Sponsored By The San Francisco Chamber Of Commerce",
+     "rows_n": "523",
+     "used": true
+    },
+    {
+     "filer_nid": "6676694",
+     "filer_name": "Workforce Housing Initiative, Committee for Prop J: A Coalition of Business, Labor, the San Francisco Chamber of Commerce, Environmentalists & Neighbors",
+     "rows_n": "507",
+     "used": true
+    },
+    {
+     "filer_nid": "172795588",
+     "filer_name": "No Plan, No Accountability, No on Prop C, Sponsored by the San Francisco Chamber of Commerce",
+     "rows_n": "488",
+     "used": true
+    },
+    {
+     "filer_nid": "161128813",
+     "filer_name": "San Franciscans for Housing Not Tents - Yes on Q with major funding by Committee on Jobs Government Reform Fund and San Francisco Forward.",
+     "rows_n": "333",
+     "used": false
+    },
+    {
+     "filer_nid": "6676807",
+     "filer_name": "Yes on Prop. K--Keep San Francisco Moving--sponsored by the San Francisco Chamber of Commerce",
+     "rows_n": "305",
+     "used": true
+    },
+    {
+     "filer_nid": "217233128",
+     "filer_name": "Yes on C, No on I, SF for Accountability in Housing sponsored by the San Francisco Building and Construction Trades Council and the San Francisco Chamber of Commerce",
+     "rows_n": "248",
+     "used": true
+    },
+    {
+     "filer_nid": "6666622",
+     "filer_name": "The Committee for Election Sunshine, Yes on C, Sponsored by League of Women Voters of SF, SPUR, San Francisco Chamber of Commerce and San Francisco Small Business Advocates PAC",
+     "rows_n": "59",
+     "used": true
+    },
+    {
+     "filer_nid": "6682082",
+     "filer_name": "San Francisco Chamber of Commerce - 1290133",
+     "rows_n": "26",
+     "used": true
+    },
+    {
+     "filer_nid": "216585910",
+     "filer_name": "San Francisco Chamber of Commerce (Major Donor)",
+     "rows_n": "11",
+     "used": true
+    },
+    {
+     "filer_nid": "217233128",
+     "filer_name": "No on I, SF for Accountability in Housing sponsored by the San Francisco Building and Construction Trades Council and the San Francisco Chamber of Commerce",
+     "rows_n": "1",
+     "used": true
+    }
+   ]
+  },
+  "Neighbors for a Better San Francisco (Blueprint)": {
+   "error": null,
+   "patterns": [
+    "NEIGHBORS FOR A BETTER",
+    "BLUEPRINT"
+   ],
+   "urls": [
+    "https://data.sf.gov/resource/pitq-e56w.json?%24select=upper%28trim%28transaction_last_name%29%29+as+name%2C+form_type%2C+count%28%2A%29+as+rows_n%2C+sum%28calculated_amount%29+as+total&%24where=form_type+in+%28%27A%27%2C%27F497P1%27%29+AND+%28upper%28transaction_last_name%29+like+%27%25NEIGHBORS+FOR+A+BETTER%25%27+OR+upper%28transaction_last_name%29+like+%27%25BLUEPRINT%25%27%29&%24group=name%2C+form_type&%24order=rows_n+desc%2C+name&%24limit=200",
+    "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+count%28%2A%29+as+rows_n&%24where=upper%28filer_name%29+like+%27%25NEIGHBORS+FOR+A+BETTER%25%27+OR+upper%28filer_name%29+like+%27%25BLUEPRINT%25%27&%24group=filer_nid%2C+filer_name&%24order=rows_n+desc%2C+filer_name&%24limit=40"
+   ],
+   "contributors": [
+    {
+     "name": "NEIGHBORS FOR A BETTER SAN FRANCISCO ADVOCACY",
+     "form_type": "A",
+     "rows_n": "74",
+     "total": "7676140.0",
+     "used": true
+    },
+    {
+     "name": "NEIGHBORS FOR A BETTER SAN FRANCISCO ADVOCACY",
+     "form_type": "F497P1",
+     "rows_n": "48",
+     "total": "5547950.0",
+     "used": true
+    },
+    {
+     "name": "NEIGHBORS FOR A BETTER SAN FRANCISCO",
+     "form_type": "F497P1",
+     "rows_n": "14",
+     "total": "450500.0",
+     "used": true
+    },
+    {
+     "name": "NEIGHBORS FOR A BETTER SAN FRANCISCO",
+     "form_type": "A",
+     "rows_n": "9",
+     "total": "743000.0",
+     "used": true
+    },
+    {
+     "name": "SF WORKFORCE HOUSING ALLIANCE PAC 2020, SPONSORED BY NEIGHBORS FOR A BETTER SAN FRANCISCO",
+     "form_type": "F497P1",
+     "rows_n": "2",
+     "total": "6300.0",
+     "used": true
+    },
+    {
+     "name": "NEIGHBORS FOR A BETTER SAN FRANCISCO ADVOCACY COMMITTEE",
+     "form_type": "F497P1",
+     "rows_n": "1",
+     "total": "5000.0",
+     "used": true
+    }
+   ],
+   "committees": [
+    {
+     "filer_nid": "193427405",
+     "filer_name": "Neighbors For A Better San Francisco Advocacy",
+     "rows_n": "1725",
+     "used": true
+    },
+    {
+     "filer_nid": "193321554",
+     "filer_name": "SF Workforce Housing Alliance PAC 2020, sponsored by Neighbors for a Better San Francisco",
+     "rows_n": "373",
+     "used": true
+    },
+    {
+     "filer_nid": "200741725",
+     "filer_name": "Stop ALL Asian Hate, Supporting the Chesa Boudin Recall, Supported by Neighbors for a Better San Francisco Advocacy",
+     "rows_n": "258",
+     "used": true
+    },
+    {
+     "filer_nid": "193427405",
+     "filer_name": "Neighbors For A Better San Francisco",
+     "rows_n": "227",
+     "used": true
+    },
+    {
+     "filer_nid": "199984963",
+     "filer_name": "NEIGHBORS FOR A BETTER SAN FRANCISCO ADVOCACY COMMITTEE",
+     "rows_n": "156",
+     "used": true
+    },
+    {
+     "filer_nid": "6667750",
+     "filer_name": "Edwin M. Lee Democratic Club PAC sponsored by Neighbors for a Better San Francisco Advocacy",
+     "rows_n": "69",
+     "used": true
+    }
+   ]
+  },
+  "GrowSF": {
+   "error": null,
+   "patterns": [
+    "GROWSF",
+    "GROW SF",
+    "GROW SAN FRANCISCO"
+   ],
+   "urls": [
+    "https://data.sf.gov/resource/pitq-e56w.json?%24select=upper%28trim%28transaction_last_name%29%29+as+name%2C+form_type%2C+count%28%2A%29+as+rows_n%2C+sum%28calculated_amount%29+as+total&%24where=form_type+in+%28%27A%27%2C%27F497P1%27%29+AND+%28upper%28transaction_last_name%29+like+%27%25GROWSF%25%27+OR+upper%28transaction_last_name%29+like+%27%25GROW+SF%25%27+OR+upper%28transaction_last_name%29+like+%27%25GROW+SAN+FRANCISCO%25%27%29&%24group=name%2C+form_type&%24order=rows_n+desc%2C+name&%24limit=200",
+    "https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+count%28%2A%29+as+rows_n&%24where=upper%28filer_name%29+like+%27%25GROWSF%25%27+OR+upper%28filer_name%29+like+%27%25GROW+SF%25%27+OR+upper%28filer_name%29+like+%27%25GROW+SAN+FRANCISCO%25%27&%24group=filer_nid%2C+filer_name&%24order=rows_n+desc%2C+filer_name&%24limit=40"
+   ],
+   "contributors": [
+    {
+     "name": "GROWSF VOTER GUIDE",
+     "form_type": "F497P1",
+     "rows_n": "9",
+     "total": "116726.36",
+     "used": true
+    },
+    {
+     "name": "COALITION TO GROW SAN FRANCISCO - GROW SF PAC",
+     "form_type": "A",
+     "rows_n": "6",
+     "total": "8000.0",
+     "used": true
+    },
+    {
+     "name": "COALITION TO GROW SAN FRANCISCO - GROW SF",
+     "form_type": "A",
+     "rows_n": "2",
+     "total": "3500.0",
+     "used": true
+    },
+    {
+     "name": "COALITION TO GROW SAN FRANCISCO - GROW SF PAC",
+     "form_type": "F497P1",
+     "rows_n": "1",
+     "total": "5000.0",
+     "used": true
+    }
+   ],
+   "committees": [
+    {
+     "filer_nid": "201619433",
+     "filer_name": "Coalition to Grow San Francisco - Grow SF PAC",
+     "rows_n": "1798",
+     "used": true
+    },
+    {
+     "filer_nid": "160122595",
+     "filer_name": "Yes In My Backyard Political Action Committee Sponsored by Grow San Francisco",
+     "rows_n": "1653",
+     "used": false
+    },
+    {
+     "filer_nid": "201619433",
+     "filer_name": "GrowSF Voter Guide",
+     "rows_n": "1050",
+     "used": true
+    },
+    {
+     "filer_nid": "205575753",
+     "filer_name": "Coalition to Grow San Francisco - Grow SF PAC Opposing Preston for Supervisor 2024",
+     "rows_n": "620",
+     "used": true
+    },
+    {
+     "filer_nid": "214918275",
+     "filer_name": "GrowSF Supporting Stephen Sherrill for Supervisor 2026",
+     "rows_n": "315",
+     "used": true
+    },
+    {
+     "filer_nid": "215852865",
+     "filer_name": "GrowSF Supporting Alan Wong for Supervisor 2026",
+     "rows_n": "307",
+     "used": true
+    },
+    {
+     "filer_nid": "205627644",
+     "filer_name": "Coalition to Grow San Francisco - Grow SF PAC Opposing Chan for Supervisor 2024",
+     "rows_n": "267",
+     "used": true
+    },
+    {
+     "filer_nid": "202605623",
+     "filer_name": "Coalition to Grow San Francisco - Grow SF PAC Opposing Mar for Supervisor 2022",
+     "rows_n": "117",
+     "used": true
+    },
+    {
+     "filer_nid": "214884140",
+     "filer_name": "GrowSF for Change",
+     "rows_n": "28",
+     "used": true
+    }
+   ]
+  }
+ }
+}
