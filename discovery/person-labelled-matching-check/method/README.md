@@ -3,8 +3,9 @@
 Run from the directory above (`discovery/person-labelled-matching-check/`): `python method/run.py` (needs `ANTHROPIC_API_KEY`
 and network; the embedding model downloads on first use). Tests: `python -m unittest discover -s method/tests`.
 
-- `run.py` drives every stage and writes `results.md`, `results.json`, `matches-that-stand-out.md` to the working
-  directory and, when no sheet exists, `labelling/`.
+- `run.py` drives every stage and writes `chance-counts.md`, `chance-counts.json` (before the AI stage), `results.md`,
+  `results.json`, `matches-that-stand-out.md` to the working directory and, when no sheet exists, `labelling/`.
+  The AI stage is capped (`MATCH_JUDGE_TIME_BUDGET_S`, default 480 s for the pool, then 180 s more for the sheet).
 - `check_lib.py` (sheet sampling, reading and scoring people's labels, timing, disagreement, instances), `stages.py`
   (lexical and embedding scoring with chance counts), `render_check.py` (markdown), `labeller.py` (the labelling page).
 - `trial_lib.py`, `compare_lib.py`, `embed.py`, `judge.py` are copied unchanged from `../../matching-methods-comparison/`.

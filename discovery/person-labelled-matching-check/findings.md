@@ -1,21 +1,12 @@
 # Person-labelled matching check: which way of matching holds up when a person judges its pairs
 
-**Kind of hop: a measurement with an instrument for people.** It runs six ways of proposing quote-to-priority pairings over real San Francisco captions and donor priorities, builds a blind sheet of the pairs they propose, and scores the ways against what people label. It makes no decisions. **No person has labelled a pair yet, so no figure in this repository is a person's judgement.** What exists is the method, the blind sheet and labelling page that a person works through, and a script that turns their files into every figure the charter asks for. The measured results are not typed here: `python method/run.py` writes them, with the same inputs and seed, to `results.md` (tables), `results.json` (the same figures as data, the comparable output) and `matches-that-stand-out.md` (the instances the proof point asks for). Read `results.md` first; this file says what is measured, how, and how far it can be trusted.
+**Kind of hop: a measurement with an instrument for people.** It runs six ways of proposing quote-to-priority pairings over real San Francisco captions and donor priorities, builds a blind sheet of the pairs they propose, and scores the ways against what people label. It makes no decisions. **No person has labelled a pair yet, so no figure in this repository is a person's judgement.** What the committed source holds is the method: the code that builds the blind sheet and the labelling page a person works through, and a script that turns their files into every figure the charter asks for. The measured results are not typed here: `python method/run.py` (the hop's `results_command`) writes them, with the same inputs and seed, to `chance-counts.md` and `chance-counts.json` (each machine method's setting and its chance count at every level; written before the AI stage, no person needed), `results.md` (tables), `results.json` (the same figures as data, the comparable output) and `matches-that-stand-out.md` (the instances the proof point asks for). **None of these generated files is among the files this hop's source commits; they exist in the repository only after a run of `method/run.py` has completed and its output has been committed, and no figure from a run is quoted in this file.** Read `results.md` first once it exists; this file says what is measured, how, and how far it can be trusted.
 
 Builds on `../matching-methods-comparison/findings.md` (the six methods, their inputs and the language model's labels; its figures were never saved, which is why this hop's script writes them down), `../matching-trial-run/findings.md` (the chance model and the first lexical figures), `../donor-priorities-survey/findings.md`, `../quote-attribution-check/findings.md` (the caption text carries no speaker) and `../campaign-finance-survey/findings.md`.
 
 ## Where things are
 
-| What | Where |
-|---|---|
-| Measured results, chance count at every setting of every method | `results.md`, `results.json` (written by the run) |
-| Pairs that meet every condition of the proof point | `matches-that-stand-out.md` (written by the run; zero instances until a person labels) |
-| The page a person labels in (self-contained HTML, times each label) | `labelling/label.html` |
-| The blind sheet it shows, and the key saying which method each pair came from (labelers must not open the key) | `labelling/blind-sheet.json`, `labelling/sheet-key.json` |
-| Where people's label files go, and their format | `labelling/person_labels/` |
-| Scripts, tests and the snapshot of the sources | `method/` (`run.py` drives; `check_lib.py` holds the arithmetic) |
 
-The sheet and its key are written once, by the first run, and never rebuilt unless `REBUILD_SHEET=1` is set, so labels already given stay valid.
 
 ## What was run
 
@@ -35,7 +26,7 @@ The sheet and its key are written once, by the first run, and never rebuilt unle
 ## What the findings say about the charter questions
 
 1. **Share of proposals a person judges real, and misses.** Not measured: no person has labelled. The instrument that measures it is built and tested; `results.md` section 2 holds the table once `labelling/person_labels/` has a file. Until then it holds the AI judge's reading of every proposal it read (labelled MACHINE), which is a language model's and not independent evidence for the AI methods.
-2. **Real overlaps found at the setting where chance is under one per run.** Partly. Each method's setting, its corpus count and its chance count at every level are written by the run (`results.md` section 1), and need no person. The count of real overlaps at that setting needs a person's labels (`results.md` section 3). The earlier trial's lexical figures, against a model's and the trial author's labels and not a blind person's, are in `../matching-trial-run/findings.md`.
+2. **Real overlaps found at the setting where chance is under one per run.** Partly. Each method's setting, its corpus count and its chance count at every level are written by the run (`chance-counts.md`, and `results.md` section 1), and need no person; no figure from that run is in the repository's committed files yet, so this finding holds the method and not the numbers. The count of real overlaps at that setting needs a person's labels (`results.md` section 3), and none exist. The earlier trial's lexical figures, against a model's and the trial author's labels and not a blind person's, are in `../matching-trial-run/findings.md`.
 3. **Opposite sides on real quotes.** Not measured by a person. The page asks it of every real or loose pair. `results.md` section 4 shows the AI judge's stance reading on each method's proposals as a MACHINE row. The earlier comparison's opposing-side count used 14 hand-written probes, not real quotes.
 4. **Time per label, and where labelers disagree.** Not measured: no timed label and no second labeler exist. The page records the time of each label and the script reports medians, a projection for a night's candidates and the pairs where two people differ.
 
@@ -56,13 +47,14 @@ Carried from the earlier trial and comparison, not re-measured here: a clerk rea
 - The measured results of the earlier comparison (it saved none); this hop's run is the first to write them.
 
 **Who must supply what**
-- Maintainer, or one to three people they name (a reporter, a resident, a civic-group member): open `labelling/label.html`, label the sheet without opening `results.md`, `matches-that-stand-out.md` or `labelling/sheet-key.json`, and put the downloaded file in `labelling/person_labels/`. About 70 to 110 pairs; the page saves progress and its order is random, so a part-finished file is still an unbiased sample. Two labelers are what measure where people differ; the proof point needs ten labelled pairs that meet every condition.
+- Maintainer, or one to three people they name (a reporter, a resident, a civic-group member): open `labelling/label.html` (built by `method/run.py`; it exists once a run has completed), label the sheet without opening `results.md`, `matches-that-stand-out.md` or `labelling/sheet-key.json`, and put the downloaded file in `labelling/person_labels/`. About 70 to 110 pairs; the page saves progress and its order is random, so a part-finished file is still an unbiased sample. Two labelers are what measure where people differ; the proof point needs ten labelled pairs that meet every condition.
 - Maintainer: whether a clerk's, a staff member's or a commenter's passage can count as "what an official said". The page records the speaker so either reading can be computed; which one counts is theirs to say.
 - Maintainer: a cap on the AI cost per night; `results.md` gives the cost and time per pair read.
 
 **Claims not verified**
 - That `claude-haiku-5-5` and its price (from $0.10 per million input tokens and $0.50 per million output tokens) are current when a later run happens: read on Anthropic's models overview on the day of writing, which lists it as current (Claude API ID `claude-haiku-5-5`); models are retired on a schedule. The name is in one place (`judge.DEFAULT_MODEL`, override `MATCH_JUDGE_MODEL`). A retired model, a missing key or an unreadable reply is reported in `results.md` and makes the run exit 1; nothing substitutes for it.
-- That `fastembed==0.9.1` is the latest release (PyPI listed it as latest on the day of writing) and that `BAAI/bge-small-en-v1.5` suits captions in capitals once lower-cased (recalled that its tokenizer is uncased).
+- That `fastembed==0.9.1` is the latest release (recalled; PyPI's JSON page could not be read for this check). That version exists on PyPI's package index: `pip download fastembed==0.9.1` fetched it. The pin is in `method/requirements.txt`. It declares `onnxruntime` as a dependency, which installs on the Python 3.12 image the `Dockerfile` uses but did not resolve in the Python 3.11 environment this file was last revised in, so the embedding stage has not run there.
+- The embedding model's tokenizer lower-cases its input: the model's `tokenizer_config.json` on Hugging Face (`BAAI/bge-small-en-v1.5`, file listing at `https://huggingface.co/BAAI/bge-small-en-v1.5/tree/main`) sets `do_lower_case` to true with the `BertTokenizer` class, so captions in capitals are read as lower case. The model card itself does not mention casing. That the model suits caption speech (spoken, unpunctuated, in capitals) is not shown by either; its published scores are on written-text benchmarks (MTEB).
 - The embedding stage and the shortlist have been exercised in this repository only with a stand-in embedder for the mechanics (sets, thresholds, tables); no figure for them from the real model is quoted in this file, and the first record of them is the run's `results.md`.
 - That the lexical chance counts reproduce the earlier trial's (the chance draws differ in number: 15 here against 20 there, so a setting near one pair per run can move one level).
 - That the 133 priorities are each exactly the donor's page text (the earlier comparison checked one against its source).
@@ -71,4 +63,5 @@ Carried from the earlier trial and comparison, not re-measured here: a clerk rea
 
 - Anthropic, Models overview (`https://platform.claude.com/docs/en/about-claude/models/overview`, canonical `https://platform.claude.com/docs/en/models/overview`) for the current model id and price.
 - `fastembed` on PyPI (`https://pypi.org/pypi/fastembed/json`) for the pinned version.
+- Hugging Face, `BAAI/bge-small-en-v1.5`: the model card (`https://huggingface.co/BAAI/bge-small-en-v1.5`), the file listing (`https://huggingface.co/BAAI/bge-small-en-v1.5/tree/main`) and its `tokenizer_config.json` (`https://huggingface.co/BAAI/bge-small-en-v1.5/resolve/main/tokenizer_config.json`), for the tokenizer's casing.
 - The earlier findings in this repository, linked at the top, and their data, copied to `method/data/`.
