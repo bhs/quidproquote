@@ -1,5 +1,5 @@
 services:
   app:
     build:
-      context: ../discovery/matching-trial-run
+      context: ../discovery/matching-methods-comparison
     command: ["sleep", "infinity"]
