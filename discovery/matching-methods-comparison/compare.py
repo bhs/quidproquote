@@ -38,6 +38,7 @@ SEED = 20261030
 N_RANDOM = int(os.environ.get("RANDOM_PAIRS", "150"))
 N_SHORTLIST = int(os.environ.get("SHORTLIST_N", "100"))
 NULL_DRAWS = int(os.environ.get("NULL_DRAWS", "5"))
+EMB_NULL_QUOTES = int(os.environ.get("EMB_NULL_QUOTES", "500"))
 ERROR_RATE = float(os.environ.get("CAPTION_ERROR_RATE", "0.5"))
 EMB_LEVELS = [round(0.30 + 0.01 * i, 2) for i in range(66)]
 
@@ -93,9 +94,12 @@ def stage_embedding(quotes, priorities):
     runs = []
     meeting_of = [q["meeting"] for q in quotes]
     for _ in range(NULL_DRAWS):
+        # embedding on the CPU is the slow part: embed a random sample of the chance quotes and scale
         fake = lib.draw_null(q_tokens, meeting_of, rng, False)
+        fake = rng.sample(fake, min(EMB_NULL_QUOTES, len(fake)))
         fv = emb.embed([" ".join(t) for t in fake])
-        runs.append(counts(np.sort((fv @ pv.T).ravel())))
+        scale = len(quotes) / len(fake)
+        runs.append([c * scale for c in counts(np.sort((fv @ pv.T).ravel()))])
     null_mean = [statistics.mean(v) for v in zip(*runs)]
     calibrated = next((lv for lv, n in zip(EMB_LEVELS, null_mean) if n < 1.0), None)
     return {"emb": emb, "np": np, "pv": pv, "qv": qv, "matrix": matrix, "real": real,

@@ -29,6 +29,7 @@ Builds on `../matching-trial-run/findings.md` (the lexical ways, chance model an
 
 - Judge model `claude-haiku-5-5`, named in one place (`judge.DEFAULT_MODEL`, override `MATCH_JUDGE_MODEL`); Anthropic's models overview listed it as current when this was written, with an API id of that name and prices from $0.10 per million input and $0.50 per million output tokens (the cost lines use those; override with `MATCH_JUDGE_PRICE_*`). API version header `2026-10-21` (the latest on the versions page; override `ANTHROPIC_API_VERSION`). A retired model, a missing key or an unreadable reply is reported as NOT RUN or an error in `results.md` and makes the run exit 1; nothing substitutes for it.
 - Embedding library `fastembed==0.9.1` (Apache-2.0, ONNX, CPU; the release listing read on libraries.io showed it as the latest). The embedding model is a choice later Hops may compare; it is configurable (`EMBEDDING_MODEL`).
+- Run time: the run must finish in minutes on a CPU, so the embedding method's chance level is drawn from a random sample of 500 chance quotes per draw (`EMB_NULL_QUOTES`), counts scaled up to the full corpus; the AI judge stops starting new calls after 600 s (`MATCH_JUDGE_TIME_BUDGET_S`).
 - `ANTHROPIC_API_KEY` is the only secret (results runs only).
 
 ## What this says about the charter questions

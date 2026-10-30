@@ -8,7 +8,7 @@ environment so the model can be changed without touching code:
   ANTHROPIC_API_VERSION          the anthropic-version header
   MATCH_JUDGE_PRICE_INPUT_PER_MTOK / MATCH_JUDGE_PRICE_OUTPUT_PER_MTOK   dollars, for the cost lines
   MATCH_JUDGE_WORKERS            parallel calls (default 8)
-  MATCH_JUDGE_TIME_BUDGET_S      stop starting new calls after this many seconds (default 900)
+  MATCH_JUDGE_TIME_BUDGET_S      stop starting new calls after this many seconds (default 600)
 
 A call that fails is never turned into an ordinary answer: a retired or unknown model, a bad key
 or an unreadable reply is raised or recorded as an error and shown as such in the results.
@@ -83,7 +83,7 @@ def settings():
         "price_in": float(os.environ.get("MATCH_JUDGE_PRICE_INPUT_PER_MTOK", DEFAULT_PRICE_IN)),
         "price_out": float(os.environ.get("MATCH_JUDGE_PRICE_OUTPUT_PER_MTOK", DEFAULT_PRICE_OUT)),
         "workers": int(os.environ.get("MATCH_JUDGE_WORKERS", "8")),
-        "time_budget_s": float(os.environ.get("MATCH_JUDGE_TIME_BUDGET_S", "900")),
+        "time_budget_s": float(os.environ.get("MATCH_JUDGE_TIME_BUDGET_S", "600")),
     }
 
 
