@@ -2,3 +2,5 @@ version: 1
 service: app
 test_command: python -m unittest discover -s tests
 startup_timeout: 120
+results_command: python collect.py && python build_map.py
+comparable_output: funding-map.md

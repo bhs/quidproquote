@@ -1,0 +1,259 @@
+{
+ "about": "Donor families: a funder that publishes its own priorities, and the names under which its money appears in the filings. A pattern is a list of words that must all be in the contributor's name (or the committee's name) once upper-cased and stripped of punctuation. Families are listed most specific first; the first family whose pattern fits a name takes it. A person chose each pattern after reading the names the dataset holds (family_census in data/money_snapshot.json); the name as filed is kept on every row so a reader can disagree. 'link' says how the name ties to the organisation: the organisation's own treasury (own), a political committee the organisation runs (own committee), a committee that names the organisation as sponsor (sponsored committee), or only a name that looks alike (name only). 'committee_ids' lists FPPC ids that the Filers dataset resolves to a committee whose registered name states the family's name or sponsor (see data/money_snapshot.json, filers_lookup); a giver row carrying one of these ids belongs to the family whatever name the committee typed, which is how 'SF Forward' (no sponsor words) is read as the Chamber's committee.",
+ "families": [
+  {
+   "key": "sf-chamber",
+   "name": "San Francisco Chamber of Commerce",
+   "kind": "business association",
+   "patterns": [
+    [
+     "SAN FRANCISCO FORWARD"
+    ],
+    [
+     "SF FORWARD"
+    ],
+    [
+     "SAN FRANCISCO CHAMBER OF COMMERCE"
+    ],
+    [
+     "SF CHAMBER"
+    ]
+   ],
+   "link_note": "'San Francisco Forward sponsored by San Francisco Chamber of Commerce' is a committee that names the Chamber as sponsor; the bare name 'SF Forward' carries no sponsor in the filing name.",
+   "committee_ids": [
+    "891575",
+    "1290133"
+   ]
+  },
+  {
+   "key": "airbnb",
+   "name": "Airbnb",
+   "kind": "company",
+   "patterns": [
+    [
+     "AIRBNB"
+    ]
+   ],
+   "link_note": "The Airbnb money in these filings is a committee that names Airbnb as its supporter; no gift under Airbnb's own name was found.",
+   "committee_ids": [
+    "1381999",
+    "1437557"
+   ]
+  },
+  {
+   "key": "sf-poa",
+   "name": "San Francisco Police Officers Association",
+   "kind": "union",
+   "patterns": [
+    [
+     "SAN FRANCISCO POLICE OFFICERS ASSOCIATION"
+    ],
+    [
+     "SFPOA"
+    ]
+   ],
+   "link_note": "The association's PAC and its Issues PAC are the association's own committees.",
+   "committee_ids": [
+    "1315969",
+    "1317554",
+    "1318539"
+   ]
+  },
+  {
+   "key": "seiu-1021",
+   "name": "SEIU Local 1021",
+   "kind": "union",
+   "patterns": [
+    [
+     "SEIU",
+     "1021"
+    ],
+    [
+     "SERVICE EMPLOYEES INTERNATIONAL UNION LOCAL 1021"
+    ]
+   ],
+   "link_note": "",
+   "committee_ids": []
+  },
+  {
+   "key": "seiu-2015",
+   "name": "SEIU Local 2015",
+   "kind": "union",
+   "patterns": [
+    [
+     "DIGNITY CA SEIU"
+    ],
+    [
+     "SEIU",
+     "2015"
+    ]
+   ],
+   "link_note": "'Dignity CA SEIU Local 2015' is read as the local's political committee (name only; not checked against a filer record).",
+   "committee_ids": []
+  },
+  {
+   "key": "ifpte-21",
+   "name": "IFPTE Local 21",
+   "kind": "union",
+   "patterns": [
+    [
+     "IFPTE",
+     "LOCAL 21"
+    ],
+    [
+     "PROFESSIONAL AND TECHNICAL ENGINEERS",
+     "LOCAL 21"
+    ]
+   ],
+   "link_note": "",
+   "committee_ids": [
+    "881248"
+   ]
+  },
+  {
+   "key": "sf-labor-council",
+   "name": "San Francisco Labor Council",
+   "kind": "labor federation",
+   "patterns": [
+    [
+     "SAN FRANCISCO LABOR COUNCIL"
+    ]
+   ],
+   "link_note": "'Labor & Neighbor Independent Expenditure PAC' is the Council's own committee by name.",
+   "committee_ids": []
+  },
+  {
+   "key": "govern-for-california",
+   "name": "Govern For California",
+   "kind": "advocacy group",
+   "patterns": [
+    [
+     "GFC COURAGE"
+    ],
+    [
+     "GOVERN FOR CALIFORNIA"
+    ]
+   ],
+   "link_note": "The 'GFC Courage Committee' chapters are read as Govern For California's political committees by name; the organisation's own pages were read for the name 'GFC' (see priorities).",
+   "committee_ids": []
+  },
+  {
+   "key": "sf-realtors",
+   "name": "San Francisco Association of Realtors",
+   "kind": "trade association",
+   "patterns": [
+    [
+     "SAN FRANCISCO ASSOCIATION OF REALTORS"
+    ]
+   ],
+   "link_note": "",
+   "committee_ids": []
+  },
+  {
+   "key": "sf-apartment-association",
+   "name": "San Francisco Apartment Association",
+   "kind": "trade association",
+   "patterns": [
+    [
+     "SAN FRANCISCO APARTMENT ASSOCIATION"
+    ]
+   ],
+   "link_note": "",
+   "committee_ids": []
+  },
+  {
+   "key": "boma-sf",
+   "name": "Building Owners and Managers Association of San Francisco",
+   "kind": "trade association",
+   "patterns": [
+    [
+     "BUILDING OWNERS AND MANAGERS ASSOCIATION"
+    ]
+   ],
+   "link_note": "",
+   "committee_ids": []
+  },
+  {
+   "key": "twu-250a",
+   "name": "Transport Workers Union Local 250-A",
+   "kind": "union",
+   "patterns": [
+    [
+     "TRANSPORT WORKERS UNION LOCAL 250"
+    ]
+   ],
+   "link_note": "Other Transport Workers Union locals and the national union are not this family.",
+   "committee_ids": []
+  },
+  {
+   "key": "operating-engineers-3",
+   "name": "Operating Engineers Local 3",
+   "kind": "union",
+   "patterns": [
+    [
+     "OPERATING ENGINEERS"
+    ]
+   ],
+   "link_note": "Stationary Engineers Local 39 is a different union and is excluded.",
+   "committee_ids": [],
+   "exclude": [
+    "STATIONARY"
+   ]
+  },
+  {
+   "key": "laborers-261",
+   "name": "San Francisco Laborers Local 261",
+   "kind": "union",
+   "patterns": [
+    [
+     "LABORER",
+     "261"
+    ]
+   ],
+   "link_note": "",
+   "committee_ids": []
+  },
+  {
+   "key": "emerson-collective",
+   "name": "Emerson Collective",
+   "kind": "foundation and investment firm",
+   "patterns": [
+    [
+     "EMERSON COLLECTIVE"
+    ]
+   ],
+   "link_note": "",
+   "committee_ids": []
+  },
+  {
+   "key": "growsf",
+   "name": "GrowSF",
+   "kind": "advocacy group",
+   "patterns": [
+    [
+     "GROWSF"
+    ],
+    [
+     "GROW SF"
+    ],
+    [
+     "GROW SAN FRANCISCO"
+    ]
+   ],
+   "link_note": "",
+   "committee_ids": []
+  },
+  {
+   "key": "blueprint",
+   "name": "Neighbors for a Better San Francisco (Blueprint)",
+   "kind": "advocacy group",
+   "patterns": [
+    [
+     "NEIGHBORS FOR A BETTER SAN FRANCISCO"
+    ]
+   ],
+   "link_note": "",
+   "committee_ids": []
+  }
+ ]
+}

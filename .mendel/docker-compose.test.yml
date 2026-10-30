@@ -1,5 +1,5 @@
 services:
   app:
     build:
-      context: ../discovery/worked-pairing-examples
+      context: ../discovery/official-funding-map
     command: ["sleep", "infinity"]

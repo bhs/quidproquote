@@ -1,0 +1,45 @@
+{
+ "about": "Where each donor family publishes a priority in its own words. Each entry names the family, the page and the first words of the line to quote; collect_pages.py fetches the page, takes the line (the first `sentences` sentences of it) exactly as the page shows it, with typographic quotes and dashes straightened, and refuses to write a statement it cannot find. Only a donor's own page is used: a news report of what a donor said is not.",
+ "pages": [
+  {"family": "sf-chamber", "url": "https://sfchamber.com/november-2026-voter-guide/", "kind": "voter guide on the organisation's own site", "page_date": "2026-10-08",
+   "statements": [
+    {"id": "CHAMBER-H", "section": "Proposition H - Parcel Tax to Fund Public Muni Operations", "starts": "Prop H would introduce a parcel tax", "sentences": 3}
+   ]},
+  {"family": "sf-poa", "url": "https://sfpoa.org/mayor-lurie-joined-by-firefighters-and-police-officers-in-strong-opposition-to-proposition-i/", "kind": "article by the association's president, on its own site", "page_date": "2026-09-01",
+   "statements": [
+    {"id": "POA-I-TIMING", "section": "Mayor Lurie Joined by Firefighters and Police Officers in Strong Opposition to Proposition I", "starts": "The timing of the special-interest led Proposition I", "sentences": 2},
+    {"id": "POA-I-WONG", "section": "Quoted words of SFPOA President Louis Wong", "starts": "\"We are finally turning the corner on staffing", "sentences": 1},
+    {"id": "POA-I-C", "section": "Closing paragraph", "starts": "San Francisco Firefighters Local 798, SFPOA, and Mayor Lurie urge", "sentences": 1}
+   ]},
+  {"family": "govern-for-california", "url": "https://www.governforcalifornia.org/news/2026/10/21/sf-voter-guide", "kind": "voter guide on the organisation's own site", "page_date": "2026-10-21",
+   "statements": [
+    {"id": "GFC-PRINCIPLES", "section": "Govern For California, San Francisco Chapter, November 2026 Voter Guide", "starts": "The San Francisco Chapter supports capable leaders", "sentences": 1},
+    {"id": "GFC-J", "section": "Proposition J, Foreclosure Transfer Tax: NO", "starts": "San Francisco's commercial real estate market is already under tremendous stress", "sentences": 2},
+    {"id": "GFC-C", "section": "Proposition C, Affordable Housing Trust Fund: YES", "starts": "San Francisco's housing costs are already too high", "sentences": 2}
+   ]},
+  {"family": "seiu-1021", "url": "https://www.seiu1021.org/post/election-endorsements-nov-3-2026", "kind": "endorsement list on the organisation's own site", "page_date": "2026-09-28",
+   "statements": [
+    {"id": "SEIU-STANDS", "section": "Election Endorsements: Nov 3, 2026", "starts": "Each election, SEIU 1021 members endorse candidates", "sentences": 1},
+    {"id": "SEIU-D", "section": "San Francisco, local ballot measures", "starts": "Proposition D - Changes to Ballot Measure Process", "sentences": 1},
+    {"id": "SEIU-E", "section": "San Francisco, local ballot measures", "starts": "Proposition E - City Administrator's Authority", "sentences": 1},
+    {"id": "SEIU-F", "section": "San Francisco, local ballot measures", "starts": "Proposition F - Changes to Executive Branch Management", "sentences": 1}
+   ]},
+  {"family": "boma-sf", "url": "https://bomasf.org/advocacy/policy-priorities", "kind": "policy priorities page on the organisation's own site", "page_date": null,
+   "statements": [
+    {"id": "BOMA-DOWNTOWN", "section": "Policy Priorities", "starts": "BOMA SF supports policies that foster a vibrant", "sentences": 1},
+    {"id": "BOMA-PERMITS", "section": "Taxation & Business Climate", "starts": "Supporting streamlined permitting and entitlement processes", "sentences": 1}
+   ]},
+  {"family": "airbnb", "url": "https://news.airbnb.com/an-update-about-our-community-in-san-francisco", "kind": "company newsroom post", "page_date": null,
+   "statements": [
+    {"id": "AIRBNB-RULES", "section": "An Update About Our Community in San Francisco", "starts": "The establishment of clear, fair and workable home sharing rules", "sentences": 1}
+   ]},
+  {"family": "growsf", "url": "https://growsf.org/voter-guide/", "kind": "voter guide on the organisation's own site", "page_date": "2026-10-22",
+   "statements": [
+    {"id": "GROWSF-C", "section": "Voter guide, November 2026", "starts": "We support real money for subsidized housing", "sentences": 2}
+   ]},
+  {"family": "sf-apartment-association", "url": "https://www.sfaa.org/advocacy", "kind": "advocacy page on the organisation's own site", "page_date": null,
+   "statements": [
+    {"id": "SFAA-ADVOCACY", "section": "Legislative Advocacy", "starts": "Political and Legislative Advocacy at the State and Local Level", "sentences": 1}
+   ]}
+ ]
+}
