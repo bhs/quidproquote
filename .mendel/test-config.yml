@@ -1,4 +1,6 @@
 version: 1
-service: app
-test_command: python -m unittest discover -s tests
+service: check
+test_command: python -m unittest discover -s method/tests
 startup_timeout: 120
+results_command: python method/run.py
+comparable_output: results.json

@@ -3,3 +3,7 @@ services:
     build:
       context: ../discovery/worked-pairing-examples
     command: ["sleep", "infinity"]
+  check:
+    build:
+      context: ../discovery/person-labelled-matching-check
+    command: ["sleep", "infinity"]
