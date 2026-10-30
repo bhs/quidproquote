@@ -1,0 +1,1468 @@
+{
+ "snapshot": {
+  "meetings": [
+   {
+    "id": 51452,
+    "body": "Board of Supervisors",
+    "date": "2026-01-06",
+    "caption_rows": 1978
+   },
+   {
+    "id": 52251,
+    "body": "Board of Supervisors",
+    "date": "2026-04-21",
+    "caption_rows": 1767
+   },
+   {
+    "id": 52800,
+    "body": "Board of Supervisors",
+    "date": "2026-07-07",
+    "caption_rows": 1740
+   },
+   {
+    "id": 52849,
+    "body": "Board of Supervisors",
+    "date": "2026-07-14",
+    "caption_rows": 3214
+   },
+   {
+    "id": 52901,
+    "body": "Board of Supervisors",
+    "date": "2026-07-21",
+    "caption_rows": 5009
+   },
+   {
+    "id": 52804,
+    "body": "Budget and Finance Committee",
+    "date": "2026-07-08",
+    "caption_rows": 1476
+   },
+   {
+    "id": 52816,
+    "body": "Public Safety and Neighborhood Services Committee",
+    "date": "2026-07-09",
+    "caption_rows": 1873
+   },
+   {
+    "id": 52831,
+    "body": "Rules Committee",
+    "date": "2026-07-13",
+    "caption_rows": 1029
+   },
+   {
+    "id": 52838,
+    "body": "Land Use and Transportation Committee",
+    "date": "2026-07-13",
+    "caption_rows": 2189
+   },
+   {
+    "id": 52853,
+    "body": "Budget and Finance Committee",
+    "date": "2026-07-15",
+    "caption_rows": 2916
+   },
+   {
+    "id": 52871,
+    "body": "Government Audit and Oversight Committee",
+    "date": "2026-07-16",
+    "caption_rows": 1263
+   }
+  ],
+  "passages": 4904,
+  "quotes_substantive": 3065,
+  "priorities": 133,
+  "priorities_by_donor": {
+   "San Francisco Chamber of Commerce": 49,
+   "GrowSF": 47,
+   "SEIU Local 1021": 18,
+   "Neighbors for a Better San Francisco (Blueprint)": 14,
+   "San Francisco Police Officers Association": 3,
+   "Airbnb": 2
+  },
+  "pairs_compared": 407645
+ },
+ "levels": {
+  "tfidf": [
+   0.15,
+   0.2,
+   0.25,
+   0.3,
+   0.35,
+   0.4,
+   0.5
+  ],
+  "phrase": [
+   1,
+   2,
+   3
+  ],
+  "topic": [
+   1,
+   2,
+   3
+  ],
+  "anchor": [
+   1,
+   2,
+   3
+  ],
+  "both": [
+   0.15,
+   0.2,
+   0.25,
+   0.3,
+   0.35,
+   0.4,
+   0.5
+  ]
+ },
+ "real_counts": {
+  "tfidf": [
+   472,
+   111,
+   32,
+   10,
+   2,
+   1,
+   0
+  ],
+  "phrase": [
+   2424,
+   193,
+   68
+  ],
+  "topic": [
+   1752,
+   1,
+   0
+  ],
+  "anchor": [
+   1219,
+   89,
+   66
+  ],
+  "both": [
+   208,
+   74,
+   26,
+   9,
+   2,
+   1,
+   0
+  ]
+ },
+ "null": {
+  "pooled": {
+   "tfidf": {
+    "mean": [
+     55.55,
+     3.1,
+     0.05,
+     0,
+     0,
+     0,
+     0
+    ],
+    "max": [
+     73,
+     7,
+     1,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "phrase": {
+    "mean": [
+     256.95,
+     0.3,
+     0
+    ],
+    "max": [
+     294,
+     1,
+     0
+    ]
+   },
+   "topic": {
+    "mean": [
+     343.65,
+     0.15,
+     0
+    ],
+    "max": [
+     417,
+     3,
+     0
+    ]
+   },
+   "anchor": {
+    "mean": [
+     848.9,
+     1,
+     0
+    ],
+    "max": [
+     971,
+     3,
+     0
+    ]
+   },
+   "both": {
+    "mean": [
+     1.95,
+     0.1,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "max": [
+     7,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  "within_meeting": {
+   "tfidf": {
+    "mean": [
+     75.2,
+     5.75,
+     0.45,
+     0.05,
+     0,
+     0,
+     0
+    ],
+    "max": [
+     102,
+     16,
+     2,
+     1,
+     0,
+     0,
+     0
+    ]
+   },
+   "phrase": {
+    "mean": [
+     268.45,
+     0.3,
+     0
+    ],
+    "max": [
+     323,
+     2,
+     0
+    ]
+   },
+   "topic": {
+    "mean": [
+     806.1,
+     0.25,
+     0
+    ],
+    "max": [
+     1016,
+     4,
+     0
+    ]
+   },
+   "anchor": {
+    "mean": [
+     837.9,
+     0.35,
+     0
+    ],
+    "max": [
+     950,
+     2,
+     0
+    ]
+   },
+   "both": {
+    "mean": [
+     2.65,
+     0.15,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "max": [
+     6,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  }
+ },
+ "null_draws_per_model": 20,
+ "calibrated": {
+  "tfidf": {
+   "index": 2,
+   "level": 0.25
+  },
+  "phrase": {
+   "index": 1,
+   "level": 2
+  },
+  "topic": {
+   "index": 1,
+   "level": 2
+  },
+  "anchor": {
+   "index": 2,
+   "level": 3
+  },
+  "both": {
+   "index": 1,
+   "level": 0.2
+  }
+ },
+ "shape": {
+  "tfidf": {
+   "pairs": 32,
+   "quotes": 26,
+   "priorities": 26,
+   "pairs_per_quote": 1.2307692307692308,
+   "top3_priority_share": 0.21875,
+   "by_donor": {
+    "San Francisco Chamber of Commerce": 17,
+    "GrowSF": 12,
+    "Neighbors for a Better San Francisco (Blueprint)": 3
+   },
+   "by_body": {
+    "Board": 20,
+    "Committee": 12
+   }
+  },
+  "phrase": {
+   "pairs": 193,
+   "quotes": 86,
+   "priorities": 57,
+   "pairs_per_quote": 2.244186046511628,
+   "top3_priority_share": 0.2849740932642487,
+   "by_donor": {
+    "GrowSF": 103,
+    "San Francisco Chamber of Commerce": 58,
+    "Neighbors for a Better San Francisco (Blueprint)": 23,
+    "Airbnb": 4,
+    "San Francisco Police Officers Association": 3,
+    "SEIU Local 1021": 2
+   },
+   "by_body": {
+    "Board": 110,
+    "Committee": 83
+   }
+  },
+  "topic": {
+   "pairs": 1,
+   "quotes": 1,
+   "priorities": 1,
+   "pairs_per_quote": 1.0,
+   "top3_priority_share": 1.0,
+   "by_donor": {
+    "Neighbors for a Better San Francisco (Blueprint)": 1
+   },
+   "by_body": {
+    "Committee": 1
+   }
+  },
+  "anchor": {
+   "pairs": 66,
+   "quotes": 28,
+   "priorities": 18,
+   "pairs_per_quote": 2.357142857142857,
+   "top3_priority_share": 0.5606060606060606,
+   "by_donor": {
+    "GrowSF": 38,
+    "San Francisco Chamber of Commerce": 22,
+    "Neighbors for a Better San Francisco (Blueprint)": 4,
+    "SEIU Local 1021": 2
+   },
+   "by_body": {
+    "Board": 34,
+    "Committee": 32
+   }
+  },
+  "both": {
+   "pairs": 74,
+   "quotes": 48,
+   "priorities": 45,
+   "pairs_per_quote": 1.5416666666666667,
+   "top3_priority_share": 0.21621621621621623,
+   "by_donor": {
+    "San Francisco Chamber of Commerce": 36,
+    "GrowSF": 30,
+    "Neighbors for a Better San Francisco (Blueprint)": 5,
+    "San Francisco Police Officers Association": 2,
+    "SEIU Local 1021": 1
+   },
+   "by_body": {
+    "Board": 33,
+    "Committee": 41
+   }
+  }
+ },
+ "overlap_jaccard": {
+  "tfidf|tfidf": 1.0,
+  "tfidf|phrase": 0.08695652173913043,
+  "tfidf|topic": 0.0,
+  "tfidf|anchor": 0.08888888888888889,
+  "tfidf|both": 0.325,
+  "phrase|tfidf": 0.08695652173913043,
+  "phrase|phrase": 1.0,
+  "phrase|topic": 0.0,
+  "phrase|anchor": 0.34196891191709844,
+  "phrase|both": 0.2081447963800905,
+  "topic|tfidf": 0.0,
+  "topic|phrase": 0.0,
+  "topic|topic": 1.0,
+  "topic|anchor": 0.0,
+  "topic|both": 0.0,
+  "anchor|tfidf": 0.08888888888888889,
+  "anchor|phrase": 0.34196891191709844,
+  "anchor|topic": 0.0,
+  "anchor|anchor": 1.0,
+  "anchor|both": 0.16666666666666666,
+  "both|tfidf": 0.325,
+  "both|phrase": 0.2081447963800905,
+  "both|topic": 0.0,
+  "both|anchor": 0.16666666666666666,
+  "both|both": 1.0
+ },
+ "judged_random_draws": {
+  "reader": {
+   "tfidf/loose": {
+    "sampled": 8,
+    "judged": 8,
+    "tally": {
+     "not_a_quote": 2,
+     "coincidental": 4,
+     "topical": 1,
+     "meaningful": 1
+    },
+    "meaningful_share": [
+     0.125,
+     0.02241690886329618,
+     0.4708948057698615
+    ],
+    "topical_share": [
+     0.125,
+     0.02241690886329618,
+     0.4708948057698615
+    ],
+    "coincidental_share": [
+     0.5,
+     0.2152125268244419,
+     0.7847874731755581
+    ],
+    "not_a_quote_share": [
+     0.25,
+     0.07147768885802765,
+     0.5907301208974108
+    ]
+   },
+   "tfidf/calibrated": {
+    "sampled": 32,
+    "judged": 22,
+    "tally": {
+     "not_a_quote": 6,
+     "meaningful": 8,
+     "topical": 7,
+     "coincidental": 1
+    },
+    "meaningful_share": [
+     0.36363636363636365,
+     0.19732972772607896,
+     0.5704865065628195
+    ],
+    "topical_share": [
+     0.3181818181818182,
+     0.16360387354692477,
+     0.5268177721716065
+    ],
+    "coincidental_share": [
+     0.045454545454545456,
+     0.008069219301147859,
+     0.21798489499518056
+    ],
+    "not_a_quote_share": [
+     0.2727272727272727,
+     0.13150582015814438,
+     0.48152123699001975
+    ]
+   },
+   "phrase/loose": {
+    "sampled": 8,
+    "judged": 8,
+    "tally": {
+     "coincidental": 7,
+     "not_a_quote": 1
+    },
+    "meaningful_share": [
+     0.0,
+     0.0,
+     0.3244156195108769
+    ],
+    "topical_share": [
+     0.0,
+     0.0,
+     0.3244156195108769
+    ],
+    "coincidental_share": [
+     0.875,
+     0.5291051942301385,
+     0.9775830911367039
+    ],
+    "not_a_quote_share": [
+     0.125,
+     0.02241690886329618,
+     0.4708948057698615
+    ]
+   },
+   "phrase/calibrated": {
+    "sampled": 32,
+    "judged": 20,
+    "tally": {
+     "meaningful": 8,
+     "not_a_quote": 4,
+     "topical": 5,
+     "coincidental": 3
+    },
+    "meaningful_share": [
+     0.4,
+     0.21880396741419272,
+     0.613422057684794
+    ],
+    "topical_share": [
+     0.25,
+     0.11186005278940306,
+     0.4687050099580635
+    ],
+    "coincidental_share": [
+     0.15,
+     0.05236779195949582,
+     0.36042329588695743
+    ],
+    "not_a_quote_share": [
+     0.2,
+     0.08065635327119998,
+     0.4160217220257599
+    ]
+   },
+   "topic/loose": {
+    "sampled": 8,
+    "judged": 8,
+    "tally": {
+     "coincidental": 7,
+     "topical": 1
+    },
+    "meaningful_share": [
+     0.0,
+     0.0,
+     0.3244156195108769
+    ],
+    "topical_share": [
+     0.125,
+     0.02241690886329618,
+     0.4708948057698615
+    ],
+    "coincidental_share": [
+     0.875,
+     0.5291051942301385,
+     0.9775830911367039
+    ],
+    "not_a_quote_share": [
+     0.0,
+     0.0,
+     0.3244156195108769
+    ]
+   },
+   "topic/calibrated": {
+    "sampled": 1,
+    "judged": 1,
+    "tally": {
+     "coincidental": 1
+    },
+    "meaningful_share": [
+     0.0,
+     0.0,
+     0.7934567085261071
+    ],
+    "topical_share": [
+     0.0,
+     0.0,
+     0.7934567085261071
+    ],
+    "coincidental_share": [
+     1.0,
+     0.20654329147389294,
+     1.0
+    ],
+    "not_a_quote_share": [
+     0.0,
+     0.0,
+     0.7934567085261071
+    ]
+   },
+   "anchor/loose": {
+    "sampled": 8,
+    "judged": 8,
+    "tally": {
+     "coincidental": 5,
+     "meaningful": 2,
+     "not_a_quote": 1
+    },
+    "meaningful_share": [
+     0.25,
+     0.07147768885802765,
+     0.5907301208974108
+    ],
+    "topical_share": [
+     0.0,
+     0.0,
+     0.3244156195108769
+    ],
+    "coincidental_share": [
+     0.625,
+     0.3057378545838018,
+     0.863158240538479
+    ],
+    "not_a_quote_share": [
+     0.125,
+     0.02241690886329618,
+     0.4708948057698615
+    ]
+   },
+   "anchor/calibrated": {
+    "sampled": 32,
+    "judged": 18,
+    "tally": {
+     "not_a_quote": 3,
+     "meaningful": 10,
+     "coincidental": 2,
+     "topical": 3
+    },
+    "meaningful_share": [
+     0.5555555555555556,
+     0.33716069428251627,
+     0.7544076889861088
+    ],
+    "topical_share": [
+     0.16666666666666666,
+     0.058364704004657555,
+     0.3922249963835924
+    ],
+    "coincidental_share": [
+     0.1111111111111111,
+     0.031018868453582777,
+     0.3280024486660421
+    ],
+    "not_a_quote_share": [
+     0.16666666666666666,
+     0.058364704004657555,
+     0.3922249963835924
+    ]
+   },
+   "both/loose": {
+    "sampled": 8,
+    "judged": 8,
+    "tally": {
+     "not_a_quote": 3,
+     "meaningful": 1,
+     "coincidental": 3,
+     "topical": 1
+    },
+    "meaningful_share": [
+     0.125,
+     0.02241690886329618,
+     0.4708948057698615
+    ],
+    "topical_share": [
+     0.125,
+     0.02241690886329618,
+     0.4708948057698615
+    ],
+    "coincidental_share": [
+     0.375,
+     0.13684175946152105,
+     0.6942621454161982
+    ],
+    "not_a_quote_share": [
+     0.375,
+     0.13684175946152105,
+     0.6942621454161982
+    ]
+   },
+   "both/calibrated": {
+    "sampled": 32,
+    "judged": 20,
+    "tally": {
+     "meaningful": 6,
+     "coincidental": 3,
+     "topical": 8,
+     "not_a_quote": 3
+    },
+    "meaningful_share": [
+     0.3,
+     0.14547527396899385,
+     0.5189767762289793
+    ],
+    "topical_share": [
+     0.4,
+     0.21880396741419272,
+     0.613422057684794
+    ],
+    "coincidental_share": [
+     0.15,
+     0.05236779195949582,
+     0.36042329588695743
+    ],
+    "not_a_quote_share": [
+     0.15,
+     0.05236779195949582,
+     0.36042329588695743
+    ]
+   }
+  },
+  "model": {
+   "tfidf/loose": {
+    "sampled": 8,
+    "judged": 8,
+    "tally": {
+     "not_a_quote": 2,
+     "coincidental": 4,
+     "topical": 1,
+     "meaningful": 1
+    },
+    "meaningful_share": [
+     0.125,
+     0.02241690886329618,
+     0.4708948057698615
+    ],
+    "topical_share": [
+     0.125,
+     0.02241690886329618,
+     0.4708948057698615
+    ],
+    "coincidental_share": [
+     0.5,
+     0.2152125268244419,
+     0.7847874731755581
+    ],
+    "not_a_quote_share": [
+     0.25,
+     0.07147768885802765,
+     0.5907301208974108
+    ]
+   },
+   "tfidf/calibrated": {
+    "sampled": 32,
+    "judged": 32,
+    "tally": {
+     "not_a_quote": 8,
+     "meaningful": 11,
+     "topical": 10,
+     "coincidental": 3
+    },
+    "meaningful_share": [
+     0.34375,
+     0.2041023335432855,
+     0.5168922649121406
+    ],
+    "topical_share": [
+     0.3125,
+     0.17952352116618736,
+     0.4856699969803239
+    ],
+    "coincidental_share": [
+     0.09375,
+     0.032400962626319516,
+     0.24218499335778834
+    ],
+    "not_a_quote_share": [
+     0.25,
+     0.13252243982621553,
+     0.42106891770246624
+    ]
+   },
+   "phrase/loose": {
+    "sampled": 8,
+    "judged": 8,
+    "tally": {
+     "coincidental": 7,
+     "not_a_quote": 1
+    },
+    "meaningful_share": [
+     0.0,
+     0.0,
+     0.3244156195108769
+    ],
+    "topical_share": [
+     0.0,
+     0.0,
+     0.3244156195108769
+    ],
+    "coincidental_share": [
+     0.875,
+     0.5291051942301385,
+     0.9775830911367039
+    ],
+    "not_a_quote_share": [
+     0.125,
+     0.02241690886329618,
+     0.4708948057698615
+    ]
+   },
+   "phrase/calibrated": {
+    "sampled": 32,
+    "judged": 32,
+    "tally": {
+     "meaningful": 15,
+     "not_a_quote": 6,
+     "topical": 4,
+     "coincidental": 7
+    },
+    "meaningful_share": [
+     0.46875,
+     0.3086912990168234,
+     0.6355076206742618
+    ],
+    "topical_share": [
+     0.125,
+     0.049700538444743,
+     0.28068649784827965
+    ],
+    "coincidental_share": [
+     0.21875,
+     0.11023696931531854,
+     0.3875533079044484
+    ],
+    "not_a_quote_share": [
+     0.1875,
+     0.08889423936162782,
+     0.3530949575492244
+    ]
+   },
+   "topic/loose": {
+    "sampled": 8,
+    "judged": 8,
+    "tally": {
+     "coincidental": 7,
+     "topical": 1
+    },
+    "meaningful_share": [
+     0.0,
+     0.0,
+     0.3244156195108769
+    ],
+    "topical_share": [
+     0.125,
+     0.02241690886329618,
+     0.4708948057698615
+    ],
+    "coincidental_share": [
+     0.875,
+     0.5291051942301385,
+     0.9775830911367039
+    ],
+    "not_a_quote_share": [
+     0.0,
+     0.0,
+     0.3244156195108769
+    ]
+   },
+   "topic/calibrated": {
+    "sampled": 1,
+    "judged": 1,
+    "tally": {
+     "coincidental": 1
+    },
+    "meaningful_share": [
+     0.0,
+     0.0,
+     0.7934567085261071
+    ],
+    "topical_share": [
+     0.0,
+     0.0,
+     0.7934567085261071
+    ],
+    "coincidental_share": [
+     1.0,
+     0.20654329147389294,
+     1.0
+    ],
+    "not_a_quote_share": [
+     0.0,
+     0.0,
+     0.7934567085261071
+    ]
+   },
+   "anchor/loose": {
+    "sampled": 8,
+    "judged": 8,
+    "tally": {
+     "coincidental": 5,
+     "meaningful": 2,
+     "not_a_quote": 1
+    },
+    "meaningful_share": [
+     0.25,
+     0.07147768885802765,
+     0.5907301208974108
+    ],
+    "topical_share": [
+     0.0,
+     0.0,
+     0.3244156195108769
+    ],
+    "coincidental_share": [
+     0.625,
+     0.3057378545838018,
+     0.863158240538479
+    ],
+    "not_a_quote_share": [
+     0.125,
+     0.02241690886329618,
+     0.4708948057698615
+    ]
+   },
+   "anchor/calibrated": {
+    "sampled": 32,
+    "judged": 32,
+    "tally": {
+     "not_a_quote": 5,
+     "meaningful": 20,
+     "coincidental": 4,
+     "topical": 3
+    },
+    "meaningful_share": [
+     0.625,
+     0.4525410058952512,
+     0.7706633153404079
+    ],
+    "topical_share": [
+     0.09375,
+     0.032400962626319516,
+     0.24218499335778834
+    ],
+    "coincidental_share": [
+     0.125,
+     0.049700538444743,
+     0.28068649784827965
+    ],
+    "not_a_quote_share": [
+     0.15625,
+     0.06864319106627216,
+     0.31754492553566527
+    ]
+   },
+   "both/loose": {
+    "sampled": 8,
+    "judged": 8,
+    "tally": {
+     "not_a_quote": 3,
+     "meaningful": 1,
+     "coincidental": 3,
+     "topical": 1
+    },
+    "meaningful_share": [
+     0.125,
+     0.02241690886329618,
+     0.4708948057698615
+    ],
+    "topical_share": [
+     0.125,
+     0.02241690886329618,
+     0.4708948057698615
+    ],
+    "coincidental_share": [
+     0.375,
+     0.13684175946152105,
+     0.6942621454161982
+    ],
+    "not_a_quote_share": [
+     0.375,
+     0.13684175946152105,
+     0.6942621454161982
+    ]
+   },
+   "both/calibrated": {
+    "sampled": 32,
+    "judged": 32,
+    "tally": {
+     "meaningful": 10,
+     "coincidental": 6,
+     "topical": 12,
+     "not_a_quote": 4
+    },
+    "meaningful_share": [
+     0.3125,
+     0.17952352116618736,
+     0.4856699969803239
+    ],
+    "topical_share": [
+     0.375,
+     0.2293366846595921,
+     0.5474589941047487
+    ],
+    "coincidental_share": [
+     0.1875,
+     0.08889423936162782,
+     0.3530949575492244
+    ],
+    "not_a_quote_share": [
+     0.125,
+     0.049700538444743,
+     0.28068649784827965
+    ]
+   }
+  }
+ },
+ "judged_top_ranked": {
+  "reader": {
+   "tfidf": {
+    "not_a_quote": 1,
+    "topical": 2,
+    "meaningful": 1
+   },
+   "phrase": {
+    "not_a_quote": 4
+   },
+   "topic": {
+    "coincidental": 1
+   },
+   "anchor": {
+    "topical": 2,
+    "meaningful": 2
+   },
+   "both": {
+    "not_a_quote": 1,
+    "meaningful": 2,
+    "topical": 1
+   }
+  },
+  "model": {
+   "tfidf": {
+    "not_a_quote": 1,
+    "topical": 2,
+    "meaningful": 1
+   },
+   "phrase": {
+    "not_a_quote": 4
+   },
+   "topic": {
+    "coincidental": 1
+   },
+   "anchor": {
+    "topical": 2,
+    "meaningful": 2
+   },
+   "both": {
+    "not_a_quote": 1,
+    "meaningful": 2,
+    "topical": 1
+   }
+  }
+ },
+ "judge_agreement": {
+  "pairs": 95,
+  "same_label": 91,
+  "kappa_four_labels": 0.9419847328244276,
+  "same_on_meaningful_or_not": 92,
+  "kappa_meaningful_or_not": 0.9215955983493811,
+  "confusion": {
+   "coincidental|coincidental": 34,
+   "coincidental|topical": 1,
+   "meaningful|meaningful": 25,
+   "not_a_quote|not_a_quote": 19,
+   "topical|meaningful": 3,
+   "topical|topical": 13
+  }
+ },
+ "judge_disagreements": [
+  {
+   "pair": "52849@02:26:43|P064",
+   "reader": "coincidental",
+   "model": "topical"
+  },
+  {
+   "pair": "52853@02:58:12|P043",
+   "reader": "topical",
+   "model": "meaningful"
+  },
+  {
+   "pair": "52853@02:58:12|P063",
+   "reader": "topical",
+   "model": "meaningful"
+  },
+  {
+   "pair": "52853@02:58:12|P110",
+   "reader": "topical",
+   "model": "meaningful"
+  }
+ ],
+ "way_comparison_fisher_p": {
+  "tfidf|phrase": 0.4455030680006155,
+  "tfidf|anchor": 0.044566814293361526,
+  "tfidf|both": 1.0,
+  "phrase|anchor": 0.31524333931754195,
+  "phrase|both": 0.30549719812701687,
+  "anchor|both": 0.023413854718282796
+ },
+ "meaningful_pair_clusters": {
+  "tfidf": {
+   "meaningful_pairs": 11,
+   "distinct_quotes": 9,
+   "distinct_priorities": 9
+  },
+  "phrase": {
+   "meaningful_pairs": 15,
+   "distinct_quotes": 10,
+   "distinct_priorities": 12
+  },
+  "topic": {
+   "meaningful_pairs": 0,
+   "distinct_quotes": 0,
+   "distinct_priorities": 0
+  },
+  "anchor": {
+   "meaningful_pairs": 20,
+   "distinct_quotes": 12,
+   "distinct_priorities": 7
+  },
+  "both": {
+   "meaningful_pairs": 10,
+   "distinct_quotes": 9,
+   "distinct_priorities": 8
+  }
+ },
+ "both_judges_meaningful_at_calibrated": {
+  "tfidf": {
+   "judged_by_both": 22,
+   "both_meaningful": 8
+  },
+  "phrase": {
+   "judged_by_both": 20,
+   "both_meaningful": 8
+  },
+  "topic": {
+   "judged_by_both": 1,
+   "both_meaningful": 0
+  },
+  "anchor": {
+   "judged_by_both": 18,
+   "both_meaningful": 10
+  },
+  "both": {
+   "judged_by_both": 20,
+   "both_meaningful": 6
+  }
+ },
+ "volume": {
+  "tfidf": {
+   "per_board_meeting": 4,
+   "per_committee_meeting": 2,
+   "weekly": 10,
+   "nightly_average": 1.4285714285714286,
+   "busy_night": 18,
+   "per_priority_per_week": 0.07518796992481203
+  },
+  "phrase": {
+   "per_board_meeting": 22,
+   "per_committee_meeting": 13.833333333333334,
+   "weekly": 63.5,
+   "nightly_average": 9.071428571428571,
+   "busy_night": 94,
+   "per_priority_per_week": 0.4774436090225564
+  },
+  "topic": {
+   "per_board_meeting": 0,
+   "per_committee_meeting": 0.16666666666666666,
+   "weekly": 0.5,
+   "nightly_average": 0.07142857142857142,
+   "busy_night": 1,
+   "per_priority_per_week": 0.0037593984962406013
+  },
+  "anchor": {
+   "per_board_meeting": 6.8,
+   "per_committee_meeting": 5.333333333333333,
+   "weekly": 22.8,
+   "nightly_average": 3.257142857142857,
+   "busy_night": 48,
+   "per_priority_per_week": 0.17142857142857143
+  },
+  "both": {
+   "per_board_meeting": 6.6,
+   "per_committee_meeting": 6.833333333333333,
+   "weekly": 27.1,
+   "nightly_average": 3.8714285714285714,
+   "busy_night": 37,
+   "per_priority_per_week": 0.2037593984962406
+  }
+ },
+ "volume_at_loosest_level": {
+  "tfidf": {
+   "per_board_meeting": 49.8,
+   "per_committee_meeting": 37.166666666666664,
+   "weekly": 161.3,
+   "nightly_average": 23.042857142857144,
+   "busy_night": 176,
+   "per_priority_per_week": 1.212781954887218
+  },
+  "phrase": {
+   "per_board_meeting": 264.2,
+   "per_committee_meeting": 183.83333333333334,
+   "weekly": 815.7,
+   "nightly_average": 116.52857142857144,
+   "busy_night": 889,
+   "per_priority_per_week": 6.133082706766918
+  },
+  "topic": {
+   "per_board_meeting": 160.8,
+   "per_committee_meeting": 158,
+   "weekly": 634.8,
+   "nightly_average": 90.68571428571428,
+   "busy_night": 859,
+   "per_priority_per_week": 4.772932330827067
+  },
+  "anchor": {
+   "per_board_meeting": 140.4,
+   "per_committee_meeting": 86.16666666666667,
+   "weekly": 398.9,
+   "nightly_average": 56.98571428571428,
+   "busy_night": 454,
+   "per_priority_per_week": 2.9992481203007517
+  },
+  "both": {
+   "per_board_meeting": 20.8,
+   "per_committee_meeting": 17.333333333333332,
+   "weekly": 72.8,
+   "nightly_average": 10.4,
+   "busy_night": 88,
+   "per_priority_per_week": 0.5473684210526315
+  }
+ },
+ "per_meeting_candidates": {
+  "tfidf": {
+   "51452": 3,
+   "52251": 1,
+   "52800": 9,
+   "52849": 7,
+   "52901": 0,
+   "52804": 1,
+   "52816": 0,
+   "52831": 1,
+   "52838": 1,
+   "52853": 9,
+   "52871": 0
+  },
+  "phrase": {
+   "51452": 5,
+   "52251": 4,
+   "52800": 43,
+   "52849": 44,
+   "52901": 14,
+   "52804": 3,
+   "52816": 12,
+   "52831": 9,
+   "52838": 5,
+   "52853": 50,
+   "52871": 4
+  },
+  "topic": {
+   "51452": 0,
+   "52251": 0,
+   "52800": 0,
+   "52849": 0,
+   "52901": 0,
+   "52804": 0,
+   "52816": 0,
+   "52831": 0,
+   "52838": 0,
+   "52853": 0,
+   "52871": 1
+  },
+  "anchor": {
+   "51452": 0,
+   "52251": 0,
+   "52800": 9,
+   "52849": 22,
+   "52901": 3,
+   "52804": 0,
+   "52816": 3,
+   "52831": 2,
+   "52838": 1,
+   "52853": 26,
+   "52871": 0
+  },
+  "both": {
+   "51452": 5,
+   "52251": 1,
+   "52800": 14,
+   "52849": 11,
+   "52901": 2,
+   "52804": 4,
+   "52816": 3,
+   "52831": 7,
+   "52838": 3,
+   "52853": 23,
+   "52871": 1
+  }
+ },
+ "per_meeting_candidates_loosest": {
+  "tfidf": {
+   "51452": 28,
+   "52251": 16,
+   "52800": 51,
+   "52849": 89,
+   "52901": 65,
+   "52804": 35,
+   "52816": 26,
+   "52831": 27,
+   "52838": 36,
+   "52853": 87,
+   "52871": 12
+  },
+  "phrase": {
+   "51452": 193,
+   "52251": 101,
+   "52800": 186,
+   "52849": 394,
+   "52901": 447,
+   "52804": 139,
+   "52816": 189,
+   "52831": 133,
+   "52838": 135,
+   "52853": 442,
+   "52871": 65
+  },
+  "topic": {
+   "51452": 54,
+   "52251": 25,
+   "52800": 73,
+   "52849": 389,
+   "52901": 263,
+   "52804": 123,
+   "52816": 84,
+   "52831": 6,
+   "52838": 145,
+   "52853": 470,
+   "52871": 120
+  },
+  "anchor": {
+   "51452": 115,
+   "52251": 76,
+   "52800": 92,
+   "52849": 197,
+   "52901": 222,
+   "52804": 74,
+   "52816": 56,
+   "52831": 59,
+   "52838": 36,
+   "52853": 232,
+   "52871": 60
+  },
+  "both": {
+   "51452": 12,
+   "52251": 4,
+   "52800": 36,
+   "52849": 34,
+   "52901": 18,
+   "52804": 12,
+   "52816": 11,
+   "52831": 14,
+   "52838": 12,
+   "52853": 52,
+   "52871": 3
+  }
+ },
+ "review": {
+  "tfidf": {
+   "triage_s_per_pair": 41.65966386554622,
+   "audio_s_per_pair": 21.2875,
+   "kept_share": 0.34375
+  },
+  "phrase": {
+   "triage_s_per_pair": 46.877040971829146,
+   "audio_s_per_pair": 24.089119170984457,
+   "kept_share": 0.46875
+  },
+  "topic": {
+   "triage_s_per_pair": 55.08403361344538,
+   "audio_s_per_pair": 36.0,
+   "kept_share": 0.0
+  },
+  "anchor": {
+   "triage_s_per_pair": 48.5179526355997,
+   "audio_s_per_pair": 24.957575757575757,
+   "kept_share": 0.625
+  },
+  "both": {
+   "triage_s_per_pair": 44.13127413127413,
+   "audio_s_per_pair": 22.08108108108108,
+   "kept_share": 0.3125
+  }
+ },
+ "review_capacity_pairs_in_30_min": {
+  "tfidf": {
+   "low": 19.94962896226618,
+   "mid": 12.694853483265481,
+   "high": 8.412109546114843
+  },
+  "phrase": {
+   "low": 15.731678315536156,
+   "mid": 9.743881238094875,
+   "high": 6.356632160545762
+  },
+  "topic": {
+   "low": 32.67734553775744,
+   "mid": 32.67734553775744,
+   "high": 32.67734553775744
+  },
+  "anchor": {
+   "low": 12.93880171569177,
+   "mid": 7.729752812158783,
+   "high": 4.94347361090689
+  },
+  "both": {
+   "low": 20.331720613287906,
+   "mid": 13.293294720427713,
+   "high": 8.953815682861688
+  }
+ },
+ "parameters": {
+  "READ_WPM": 238,
+  "SPEECH_WPM": 150,
+  "TRIAGE_OVERHEAD_S": 15,
+  "VERIFY_FIXED_S": {
+   "low": 120,
+   "mid": 270,
+   "high": 480
+  },
+  "WEEKLY_MEETINGS": {
+   "board": 1,
+   "committee": 3
+  },
+  "POOL_SIZES": [
+   133,
+   300,
+   1000
+  ]
+ }
+}
