@@ -15,7 +15,7 @@ Quotes are the transcript's text as published, not checked against the recording
 
 ## Pairing 1: Myrna Melgar and San Francisco Chamber of Commerce on Prop C, the Housing Trust Fund
 
-**Lead for a reporter's look.** Myrna Melgar (Supervisor, District 7) is recorded in the Board of Supervisors transcript of 2026-07-14, at 01:07:48 to 01:08:14, saying the words in 1.1. The published statement from San Francisco Chamber of Commerce, in 1.3, is on the same subject (Prop C, the Housing Trust Fund). 1.5 lists what contributors named like San Francisco Chamber of Commerce reported giving to committees tied to Myrna Melgar, by committee and filing. Two things shown side by side for a reporter to check. Nothing here says why anyone gave money or said anything, or that one led to the other.
+**Lead for a reporter's look.** Myrna Melgar (Supervisor, District 7) is recorded in the Board of Supervisors transcript of 2026-07-14, at 01:07:48 to 01:08:14, saying the words in 1.1. The published statement from San Francisco Chamber of Commerce, in 1.3, is on the same subject (Prop C, the Housing Trust Fund). 1.5 lists what the Ethics Commission's filings show for committees and contributors named like San Francisco Chamber of Commerce: contributions to committees tied to Myrna Melgar and independent expenditure reports that name Myrna Melgar, by committee and filing. Two things shown side by side for a reporter to check. Nothing here says why anyone gave money or said anything, or that one led to the other.
 
 ### 1.1 The official's words, as the city's caption transcript publishes them
 
@@ -50,7 +50,7 @@ Quotes are the transcript's text as published, not checked against the recording
 
 ### 1.5 Money
 
-By committee and filing, in [Money 1](#money-1-san-francisco-chamber-of-commerce-contributions-reported-to-committees-tied-to-myrna-melgar) below.
+By committee and filing, in [Money 1](#money-1-san-francisco-chamber-of-commerce-contributions-and-independent-expenditures-reported-beside-myrna-melgar) below.
 
 ### 1.6 Where a person's judgement was needed
 
@@ -68,7 +68,7 @@ By committee and filing, in [Money 1](#money-1-san-francisco-chamber-of-commerce
 
 ## Pairing 2: Chyanne Chen and Neighbors for a Better San Francisco (Blueprint) on Prop B, the public bank
 
-**Lead for a reporter's look.** Chyanne Chen (Supervisor, District 11) is recorded in the Board of Supervisors transcript of 2026-07-07, at 00:15:56 to 00:16:27, saying the words in 2.1. The published statement from Neighbors for a Better San Francisco (Blueprint), in 2.3, is on the same subject (Prop B, the public bank). 2.5 lists what contributors named like Neighbors for a Better San Francisco (Blueprint) reported giving to committees tied to Chyanne Chen, by committee and filing. Two things shown side by side for a reporter to check. Nothing here says why anyone gave money or said anything, or that one led to the other.
+**Lead for a reporter's look.** Chyanne Chen (Supervisor, District 11) is recorded in the Board of Supervisors transcript of 2026-07-07, at 00:15:56 to 00:16:27, saying the words in 2.1. The published statement from Neighbors for a Better San Francisco (Blueprint), in 2.3, is on the same subject (Prop B, the public bank). 2.5 lists what the Ethics Commission's filings show for committees and contributors named like Neighbors for a Better San Francisco (Blueprint): contributions to committees tied to Chyanne Chen and independent expenditure reports that name Chyanne Chen, by committee and filing. Two things shown side by side for a reporter to check. Nothing here says why anyone gave money or said anything, or that one led to the other.
 
 ### 2.1 The official's words, as the city's caption transcript publishes them
 
@@ -105,7 +105,7 @@ By committee and filing, in [Money 1](#money-1-san-francisco-chamber-of-commerce
 
 ### 2.5 Money
 
-By committee and filing, in [Money 2](#money-2-neighbors-for-a-better-san-francisco-blueprint-contributions-reported-to-committees-tied-to-chyanne-chen) below.
+By committee and filing, in [Money 2](#money-2-neighbors-for-a-better-san-francisco-blueprint-contributions-and-independent-expenditures-reported-beside-chyanne-chen) below.
 
 ### 2.6 Where a person's judgement was needed
 
@@ -123,7 +123,7 @@ By committee and filing, in [Money 2](#money-2-neighbors-for-a-better-san-franci
 
 ## Pairing 3: Bilal Mahmood and GrowSF on Prop J, the foreclosure transfer tax exemption
 
-**Lead for a reporter's look.** Bilal Mahmood (Supervisor, District 5) is recorded in the Budget and Finance Committee transcript of 2026-07-15, at 02:52:31 to 02:52:42, saying the words in 3.1. The published statement from GrowSF, in 3.3, is on the same subject (Prop J, the foreclosure transfer tax exemption). 3.5 lists what contributors named like GrowSF reported giving to committees tied to Bilal Mahmood, by committee and filing. Two things shown side by side for a reporter to check. Nothing here says why anyone gave money or said anything, or that one led to the other.
+**Lead for a reporter's look.** Bilal Mahmood (Supervisor, District 5) is recorded in the Budget and Finance Committee transcript of 2026-07-15, at 02:52:31 to 02:52:42, saying the words in 3.1. The published statement from GrowSF, in 3.3, is on the same subject (Prop J, the foreclosure transfer tax exemption). 3.5 lists what the Ethics Commission's filings show for committees and contributors named like GrowSF: contributions to committees tied to Bilal Mahmood and independent expenditure reports that name Bilal Mahmood, by committee and filing. Two things shown side by side for a reporter to check. Nothing here says why anyone gave money or said anything, or that one led to the other.
 
 ### 3.1 The official's words, as the city's caption transcript publishes them
 
@@ -160,7 +160,7 @@ By committee and filing, in [Money 2](#money-2-neighbors-for-a-better-san-franci
 
 ### 3.5 Money
 
-By committee and filing, in [Money 3](#money-3-growsf-contributions-reported-to-committees-tied-to-bilal-mahmood) below.
+By committee and filing, in [Money 3](#money-3-growsf-contributions-and-independent-expenditures-reported-beside-bilal-mahmood) below.
 
 ### 3.6 Where a person's judgement was needed
 
@@ -178,7 +178,7 @@ By committee and filing, in [Money 3](#money-3-growsf-contributions-reported-to-
 
 ## Pairing 4: Bilal Mahmood and Neighbors for a Better San Francisco (Blueprint) on Prop J, the foreclosure transfer tax exemption
 
-**Lead for a reporter's look.** Bilal Mahmood (Supervisor, District 5) is recorded in the Budget and Finance Committee transcript of 2026-07-15, at 02:53:29 to 02:53:57, saying the words in 4.1. The published statement from Neighbors for a Better San Francisco (Blueprint), in 4.3, is on the same subject (Prop J, the foreclosure transfer tax exemption). 4.5 lists what contributors named like Neighbors for a Better San Francisco (Blueprint) reported giving to committees tied to Bilal Mahmood, by committee and filing. Two things shown side by side for a reporter to check. Nothing here says why anyone gave money or said anything, or that one led to the other.
+**Lead for a reporter's look.** Bilal Mahmood (Supervisor, District 5) is recorded in the Budget and Finance Committee transcript of 2026-07-15, at 02:53:29 to 02:53:57, saying the words in 4.1. The published statement from Neighbors for a Better San Francisco (Blueprint), in 4.3, is on the same subject (Prop J, the foreclosure transfer tax exemption). 4.5 lists what the Ethics Commission's filings show for committees and contributors named like Neighbors for a Better San Francisco (Blueprint): contributions to committees tied to Bilal Mahmood and independent expenditure reports that name Bilal Mahmood, by committee and filing. Two things shown side by side for a reporter to check. Nothing here says why anyone gave money or said anything, or that one led to the other.
 
 ### 4.1 The official's words, as the city's caption transcript publishes them
 
@@ -215,7 +215,7 @@ By committee and filing, in [Money 3](#money-3-growsf-contributions-reported-to-
 
 ### 4.5 Money
 
-By committee and filing, in [Money 4](#money-4-neighbors-for-a-better-san-francisco-blueprint-contributions-reported-to-committees-tied-to-bilal-mahmood) below.
+By committee and filing, in [Money 4](#money-4-neighbors-for-a-better-san-francisco-blueprint-contributions-and-independent-expenditures-reported-beside-bilal-mahmood) below.
 
 ### 4.6 Where a person's judgement was needed
 
@@ -232,7 +232,7 @@ By committee and filing, in [Money 4](#money-4-neighbors-for-a-better-san-franci
 
 ## Pairing 5: Shamann Walton and San Francisco Chamber of Commerce on Prop E, City Administrator powers
 
-**Lead for a reporter's look.** Shamann Walton (Supervisor, District 10) is recorded in the Board of Supervisors transcript of 2026-07-14, at 02:39:58 to 02:40:56, saying the words in 5.1. The published statement from San Francisco Chamber of Commerce, in 5.3, is on the same subject (Prop E, City Administrator powers). 5.5 lists what contributors named like San Francisco Chamber of Commerce reported giving to committees tied to Shamann Walton, by committee and filing. Two things shown side by side for a reporter to check. Nothing here says why anyone gave money or said anything, or that one led to the other.
+**Lead for a reporter's look.** Shamann Walton (Supervisor, District 10) is recorded in the Board of Supervisors transcript of 2026-07-14, at 02:39:58 to 02:40:56, saying the words in 5.1. The published statement from San Francisco Chamber of Commerce, in 5.3, is on the same subject (Prop E, City Administrator powers). 5.5 lists what the Ethics Commission's filings show for committees and contributors named like San Francisco Chamber of Commerce: contributions to committees tied to Shamann Walton and independent expenditure reports that name Shamann Walton, by committee and filing. Two things shown side by side for a reporter to check. Nothing here says why anyone gave money or said anything, or that one led to the other.
 
 ### 5.1 The official's words, as the city's caption transcript publishes them
 
@@ -272,7 +272,7 @@ By committee and filing, in [Money 4](#money-4-neighbors-for-a-better-san-franci
 
 ### 5.5 Money
 
-By committee and filing, in [Money 5](#money-5-san-francisco-chamber-of-commerce-contributions-reported-to-committees-tied-to-shamann-walton) below.
+By committee and filing, in [Money 5](#money-5-san-francisco-chamber-of-commerce-contributions-and-independent-expenditures-reported-beside-shamann-walton) below.
 
 ### 5.6 Where a person's judgement was needed
 
@@ -290,7 +290,7 @@ By committee and filing, in [Money 5](#money-5-san-francisco-chamber-of-commerce
 
 ## Pairing 6: Chyanne Chen and GrowSF on inclusionary housing fees and the Housing Trust Fund
 
-**Lead for a reporter's look.** Chyanne Chen (Supervisor, District 11) is recorded in the Board of Supervisors transcript of 2026-07-14, at 02:57:26 to 02:57:52, saying the words in 6.1. The published statement from GrowSF, in 6.3, is on the same subject (inclusionary housing fees and the Housing Trust Fund). 6.5 lists what contributors named like GrowSF reported giving to committees tied to Chyanne Chen, by committee and filing. Two things shown side by side for a reporter to check. Nothing here says why anyone gave money or said anything, or that one led to the other.
+**Lead for a reporter's look.** Chyanne Chen (Supervisor, District 11) is recorded in the Board of Supervisors transcript of 2026-07-14, at 02:57:26 to 02:57:52, saying the words in 6.1. The published statement from GrowSF, in 6.3, is on the same subject (inclusionary housing fees and the Housing Trust Fund). 6.5 lists what the Ethics Commission's filings show for committees and contributors named like GrowSF: contributions to committees tied to Chyanne Chen and independent expenditure reports that name Chyanne Chen, by committee and filing. Two things shown side by side for a reporter to check. Nothing here says why anyone gave money or said anything, or that one led to the other.
 
 ### 6.1 The official's words, as the city's caption transcript publishes them
 
@@ -326,7 +326,7 @@ By committee and filing, in [Money 5](#money-5-san-francisco-chamber-of-commerce
 
 ### 6.5 Money
 
-By committee and filing, in [Money 6](#money-6-growsf-contributions-reported-to-committees-tied-to-chyanne-chen) below.
+By committee and filing, in [Money 6](#money-6-growsf-contributions-and-independent-expenditures-reported-beside-chyanne-chen) below.
 
 ### 6.6 Where a person's judgement was needed
 
@@ -344,9 +344,9 @@ By committee and filing, in [Money 6](#money-6-growsf-contributions-reported-to-
 
 ## Money
 
-One section per pairing, so that the pairings above keep their place. Each searches every committee tied to the official in `data/committees.json` for contributors whose name contains the donor's name words.
+One section per pairing, so that the pairings above keep their place. Each has two parts. The first searches every committee tied to the official in `data/committees.json` for contributions from contributors whose name holds the donor's name words. The second lists independent expenditure reports that name the official, filed by committees whose own name holds the same words: money the donor's committee spent itself, which is not money given to the official's committees. The name words come from `money.py` and were checked against the names read in the filings (section "Names read in the filings" below).
 
-### Money 1: San Francisco Chamber of Commerce, contributions reported to committees tied to Myrna Melgar
+### Money 1: San Francisco Chamber of Commerce, contributions and independent expenditures reported beside Myrna Melgar
 
 Committees tied to the official (from `data/committees.json`; searched together in one query):
 
@@ -355,35 +355,166 @@ Committees tied to the official (from `data/committees.json`; searched together 
 - Myrna Melgar for Supervisor 2020 (filer 186079773, Candidate or Officeholder, terminated): the official's own candidate or officeholder committee
 - Myrna Melgar for Democratic County Central Committee AD 19 2016 (filer 159911091, Candidate or Officeholder, terminated): the official's own candidate or officeholder committee
 
-**Not retrieved in this build.** Run `python build_pairings.py` with network access to the Ethics Commission dataset to fill this section.
+#### Contributions to the official's committees from contributors named like the donor
 
-### Money 2: Neighbors for a Better San Francisco (Blueprint), contributions reported to committees tied to Chyanne Chen
+Source: San Francisco Ethics Commission campaign finance Transactions dataset on DataSF ([https://data.sf.gov/d/pitq-e56w](https://data.sf.gov/d/pitq-e56w)), queried by contributor name (the dataset has no donor identifier); retrieved 2026-10-30; rows last loaded not given. Query: <https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+transaction_first_name%2C+transaction_last_name%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27A%27%2C%27F497P1%27%29+AND+filer_nid+in+%28%27159911091%27%2C%27186079773%27%2C%27204210736%27%2C%27208194309%27%29+AND+%28%28upper%28transaction_last_name%29+like+%27%25SAN+FRANCISCO+CHAMBER+OF+COMMERCE%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25SF+CHAMBER%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25SF+FORWARD%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000>
+
+Control, so that no row can be told from an empty read: Schedule A rows held by each of these committees, whoever the contributor (<https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+count%28%2A%29+as+rows_a&%24where=form_type+%3D+%27A%27+AND+filer_nid+in+%28%27159911091%27%2C%27186079773%27%2C%27204210736%27%2C%27208194309%27%29&%24group=filer_nid&%24limit=500>): 208194309 635; 204210736 0; 186079773 817; 159911091 19.
+
+**No row found.** No Schedule A or 24-hour row in these committees carries a contributor name matching the donor's name words (SAN FRANCISCO CHAMBER OF COMMERCE; SF CHAMBER; SF FORWARD). That is a complete answer for these committees and these name words only: unitemized contributions carry no name, other spellings would be missed, and committees not in the list are not searched.
+
+#### Independent expenditure reports naming the official, filed by committees named like the donor
+
+Money the committee spent itself on communications about the official, as it reported it; it was not given to the official's committees. Rows are the 24-hour reports (form 496) in which the committee names the official as supported or opposed; the candidate, office and district are as filed, and a candidate with the same surname but another given name is left out. Query: <https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+support_oppose_code%2C+candidate_last_name%2C+office_description%2C+district_number%2C+transaction_description%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27F496%27%2C%27F465P3%27%29+AND+upper%28candidate_last_name%29+like+%27%25MELGAR%25%27+AND+%28%28upper%28filer_name%29+like+%27%25SAN+FRANCISCO+CHAMBER+OF+COMMERCE%25%27%29+OR+%28upper%28filer_name%29+like+%27%25SF+CHAMBER%25%27%29+OR+%28upper%28filer_name%29+like+%27%25SF+FORWARD%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000>
+
+**No row found.** No independent expenditure report filed by a committee whose name holds the donor's name words (SAN FRANCISCO CHAMBER OF COMMERCE; SF CHAMBER; SF FORWARD) names Myrna Melgar as candidate.
+
+A committee's periodic report (Schedule E) may list the same payments; those rows carry no candidate field, so they cannot be tied to the official and are not read or added.
+
+Looser name patterns (CHAMBER OF COMMERCE; SF FORWARD; SAN FRANCISCO FORWARD), read for the same committees and the same official, find 0 contribution rows and 0 independent expenditure rows (<https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+transaction_first_name%2C+transaction_last_name%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27A%27%2C%27F497P1%27%29+AND+filer_nid+in+%28%27159911091%27%2C%27186079773%27%2C%27204210736%27%2C%27208194309%27%29+AND+%28%28upper%28transaction_last_name%29+like+%27%25CHAMBER+OF+COMMERCE%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25SF+FORWARD%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25SAN+FRANCISCO+FORWARD%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000>, <https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+support_oppose_code%2C+candidate_last_name%2C+office_description%2C+district_number%2C+transaction_description%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27F496%27%2C%27F465P3%27%29+AND+upper%28candidate_last_name%29+like+%27%25MELGAR%25%27+AND+%28%28upper%28filer_name%29+like+%27%25CHAMBER+OF+COMMERCE%25%27%29+OR+%28upper%28filer_name%29+like+%27%25SF+FORWARD%25%27%29+OR+%28upper%28filer_name%29+like+%27%25SAN+FRANCISCO+FORWARD%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000>).
+
+Committees in the dataset whose name holds the surname "Melgar" and that are not in the list above (<https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+filer_type%2C+count%28%2A%29+as+rows_n&%24where=upper%28filer_name%29+like+%27%25MELGAR%25%27&%24group=filer_nid%2C+filer_name%2C+filer_type&%24order=filer_nid&%24limit=500>): none. A person reads these names to see whether any is the official's.
+
+Not added together across committees, filings, forms, offices or between the two parts above. Contributors and committees named like the donor were matched on words in the name (SAN FRANCISCO CHAMBER OF COMMERCE; SF CHAMBER; SF FORWARD); the names read in the filings for this donor are listed under "Names read in the filings".
+
+### Money 2: Neighbors for a Better San Francisco (Blueprint), contributions and independent expenditures reported beside Chyanne Chen
 
 Committees tied to the official (from `data/committees.json`; searched together in one query):
 
 - Chyanne Chen for Supervisor 2024 (filer 210823617, Candidate or Officeholder, terminated): the official's own candidate or officeholder committee
 
-**Not retrieved in this build.** Run `python build_pairings.py` with network access to the Ethics Commission dataset to fill this section.
+#### Contributions to the official's committees from contributors named like the donor
 
-### Money 3: GrowSF, contributions reported to committees tied to Bilal Mahmood
+Source: San Francisco Ethics Commission campaign finance Transactions dataset on DataSF ([https://data.sf.gov/d/pitq-e56w](https://data.sf.gov/d/pitq-e56w)), queried by contributor name (the dataset has no donor identifier); retrieved 2026-10-30; rows last loaded not given. Query: <https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+transaction_first_name%2C+transaction_last_name%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27A%27%2C%27F497P1%27%29+AND+filer_nid+in+%28%27210823617%27%29+AND+%28%28upper%28transaction_last_name%29+like+%27%25NEIGHBORS+FOR+A+BETTER+SAN+FRANCISCO%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000>
+
+Control, so that no row can be told from an empty read: Schedule A rows held by each of these committees, whoever the contributor (<https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+count%28%2A%29+as+rows_a&%24where=form_type+%3D+%27A%27+AND+filer_nid+in+%28%27210823617%27%29&%24group=filer_nid&%24limit=500>): 210823617 678.
+
+**No row found.** No Schedule A or 24-hour row in these committees carries a contributor name matching the donor's name words (NEIGHBORS FOR A BETTER SAN FRANCISCO). That is a complete answer for these committees and these name words only: unitemized contributions carry no name, other spellings would be missed, and committees not in the list are not searched.
+
+#### Independent expenditure reports naming the official, filed by committees named like the donor
+
+Money the committee spent itself on communications about the official, as it reported it; it was not given to the official's committees. Rows are the 24-hour reports (form 496) in which the committee names the official as supported or opposed; the candidate, office and district are as filed, and a candidate with the same surname but another given name is left out. Query: <https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+support_oppose_code%2C+candidate_last_name%2C+office_description%2C+district_number%2C+transaction_description%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27F496%27%2C%27F465P3%27%29+AND+upper%28candidate_last_name%29+like+%27%25CHEN%25%27+AND+%28%28upper%28filer_name%29+like+%27%25NEIGHBORS+FOR+A+BETTER+SAN+FRANCISCO%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000>
+
+**No row found.** No independent expenditure report filed by a committee whose name holds the donor's name words (NEIGHBORS FOR A BETTER SAN FRANCISCO) names Chyanne Chen as candidate.
+
+A committee's periodic report (Schedule E) may list the same payments; those rows carry no candidate field, so they cannot be tied to the official and are not read or added.
+
+Looser name patterns (NEIGHBORS FOR A BETTER; BLUEPRINT), read for the same committees and the same official, find 0 contribution rows and 0 independent expenditure rows (<https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+transaction_first_name%2C+transaction_last_name%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27A%27%2C%27F497P1%27%29+AND+filer_nid+in+%28%27210823617%27%29+AND+%28%28upper%28transaction_last_name%29+like+%27%25NEIGHBORS+FOR+A+BETTER%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25BLUEPRINT%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000>, <https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+support_oppose_code%2C+candidate_last_name%2C+office_description%2C+district_number%2C+transaction_description%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27F496%27%2C%27F465P3%27%29+AND+upper%28candidate_last_name%29+like+%27%25CHEN%25%27+AND+%28%28upper%28filer_name%29+like+%27%25NEIGHBORS+FOR+A+BETTER%25%27%29+OR+%28upper%28filer_name%29+like+%27%25BLUEPRINT%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000>).
+
+Committees in the dataset whose name holds the surname "Chen" and that are not in the list above (<https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+filer_type%2C+count%28%2A%29+as+rows_n&%24where=upper%28filer_name%29+like+%27%25CHEN%25%27&%24group=filer_nid%2C+filer_name%2C+filer_type&%24order=filer_nid&%24limit=500>): Jean Chen (filer 158359410, Major Donor); Queena Chen for San Francisco Democratic County Central Committee 2020 (filer 183244106, Candidate or Officeholder); Michael Chen for Democratic County Central Committee 2020 (filer 183385842, Candidate or Officeholder); Maurice Chenier for San Francisco District Attorney Committee 2022 (filer 205693494, Candidate or Officeholder); Mike Chen for Democratic County Central Committee 2024 (filer 208649873, Candidate or Officeholder); Queena Chen for SF Democratic County Central Committee 2024 (filer 208689319, Candidate or Officeholder); Herald Chen (filer 211723815, Major Donor); Courtney Chenette (filer 212255667, Major Donor); Committee to Elect Claudine Cheng for District 3 Supervisor (filer 6666878, Candidate or Officeholder). A person reads these names to see whether any is the official's.
+
+Not added together across committees, filings, forms, offices or between the two parts above. Contributors and committees named like the donor were matched on words in the name (NEIGHBORS FOR A BETTER SAN FRANCISCO); the names read in the filings for this donor are listed under "Names read in the filings".
+
+### Money 3: GrowSF, contributions and independent expenditures reported beside Bilal Mahmood
 
 Committees tied to the official (from `data/committees.json`; searched together in one query):
 
 - Bilal Mahmood for DCCC Member 2024 (filer 208655996, Candidate or Officeholder, terminated): the official's own candidate or officeholder committee
 - Bilal Mahmood for Supervisor 2024 (filer 209865652, Candidate or Officeholder, active): the official's own candidate or officeholder committee
 
-**Not retrieved in this build.** Run `python build_pairings.py` with network access to the Ethics Commission dataset to fill this section.
+#### Contributions to the official's committees from contributors named like the donor
 
-### Money 4: Neighbors for a Better San Francisco (Blueprint), contributions reported to committees tied to Bilal Mahmood
+Source: San Francisco Ethics Commission campaign finance Transactions dataset on DataSF ([https://data.sf.gov/d/pitq-e56w](https://data.sf.gov/d/pitq-e56w)), queried by contributor name (the dataset has no donor identifier); retrieved 2026-10-30; rows last loaded not given. Query: <https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+transaction_first_name%2C+transaction_last_name%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27A%27%2C%27F497P1%27%29+AND+filer_nid+in+%28%27208655996%27%2C%27209865652%27%29+AND+%28%28upper%28transaction_last_name%29+like+%27%25GROWSF%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25GROW+SF%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000>
+
+Control, so that no row can be told from an empty read: Schedule A rows held by each of these committees, whoever the contributor (<https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+count%28%2A%29+as+rows_a&%24where=form_type+%3D+%27A%27+AND+filer_nid+in+%28%27208655996%27%2C%27209865652%27%29&%24group=filer_nid&%24limit=500>): 208655996 162; 209865652 922.
+
+**No row found.** No Schedule A or 24-hour row in these committees carries a contributor name matching the donor's name words (GROWSF; GROW SF). That is a complete answer for these committees and these name words only: unitemized contributions carry no name, other spellings would be missed, and committees not in the list are not searched.
+
+#### Independent expenditure reports naming the official, filed by committees named like the donor
+
+Money the committee spent itself on communications about the official, as it reported it; it was not given to the official's committees. Rows are the 24-hour reports (form 496) in which the committee names the official as supported or opposed; the candidate, office and district are as filed, and a candidate with the same surname but another given name is left out. Query: <https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+support_oppose_code%2C+candidate_last_name%2C+office_description%2C+district_number%2C+transaction_description%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27F496%27%2C%27F465P3%27%29+AND+upper%28candidate_last_name%29+like+%27%25MAHMOOD%25%27+AND+%28%28upper%28filer_name%29+like+%27%25GROWSF%25%27%29+OR+%28upper%28filer_name%29+like+%27%25GROW+SF%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000>
+
+**Coalition to Grow San Francisco - Grow SF PAC** (filer 201619433), reports naming the candidate for Board Member, district 17
+
+| Form | Filing id | Filing date | Filed as | Expenditure date | Amount | Supports or opposes | Candidate as filed | Description as filed | Counted |
+|---|---|---|---|---|---|---|---|---|---|
+| 24-hour report (496) | 209989944 | 2024-01-31 | FiledOriginal v1 | 2024-01-21 | $19.59 | supports | Bilal Mahmood | Online Ads | yes |
+| 24-hour report (496) | 209989944 | 2024-01-31 | FiledOriginal v1 | 2024-01-24 | $14.11 | supports | Bilal Mahmood | Online Ads | yes |
+| 24-hour report (496) | 209989944 | 2024-01-31 | FiledOriginal v1 | 2024-01-26 | $156.79 | supports | Bilal Mahmood | Online Ads | yes |
+| 24-hour report (496) | 209989944 | 2024-01-31 | FiledOriginal v1 | 2024-01-30 | $391.97 | supports | Bilal Mahmood | Online Ads | yes |
+| 24-hour report (496) | 209989944 | 2024-01-31 | FiledOriginal v1 | 2024-01-30 | $1,749.79 | supports | Bilal Mahmood | Online Ads | yes |
+| 24-hour report (496) | 209989944 | 2024-01-31 | FiledOriginal v1 | 2024-01-31 | $47.03 | supports | Bilal Mahmood | Design services | yes |
+
+Total for this committee, this office and these reports: **$2,379.28** over 6 24-hour rows.
+
+**Coalition to Grow San Francisco - Grow SF PAC** (filer 201619433), reports naming the candidate for SUPERVISOR, district 5
+
+| Form | Filing id | Filing date | Filed as | Expenditure date | Amount | Supports or opposes | Candidate as filed | Description as filed | Counted |
+|---|---|---|---|---|---|---|---|---|---|
+| 24-hour report (496) | 212211516 | 2024-09-30 | FiledOriginal v1 | 2024-09-29 | $1,470.59 | supports | BILAL MAHMOOD | IND EXP OF DIGITAL ADVERTISEMENT. | yes |
+| 24-hour report (496) | 212232415 | 2024-10-02 | FiledOriginal v1 | 2024-10-01 | $35.29 | supports | BILAL MAHMOOD | IND EXP OF TRANSLATION SERVICES. | yes |
+| 24-hour report (496) | 212232415 | 2024-10-02 | FiledOriginal v1 | 2024-10-01 | $1,955.52 | supports | BILAL MAHMOOD | IND EXP OF TELEVISION ADVERTISEMENT. | yes |
+| 24-hour report (496) | 212232415 | 2024-10-02 | FiledOriginal v1 | 2024-10-01 | $2,627.45 | supports | BILAL MAHMOOD | IND EXP OF DIGITAL ADVERTISEMENT. | yes |
+| 24-hour report (496) | 212232415 | 2024-10-02 | FiledOriginal v1 | 2024-10-01 | $3,431.37 | supports | BILAL MAHMOOD | IND EXP OF TELEVISION ADVERTISEMENT. | yes |
+| 24-hour report (496) | 212232415 | 2024-10-02 | FiledOriginal v1 | 2024-10-01 | $156.86 | supports | BILAL MAHMOOD | IND EXP OF DESIGN SERVICES. | yes |
+| 24-hour report (496) | 212259496 | 2024-10-07 | FiledAmendment v2 | 2024-10-03 | $243.11 | supports | BILAL MAHMOOD | IND EXP OF ADVERTISEMENT PRODUCTION. | yes |
+| 24-hour report (496) | 212259496 | 2024-10-07 | FiledAmendment v2 | 2024-10-03 | $784.31 | supports | BILAL MAHMOOD | IND EXP OF DIGITAL ADVERTISEMENT. | yes |
+| 24-hour report (496) | 212453813 | 2024-10-29 | FiledOriginal v1 | 2024-10-28 | $4,235.29 | supports | BILAL MAHMOOD | IND EXP OF DIGITAL ADVERTISEMENT. | yes |
+
+Total for this committee, this office and these reports: **$14,939.79** over 9 24-hour rows.
+
+**Coalition to Grow San Francisco - Grow SF PAC Opposing Preston for Supervisor 2024** (filer 205575753), reports naming the candidate for Supervisor, district 5
+
+| Form | Filing id | Filing date | Filed as | Expenditure date | Amount | Supports or opposes | Candidate as filed | Description as filed | Counted |
+|---|---|---|---|---|---|---|---|---|---|
+| 24-hour report (496) | 212139607 | 2024-09-23 | FiledAmendment v6 | 2024-09-05 | $6,590.00 | supports | Bilal Mahmood | Marketing Research - Swayable, $7640 | yes |
+| 24-hour report (496) | 212139607 | 2024-09-23 | FiledAmendment v6 | 2024-09-05 | $2,500.00 | supports | Bilal Mahmood | Poll - Fairbank, Maslin, Maullin, Metz, & Associates (FM3 Research), $2500 | yes |
+| 24-hour report (496) | 212139607 | 2024-09-23 | FiledAmendment v6 | 2024-09-05 | $61,185.25 | supports | Bilal Mahmood | Billboards - Clear Channel Outdoor, $61185.25 | yes |
+| 24-hour report (496) | 212139607 | 2024-09-23 | FiledAmendment v6 | 2024-09-05 | $9,900.00 | supports | Bilal Mahmood | Online ads - Google, $9900 | yes |
+| 24-hour report (496) | 212139607 | 2024-09-23 | FiledAmendment v6 | 2024-09-05 | $4,904.75 | supports | Bilal Mahmood | Online ads - Three Point Media, LLC, video production, $4904.75 | yes |
+| 24-hour report (496) | 212139607 | 2024-09-23 | FiledAmendment v6 | 2024-09-05 | $0.01 | supports | Bilal Mahmood | Online ads | yes |
+| 24-hour report (496) | 212128086 | 2024-09-21 | FiledOriginal v1 | 2024-09-20 | $10,000.00 | supports | Bilal Mahmood | Online ads - META Platforms, $10,000 | yes |
+| 24-hour report (496) | 212242874 | 2024-10-04 | FiledOriginal v1 | 2024-10-03 | $0.01 | supports | Bilal Mahmood | Mailer | yes |
+| 24-hour report (496) | 212242874 | 2024-10-04 | FiledOriginal v1 | 2024-10-03 | $6,130.34 | supports | Bilal Mahmood | Mailer - Snap Pack Mail, printing, shipping and postage, $6130.34 | yes |
+| 24-hour report (496) | 212242874 | 2024-10-04 | FiledOriginal v1 | 2024-10-03 | $0.01 | supports | Bilal Mahmood | Mailer | yes |
+| 24-hour report (496) | 212242874 | 2024-10-04 | FiledOriginal v1 | 2024-10-03 | $0.01 | supports | Bilal Mahmood | Mailer | yes |
+| 24-hour report (496) | 212249096 | 2024-10-05 | FiledOriginal v1 | 2024-10-04 | $10,230.00 | supports | Bilal Mahmood | Online ads - YouTube, $10230 | yes |
+| 24-hour report (496) | 212255368 | 2024-10-07 | FiledOriginal v1 | 2024-10-07 | $3,349.01 | supports | Bilal Mahmood | Video Production - Three Point Media, LLC, $3349.01 | yes |
+| 24-hour report (496) | 212271053 | 2024-10-09 | FiledOriginal v1 | 2024-10-08 | $6,270.00 | supports | Bilal Mahmood | Online ads - YouTube, $6270 | yes |
+| 24-hour report (496) | 212343992 | 2024-10-20 | FiledOriginal v1 | 2024-10-10 | $1,491.07 | supports | Bilal Mahmood | Voter guide | yes |
+| 24-hour report (496) | 212343992 | 2024-10-20 | FiledOriginal v1 | 2024-10-10 | $211.78 | supports | Bilal Mahmood | Staff time | yes |
+| 24-hour report (496) | 212343992 | 2024-10-20 | FiledOriginal v1 | 2024-10-20 | $8,407.99 | supports | Bilal Mahmood | Mailer - Snap Pack Mail, printing and postage, $8407.99 | yes |
+
+Total for this committee, this office and these reports: **$131,170.23** over 17 24-hour rows.
+
+A committee's periodic report (Schedule E) may list the same payments; those rows carry no candidate field, so they cannot be tied to the official and are not read or added.
+
+Looser name patterns (GROWSF; GROW SF; GROW SAN FRANCISCO), read for the same committees and the same official, find 0 contribution rows and 32 independent expenditure rows (<https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+transaction_first_name%2C+transaction_last_name%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27A%27%2C%27F497P1%27%29+AND+filer_nid+in+%28%27208655996%27%2C%27209865652%27%29+AND+%28%28upper%28transaction_last_name%29+like+%27%25GROWSF%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25GROW+SF%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25GROW+SAN+FRANCISCO%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000>, <https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+support_oppose_code%2C+candidate_last_name%2C+office_description%2C+district_number%2C+transaction_description%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27F496%27%2C%27F465P3%27%29+AND+upper%28candidate_last_name%29+like+%27%25MAHMOOD%25%27+AND+%28%28upper%28filer_name%29+like+%27%25GROWSF%25%27%29+OR+%28upper%28filer_name%29+like+%27%25GROW+SF%25%27%29+OR+%28upper%28filer_name%29+like+%27%25GROW+SAN+FRANCISCO%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000>).
+
+Committees in the dataset whose name holds the surname "Mahmood" and that are not in the list above (<https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+filer_type%2C+count%28%2A%29+as+rows_n&%24where=upper%28filer_name%29+like+%27%25MAHMOOD%25%27&%24group=filer_nid%2C+filer_name%2C+filer_type&%24order=filer_nid&%24limit=500>): none. A person reads these names to see whether any is the official's.
+
+Not added together across committees, filings, forms, offices or between the two parts above. Contributors and committees named like the donor were matched on words in the name (GROWSF; GROW SF); the names read in the filings for this donor are listed under "Names read in the filings".
+
+### Money 4: Neighbors for a Better San Francisco (Blueprint), contributions and independent expenditures reported beside Bilal Mahmood
 
 Committees tied to the official (from `data/committees.json`; searched together in one query):
 
 - Bilal Mahmood for DCCC Member 2024 (filer 208655996, Candidate or Officeholder, terminated): the official's own candidate or officeholder committee
 - Bilal Mahmood for Supervisor 2024 (filer 209865652, Candidate or Officeholder, active): the official's own candidate or officeholder committee
 
-**Not retrieved in this build.** Run `python build_pairings.py` with network access to the Ethics Commission dataset to fill this section.
+#### Contributions to the official's committees from contributors named like the donor
 
-### Money 5: San Francisco Chamber of Commerce, contributions reported to committees tied to Shamann Walton
+Source: San Francisco Ethics Commission campaign finance Transactions dataset on DataSF ([https://data.sf.gov/d/pitq-e56w](https://data.sf.gov/d/pitq-e56w)), queried by contributor name (the dataset has no donor identifier); retrieved 2026-10-30; rows last loaded not given. Query: <https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+transaction_first_name%2C+transaction_last_name%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27A%27%2C%27F497P1%27%29+AND+filer_nid+in+%28%27208655996%27%2C%27209865652%27%29+AND+%28%28upper%28transaction_last_name%29+like+%27%25NEIGHBORS+FOR+A+BETTER+SAN+FRANCISCO%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000>
+
+Control, so that no row can be told from an empty read: Schedule A rows held by each of these committees, whoever the contributor (<https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+count%28%2A%29+as+rows_a&%24where=form_type+%3D+%27A%27+AND+filer_nid+in+%28%27208655996%27%2C%27209865652%27%29&%24group=filer_nid&%24limit=500>): 208655996 162; 209865652 922.
+
+**No row found.** No Schedule A or 24-hour row in these committees carries a contributor name matching the donor's name words (NEIGHBORS FOR A BETTER SAN FRANCISCO). That is a complete answer for these committees and these name words only: unitemized contributions carry no name, other spellings would be missed, and committees not in the list are not searched.
+
+#### Independent expenditure reports naming the official, filed by committees named like the donor
+
+Money the committee spent itself on communications about the official, as it reported it; it was not given to the official's committees. Rows are the 24-hour reports (form 496) in which the committee names the official as supported or opposed; the candidate, office and district are as filed, and a candidate with the same surname but another given name is left out. Query: <https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+support_oppose_code%2C+candidate_last_name%2C+office_description%2C+district_number%2C+transaction_description%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27F496%27%2C%27F465P3%27%29+AND+upper%28candidate_last_name%29+like+%27%25MAHMOOD%25%27+AND+%28%28upper%28filer_name%29+like+%27%25NEIGHBORS+FOR+A+BETTER+SAN+FRANCISCO%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000>
+
+**No row found.** No independent expenditure report filed by a committee whose name holds the donor's name words (NEIGHBORS FOR A BETTER SAN FRANCISCO) names Bilal Mahmood as candidate.
+
+A committee's periodic report (Schedule E) may list the same payments; those rows carry no candidate field, so they cannot be tied to the official and are not read or added.
+
+Looser name patterns (NEIGHBORS FOR A BETTER; BLUEPRINT), read for the same committees and the same official, find 0 contribution rows and 0 independent expenditure rows (<https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+transaction_first_name%2C+transaction_last_name%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27A%27%2C%27F497P1%27%29+AND+filer_nid+in+%28%27208655996%27%2C%27209865652%27%29+AND+%28%28upper%28transaction_last_name%29+like+%27%25NEIGHBORS+FOR+A+BETTER%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25BLUEPRINT%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000>, <https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+support_oppose_code%2C+candidate_last_name%2C+office_description%2C+district_number%2C+transaction_description%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27F496%27%2C%27F465P3%27%29+AND+upper%28candidate_last_name%29+like+%27%25MAHMOOD%25%27+AND+%28%28upper%28filer_name%29+like+%27%25NEIGHBORS+FOR+A+BETTER%25%27%29+OR+%28upper%28filer_name%29+like+%27%25BLUEPRINT%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000>).
+
+Committees in the dataset whose name holds the surname "Mahmood" and that are not in the list above (<https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+filer_type%2C+count%28%2A%29+as+rows_n&%24where=upper%28filer_name%29+like+%27%25MAHMOOD%25%27&%24group=filer_nid%2C+filer_name%2C+filer_type&%24order=filer_nid&%24limit=500>): none. A person reads these names to see whether any is the official's.
+
+Not added together across committees, filings, forms, offices or between the two parts above. Contributors and committees named like the donor were matched on words in the name (NEIGHBORS FOR A BETTER SAN FRANCISCO); the names read in the filings for this donor are listed under "Names read in the filings".
+
+### Money 5: San Francisco Chamber of Commerce, contributions and independent expenditures reported beside Shamann Walton
 
 Committees tied to the official (from `data/committees.json`; searched together in one query):
 
@@ -394,15 +525,155 @@ Committees tied to the official (from `data/committees.json`; searched together 
 - Shamann Walton for School Board 2014 (filer 147120072, Candidate or Officeholder, terminated): the official's own candidate or officeholder committee
 - Committee to Elect Shamann Walton for SF Board of Education 2012 (filer 130665917, Candidate or Officeholder, terminated): the official's own candidate or officeholder committee
 
-**Not retrieved in this build.** Run `python build_pairings.py` with network access to the Ethics Commission dataset to fill this section.
+#### Contributions to the official's committees from contributors named like the donor
 
-### Money 6: GrowSF, contributions reported to committees tied to Chyanne Chen
+Source: San Francisco Ethics Commission campaign finance Transactions dataset on DataSF ([https://data.sf.gov/d/pitq-e56w](https://data.sf.gov/d/pitq-e56w)), queried by contributor name (the dataset has no donor identifier); retrieved 2026-10-30; rows last loaded not given. Query: <https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+transaction_first_name%2C+transaction_last_name%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27A%27%2C%27F497P1%27%29+AND+filer_nid+in+%28%27130665917%27%2C%27147120072%27%2C%27163932080%27%2C%27174388788%27%2C%27183835609%27%2C%27197031455%27%29+AND+%28%28upper%28transaction_last_name%29+like+%27%25SAN+FRANCISCO+CHAMBER+OF+COMMERCE%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25SF+CHAMBER%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25SF+FORWARD%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000>
+
+Control, so that no row can be told from an empty read: Schedule A rows held by each of these committees, whoever the contributor (<https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+count%28%2A%29+as+rows_a&%24where=form_type+%3D+%27A%27+AND+filer_nid+in+%28%27130665917%27%2C%27147120072%27%2C%27163932080%27%2C%27174388788%27%2C%27183835609%27%2C%27197031455%27%29&%24group=filer_nid&%24limit=500>): 197031455 472; 163932080 767; 183835609 56; 174388788 4; 147120072 355; 130665917 70.
+
+**No row found.** No Schedule A or 24-hour row in these committees carries a contributor name matching the donor's name words (SAN FRANCISCO CHAMBER OF COMMERCE; SF CHAMBER; SF FORWARD). That is a complete answer for these committees and these name words only: unitemized contributions carry no name, other spellings would be missed, and committees not in the list are not searched.
+
+#### Independent expenditure reports naming the official, filed by committees named like the donor
+
+Money the committee spent itself on communications about the official, as it reported it; it was not given to the official's committees. Rows are the 24-hour reports (form 496) in which the committee names the official as supported or opposed; the candidate, office and district are as filed, and a candidate with the same surname but another given name is left out. Query: <https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+support_oppose_code%2C+candidate_last_name%2C+office_description%2C+district_number%2C+transaction_description%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27F496%27%2C%27F465P3%27%29+AND+upper%28candidate_last_name%29+like+%27%25WALTON%25%27+AND+%28%28upper%28filer_name%29+like+%27%25SAN+FRANCISCO+CHAMBER+OF+COMMERCE%25%27%29+OR+%28upper%28filer_name%29+like+%27%25SF+CHAMBER%25%27%29+OR+%28upper%28filer_name%29+like+%27%25SF+FORWARD%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000>
+
+**No row found.** No independent expenditure report filed by a committee whose name holds the donor's name words (SAN FRANCISCO CHAMBER OF COMMERCE; SF CHAMBER; SF FORWARD) names Shamann Walton as candidate.
+
+A committee's periodic report (Schedule E) may list the same payments; those rows carry no candidate field, so they cannot be tied to the official and are not read or added.
+
+Looser name patterns (CHAMBER OF COMMERCE; SF FORWARD; SAN FRANCISCO FORWARD), read for the same committees and the same official, find 0 contribution rows and 0 independent expenditure rows (<https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+transaction_first_name%2C+transaction_last_name%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27A%27%2C%27F497P1%27%29+AND+filer_nid+in+%28%27130665917%27%2C%27147120072%27%2C%27163932080%27%2C%27174388788%27%2C%27183835609%27%2C%27197031455%27%29+AND+%28%28upper%28transaction_last_name%29+like+%27%25CHAMBER+OF+COMMERCE%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25SF+FORWARD%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25SAN+FRANCISCO+FORWARD%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000>, <https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+support_oppose_code%2C+candidate_last_name%2C+office_description%2C+district_number%2C+transaction_description%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27F496%27%2C%27F465P3%27%29+AND+upper%28candidate_last_name%29+like+%27%25WALTON%25%27+AND+%28%28upper%28filer_name%29+like+%27%25CHAMBER+OF+COMMERCE%25%27%29+OR+%28upper%28filer_name%29+like+%27%25SF+FORWARD%25%27%29+OR+%28upper%28filer_name%29+like+%27%25SAN+FRANCISCO+FORWARD%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000>).
+
+Committees in the dataset whose name holds the surname "Walton" and that are not in the list above (<https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+filer_type%2C+count%28%2A%29+as+rows_n&%24where=upper%28filer_name%29+like+%27%25WALTON%25%27&%24group=filer_nid%2C+filer_name%2C+filer_type&%24order=filer_nid&%24limit=500>): Samuel Rawlings Walton (filer 132671132, Major Donor). A person reads these names to see whether any is the official's.
+
+Not added together across committees, filings, forms, offices or between the two parts above. Contributors and committees named like the donor were matched on words in the name (SAN FRANCISCO CHAMBER OF COMMERCE; SF CHAMBER; SF FORWARD); the names read in the filings for this donor are listed under "Names read in the filings".
+
+### Money 6: GrowSF, contributions and independent expenditures reported beside Chyanne Chen
 
 Committees tied to the official (from `data/committees.json`; searched together in one query):
 
 - Chyanne Chen for Supervisor 2024 (filer 210823617, Candidate or Officeholder, terminated): the official's own candidate or officeholder committee
 
-**Not retrieved in this build.** Run `python build_pairings.py` with network access to the Ethics Commission dataset to fill this section.
+#### Contributions to the official's committees from contributors named like the donor
+
+Source: San Francisco Ethics Commission campaign finance Transactions dataset on DataSF ([https://data.sf.gov/d/pitq-e56w](https://data.sf.gov/d/pitq-e56w)), queried by contributor name (the dataset has no donor identifier); retrieved 2026-10-30; rows last loaded not given. Query: <https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+transaction_first_name%2C+transaction_last_name%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27A%27%2C%27F497P1%27%29+AND+filer_nid+in+%28%27210823617%27%29+AND+%28%28upper%28transaction_last_name%29+like+%27%25GROWSF%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25GROW+SF%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000>
+
+Control, so that no row can be told from an empty read: Schedule A rows held by each of these committees, whoever the contributor (<https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+count%28%2A%29+as+rows_a&%24where=form_type+%3D+%27A%27+AND+filer_nid+in+%28%27210823617%27%29&%24group=filer_nid&%24limit=500>): 210823617 678.
+
+**No row found.** No Schedule A or 24-hour row in these committees carries a contributor name matching the donor's name words (GROWSF; GROW SF). That is a complete answer for these committees and these name words only: unitemized contributions carry no name, other spellings would be missed, and committees not in the list are not searched.
+
+#### Independent expenditure reports naming the official, filed by committees named like the donor
+
+Money the committee spent itself on communications about the official, as it reported it; it was not given to the official's committees. Rows are the 24-hour reports (form 496) in which the committee names the official as supported or opposed; the candidate, office and district are as filed, and a candidate with the same surname but another given name is left out. Query: <https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+support_oppose_code%2C+candidate_last_name%2C+office_description%2C+district_number%2C+transaction_description%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27F496%27%2C%27F465P3%27%29+AND+upper%28candidate_last_name%29+like+%27%25CHEN%25%27+AND+%28%28upper%28filer_name%29+like+%27%25GROWSF%25%27%29+OR+%28upper%28filer_name%29+like+%27%25GROW+SF%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000>
+
+**No row found.** No independent expenditure report filed by a committee whose name holds the donor's name words (GROWSF; GROW SF) names Chyanne Chen as candidate.
+
+A committee's periodic report (Schedule E) may list the same payments; those rows carry no candidate field, so they cannot be tied to the official and are not read or added.
+
+Looser name patterns (GROWSF; GROW SF; GROW SAN FRANCISCO), read for the same committees and the same official, find 0 contribution rows and 0 independent expenditure rows (<https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+transaction_first_name%2C+transaction_last_name%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27A%27%2C%27F497P1%27%29+AND+filer_nid+in+%28%27210823617%27%29+AND+%28%28upper%28transaction_last_name%29+like+%27%25GROWSF%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25GROW+SF%25%27%29+OR+%28upper%28transaction_last_name%29+like+%27%25GROW+SAN+FRANCISCO%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000>, <https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+form_type%2C+filing_id_number%2C+filing_date%2C+filing_type%2C+filing_version%2C+calculated_date%2C+calculated_amount%2C+support_oppose_code%2C+candidate_last_name%2C+office_description%2C+district_number%2C+transaction_description%2C+memo_code%2C+data_loaded_at&%24where=form_type+in+%28%27F496%27%2C%27F465P3%27%29+AND+upper%28candidate_last_name%29+like+%27%25CHEN%25%27+AND+%28%28upper%28filer_name%29+like+%27%25GROWSF%25%27%29+OR+%28upper%28filer_name%29+like+%27%25GROW+SF%25%27%29+OR+%28upper%28filer_name%29+like+%27%25GROW+SAN+FRANCISCO%25%27%29%29&%24order=filer_nid%2C+calculated_date&%24limit=5000>).
+
+Committees in the dataset whose name holds the surname "Chen" and that are not in the list above (<https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+filer_type%2C+count%28%2A%29+as+rows_n&%24where=upper%28filer_name%29+like+%27%25CHEN%25%27&%24group=filer_nid%2C+filer_name%2C+filer_type&%24order=filer_nid&%24limit=500>): Jean Chen (filer 158359410, Major Donor); Queena Chen for San Francisco Democratic County Central Committee 2020 (filer 183244106, Candidate or Officeholder); Michael Chen for Democratic County Central Committee 2020 (filer 183385842, Candidate or Officeholder); Maurice Chenier for San Francisco District Attorney Committee 2022 (filer 205693494, Candidate or Officeholder); Mike Chen for Democratic County Central Committee 2024 (filer 208649873, Candidate or Officeholder); Queena Chen for SF Democratic County Central Committee 2024 (filer 208689319, Candidate or Officeholder); Herald Chen (filer 211723815, Major Donor); Courtney Chenette (filer 212255667, Major Donor); Committee to Elect Claudine Cheng for District 3 Supervisor (filer 6666878, Candidate or Officeholder). A person reads these names to see whether any is the official's.
+
+Not added together across committees, filings, forms, offices or between the two parts above. Contributors and committees named like the donor were matched on words in the name (GROWSF; GROW SF); the names read in the filings for this donor are listed under "Names read in the filings".
+
+## Names read in the filings
+
+For each donor in the pairings, every contributor name (Schedule A and 24-hour rows, any committee) and committee name in the dataset that holds a looser pattern than the name words used for the money. Names are as filed, case and spacing folded; rows and amounts are per name and form and are never added across names or forms. 'Used' says whether the money sections' name words match the name, so a name marked 'no' is one the money sections do not search; whether it is the donor is for a person to decide. Retrieved 2026-10-30.
+
+### San Francisco Chamber of Commerce
+
+Patterns read: CHAMBER OF COMMERCE; SF FORWARD; SAN FRANCISCO FORWARD. Queries: <https://data.sf.gov/resource/pitq-e56w.json?%24select=upper%28trim%28transaction_last_name%29%29+as+name%2C+form_type%2C+count%28%2A%29+as+rows_n%2C+sum%28calculated_amount%29+as+total&%24where=form_type+in+%28%27A%27%2C%27F497P1%27%29+AND+%28upper%28transaction_last_name%29+like+%27%25CHAMBER+OF+COMMERCE%25%27+OR+upper%28transaction_last_name%29+like+%27%25SF+FORWARD%25%27+OR+upper%28transaction_last_name%29+like+%27%25SAN+FRANCISCO+FORWARD%25%27%29&%24group=name%2C+form_type&%24order=rows_n+desc%2C+name&%24limit=200> and <https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+count%28%2A%29+as+rows_n&%24where=upper%28filer_name%29+like+%27%25CHAMBER+OF+COMMERCE%25%27+OR+upper%28filer_name%29+like+%27%25SF+FORWARD%25%27+OR+upper%28filer_name%29+like+%27%25SAN+FRANCISCO+FORWARD%25%27&%24group=filer_nid%2C+filer_name&%24order=rows_n+desc%2C+filer_name&%24limit=40>.
+
+| Contributor name as filed | Form | Rows | Amount | Used |
+|---|---|---|---|---|
+| SAN FRANCISCO CHAMBER OF COMMERCE 21ST CENTURY COMMITTEE | A | 36 | $193,190.93 | yes |
+| SAN FRANCISCO FORWARD SPONSORED BY SAN FRANCISCO CHAMBER OF COMMERCE | A | 34 | $1,171,000.00 | yes |
+| SF FORWARD | A | 27 | $545,500.00 | yes |
+| SAN FRANCISCO FORWARD SPONSORED BY SAN FRANCISCO CHAMBER OF COMMERCE | F497P1 | 24 | $1,029,133.62 | yes |
+| SAN FRANCISCO CHAMBER OF COMMERCE | A | 21 | $110,450.00 | yes |
+| SF FORWARD SPONSORED BY SAN FRANCISCO CHAMBER OF COMMERCE | A | 19 | $653,999.00 | yes |
+| SF FORWARD SPONSORED BY SAN FRANCISCO CHAMBER OF COMMERCE | F497P1 | 17 | $737,000.00 | yes |
+| SF FORWARD | F497P1 | 16 | $386,500.00 | yes |
+| SF CHAMBER OF COMMERCE 21ST CENTURY COMMITTEE | A | 11 | $106,489.22 | yes |
+| SAN FRANCISCO FORWARD | A | 10 | $57,500.00 | no |
+| SAN FRANCISCO FORWARD, SPONSORED BY SAN FRANCISCO CHAMBER OF COMMERCE | A | 10 | $202,500.00 | yes |
+| SAN FRANCISCO FORWARD, SPONSORED BY SAN FRANCISCO CHAMBER OF COMMERCE | F497P1 | 9 | $192,500.00 | yes |
+| SF FORWARD, SPONSORED BY SAN FRANCISCO CHAMBER OF COMMERCE | A | 9 | $110,000.00 | yes |
+| SAN FRANCISCO CHAMBER OF COMMERCE - 21ST CENTURY COMMITTEE | A | 8 | $43,256.99 | yes |
+| SAN FRANCISCO CHAMBER OF COMMERCE 21ST CENTURY COMMITTEE | F497P1 | 7 | $56,666.67 | yes |
+| SF CHAMBER OF COMMERCE | A | 4 | $34,735.90 | yes |
+| SAN FRANCISCO CHAMBER OF COMMERCE | F497P1 | 3 | $19,600.00 | yes |
+| SAN FRANCISCO FORWARD | F497P1 | 3 | $9,000.00 | no |
+| SAN FRANCISCO BLACK CHAMBER OF COMMERCE | A | 2 | $800.00 | no |
+| CALIFORNIA CHAMBER OF COMMERCE | A | 1 | $5,000.00 | no |
+| CALIFORNIA CHAMBER OF COMMERCE | F497P1 | 1 | $5,000.00 | no |
+| NO ON I, SPONSORED BY THE SAN FRANCISCO CHAMBER OF COMMERCE | A | 1 | $71,577.06 | yes |
+| NORTH BEACH CHAMBER OF COMMERCE | A | 1 | $100.00 | no |
+| SAN FRANCISCO CHAMBER OF COMMERCE 21ST CENTURY CMTE | A | 1 | $10,000.00 | yes |
+| SAN FRANCISCO CHAMBER OF COMMERCE 21ST CENTURY COMMITTEE (ID #891575) | A | 1 | $5,000.00 | yes |
+| SF CHAMBER OF COMMERCE 21ST CENTURY COMM. | A | 1 | $5,000.00 | yes |
+| SF CHAMBER OF COMMERCE 21ST CENTURY COMMITTEE | F497P1 | 1 | $1,666.67 | yes |
+| SF FORWARD SPONSORED BY THE SAN FRANCISCO CHAMBER OF COMMERCE | A | 1 | $20,000.00 | yes |
+| YES ON Q WITH MAJOR FUNDING BY COMMITTEE ON JOBS GOVERNMENT REFORM FUND AND SF FORWARD SPONSORED BY THE SAN FRANCISCO CHAMBER OF COMMERCE | A | 1 | $1,000.00 | yes |
+
+| Committee name as filed | Filer | Rows | Used |
+|---|---|---|---|
+| SF FORWARD SPONSORED BY THE SAN FRANCISCO CHAMBER OF COMMERCE | 6668151 | 5723 | yes |
+| SAN FRANCISCANS FOR A BETTER MUNI, YES ON G, WITH SUPPORT FROM SF FORWARD, PLAN C SAN FRANCISCO, SFAR, COMMITTEE ON JOBS GOVERNMENT REFORM FUND COMMITTEE, SF COALITIONFOR RESPONSIBLE GROWTH AND SPUR | 9293044 | 669 | yes |
+| No On I, Sponsored By The San Francisco Chamber Of Commerce | 191766883 | 523 | yes |
+| Workforce Housing Initiative, Committee for Prop J: A Coalition of Business, Labor, the San Francisco Chamber of Commerce, Environmentalists & Neighbors | 6676694 | 507 | yes |
+| No Plan, No Accountability, No on Prop C, Sponsored by the San Francisco Chamber of Commerce | 172795588 | 488 | yes |
+| San Franciscans for Housing Not Tents - Yes on Q with major funding by Committee on Jobs Government Reform Fund and San Francisco Forward. | 161128813 | 333 | no |
+| Yes on Prop. K--Keep San Francisco Moving--sponsored by the San Francisco Chamber of Commerce | 6676807 | 305 | yes |
+| Yes on C, No on I, SF for Accountability in Housing sponsored by the San Francisco Building and Construction Trades Council and the San Francisco Chamber of Commerce | 217233128 | 248 | yes |
+| The Committee for Election Sunshine, Yes on C, Sponsored by League of Women Voters of SF, SPUR, San Francisco Chamber of Commerce and San Francisco Small Business Advocates PAC | 6666622 | 59 | yes |
+| San Francisco Chamber of Commerce - 1290133 | 6682082 | 26 | yes |
+| San Francisco Chamber of Commerce (Major Donor) | 216585910 | 11 | yes |
+| No on I, SF for Accountability in Housing sponsored by the San Francisco Building and Construction Trades Council and the San Francisco Chamber of Commerce | 217233128 | 1 | yes |
+
+### Neighbors for a Better San Francisco (Blueprint)
+
+Patterns read: NEIGHBORS FOR A BETTER; BLUEPRINT. Queries: <https://data.sf.gov/resource/pitq-e56w.json?%24select=upper%28trim%28transaction_last_name%29%29+as+name%2C+form_type%2C+count%28%2A%29+as+rows_n%2C+sum%28calculated_amount%29+as+total&%24where=form_type+in+%28%27A%27%2C%27F497P1%27%29+AND+%28upper%28transaction_last_name%29+like+%27%25NEIGHBORS+FOR+A+BETTER%25%27+OR+upper%28transaction_last_name%29+like+%27%25BLUEPRINT%25%27%29&%24group=name%2C+form_type&%24order=rows_n+desc%2C+name&%24limit=200> and <https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+count%28%2A%29+as+rows_n&%24where=upper%28filer_name%29+like+%27%25NEIGHBORS+FOR+A+BETTER%25%27+OR+upper%28filer_name%29+like+%27%25BLUEPRINT%25%27&%24group=filer_nid%2C+filer_name&%24order=rows_n+desc%2C+filer_name&%24limit=40>.
+
+| Contributor name as filed | Form | Rows | Amount | Used |
+|---|---|---|---|---|
+| NEIGHBORS FOR A BETTER SAN FRANCISCO ADVOCACY | A | 74 | $7,676,140.00 | yes |
+| NEIGHBORS FOR A BETTER SAN FRANCISCO ADVOCACY | F497P1 | 48 | $5,547,950.00 | yes |
+| NEIGHBORS FOR A BETTER SAN FRANCISCO | F497P1 | 14 | $450,500.00 | yes |
+| NEIGHBORS FOR A BETTER SAN FRANCISCO | A | 9 | $743,000.00 | yes |
+| SF WORKFORCE HOUSING ALLIANCE PAC 2020, SPONSORED BY NEIGHBORS FOR A BETTER SAN FRANCISCO | F497P1 | 2 | $6,300.00 | yes |
+| NEIGHBORS FOR A BETTER SAN FRANCISCO ADVOCACY COMMITTEE | F497P1 | 1 | $5,000.00 | yes |
+
+| Committee name as filed | Filer | Rows | Used |
+|---|---|---|---|
+| Neighbors For A Better San Francisco Advocacy | 193427405 | 1725 | yes |
+| SF Workforce Housing Alliance PAC 2020, sponsored by Neighbors for a Better San Francisco | 193321554 | 373 | yes |
+| Stop ALL Asian Hate, Supporting the Chesa Boudin Recall, Supported by Neighbors for a Better San Francisco Advocacy | 200741725 | 258 | yes |
+| Neighbors For A Better San Francisco | 193427405 | 227 | yes |
+| NEIGHBORS FOR A BETTER SAN FRANCISCO ADVOCACY COMMITTEE | 199984963 | 156 | yes |
+| Edwin M. Lee Democratic Club PAC sponsored by Neighbors for a Better San Francisco Advocacy | 6667750 | 69 | yes |
+
+### GrowSF
+
+Patterns read: GROWSF; GROW SF; GROW SAN FRANCISCO. Queries: <https://data.sf.gov/resource/pitq-e56w.json?%24select=upper%28trim%28transaction_last_name%29%29+as+name%2C+form_type%2C+count%28%2A%29+as+rows_n%2C+sum%28calculated_amount%29+as+total&%24where=form_type+in+%28%27A%27%2C%27F497P1%27%29+AND+%28upper%28transaction_last_name%29+like+%27%25GROWSF%25%27+OR+upper%28transaction_last_name%29+like+%27%25GROW+SF%25%27+OR+upper%28transaction_last_name%29+like+%27%25GROW+SAN+FRANCISCO%25%27%29&%24group=name%2C+form_type&%24order=rows_n+desc%2C+name&%24limit=200> and <https://data.sf.gov/resource/pitq-e56w.json?%24select=filer_nid%2C+filer_name%2C+count%28%2A%29+as+rows_n&%24where=upper%28filer_name%29+like+%27%25GROWSF%25%27+OR+upper%28filer_name%29+like+%27%25GROW+SF%25%27+OR+upper%28filer_name%29+like+%27%25GROW+SAN+FRANCISCO%25%27&%24group=filer_nid%2C+filer_name&%24order=rows_n+desc%2C+filer_name&%24limit=40>.
+
+| Contributor name as filed | Form | Rows | Amount | Used |
+|---|---|---|---|---|
+| GROWSF VOTER GUIDE | F497P1 | 9 | $116,726.36 | yes |
+| COALITION TO GROW SAN FRANCISCO - GROW SF PAC | A | 6 | $8,000.00 | yes |
+| COALITION TO GROW SAN FRANCISCO - GROW SF | A | 2 | $3,500.00 | yes |
+| COALITION TO GROW SAN FRANCISCO - GROW SF PAC | F497P1 | 1 | $5,000.00 | yes |
+
+| Committee name as filed | Filer | Rows | Used |
+|---|---|---|---|
+| Coalition to Grow San Francisco - Grow SF PAC | 201619433 | 1798 | yes |
+| Yes In My Backyard Political Action Committee Sponsored by Grow San Francisco | 160122595 | 1653 | no |
+| GrowSF Voter Guide | 201619433 | 1050 | yes |
+| Coalition to Grow San Francisco - Grow SF PAC Opposing Preston for Supervisor 2024 | 205575753 | 620 | yes |
+| GrowSF Supporting Stephen Sherrill for Supervisor 2026 | 214918275 | 315 | yes |
+| GrowSF Supporting Alan Wong for Supervisor 2026 | 215852865 | 307 | yes |
+| Coalition to Grow San Francisco - Grow SF PAC Opposing Chan for Supervisor 2024 | 205627644 | 267 | yes |
+| Coalition to Grow San Francisco - Grow SF PAC Opposing Mar for Supervisor 2022 | 202605623 | 117 | yes |
+| GrowSF for Change | 214884140 | 28 | yes |
 
 ## Candidates looked at and not used
 

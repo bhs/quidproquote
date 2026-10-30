@@ -168,6 +168,79 @@ def build_money_query(name_words, filer_nids):
     }
 
 
+def _name_clause(column, name_words):
+    return " OR ".join("(" + " AND ".join("upper(%s) like %s" % (column, _lit("%" + w + "%")) for w in words) + ")"
+                       for words in name_words)
+
+
+def build_independent_query(name_words, surname):
+    """SoQL parameters: every independent-expenditure report row (24-hour report F496 and the
+    supplemental pre-election report F465 part 3) that names the surname as the candidate supported or
+    opposed, filed by a committee whose name holds the donor's name words."""
+    where = "form_type in ('F496','F465P3') AND upper(candidate_last_name) like %s AND (%s)" % (
+        _lit("%" + surname.upper() + "%"), _name_clause("filer_name", name_words))
+    return {
+        "$select": "filer_nid, filer_name, form_type, filing_id_number, filing_date, filing_type, "
+                   "filing_version, calculated_date, calculated_amount, support_oppose_code, candidate_last_name, "
+                   "office_description, district_number, transaction_description, memo_code, data_loaded_at",
+        "$where": where,
+        "$order": "filer_nid, calculated_date",
+        "$limit": "5000",
+    }
+
+
+def build_control_query(filer_nids):
+    """SoQL parameters: how many Schedule A rows each committee holds, whoever the contributor, so that
+    'no row for the donor' can be told from 'no rows at all'."""
+    return {
+        "$select": "filer_nid, count(*) as rows_a",
+        "$where": "form_type = 'A' AND filer_nid in (%s)" % ",".join(_lit(str(n)) for n in filer_nids),
+        "$group": "filer_nid",
+        "$limit": "500",
+    }
+
+
+def build_census_queries(near_patterns):
+    """SoQL parameters for the contributor names (Schedule A and 24-hour rows, every committee) and the
+    committee names that hold any of the near patterns, one row per name as filed (case and spaces folded)."""
+    def like(column):
+        return " OR ".join("upper(%s) like %s" % (column, _lit("%" + w + "%")) for w in near_patterns)
+    contributors = {
+        "$select": "upper(trim(transaction_last_name)) as name, form_type, count(*) as rows_n, "
+                   "sum(calculated_amount) as total",
+        "$where": "form_type in ('A','F497P1') AND (%s)" % like("transaction_last_name"),
+        "$group": "name, form_type",
+        "$order": "rows_n desc, name",
+        "$limit": "200",
+    }
+    committees = {
+        "$select": "filer_nid, filer_name, count(*) as rows_n",
+        "$where": like("filer_name"),
+        "$group": "filer_nid, filer_name",
+        "$order": "rows_n desc, filer_name",
+        "$limit": "40",
+    }
+    return contributors, committees
+
+
+def build_surname_committees_query(surname):
+    """SoQL parameters: every committee whose name holds the surname, to see committees the snapshot of
+    committees tied to the official does not list."""
+    return {
+        "$select": "filer_nid, filer_name, filer_type, count(*) as rows_n",
+        "$where": "upper(filer_name) like %s" % _lit("%" + surname.upper() + "%"),
+        "$group": "filer_nid, filer_name, filer_type",
+        "$order": "filer_nid",
+        "$limit": "500",
+    }
+
+
+def name_matches(name_words, name):
+    """True when the name holds every word of one of the donor's name-word lists (as the query reads it)."""
+    up = (name or "").upper()
+    return any(all(w in up for w in words) for words in name_words)
+
+
 def _amount(row):
     try:
         return round(float(row.get("calculated_amount") or 0.0), 2)
@@ -213,6 +286,43 @@ def summarise_money(rows, committees):
     return by_committee
 
 
+def names_official(candidate_field, surname, given=None):
+    """True when the candidate as filed is the official: the surname is a whole word of it and, when it holds
+    other words, the given name is one of them (so 'Mike Chen' is not 'Chyanne Chen'; a bare surname is kept
+    and shown as filed, with its office and district, for a person to read)."""
+    tokens = re.findall(r"[A-Z']+", (candidate_field or "").upper())
+    if surname.upper() not in tokens:
+        return False
+    return given is None or tokens == [surname.upper()] or given.upper() in tokens
+
+
+def summarise_independent(rows, surname, given=None):
+    """Independent-expenditure rows naming the official, grouped by the committee that
+    filed them and the office and district as filed. 24-hour reports (F496) are the base; a supplemental
+    pre-election row (F465 part 3) with the same committee, date and amount repeats one and is listed apart.
+    A memo row is listed and not summed. Nothing is added across committees or offices."""
+    mine = [r for r in rows if names_official(r.get("candidate_last_name"), surname, given)]
+    groups = {}
+    for r in mine:
+        key = (str(r.get("filer_nid")), r.get("filer_name") or "", r.get("office_description") or "",
+               r.get("district_number") or "")
+        groups.setdefault(key, []).append(r)
+    out = []
+    for (nid, name, office, district), rs in sorted(groups.items()):
+        base = [r for r in rs if r.get("form_type") == "F496"]
+        base_keys = {((r.get("calculated_date") or "")[:10], _amount(r)) for r in base}
+        counted = [r for r in base if not _is_memo(r)]
+        memo = [r for r in base if _is_memo(r)]
+        repeats = [r for r in rs if r.get("form_type") == "F465P3"
+                   and ((r.get("calculated_date") or "")[:10], _amount(r)) in base_keys]
+        apart = [r for r in rs if r.get("form_type") == "F465P3" and r not in repeats]
+        out.append({"filer_nid": nid, "filer_name": name, "office": office, "district": district,
+                    "counted": counted, "memo": memo, "repeats": repeats, "apart": apart,
+                    "total": round(sum(_amount(r) for r in counted), 2),
+                    "apart_total": round(sum(_amount(r) for r in apart), 2)})
+    return out
+
+
 def dollars(x):
     return "${:,.2f}".format(x)
 
@@ -223,16 +333,21 @@ def lead_text(p):
     """One neutral paragraph. It names what sits beside what and never says why."""
     return ("%s (%s%s) is recorded in the %s transcript of %s, at %s, saying the words in %s.1. "
             "The published statement from %s, in %s.3, is on the same subject (%s). "
-            "%s.5 lists what contributors named like %s reported giving to committees tied to %s, "
+            "%s.5 lists what the Ethics Commission's filings show for committees and contributors named like %s: "
+            "contributions to committees tied to %s and independent expenditure reports that name %s, "
             "by committee and filing. %s" % (
                 p["official"], p["office"], (", District %s" % p["district"]) if p["district"] else "",
                 p["body"], p["date"], p["time"], p["id_label"],
-                p["donor"], p["id_label"], p["subject"], p["id_label"], p["donor"], p["official"],
+                p["donor"], p["id_label"], p["subject"], p["id_label"], p["donor"], p["official"], p["official"],
                 NO_CAUSATION))
 
 
 def money_heading(p):
-    return "Money %d: %s, contributions reported to committees tied to %s" % (p["n"], p["donor"], p["official"])
+    return "Money %d: %s, contributions and independent expenditures reported beside %s" % (p["n"], p["donor"], p["official"])
+
+
+def _name_of(r):
+    return " ".join(x for x in (r.get("transaction_first_name"), r.get("transaction_last_name")) if x)
 
 
 def render_money_section(p, money, retrieved):
@@ -252,11 +367,20 @@ def render_money_section(p, money, retrieved):
         out.append("**The money query failed:** `%s`. Nothing is shown in its place." % money["error"])
         out.append("")
         return out
+    out.append("#### Contributions to the official's committees from contributors named like the donor")
+    out.append("")
     out.append("Source: San Francisco Ethics Commission campaign finance Transactions dataset on DataSF "
                "([%s](%s)), queried by contributor name (the dataset has no donor identifier); retrieved %s; "
                "rows last loaded %s. Query: <%s>" % (DATASET_PAGE, DATASET_PAGE, retrieved,
                                                       money.get("data_loaded_at") or "not given", money["url"]))
     out.append("")
+    control = money.get("control")
+    if control and not control.get("error"):
+        out.append("Control, so that no row can be told from an empty read: Schedule A rows held by each of these "
+                   "committees, whoever the contributor (<%s>): %s." % (
+                       control["url"], "; ".join("%s %s" % (c["filer_nid"], control["by_committee"].get(str(c["filer_nid"]), 0))
+                                                 for c in p["committees"])))
+        out.append("")
     summary = summarise_money(money["rows"], p["committees"])
     any_rows = False
     for c in p["committees"]:
@@ -273,11 +397,10 @@ def render_money_section(p, money, retrieved):
                                     ("24-hour report", "repeats", "no, repeats Schedule A"),
                                     ("24-hour report", "twentyfour_only", "listed apart, no Schedule A row yet")):
             for r in s[key]:
-                name = " ".join(x for x in (r.get("transaction_first_name"), r.get("transaction_last_name")) if x)
                 out.append("| %s | %s | %s | %s v%s | %s | %s | %s | %s |" % (
                     label, r.get("filing_id_number", ""), (r.get("filing_date") or "")[:10],
                     r.get("filing_type", ""), r.get("filing_version", ""),
-                    (r.get("calculated_date") or "")[:10], dollars(_amount(r)), name, counted))
+                    (r.get("calculated_date") or "")[:10], dollars(_amount(r)), _name_of(r), counted))
         out.append("")
         out.append("Schedule A total for this committee: **%s** over %d rows. 24-hour rows listed apart "
                    "(not in that total): %s." % (dollars(s["schedule_a_total"]), len(s["schedule_a"]),
@@ -285,13 +408,120 @@ def render_money_section(p, money, retrieved):
         out.append("")
     if not any_rows:
         out.append("**No row found.** No Schedule A or 24-hour row in these committees carries a contributor name "
-                   "matching the donor's name words. That is a complete answer for these committees and these name "
-                   "words only: unitemized contributions carry no name, other spellings would be missed, and "
-                   "committees not in the list are not searched.")
+                   "matching the donor's name words (%s). That is a complete answer for these committees and these "
+                   "name words only: unitemized contributions carry no name, other spellings would be missed, and "
+                   "committees not in the list are not searched." % p["name_words_text"])
         out.append("")
-    out.append("Not added together across committees, filings or forms. Contributors named like the donor were "
-               "matched on words in the name (%s); read the names above before using any row." % p["name_words_text"])
+    out.append("#### Independent expenditure reports naming the official, filed by committees named like the donor")
     out.append("")
+    ind = money.get("independent")
+    if ind is None:
+        out.append("**Not retrieved in this build.**")
+        out.append("")
+    elif ind.get("error"):
+        out.append("**The independent expenditure query failed:** `%s`. Nothing is shown in its place." % ind["error"])
+        out.append("")
+    else:
+        out.append("Money the committee spent itself on communications about the official, as it reported it; it was not "
+                   "given to the official's committees. Rows are the 24-hour reports (form 496) in which the committee "
+                   "names the official as supported or opposed; the candidate, office and district are as filed, and a "
+                   "candidate with the same surname but another given name is left out. "
+                   "Query: <%s>" % ind["url"])
+        out.append("")
+        groups = summarise_independent(ind["rows"], p["surname"], p["given"])
+        if not groups:
+            out.append("**No row found.** No independent expenditure report filed by a committee whose name holds the "
+                       "donor's name words (%s) names %s as candidate." % (p["name_words_text"], p["official"]))
+            out.append("")
+        for g in groups:
+            out.append("**%s** (filer %s), reports naming the candidate for %s, district %s" % (
+                g["filer_name"], g["filer_nid"], g["office"] or "an office not given", g["district"] or "not given"))
+            out.append("")
+            out.append("| Form | Filing id | Filing date | Filed as | Expenditure date | Amount | Supports or opposes | Candidate as filed | Description as filed | Counted |")
+            out.append("|---|---|---|---|---|---|---|---|---|---|")
+            for label, key, counted in (("24-hour report (496)", "counted", "yes"),
+                                        ("24-hour report (496) memo", "memo", "no, memo entry"),
+                                        ("Pre-election report (465 part 3)", "repeats", "no, repeats a 24-hour row"),
+                                        ("Pre-election report (465 part 3)", "apart", "listed apart, no 24-hour row")):
+                for r in g[key]:
+                    so = {"S": "supports", "O": "opposes"}.get(r.get("support_oppose_code"), r.get("support_oppose_code") or "")
+                    out.append("| %s | %s | %s | %s v%s | %s | %s | %s | %s | %s | %s |" % (
+                        label, r.get("filing_id_number", ""), (r.get("filing_date") or "")[:10],
+                        r.get("filing_type", ""), r.get("filing_version", ""), (r.get("calculated_date") or "")[:10],
+                        dollars(_amount(r)), so, r.get("candidate_last_name", ""),
+                        (r.get("transaction_description") or "").replace("|", "/"), counted))
+            out.append("")
+            out.append("Total for this committee, this office and these reports: **%s** over %d 24-hour rows"
+                       "%s." % (dollars(g["total"]), len(g["counted"]),
+                                (", and %s in pre-election rows listed apart (not in that total)" % dollars(g["apart_total"]))
+                                if g["apart"] else ""))
+            out.append("")
+        out.append("A committee's periodic report (Schedule E) may list the same payments; those rows carry no "
+                   "candidate field, so they cannot be tied to the official and are not read or added.")
+        out.append("")
+    loose = money.get("loose")
+    if loose and not loose.get("error"):
+        out.append("Looser name patterns (%s), read for the same committees and the same official, find %d contribution "
+                   "rows and %d independent expenditure rows (<%s>, <%s>)." % (
+                       "; ".join(loose["patterns"]), loose["contribution_rows"], loose["independent_rows"],
+                       loose["urls"][0], loose["urls"][1]))
+        out.append("")
+    if loose and not loose.get("error"):
+        un = loose.get("unlisted_committees") or []
+        out.append("Committees in the dataset whose name holds the surname \"%s\" and that are not in the list above "
+                   "(<%s>): %s. A person reads these names to see whether any is the official's." % (
+                       p["surname"], loose["unlisted_url"],
+                       "; ".join("%s (filer %s, %s)" % (u["filer_name"], u["filer_nid"], u["filer_type"]) for u in un)
+                       or "none"))
+        out.append("")
+    out.append("Not added together across committees, filings, forms, offices or between the two parts above. "
+               "Contributors and committees named like the donor were matched on words in the name (%s); the names "
+               "read in the filings for this donor are listed under \"Names read in the filings\"." % p["name_words_text"])
+    out.append("")
+    return out
+
+
+def render_census(census, donors, retrieved):
+    """Contributor and committee names read in the dataset for each donor, with whether the name words match."""
+    out = ["## Names read in the filings", ""]
+    out.append("For each donor in the pairings, every contributor name (Schedule A and 24-hour rows, any committee) and "
+               "committee name in the dataset that holds a looser pattern than the name words used for the money. "
+               "Names are as filed, case and spacing folded; rows and amounts are per name and form and are never "
+               "added across names or forms. 'Used' says whether the money sections' name words match the name, so a "
+               "name marked 'no' is one the money sections do not search; whether it is the donor is for a person "
+               "to decide. Retrieved %s." % (retrieved or "not retrieved"))
+    out.append("")
+    for donor in donors:
+        c = (census or {}).get(donor)
+        out.append("### %s" % donor)
+        out.append("")
+        if not c:
+            out.append("Not retrieved in this build.")
+            out.append("")
+            continue
+        if c.get("error"):
+            out.append("**The names query failed:** `%s`." % c["error"])
+            out.append("")
+            continue
+        out.append("Patterns read: %s. Queries: <%s> and <%s>." % (
+            "; ".join(c["patterns"]), c["urls"][0], c["urls"][1]))
+        out.append("")
+        out.append("| Contributor name as filed | Form | Rows | Amount | Used |")
+        out.append("|---|---|---|---|---|")
+        for r in c["contributors"]:
+            out.append("| %s | %s | %s | %s | %s |" % (r["name"], r["form_type"], r["rows_n"],
+                                                       dollars(float(r["total"] or 0)),
+                                                       "yes" if r["used"] else "no"))
+        out.append("")
+        out.append("| Committee name as filed | Filer | Rows | Used |")
+        out.append("|---|---|---|---|")
+        for r in c["committees"]:
+            out.append("| %s | %s | %s | %s |" % (r["filer_name"], r["filer_nid"], r["rows_n"],
+                                                  "yes" if r["used"] else "no"))
+        out.append("")
+        if len(c["committees"]) >= 40:
+            out.append("The committee list is cut at the 40 with most rows.")
+            out.append("")
     return out
 
 

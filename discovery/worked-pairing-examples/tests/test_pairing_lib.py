@@ -68,6 +68,47 @@ class Money(unittest.TestCase):
         self.assertIn("'209865652'", q["$where"])
         self.assertIn("upper(transaction_last_name) like '%GROWSF%'", q["$where"])
 
+    def test_independent_expenditure_query_reads_reports_naming_the_candidate(self):
+        q = pl.build_independent_query(mn.DONOR_NAME_WORDS["GrowSF"], "Mahmood")
+        self.assertIn("form_type in ('F496','F465P3')", q["$where"])
+        self.assertIn("upper(candidate_last_name) like '%MAHMOOD%'", q["$where"])
+        self.assertIn("upper(filer_name) like '%GROWSF%'", q["$where"])
+
+    def test_candidate_with_the_same_surname_but_another_given_name_is_left_out(self):
+        self.assertTrue(pl.names_official("Bilal Mahmood", "Mahmood", "Bilal"))
+        self.assertTrue(pl.names_official("MAHMOOD", "Mahmood", "Bilal"))
+        self.assertFalse(pl.names_official("Mike Chen", "Chen", "Chyanne"))
+        self.assertFalse(pl.names_official("Chenette", "Chen", "Chyanne"))
+
+    def test_independent_expenditures_are_grouped_by_committee_and_office_and_never_repeat(self):
+        def ie(form, date, amount, office="Supervisor", filer="7", memo=False):
+            return {"filer_nid": filer, "filer_name": "C", "form_type": form, "calculated_date": date + "T00:00:00.000",
+                    "calculated_amount": str(amount), "candidate_last_name": "Bilal Mahmood",
+                    "office_description": office, "district_number": "5", "memo_code": memo}
+        rows = [ie("F496", "2024-10-01", 100), ie("F496", "2024-10-02", 50, memo=True), ie("F465P3", "2024-10-01", 100),
+                ie("F465P3", "2024-10-09", 25), ie("F496", "2024-01-01", 10, office="Board Member")]
+        groups = pl.summarise_independent(rows, "Mahmood", "Bilal")
+        self.assertEqual(len(groups), 2)
+        sup = [g for g in groups if g["office"] == "Supervisor"][0]
+        self.assertEqual((sup["total"], len(sup["memo"]), len(sup["repeats"]), sup["apart_total"]), (100.0, 1, 1, 25.0))
+
+    def test_name_words_are_checked_against_names_as_filed(self):
+        words = mn.DONOR_NAME_WORDS["San Francisco Chamber of Commerce"]
+        self.assertTrue(pl.name_matches(words, "SF Forward sponsored by San Francisco Chamber of Commerce"))
+        self.assertFalse(pl.name_matches(words, "SAN FRANCISCO BLACK CHAMBER OF COMMERCE"))
+        self.assertFalse(pl.name_matches(words, "SAN FRANCISCO FORWARD"))
+
+    def test_census_and_control_queries(self):
+        contrib, comm = pl.build_census_queries(mn.NEAR_PATTERNS["GrowSF"])
+        self.assertIn("upper(transaction_last_name) like '%GROW SAN FRANCISCO%'", contrib["$where"])
+        self.assertIn("upper(filer_name) like '%GROWSF%'", comm["$where"])
+        self.assertIn("form_type = 'A'", pl.build_control_query(["1"])["$where"])
+
+    def test_a_failed_query_is_listed_as_a_failure(self):
+        money = {"k": {"error": None, "independent": {"error": "down"}, "control": {"error": None}}}
+        self.assertEqual(bp.failures(money, {"GrowSF": {"error": "down"}}),
+                         ["k (independent expenditures)", "GrowSF (names read)"])
+
     def test_failed_money_is_said_in_the_write_up(self):
         p = {"n": 1, "donor": "GrowSF", "official": "X", "committees": self.COMMITTEES, "name_words_text": "GROWSF"}
         text = "\n".join(pl.render_money_section(p, {"error": "URLError: down", "rows": []}, "2026-10-30"))
@@ -109,7 +150,8 @@ class TheWorkedPairings(unittest.TestCase):
     def test_unretrieved_money_is_said_not_filled(self):
         text = bp.render(self.pairs, self.picks, {}, None)
         self.assertIn("Not retrieved in this build", text)
-        self.assertEqual(text.count("### Money "), len(self.pairs))
+        self.assertEqual(text.count("\n### Money "), len(self.pairs))
+        self.assertIn("Not retrieved in this build.", "\n".join(pl.render_census(None, ["GrowSF"], None)))
 
 
 if __name__ == "__main__":
