@@ -1,5 +1,5 @@
 {
- "about": "The pairings, chosen from the money. Each starts from a donor family that gave through a committee tied to the official (data/money_snapshot.json, family_rows), then takes the official's words from the city's caption transcript on a subject the donor's own page speaks to. Quote boundaries, speaker credit and the reading of overlap and stance are a person's; the quote is re-read from the transcript by build_map.py, which refuses to build if it is not word for word. Nothing here says why anyone said or gave anything.",
+ "about": "The pairings, chosen from the money. Each starts from a donor family that gave through a committee tied to the official (data/money_snapshot.json, family_rows), then takes the official's words from the city's caption transcript on a subject the donor's own page speaks to. Quote boundaries, speaker credit and the reading of overlap and stance are a person's; the quote is re-read from the transcript by build_map.py, which refuses to build if it is not word for word. `highlight` lists the words a pairing card marks: each must be literally in both the quote and the donor's words, and the build refuses it otherwise. Nothing here says why anyone said or gave anything.",
  "pairings": [
   {
    "id": 1, "slug": "lurie-chamber-muni", "official": "Daniel Lurie", "family": "sf-chamber",
@@ -14,6 +14,7 @@
     "outside": []
    },
    "priority_ids": ["CHAMBER-H"],
+   "highlight": ["Muni"],
    "overlap": "Same subject: Muni. The Mayor's words report Muni weekend ridership; the Chamber's statement is its position on the Muni parcel tax (Prop H).",
    "stance": "Different kinds of statement: the Mayor's sentence reports ridership and does not mention Prop H; the Chamber's statement supports Prop H. No agreement or disagreement is claimed. (My reading.)",
    "money_note": "The committee that received the money is 'Mayor Lurie's Yes on H Committee', a ballot-measure committee carrying the Mayor's name; its purpose in the Ethics Commission's portal is 'organized to support Measure H: Parcel Tax to Fund Public Muni Operations'."
@@ -31,6 +32,7 @@
     "outside": []
    },
    "priority_ids": ["POA-I-TIMING", "POA-I-WONG"],
+   "highlight": [],
    "overlap": "Same subject: the city's budget and what it pays for. The Mayor describes the coming budget, core services and the deficit; the association's page is about the general fund that pays for police officers and firefighters.",
    "stance": "No position of the Mayor on a measure is in the quote, and the association's statement is about Proposition I, which the quote does not name. The association's page also reports the Mayor opposing Proposition I (a different occasion, August 2026). (My reading.)",
    "money_note": "The committee that received the money is 'Mayor Lurie's Yes on D, E & F Committee', a ballot-measure committee carrying the Mayor's name; its purpose in the Ethics Commission's portal is 'organized to support Measures D, E, and F'."
@@ -48,6 +50,7 @@
     "outside": []
    },
    "priority_ids": ["POA-I-C"],
+   "highlight": [],
    "overlap": "Same package: the Board's 14 July vote to cut the inclusionary housing fee, which the speaker before Dorsey ties to the Housing Trust Fund expansion ('SIT ON TOP OF THE HOUSING TRUST FUND THAT HAS BEEN EXPANDED SO THAT WE HAVE BOTH', 01:46:56 to 01:47:00); the association's page urges a Yes vote on Prop C, the Housing Trust Fund measure. The quote itself does not name Prop C.",
    "stance": "Not comparable on the text: the quote explains a vote on an amendment to the fee ordinance; the association's statement is a vote recommendation on a ballot measure. (My reading.)",
    "money_note": "The committees that received the money are the Supervisor's own: his 2022 supervisor committee and his 2024 officeholder committee (named 'Matt Dorsey for DCCC Member 2024 Officeholder Committee')."
@@ -68,6 +71,7 @@
     ]
    },
    "priority_ids": ["GFC-J"],
+   "highlight": ["real estate market", "transfer tax"],
    "overlap": "Same measure: Prop J, the foreclosure exemption in the real property transfer tax.",
    "stance": "Different positions on the text: the quote presents the measure as bringing the transfer tax code up to date; the donor's page says NO on Prop J. (My reading of the quote; the donor's side is its own words.)",
    "money_note": "The committees that received the money are the Supervisor's own: his 2024 supervisor committee and his 2024 committee for the Democratic County Central Committee (another office)."
@@ -85,6 +89,7 @@
     "outside": []
    },
    "priority_ids": ["SEIU-D", "SEIU-E", "SEIU-F", "SEIU-STANDS"],
+   "highlight": ["City Administrator's"],
    "overlap": "Same measures: the quote names 'THE CHARTER REFORM MEASURES PROPOSED BY MAYOR LURIE' (a spending ... mayoral hiring and firing authority, the City Administrator's term and procurement, and the signature threshold for initiatives); the union's page lists Props D, E and F with a recommendation on each.",
    "stance": "The quote asks for a cost analysis and says the measures 'SHIFT REAL POWER AWAY FROM THE BOARD OF SUPERVISORS'; the union's page says Vote NO on each. Both are critical of the measures on their face. (My reading.)",
    "money_note": "The committees that received the money are the Supervisor's own committees for the Board of Education (2012 and 2014), campaigns for another office years before his supervisor seat."

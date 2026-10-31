@@ -1,6 +1,8 @@
 """Builds the funding map and the pairings from data/ (no network).
 
-    python build_map.py        # reads data/*.json, writes funding-map.md, funding-map.json, pairings.md, pairings.json
+    python build_map.py        # reads data/*.json, writes funding-map.md, funding-map.json, pairings.md,
+                               # pairing-cards.md, pairing-cards.html, pairing-cards.json (and refreshes the
+                               # cards block of findings.md between its markers, when that file is present)
 
 Money is kept in separate buckets and never added across them: gifts (Schedule A) per committee, 24-hour
 reports not yet on a periodic report, and outside spending (form 496) naming the official.
@@ -13,6 +15,7 @@ import os
 import sys
 
 import fmap_lib as fl
+import pairing_cards as pc
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, "data")
@@ -532,6 +535,38 @@ def render_limits_md(data, ent, indep, agg):
     return L
 
 
+CARDS_START = "<!-- pairing-cards:start (written by build_map.py; do not edit by hand) -->"
+CARDS_END = "<!-- pairing-cards:end -->"
+CARDS_INTRO = ("Each pairing that has money found, as a self-contained card: money in and the donor's stated priority on "
+               "the left, the official in the middle, the official's exact words on the right, then a reading strip "
+               "(not a finding; no cause claimed) with the speaker-credit doubt, and a sources row. Presentation only: "
+               "the analysis, the pairings and the caveats are those of `pairings.md`. Highlighted words are the ones "
+               "literally in both the quote and the donor's words. The same cards, styled, are in `pairing-cards.html`; "
+               "as data, in `pairing-cards.json`.")
+
+
+def render_cards_block(cards):
+    return [CARDS_START, ""] + [CARDS_INTRO, ""] + pc.render_cards_md(cards) + [CARDS_END]
+
+
+def update_findings(block):
+    """Replace the cards block of findings.md between its markers. Nothing is written when the file or the
+    markers are absent."""
+    path = os.path.join(HERE, "findings.md")
+    if not os.path.exists(path):
+        return False
+    with open(path, encoding="utf-8") as f:
+        text = f.read()
+    a, b = text.find(CARDS_START), text.find(CARDS_END)
+    if a < 0 or b < a:
+        return False
+    new = text[:a] + "\n".join(block) + text[b + len(CARDS_END):]
+    if new != text:
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(new)
+    return True
+
+
 def main(argv=None):
     data = load_all()
     snap = data["snap"]
@@ -543,12 +578,16 @@ def main(argv=None):
     ent = entity_table(snap)
     try:
         pairs = build_pairings(data, indep)
+        cards = pc.build_cards(pairs, snap, data["fams"])
     except (ValueError, StopIteration) as exc:
         print("PAIRING FAILED: %s" % exc, file=sys.stderr)
         return 1
     md = render_map_md(data, agg, indep, routes, ind_check, st, ex) + [""] + render_limits_md(data, ent, indep, agg)
     pmd = render_pairings_md(pairs, snap)
-    full = ("\n".join(md) + "\n") + pmd
+    cards_md = "\n".join(["# Pairing cards: each pairing with money found, as a self-contained card", "", CARDS_INTRO, ""]
+                         + pc.render_cards_md(cards)) + "\n"
+    cards_html = pc.render_cards_html(cards)
+    full = ("\n".join(md) + "\n") + pmd + cards_md
     low = full.lower()
     bad = [w for w in CAUSAL if w in low and w != "influence"]
     if bad:
@@ -558,6 +597,13 @@ def main(argv=None):
         f.write("\n".join(md) + "\n")
     with open(os.path.join(HERE, "pairings.md"), "w", encoding="utf-8") as f:
         f.write(pmd)
+    with open(os.path.join(HERE, "pairing-cards.md"), "w", encoding="utf-8") as f:
+        f.write(cards_md)
+    with open(os.path.join(HERE, "pairing-cards.html"), "w", encoding="utf-8") as f:
+        f.write(cards_html)
+    with open(os.path.join(HERE, "pairing-cards.json"), "w", encoding="utf-8") as f:
+        json.dump({"retrieved": snap["retrieved"], "cards": cards}, f, indent=1, ensure_ascii=False)
+    update_findings(render_cards_block(cards))
     summary = {
         "retrieved": snap["retrieved"], "data_loaded_at": snap["data_loaded_at"],
         "committees": [{k: c[k] for k in ("official", "filer_nid", "filer_name", "filer_type", "status", "relation")} |

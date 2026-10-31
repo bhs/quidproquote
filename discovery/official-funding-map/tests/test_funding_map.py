@@ -6,6 +6,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."
 
 import build_map as bm  # noqa: E402
 import fmap_lib as fl  # noqa: E402
+import pairing_cards as pc  # noqa: E402
 
 
 class Names(unittest.TestCase):
@@ -125,6 +126,80 @@ class Sources(unittest.TestCase):
     def test_committee_control_basis_stated(self):
         self.assertIn("18402(c)(1)", self.map_md)
         self.assertIn("Form 410", self.map_md)
+
+
+class Cards(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.data = bm.load_all()
+        cls.indep = bm.independent_for(cls.data)
+        cls.pairs = bm.build_pairings(cls.data, cls.indep)
+        cls.cards = pc.build_cards(cls.pairs, cls.data["snap"], cls.data["fams"])
+
+    def test_one_card_per_pairing_with_money(self):
+        self.assertEqual(len(self.cards), len(self.pairs))
+        self.assertEqual([c["id"] for c in self.cards], [p["pk"]["id"] for p in self.pairs])
+
+    def test_pairing_without_money_is_not_a_card(self):
+        empty = dict(self.pairs[0], money={"per": {}, "outside": []})
+        self.assertEqual(pc.build_cards([empty], self.data["snap"], self.data["fams"]), [])
+
+    def test_money_lines_are_per_committee_and_never_summed(self):
+        for card, p in zip(self.cards, self.pairs):
+            lines = card["money"]["committees"]
+            self.assertEqual(len(lines), len(p["money"]["per"]))
+            for line, c in zip(lines, p["money"]["per"].values()):
+                self.assertEqual(line["schedule_a_total"], c["a_sum"])
+                self.assertTrue(line["kind"] and line["rows"] and line["first"] and line["givers_as_filed"])
+            self.assertNotIn("total", card["money"])
+        md = "\n".join(pc.render_cards_md(self.cards))
+        self.assertNotIn(fl.dollars(sum(c["schedule_a_total"] for c in self.cards[3]["money"]["committees"])).replace("$", "&#36;"), md)
+
+    def test_highlights_are_literal_in_quote_and_donor_words(self):
+        for card in self.cards:
+            donor = " ".join(s["section"] + " " + s["text"] for s in card["donor"]["statements"])
+            for term in card["highlight"]:
+                self.assertTrue(pc.term_regex([term]).search(card["quote"]["text"]), term)
+                self.assertTrue(pc.term_regex([term]).search(donor), term)
+
+    def test_highlight_not_in_both_is_refused(self):
+        with self.assertRaises(ValueError):
+            pc.check_terms(["Prop H"], "MUNI WEEKEND RIDERSHIP", ["Prop H would introduce a parcel tax"], "x")
+
+    def test_marking_adds_tags_only(self):
+        out = pc.marked("MUNI WEEKEND, MUNICIPAL", ["Muni"], pc.esc_html)
+        self.assertEqual(out, "<mark>MUNI</mark> WEEKEND, MUNICIPAL")
+
+    def test_quote_in_cards_is_the_transcripts_text(self):
+        import re
+        for card, p in zip(self.cards, self.pairs):
+            self.assertEqual(card["quote"]["text"], p["quote"]["text"])
+            md = "\n".join(pc.card_md(card))
+            plain = re.sub(r"</?mark>", "", md)
+            self.assertIn(pc.esc_md('"%s"' % card["quote"]["text"]), plain)
+
+    def test_card_carries_credit_badge_sources_and_retrieval_date(self):
+        for card in self.cards:
+            md = "\n".join(pc.card_md(card))
+            self.assertIn("SPEAKER-CREDIT DOUBT: %s" % card["speaker_credit"]["doubt"].upper(), md)
+            self.assertIn(card["sources"]["transcript"], md)
+            self.assertIn(card["sources"]["money_retrieved"], md)
+            for u in card["sources"]["donor_pages"]:
+                self.assertIn(u, md)
+            for fid in card["sources"]["filing_ids"]:
+                self.assertIn(fid, md)
+            self.assertIn("Reading, not a finding", md)
+
+    def test_chapter_givers_are_one_donor_bubble_with_a_tie_note(self):
+        gfc = next(c for c in self.cards if c["donor"]["name"] == "Govern For California")
+        self.assertGreater(gfc["donor"]["tie"]["giver_names"], 1)
+        self.assertIn("by name only", gfc["donor"]["tie"]["text"])
+
+    def test_no_causal_words_in_cards(self):
+        text = ("\n".join(pc.render_cards_md(self.cards)) + pc.render_cards_html(self.cards)).lower()
+        for w in bm.CAUSAL:
+            if w != "influence":
+                self.assertNotIn(w, text)
 
 
 if __name__ == "__main__":

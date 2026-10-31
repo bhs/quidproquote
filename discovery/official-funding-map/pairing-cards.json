@@ -1,0 +1,611 @@
+{
+ "retrieved": "2026-10-30",
+ "cards": [
+  {
+   "n": 1,
+   "id": 1,
+   "slug": "lurie-chamber-muni",
+   "title": "Daniel Lurie × San Francisco Chamber of Commerce",
+   "official": {
+    "name": "Daniel Lurie",
+    "role": "Mayor"
+   },
+   "quote": {
+    "text": "MUNI WEEKEND RIDERSHIP SURPASSED PRE-PANDEMIC LEVELS FOR THE FIRST TIME AS OF SFO RECORDED ITS BUSIEST MEMORIAL DAY WEEKEND EVER AND HALF A MILLION MORE TOURISTS ARE PROJECTED TO COME TO OUR CITY THIS YEAR THAN IN 2025.",
+    "meeting": "Board of Supervisors",
+    "date": "2026-07-14",
+    "first_stamp": "00:03:46",
+    "last_stamp": "00:03:59",
+    "transcript_url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52849",
+    "retrieved": "2026-10-29"
+   },
+   "highlight": [
+    "Muni"
+   ],
+   "money": {
+    "committees": [
+     {
+      "committee": "Mayor Lurie's Yes on H Committee",
+      "filer": "214099226",
+      "kind": "ballot-measure committee carrying the official's name",
+      "schedule_a_total": 499000.0,
+      "schedule_a_total_text": "$499,000",
+      "rows": 4,
+      "first": "2026-03-09",
+      "last": "2026-09-23",
+      "givers_as_filed": [
+       "San Francisco Forward sponsored by San Francisco Chamber of Commerce"
+      ],
+      "filings": [
+       "216863528 (v1)",
+       "216870148 (v3)",
+       "217514736 (v1)",
+       "217719664 (v1)"
+      ],
+      "filing_ids": [
+       "216863528",
+       "216870148",
+       "217514736",
+       "217719664"
+      ],
+      "repeats_not_counted": 2,
+      "h24_only_total": null,
+      "h24_only_rows": 0
+     }
+    ],
+    "outside_spending": [],
+    "retrieved": "2026-10-30",
+    "data_loaded_at": "2026-10-30",
+    "dataset_url": "https://data.sf.gov/d/pitq-e56w",
+    "note": "One line per receiving committee. Each Schedule A total is that committee's own and is never added to another's."
+   },
+   "donor": {
+    "name": "San Francisco Chamber of Commerce",
+    "kind": "business association",
+    "statements": [
+     {
+      "section": "Proposition H - Parcel Tax to Fund Public Muni Operations",
+      "text": "Prop H would introduce a parcel tax from 2027-2042 to assist in funding San Francisco Municipal Transportation Agency operations. The anticipated revenue generated from this tax would be about $177 million. The Chamber supports Prop H as public transit is a critical driver of the San Francisco economy, helping workers, residents, and businesses stay connected.",
+      "url": "https://sfchamber.com/november-2026-voter-guide/",
+      "page_date": "2026-10-08",
+      "retrieved": "2026-10-30",
+      "kind": "voter guide on the organisation's own site"
+     }
+    ],
+    "tie": {
+     "how": [
+      "by Filers id: 891575 (SF FORWARD SPONSORED BY THE SAN FRANCISCO CHAMBER OF COMMERCE)"
+     ],
+     "giver_names": 1,
+     "text": "Tie to the donor recognised by Filers id: 891575 (SF FORWARD SPONSORED BY THE SAN FRANCISCO CHAMBER OF COMMERCE)."
+    }
+   },
+   "reading": {
+    "in_common": "Same subject: Muni. The Mayor's words report Muni weekend ridership; the Chamber's statement is its position on the Muni parcel tax (Prop H).",
+    "differs": "Different kinds of statement: the Mayor's sentence reports ridership and does not mention Prop H; the Chamber's statement supports Prop H. No agreement or disagreement is claimed. (My reading.)",
+    "cause": "No cause is claimed."
+   },
+   "speaker_credit": {
+    "doubt": "low",
+    "reason": "The transcript itself names the speaker as the Mayor before and after the turn; only the captions' rendering of the Board President's name ('MANAGEMENT') is garbled. The roster has one Mayor."
+   },
+   "sources": {
+    "transcript": "https://sfgov.legistar.com/Transcript.aspx?ID1=52849",
+    "donor_pages": [
+     "https://sfchamber.com/november-2026-voter-guide/"
+    ],
+    "filing_ids": [
+     "216863528",
+     "216870148",
+     "217514736",
+     "217719664"
+    ],
+    "dataset_url": "https://data.sf.gov/d/pitq-e56w",
+    "money_retrieved": "2026-10-30"
+   }
+  },
+  {
+   "n": 2,
+   "id": 2,
+   "slug": "lurie-poa-budget",
+   "title": "Daniel Lurie × San Francisco Police Officers Association",
+   "official": {
+    "name": "Daniel Lurie",
+    "role": "Mayor"
+   },
+   "quote": {
+    "text": "I'M CONFIDENT THAT THE UPCOMING BUDGET WILL BUILD ON THE PROGRESS WE'VE ALREADY MADE. AMID FEDERAL CUTS WE ARE STRENGTHENING OUR SOCIAL SAFETY NET SO SAN FRANCISCANS KNOW THEY CAN COUNT ON THIS CITY. THE BUDGET MAINTAINS HEALTH CARE AND FOOD ASSISTANCE INVESTS IN PREVENTING INDIVIDUALS AND FAMILIES FROM FALLING INTO HOMELESSNESS AND PROTECTS CORE SERVICES THAT KEEPS OUR STREETS SAFE AND CLEAN. AND WE ARE ALSO ON TRACK TO CLOSE A $642 MILLION DEFICIT.",
+    "meeting": "Board of Supervisors",
+    "date": "2026-07-14",
+    "first_stamp": "00:04:36",
+    "last_stamp": "00:05:01",
+    "transcript_url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52849",
+    "retrieved": "2026-10-29"
+   },
+   "highlight": [],
+   "money": {
+    "committees": [
+     {
+      "committee": "Mayor Lurie's Yes on D, E & F Committee",
+      "filer": "216006060",
+      "kind": "ballot-measure committee carrying the official's name",
+      "schedule_a_total": 10000.0,
+      "schedule_a_total_text": "$10,000",
+      "rows": 1,
+      "first": "2026-08-27",
+      "last": "2026-08-27",
+      "givers_as_filed": [
+       "San Francisco Police Officers Association Issues PAC"
+      ],
+      "filings": [
+       "217516412 (v1)"
+      ],
+      "filing_ids": [
+       "217516412"
+      ],
+      "repeats_not_counted": 1,
+      "h24_only_total": null,
+      "h24_only_rows": 0
+     }
+    ],
+    "outside_spending": [],
+    "retrieved": "2026-10-30",
+    "data_loaded_at": "2026-10-30",
+    "dataset_url": "https://data.sf.gov/d/pitq-e56w",
+    "note": "One line per receiving committee. Each Schedule A total is that committee's own and is never added to another's."
+   },
+   "donor": {
+    "name": "San Francisco Police Officers Association",
+    "kind": "union",
+    "statements": [
+     {
+      "section": "Mayor Lurie Joined by Firefighters and Police Officers in Strong Opposition to Proposition I",
+      "text": "The timing of the special-interest led Proposition I could not be worse. San Francisco is in the middle of its most aggressive first-responder hiring push in years.",
+      "url": "https://sfpoa.org/mayor-lurie-joined-by-firefighters-and-police-officers-in-strong-opposition-to-proposition-i/",
+      "page_date": "2026-09-01",
+      "retrieved": "2026-10-30",
+      "kind": "article by the association's president, on its own site"
+     },
+     {
+      "section": "Quoted words of SFPOA President Louis Wong",
+      "text": "\"We are finally turning the corner on staffing after years of losing officers, and this is exactly the wrong moment to drain the fund that's paying for that comeback,\" said Louis Wong, President of the San Francisco Police Officers Association.",
+      "url": "https://sfpoa.org/mayor-lurie-joined-by-firefighters-and-police-officers-in-strong-opposition-to-proposition-i/",
+      "page_date": "2026-09-01",
+      "retrieved": "2026-10-30",
+      "kind": "article by the association's president, on its own site"
+     }
+    ],
+    "tie": {
+     "how": [
+      "by Filers id: 1317554 (San Francisco Police Officers Association Issues PAC)"
+     ],
+     "giver_names": 1,
+     "text": "Tie to the donor recognised by Filers id: 1317554 (San Francisco Police Officers Association Issues PAC)."
+    }
+   },
+   "reading": {
+    "in_common": "Same subject: the city's budget and what it pays for. The Mayor describes the coming budget, core services and the deficit; the association's page is about the general fund that pays for police officers and firefighters.",
+    "differs": "No position of the Mayor on a measure is in the quote, and the association's statement is about Proposition I, which the quote does not name. The association's page also reports the Mayor opposing Proposition I (a different occasion, August 2026). (My reading.)",
+    "cause": "No cause is claimed."
+   },
+   "speaker_credit": {
+    "doubt": "low",
+    "reason": "The transcript names the speaker as the Mayor on both sides of the turn."
+   },
+   "sources": {
+    "transcript": "https://sfgov.legistar.com/Transcript.aspx?ID1=52849",
+    "donor_pages": [
+     "https://sfpoa.org/mayor-lurie-joined-by-firefighters-and-police-officers-in-strong-opposition-to-proposition-i/"
+    ],
+    "filing_ids": [
+     "217516412"
+    ],
+    "dataset_url": "https://data.sf.gov/d/pitq-e56w",
+    "money_retrieved": "2026-10-30"
+   }
+  },
+  {
+   "n": 3,
+   "id": 3,
+   "slug": "dorsey-poa-inclusionary",
+   "title": "Matt Dorsey × San Francisco Police Officers Association",
+   "official": {
+    "name": "Matt Dorsey",
+    "role": "Supervisor, District 6"
+   },
+   "quote": {
+    "text": "COLLEAGUES, I WILL RESPECTFULLY BE VOTING NO ON THE PROPOSED AMENDMENT WHILE WE ULTIMATELY HAVE THE FINAL POLICY DECISION OVER OUR INCLUSIONARY RATES. WE GENERALLY ENTRUST THE BULK OF THE POLICYMAKING WORK ON OUR INCLUSIONARY RATES TO A GROUP OF EXPERTS FROM THE DEVELOPMENT AND AFFORDABLE HOUSING COMMUNITY. THEY LOOK AT THE DATA AND PROVIDE US WITH RECOMMENDATIONS. AS LAND USE CHAIR MELGAR JUST EXPLAINED. AND THIS TIME AROUND THE NUMBERS SHOWED THAT OUR RATES ARE TOO HIGH AND IN FACT THE REPORT SHOWED THAT THE EVEN ZERO IS INFEASIBLE. WHILE I FRANKLY HAVE RESERVATIONS EVEN ABOUT 5%, I RESPECT THE PROCESS THAT LED TO THAT RECOMMENDATION AND I UNDERSTAND THE DESIRE AND THE IMPORTANCE OF HAVING A NUMBER THAT'S GREATER THAN ZERO. BUT I DO BELIEVE WE NEED TO TRUST THE MATH. I DON'T BELIEVE WE SHOULD SINGLE OUT NEIGHBORHOODS AND FREEZE THEM OUT FOR NEW HOUSING MARKET RATE OR AFFORDABLE. IT TAKES TIME TO SEE THE EFFECTS OF THESE CHANGES AND THAT'S WHY THE TAX PROCESS HAPPENS EVERY THREE YEARS. I BELIEVE WE NEED TO LET THIS POLICY PLAY OUT SO I WILL RESPECTFULLY NOT SUPPORT THE AMENDMENT ON THE PRINCIPLE THAT IT RISKS MOVING THE LEGISLATION FURTHER FROM ITS GOAL OF MAKING HOUSING PRODUCTION FEASIBLE.",
+    "meeting": "Board of Supervisors",
+    "date": "2026-07-14",
+    "first_stamp": "01:47:19",
+    "last_stamp": "01:48:25",
+    "transcript_url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52849",
+    "retrieved": "2026-10-29"
+   },
+   "highlight": [],
+   "money": {
+    "committees": [
+     {
+      "committee": "Matt Dorsey for Supervisor 2022",
+      "filer": "203924838",
+      "kind": "own committee",
+      "schedule_a_total": 500.0,
+      "schedule_a_total_text": "$500",
+      "rows": 1,
+      "first": "2024-04-01",
+      "last": "2024-04-01",
+      "givers_as_filed": [
+       "SAN FRANCISCO POLICE OFFICERS ASSOCIATION PAC"
+      ],
+      "filings": [
+       "211830580 (v1)"
+      ],
+      "filing_ids": [
+       "211830580"
+      ],
+      "repeats_not_counted": 0,
+      "h24_only_total": null,
+      "h24_only_rows": 0
+     },
+     {
+      "committee": "Matt Dorsey for DCCC Member 2024 Officeholder Committee",
+      "filer": "208697921",
+      "kind": "officeholder committee, for another office (Democratic County Central Committee)",
+      "schedule_a_total": 7500.0,
+      "schedule_a_total_text": "$7,500",
+      "rows": 3,
+      "first": "2024-01-30",
+      "last": "2026-04-23",
+      "givers_as_filed": [
+       "SAN FRANCISCO POLICE OFFICERS ASSOCIATION PAC"
+      ],
+      "filings": [
+       "210655135 (v1)",
+       "214607150 (v1)",
+       "217134003 (v1)"
+      ],
+      "filing_ids": [
+       "210655135",
+       "214607150",
+       "217134003"
+      ],
+      "repeats_not_counted": 1,
+      "h24_only_total": null,
+      "h24_only_rows": 0
+     }
+    ],
+    "outside_spending": [],
+    "retrieved": "2026-10-30",
+    "data_loaded_at": "2026-10-30",
+    "dataset_url": "https://data.sf.gov/d/pitq-e56w",
+    "note": "One line per receiving committee. Each Schedule A total is that committee's own and is never added to another's."
+   },
+   "donor": {
+    "name": "San Francisco Police Officers Association",
+    "kind": "union",
+    "statements": [
+     {
+      "section": "Closing paragraph",
+      "text": "San Francisco Firefighters Local 798, SFPOA, and Mayor Lurie urge San Franciscans to vote NO on Proposition I and YES on Proposition C this November - and to protect the budget that keeps this city safe.",
+      "url": "https://sfpoa.org/mayor-lurie-joined-by-firefighters-and-police-officers-in-strong-opposition-to-proposition-i/",
+      "page_date": "2026-09-01",
+      "retrieved": "2026-10-30",
+      "kind": "article by the association's president, on its own site"
+     }
+    ],
+    "tie": {
+     "how": [
+      "by Filers id: 1315969 (San Francisco Police Officers Association PAC)"
+     ],
+     "giver_names": 1,
+     "text": "Tie to the donor recognised by Filers id: 1315969 (San Francisco Police Officers Association PAC)."
+    }
+   },
+   "reading": {
+    "in_common": "Same package: the Board's 14 July vote to cut the inclusionary housing fee, which the speaker before Dorsey ties to the Housing Trust Fund expansion ('SIT ON TOP OF THE HOUSING TRUST FUND THAT HAS BEEN EXPANDED SO THAT WE HAVE BOTH', 01:46:56 to 01:47:00); the association's page urges a Yes vote on Prop C, the Housing Trust Fund measure. The quote itself does not name Prop C.",
+    "differs": "Not comparable on the text: the quote explains a vote on an amendment to the fee ordinance; the association's statement is a vote recommendation on a ballot measure. (My reading.)",
+    "cause": "No cause is claimed."
+   },
+   "speaker_credit": {
+    "doubt": "low",
+    "reason": "Name spelled correctly in the cue that opens the turn, and the next speaker is named."
+   },
+   "sources": {
+    "transcript": "https://sfgov.legistar.com/Transcript.aspx?ID1=52849",
+    "donor_pages": [
+     "https://sfpoa.org/mayor-lurie-joined-by-firefighters-and-police-officers-in-strong-opposition-to-proposition-i/"
+    ],
+    "filing_ids": [
+     "210655135",
+     "211830580",
+     "214607150",
+     "217134003"
+    ],
+    "dataset_url": "https://data.sf.gov/d/pitq-e56w",
+    "money_retrieved": "2026-10-30"
+   }
+  },
+  {
+   "n": 4,
+   "id": 4,
+   "slug": "mahmood-gfc-prop-j",
+   "title": "Bilal Mahmood × Govern For California",
+   "official": {
+    "name": "Bilal Mahmood",
+    "role": "Supervisor, District 5"
+   },
+   "quote": {
+    "text": "THIS MEASURE GIVES SAN FRANCISCO VOTERS THE OPPORTUNITY TO DECIDE WHETHER A TRANSFER TAX CODE SHOULD REFLECT THE WAY TODAY'S REAL ESTATE MARKET OPERATES RATHER THAN THE MARKET THAT EXISTED DECADES AGO.",
+    "meeting": "Budget and Finance Committee",
+    "date": "2026-07-15",
+    "first_stamp": "02:52:31",
+    "last_stamp": "02:52:42",
+    "transcript_url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52853",
+    "retrieved": "2026-10-29"
+   },
+   "highlight": [
+    "real estate market",
+    "transfer tax"
+   ],
+   "money": {
+    "committees": [
+     {
+      "committee": "Bilal Mahmood for DCCC Member 2024",
+      "filer": "208655996",
+      "kind": "own committee, for another office (Democratic County Central Committee)",
+      "schedule_a_total": 10500.0,
+      "schedule_a_total_text": "$10,500",
+      "rows": 4,
+      "first": "2024-01-29",
+      "last": "2024-02-06",
+      "givers_as_filed": [
+       "GFC COURAGE COMMITTEE - BAY AREA CHAPTER",
+       "GFC COURAGE COMMITTEE - EAST BAY CHAPTER",
+       "GFC COURAGE COMMITTEE - SAN FRANCISCO CHAPTER",
+       "GFC COURAGE COMMITTEE - SIERRA CHAPTER"
+      ],
+      "filings": [
+       "210655413 (v1)"
+      ],
+      "filing_ids": [
+       "210655413"
+      ],
+      "repeats_not_counted": 4,
+      "h24_only_total": null,
+      "h24_only_rows": 0
+     },
+     {
+      "committee": "Bilal Mahmood for Supervisor 2024",
+      "filer": "209865652",
+      "kind": "own committee",
+      "schedule_a_total": 7500.0,
+      "schedule_a_total_text": "$7,500",
+      "rows": 15,
+      "first": "2024-05-01",
+      "last": "2024-09-26",
+      "givers_as_filed": [
+       "GFC COURAGE COMMITTEE - BAY AREA CHAPTER",
+       "GFC COURAGE COMMITTEE - CALIFORNIA BUSINESS COALITION",
+       "GFC COURAGE COMMITTEE - COMMON SENSE CHAPTER",
+       "GFC COURAGE COMMITTEE - EAST BAY CHAPTER",
+       "GFC COURAGE COMMITTEE - EXCELLENCE IN EDUCATION CHAPTER",
+       "GFC COURAGE COMMITTEE - FUTURE GENERATIONS CHAPER",
+       "GFC COURAGE COMMITTEE - GOLDEN GATE CHAPTER",
+       "GFC COURAGE COMMITTEE - MARIN CHAPTER",
+       "GFC COURAGE COMMITTEE - PALO ALTO CHAPTER",
+       "GFC COURAGE COMMITTEE - SAN FRANCISCO CHAPTER",
+       "GFC COURAGE COMMITTEE - SANTA BARBARA CHAPTER",
+       "GFC COURAGE COMMITTEE - SANTA CRUZ CHAPTER",
+       "GFC COURAGE COMMITTEE - SIERRA CHAPTER",
+       "GFC COURAGE COMMITTEE - SOUTHERN CALIFORNIA CHAPTER",
+       "GOVERN FOR CALIFORNIA COURAGE COMMITTEE"
+      ],
+      "filings": [
+       "212414131 (v1)",
+       "213049667 (v2)",
+       "213049699 (v2)"
+      ],
+      "filing_ids": [
+       "212414131",
+       "213049667",
+       "213049699"
+      ],
+      "repeats_not_counted": 0,
+      "h24_only_total": null,
+      "h24_only_rows": 0
+     }
+    ],
+    "outside_spending": [],
+    "retrieved": "2026-10-30",
+    "data_loaded_at": "2026-10-30",
+    "dataset_url": "https://data.sf.gov/d/pitq-e56w",
+    "note": "One line per receiving committee. Each Schedule A total is that committee's own and is never added to another's."
+   },
+   "donor": {
+    "name": "Govern For California",
+    "kind": "advocacy group",
+    "statements": [
+     {
+      "section": "Proposition J, Foreclosure Transfer Tax: NO",
+      "text": "San Francisco's commercial real estate market is already under tremendous stress, and adding transfer taxes to foreclosures and distressed property workouts would make matters worse. The city should be encouraging capital to return to its struggling real estate market, not making it more expensive to invest.",
+      "url": "https://www.governforcalifornia.org/news/2026/10/21/sf-voter-guide",
+      "page_date": "2026-10-21",
+      "retrieved": "2026-10-30",
+      "kind": "voter guide on the organisation's own site"
+     }
+    ],
+    "tie": {
+     "how": [
+      "by name only (15 giver names as filed); the FPPC ids on those rows do not resolve in the Filers dataset"
+     ],
+     "giver_names": 15,
+     "text": "Tie to the donor recognised by name only (15 giver names as filed); the FPPC ids on those rows do not resolve in the Filers dataset."
+    }
+   },
+   "reading": {
+    "in_common": "Same measure: Prop J, the foreclosure exemption in the real property transfer tax.",
+    "differs": "Different positions on the text: the quote presents the measure as bringing the transfer tax code up to date; the donor's page says NO on Prop J. (My reading of the quote; the donor's side is its own words.)",
+    "cause": "No cause is claimed."
+   },
+   "speaker_credit": {
+    "doubt": "high",
+    "reason": "No caption cue spells the speaker's surname. Two pages read on 2026-10-30 name Supervisor Mahmood as the measure's introducer, which the sponsor list in the speaker's thanks fits."
+   },
+   "sources": {
+    "transcript": "https://sfgov.legistar.com/Transcript.aspx?ID1=52853",
+    "donor_pages": [
+     "https://www.governforcalifornia.org/news/2026/10/21/sf-voter-guide"
+    ],
+    "filing_ids": [
+     "210655413",
+     "212414131",
+     "213049667",
+     "213049699"
+    ],
+    "dataset_url": "https://data.sf.gov/d/pitq-e56w",
+    "money_retrieved": "2026-10-30"
+   }
+  },
+  {
+   "n": 5,
+   "id": 5,
+   "slug": "walton-seiu1021-charter",
+   "title": "Shamann Walton × SEIU Local 1021",
+   "official": {
+    "name": "Shamann Walton",
+    "role": "Supervisor, District 10"
+   },
+   "quote": {
+    "text": "COLLEAGUES I AM ALSO REQUESTING THE BUDGET AND LEGISLATIVE ANALYSTS TO INTERPRET CLEARLY ANALYZE THE ECONOMIC IMPACT OF THE CHARTER REFORM MEASURES PROPOSED BY MAYOR LURIE THAT ARE CURRENTLY UNDERGOING THE SIGNATURE VERIFICATION PROCESS AT THE DEPARTMENT OF ELECTIONS. SAN FRANCISCO VOTERS ARE BEING ASKED TO DECIDE ON THREE CHARTER REFORM MEASURES THIS NOVEMBER THAT WERE FUNDAMENTAL RESTRUCTURE HOW THE CITY OPERATES INCLUDING A SPENDING MAYORAL HIRING AND FIRING AUTHORITY AS WELL AS REORGANIZATION POWER. EXTENDING THE CITY ADMINISTRATOR'S TERM TO TEN YEARS WHILE GIVING THAT OFFICE SO AUTHORITY OVER PROCUREMENT. AND RAISING THE SIGNATURE THRESHOLD FOR CITIZEN INITIATIVES FROM 2% TO 8%. >> THESE ARE NOT SMALL TECHNICAL FIXES. THEY SHIFT REAL POWER AWAY FROM THE BOARD OF SUPERVISORS INDEPENDENT COMMISSIONS AND FROM THE RESIDENTS OF SAN FRANCISCO.",
+    "meeting": "Board of Supervisors",
+    "date": "2026-07-14",
+    "first_stamp": "02:39:58",
+    "last_stamp": "02:40:56",
+    "transcript_url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52849",
+    "retrieved": "2026-10-29"
+   },
+   "highlight": [
+    "City Administrator's"
+   ],
+   "money": {
+    "committees": [
+     {
+      "committee": "Shamann Walton for School Board 2014",
+      "filer": "147120072",
+      "kind": "own committee, for another office (School Board)",
+      "schedule_a_total": 500.0,
+      "schedule_a_total_text": "$500",
+      "rows": 1,
+      "first": "2015-04-22",
+      "last": "2015-04-22",
+      "givers_as_filed": [
+       "Service Employees International Union (SEIU) Local 1021"
+      ],
+      "filings": [
+       "155520026 (v1)"
+      ],
+      "filing_ids": [
+       "155520026"
+      ],
+      "repeats_not_counted": 0,
+      "h24_only_total": null,
+      "h24_only_rows": 0
+     },
+     {
+      "committee": "Committee to Elect Shamann Walton for SF Board of Education 2012",
+      "filer": "130665917",
+      "kind": "own committee, for another office (School Board)",
+      "schedule_a_total": 500.0,
+      "schedule_a_total_text": "$500",
+      "rows": 1,
+      "first": "2012-10-30",
+      "last": "2012-10-30",
+      "givers_as_filed": [
+       "SEIU Local 1021"
+      ],
+      "filings": [
+       "139507483 (v1)"
+      ],
+      "filing_ids": [
+       "139507483"
+      ],
+      "repeats_not_counted": 0,
+      "h24_only_total": null,
+      "h24_only_rows": 0
+     }
+    ],
+    "outside_spending": [],
+    "retrieved": "2026-10-30",
+    "data_loaded_at": "2026-10-30",
+    "dataset_url": "https://data.sf.gov/d/pitq-e56w",
+    "note": "One line per receiving committee. Each Schedule A total is that committee's own and is never added to another's."
+   },
+   "donor": {
+    "name": "SEIU Local 1021",
+    "kind": "union",
+    "statements": [
+     {
+      "section": "San Francisco, local ballot measures",
+      "text": "Proposition D - Changes to Ballot Measure Process - Vote NO",
+      "url": "https://www.seiu1021.org/post/election-endorsements-nov-3-2026",
+      "page_date": "2026-09-28",
+      "retrieved": "2026-10-30",
+      "kind": "endorsement list on the organisation's own site"
+     },
+     {
+      "section": "San Francisco, local ballot measures",
+      "text": "Proposition E - City Administrator's Authority and Changes to City Contracting - Vote NO",
+      "url": "https://www.seiu1021.org/post/election-endorsements-nov-3-2026",
+      "page_date": "2026-09-28",
+      "retrieved": "2026-10-30",
+      "kind": "endorsement list on the organisation's own site"
+     },
+     {
+      "section": "San Francisco, local ballot measures",
+      "text": "Proposition F - Changes to Executive Branch Management - Vote NO",
+      "url": "https://www.seiu1021.org/post/election-endorsements-nov-3-2026",
+      "page_date": "2026-09-28",
+      "retrieved": "2026-10-30",
+      "kind": "endorsement list on the organisation's own site"
+     },
+     {
+      "section": "Election Endorsements: Nov 3, 2026",
+      "text": "Each election, SEIU 1021 members endorse candidates who will stand with us as we fight to win strong contracts and protect working standards.",
+      "url": "https://www.seiu1021.org/post/election-endorsements-nov-3-2026",
+      "page_date": "2026-09-28",
+      "retrieved": "2026-10-30",
+      "kind": "endorsement list on the organisation's own site"
+     }
+    ],
+    "tie": {
+     "how": [
+      "by name only (2 giver names as filed); FPPC id that resolves in the Filers dataset: 1296948 ('Service Employees International Union 1021 Candidate PAC')"
+     ],
+     "giver_names": 2,
+     "text": "Tie to the donor recognised by name only (2 giver names as filed); FPPC id that resolves in the Filers dataset: 1296948 ('Service Employees International Union 1021 Candidate PAC')."
+    }
+   },
+   "reading": {
+    "in_common": "Same measures: the quote names 'THE CHARTER REFORM MEASURES PROPOSED BY MAYOR LURIE' (a spending ... mayoral hiring and firing authority, the City Administrator's term and procurement, and the signature threshold for initiatives); the union's page lists Props D, E and F with a recommendation on each.",
+    "differs": "The quote asks for a cost analysis and says the measures 'SHIFT REAL POWER AWAY FROM THE BOARD OF SUPERVISORS'; the union's page says Vote NO on each. Both are critical of the measures on their face. (My reading.)",
+    "cause": "No cause is claimed."
+   },
+   "speaker_credit": {
+    "doubt": "low",
+    "reason": "No name cue directly before the passage (the cue is three minutes earlier, with '>>' marks between); the speaker's own 'District Ten' and the chair's closing agree with Walton."
+   },
+   "sources": {
+    "transcript": "https://sfgov.legistar.com/Transcript.aspx?ID1=52849",
+    "donor_pages": [
+     "https://www.seiu1021.org/post/election-endorsements-nov-3-2026"
+    ],
+    "filing_ids": [
+     "139507483",
+     "155520026"
+    ],
+    "dataset_url": "https://data.sf.gov/d/pitq-e56w",
+    "money_retrieved": "2026-10-30"
+   }
+  }
+ ]
+}
