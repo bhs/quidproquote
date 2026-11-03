@@ -1,0 +1,4829 @@
+{
+ "about": "Funder-first pairings. Every figure rests on the meetings listed under `meetings`; `extension` says what was and was not read beyond the sampled eleven. Nothing here says why anyone said or gave anything.",
+ "mode": "offline (sampled meetings and minutes excerpts only)",
+ "money": {
+  "retrieved": "2026-10-30",
+  "data_loaded_through": "2026-10-30",
+  "dataset": "https://data.sf.gov/d/pitq-e56w"
+ },
+ "extension": {
+  "attempted": false,
+  "route": "",
+  "year": null,
+  "notes": [],
+  "errors": [],
+  "calendar_rows": 0,
+  "calendar_rows_with_transcript": 0,
+  "added": 0,
+  "wanted": 0
+ },
+ "meetings": [
+  {
+   "id": 51452,
+   "body": "Board of Supervisors",
+   "date": "2026-01-06",
+   "source": "sampled",
+   "caption_rows": 1978,
+   "caption_words": 18170,
+   "credited_words": 5598,
+   "turns_credited": 20,
+   "transcript_url": "https://sfgov.legistar.com/Transcript.aspx?ID1=51452",
+   "minutes": "offline: no minutes read",
+   "minutes_parsed": null
+  },
+  {
+   "id": 52251,
+   "body": "Board of Supervisors",
+   "date": "2026-04-21",
+   "source": "sampled",
+   "caption_rows": 1767,
+   "caption_words": 15813,
+   "credited_words": 6387,
+   "turns_credited": 17,
+   "transcript_url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52251",
+   "minutes": "offline: no minutes read",
+   "minutes_parsed": null
+  },
+  {
+   "id": 52800,
+   "body": "Board of Supervisors",
+   "date": "2026-07-07",
+   "source": "sampled",
+   "caption_rows": 1740,
+   "caption_words": 15698,
+   "credited_words": 5026,
+   "turns_credited": 16,
+   "transcript_url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52800",
+   "minutes": "offline: no minutes read",
+   "minutes_parsed": null
+  },
+  {
+   "id": 52804,
+   "body": "Budget and Finance Committee",
+   "date": "2026-07-08",
+   "source": "sampled",
+   "caption_rows": 1476,
+   "caption_words": 13467,
+   "credited_words": 1490,
+   "turns_credited": 6,
+   "transcript_url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52804",
+   "minutes": "offline: no minutes read",
+   "minutes_parsed": null
+  },
+  {
+   "id": 52816,
+   "body": "Public Safety and Neighborhood Services Committee",
+   "date": "2026-07-09",
+   "source": "sampled",
+   "caption_rows": 1873,
+   "caption_words": 16809,
+   "credited_words": 1476,
+   "turns_credited": 8,
+   "transcript_url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52816",
+   "minutes": "offline: no minutes read",
+   "minutes_parsed": null
+  },
+  {
+   "id": 52831,
+   "body": "Rules Committee",
+   "date": "2026-07-13",
+   "source": "sampled",
+   "caption_rows": 1029,
+   "caption_words": 9287,
+   "credited_words": 1049,
+   "turns_credited": 3,
+   "transcript_url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52831",
+   "minutes": "offline: no minutes read",
+   "minutes_parsed": null
+  },
+  {
+   "id": 52838,
+   "body": "Land Use and Transportation Committee",
+   "date": "2026-07-13",
+   "source": "sampled",
+   "caption_rows": 2189,
+   "caption_words": 21113,
+   "credited_words": 1746,
+   "turns_credited": 4,
+   "transcript_url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52838",
+   "minutes": "offline: no minutes read",
+   "minutes_parsed": null
+  },
+  {
+   "id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "source": "sampled",
+   "caption_rows": 3214,
+   "caption_words": 28979,
+   "credited_words": 14826,
+   "turns_credited": 43,
+   "transcript_url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52849",
+   "minutes": "excerpts typed from the minutes (data/minutes/52849.txt)",
+   "minutes_parsed": {
+    "present": 11,
+    "votes": 5,
+    "motions": 2
+   }
+  },
+  {
+   "id": 52853,
+   "body": "Budget and Finance Committee",
+   "date": "2026-07-15",
+   "source": "sampled",
+   "caption_rows": 2916,
+   "caption_words": 26837,
+   "credited_words": 2954,
+   "turns_credited": 6,
+   "transcript_url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52853",
+   "minutes": "offline: no minutes read",
+   "minutes_parsed": null
+  },
+  {
+   "id": 52871,
+   "body": "Government Audit and Oversight Committee",
+   "date": "2026-07-16",
+   "source": "sampled",
+   "caption_rows": 1263,
+   "caption_words": 11475,
+   "credited_words": 1545,
+   "turns_credited": 3,
+   "transcript_url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52871",
+   "minutes": "offline: no minutes read",
+   "minutes_parsed": null
+  },
+  {
+   "id": 52901,
+   "body": "Board of Supervisors",
+   "date": "2026-07-21",
+   "source": "sampled",
+   "caption_rows": 5009,
+   "caption_words": 44825,
+   "credited_words": 10361,
+   "turns_credited": 28,
+   "transcript_url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52901",
+   "minutes": "offline: no minutes read",
+   "minutes_parsed": null
+  }
+ ],
+ "credited_words_by_official": {
+  "Alan Wong": 5533,
+  "Bilal Mahmood": 3472,
+  "Chyanne Chen": 8528,
+  "Connie Chan": 3161,
+  "Daniel Lurie": 507,
+  "Danny Sauter": 1153,
+  "Jackie Fielder": 4987,
+  "Matt Dorsey": 7503,
+  "Myrna Melgar": 7597,
+  "Shamann Walton": 5803,
+  "Stephen Sherrill": 4214
+ },
+ "earlier_pairings_check": [
+  {
+   "slug": "lurie-chamber-muni",
+   "official": "Daniel Lurie",
+   "family": "sf-chamber",
+   "meeting_id": 52849,
+   "quote_from": "00:03:46",
+   "quote_to": "00:03:59",
+   "earlier_doubt": "low",
+   "rule_doubt": "low",
+   "outcome": "found as a candidate (loose)"
+  },
+  {
+   "slug": "lurie-poa-budget",
+   "official": "Daniel Lurie",
+   "family": "sf-poa",
+   "meeting_id": 52849,
+   "quote_from": "00:04:36",
+   "quote_to": "00:05:01",
+   "earlier_doubt": "low",
+   "rule_doubt": "low",
+   "outcome": "credited, but no passage hit the donor's subject terms"
+  },
+  {
+   "slug": "dorsey-poa-inclusionary",
+   "official": "Matt Dorsey",
+   "family": "sf-poa",
+   "meeting_id": 52849,
+   "quote_from": "01:47:19",
+   "quote_to": "01:48:25",
+   "earlier_doubt": "low",
+   "rule_doubt": "low",
+   "outcome": "found as a candidate (loose)"
+  },
+  {
+   "slug": "mahmood-gfc-prop-j",
+   "official": "Bilal Mahmood",
+   "family": "govern-for-california",
+   "meeting_id": 52853,
+   "quote_from": "02:52:31",
+   "quote_to": "02:52:42",
+   "earlier_doubt": "high",
+   "outcome": "missed: no cue credits the quote's first row to the official"
+  },
+  {
+   "slug": "walton-seiu1021-charter",
+   "official": "Shamann Walton",
+   "family": "seiu-1021",
+   "meeting_id": 52849,
+   "quote_from": "02:39:58",
+   "quote_to": "02:40:56",
+   "earlier_doubt": "low",
+   "rule_doubt": "high",
+   "outcome": "found as a candidate (accept)"
+  }
+ ],
+ "pairs": [
+  {
+   "official": "Daniel Lurie",
+   "family": "airbnb",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "1 passage(s) hit the subject's terms; each was judged not to be on the donor's subject",
+   "candidates": 1,
+   "specific": 0,
+   "decisions": {
+    "reject": 1
+   },
+   "committees": [
+    {
+     "committee": "Mayor Lurie's Yes on H Committee",
+     "kind": "ballot-measure committee carrying the official's name",
+     "schedule_a_total": 500000.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Alan Wong",
+   "family": "boma-sf",
+   "tied": false,
+   "status": "no fitting remark",
+   "reason": "no passage in the 5533 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "GrowSF Supporting Alan Wong for Supervisor 2026",
+     "kind": "committee formed to support the official (not the official's own)",
+     "schedule_a_total": 9999.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Connie Chan",
+   "family": "boma-sf",
+   "tied": false,
+   "status": "no fitting remark",
+   "reason": "no passage in the 3161 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Coalition to Grow San Francisco - Grow SF PAC Opposing Chan for Supervisor 2024",
+     "kind": "committee formed to oppose the official (not the official's own)",
+     "schedule_a_total": 20000.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Daniel Lurie",
+   "family": "emerson-collective",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 507 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Mayor Lurie's Yes on D, E & F Committee",
+     "kind": "ballot-measure committee carrying the official's name",
+     "schedule_a_total": 500000.0,
+     "rows": 1
+    },
+    {
+     "committee": "Mayor Lurie's Yes on H Committee",
+     "kind": "ballot-measure committee carrying the official's name",
+     "schedule_a_total": 200000.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Bilal Mahmood",
+   "family": "govern-for-california",
+   "tied": true,
+   "status": "fitting remark found",
+   "reason": "2 passage(s) judged on the donor's subject",
+   "candidates": 3,
+   "specific": 3,
+   "decisions": {
+    "accept": 2,
+    "loose": 1
+   },
+   "committees": [
+    {
+     "committee": "Bilal Mahmood for DCCC Member 2024",
+     "kind": "own committee, for another office (Democratic County Central Committee)",
+     "schedule_a_total": 10500.0,
+     "rows": 4
+    },
+    {
+     "committee": "Bilal Mahmood for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 7500.0,
+     "rows": 15
+    }
+   ]
+  },
+  {
+   "official": "Danny Sauter",
+   "family": "govern-for-california",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 1153 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Danny Sauter for Supervisor 2024 Officerholder Committee",
+     "kind": "own committee",
+     "schedule_a_total": 4500.0,
+     "rows": 9
+    }
+   ]
+  },
+  {
+   "official": "Stephen Sherrill",
+   "family": "govern-for-california",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 4214 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Stephen Sherrill for Supervisor 2026 General",
+     "kind": "own committee",
+     "schedule_a_total": 1000.0,
+     "rows": 2
+    },
+    {
+     "committee": "Stephen Sherrill for Supervisor 2026",
+     "kind": "own committee",
+     "schedule_a_total": 1500.0,
+     "rows": 3
+    }
+   ]
+  },
+  {
+   "official": "Alan Wong",
+   "family": "ifpte-21",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 5533 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Alan Wong for College Board 2020",
+     "kind": "own committee, for another office (Community College Board)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Chyanne Chen",
+   "family": "ifpte-21",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 8528 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Chyanne Chen for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Connie Chan",
+   "family": "ifpte-21",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 3161 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Connie Chan for Democratic County Central Committee 2028",
+     "kind": "own committee, for another office (Democratic County Central Committee)",
+     "schedule_a_total": 25750.0,
+     "rows": 3
+    },
+    {
+     "committee": "Connie Chan for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Connie Chan for Supervisor 2020",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Jackie Fielder",
+   "family": "ifpte-21",
+   "tied": true,
+   "status": "fitting remark found",
+   "reason": "1 passage(s) judged on the donor's subject",
+   "candidates": 1,
+   "specific": 1,
+   "decisions": {
+    "accept": 1
+   },
+   "committees": [
+    {
+     "committee": "Jackie Fielder for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Myrna Melgar",
+   "family": "ifpte-21",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "1 passage(s) hit the subject's terms; each was judged not to be on the donor's subject",
+   "candidates": 1,
+   "specific": 1,
+   "decisions": {
+    "reject": 1
+   },
+   "committees": [
+    {
+     "committee": "Re-Elect Myrna Melgar for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Myrna Melgar for Supervisor 2020",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Rafael Mandelman",
+   "family": "ifpte-21",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no turn of the official was credited in the meetings read",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Rafael Mandelman for Supervisor 2018 General",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Rafael Mandelman for College Board 2016 Officeholder Account",
+     "kind": "officeholder committee, for another office (Community College Board)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Mandelman for Supervisor 2010",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Shamann Walton",
+   "family": "ifpte-21",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "4 passage(s) hit the subject's terms; each was judged not to be on the donor's subject",
+   "candidates": 4,
+   "specific": 2,
+   "decisions": {
+    "reject": 4
+   },
+   "committees": [
+    {
+     "committee": "Shamann Walton for Supervisor 2018",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Alan Wong",
+   "family": "laborers-261",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 5533 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "ALAN WONG FOR COLLEGE BOARD 2024",
+     "kind": "own committee, for another office (Community College Board)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Alan Wong for Supervisor 2026",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Alan Wong for College Board 2020",
+     "kind": "own committee, for another office (Community College Board)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Bilal Mahmood",
+   "family": "laborers-261",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 3472 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Bilal Mahmood for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Connie Chan",
+   "family": "laborers-261",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 3161 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Connie Chan for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Daniel Lurie",
+   "family": "laborers-261",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 507 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Mayor Lurie's Yes on H Committee",
+     "kind": "ballot-measure committee carrying the official's name",
+     "schedule_a_total": 10000.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Danny Sauter",
+   "family": "laborers-261",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 1153 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Danny Sauter for Supervisor 2024 Officerholder Committee",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Jackie Fielder",
+   "family": "laborers-261",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "1 passage(s) hit the subject's terms; each was judged not to be on the donor's subject",
+   "candidates": 1,
+   "specific": 1,
+   "decisions": {
+    "reject": 1
+   },
+   "committees": [
+    {
+     "committee": "Jackie Fielder for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Matt Dorsey",
+   "family": "laborers-261",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 7503 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Matt Dorsey for Supervisor 2022",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Myrna Melgar",
+   "family": "laborers-261",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 7597 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Re-Elect Myrna Melgar for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Myrna Melgar for Supervisor 2020",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Rafael Mandelman",
+   "family": "laborers-261",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no turn of the official was credited in the meetings read",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Rafael Mandelman for Democratic County Central Committee 2024",
+     "kind": "own committee, for another office (Democratic County Central Committee)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Rafael Mandelman for Supervisor 2018 General",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Rafael Mandelman for College Board 2016 Officeholder Account",
+     "kind": "officeholder committee, for another office (Community College Board)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Rafael Mandelman for the Democratic County Central Committee 2016",
+     "kind": "own committee, for another office (Democratic County Central Committee)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Rafael Mandelman for San Francisco Community College District Board 2012",
+     "kind": "own committee, for another office (Community College Board)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Mandelman for Supervisor 2010",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Rafael Mandelman for Democratic County Central Committee - 2010",
+     "kind": "own committee, for another office (Democratic County Central Committee)",
+     "schedule_a_total": 2000.0,
+     "rows": 2
+    }
+   ]
+  },
+  {
+   "official": "Shamann Walton",
+   "family": "laborers-261",
+   "tied": true,
+   "status": "fitting remark found",
+   "reason": "3 passage(s) judged on the donor's subject",
+   "candidates": 3,
+   "specific": 3,
+   "decisions": {
+    "accept": 3
+   },
+   "committees": [
+    {
+     "committee": "Shamann Walton for Supervisor  2022",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Shamann Walton for Supervisor 2018",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Shamann Walton for Democratic Central Committee 2020",
+     "kind": "own committee, for another office (Democratic County Central Committee)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Shamann Walton for School Board 2014",
+     "kind": "own committee, for another office (School Board)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Stephen Sherrill",
+   "family": "laborers-261",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 4214 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Working Families for Stephen Sherrill for Supervisor 2026, Sponsored by International Union of Operating Engineers Local 3",
+     "kind": "committee formed to support the official (not the official's own)",
+     "schedule_a_total": 10000.0,
+     "rows": 1
+    },
+    {
+     "committee": "Stephen Sherrill for Supervisor 2026",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Alan Wong",
+   "family": "operating-engineers-3",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 5533 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Alan Wong for Supervisor 2026 General",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Alan Wong for Supervisor 2026",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Alan Wong for College Board 2020",
+     "kind": "own committee, for another office (Community College Board)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Bilal Mahmood",
+   "family": "operating-engineers-3",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 3472 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Bilal Mahmood for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Connie Chan",
+   "family": "operating-engineers-3",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 3161 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Connie Chan for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Connie Chan for Supervisor 2020",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Daniel Lurie",
+   "family": "operating-engineers-3",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 507 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Mayor Lurie's Yes on H Committee",
+     "kind": "ballot-measure committee carrying the official's name",
+     "schedule_a_total": 25000.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Danny Sauter",
+   "family": "operating-engineers-3",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 1153 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Danny Sauter for Supervisor 2024 Officerholder Committee",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Jackie Fielder",
+   "family": "operating-engineers-3",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "1 passage(s) hit the subject's terms; each was judged not to be on the donor's subject",
+   "candidates": 1,
+   "specific": 1,
+   "decisions": {
+    "reject": 1
+   },
+   "committees": [
+    {
+     "committee": "Jackie Fielder for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Matt Dorsey",
+   "family": "operating-engineers-3",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 7503 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Matt Dorsey for Supervisor 2026",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Matt Dorsey for Supervisor 2022",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Matt Dorsey for DCCC Member 2024 Officeholder Committee",
+     "kind": "officeholder committee, for another office (Democratic County Central Committee)",
+     "schedule_a_total": 1000.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Myrna Melgar",
+   "family": "operating-engineers-3",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 7597 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Re-Elect Myrna Melgar for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Myrna Melgar for Supervisor 2020",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Rafael Mandelman",
+   "family": "operating-engineers-3",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no turn of the official was credited in the meetings read",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Rafael Mandelman for Supervisor 2022",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Rafael Mandelman for Democratic County Central Committee 2024",
+     "kind": "own committee, for another office (Democratic County Central Committee)",
+     "schedule_a_total": 100.0,
+     "rows": 1
+    },
+    {
+     "committee": "Rafael Mandelman for Supervisor 2018 General",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Shamann Walton",
+   "family": "operating-engineers-3",
+   "tied": true,
+   "status": "fitting remark found",
+   "reason": "3 passage(s) judged on the donor's subject",
+   "candidates": 3,
+   "specific": 3,
+   "decisions": {
+    "accept": 3
+   },
+   "committees": [
+    {
+     "committee": "Shamann Walton for Supervisor  2022",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Shamann Walton for Supervisor 2018",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Shamann Walton for School Board 2014",
+     "kind": "own committee, for another office (School Board)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Stephen Sherrill",
+   "family": "operating-engineers-3",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 4214 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Working Families for Stephen Sherrill for Supervisor 2026, Sponsored by International Union of Operating Engineers Local 3",
+     "kind": "committee formed to support the official (not the official's own)",
+     "schedule_a_total": 20000.0,
+     "rows": 1
+    },
+    {
+     "committee": "Stephen Sherrill for Supervisor 2026",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Connie Chan",
+   "family": "seiu-1021",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 3161 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Connie Chan for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Connie Chan for Supervisor 2020",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Rafael Mandelman",
+   "family": "seiu-1021",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no turn of the official was credited in the meetings read",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Rafael Mandelman for Supervisor 2018 General",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Rafael Mandelman for Supervisor 2018 Primary",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Rafael Mandelman for College Board 2016 Officeholder Account",
+     "kind": "officeholder committee, for another office (Community College Board)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Rafael Mandelman for San Francisco Community College District Board 2012",
+     "kind": "own committee, for another office (Community College Board)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Teachers, Nurses, Muni riders, neighbors and working families supporting Mandelman for Supervisor 2010 sponsored by labor organizations",
+     "kind": "committee formed to support the official (not the official's own)",
+     "schedule_a_total": 100000.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Shamann Walton",
+   "family": "seiu-1021",
+   "tied": true,
+   "status": "fitting remark found",
+   "reason": "3 passage(s) judged on the donor's subject",
+   "candidates": 3,
+   "specific": 3,
+   "decisions": {
+    "accept": 3
+   },
+   "committees": [
+    {
+     "committee": "Shamann Walton for School Board 2014",
+     "kind": "own committee, for another office (School Board)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Committee to Elect Shamann Walton for SF Board of Education 2012",
+     "kind": "own committee, for another office (School Board)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Alan Wong",
+   "family": "seiu-2015",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 5533 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Alan Wong for Supervisor 2026 General",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Chyanne Chen",
+   "family": "seiu-2015",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 8528 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Chyanne Chen for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Connie Chan",
+   "family": "seiu-2015",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 3161 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Connie Chan for Democratic County Central Committee 2028",
+     "kind": "own committee, for another office (Democratic County Central Committee)",
+     "schedule_a_total": 2500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Jackie Fielder",
+   "family": "seiu-2015",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "1 passage(s) hit the subject's terms; each was judged not to be on the donor's subject",
+   "candidates": 1,
+   "specific": 1,
+   "decisions": {
+    "reject": 1
+   },
+   "committees": [
+    {
+     "committee": "Jackie Fielder for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Myrna Melgar",
+   "family": "seiu-2015",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 7597 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Re-Elect Myrna Melgar for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Myrna Melgar for Supervisor 2020",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Rafael Mandelman",
+   "family": "seiu-2015",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no turn of the official was credited in the meetings read",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Rafael Mandelman for Supervisor 2022",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Alan Wong",
+   "family": "sf-apartment-association",
+   "tied": true,
+   "status": "fitting remark found",
+   "reason": "1 passage(s) judged on the donor's subject",
+   "candidates": 1,
+   "specific": 1,
+   "decisions": {
+    "accept": 1
+   },
+   "committees": [
+    {
+     "committee": "Alan Wong for Supervisor 2026 General",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Alan Wong for Supervisor 2026",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Bilal Mahmood",
+   "family": "sf-apartment-association",
+   "tied": true,
+   "status": "same broad subject only",
+   "reason": "2 passage(s) on the same broad subject, none on the donor's specific one",
+   "candidates": 2,
+   "specific": 2,
+   "decisions": {
+    "loose": 2
+   },
+   "committees": [
+    {
+     "committee": "Bilal Mahmood for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Danny Sauter",
+   "family": "sf-apartment-association",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 1153 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Danny Sauter for Supervisor 2024 Officerholder Committee",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Matt Dorsey",
+   "family": "sf-apartment-association",
+   "tied": true,
+   "status": "same broad subject only",
+   "reason": "2 passage(s) on the same broad subject, none on the donor's specific one",
+   "candidates": 5,
+   "specific": 0,
+   "decisions": {
+    "reject": 3,
+    "loose": 2
+   },
+   "committees": [
+    {
+     "committee": "Matt Dorsey for Supervisor 2026",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Matt Dorsey for Supervisor 2022",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Matt Dorsey for DCCC Member 2024 Officeholder Committee",
+     "kind": "officeholder committee, for another office (Democratic County Central Committee)",
+     "schedule_a_total": 10000.0,
+     "rows": 3
+    }
+   ]
+  },
+  {
+   "official": "Myrna Melgar",
+   "family": "sf-apartment-association",
+   "tied": true,
+   "status": "fitting remark found",
+   "reason": "2 passage(s) judged on the donor's subject",
+   "candidates": 4,
+   "specific": 3,
+   "decisions": {
+    "reject": 2,
+    "accept": 2
+   },
+   "committees": [
+    {
+     "committee": "Myrna Melgar for Supervisor 2020",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Rafael Mandelman",
+   "family": "sf-apartment-association",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no turn of the official was credited in the meetings read",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Rafael Mandelman for Supervisor 2018 Primary",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Stephen Sherrill",
+   "family": "sf-apartment-association",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 4214 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Stephen Sherrill for Supervisor 2026",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Daniel Lurie",
+   "family": "sf-chamber",
+   "tied": true,
+   "status": "same broad subject only",
+   "reason": "1 passage(s) on the same broad subject, none on the donor's specific one",
+   "candidates": 1,
+   "specific": 0,
+   "decisions": {
+    "loose": 1
+   },
+   "committees": [
+    {
+     "committee": "Mayor Lurie's Yes on H Committee",
+     "kind": "ballot-measure committee carrying the official's name",
+     "schedule_a_total": 499000.0,
+     "rows": 4
+    }
+   ]
+  },
+  {
+   "official": "Connie Chan",
+   "family": "sf-labor-council",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 3161 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Connie Chan for Democratic County Central Committee 2028",
+     "kind": "own committee, for another office (Democratic County Central Committee)",
+     "schedule_a_total": 5000.0,
+     "rows": 1
+    },
+    {
+     "committee": "Connie Chan for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Myrna Melgar",
+   "family": "sf-labor-council",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 7597 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Re-Elect Myrna Melgar for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Rafael Mandelman",
+   "family": "sf-labor-council",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no turn of the official was credited in the meetings read",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Rafael Mandelman for Supervisor 2022",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Teachers, Nurses, Muni riders, neighbors and working families supporting Mandelman for Supervisor 2010 sponsored by labor organizations",
+     "kind": "committee formed to support the official (not the official's own)",
+     "schedule_a_total": 39000.0,
+     "rows": 2
+    }
+   ]
+  },
+  {
+   "official": "Shamann Walton",
+   "family": "sf-labor-council",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 5803 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Shamann Walton for Supervisor  2022",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Shamann Walton for Supervisor 2018",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Alan Wong",
+   "family": "sf-poa",
+   "tied": true,
+   "status": "fitting remark found",
+   "reason": "1 passage(s) judged on the donor's subject",
+   "candidates": 8,
+   "specific": 2,
+   "decisions": {
+    "reject": 5,
+    "accept": 1,
+    "loose": 2
+   },
+   "committees": [
+    {
+     "committee": "Alan Wong for Supervisor 2026 General",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Alan Wong for Supervisor 2026",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Daniel Lurie",
+   "family": "sf-poa",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 507 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Mayor Lurie's Yes on D, E & F Committee",
+     "kind": "ballot-measure committee carrying the official's name",
+     "schedule_a_total": 10000.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Matt Dorsey",
+   "family": "sf-poa",
+   "tied": true,
+   "status": "same broad subject only",
+   "reason": "1 passage(s) on the same broad subject, none on the donor's specific one",
+   "candidates": 1,
+   "specific": 0,
+   "decisions": {
+    "loose": 1
+   },
+   "committees": [
+    {
+     "committee": "Matt Dorsey for Supervisor 2022",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Matt Dorsey for DCCC Member 2024 Officeholder Committee",
+     "kind": "officeholder committee, for another office (Democratic County Central Committee)",
+     "schedule_a_total": 7500.0,
+     "rows": 3
+    }
+   ]
+  },
+  {
+   "official": "Matt Dorsey",
+   "family": "sf-realtors",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 7503 words credited to the official hit the donor's subject terms",
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Matt Dorsey for DCCC Member 2024 Officeholder Committee",
+     "kind": "officeholder committee, for another office (Democratic County Central Committee)",
+     "schedule_a_total": 20000.0,
+     "rows": 2
+    }
+   ]
+  },
+  {
+   "official": "Daniel Lurie",
+   "family": "twu-250a",
+   "tied": true,
+   "status": "same broad subject only",
+   "reason": "1 passage(s) on the same broad subject, none on the donor's specific one",
+   "candidates": 1,
+   "specific": 0,
+   "decisions": {
+    "loose": 1
+   },
+   "committees": [
+    {
+     "committee": "Mayor Lurie's Yes on H Committee",
+     "kind": "ballot-measure committee carrying the official's name",
+     "schedule_a_total": 50000.0,
+     "rows": 1
+    }
+   ]
+  }
+ ],
+ "candidates": [
+  {
+   "id": "52849|00:03:51|Daniel Lurie|AIRBNB-RULES",
+   "official": "Daniel Lurie",
+   "family": "airbnb",
+   "subject": "AIRBNB-RULES",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "00:03:51",
+   "last_stamp": "00:03:59",
+   "text": "FOR THE FIRST TIME AS OF SFO RECORDED ITS BUSIEST MEMORIAL DAY WEEKEND EVER AND HALF A MILLION MORE TOURISTS ARE PROJECTED TO COME TO OUR CITY THIS YEAR THAN IN 2025.",
+   "tier": "topic",
+   "anchor_hits": [],
+   "topic_hits": [
+    "TOURISTS"
+   ],
+   "credit": {
+    "doubt": "low",
+    "why": [
+     "inside the Mayor's opening remarks, which the presiding officer's question opens and 'THANK YOU, MAYOR' closes (00:02:28)"
+    ],
+    "cue": "the presiding officer asks the Mayor for opening remarks",
+    "cue_stamp": "00:02:28",
+    "exact_spelling": true,
+    "closed_by_a_cue": true
+   },
+   "review": {
+    "id": "52849|00:03:51|Daniel Lurie|AIRBNB-RULES",
+    "decision": "reject",
+    "credit": "agree",
+    "credit_note": "Inside the Mayor's opening remarks, introduced by the clerk and closed by 'THANK YOU, MAYOR LURIE'.",
+    "note": "The word is 'tourists' in a list of the city's results; Airbnb's statement is about home-sharing rules."
+   },
+   "decision": "reject",
+   "final_text": "FOR THE FIRST TIME AS OF SFO RECORDED ITS BUSIEST MEMORIAL DAY WEEKEND EVER AND HALF A MILLION MORE TOURISTS ARE PROJECTED TO COME TO OUR CITY THIS YEAR THAN IN 2025.",
+   "final_first": "00:03:51",
+   "final_last": "00:03:59",
+   "minutes": {
+    "status": "confirmed",
+    "checks": [
+     "The minutes summarise Lurie addressing the Board."
+    ]
+   }
+  },
+  {
+   "id": "52849|01:40:05|Bilal Mahmood|GFC-C",
+   "official": "Bilal Mahmood",
+   "family": "govern-for-california",
+   "subject": "GFC-C",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "01:40:05",
+   "last_stamp": "01:40:19",
+   "text": "CITY TO BUILD THE HOUSING REQUIRED TO MEET DEMAND. >> THE INCREASE IN THE THRESHOLD FOR INCLUSIONARY FEES FROM TEN UNITS TO 25 UNITS IN PARTICULAR WILL HELP WITH THE EXACT KIND OF MIDSIZED PROJECTS ENCOURAGED BY THE FAMILY ZONING PLAN WHEN PAIRED WITH THE HOUSING TRUST FUND EXPANSION SUPERVISOR MELGAR HAS PROPOSED THESE POLICIES GO A",
+   "tier": "specific",
+   "anchor_hits": [
+    "HOUSING TRUST FUND",
+    "INCLUSIONARY"
+   ],
+   "topic_hits": [],
+   "credit": {
+    "doubt": "low",
+    "why": [
+     "59 words after the cue 'SUPERVISOR MAHMOOD' (01:39:46)",
+     "1 '>>' mark(s) between the cue and the passage"
+    ],
+    "cue": "SUPERVISOR MAHMOOD",
+    "cue_stamp": "01:39:46",
+    "exact_spelling": true,
+    "closed_by_a_cue": true
+   },
+   "review": {
+    "id": "52849|01:40:05|Bilal Mahmood|GFC-C",
+    "decision": "accept",
+    "credit": "agree",
+    "credit_note": "The cue 'SUPERVISOR MAHMOOD THANK YOU PRESIDENT' opens the turn; the next speaker is named after it.",
+    "note": "Same package as Prop C (the inclusionary-fee changes paired with the Housing Trust Fund).",
+    "trim": {
+     "begin_at": "THE INCREASE IN THE THRESHOLD",
+     "end_at": "RISING RENTS FOR RESIDENTS ON THE OPEN MARKET."
+    },
+    "donor_statements": [
+     "GFC-C"
+    ],
+    "in_common": "Both speak of the inclusionary housing requirements and the Housing Trust Fund being traded against each other.",
+    "differs": "Govern For California's page says YES on Prop C and describes it as a compromise; the supervisor's words describe the paired changes as helping production and do not name Prop C or take a position on the ballot measure."
+   },
+   "decision": "accept",
+   "final_text": "THE INCREASE IN THE THRESHOLD FOR INCLUSIONARY FEES FROM TEN UNITS TO 25 UNITS IN PARTICULAR WILL HELP WITH THE EXACT KIND OF MIDSIZED PROJECTS ENCOURAGED BY THE FAMILY ZONING PLAN WHEN PAIRED WITH THE HOUSING TRUST FUND EXPANSION SUPERVISOR MELGAR HAS PROPOSED THESE POLICIES GO A LONG WAY IN HELPING US MEET OUR PRODUCTION GOALS AROUND SUBSIDIZED AFFORDABLE HOUSING WHILE ALSO STEMMING THE TIDE OF RISING RENTS FOR RESIDENTS ON THE OPEN MARKET.",
+   "final_first": "01:40:08",
+   "final_last": "01:40:31",
+   "minutes": {
+    "status": "silent",
+    "checks": [
+     "Mahmood is listed present."
+    ]
+   }
+  },
+  {
+   "id": "52849|01:40:34|Bilal Mahmood|GFC-C",
+   "official": "Bilal Mahmood",
+   "family": "govern-for-california",
+   "subject": "GFC-C",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "01:40:34",
+   "last_stamp": "01:40:43",
+   "text": "AS WAS NOTED, THIS WAS DONE AS AN EXCHANGE ON THE RECOMMENDATION BY THE TAC BETWEEN THE HOUSING TRUST FUND AND INCLUSIONARY REQUIREMENTS AND HAD AMENDMENTS MOVE FORWARD TO ACTUALLY COUPLE THOSE MEASURES.",
+   "tier": "specific",
+   "anchor_hits": [
+    "HOUSING TRUST FUND",
+    "INCLUSIONARY"
+   ],
+   "topic_hits": [],
+   "credit": {
+    "doubt": "medium",
+    "why": [
+     "143 words after the cue 'SUPERVISOR MAHMOOD' (01:39:46)",
+     "2 '>>' mark(s) between the cue and the passage"
+    ],
+    "cue": "SUPERVISOR MAHMOOD",
+    "cue_stamp": "01:39:46",
+    "exact_spelling": true,
+    "closed_by_a_cue": true
+   },
+   "review": {
+    "id": "52849|01:40:34|Bilal Mahmood|GFC-C",
+    "decision": "accept",
+    "credit": "agree",
+    "credit_note": "Same turn as 01:40:05 (two '>>' marks inside one speech; the speaker is not named again).",
+    "note": "The supervisor uses the word 'exchange' for the same trade the donor's page calls an exchange.",
+    "trim": {
+     "begin_at": "AS WAS NOTED, THIS WAS DONE AS AN EXCHANGE",
+     "end_at": "COUPLE THOSE MEASURES."
+    },
+    "donor_statements": [
+     "GFC-C"
+    ],
+    "prefer": true,
+    "in_common": "Both describe the same trade: 'an exchange' between the Housing Trust Fund and the inclusionary requirements (the supervisor); a compromise that reduces certain inclusionary requirements 'in exchange for greater direct funding of affordable housing' (the donor's page).",
+    "differs": "The donor's page recommends YES on Prop C. The supervisor reports how the changes were made and that they were moved forward together; he does not name Prop C and says nothing here of the ballot measure's recommendation."
+   },
+   "decision": "accept",
+   "final_text": "AS WAS NOTED, THIS WAS DONE AS AN EXCHANGE ON THE RECOMMENDATION BY THE TAC BETWEEN THE HOUSING TRUST FUND AND INCLUSIONARY REQUIREMENTS AND HAD AMENDMENTS MOVE FORWARD TO ACTUALLY COUPLE THOSE MEASURES.",
+   "final_first": "01:40:34",
+   "final_last": "01:40:43",
+   "minutes": {
+    "status": "silent",
+    "checks": [
+     "Mahmood is listed present."
+    ]
+   }
+  },
+  {
+   "id": "52849|01:41:07|Bilal Mahmood|GFC-C",
+   "official": "Bilal Mahmood",
+   "family": "govern-for-california",
+   "subject": "GFC-C",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "01:41:07",
+   "last_stamp": "01:41:14",
+   "text": "MORE AFFORDABLE HOUSING THAT IS BEING BUILT AS A RESULT OF THE INCLUSIONARY REQUIREMENT TO BE BUILT IN THE MISSION REPRESENTING THE OPPORTUNITY FOR RESIDENTS WHO WANT TO LEAVE",
+   "tier": "specific",
+   "anchor_hits": [
+    "INCLUSIONARY"
+   ],
+   "topic_hits": [],
+   "credit": {
+    "doubt": "medium",
+    "why": [
+     "242 words after the cue 'SUPERVISOR MAHMOOD' (01:39:46)",
+     "4 '>>' mark(s) between the cue and the passage"
+    ],
+    "cue": "SUPERVISOR MAHMOOD",
+    "cue_stamp": "01:39:46",
+    "exact_spelling": true,
+    "closed_by_a_cue": true
+   },
+   "review": {
+    "id": "52849|01:41:07|Bilal Mahmood|GFC-C",
+    "decision": "loose",
+    "credit": "agree",
+    "credit_note": "Same turn.",
+    "note": "A fragment about the effect of the Mission amendment, not about the exchange."
+   },
+   "decision": "loose",
+   "final_text": "MORE AFFORDABLE HOUSING THAT IS BEING BUILT AS A RESULT OF THE INCLUSIONARY REQUIREMENT TO BE BUILT IN THE MISSION REPRESENTING THE OPPORTUNITY FOR RESIDENTS WHO WANT TO LEAVE",
+   "final_first": "01:41:07",
+   "final_last": "01:41:14",
+   "minutes": {
+    "status": "silent",
+    "checks": [
+     "Mahmood is listed present."
+    ]
+   }
+  },
+  {
+   "id": "52901|00:10:55|Jackie Fielder|IFPTE-SERVICES",
+   "official": "Jackie Fielder",
+   "family": "ifpte-21",
+   "subject": "IFPTE-SERVICES",
+   "meeting_id": 52901,
+   "body": "Board of Supervisors",
+   "date": "2026-07-21",
+   "first_stamp": "00:10:55",
+   "last_stamp": "00:11:02",
+   "text": "COLLEAGUES, THIS BUDGET CLOSES A MASSIVE DEFICIT WITHOUT MASS LAYOFFS. CERTAINLY NOT WITHOUT TRADEOFFS. I'M STILL WRESTLING WITH",
+   "tier": "specific",
+   "anchor_hits": [
+    "LAYOFFS"
+   ],
+   "topic_hits": [],
+   "credit": {
+    "doubt": "low",
+    "why": [
+     "5 words after the cue 'SUPERVISOR FIELDER' (00:10:52)"
+    ],
+    "cue": "SUPERVISOR FIELDER",
+    "cue_stamp": "00:10:52",
+    "exact_spelling": true,
+    "closed_by_a_cue": true
+   },
+   "review": {
+    "id": "52901|00:10:55|Jackie Fielder|IFPTE-SERVICES",
+    "decision": "accept",
+    "credit": "agree",
+    "credit_note": "'OH, SUPERVISOR FIELDER, THANK YOU, PRESIDENT' opens the turn; the passage follows within a few words.",
+    "note": "Same specific subject: the budget and layoffs.",
+    "trim": {
+     "begin_at": "COLLEAGUES, THIS BUDGET CLOSES",
+     "end_at": "SAN FRANCISCANS DEPEND ON."
+    },
+    "donor_statements": [
+     "IFPTE-RECOVERY",
+     "IFPTE-CHOICE"
+    ],
+    "in_common": "Both speak of the city's budget and of cutting jobs and services: the supervisor of a budget that 'closes a massive deficit without mass layoffs'; the union's president of cuts to jobs and services being 'a choice, it is not a necessity' (April 2026, about layoffs).",
+    "differs": "The union's words were said in April about the Mayor's proposed layoffs and are reported by Mission Local, not published by the union; the supervisor's words are about the budget before the Board on 21 July and carry no position on the union's. No agreement or disagreement is claimed."
+   },
+   "decision": "accept",
+   "final_text": "COLLEAGUES, THIS BUDGET CLOSES A MASSIVE DEFICIT WITHOUT MASS LAYOFFS. CERTAINLY NOT WITHOUT TRADEOFFS. I'M STILL WRESTLING WITH GROWING POLICE PAY BY 14% OVER FOUR YEARS ISN'T WHERE I WOULD HAVE PUT OUR LIMITED DOLLARS. HOWEVER, IN A YEAR WITH LOOMING FEDERAL CUTS AND NO EASY OPTIONS, THIS BOARD HELD THE LINE ON CRITICAL SAFETY NET PROGRAMS THAT TENS OF THOUSANDS OF SAN FRANCISCANS DEPEND ON.",
+   "final_first": "00:10:55",
+   "final_last": "00:11:18",
+   "minutes": {
+    "status": "no_minutes",
+    "checks": []
+   }
+  },
+  {
+   "id": "52804|00:24:29|Myrna Melgar|IFPTE-SERVICES",
+   "official": "Myrna Melgar",
+   "family": "ifpte-21",
+   "subject": "IFPTE-SERVICES",
+   "meeting_id": 52804,
+   "body": "Budget and Finance Committee",
+   "date": "2026-07-08",
+   "first_stamp": "00:24:29",
+   "last_stamp": "00:24:44",
+   "text": "BUT JUST THE REASONING OF WHY THEY END UP MAKING THE DECISION OF LAYOFF WITHOUT. WAS THERE EVER CONVERSATION AND CONSIDERATION OF TAPPING INTO THOSE ENDOWMENT TO PREVENT THE LAYOFF? >> SO WITH THAT I THANK YOU.",
+   "tier": "specific",
+   "anchor_hits": [
+    "LAYOFF"
+   ],
+   "topic_hits": [],
+   "credit": {
+    "doubt": "medium",
+    "why": [
+     "447 words after the cue 'SUPERVISOR MELGAR' (00:21:26)",
+     "1 '>>' mark(s) between the cue and the passage"
+    ],
+    "cue": "SUPERVISOR MELGAR",
+    "cue_stamp": "00:21:26",
+    "exact_spelling": true,
+    "closed_by_a_cue": true
+   },
+   "review": {
+    "id": "52804|00:24:29|Myrna Melgar|IFPTE-SERVICES",
+    "decision": "reject",
+    "credit": "disagree",
+    "credit_note": "The turn after the cue 'SUPERVISOR MELGAR' ends before this passage: the next row thanks 'SUPERVISOR MELGAR' for her leadership, so the questioner is another member.",
+    "note": "The layoff asked about is at the Academy of Sciences, not the city's own workforce."
+   },
+   "decision": "reject",
+   "final_text": "BUT JUST THE REASONING OF WHY THEY END UP MAKING THE DECISION OF LAYOFF WITHOUT. WAS THERE EVER CONVERSATION AND CONSIDERATION OF TAPPING INTO THOSE ENDOWMENT TO PREVENT THE LAYOFF? >> SO WITH THAT I THANK YOU.",
+   "final_first": "00:24:29",
+   "final_last": "00:24:44",
+   "minutes": {
+    "status": "no_minutes",
+    "checks": []
+   }
+  },
+  {
+   "id": "52849|02:37:13|Shamann Walton|IFPTE-SERVICES",
+   "official": "Shamann Walton",
+   "family": "ifpte-21",
+   "subject": "IFPTE-SERVICES",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "02:37:13",
+   "last_stamp": "02:37:21",
+   "text": "LIMIT ACCESS TO JOBS, HEALTH CARE, EDUCATION, GROCERY STORES AND OTHER ESSENTIAL SERVICES. THIS RESOLUTION IS TO ENCOURAGE CONTINUED AND SUSTAINABLE FUNDING AND LONG TERM SUPPORT",
+   "tier": "topic",
+   "anchor_hits": [],
+   "topic_hits": [
+    "ESSENTIAL SERVICES"
+   ],
+   "credit": {
+    "doubt": "medium",
+    "why": [
+     "42 words after the cue 'SUPERVISOR WALTON' (02:36:50)",
+     "3 '>>' mark(s) between the cue and the passage",
+     "no cue closes the turn"
+    ],
+    "cue": "SUPERVISOR WALTON",
+    "cue_stamp": "02:36:50",
+    "exact_spelling": true,
+    "closed_by_a_cue": false
+   },
+   "review": {
+    "id": "52849|02:37:13|Shamann Walton|IFPTE-SERVICES",
+    "decision": "reject",
+    "credit": "agree",
+    "credit_note": "Walton's own resolution on neighborhood access (cue at 02:36:50, 'DISTRICT TEN' in the words).",
+    "note": "'Essential services' here are services residents lack, not city jobs."
+   },
+   "decision": "reject",
+   "final_text": "LIMIT ACCESS TO JOBS, HEALTH CARE, EDUCATION, GROCERY STORES AND OTHER ESSENTIAL SERVICES. THIS RESOLUTION IS TO ENCOURAGE CONTINUED AND SUSTAINABLE FUNDING AND LONG TERM SUPPORT",
+   "final_first": "02:37:13",
+   "final_last": "02:37:21",
+   "minutes": {
+    "status": "silent",
+    "checks": [
+     "Walton is listed present."
+    ]
+   }
+  },
+  {
+   "id": "52849|02:37:33|Shamann Walton|IFPTE-SERVICES",
+   "official": "Shamann Walton",
+   "family": "ifpte-21",
+   "subject": "IFPTE-SERVICES",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "02:37:33",
+   "last_stamp": "02:37:40",
+   "text": "INEQUITIES HAVE LIMITED ACCESS TO JOBS HEALTH CARE, EDUCATION ,GROCERY STORES AND OTHER ESSENTIAL SERVICES. FOR MANY DISTRICT TEN RESIDENTS, THE BAYVIEW",
+   "tier": "topic",
+   "anchor_hits": [],
+   "topic_hits": [
+    "ESSENTIAL SERVICES"
+   ],
+   "credit": {
+    "doubt": "medium",
+    "why": [
+     "88 words after the cue 'SUPERVISOR WALTON' (02:36:50)",
+     "3 '>>' mark(s) between the cue and the passage",
+     "no cue closes the turn"
+    ],
+    "cue": "SUPERVISOR WALTON",
+    "cue_stamp": "02:36:50",
+    "exact_spelling": true,
+    "closed_by_a_cue": false
+   },
+   "review": {
+    "id": "52849|02:37:33|Shamann Walton|IFPTE-SERVICES",
+    "decision": "reject",
+    "credit": "agree",
+    "credit_note": "Walton's own resolution on neighborhood access (cue at 02:36:50, 'DISTRICT TEN' in the words).",
+    "note": "'Essential services' here are services residents lack, not city jobs."
+   },
+   "decision": "reject",
+   "final_text": "INEQUITIES HAVE LIMITED ACCESS TO JOBS HEALTH CARE, EDUCATION ,GROCERY STORES AND OTHER ESSENTIAL SERVICES. FOR MANY DISTRICT TEN RESIDENTS, THE BAYVIEW",
+   "final_first": "02:37:33",
+   "final_last": "02:37:40",
+   "minutes": {
+    "status": "silent",
+    "checks": [
+     "Walton is listed present."
+    ]
+   }
+  },
+  {
+   "id": "52901|01:35:14|Shamann Walton|IFPTE-SERVICES",
+   "official": "Shamann Walton",
+   "family": "ifpte-21",
+   "subject": "IFPTE-SERVICES",
+   "meeting_id": 52901,
+   "body": "Board of Supervisors",
+   "date": "2026-07-21",
+   "first_stamp": "01:35:14",
+   "last_stamp": "01:35:22",
+   "text": "KAISER SERVES MANY SAN FRANCISCANS INCLUDING THOUSANDS OF CITY EMPLOYEES. I WAS BORN AT KAISER GEARY. I URGED KAISER TO BARGAIN IN GOOD FAITH AND REACH A FAIR,",
+   "tier": "specific",
+   "anchor_hits": [
+    "CITY EMPLOYEES"
+   ],
+   "topic_hits": [],
+   "credit": {
+    "doubt": "low",
+    "why": [
+     "125 words after the cue 'SUPERVISOR WALTON' (01:34:28)",
+     "1 '>>' mark(s) between the cue and the passage"
+    ],
+    "cue": "SUPERVISOR WALTON",
+    "cue_stamp": "01:34:28",
+    "exact_spelling": true,
+    "closed_by_a_cue": true
+   },
+   "review": {
+    "id": "52901|01:35:14|Shamann Walton|IFPTE-SERVICES",
+    "decision": "reject",
+    "credit": "agree",
+    "credit_note": "First-person remarks on a Kaiser resolution after the cue at 01:34:28.",
+    "note": "City employees are mentioned as Kaiser's patients; the subject is a health plan's mental health care."
+   },
+   "decision": "reject",
+   "final_text": "KAISER SERVES MANY SAN FRANCISCANS INCLUDING THOUSANDS OF CITY EMPLOYEES. I WAS BORN AT KAISER GEARY. I URGED KAISER TO BARGAIN IN GOOD FAITH AND REACH A FAIR,",
+   "final_first": "01:35:14",
+   "final_last": "01:35:22",
+   "minutes": {
+    "status": "no_minutes",
+    "checks": []
+   }
+  },
+  {
+   "id": "52901|01:35:56|Shamann Walton|IFPTE-SERVICES",
+   "official": "Shamann Walton",
+   "family": "ifpte-21",
+   "subject": "IFPTE-SERVICES",
+   "meeting_id": 52901,
+   "body": "Board of Supervisors",
+   "date": "2026-07-21",
+   "first_stamp": "01:35:56",
+   "last_stamp": "01:36:03",
+   "text": "YOU FOR YOUR ONGOING COMMITMENT TO ENSURING THAT ALL SAN FRANCISCO RESIDENTS AND CITY EMPLOYEES HAVE ACCESS TO TIMELY, APPROPRIATE BEHAVIORAL HEALTH CARE SERVICES.",
+   "tier": "specific",
+   "anchor_hits": [
+    "CITY EMPLOYEES"
+   ],
+   "topic_hits": [],
+   "credit": {
+    "doubt": "low",
+    "why": [
+     "9 words after the cue 'SUPERVISOR WALTON' (01:35:53)"
+    ],
+    "cue": "SUPERVISOR WALTON",
+    "cue_stamp": "01:35:53",
+    "exact_spelling": true,
+    "closed_by_a_cue": true
+   },
+   "review": {
+    "id": "52901|01:35:56|Shamann Walton|IFPTE-SERVICES",
+    "decision": "reject",
+    "credit": "unclear",
+    "credit_note": "Closing remarks of a turn whose end is not marked.",
+    "note": "Same subject as the passage before."
+   },
+   "decision": "reject",
+   "final_text": "YOU FOR YOUR ONGOING COMMITMENT TO ENSURING THAT ALL SAN FRANCISCO RESIDENTS AND CITY EMPLOYEES HAVE ACCESS TO TIMELY, APPROPRIATE BEHAVIORAL HEALTH CARE SERVICES.",
+   "final_first": "01:35:56",
+   "final_last": "01:36:03",
+   "minutes": {
+    "status": "no_minutes",
+    "checks": []
+   }
+  },
+  {
+   "id": "52849|01:04:44|Jackie Fielder|LIUNA-DEF",
+   "official": "Jackie Fielder",
+   "family": "laborers-261",
+   "subject": "LIUNA-DEF",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "01:04:44",
+   "last_stamp": "01:04:52",
+   "text": "SWEEPING CHANGES IT PROPOSES TO OUR CITIZEN OVERSIGHT BODIES. >> SAN FRANCISCANS PASSED PROPOSITION E IN NOVEMBER OF 2024 TO REDUCE DUPLICATION AND INCREASE THE EFFICIENCY OF",
+   "tier": "specific",
+   "anchor_hits": [
+    "PROPOSITION E"
+   ],
+   "topic_hits": [],
+   "credit": {
+    "doubt": "low",
+    "why": [
+     "15 words after the cue 'SUPERVISOR FIELDER' (01:04:36)"
+    ],
+    "cue": "SUPERVISOR FIELDER",
+    "cue_stamp": "01:04:36",
+    "exact_spelling": true,
+    "closed_by_a_cue": true
+   },
+   "review": {
+    "id": "52849|01:04:44|Jackie Fielder|LIUNA-DEF",
+    "decision": "reject",
+    "credit": "agree",
+    "credit_note": "Cue 'SUPERVISOR FIELDER ... I'M VOTING NO ON THIS CHARTER AMENDMENT' (01:04:36).",
+    "note": "'Proposition E in November of 2024' is the earlier measure on boards and commissions, not the 2026 Props D, E and F; the match is the measure's letter."
+   },
+   "decision": "reject",
+   "final_text": "SWEEPING CHANGES IT PROPOSES TO OUR CITIZEN OVERSIGHT BODIES. >> SAN FRANCISCANS PASSED PROPOSITION E IN NOVEMBER OF 2024 TO REDUCE DUPLICATION AND INCREASE THE EFFICIENCY OF",
+   "final_first": "01:04:44",
+   "final_last": "01:04:52",
+   "minutes": {
+    "status": "silent",
+    "checks": [
+     "Fielder is listed present."
+    ]
+   }
+  },
+  {
+   "id": "52849|02:40:02|Shamann Walton|LIUNA-DEF",
+   "official": "Shamann Walton",
+   "family": "laborers-261",
+   "subject": "LIUNA-DEF",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "02:40:02",
+   "last_stamp": "02:40:10",
+   "text": "AND LEGISLATIVE ANALYSTS TO INTERPRET CLEARLY ANALYZE THE ECONOMIC IMPACT OF THE CHARTER REFORM MEASURES PROPOSED BY MAYOR LURIE THAT ARE CURRENTLY UNDERGOING THE SIGNATURE",
+   "tier": "specific",
+   "anchor_hits": [
+    "CHARTER REFORM"
+   ],
+   "topic_hits": [],
+   "credit": {
+    "doubt": "high",
+    "why": [
+     "417 words after the cue 'SUPERVISOR WALTON' (02:36:50)",
+     "7 '>>' mark(s) between the cue and the passage",
+     "no cue closes the turn"
+    ],
+    "cue": "SUPERVISOR WALTON",
+    "cue_stamp": "02:36:50",
+    "exact_spelling": true,
+    "closed_by_a_cue": false
+   },
+   "review": {
+    "id": "52849|02:40:02|Shamann Walton|LIUNA-DEF",
+    "decision": "accept",
+    "credit": "agree",
+    "credit_note": "Same turn as for SEIU 1021.",
+    "note": "Same remarks; the donor's side is the Mayor's claim, reported by the Examiner, that the union supports Props D, E and F.",
+    "trim": {
+     "begin_at": "COLLEAGUES I AM ALSO REQUESTING",
+     "end_at": "RESIDENTS OF SAN FRANCISCO."
+    },
+    "donor_statements": [
+     "LIUNA-MAYOR-CLAIM"
+    ],
+    "in_common": "Both are about the Mayor's three charter measures (Props D, E and F).",
+    "differs": "The union's support is the Mayor's claim as reported by the Examiner (March 2026), not the union's own statement. The supervisor asks for an analysis of the measures and says they 'SHIFT REAL POWER AWAY FROM THE BOARD OF SUPERVISORS'."
+   },
+   "decision": "accept",
+   "final_text": "COLLEAGUES I AM ALSO REQUESTING THE BUDGET AND LEGISLATIVE ANALYSTS TO INTERPRET CLEARLY ANALYZE THE ECONOMIC IMPACT OF THE CHARTER REFORM MEASURES PROPOSED BY MAYOR LURIE THAT ARE CURRENTLY UNDERGOING THE SIGNATURE VERIFICATION PROCESS AT THE DEPARTMENT OF ELECTIONS. SAN FRANCISCO VOTERS ARE BEING ASKED TO DECIDE ON THREE CHARTER REFORM MEASURES THIS NOVEMBER THAT WERE FUNDAMENTAL RESTRUCTURE HOW THE CITY OPERATES INCLUDING A SPENDING MAYORAL HIRING AND FIRING AUTHORITY AS WELL AS REORGANIZATION POWER. EXTENDING THE CITY ADMINISTRATOR'S TERM TO TEN YEARS WHILE GIVING THAT OFFICE SO AUTHORITY OVER PROCUREMENT. AND RAISING THE SIGNATURE THRESHOLD FOR CITIZEN INITIATIVES FROM 2% TO 8%. >> THESE ARE NOT SMALL TECHNICAL FIXES. THEY SHIFT REAL POWER AWAY FROM THE BOARD OF SUPERVISORS INDEPENDENT COMMISSIONS AND FROM THE RESIDENTS OF SAN FRANCISCO.",
+   "final_first": "02:39:58",
+   "final_last": "02:40:56",
+   "minutes": {
+    "status": "silent",
+    "checks": [
+     "Walton is listed present."
+    ]
+   }
+  },
+  {
+   "id": "52849|02:40:17|Shamann Walton|LIUNA-DEF",
+   "official": "Shamann Walton",
+   "family": "laborers-261",
+   "subject": "LIUNA-DEF",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "02:40:17",
+   "last_stamp": "02:40:25",
+   "text": "SAN FRANCISCO VOTERS ARE BEING ASKED TO DECIDE ON THREE CHARTER REFORM MEASURES THIS NOVEMBER THAT WERE FUNDAMENTAL RESTRUCTURE HOW THE CITY OPERATES INCLUDING A SPENDING",
+   "tier": "specific",
+   "anchor_hits": [
+    "CHARTER REFORM"
+   ],
+   "topic_hits": [],
+   "credit": {
+    "doubt": "high",
+    "why": [
+     "449 words after the cue 'SUPERVISOR WALTON' (02:36:50)",
+     "7 '>>' mark(s) between the cue and the passage",
+     "no cue closes the turn"
+    ],
+    "cue": "SUPERVISOR WALTON",
+    "cue_stamp": "02:36:50",
+    "exact_spelling": true,
+    "closed_by_a_cue": false
+   },
+   "review": {
+    "id": "52849|02:40:17|Shamann Walton|LIUNA-DEF",
+    "decision": "accept",
+    "credit": "agree",
+    "credit_note": "Same turn.",
+    "note": "Same remarks.",
+    "trim": {
+     "begin_at": "COLLEAGUES I AM ALSO REQUESTING",
+     "end_at": "RESIDENTS OF SAN FRANCISCO."
+    },
+    "donor_statements": [
+     "LIUNA-MAYOR-CLAIM"
+    ],
+    "in_common": "Both are about the Mayor's three charter measures (Props D, E and F).",
+    "differs": "See the first passage of the turn."
+   },
+   "decision": "accept",
+   "final_text": "COLLEAGUES I AM ALSO REQUESTING THE BUDGET AND LEGISLATIVE ANALYSTS TO INTERPRET CLEARLY ANALYZE THE ECONOMIC IMPACT OF THE CHARTER REFORM MEASURES PROPOSED BY MAYOR LURIE THAT ARE CURRENTLY UNDERGOING THE SIGNATURE VERIFICATION PROCESS AT THE DEPARTMENT OF ELECTIONS. SAN FRANCISCO VOTERS ARE BEING ASKED TO DECIDE ON THREE CHARTER REFORM MEASURES THIS NOVEMBER THAT WERE FUNDAMENTAL RESTRUCTURE HOW THE CITY OPERATES INCLUDING A SPENDING MAYORAL HIRING AND FIRING AUTHORITY AS WELL AS REORGANIZATION POWER. EXTENDING THE CITY ADMINISTRATOR'S TERM TO TEN YEARS WHILE GIVING THAT OFFICE SO AUTHORITY OVER PROCUREMENT. AND RAISING THE SIGNATURE THRESHOLD FOR CITIZEN INITIATIVES FROM 2% TO 8%. >> THESE ARE NOT SMALL TECHNICAL FIXES. THEY SHIFT REAL POWER AWAY FROM THE BOARD OF SUPERVISORS INDEPENDENT COMMISSIONS AND FROM THE RESIDENTS OF SAN FRANCISCO.",
+   "final_first": "02:39:58",
+   "final_last": "02:40:56",
+   "minutes": {
+    "status": "silent",
+    "checks": [
+     "Walton is listed present."
+    ]
+   }
+  },
+  {
+   "id": "52849|02:41:28|Shamann Walton|LIUNA-DEF",
+   "official": "Shamann Walton",
+   "family": "laborers-261",
+   "subject": "LIUNA-DEF",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "02:41:28",
+   "last_stamp": "02:41:31",
+   "text": "IF THOSE NUMBERS ARE TO JUSTIFY A CASE FOR CENTRALIZING POWER IN THE CITY ADMINISTRATOR'S OFFICE WE SHOULD BE A",
+   "tier": "specific",
+   "anchor_hits": [
+    "CITY ADMINISTRATOR"
+   ],
+   "topic_hits": [],
+   "credit": {
+    "doubt": "high",
+    "why": [
+     "612 words after the cue 'SUPERVISOR WALTON' (02:36:50)",
+     "8 '>>' mark(s) between the cue and the passage",
+     "no cue closes the turn"
+    ],
+    "cue": "SUPERVISOR WALTON",
+    "cue_stamp": "02:36:50",
+    "exact_spelling": true,
+    "closed_by_a_cue": false
+   },
+   "review": {
+    "id": "52849|02:41:28|Shamann Walton|LIUNA-DEF",
+    "decision": "accept",
+    "credit": "agree",
+    "credit_note": "Same turn.",
+    "note": "Same remarks.",
+    "trim": {
+     "begin_at": "COLLEAGUES I AM ALSO REQUESTING",
+     "end_at": "RESIDENTS OF SAN FRANCISCO."
+    },
+    "donor_statements": [
+     "LIUNA-MAYOR-CLAIM"
+    ],
+    "in_common": "Both are about the Mayor's three charter measures (Props D, E and F).",
+    "differs": "See the first passage of the turn."
+   },
+   "decision": "accept",
+   "final_text": "COLLEAGUES I AM ALSO REQUESTING THE BUDGET AND LEGISLATIVE ANALYSTS TO INTERPRET CLEARLY ANALYZE THE ECONOMIC IMPACT OF THE CHARTER REFORM MEASURES PROPOSED BY MAYOR LURIE THAT ARE CURRENTLY UNDERGOING THE SIGNATURE VERIFICATION PROCESS AT THE DEPARTMENT OF ELECTIONS. SAN FRANCISCO VOTERS ARE BEING ASKED TO DECIDE ON THREE CHARTER REFORM MEASURES THIS NOVEMBER THAT WERE FUNDAMENTAL RESTRUCTURE HOW THE CITY OPERATES INCLUDING A SPENDING MAYORAL HIRING AND FIRING AUTHORITY AS WELL AS REORGANIZATION POWER. EXTENDING THE CITY ADMINISTRATOR'S TERM TO TEN YEARS WHILE GIVING THAT OFFICE SO AUTHORITY OVER PROCUREMENT. AND RAISING THE SIGNATURE THRESHOLD FOR CITIZEN INITIATIVES FROM 2% TO 8%. >> THESE ARE NOT SMALL TECHNICAL FIXES. THEY SHIFT REAL POWER AWAY FROM THE BOARD OF SUPERVISORS INDEPENDENT COMMISSIONS AND FROM THE RESIDENTS OF SAN FRANCISCO.",
+   "final_first": "02:39:58",
+   "final_last": "02:40:56",
+   "minutes": {
+    "status": "silent",
+    "checks": [
+     "Walton is listed present."
+    ]
+   }
+  },
+  {
+   "id": "52849|01:04:44|Jackie Fielder|OE3-DEF",
+   "official": "Jackie Fielder",
+   "family": "operating-engineers-3",
+   "subject": "OE3-DEF",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "01:04:44",
+   "last_stamp": "01:04:52",
+   "text": "SWEEPING CHANGES IT PROPOSES TO OUR CITIZEN OVERSIGHT BODIES. >> SAN FRANCISCANS PASSED PROPOSITION E IN NOVEMBER OF 2024 TO REDUCE DUPLICATION AND INCREASE THE EFFICIENCY OF",
+   "tier": "specific",
+   "anchor_hits": [
+    "PROPOSITION E"
+   ],
+   "topic_hits": [],
+   "credit": {
+    "doubt": "low",
+    "why": [
+     "15 words after the cue 'SUPERVISOR FIELDER' (01:04:36)"
+    ],
+    "cue": "SUPERVISOR FIELDER",
+    "cue_stamp": "01:04:36",
+    "exact_spelling": true,
+    "closed_by_a_cue": true
+   },
+   "review": {
+    "id": "52849|01:04:44|Jackie Fielder|OE3-DEF",
+    "decision": "reject",
+    "credit": "agree",
+    "credit_note": "Cue 'SUPERVISOR FIELDER ... I'M VOTING NO ON THIS CHARTER AMENDMENT' (01:04:36).",
+    "note": "'Proposition E in November of 2024' is the earlier measure on boards and commissions, not the 2026 Props D, E and F; the match is the measure's letter."
+   },
+   "decision": "reject",
+   "final_text": "SWEEPING CHANGES IT PROPOSES TO OUR CITIZEN OVERSIGHT BODIES. >> SAN FRANCISCANS PASSED PROPOSITION E IN NOVEMBER OF 2024 TO REDUCE DUPLICATION AND INCREASE THE EFFICIENCY OF",
+   "final_first": "01:04:44",
+   "final_last": "01:04:52",
+   "minutes": {
+    "status": "silent",
+    "checks": [
+     "Fielder is listed present."
+    ]
+   }
+  },
+  {
+   "id": "52849|02:40:02|Shamann Walton|OE3-DEF",
+   "official": "Shamann Walton",
+   "family": "operating-engineers-3",
+   "subject": "OE3-DEF",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "02:40:02",
+   "last_stamp": "02:40:10",
+   "text": "AND LEGISLATIVE ANALYSTS TO INTERPRET CLEARLY ANALYZE THE ECONOMIC IMPACT OF THE CHARTER REFORM MEASURES PROPOSED BY MAYOR LURIE THAT ARE CURRENTLY UNDERGOING THE SIGNATURE",
+   "tier": "specific",
+   "anchor_hits": [
+    "CHARTER REFORM"
+   ],
+   "topic_hits": [],
+   "credit": {
+    "doubt": "high",
+    "why": [
+     "417 words after the cue 'SUPERVISOR WALTON' (02:36:50)",
+     "7 '>>' mark(s) between the cue and the passage",
+     "no cue closes the turn"
+    ],
+    "cue": "SUPERVISOR WALTON",
+    "cue_stamp": "02:36:50",
+    "exact_spelling": true,
+    "closed_by_a_cue": false
+   },
+   "review": {
+    "id": "52849|02:40:02|Shamann Walton|OE3-DEF",
+    "decision": "accept",
+    "credit": "agree",
+    "credit_note": "Same turn as for SEIU 1021.",
+    "note": "Same remarks; the donor's side is the Mayor's claim, reported by the Examiner, that the union supports Props D, E and F.",
+    "trim": {
+     "begin_at": "COLLEAGUES I AM ALSO REQUESTING",
+     "end_at": "RESIDENTS OF SAN FRANCISCO."
+    },
+    "donor_statements": [
+     "OE3-MAYOR-CLAIM"
+    ],
+    "in_common": "Both are about the Mayor's three charter measures (Props D, E and F).",
+    "differs": "The union's support is the Mayor's claim as reported by the Examiner (March 2026), not the union's own statement. The supervisor asks for an analysis of the measures and says they 'SHIFT REAL POWER AWAY FROM THE BOARD OF SUPERVISORS'."
+   },
+   "decision": "accept",
+   "final_text": "COLLEAGUES I AM ALSO REQUESTING THE BUDGET AND LEGISLATIVE ANALYSTS TO INTERPRET CLEARLY ANALYZE THE ECONOMIC IMPACT OF THE CHARTER REFORM MEASURES PROPOSED BY MAYOR LURIE THAT ARE CURRENTLY UNDERGOING THE SIGNATURE VERIFICATION PROCESS AT THE DEPARTMENT OF ELECTIONS. SAN FRANCISCO VOTERS ARE BEING ASKED TO DECIDE ON THREE CHARTER REFORM MEASURES THIS NOVEMBER THAT WERE FUNDAMENTAL RESTRUCTURE HOW THE CITY OPERATES INCLUDING A SPENDING MAYORAL HIRING AND FIRING AUTHORITY AS WELL AS REORGANIZATION POWER. EXTENDING THE CITY ADMINISTRATOR'S TERM TO TEN YEARS WHILE GIVING THAT OFFICE SO AUTHORITY OVER PROCUREMENT. AND RAISING THE SIGNATURE THRESHOLD FOR CITIZEN INITIATIVES FROM 2% TO 8%. >> THESE ARE NOT SMALL TECHNICAL FIXES. THEY SHIFT REAL POWER AWAY FROM THE BOARD OF SUPERVISORS INDEPENDENT COMMISSIONS AND FROM THE RESIDENTS OF SAN FRANCISCO.",
+   "final_first": "02:39:58",
+   "final_last": "02:40:56",
+   "minutes": {
+    "status": "silent",
+    "checks": [
+     "Walton is listed present."
+    ]
+   }
+  },
+  {
+   "id": "52849|02:40:17|Shamann Walton|OE3-DEF",
+   "official": "Shamann Walton",
+   "family": "operating-engineers-3",
+   "subject": "OE3-DEF",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "02:40:17",
+   "last_stamp": "02:40:25",
+   "text": "SAN FRANCISCO VOTERS ARE BEING ASKED TO DECIDE ON THREE CHARTER REFORM MEASURES THIS NOVEMBER THAT WERE FUNDAMENTAL RESTRUCTURE HOW THE CITY OPERATES INCLUDING A SPENDING",
+   "tier": "specific",
+   "anchor_hits": [
+    "CHARTER REFORM"
+   ],
+   "topic_hits": [],
+   "credit": {
+    "doubt": "high",
+    "why": [
+     "449 words after the cue 'SUPERVISOR WALTON' (02:36:50)",
+     "7 '>>' mark(s) between the cue and the passage",
+     "no cue closes the turn"
+    ],
+    "cue": "SUPERVISOR WALTON",
+    "cue_stamp": "02:36:50",
+    "exact_spelling": true,
+    "closed_by_a_cue": false
+   },
+   "review": {
+    "id": "52849|02:40:17|Shamann Walton|OE3-DEF",
+    "decision": "accept",
+    "credit": "agree",
+    "credit_note": "Same turn.",
+    "note": "Same remarks.",
+    "trim": {
+     "begin_at": "COLLEAGUES I AM ALSO REQUESTING",
+     "end_at": "RESIDENTS OF SAN FRANCISCO."
+    },
+    "donor_statements": [
+     "OE3-MAYOR-CLAIM"
+    ],
+    "in_common": "Both are about the Mayor's three charter measures (Props D, E and F).",
+    "differs": "See the first passage of the turn."
+   },
+   "decision": "accept",
+   "final_text": "COLLEAGUES I AM ALSO REQUESTING THE BUDGET AND LEGISLATIVE ANALYSTS TO INTERPRET CLEARLY ANALYZE THE ECONOMIC IMPACT OF THE CHARTER REFORM MEASURES PROPOSED BY MAYOR LURIE THAT ARE CURRENTLY UNDERGOING THE SIGNATURE VERIFICATION PROCESS AT THE DEPARTMENT OF ELECTIONS. SAN FRANCISCO VOTERS ARE BEING ASKED TO DECIDE ON THREE CHARTER REFORM MEASURES THIS NOVEMBER THAT WERE FUNDAMENTAL RESTRUCTURE HOW THE CITY OPERATES INCLUDING A SPENDING MAYORAL HIRING AND FIRING AUTHORITY AS WELL AS REORGANIZATION POWER. EXTENDING THE CITY ADMINISTRATOR'S TERM TO TEN YEARS WHILE GIVING THAT OFFICE SO AUTHORITY OVER PROCUREMENT. AND RAISING THE SIGNATURE THRESHOLD FOR CITIZEN INITIATIVES FROM 2% TO 8%. >> THESE ARE NOT SMALL TECHNICAL FIXES. THEY SHIFT REAL POWER AWAY FROM THE BOARD OF SUPERVISORS INDEPENDENT COMMISSIONS AND FROM THE RESIDENTS OF SAN FRANCISCO.",
+   "final_first": "02:39:58",
+   "final_last": "02:40:56",
+   "minutes": {
+    "status": "silent",
+    "checks": [
+     "Walton is listed present."
+    ]
+   }
+  },
+  {
+   "id": "52849|02:41:28|Shamann Walton|OE3-DEF",
+   "official": "Shamann Walton",
+   "family": "operating-engineers-3",
+   "subject": "OE3-DEF",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "02:41:28",
+   "last_stamp": "02:41:31",
+   "text": "IF THOSE NUMBERS ARE TO JUSTIFY A CASE FOR CENTRALIZING POWER IN THE CITY ADMINISTRATOR'S OFFICE WE SHOULD BE A",
+   "tier": "specific",
+   "anchor_hits": [
+    "CITY ADMINISTRATOR"
+   ],
+   "topic_hits": [],
+   "credit": {
+    "doubt": "high",
+    "why": [
+     "612 words after the cue 'SUPERVISOR WALTON' (02:36:50)",
+     "8 '>>' mark(s) between the cue and the passage",
+     "no cue closes the turn"
+    ],
+    "cue": "SUPERVISOR WALTON",
+    "cue_stamp": "02:36:50",
+    "exact_spelling": true,
+    "closed_by_a_cue": false
+   },
+   "review": {
+    "id": "52849|02:41:28|Shamann Walton|OE3-DEF",
+    "decision": "accept",
+    "credit": "agree",
+    "credit_note": "Same turn.",
+    "note": "Same remarks.",
+    "trim": {
+     "begin_at": "COLLEAGUES I AM ALSO REQUESTING",
+     "end_at": "RESIDENTS OF SAN FRANCISCO."
+    },
+    "donor_statements": [
+     "OE3-MAYOR-CLAIM"
+    ],
+    "in_common": "Both are about the Mayor's three charter measures (Props D, E and F).",
+    "differs": "See the first passage of the turn."
+   },
+   "decision": "accept",
+   "final_text": "COLLEAGUES I AM ALSO REQUESTING THE BUDGET AND LEGISLATIVE ANALYSTS TO INTERPRET CLEARLY ANALYZE THE ECONOMIC IMPACT OF THE CHARTER REFORM MEASURES PROPOSED BY MAYOR LURIE THAT ARE CURRENTLY UNDERGOING THE SIGNATURE VERIFICATION PROCESS AT THE DEPARTMENT OF ELECTIONS. SAN FRANCISCO VOTERS ARE BEING ASKED TO DECIDE ON THREE CHARTER REFORM MEASURES THIS NOVEMBER THAT WERE FUNDAMENTAL RESTRUCTURE HOW THE CITY OPERATES INCLUDING A SPENDING MAYORAL HIRING AND FIRING AUTHORITY AS WELL AS REORGANIZATION POWER. EXTENDING THE CITY ADMINISTRATOR'S TERM TO TEN YEARS WHILE GIVING THAT OFFICE SO AUTHORITY OVER PROCUREMENT. AND RAISING THE SIGNATURE THRESHOLD FOR CITIZEN INITIATIVES FROM 2% TO 8%. >> THESE ARE NOT SMALL TECHNICAL FIXES. THEY SHIFT REAL POWER AWAY FROM THE BOARD OF SUPERVISORS INDEPENDENT COMMISSIONS AND FROM THE RESIDENTS OF SAN FRANCISCO.",
+   "final_first": "02:39:58",
+   "final_last": "02:40:56",
+   "minutes": {
+    "status": "silent",
+    "checks": [
+     "Walton is listed present."
+    ]
+   }
+  },
+  {
+   "id": "52849|02:40:02|Shamann Walton|SEIU1021-DEF",
+   "official": "Shamann Walton",
+   "family": "seiu-1021",
+   "subject": "SEIU1021-DEF",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "02:40:02",
+   "last_stamp": "02:40:10",
+   "text": "AND LEGISLATIVE ANALYSTS TO INTERPRET CLEARLY ANALYZE THE ECONOMIC IMPACT OF THE CHARTER REFORM MEASURES PROPOSED BY MAYOR LURIE THAT ARE CURRENTLY UNDERGOING THE SIGNATURE",
+   "tier": "specific",
+   "anchor_hits": [
+    "CHARTER REFORM"
+   ],
+   "topic_hits": [],
+   "credit": {
+    "doubt": "high",
+    "why": [
+     "417 words after the cue 'SUPERVISOR WALTON' (02:36:50)",
+     "7 '>>' mark(s) between the cue and the passage",
+     "no cue closes the turn"
+    ],
+    "cue": "SUPERVISOR WALTON",
+    "cue_stamp": "02:36:50",
+    "exact_spelling": true,
+    "closed_by_a_cue": false
+   },
+   "review": {
+    "id": "52849|02:40:02|Shamann Walton|SEIU1021-DEF",
+    "decision": "accept",
+    "credit": "agree",
+    "credit_note": "No cue directly before: the turn opens at 02:36:50 ('SUPERVISOR WALTON THANK YOU, MADAM CLERK') with '>>' marks inside it. The words 'DISTRICT TEN RESIDENTS' (District 10 is Walton) and thanks to Supervisor Chen and Supervisor Fielder, and the chair's close at 02:42:48 ('THE REST I SUBMIT ... SUPERVISOR WALTON'), agree.",
+    "note": "The three measures by their content.",
+    "trim": {
+     "begin_at": "COLLEAGUES I AM ALSO REQUESTING",
+     "end_at": "RESIDENTS OF SAN FRANCISCO."
+    },
+    "donor_statements": [
+     "SEIU-D",
+     "SEIU-E",
+     "SEIU-F"
+    ],
+    "in_common": "Both are about the Mayor's three charter measures: the supervisor names 'THE CHARTER REFORM MEASURES PROPOSED BY MAYOR LURIE' and the City Administrator's term and authority over procurement (Prop E's subject) and the signature threshold (Prop D's); the donor's page lists Props D, E and F.",
+    "differs": "The supervisor asks for an analysis of their economic impact and says they 'SHIFT REAL POWER AWAY FROM THE BOARD OF SUPERVISORS'; he does not say how he will vote. The donor's page says to vote No on each."
+   },
+   "decision": "accept",
+   "final_text": "COLLEAGUES I AM ALSO REQUESTING THE BUDGET AND LEGISLATIVE ANALYSTS TO INTERPRET CLEARLY ANALYZE THE ECONOMIC IMPACT OF THE CHARTER REFORM MEASURES PROPOSED BY MAYOR LURIE THAT ARE CURRENTLY UNDERGOING THE SIGNATURE VERIFICATION PROCESS AT THE DEPARTMENT OF ELECTIONS. SAN FRANCISCO VOTERS ARE BEING ASKED TO DECIDE ON THREE CHARTER REFORM MEASURES THIS NOVEMBER THAT WERE FUNDAMENTAL RESTRUCTURE HOW THE CITY OPERATES INCLUDING A SPENDING MAYORAL HIRING AND FIRING AUTHORITY AS WELL AS REORGANIZATION POWER. EXTENDING THE CITY ADMINISTRATOR'S TERM TO TEN YEARS WHILE GIVING THAT OFFICE SO AUTHORITY OVER PROCUREMENT. AND RAISING THE SIGNATURE THRESHOLD FOR CITIZEN INITIATIVES FROM 2% TO 8%. >> THESE ARE NOT SMALL TECHNICAL FIXES. THEY SHIFT REAL POWER AWAY FROM THE BOARD OF SUPERVISORS INDEPENDENT COMMISSIONS AND FROM THE RESIDENTS OF SAN FRANCISCO.",
+   "final_first": "02:39:58",
+   "final_last": "02:40:56",
+   "minutes": {
+    "status": "silent",
+    "checks": [
+     "Walton is listed present."
+    ]
+   }
+  },
+  {
+   "id": "52849|02:40:17|Shamann Walton|SEIU1021-DEF",
+   "official": "Shamann Walton",
+   "family": "seiu-1021",
+   "subject": "SEIU1021-DEF",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "02:40:17",
+   "last_stamp": "02:40:25",
+   "text": "SAN FRANCISCO VOTERS ARE BEING ASKED TO DECIDE ON THREE CHARTER REFORM MEASURES THIS NOVEMBER THAT WERE FUNDAMENTAL RESTRUCTURE HOW THE CITY OPERATES INCLUDING A SPENDING",
+   "tier": "specific",
+   "anchor_hits": [
+    "CHARTER REFORM"
+   ],
+   "topic_hits": [],
+   "credit": {
+    "doubt": "high",
+    "why": [
+     "449 words after the cue 'SUPERVISOR WALTON' (02:36:50)",
+     "7 '>>' mark(s) between the cue and the passage",
+     "no cue closes the turn"
+    ],
+    "cue": "SUPERVISOR WALTON",
+    "cue_stamp": "02:36:50",
+    "exact_spelling": true,
+    "closed_by_a_cue": false
+   },
+   "review": {
+    "id": "52849|02:40:17|Shamann Walton|SEIU1021-DEF",
+    "decision": "accept",
+    "credit": "agree",
+    "credit_note": "Same turn as 02:40:02.",
+    "note": "Same remarks.",
+    "trim": {
+     "begin_at": "COLLEAGUES I AM ALSO REQUESTING",
+     "end_at": "RESIDENTS OF SAN FRANCISCO."
+    },
+    "donor_statements": [
+     "SEIU-D",
+     "SEIU-E",
+     "SEIU-F"
+    ],
+    "in_common": "Both are about the Mayor's three charter measures: the supervisor names 'THE CHARTER REFORM MEASURES PROPOSED BY MAYOR LURIE' and the City Administrator's term and authority over procurement (Prop E's subject) and the signature threshold (Prop D's); the donor's page lists Props D, E and F.",
+    "differs": "The supervisor asks for an analysis of their economic impact and says they 'SHIFT REAL POWER AWAY FROM THE BOARD OF SUPERVISORS'; he does not say how he will vote. The donor's page says to vote No on each."
+   },
+   "decision": "accept",
+   "final_text": "COLLEAGUES I AM ALSO REQUESTING THE BUDGET AND LEGISLATIVE ANALYSTS TO INTERPRET CLEARLY ANALYZE THE ECONOMIC IMPACT OF THE CHARTER REFORM MEASURES PROPOSED BY MAYOR LURIE THAT ARE CURRENTLY UNDERGOING THE SIGNATURE VERIFICATION PROCESS AT THE DEPARTMENT OF ELECTIONS. SAN FRANCISCO VOTERS ARE BEING ASKED TO DECIDE ON THREE CHARTER REFORM MEASURES THIS NOVEMBER THAT WERE FUNDAMENTAL RESTRUCTURE HOW THE CITY OPERATES INCLUDING A SPENDING MAYORAL HIRING AND FIRING AUTHORITY AS WELL AS REORGANIZATION POWER. EXTENDING THE CITY ADMINISTRATOR'S TERM TO TEN YEARS WHILE GIVING THAT OFFICE SO AUTHORITY OVER PROCUREMENT. AND RAISING THE SIGNATURE THRESHOLD FOR CITIZEN INITIATIVES FROM 2% TO 8%. >> THESE ARE NOT SMALL TECHNICAL FIXES. THEY SHIFT REAL POWER AWAY FROM THE BOARD OF SUPERVISORS INDEPENDENT COMMISSIONS AND FROM THE RESIDENTS OF SAN FRANCISCO.",
+   "final_first": "02:39:58",
+   "final_last": "02:40:56",
+   "minutes": {
+    "status": "silent",
+    "checks": [
+     "Walton is listed present."
+    ]
+   }
+  },
+  {
+   "id": "52849|02:41:28|Shamann Walton|SEIU1021-DEF",
+   "official": "Shamann Walton",
+   "family": "seiu-1021",
+   "subject": "SEIU1021-DEF",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "02:41:28",
+   "last_stamp": "02:41:31",
+   "text": "IF THOSE NUMBERS ARE TO JUSTIFY A CASE FOR CENTRALIZING POWER IN THE CITY ADMINISTRATOR'S OFFICE WE SHOULD BE A",
+   "tier": "specific",
+   "anchor_hits": [
+    "CITY ADMINISTRATOR"
+   ],
+   "topic_hits": [],
+   "credit": {
+    "doubt": "high",
+    "why": [
+     "612 words after the cue 'SUPERVISOR WALTON' (02:36:50)",
+     "8 '>>' mark(s) between the cue and the passage",
+     "no cue closes the turn"
+    ],
+    "cue": "SUPERVISOR WALTON",
+    "cue_stamp": "02:36:50",
+    "exact_spelling": true,
+    "closed_by_a_cue": false
+   },
+   "review": {
+    "id": "52849|02:41:28|Shamann Walton|SEIU1021-DEF",
+    "decision": "accept",
+    "credit": "agree",
+    "credit_note": "Same turn as 02:40:02.",
+    "note": "Same remarks.",
+    "trim": {
+     "begin_at": "COLLEAGUES I AM ALSO REQUESTING",
+     "end_at": "RESIDENTS OF SAN FRANCISCO."
+    },
+    "donor_statements": [
+     "SEIU-D",
+     "SEIU-E",
+     "SEIU-F"
+    ],
+    "in_common": "Both are about the Mayor's three charter measures: the supervisor names 'THE CHARTER REFORM MEASURES PROPOSED BY MAYOR LURIE' and the City Administrator's term and authority over procurement (Prop E's subject) and the signature threshold (Prop D's); the donor's page lists Props D, E and F.",
+    "differs": "The supervisor asks for an analysis of their economic impact and says they 'SHIFT REAL POWER AWAY FROM THE BOARD OF SUPERVISORS'; he does not say how he will vote. The donor's page says to vote No on each."
+   },
+   "decision": "accept",
+   "final_text": "COLLEAGUES I AM ALSO REQUESTING THE BUDGET AND LEGISLATIVE ANALYSTS TO INTERPRET CLEARLY ANALYZE THE ECONOMIC IMPACT OF THE CHARTER REFORM MEASURES PROPOSED BY MAYOR LURIE THAT ARE CURRENTLY UNDERGOING THE SIGNATURE VERIFICATION PROCESS AT THE DEPARTMENT OF ELECTIONS. SAN FRANCISCO VOTERS ARE BEING ASKED TO DECIDE ON THREE CHARTER REFORM MEASURES THIS NOVEMBER THAT WERE FUNDAMENTAL RESTRUCTURE HOW THE CITY OPERATES INCLUDING A SPENDING MAYORAL HIRING AND FIRING AUTHORITY AS WELL AS REORGANIZATION POWER. EXTENDING THE CITY ADMINISTRATOR'S TERM TO TEN YEARS WHILE GIVING THAT OFFICE SO AUTHORITY OVER PROCUREMENT. AND RAISING THE SIGNATURE THRESHOLD FOR CITIZEN INITIATIVES FROM 2% TO 8%. >> THESE ARE NOT SMALL TECHNICAL FIXES. THEY SHIFT REAL POWER AWAY FROM THE BOARD OF SUPERVISORS INDEPENDENT COMMISSIONS AND FROM THE RESIDENTS OF SAN FRANCISCO.",
+   "final_first": "02:39:58",
+   "final_last": "02:40:56",
+   "minutes": {
+    "status": "silent",
+    "checks": [
+     "Walton is listed present."
+    ]
+   }
+  },
+  {
+   "id": "52849|01:04:44|Jackie Fielder|SEIU2015-BALLOT",
+   "official": "Jackie Fielder",
+   "family": "seiu-2015",
+   "subject": "SEIU2015-BALLOT",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "01:04:44",
+   "last_stamp": "01:04:52",
+   "text": "SWEEPING CHANGES IT PROPOSES TO OUR CITIZEN OVERSIGHT BODIES. >> SAN FRANCISCANS PASSED PROPOSITION E IN NOVEMBER OF 2024 TO REDUCE DUPLICATION AND INCREASE THE EFFICIENCY OF",
+   "tier": "specific",
+   "anchor_hits": [
+    "PROPOSITION E"
+   ],
+   "topic_hits": [],
+   "credit": {
+    "doubt": "low",
+    "why": [
+     "15 words after the cue 'SUPERVISOR FIELDER' (01:04:36)"
+    ],
+    "cue": "SUPERVISOR FIELDER",
+    "cue_stamp": "01:04:36",
+    "exact_spelling": true,
+    "closed_by_a_cue": true
+   },
+   "review": {
+    "id": "52849|01:04:44|Jackie Fielder|SEIU2015-BALLOT",
+    "decision": "reject",
+    "credit": "agree",
+    "credit_note": "Cue 'SUPERVISOR FIELDER ... I'M VOTING NO ON THIS CHARTER AMENDMENT' (01:04:36).",
+    "note": "'Proposition E in November of 2024' is the earlier measure on boards and commissions, not the 2026 Props D, E and F; the match is the measure's letter."
+   },
+   "decision": "reject",
+   "final_text": "SWEEPING CHANGES IT PROPOSES TO OUR CITIZEN OVERSIGHT BODIES. >> SAN FRANCISCANS PASSED PROPOSITION E IN NOVEMBER OF 2024 TO REDUCE DUPLICATION AND INCREASE THE EFFICIENCY OF",
+   "final_first": "01:04:44",
+   "final_last": "01:04:52",
+   "minutes": {
+    "status": "silent",
+    "checks": [
+     "Fielder is listed present."
+    ]
+   }
+  },
+  {
+   "id": "52849|01:12:24|Alan Wong|SFAA-I-C",
+   "official": "Alan Wong",
+   "family": "sf-apartment-association",
+   "subject": "SFAA-I-C",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "01:12:24",
+   "last_stamp": "01:12:29",
+   "text": "AND YOUNG PEOPLE CAN AFFORD TO REMAIN PART OF OUR CITY. THE HOUSING TRUST FUND HAS HELPED CREATE AND PRESERVE AFFORDABLE HOMES AND SUPPORT OPPORTUNITIES FOR FIRST TIME",
+   "tier": "specific",
+   "anchor_hits": [
+    "HOUSING TRUST FUND"
+   ],
+   "topic_hits": [],
+   "credit": {
+    "doubt": "low",
+    "why": [
+     "60 words after the cue 'SUPERVISOR WONG' (01:12:01)",
+     "1 '>>' mark(s) between the cue and the passage"
+    ],
+    "cue": "SUPERVISOR WONG",
+    "cue_stamp": "01:12:01",
+    "exact_spelling": true,
+    "closed_by_a_cue": true
+   },
+   "review": {
+    "id": "52849|01:12:24|Alan Wong|SFAA-I-C",
+    "decision": "accept",
+    "credit": "agree",
+    "credit_note": "As for the same passage under POA-C.",
+    "note": "The measure is the Housing Trust Fund charter amendment (Prop C), which the reports say the Apartment Association's money backs.",
+    "trim": {
+     "begin_at": "COLLEAGUES, I'M PROUD TO CO-SPONSOR THIS MEASURE",
+     "end_at": "NEIGHBORHOOD STABILITY."
+    },
+    "donor_statements": [
+     "SFAA-I-PROPC"
+    ],
+    "in_common": "Both are about the Housing Trust Fund measure (Prop C): the supervisor co-sponsors it; the reports say the association's donation flows through a committee that backs it.",
+    "differs": "The association's side is a reporter's statement about where $211,000 went (The Real Deal, 29 October 2026), not the association's own words; the supervisor says nothing of Prop I or of the committee."
+   },
+   "decision": "accept",
+   "final_text": "COLLEAGUES, I'M PROUD TO CO-SPONSOR THIS MEASURE. THANK YOU TO SUPERVISOR MELGAR AND HER OFFICE FOR THEIR LEADERSHIP AND HARD WORK ON THIS AND BRINGING PEOPLE TOGETHER. WE ALL AGREE THAT SAN FRANCISCO NEEDS TO BUILD MORE HOUSING BUT AS WE WORK TO MAKE IT EASIER TO BUILD WE ALSO NEED TO MAKE SURE THAT WORKING FAMILIES, SENIORS AND YOUNG PEOPLE CAN AFFORD TO REMAIN PART OF OUR CITY. THE HOUSING TRUST FUND HAS HELPED CREATE AND PRESERVE AFFORDABLE HOMES AND SUPPORT OPPORTUNITIES FOR FIRST TIME HOMEBUYERS. THIS MEASURE WILL STRENGTHEN THAT FUND OVER TIME WHILE INCLUDING REASONABLE PROTECTIONS WHEN THE CITY FACES A SERIOUS BUDGET SHORTFALL. THIS IS A BALANCED APPROACH. IT SUPPORTS MORE HOUSING PRODUCTION WHILE MAKING A LONG TERM COMMITMENT TO AFFORDABILITY AND NEIGHBORHOOD STABILITY.",
+   "final_first": "01:12:08",
+   "final_last": "01:12:44",
+   "minutes": {
+    "status": "consistent",
+    "checks": [
+     "Wong is listed present.",
+     "The minutes list Wong as a sponsor of an item whose title shares words with the passage; that fits a sponsor presenting it, but the minutes do not say who spoke."
+    ]
+   }
+  },
+  {
+   "id": "52849|01:40:14|Bilal Mahmood|SFAA-I-C",
+   "official": "Bilal Mahmood",
+   "family": "sf-apartment-association",
+   "subject": "SFAA-I-C",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "01:40:14",
+   "last_stamp": "01:40:19",
+   "text": "THE EXACT KIND OF MIDSIZED PROJECTS ENCOURAGED BY THE FAMILY ZONING PLAN WHEN PAIRED WITH THE HOUSING TRUST FUND EXPANSION SUPERVISOR MELGAR HAS PROPOSED THESE POLICIES GO A",
+   "tier": "specific",
+   "anchor_hits": [
+    "HOUSING TRUST FUND"
+   ],
+   "topic_hits": [],
+   "credit": {
+    "doubt": "medium",
+    "why": [
+     "88 words after the cue 'SUPERVISOR MAHMOOD' (01:39:46)",
+     "2 '>>' mark(s) between the cue and the passage"
+    ],
+    "cue": "SUPERVISOR MAHMOOD",
+    "cue_stamp": "01:39:46",
+    "exact_spelling": true,
+    "closed_by_a_cue": true
+   },
+   "review": {
+    "id": "52849|01:40:14|Bilal Mahmood|SFAA-I-C",
+    "decision": "loose",
+    "credit": "agree",
+    "credit_note": "Same turn as 01:40:05.",
+    "note": "The words are about the paired inclusionary and Housing Trust Fund changes; the association's reported subject is Prop I and Prop C as ballot measures."
+   },
+   "decision": "loose",
+   "final_text": "THE EXACT KIND OF MIDSIZED PROJECTS ENCOURAGED BY THE FAMILY ZONING PLAN WHEN PAIRED WITH THE HOUSING TRUST FUND EXPANSION SUPERVISOR MELGAR HAS PROPOSED THESE POLICIES GO A",
+   "final_first": "01:40:14",
+   "final_last": "01:40:19",
+   "minutes": {
+    "status": "silent",
+    "checks": [
+     "Mahmood is listed present."
+    ]
+   }
+  },
+  {
+   "id": "52849|01:40:34|Bilal Mahmood|SFAA-I-C",
+   "official": "Bilal Mahmood",
+   "family": "sf-apartment-association",
+   "subject": "SFAA-I-C",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "01:40:34",
+   "last_stamp": "01:40:39",
+   "text": "AS WAS NOTED, THIS WAS DONE AS AN EXCHANGE ON THE RECOMMENDATION BY THE TAC BETWEEN THE HOUSING TRUST FUND AND INCLUSIONARY REQUIREMENTS AND HAD AMENDMENTS MOVE FORWARD",
+   "tier": "specific",
+   "anchor_hits": [
+    "HOUSING TRUST FUND"
+   ],
+   "topic_hits": [],
+   "credit": {
+    "doubt": "medium",
+    "why": [
+     "143 words after the cue 'SUPERVISOR MAHMOOD' (01:39:46)",
+     "2 '>>' mark(s) between the cue and the passage"
+    ],
+    "cue": "SUPERVISOR MAHMOOD",
+    "cue_stamp": "01:39:46",
+    "exact_spelling": true,
+    "closed_by_a_cue": true
+   },
+   "review": {
+    "id": "52849|01:40:34|Bilal Mahmood|SFAA-I-C",
+    "decision": "loose",
+    "credit": "agree",
+    "credit_note": "Same turn as 01:40:05.",
+    "note": "As above."
+   },
+   "decision": "loose",
+   "final_text": "AS WAS NOTED, THIS WAS DONE AS AN EXCHANGE ON THE RECOMMENDATION BY THE TAC BETWEEN THE HOUSING TRUST FUND AND INCLUSIONARY REQUIREMENTS AND HAD AMENDMENTS MOVE FORWARD",
+   "final_first": "01:40:34",
+   "final_last": "01:40:39",
+   "minutes": {
+    "status": "silent",
+    "checks": [
+     "Mahmood is listed present."
+    ]
+   }
+  },
+  {
+   "id": "52849|02:03:58|Matt Dorsey|SFAA-LANDLORD",
+   "official": "Matt Dorsey",
+   "family": "sf-apartment-association",
+   "subject": "SFAA-LANDLORD",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "02:03:58",
+   "last_stamp": "02:04:06",
+   "text": "WHO PEOPLE WHO DESERVE THE CHOICE OF A DRUG FREE OPTION FOR ANY REASON THAT COVERS ALL OTHER RESIDENTIAL TENANTS IN SAN FRANCISCO WITH ONE EXCEPTION AND THAT'S A 42 UNIT",
+   "tier": "topic",
+   "anchor_hits": [],
+   "topic_hits": [
+    "TENANTS"
+   ],
+   "credit": {
+    "doubt": "medium",
+    "why": [
+     "332 words after the cue 'CHAIR DORSEY' (02:01:58)",
+     "1 '>>' mark(s) between the cue and the passage",
+     "no cue closes the turn"
+    ],
+    "cue": "CHAIR DORSEY",
+    "cue_stamp": "02:01:58",
+    "exact_spelling": true,
+    "closed_by_a_cue": false
+   },
+   "review": {
+    "id": "52849|02:03:58|Matt Dorsey|SFAA-LANDLORD",
+    "decision": "reject",
+    "credit": "agree",
+    "credit_note": "'CHAIR DORSEY THANK YOU PRESIDENT' opens the turn at 02:01:58; the sponsor presents his own ordinance.",
+    "note": "'Residential tenants' appears in a comparison; the ordinance is about drug-free supportive housing."
+   },
+   "decision": "reject",
+   "final_text": "WHO PEOPLE WHO DESERVE THE CHOICE OF A DRUG FREE OPTION FOR ANY REASON THAT COVERS ALL OTHER RESIDENTIAL TENANTS IN SAN FRANCISCO WITH ONE EXCEPTION AND THAT'S A 42 UNIT",
+   "final_first": "02:03:58",
+   "final_last": "02:04:06",
+   "minutes": {
+    "status": "silent",
+    "checks": [
+     "Dorsey is listed present."
+    ]
+   }
+  },
+  {
+   "id": "52849|02:04:57|Matt Dorsey|SFAA-LANDLORD",
+   "official": "Matt Dorsey",
+   "family": "sf-apartment-association",
+   "subject": "SFAA-LANDLORD",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "02:04:57",
+   "last_stamp": "02:05:01",
+   "text": "FROM DRUG FREE PCH PROVIDERS IN THE STATE OF OREGON. WE SHOULD EXPECT EVICTIONS UNDER THIS ORDINANCE TO BE EXCEEDINGLY RARE. THE SELF-SELECTION OF RESIDENTS",
+   "tier": "topic",
+   "anchor_hits": [],
+   "topic_hits": [
+    "EVICTIONS"
+   ],
+   "credit": {
+    "doubt": "medium",
+    "why": [
+     "490 words after the cue 'CHAIR DORSEY' (02:01:58)",
+     "1 '>>' mark(s) between the cue and the passage",
+     "no cue closes the turn"
+    ],
+    "cue": "CHAIR DORSEY",
+    "cue_stamp": "02:01:58",
+    "exact_spelling": true,
+    "closed_by_a_cue": false
+   },
+   "review": {
+    "id": "52849|02:04:57|Matt Dorsey|SFAA-LANDLORD",
+    "decision": "loose",
+    "credit": "agree",
+    "credit_note": "Same turn.",
+    "note": "Evictions from supportive housing under a city ordinance: the same words (tenancy, eviction) as landlord-tenant law, but not the private rental market the association speaks of."
+   },
+   "decision": "loose",
+   "final_text": "FROM DRUG FREE PCH PROVIDERS IN THE STATE OF OREGON. WE SHOULD EXPECT EVICTIONS UNDER THIS ORDINANCE TO BE EXCEEDINGLY RARE. THE SELF-SELECTION OF RESIDENTS",
+   "final_first": "02:04:57",
+   "final_last": "02:05:01",
+   "minutes": {
+    "status": "consistent",
+    "checks": [
+     "Dorsey is listed present.",
+     "The minutes list Dorsey as the first-named sponsor of an item whose title shares words with the passage; that fits a sponsor presenting it, but the minutes do not say who spoke."
+    ]
+   }
+  },
+  {
+   "id": "52849|02:05:36|Matt Dorsey|SFAA-LANDLORD",
+   "official": "Matt Dorsey",
+   "family": "sf-apartment-association",
+   "subject": "SFAA-LANDLORD",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "02:05:36",
+   "last_stamp": "02:05:44",
+   "text": "LEGISLATION THAT REQUIRES HCA TO OFFER ALTERNATIVE HOUSING OR SHELTER TOGETHER WITH SERVICES BEFORE AN EVICTION CAN EVEN TAKE PLACE. FINALLY, THIS ORDINANCE",
+   "tier": "topic",
+   "anchor_hits": [],
+   "topic_hits": [
+    "EVICTION"
+   ],
+   "credit": {
+    "doubt": "medium",
+    "why": [
+     "595 words after the cue 'CHAIR DORSEY' (02:01:58)",
+     "1 '>>' mark(s) between the cue and the passage",
+     "no cue closes the turn"
+    ],
+    "cue": "CHAIR DORSEY",
+    "cue_stamp": "02:01:58",
+    "exact_spelling": true,
+    "closed_by_a_cue": false
+   },
+   "review": {
+    "id": "52849|02:05:36|Matt Dorsey|SFAA-LANDLORD",
+    "decision": "reject",
+    "credit": "agree",
+    "credit_note": "Same turn.",
+    "note": "Alternative housing offered before an eviction from city-funded housing."
+   },
+   "decision": "reject",
+   "final_text": "LEGISLATION THAT REQUIRES HCA TO OFFER ALTERNATIVE HOUSING OR SHELTER TOGETHER WITH SERVICES BEFORE AN EVICTION CAN EVEN TAKE PLACE. FINALLY, THIS ORDINANCE",
+   "final_first": "02:05:36",
+   "final_last": "02:05:44",
+   "minutes": {
+    "status": "consistent",
+    "checks": [
+     "Dorsey is listed present.",
+     "The minutes list Dorsey as the first-named sponsor of an item whose title shares words with the passage; that fits a sponsor presenting it, but the minutes do not say who spoke."
+    ]
+   }
+  },
+  {
+   "id": "52849|02:06:02|Matt Dorsey|SFAA-LANDLORD",
+   "official": "Matt Dorsey",
+   "family": "sf-apartment-association",
+   "subject": "SFAA-LANDLORD",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "02:06:02",
+   "last_stamp": "02:06:16",
+   "text": "AND I AM ON BOARD WITH ONE THAT WILL FURTHER COMMIT THIS LEGISLATION TO THE GOAL OF AVOIDING EVICTIONS. AND ACCORDINGLY I WOULD LIKE TO MOVE AN AMENDMENT TO ADD EVICTIONS AND TO PAGE EIGHT LINE 24 SO THAT THAT SUB SUBSECTION NOW",
+   "tier": "topic",
+   "anchor_hits": [],
+   "topic_hits": [
+    "EVICTIONS"
+   ],
+   "credit": {
+    "doubt": "medium",
+    "why": [
+     "665 words after the cue 'CHAIR DORSEY' (02:01:58)",
+     "1 '>>' mark(s) between the cue and the passage",
+     "no cue closes the turn"
+    ],
+    "cue": "CHAIR DORSEY",
+    "cue_stamp": "02:01:58",
+    "exact_spelling": true,
+    "closed_by_a_cue": false
+   },
+   "review": {
+    "id": "52849|02:06:02|Matt Dorsey|SFAA-LANDLORD",
+    "decision": "loose",
+    "credit": "agree",
+    "credit_note": "Same turn; the minutes record that Supervisor Dorsey, seconded by Supervisor Sherrill, moved an amendment adding 'evictions and' on page 8, line 23, as the words say.",
+    "note": "As above.",
+    "trim": {
+     "begin_at": "ACCORDINGLY I WOULD LIKE TO MOVE AN AMENDMENT",
+     "end_at": "PAGE EIGHT LINE 24"
+    }
+   },
+   "decision": "loose",
+   "final_text": "ACCORDINGLY I WOULD LIKE TO MOVE AN AMENDMENT TO ADD EVICTIONS AND TO PAGE EIGHT LINE 24",
+   "final_first": "02:06:09",
+   "final_last": "02:06:10",
+   "minutes": {
+    "status": "confirmed",
+    "checks": [
+     "Dorsey is listed present.",
+     "The minutes record a motion moved by Dorsey (that this Ordinance be AMENDED, AN AMENDMENT OF THE WHOLE BEARING SAME TITLE, on Page 8, Line 23, by...)."
+    ]
+   }
+  },
+  {
+   "id": "52849|02:17:23|Matt Dorsey|SFAA-LANDLORD",
+   "official": "Matt Dorsey",
+   "family": "sf-apartment-association",
+   "subject": "SFAA-LANDLORD",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "02:17:23",
+   "last_stamp": "02:17:42",
+   "text": "DRUGS IN AND OF ITSELF WITHOUT OTHER LEASE VIOLATIONS IS NOT A REASON FOR EVICTION. SERVICES ARE INFORMED BY A HARM REDUCTION PHILOSOPHY THAT RECOGNIZES DRUG USE AND ADDICTION AS PART OF TENANTS LIVES. AND IT PRESCRIBES THAT SUPPORT FOR RESIDENTS WHO ENGAGE IN ILLICIT DRUG USE TO BE NON-JUDGMENTAL COMMUNICATION IN WHICH TENANTS ARE OFFERED EDUCATION ON HOW TO ENGAGE IN SAFER PRACTICES. I HAVE NO OBJECTIONS TO THAT.",
+   "tier": "topic",
+   "anchor_hits": [],
+   "topic_hits": [
+    "EVICTION",
+    "TENANTS"
+   ],
+   "credit": {
+    "doubt": "medium",
+    "why": [
+     "159 words after the cue 'SUPERVISOR DORSEY' (02:16:11)",
+     "no cue closes the turn"
+    ],
+    "cue": "SUPERVISOR DORSEY",
+    "cue_stamp": "02:16:11",
+    "exact_spelling": true,
+    "closed_by_a_cue": false
+   },
+   "review": {
+    "id": "52849|02:17:23|Matt Dorsey|SFAA-LANDLORD",
+    "decision": "reject",
+    "credit": "unclear",
+    "credit_note": "Cue at 02:16:11 opens a turn that has no closing cue.",
+    "note": "Describes services in supportive housing."
+   },
+   "decision": "reject",
+   "final_text": "DRUGS IN AND OF ITSELF WITHOUT OTHER LEASE VIOLATIONS IS NOT A REASON FOR EVICTION. SERVICES ARE INFORMED BY A HARM REDUCTION PHILOSOPHY THAT RECOGNIZES DRUG USE AND ADDICTION AS PART OF TENANTS LIVES. AND IT PRESCRIBES THAT SUPPORT FOR RESIDENTS WHO ENGAGE IN ILLICIT DRUG USE TO BE NON-JUDGMENTAL COMMUNICATION IN WHICH TENANTS ARE OFFERED EDUCATION ON HOW TO ENGAGE IN SAFER PRACTICES. I HAVE NO OBJECTIONS TO THAT.",
+   "final_first": "02:17:23",
+   "final_last": "02:17:42",
+   "minutes": {
+    "status": "silent",
+    "checks": [
+     "Dorsey is listed present."
+    ]
+   }
+  },
+  {
+   "id": "52804|00:27:21|Myrna Melgar|SFAA-LANDLORD",
+   "official": "Myrna Melgar",
+   "family": "sf-apartment-association",
+   "subject": "SFAA-LANDLORD",
+   "meeting_id": 52804,
+   "body": "Budget and Finance Committee",
+   "date": "2026-07-08",
+   "first_stamp": "00:27:21",
+   "last_stamp": "00:27:29",
+   "text": "THOUSAND RESIDENTS PARTICULARLY AT THE GATEWAY AND WE'VE HAD SUCH ENORMOUS SUPPORT FROM THE GATEWAY TENANTS ASSOCIATION FROM THE NEARBY BARBARY COAST NEIGHBORS ASSOCIATION",
+   "tier": "topic",
+   "anchor_hits": [],
+   "topic_hits": [
+    "TENANTS"
+   ],
+   "credit": {
+    "doubt": "medium",
+    "why": [
+     "400 words after the cue 'SUPERVISOR MELGAR' (00:24:51)",
+     "4 '>>' mark(s) between the cue and the passage"
+    ],
+    "cue": "SUPERVISOR MELGAR",
+    "cue_stamp": "00:24:51",
+    "exact_spelling": true,
+    "closed_by_a_cue": true
+   },
+   "review": {
+    "id": "52804|00:27:21|Myrna Melgar|SFAA-LANDLORD",
+    "decision": "reject",
+    "credit": "unclear",
+    "credit_note": "Four '>>' marks between the cue and the passage.",
+    "note": "The Gateway tenants' association is thanked for support of another project."
+   },
+   "decision": "reject",
+   "final_text": "THOUSAND RESIDENTS PARTICULARLY AT THE GATEWAY AND WE'VE HAD SUCH ENORMOUS SUPPORT FROM THE GATEWAY TENANTS ASSOCIATION FROM THE NEARBY BARBARY COAST NEIGHBORS ASSOCIATION",
+   "final_first": "00:27:21",
+   "final_last": "00:27:29",
+   "minutes": {
+    "status": "no_minutes",
+    "checks": []
+   }
+  },
+  {
+   "id": "52849|01:08:00|Myrna Melgar|SFAA-I-C",
+   "official": "Myrna Melgar",
+   "family": "sf-apartment-association",
+   "subject": "SFAA-I-C",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "01:08:00",
+   "last_stamp": "01:08:08",
+   "text": "FUNDING FOR AFFORDABLE HOUSING AND PRESERVATION THROUGH THE EXPANSION AND THE EXTENSION OF THE EXISTING HOUSING TRUST FUND TO EVENTUALLY REACH $125 MILLION BY DEDICATING A PORTION",
+   "tier": "specific",
+   "anchor_hits": [
+    "HOUSING TRUST FUND"
+   ],
+   "topic_hits": [],
+   "credit": {
+    "doubt": "low",
+    "why": [
+     "38 words after the cue 'SUPERVISOR MELGAR' (01:07:44)"
+    ],
+    "cue": "SUPERVISOR MELGAR",
+    "cue_stamp": "01:07:44",
+    "exact_spelling": true,
+    "closed_by_a_cue": true
+   },
+   "review": {
+    "id": "52849|01:08:00|Myrna Melgar|SFAA-I-C",
+    "decision": "accept",
+    "credit": "agree",
+    "credit_note": "'SUPERVISOR MELGAR THANK YOU MR. PRESIDENT. COLLEAGUES, I AM SO EXCITED' opens the turn; no '>>' mark before the passage; the minutes list her as the measure's primary sponsor.",
+    "note": "The sponsor introduces the Housing Trust Fund charter amendment (Prop C).",
+    "trim": {
+     "begin_at": "COLLEAGUES, I AM SO EXCITED",
+     "end_at": "FUTURE GROWTH OF PROPERTY VALUES IN SAN FRANCISCO."
+    },
+    "donor_statements": [
+     "SFAA-I-PROPC"
+    ],
+    "in_common": "Both are about the Housing Trust Fund measure (Prop C), which the supervisor sponsors and asks the Board to send to the ballot.",
+    "differs": "The association's side is a reporter's statement about where $211,000 went, not the association's own words; the supervisor does not speak of Prop I or of the committee."
+   },
+   "decision": "accept",
+   "final_text": "COLLEAGUES, I AM SO EXCITED FOR THE OPPORTUNITY TO SEND THIS MEASURE TO THE BALLOT TODAY AND ASK FOR YOUR SUPPORT. IT WILL SECURE A STEADY FUND OF SORT OF A STEADY SOURCE OF FUNDING FOR AFFORDABLE HOUSING AND PRESERVATION THROUGH THE EXPANSION AND THE EXTENSION OF THE EXISTING HOUSING TRUST FUND TO EVENTUALLY REACH $125 MILLION BY DEDICATING A PORTION OF FUTURE GROWTH OF PROPERTY VALUES IN SAN FRANCISCO.",
+   "final_first": "01:07:48",
+   "final_last": "01:08:14",
+   "minutes": {
+    "status": "consistent",
+    "checks": [
+     "Melgar is listed present.",
+     "The minutes list Melgar as the first-named sponsor of an item whose title shares words with the passage; that fits a sponsor presenting it, but the minutes do not say who spoke."
+    ]
+   }
+  },
+  {
+   "id": "52849|01:11:24|Myrna Melgar|SFAA-I-C",
+   "official": "Myrna Melgar",
+   "family": "sf-apartment-association",
+   "subject": "SFAA-I-C",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "01:11:24",
+   "last_stamp": "01:11:36",
+   "text": "I DO JUST WANT TO STATE ON THE RECORD THAT I THINK IT IS ARBITRARY TO EXTEND THE HOUSING TRUST FUND AND INCREASE THE HOUSING TRUST FUND. >> AND AT THE VERY SAME MEETING VOTE TO DECREASE INCLUSIONARY HOUSING.",
+   "tier": "specific",
+   "anchor_hits": [
+    "HOUSING TRUST FUND"
+   ],
+   "topic_hits": [],
+   "credit": {
+    "doubt": "medium",
+    "why": [
+     "525 words after the cue 'SUPERVISOR MELGAR' (01:07:44)",
+     "4 '>>' mark(s) between the cue and the passage"
+    ],
+    "cue": "SUPERVISOR MELGAR",
+    "cue_stamp": "01:07:44",
+    "exact_spelling": true,
+    "closed_by_a_cue": true
+   },
+   "review": {
+    "id": "52849|01:11:24|Myrna Melgar|SFAA-I-C",
+    "decision": "reject",
+    "credit": "disagree",
+    "credit_note": "Walton speaks here: the turn follows 'THANK YOU VERY MUCH COLLEAGUE SUPERVISOR WALTON', and the speaker says he will support the measure while objecting to the inclusionary vote; the rule credited the earlier cue for Melgar across four '>>' marks.",
+    "note": "Right words, wrong official."
+   },
+   "decision": "reject",
+   "final_text": "I DO JUST WANT TO STATE ON THE RECORD THAT I THINK IT IS ARBITRARY TO EXTEND THE HOUSING TRUST FUND AND INCREASE THE HOUSING TRUST FUND. >> AND AT THE VERY SAME MEETING VOTE TO DECREASE INCLUSIONARY HOUSING.",
+   "final_first": "01:11:24",
+   "final_last": "01:11:36",
+   "minutes": {
+    "status": "silent",
+    "checks": [
+     "Melgar is listed present."
+    ]
+   }
+  },
+  {
+   "id": "52849|01:44:02|Myrna Melgar|SFAA-I-C",
+   "official": "Myrna Melgar",
+   "family": "sf-apartment-association",
+   "subject": "SFAA-I-C",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "01:44:02",
+   "last_stamp": "01:44:18",
+   "text": "THAT WE UNDERSTAND THAT BECAUSE WE HAVE TO DO IT. SO NOW AS IT RELATES TO THE HOUSING TRUST FUND BECAUSE WE SET THE INCLUSIONARY RATE EVERY THREE YEARS WE ARE ALSO PUTTING TOGETHER THE HOUSING TRUST FUND FOR 30 YEARS. IT IS A 30 YEAR COMMITMENT THAT IS PERMANENT 30 YEARS VERSUS A",
+   "tier": "specific",
+   "anchor_hits": [
+    "HOUSING TRUST FUND"
+   ],
+   "topic_hits": [],
+   "credit": {
+    "doubt": "medium",
+    "why": [
+     "402 words after the cue 'SUPERVISOR MELGAR' (01:41:32)",
+     "2 '>>' mark(s) between the cue and the passage",
+     "no cue closes the turn"
+    ],
+    "cue": "SUPERVISOR MELGAR",
+    "cue_stamp": "01:41:32",
+    "exact_spelling": true,
+    "closed_by_a_cue": false
+   },
+   "review": {
+    "id": "52849|01:44:02|Myrna Melgar|SFAA-I-C",
+    "decision": "accept",
+    "credit": "agree",
+    "credit_note": "'SUPERVISOR MELGAR. THANK YOU SO MUCH. PRESIDENT MANDELMAN. I WANTED TO EXPLAIN MY CO-SPONSORSHIP OF THIS ITEM' (01:41:32) opens the turn.",
+    "note": "The sponsor explains how the Housing Trust Fund (Prop C) relates to the inclusionary rate.",
+    "trim": {
+     "begin_at": "SO NOW AS IT RELATES TO THE HOUSING TRUST FUND",
+     "end_at": "VERSUS A THREE YEAR RESETTING OF THE FEE BASED ON THE MARKET."
+    },
+    "donor_statements": [
+     "SFAA-I-PROPC"
+    ],
+    "in_common": "Both concern the Housing Trust Fund measure (Prop C).",
+    "differs": "The association's side is a reporter's statement about where $211,000 went; the supervisor describes the fund as a 30-year commitment against a three-year reset of the inclusionary fee and does not speak of Prop I."
+   },
+   "decision": "accept",
+   "final_text": "SO NOW AS IT RELATES TO THE HOUSING TRUST FUND BECAUSE WE SET THE INCLUSIONARY RATE EVERY THREE YEARS WE ARE ALSO PUTTING TOGETHER THE HOUSING TRUST FUND FOR 30 YEARS. IT IS A 30 YEAR COMMITMENT THAT IS PERMANENT 30 YEARS VERSUS A THREE YEAR RESETTING OF THE FEE BASED ON THE MARKET.",
+   "final_first": "01:44:05",
+   "final_last": "01:44:22",
+   "minutes": {
+    "status": "silent",
+    "checks": [
+     "Melgar is listed present."
+    ]
+   }
+  },
+  {
+   "id": "52849|00:03:42|Daniel Lurie|CHAMBER-H",
+   "official": "Daniel Lurie",
+   "family": "sf-chamber",
+   "subject": "CHAMBER-H",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "00:03:42",
+   "last_stamp": "00:03:51",
+   "text": "RETURNING TO SAN FRANCISCO IN MAY. >> MUNI WEEKEND RIDERSHIP SURPASSED PRE-PANDEMIC LEVELS FOR THE FIRST TIME AS OF SFO RECORDED ITS BUSIEST MEMORIAL",
+   "tier": "topic",
+   "anchor_hits": [],
+   "topic_hits": [
+    "MUNI"
+   ],
+   "credit": {
+    "doubt": "low",
+    "why": [
+     "inside the Mayor's opening remarks, which the presiding officer's question opens and 'THANK YOU, MAYOR' closes (00:02:28)"
+    ],
+    "cue": "the presiding officer asks the Mayor for opening remarks",
+    "cue_stamp": "00:02:28",
+    "exact_spelling": true,
+    "closed_by_a_cue": true
+   },
+   "review": {
+    "id": "52849|00:03:42|Daniel Lurie|CHAMBER-H",
+    "decision": "loose",
+    "credit": "agree",
+    "credit_note": "Inside the Mayor's opening remarks, introduced by the clerk and closed by 'THANK YOU, MAYOR LURIE'; the minutes summarise the Mayor addressing the Board.",
+    "note": "The same subject (Muni), not the same proposal.",
+    "trim": {
+     "begin_at": "MUNI WEEKEND RIDERSHIP",
+     "end_at": "THAN IN 2025."
+    }
+   },
+   "decision": "loose",
+   "final_text": "MUNI WEEKEND RIDERSHIP SURPASSED PRE-PANDEMIC LEVELS FOR THE FIRST TIME AS OF SFO RECORDED ITS BUSIEST MEMORIAL DAY WEEKEND EVER AND HALF A MILLION MORE TOURISTS ARE PROJECTED TO COME TO OUR CITY THIS YEAR THAN IN 2025.",
+   "final_first": "00:03:46",
+   "final_last": "00:03:59",
+   "minutes": {
+    "status": "confirmed",
+    "checks": [
+     "The minutes summarise Lurie addressing the Board."
+    ]
+   }
+  },
+  {
+   "id": "52251|01:54:39|Alan Wong|POA-I",
+   "official": "Alan Wong",
+   "family": "sf-poa",
+   "subject": "POA-I",
+   "meeting_id": 52251,
+   "body": "Board of Supervisors",
+   "date": "2026-04-21",
+   "first_stamp": "01:54:39",
+   "last_stamp": "01:54:43",
+   "text": "PREVENTION AND COMMUNITY HEALING. HE ASKS OUR CITY DEPARTMENTS OUR PUBLIC SAFETY AGENCIES AND OUR EDUCATORS TO TEACH AND ACT WITH RESPECT FOR ELDERS",
+   "tier": "topic",
+   "anchor_hits": [],
+   "topic_hits": [
+    "PUBLIC SAFETY"
+   ],
+   "credit": {
+    "doubt": "medium",
+    "why": [
+     "363 words after the cue 'SUPERVISOR WONG' (01:52:31)",
+     "2 '>>' mark(s) between the cue and the passage"
+    ],
+    "cue": "SUPERVISOR WONG",
+    "cue_stamp": "01:52:31",
+    "exact_spelling": true,
+    "closed_by_a_cue": true
+   },
+   "review": {
+    "id": "52251|01:54:39|Alan Wong|POA-I",
+    "decision": "reject",
+    "credit": "agree",
+    "credit_note": "Commendation remarks after the cue at 01:52:31.",
+    "note": "'Public safety agencies' in a tribute."
+   },
+   "decision": "reject",
+   "final_text": "PREVENTION AND COMMUNITY HEALING. HE ASKS OUR CITY DEPARTMENTS OUR PUBLIC SAFETY AGENCIES AND OUR EDUCATORS TO TEACH AND ACT WITH RESPECT FOR ELDERS",
+   "final_first": "01:54:39",
+   "final_last": "01:54:43",
+   "minutes": {
+    "status": "no_minutes",
+    "checks": []
+   }
+  },
+  {
+   "id": "52816|00:25:17|Alan Wong|POA-I",
+   "official": "Alan Wong",
+   "family": "sf-poa",
+   "subject": "POA-I",
+   "meeting_id": 52816,
+   "body": "Public Safety and Neighborhood Services Committee",
+   "date": "2026-07-09",
+   "first_stamp": "00:25:17",
+   "last_stamp": "00:25:22",
+   "text": "BY THE TIME FIREWORKS ARE BEING DISCHARGED IN OUR NEIGHBORHOODS, RESIDENTS AND FIRST RESPONDERS NEED A TOOL THAT APPLIES TO THE CONDUCT HAPPENING HERE.",
+   "tier": "specific",
+   "anchor_hits": [
+    "FIRST RESPONDERS"
+   ],
+   "topic_hits": [],
+   "credit": {
+    "doubt": "low",
+    "why": [
+     "303 words after the cue 'SUPERVISOR WONG' (00:23:28)"
+    ],
+    "cue": "SUPERVISOR WONG",
+    "cue_stamp": "00:23:28",
+    "exact_spelling": true,
+    "closed_by_a_cue": true
+   },
+   "review": {
+    "id": "52816|00:25:17|Alan Wong|POA-I",
+    "decision": "reject",
+    "credit": "agree",
+    "credit_note": "Sponsor of the fireworks ordinance, after the cue at 00:23:28.",
+    "note": "'First responders' in a fireworks ordinance."
+   },
+   "decision": "reject",
+   "final_text": "BY THE TIME FIREWORKS ARE BEING DISCHARGED IN OUR NEIGHBORHOODS, RESIDENTS AND FIRST RESPONDERS NEED A TOOL THAT APPLIES TO THE CONDUCT HAPPENING HERE.",
+   "final_first": "00:25:17",
+   "final_last": "00:25:22",
+   "minutes": {
+    "status": "no_minutes",
+    "checks": []
+   }
+  },
+  {
+   "id": "52816|00:28:05|Alan Wong|POA-I",
+   "official": "Alan Wong",
+   "family": "sf-poa",
+   "subject": "POA-I",
+   "meeting_id": 52816,
+   "body": "Public Safety and Neighborhood Services Committee",
+   "date": "2026-07-09",
+   "first_stamp": "00:28:05",
+   "last_stamp": "00:28:11",
+   "text": "LAW FROM THE POLICE CODE AND WE'VE CHECKED IN WITH THE LIBRARY AND POLICE DEPARTMENT FOR THIS ORDINANCE. GOOD GOVERNMENT MEANS NOT ONLY PASSING NEW LAWS BUT CLEANING",
+   "tier": "topic",
+   "anchor_hits": [],
+   "topic_hits": [
+    "POLICE DEPARTMENT"
+   ],
+   "credit": {
+    "doubt": "medium",
+    "why": [
+     "155 words after the cue 'SUPERVISOR WONG' (00:27:13)",
+     "2 '>>' mark(s) between the cue and the passage"
+    ],
+    "cue": "SUPERVISOR WONG",
+    "cue_stamp": "00:27:13",
+    "exact_spelling": true,
+    "closed_by_a_cue": true
+   },
+   "review": {
+    "id": "52816|00:28:05|Alan Wong|POA-I",
+    "decision": "reject",
+    "credit": "agree",
+    "credit_note": "Same turn.",
+    "note": "Fireworks ordinance; the Police Department consulted."
+   },
+   "decision": "reject",
+   "final_text": "LAW FROM THE POLICE CODE AND WE'VE CHECKED IN WITH THE LIBRARY AND POLICE DEPARTMENT FOR THIS ORDINANCE. GOOD GOVERNMENT MEANS NOT ONLY PASSING NEW LAWS BUT CLEANING",
+   "final_first": "00:28:05",
+   "final_last": "00:28:11",
+   "minutes": {
+    "status": "no_minutes",
+    "checks": []
+   }
+  },
+  {
+   "id": "52901|00:27:07|Alan Wong|POA-I",
+   "official": "Alan Wong",
+   "family": "sf-poa",
+   "subject": "POA-I",
+   "meeting_id": 52901,
+   "body": "Board of Supervisors",
+   "date": "2026-07-21",
+   "first_stamp": "00:27:07",
+   "last_stamp": "00:27:11",
+   "text": "THIS ORDINANCE COMES BEFORE THE FULL BOARD WITH THE RECOMMENDATION OF THE PUBLIC SAFETY AND NEIGHBORHOOD SERVICES COMMITTEE WHICH APPROVED IT ON JULY 9TH.",
+   "tier": "topic",
+   "anchor_hits": [],
+   "topic_hits": [
+    "PUBLIC SAFETY"
+   ],
+   "credit": {
+    "doubt": "low",
+    "why": [
+     "1 words after the cue 'SUPERVISOR WONG' (00:27:00)"
+    ],
+    "cue": "SUPERVISOR WONG",
+    "cue_stamp": "00:27:00",
+    "exact_spelling": true,
+    "closed_by_a_cue": true
+   },
+   "review": {
+    "id": "52901|00:27:07|Alan Wong|POA-I",
+    "decision": "reject",
+    "credit": "agree",
+    "credit_note": "Same sponsor on 21 July.",
+    "note": "Fireworks ordinance; the committee's approval."
+   },
+   "decision": "reject",
+   "final_text": "THIS ORDINANCE COMES BEFORE THE FULL BOARD WITH THE RECOMMENDATION OF THE PUBLIC SAFETY AND NEIGHBORHOOD SERVICES COMMITTEE WHICH APPROVED IT ON JULY 9TH.",
+   "final_first": "00:27:07",
+   "final_last": "00:27:11",
+   "minutes": {
+    "status": "no_minutes",
+    "checks": []
+   }
+  },
+  {
+   "id": "52901|00:29:48|Alan Wong|POA-I",
+   "official": "Alan Wong",
+   "family": "sf-poa",
+   "subject": "POA-I",
+   "meeting_id": 52901,
+   "body": "Board of Supervisors",
+   "date": "2026-07-21",
+   "first_stamp": "00:29:48",
+   "last_stamp": "00:29:54",
+   "text": "OUR COMMUNITIES. I'D LIKE TO THANK THE CERTAIN GOOD POLICE DEPARTMENT FOR WORKING WITH US ON THIS LEGISLATION AND BRINGING UP THIS POTENTIAL LEGISLATION AS",
+   "tier": "topic",
+   "anchor_hits": [],
+   "topic_hits": [
+    "POLICE DEPARTMENT"
+   ],
+   "credit": {
+    "doubt": "medium",
+    "why": [
+     "429 words after the cue 'SUPERVISOR WONG' (00:27:00)",
+     "3 '>>' mark(s) between the cue and the passage"
+    ],
+    "cue": "SUPERVISOR WONG",
+    "cue_stamp": "00:27:00",
+    "exact_spelling": true,
+    "closed_by_a_cue": true
+   },
+   "review": {
+    "id": "52901|00:29:48|Alan Wong|POA-I",
+    "decision": "reject",
+    "credit": "agree",
+    "credit_note": "Same turn.",
+    "note": "Thanks the Police Department for working on the ordinance."
+   },
+   "decision": "reject",
+   "final_text": "OUR COMMUNITIES. I'D LIKE TO THANK THE CERTAIN GOOD POLICE DEPARTMENT FOR WORKING WITH US ON THIS LEGISLATION AND BRINGING UP THIS POTENTIAL LEGISLATION AS",
+   "final_first": "00:29:48",
+   "final_last": "00:29:54",
+   "minutes": {
+    "status": "no_minutes",
+    "checks": []
+   }
+  },
+  {
+   "id": "52849|01:12:24|Alan Wong|POA-C",
+   "official": "Alan Wong",
+   "family": "sf-poa",
+   "subject": "POA-C",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "01:12:24",
+   "last_stamp": "01:12:29",
+   "text": "AND YOUNG PEOPLE CAN AFFORD TO REMAIN PART OF OUR CITY. THE HOUSING TRUST FUND HAS HELPED CREATE AND PRESERVE AFFORDABLE HOMES AND SUPPORT OPPORTUNITIES FOR FIRST TIME",
+   "tier": "specific",
+   "anchor_hits": [
+    "HOUSING TRUST FUND"
+   ],
+   "topic_hits": [],
+   "credit": {
+    "doubt": "low",
+    "why": [
+     "60 words after the cue 'SUPERVISOR WONG' (01:12:01)",
+     "1 '>>' mark(s) between the cue and the passage"
+    ],
+    "cue": "SUPERVISOR WONG",
+    "cue_stamp": "01:12:01",
+    "exact_spelling": true,
+    "closed_by_a_cue": true
+   },
+   "review": {
+    "id": "52849|01:12:24|Alan Wong|POA-C",
+    "decision": "accept",
+    "credit": "agree",
+    "credit_note": "'SUPERVISOR WONG. >> COLLEAGUES, I'M PROUD TO CO-SPONSOR THIS MEASURE': the cue is spelled as the roster has it, the speaker thanks Supervisor Melgar for the measure, and the chair calls the roll on the item next.",
+    "note": "The measure is the Housing Trust Fund charter amendment, which the donor's page calls Prop C.",
+    "trim": {
+     "begin_at": "COLLEAGUES, I'M PROUD TO CO-SPONSOR THIS MEASURE",
+     "end_at": "NEIGHBORHOOD STABILITY."
+    },
+    "donor_statements": [
+     "POA-I-C"
+    ],
+    "in_common": "Both are about the Housing Trust Fund measure on the November ballot: the supervisor co-sponsors it ('this measure will strengthen that fund'); the association urges a YES vote on Proposition C.",
+    "differs": "The association's page is a recommendation to voters on a ballot measure and joins it to NO on Proposition I; the supervisor speaks at the Board's vote to place the measure on the ballot and does not name Prop C or Prop I. That Prop C is this charter amendment is read from the Govern For California and GrowSF pages (Prop C: Housing Trust Fund) and the minutes' title."
+   },
+   "decision": "accept",
+   "final_text": "COLLEAGUES, I'M PROUD TO CO-SPONSOR THIS MEASURE. THANK YOU TO SUPERVISOR MELGAR AND HER OFFICE FOR THEIR LEADERSHIP AND HARD WORK ON THIS AND BRINGING PEOPLE TOGETHER. WE ALL AGREE THAT SAN FRANCISCO NEEDS TO BUILD MORE HOUSING BUT AS WE WORK TO MAKE IT EASIER TO BUILD WE ALSO NEED TO MAKE SURE THAT WORKING FAMILIES, SENIORS AND YOUNG PEOPLE CAN AFFORD TO REMAIN PART OF OUR CITY. THE HOUSING TRUST FUND HAS HELPED CREATE AND PRESERVE AFFORDABLE HOMES AND SUPPORT OPPORTUNITIES FOR FIRST TIME HOMEBUYERS. THIS MEASURE WILL STRENGTHEN THAT FUND OVER TIME WHILE INCLUDING REASONABLE PROTECTIONS WHEN THE CITY FACES A SERIOUS BUDGET SHORTFALL. THIS IS A BALANCED APPROACH. IT SUPPORTS MORE HOUSING PRODUCTION WHILE MAKING A LONG TERM COMMITMENT TO AFFORDABILITY AND NEIGHBORHOOD STABILITY.",
+   "final_first": "01:12:08",
+   "final_last": "01:12:44",
+   "minutes": {
+    "status": "consistent",
+    "checks": [
+     "Wong is listed present.",
+     "The minutes list Wong as a sponsor of an item whose title shares words with the passage; that fits a sponsor presenting it, but the minutes do not say who spoke."
+    ]
+   }
+  },
+  {
+   "id": "52849|01:54:04|Alan Wong|POA-C",
+   "official": "Alan Wong",
+   "family": "sf-poa",
+   "subject": "POA-C",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "01:54:04",
+   "last_stamp": "01:54:07",
+   "text": "DRAMATICALLY. THE CITY'S OWN TECHNICAL ADVISORY COMMITTEE CONCLUDED THAT OUR EXISTING INCLUSIONARY REQUIREMENTS HAVE BECOME A SIGNIFICANT BARRIER TO NEW",
+   "tier": "topic",
+   "anchor_hits": [],
+   "topic_hits": [
+    "INCLUSIONARY"
+   ],
+   "credit": {
+    "doubt": "low",
+    "why": [
+     "33 words after the cue 'SUPERVISOR WONG' (01:53:47)"
+    ],
+    "cue": "SUPERVISOR WONG",
+    "cue_stamp": "01:53:47",
+    "exact_spelling": true,
+    "closed_by_a_cue": true
+   },
+   "review": {
+    "id": "52849|01:54:04|Alan Wong|POA-C",
+    "decision": "loose",
+    "credit": "agree",
+    "credit_note": "'THANK YOU. SUPERVISOR WONG COLLEAGUES' (01:53:47) opens the turn; the next speaker follows '>> THANK YOU.'",
+    "note": "The ordinance cutting inclusionary requirements, which the same Board voted on together with the Housing Trust Fund measure; the donor's page speaks of Prop C."
+   },
+   "decision": "loose",
+   "final_text": "DRAMATICALLY. THE CITY'S OWN TECHNICAL ADVISORY COMMITTEE CONCLUDED THAT OUR EXISTING INCLUSIONARY REQUIREMENTS HAVE BECOME A SIGNIFICANT BARRIER TO NEW",
+   "final_first": "01:54:04",
+   "final_last": "01:54:07",
+   "minutes": {
+    "status": "silent",
+    "checks": [
+     "Wong is listed present."
+    ]
+   }
+  },
+  {
+   "id": "52849|01:54:27|Alan Wong|POA-C",
+   "official": "Alan Wong",
+   "family": "sf-poa",
+   "subject": "POA-C",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "01:54:27",
+   "last_stamp": "01:54:34",
+   "text": "PRESERVING OUR LONG TERM COMMITMENT TO AFFORDABLE HOUSING ADJUSTS INCLUSIONARY REQUIREMENTS, REDUCES CERTAIN IMPACT FEES AND PROVIDES GREATER FLEXIBILITY SO PROJECTS",
+   "tier": "topic",
+   "anchor_hits": [],
+   "topic_hits": [
+    "INCLUSIONARY"
+   ],
+   "credit": {
+    "doubt": "low",
+    "why": [
+     "93 words after the cue 'SUPERVISOR WONG' (01:53:47)"
+    ],
+    "cue": "SUPERVISOR WONG",
+    "cue_stamp": "01:53:47",
+    "exact_spelling": true,
+    "closed_by_a_cue": true
+   },
+   "review": {
+    "id": "52849|01:54:27|Alan Wong|POA-C",
+    "decision": "loose",
+    "credit": "agree",
+    "credit_note": "Same turn.",
+    "note": "As above."
+   },
+   "decision": "loose",
+   "final_text": "PRESERVING OUR LONG TERM COMMITMENT TO AFFORDABLE HOUSING ADJUSTS INCLUSIONARY REQUIREMENTS, REDUCES CERTAIN IMPACT FEES AND PROVIDES GREATER FLEXIBILITY SO PROJECTS",
+   "final_first": "01:54:27",
+   "final_last": "01:54:34",
+   "minutes": {
+    "status": "silent",
+    "checks": [
+     "Wong is listed present."
+    ]
+   }
+  },
+  {
+   "id": "52849|01:47:22|Matt Dorsey|POA-C",
+   "official": "Matt Dorsey",
+   "family": "sf-poa",
+   "subject": "POA-C",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "01:47:22",
+   "last_stamp": "01:47:34",
+   "text": "AMENDMENT WHILE WE ULTIMATELY HAVE THE FINAL POLICY DECISION OVER OUR INCLUSIONARY RATES. WE GENERALLY ENTRUST THE BULK OF THE POLICYMAKING WORK ON OUR INCLUSIONARY RATES TO A GROUP OF EXPERTS FROM THE DEVELOPMENT AND AFFORDABLE HOUSING",
+   "tier": "topic",
+   "anchor_hits": [],
+   "topic_hits": [
+    "INCLUSIONARY"
+   ],
+   "credit": {
+    "doubt": "low",
+    "why": [
+     "14 words after the cue 'SUPERVISOR DORSEY' (01:47:15)"
+    ],
+    "cue": "SUPERVISOR DORSEY",
+    "cue_stamp": "01:47:15",
+    "exact_spelling": true,
+    "closed_by_a_cue": true
+   },
+   "review": {
+    "id": "52849|01:47:22|Matt Dorsey|POA-C",
+    "decision": "loose",
+    "credit": "agree",
+    "credit_note": "'SUPERVISOR DORSEY THANK YOU PRESIDENT MANDOLIN' (01:47:15) opens the turn; 'SUPERVISOR CHEN. THANK YOU MR. PRESIDENT' (01:48:28) closes it; the minutes list Dorsey on the Noes of the vote on Supervisor Fielder's amendment, as the words say.",
+    "note": "The vote on the fee ordinance that the Board took together with the Prop C measure; the donor's page speaks of Prop C.",
+    "trim": {
+     "begin_at": "COLLEAGUES, I WILL RESPECTFULLY BE VOTING NO",
+     "end_at": "MAKING HOUSING PRODUCTION FEASIBLE."
+    }
+   },
+   "decision": "loose",
+   "final_text": "COLLEAGUES, I WILL RESPECTFULLY BE VOTING NO ON THE PROPOSED AMENDMENT WHILE WE ULTIMATELY HAVE THE FINAL POLICY DECISION OVER OUR INCLUSIONARY RATES. WE GENERALLY ENTRUST THE BULK OF THE POLICYMAKING WORK ON OUR INCLUSIONARY RATES TO A GROUP OF EXPERTS FROM THE DEVELOPMENT AND AFFORDABLE HOUSING COMMUNITY. THEY LOOK AT THE DATA AND PROVIDE US WITH RECOMMENDATIONS. AS LAND USE CHAIR MELGAR JUST EXPLAINED. AND THIS TIME AROUND THE NUMBERS SHOWED THAT OUR RATES ARE TOO HIGH AND IN FACT THE REPORT SHOWED THAT THE EVEN ZERO IS INFEASIBLE. WHILE I FRANKLY HAVE RESERVATIONS EVEN ABOUT 5%, I RESPECT THE PROCESS THAT LED TO THAT RECOMMENDATION AND I UNDERSTAND THE DESIRE AND THE IMPORTANCE OF HAVING A NUMBER THAT'S GREATER THAN ZERO. BUT I DO BELIEVE WE NEED TO TRUST THE MATH. I DON'T BELIEVE WE SHOULD SINGLE OUT NEIGHBORHOODS AND FREEZE THEM OUT FOR NEW HOUSING MARKET RATE OR AFFORDABLE. IT TAKES TIME TO SEE THE EFFECTS OF THESE CHANGES AND THAT'S WHY THE TAX PROCESS HAPPENS EVERY THREE YEARS. I BELIEVE WE NEED TO LET THIS POLICY PLAY OUT SO I WILL RESPECTFULLY NOT SUPPORT THE AMENDMENT ON THE PRINCIPLE THAT IT RISKS MOVING THE LEGISLATION FURTHER FROM ITS GOAL OF MAKING HOUSING PRODUCTION FEASIBLE.",
+   "final_first": "01:47:19",
+   "final_last": "01:48:25",
+   "minutes": {
+    "status": "confirmed",
+    "checks": [
+     "Dorsey is listed present.",
+     "Passage states a vote of NO; the best-matching vote in the minutes (words shared: AFFORDABLE, AMENDMENT, DEVELOPMENT, HOUSING, INCLUSIONARY, MELGAR) lists Dorsey on the Noes side (motion: that this Ordinance be AMENDED, AN AMENDMENT OF THE WHOLE BEARING SAME TITLE, on Page 53, Line 9, by changing 'For' to 'Except as provided i)."
+    ]
+   }
+  },
+  {
+   "id": "52849|00:03:42|Daniel Lurie|TWU-TRANSIT",
+   "official": "Daniel Lurie",
+   "family": "twu-250a",
+   "subject": "TWU-TRANSIT",
+   "meeting_id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "first_stamp": "00:03:42",
+   "last_stamp": "00:03:51",
+   "text": "RETURNING TO SAN FRANCISCO IN MAY. >> MUNI WEEKEND RIDERSHIP SURPASSED PRE-PANDEMIC LEVELS FOR THE FIRST TIME AS OF SFO RECORDED ITS BUSIEST MEMORIAL",
+   "tier": "topic",
+   "anchor_hits": [],
+   "topic_hits": [
+    "MUNI"
+   ],
+   "credit": {
+    "doubt": "low",
+    "why": [
+     "inside the Mayor's opening remarks, which the presiding officer's question opens and 'THANK YOU, MAYOR' closes (00:02:28)"
+    ],
+    "cue": "the presiding officer asks the Mayor for opening remarks",
+    "cue_stamp": "00:02:28",
+    "exact_spelling": true,
+    "closed_by_a_cue": true
+   },
+   "review": {
+    "id": "52849|00:03:42|Daniel Lurie|TWU-TRANSIT",
+    "decision": "loose",
+    "credit": "agree",
+    "credit_note": "As above.",
+    "note": "The listing of the union as a supporter does not show which measure.",
+    "trim": {
+     "begin_at": "MUNI WEEKEND RIDERSHIP",
+     "end_at": "THAN IN 2025."
+    }
+   },
+   "decision": "loose",
+   "final_text": "MUNI WEEKEND RIDERSHIP SURPASSED PRE-PANDEMIC LEVELS FOR THE FIRST TIME AS OF SFO RECORDED ITS BUSIEST MEMORIAL DAY WEEKEND EVER AND HALF A MILLION MORE TOURISTS ARE PROJECTED TO COME TO OUR CITY THIS YEAR THAN IN 2025.",
+   "final_first": "00:03:46",
+   "final_last": "00:03:59",
+   "minutes": {
+    "status": "confirmed",
+    "checks": [
+     "The minutes summarise Lurie addressing the Board."
+    ]
+   }
+  }
+ ],
+ "stale_reviews": [],
+ "pairings": [
+  {
+   "id": 1,
+   "official": "Bilal Mahmood",
+   "office": "Supervisor",
+   "district": "5",
+   "donor": "Govern For California",
+   "donor_kind": "advocacy group",
+   "subject": "Prop C and inclusionary housing requirements",
+   "candidate_id": "52849|01:40:34|Bilal Mahmood|GFC-C",
+   "quote": {
+    "text": "AS WAS NOTED, THIS WAS DONE AS AN EXCHANGE ON THE RECOMMENDATION BY THE TAC BETWEEN THE HOUSING TRUST FUND AND INCLUSIONARY REQUIREMENTS AND HAD AMENDMENTS MOVE FORWARD TO ACTUALLY COUPLE THOSE MEASURES.",
+    "meeting_id": 52849,
+    "body": "Board of Supervisors",
+    "date": "2026-07-14",
+    "first_stamp": "01:40:34",
+    "last_stamp": "01:40:43",
+    "transcript_url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52849",
+    "words_of_the_machine_passage": 33
+   },
+   "speaker_credit": {
+    "doubt": "medium",
+    "rule": [
+     "143 words after the cue 'SUPERVISOR MAHMOOD' (01:39:46)",
+     "2 '>>' mark(s) between the cue and the passage"
+    ],
+    "cue": "SUPERVISOR MAHMOOD",
+    "cue_stamp": "01:39:46",
+    "reviewer": "agree",
+    "reviewer_note": "Same turn as 01:40:05 (two '>>' marks inside one speech; the speaker is not named again).",
+    "minutes": {
+     "status": "silent",
+     "checks": [
+      "Mahmood is listed present."
+     ]
+    },
+    "minutes_source": "excerpts typed from the minutes (data/minutes/52849.txt)"
+   },
+   "donor_words": [
+    {
+     "id": "GFC-C",
+     "kind": "the donor's own words",
+     "section": "Proposition C, Affordable Housing Trust Fund: YES",
+     "text": "San Francisco's housing costs are already too high, and imposing expensive requirements on private development only makes the problem worse. Prop C preserves a compromise that reduces certain inclusionary housing requirements in exchange for greater direct funding of affordable housing, without creating a new tax.",
+     "url": "https://www.governforcalifornia.org/news/2026/10/21/sf-voter-guide",
+     "page_date": "2026-10-21",
+     "retrieved": "2026-10-30",
+     "source_kind": "voter guide on the organisation's own site"
+    }
+   ],
+   "money": {
+    "retrieved": "2026-10-30",
+    "data_loaded_through": "2026-10-30",
+    "dataset": "https://data.sf.gov/d/pitq-e56w",
+    "per_committee": [
+     {
+      "committee": "Bilal Mahmood for DCCC Member 2024",
+      "filer_nid": "208655996",
+      "relation": "own-other",
+      "kind": "own committee, for another office (Democratic County Central Committee)",
+      "schedule_a_total": 10500.0,
+      "schedule_a_rows": 4,
+      "first_date": "2024-01-29",
+      "last_date": "2024-02-06",
+      "givers_as_filed": [
+       "GFC COURAGE COMMITTEE - BAY AREA CHAPTER",
+       "GFC COURAGE COMMITTEE - EAST BAY CHAPTER",
+       "GFC COURAGE COMMITTEE - SAN FRANCISCO CHAPTER",
+       "GFC COURAGE COMMITTEE - SIERRA CHAPTER"
+      ],
+      "filings": [
+       "210655413 (v1)"
+      ],
+      "rows": [
+       {
+        "date": "2024-01-29",
+        "amount": 1000.0,
+        "filing": "210655413",
+        "version": "1",
+        "filing_date": "2024-02-22",
+        "giver": "GFC COURAGE COMMITTEE - EAST BAY CHAPTER"
+       },
+       {
+        "date": "2024-01-29",
+        "amount": 1500.0,
+        "filing": "210655413",
+        "version": "1",
+        "filing_date": "2024-02-22",
+        "giver": "GFC COURAGE COMMITTEE - BAY AREA CHAPTER"
+       },
+       {
+        "date": "2024-01-29",
+        "amount": 5000.0,
+        "filing": "210655413",
+        "version": "1",
+        "filing_date": "2024-02-22",
+        "giver": "GFC COURAGE COMMITTEE - SAN FRANCISCO CHAPTER"
+       },
+       {
+        "date": "2024-02-06",
+        "amount": 3000.0,
+        "filing": "210655413",
+        "version": "1",
+        "filing_date": "2024-02-22",
+        "giver": "GFC COURAGE COMMITTEE - SIERRA CHAPTER"
+       }
+      ],
+      "h24_repeats_not_counted": 4,
+      "h24_only_rows": 0,
+      "h24_only_total": 0
+     },
+     {
+      "committee": "Bilal Mahmood for Supervisor 2024",
+      "filer_nid": "209865652",
+      "relation": "own",
+      "kind": "own committee",
+      "schedule_a_total": 7500.0,
+      "schedule_a_rows": 15,
+      "first_date": "2024-05-01",
+      "last_date": "2024-09-26",
+      "givers_as_filed": [
+       "GFC COURAGE COMMITTEE - BAY AREA CHAPTER",
+       "GFC COURAGE COMMITTEE - CALIFORNIA BUSINESS COALITION",
+       "GFC COURAGE COMMITTEE - COMMON SENSE CHAPTER",
+       "GFC COURAGE COMMITTEE - EAST BAY CHAPTER",
+       "GFC COURAGE COMMITTEE - EXCELLENCE IN EDUCATION CHAPTER",
+       "GFC COURAGE COMMITTEE - FUTURE GENERATIONS CHAPER",
+       "GFC COURAGE COMMITTEE - GOLDEN GATE CHAPTER",
+       "GFC COURAGE COMMITTEE - MARIN CHAPTER",
+       "GFC COURAGE COMMITTEE - PALO ALTO CHAPTER",
+       "GFC COURAGE COMMITTEE - SAN FRANCISCO CHAPTER",
+       "GFC COURAGE COMMITTEE - SANTA BARBARA CHAPTER",
+       "GFC COURAGE COMMITTEE - SANTA CRUZ CHAPTER",
+       "GFC COURAGE COMMITTEE - SIERRA CHAPTER",
+       "GFC COURAGE COMMITTEE - SOUTHERN CALIFORNIA CHAPTER",
+       "GOVERN FOR CALIFORNIA COURAGE COMMITTEE"
+      ],
+      "filings": [
+       "212414131 (v1)",
+       "213049667 (v2)",
+       "213049699 (v2)"
+      ],
+      "rows": [
+       {
+        "date": "2024-05-01",
+        "amount": 500.0,
+        "filing": "213049667",
+        "version": "2",
+        "filing_date": "2025-01-31",
+        "giver": "GFC COURAGE COMMITTEE - SAN FRANCISCO CHAPTER"
+       },
+       {
+        "date": "2024-05-01",
+        "amount": 500.0,
+        "filing": "213049667",
+        "version": "2",
+        "filing_date": "2025-01-31",
+        "giver": "GFC COURAGE COMMITTEE - SANTA CRUZ CHAPTER"
+       },
+       {
+        "date": "2024-05-01",
+        "amount": 500.0,
+        "filing": "213049667",
+        "version": "2",
+        "filing_date": "2025-01-31",
+        "giver": "GFC COURAGE COMMITTEE - SIERRA CHAPTER"
+       },
+       {
+        "date": "2024-05-01",
+        "amount": 500.0,
+        "filing": "213049667",
+        "version": "2",
+        "filing_date": "2025-01-31",
+        "giver": "GFC COURAGE COMMITTEE - PALO ALTO CHAPTER"
+       },
+       {
+        "date": "2024-05-01",
+        "amount": 500.0,
+        "filing": "213049667",
+        "version": "2",
+        "filing_date": "2025-01-31",
+        "giver": "GFC COURAGE COMMITTEE - BAY AREA CHAPTER"
+       },
+       {
+        "date": "2024-05-01",
+        "amount": 500.0,
+        "filing": "213049667",
+        "version": "2",
+        "filing_date": "2025-01-31",
+        "giver": "GFC COURAGE COMMITTEE - GOLDEN GATE CHAPTER"
+       },
+       {
+        "date": "2024-05-10",
+        "amount": 500.0,
+        "filing": "213049667",
+        "version": "2",
+        "filing_date": "2025-01-31",
+        "giver": "GFC COURAGE COMMITTEE - CALIFORNIA BUSINESS COALITION"
+       },
+       {
+        "date": "2024-05-16",
+        "amount": 500.0,
+        "filing": "213049667",
+        "version": "2",
+        "filing_date": "2025-01-31",
+        "giver": "GFC COURAGE COMMITTEE - COMMON SENSE CHAPTER"
+       },
+       {
+        "date": "2024-08-16",
+        "amount": 500.0,
+        "filing": "213049699",
+        "version": "2",
+        "filing_date": "2025-01-31",
+        "giver": "GFC COURAGE COMMITTEE - MARIN CHAPTER"
+       },
+       {
+        "date": "2024-08-19",
+        "amount": 500.0,
+        "filing": "213049699",
+        "version": "2",
+        "filing_date": "2025-01-31",
+        "giver": "GFC COURAGE COMMITTEE - FUTURE GENERATIONS CHAPER"
+       },
+       {
+        "date": "2024-08-20",
+        "amount": 500.0,
+        "filing": "213049699",
+        "version": "2",
+        "filing_date": "2025-01-31",
+        "giver": "GFC COURAGE COMMITTEE - SOUTHERN CALIFORNIA CHAPTER"
+       },
+       {
+        "date": "2024-08-26",
+        "amount": 500.0,
+        "filing": "213049699",
+        "version": "2",
+        "filing_date": "2025-01-31",
+        "giver": "GFC COURAGE COMMITTEE - EXCELLENCE IN EDUCATION CHAPTER"
+       },
+       {
+        "date": "2024-08-26",
+        "amount": 500.0,
+        "filing": "213049699",
+        "version": "2",
+        "filing_date": "2025-01-31",
+        "giver": "GFC COURAGE COMMITTEE - SANTA BARBARA CHAPTER"
+       },
+       {
+        "date": "2024-08-26",
+        "amount": 500.0,
+        "filing": "213049699",
+        "version": "2",
+        "filing_date": "2025-01-31",
+        "giver": "GFC COURAGE COMMITTEE - EAST BAY CHAPTER"
+       },
+       {
+        "date": "2024-09-26",
+        "amount": 500.0,
+        "filing": "212414131",
+        "version": "1",
+        "filing_date": "2024-10-24",
+        "giver": "GOVERN FOR CALIFORNIA COURAGE COMMITTEE"
+       }
+      ],
+      "h24_repeats_not_counted": 0,
+      "h24_only_rows": 0,
+      "h24_only_total": 0
+     }
+    ],
+    "outside_spending_apart": [],
+    "tie": {
+     "by_id_rows": 0,
+     "by_name_rows": 23
+    },
+    "duplicates_dropped": 0
+   },
+   "reading": {
+    "in_common": "Both describe the same trade: 'an exchange' between the Housing Trust Fund and the inclusionary requirements (the supervisor); a compromise that reduces certain inclusionary requirements 'in exchange for greater direct funding of affordable housing' (the donor's page).",
+    "differs": "The donor's page recommends YES on Prop C. The supervisor reports how the changes were made and that they were moved forward together; he does not name Prop C and says nothing here of the ballot measure's recommendation.",
+    "match": "accept",
+    "hit": "specific",
+    "terms": [
+     "HOUSING TRUST FUND",
+     "INCLUSIONARY"
+    ]
+   },
+   "judgement": []
+  },
+  {
+   "id": 2,
+   "official": "Alan Wong",
+   "office": "Supervisor",
+   "district": "4",
+   "donor": "San Francisco Police Officers Association",
+   "donor_kind": "union",
+   "subject": "Prop C, the Housing Trust Fund measure",
+   "candidate_id": "52849|01:12:24|Alan Wong|POA-C",
+   "quote": {
+    "text": "COLLEAGUES, I'M PROUD TO CO-SPONSOR THIS MEASURE. THANK YOU TO SUPERVISOR MELGAR AND HER OFFICE FOR THEIR LEADERSHIP AND HARD WORK ON THIS AND BRINGING PEOPLE TOGETHER. WE ALL AGREE THAT SAN FRANCISCO NEEDS TO BUILD MORE HOUSING BUT AS WE WORK TO MAKE IT EASIER TO BUILD WE ALSO NEED TO MAKE SURE THAT WORKING FAMILIES, SENIORS AND YOUNG PEOPLE CAN AFFORD TO REMAIN PART OF OUR CITY. THE HOUSING TRUST FUND HAS HELPED CREATE AND PRESERVE AFFORDABLE HOMES AND SUPPORT OPPORTUNITIES FOR FIRST TIME HOMEBUYERS. THIS MEASURE WILL STRENGTHEN THAT FUND OVER TIME WHILE INCLUDING REASONABLE PROTECTIONS WHEN THE CITY FACES A SERIOUS BUDGET SHORTFALL. THIS IS A BALANCED APPROACH. IT SUPPORTS MORE HOUSING PRODUCTION WHILE MAKING A LONG TERM COMMITMENT TO AFFORDABILITY AND NEIGHBORHOOD STABILITY.",
+    "meeting_id": 52849,
+    "body": "Board of Supervisors",
+    "date": "2026-07-14",
+    "first_stamp": "01:12:08",
+    "last_stamp": "01:12:44",
+    "transcript_url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52849",
+    "words_of_the_machine_passage": 28
+   },
+   "speaker_credit": {
+    "doubt": "low",
+    "rule": [
+     "60 words after the cue 'SUPERVISOR WONG' (01:12:01)",
+     "1 '>>' mark(s) between the cue and the passage"
+    ],
+    "cue": "SUPERVISOR WONG",
+    "cue_stamp": "01:12:01",
+    "reviewer": "agree",
+    "reviewer_note": "'SUPERVISOR WONG. >> COLLEAGUES, I'M PROUD TO CO-SPONSOR THIS MEASURE': the cue is spelled as the roster has it, the speaker thanks Supervisor Melgar for the measure, and the chair calls the roll on the item next.",
+    "minutes": {
+     "status": "consistent",
+     "checks": [
+      "Wong is listed present.",
+      "The minutes list Wong as a sponsor of an item whose title shares words with the passage; that fits a sponsor presenting it, but the minutes do not say who spoke."
+     ]
+    },
+    "minutes_source": "excerpts typed from the minutes (data/minutes/52849.txt)"
+   },
+   "donor_words": [
+    {
+     "id": "POA-I-C",
+     "kind": "the donor's own words",
+     "section": "Closing paragraph",
+     "text": "San Francisco Firefighters Local 798, SFPOA, and Mayor Lurie urge San Franciscans to vote NO on Proposition I and YES on Proposition C this November - and to protect the budget that keeps this city safe.",
+     "url": "https://sfpoa.org/mayor-lurie-joined-by-firefighters-and-police-officers-in-strong-opposition-to-proposition-i/",
+     "page_date": "2026-09-01",
+     "retrieved": "2026-10-30",
+     "source_kind": "article by the association's president, on its own site"
+    }
+   ],
+   "money": {
+    "retrieved": "2026-10-30",
+    "data_loaded_through": "2026-10-30",
+    "dataset": "https://data.sf.gov/d/pitq-e56w",
+    "per_committee": [
+     {
+      "committee": "Alan Wong for Supervisor 2026 General",
+      "filer_nid": "216198377",
+      "relation": "own",
+      "kind": "own committee",
+      "schedule_a_total": 500.0,
+      "schedule_a_rows": 1,
+      "first_date": "2026-07-06",
+      "last_date": "2026-07-06",
+      "givers_as_filed": [
+       "SAN FRANCISCO POLICE OFFICERS ASSOCIATION PAC"
+      ],
+      "filings": [
+       "217514163 (v1)"
+      ],
+      "rows": [
+       {
+        "date": "2026-07-06",
+        "amount": 500.0,
+        "filing": "217514163",
+        "version": "1",
+        "filing_date": "2026-09-24",
+        "giver": "SAN FRANCISCO POLICE OFFICERS ASSOCIATION PAC"
+       }
+      ],
+      "h24_repeats_not_counted": 0,
+      "h24_only_rows": 0,
+      "h24_only_total": 0
+     },
+     {
+      "committee": "Alan Wong for Supervisor 2026",
+      "filer_nid": "215112140",
+      "relation": "own",
+      "kind": "own committee",
+      "schedule_a_total": 500.0,
+      "schedule_a_rows": 1,
+      "first_date": "2026-07-06",
+      "last_date": "2026-07-06",
+      "givers_as_filed": [
+       "SAN FRANCISCO POLICE OFFICERS ASSOCIATION PAC"
+      ],
+      "filings": [
+       "217514470 (v1)"
+      ],
+      "rows": [
+       {
+        "date": "2026-07-06",
+        "amount": 500.0,
+        "filing": "217514470",
+        "version": "1",
+        "filing_date": "2026-09-24",
+        "giver": "SAN FRANCISCO POLICE OFFICERS ASSOCIATION PAC"
+       }
+      ],
+      "h24_repeats_not_counted": 0,
+      "h24_only_rows": 0,
+      "h24_only_total": 0
+     }
+    ],
+    "outside_spending_apart": [],
+    "tie": {
+     "by_id_rows": 2,
+     "by_name_rows": 0
+    },
+    "duplicates_dropped": 0
+   },
+   "reading": {
+    "in_common": "Both are about the Housing Trust Fund measure on the November ballot: the supervisor co-sponsors it ('this measure will strengthen that fund'); the association urges a YES vote on Proposition C.",
+    "differs": "The association's page is a recommendation to voters on a ballot measure and joins it to NO on Proposition I; the supervisor speaks at the Board's vote to place the measure on the ballot and does not name Prop C or Prop I. That Prop C is this charter amendment is read from the Govern For California and GrowSF pages (Prop C: Housing Trust Fund) and the minutes' title.",
+    "match": "accept",
+    "hit": "specific",
+    "terms": [
+     "HOUSING TRUST FUND"
+    ]
+   },
+   "judgement": []
+  },
+  {
+   "id": 3,
+   "official": "Shamann Walton",
+   "office": "Supervisor",
+   "district": "10",
+   "donor": "SEIU Local 1021",
+   "donor_kind": "union",
+   "subject": "Props D, E and F, the Mayor's charter measures",
+   "candidate_id": "52849|02:40:02|Shamann Walton|SEIU1021-DEF",
+   "quote": {
+    "text": "COLLEAGUES I AM ALSO REQUESTING THE BUDGET AND LEGISLATIVE ANALYSTS TO INTERPRET CLEARLY ANALYZE THE ECONOMIC IMPACT OF THE CHARTER REFORM MEASURES PROPOSED BY MAYOR LURIE THAT ARE CURRENTLY UNDERGOING THE SIGNATURE VERIFICATION PROCESS AT THE DEPARTMENT OF ELECTIONS. SAN FRANCISCO VOTERS ARE BEING ASKED TO DECIDE ON THREE CHARTER REFORM MEASURES THIS NOVEMBER THAT WERE FUNDAMENTAL RESTRUCTURE HOW THE CITY OPERATES INCLUDING A SPENDING MAYORAL HIRING AND FIRING AUTHORITY AS WELL AS REORGANIZATION POWER. EXTENDING THE CITY ADMINISTRATOR'S TERM TO TEN YEARS WHILE GIVING THAT OFFICE SO AUTHORITY OVER PROCUREMENT. AND RAISING THE SIGNATURE THRESHOLD FOR CITIZEN INITIATIVES FROM 2% TO 8%. >> THESE ARE NOT SMALL TECHNICAL FIXES. THEY SHIFT REAL POWER AWAY FROM THE BOARD OF SUPERVISORS INDEPENDENT COMMISSIONS AND FROM THE RESIDENTS OF SAN FRANCISCO.",
+    "meeting_id": 52849,
+    "body": "Board of Supervisors",
+    "date": "2026-07-14",
+    "first_stamp": "02:39:58",
+    "last_stamp": "02:40:56",
+    "transcript_url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52849",
+    "words_of_the_machine_passage": 25
+   },
+   "speaker_credit": {
+    "doubt": "high",
+    "rule": [
+     "417 words after the cue 'SUPERVISOR WALTON' (02:36:50)",
+     "7 '>>' mark(s) between the cue and the passage",
+     "no cue closes the turn"
+    ],
+    "cue": "SUPERVISOR WALTON",
+    "cue_stamp": "02:36:50",
+    "reviewer": "agree",
+    "reviewer_note": "No cue directly before: the turn opens at 02:36:50 ('SUPERVISOR WALTON THANK YOU, MADAM CLERK') with '>>' marks inside it. The words 'DISTRICT TEN RESIDENTS' (District 10 is Walton) and thanks to Supervisor Chen and Supervisor Fielder, and the chair's close at 02:42:48 ('THE REST I SUBMIT ... SUPERVISOR WALTON'), agree.",
+    "minutes": {
+     "status": "silent",
+     "checks": [
+      "Walton is listed present."
+     ]
+    },
+    "minutes_source": "excerpts typed from the minutes (data/minutes/52849.txt)"
+   },
+   "donor_words": [
+    {
+     "id": "SEIU-D",
+     "kind": "the donor's own words",
+     "section": "San Francisco, local ballot measures",
+     "text": "Proposition D - Changes to Ballot Measure Process - Vote NO",
+     "url": "https://www.seiu1021.org/post/election-endorsements-nov-3-2026",
+     "page_date": "2026-09-28",
+     "retrieved": "2026-10-30",
+     "source_kind": "endorsement list on the organisation's own site"
+    },
+    {
+     "id": "SEIU-E",
+     "kind": "the donor's own words",
+     "section": "San Francisco, local ballot measures",
+     "text": "Proposition E - City Administrator's Authority and Changes to City Contracting - Vote NO",
+     "url": "https://www.seiu1021.org/post/election-endorsements-nov-3-2026",
+     "page_date": "2026-09-28",
+     "retrieved": "2026-10-30",
+     "source_kind": "endorsement list on the organisation's own site"
+    },
+    {
+     "id": "SEIU-F",
+     "kind": "the donor's own words",
+     "section": "San Francisco, local ballot measures",
+     "text": "Proposition F - Changes to Executive Branch Management - Vote NO",
+     "url": "https://www.seiu1021.org/post/election-endorsements-nov-3-2026",
+     "page_date": "2026-09-28",
+     "retrieved": "2026-10-30",
+     "source_kind": "endorsement list on the organisation's own site"
+    }
+   ],
+   "money": {
+    "retrieved": "2026-10-30",
+    "data_loaded_through": "2026-10-30",
+    "dataset": "https://data.sf.gov/d/pitq-e56w",
+    "per_committee": [
+     {
+      "committee": "Shamann Walton for School Board 2014",
+      "filer_nid": "147120072",
+      "relation": "own-other",
+      "kind": "own committee, for another office (School Board)",
+      "schedule_a_total": 500.0,
+      "schedule_a_rows": 1,
+      "first_date": "2015-04-22",
+      "last_date": "2015-04-22",
+      "givers_as_filed": [
+       "Service Employees International Union (SEIU) Local 1021"
+      ],
+      "filings": [
+       "155520026 (v1)"
+      ],
+      "rows": [
+       {
+        "date": "2015-04-22",
+        "amount": 500.0,
+        "filing": "155520026",
+        "version": "1",
+        "filing_date": "2015-07-30",
+        "giver": "Service Employees International Union (SEIU) Local 1021"
+       }
+      ],
+      "h24_repeats_not_counted": 0,
+      "h24_only_rows": 0,
+      "h24_only_total": 0
+     },
+     {
+      "committee": "Committee to Elect Shamann Walton for SF Board of Education 2012",
+      "filer_nid": "130665917",
+      "relation": "own-other",
+      "kind": "own committee, for another office (School Board)",
+      "schedule_a_total": 500.0,
+      "schedule_a_rows": 1,
+      "first_date": "2012-10-30",
+      "last_date": "2012-10-30",
+      "givers_as_filed": [
+       "SEIU Local 1021"
+      ],
+      "filings": [
+       "139507483 (v1)"
+      ],
+      "rows": [
+       {
+        "date": "2012-10-30",
+        "amount": 500.0,
+        "filing": "139507483",
+        "version": "1",
+        "filing_date": "2013-02-01",
+        "giver": "SEIU Local 1021"
+       }
+      ],
+      "h24_repeats_not_counted": 0,
+      "h24_only_rows": 0,
+      "h24_only_total": 0
+     }
+    ],
+    "outside_spending_apart": [],
+    "tie": {
+     "by_id_rows": 0,
+     "by_name_rows": 2
+    },
+    "duplicates_dropped": 0
+   },
+   "reading": {
+    "in_common": "Both are about the Mayor's three charter measures: the supervisor names 'THE CHARTER REFORM MEASURES PROPOSED BY MAYOR LURIE' and the City Administrator's term and authority over procurement (Prop E's subject) and the signature threshold (Prop D's); the donor's page lists Props D, E and F.",
+    "differs": "The supervisor asks for an analysis of their economic impact and says they 'SHIFT REAL POWER AWAY FROM THE BOARD OF SUPERVISORS'; he does not say how he will vote. The donor's page says to vote No on each.",
+    "match": "accept",
+    "hit": "specific",
+    "terms": [
+     "CHARTER REFORM"
+    ]
+   },
+   "judgement": []
+  },
+  {
+   "id": 4,
+   "official": "Myrna Melgar",
+   "office": "Supervisor",
+   "district": "7",
+   "donor": "San Francisco Apartment Association",
+   "donor_kind": "trade association",
+   "subject": "Opposing Prop I and backing Prop C (reported)",
+   "candidate_id": "52849|01:08:00|Myrna Melgar|SFAA-I-C",
+   "quote": {
+    "text": "COLLEAGUES, I AM SO EXCITED FOR THE OPPORTUNITY TO SEND THIS MEASURE TO THE BALLOT TODAY AND ASK FOR YOUR SUPPORT. IT WILL SECURE A STEADY FUND OF SORT OF A STEADY SOURCE OF FUNDING FOR AFFORDABLE HOUSING AND PRESERVATION THROUGH THE EXPANSION AND THE EXTENSION OF THE EXISTING HOUSING TRUST FUND TO EVENTUALLY REACH $125 MILLION BY DEDICATING A PORTION OF FUTURE GROWTH OF PROPERTY VALUES IN SAN FRANCISCO.",
+    "meeting_id": 52849,
+    "body": "Board of Supervisors",
+    "date": "2026-07-14",
+    "first_stamp": "01:07:48",
+    "last_stamp": "01:08:14",
+    "transcript_url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52849",
+    "words_of_the_machine_passage": 27
+   },
+   "speaker_credit": {
+    "doubt": "low",
+    "rule": [
+     "38 words after the cue 'SUPERVISOR MELGAR' (01:07:44)"
+    ],
+    "cue": "SUPERVISOR MELGAR",
+    "cue_stamp": "01:07:44",
+    "reviewer": "agree",
+    "reviewer_note": "'SUPERVISOR MELGAR THANK YOU MR. PRESIDENT. COLLEAGUES, I AM SO EXCITED' opens the turn; no '>>' mark before the passage; the minutes list her as the measure's primary sponsor.",
+    "minutes": {
+     "status": "consistent",
+     "checks": [
+      "Melgar is listed present.",
+      "The minutes list Melgar as the first-named sponsor of an item whose title shares words with the passage; that fits a sponsor presenting it, but the minutes do not say who spoke."
+     ]
+    },
+    "minutes_source": "excerpts typed from the minutes (data/minutes/52849.txt)"
+   },
+   "donor_words": [
+    {
+     "id": "SFAA-I-PROPC",
+     "kind": "reported by others, not the donor's own words",
+     "section": "The Real Deal",
+     "text": "The money flows through a committee opposing Prop I while backing a separate affordable housing measure, Prop C.",
+     "url": "https://therealdeal.com/san-francisco/2026/10/29/real-estate-players-pay-big-bucks-to-fight-prop-i/",
+     "page_date": "2026-10-29",
+     "retrieved": "2026-10-30",
+     "source_kind": "news report",
+     "speaker": "Reporter's statement of fact",
+     "suggests": "Opposes Prop I and backs Prop C.",
+     "caveat": "The same $211,000; the committee is not named in the extract.",
+     "read": "search-result extract of the page read; page not read in full"
+    }
+   ],
+   "money": {
+    "retrieved": "2026-10-30",
+    "data_loaded_through": "2026-10-30",
+    "dataset": "https://data.sf.gov/d/pitq-e56w",
+    "per_committee": [
+     {
+      "committee": "Myrna Melgar for Supervisor 2020",
+      "filer_nid": "186079773",
+      "relation": "own",
+      "kind": "own committee",
+      "schedule_a_total": 500.0,
+      "schedule_a_rows": 1,
+      "first_date": "2020-12-23",
+      "last_date": "2020-12-23",
+      "givers_as_filed": [
+       "San Francisco Apartment Association"
+      ],
+      "filings": [
+       "196565476 (v1)"
+      ],
+      "rows": [
+       {
+        "date": "2020-12-23",
+        "amount": 500.0,
+        "filing": "196565476",
+        "version": "1",
+        "filing_date": "2021-01-30",
+        "giver": "San Francisco Apartment Association"
+       }
+      ],
+      "h24_repeats_not_counted": 0,
+      "h24_only_rows": 0,
+      "h24_only_total": 0
+     }
+    ],
+    "outside_spending_apart": [],
+    "tie": {
+     "by_id_rows": 0,
+     "by_name_rows": 1
+    },
+    "duplicates_dropped": 0
+   },
+   "reading": {
+    "in_common": "Both are about the Housing Trust Fund measure (Prop C), which the supervisor sponsors and asks the Board to send to the ballot.",
+    "differs": "The association's side is a reporter's statement about where $211,000 went, not the association's own words; the supervisor does not speak of Prop I or of the committee.",
+    "match": "accept",
+    "hit": "specific",
+    "terms": [
+     "HOUSING TRUST FUND"
+    ]
+   },
+   "judgement": []
+  },
+  {
+   "id": 5,
+   "official": "Jackie Fielder",
+   "office": "Supervisor",
+   "district": "9",
+   "donor": "IFPTE Local 21",
+   "donor_kind": "union",
+   "subject": "City jobs and services, against layoffs and privatised work (reported)",
+   "candidate_id": "52901|00:10:55|Jackie Fielder|IFPTE-SERVICES",
+   "quote": {
+    "text": "COLLEAGUES, THIS BUDGET CLOSES A MASSIVE DEFICIT WITHOUT MASS LAYOFFS. CERTAINLY NOT WITHOUT TRADEOFFS. I'M STILL WRESTLING WITH GROWING POLICE PAY BY 14% OVER FOUR YEARS ISN'T WHERE I WOULD HAVE PUT OUR LIMITED DOLLARS. HOWEVER, IN A YEAR WITH LOOMING FEDERAL CUTS AND NO EASY OPTIONS, THIS BOARD HELD THE LINE ON CRITICAL SAFETY NET PROGRAMS THAT TENS OF THOUSANDS OF SAN FRANCISCANS DEPEND ON.",
+    "meeting_id": 52901,
+    "body": "Board of Supervisors",
+    "date": "2026-07-21",
+    "first_stamp": "00:10:55",
+    "last_stamp": "00:11:18",
+    "transcript_url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52901",
+    "words_of_the_machine_passage": 18
+   },
+   "speaker_credit": {
+    "doubt": "low",
+    "rule": [
+     "5 words after the cue 'SUPERVISOR FIELDER' (00:10:52)"
+    ],
+    "cue": "SUPERVISOR FIELDER",
+    "cue_stamp": "00:10:52",
+    "reviewer": "agree",
+    "reviewer_note": "'OH, SUPERVISOR FIELDER, THANK YOU, PRESIDENT' opens the turn; the passage follows within a few words.",
+    "minutes": {
+     "status": "no_minutes",
+     "checks": []
+    },
+    "minutes_source": ""
+   },
+   "donor_words": [
+    {
+     "id": "IFPTE-RECOVERY",
+     "kind": "reported by others, not the donor's own words",
+     "section": "Mission Local",
+     "text": "If we don't have things like clean streets, strong hospitals, and effective transit, we don't have a recovery",
+     "url": "https://missionlocal.org/2026/04/sf-lurie-layoffs-unions-fight-ifpte-seiu-budget/",
+     "page_date": "2026-04-10",
+     "retrieved": "2026-10-30",
+     "source_kind": "news report",
+     "speaker": "Bianca Polovina, president of IFPTE Local 21, quoted",
+     "suggests": "Priority: city services and city jobs; opposes the Mayor's proposed layoffs.",
+     "caveat": "Said in April 2026 about layoffs, not about a ballot measure.",
+     "read": "page read in full"
+    },
+    {
+     "id": "IFPTE-CHOICE",
+     "kind": "reported by others, not the donor's own words",
+     "section": "Mission Local",
+     "text": "When we talk about cutting essential services, cutting jobs, this is a choice, it is not a necessity.",
+     "url": "https://missionlocal.org/2026/04/sf-lurie-layoffs-unions-fight-ifpte-seiu-budget/",
+     "page_date": "2026-04-10",
+     "retrieved": "2026-10-30",
+     "source_kind": "news report",
+     "speaker": "Bianca Polovina, president of IFPTE Local 21, quoted",
+     "suggests": "Priority: keeping city jobs and services funded rather than cut.",
+     "caveat": "Same article and speaker as IFPTE-RECOVERY.",
+     "read": "page read in full"
+    }
+   ],
+   "money": {
+    "retrieved": "2026-10-30",
+    "data_loaded_through": "2026-10-30",
+    "dataset": "https://data.sf.gov/d/pitq-e56w",
+    "per_committee": [
+     {
+      "committee": "Jackie Fielder for Supervisor 2024",
+      "filer_nid": "208038450",
+      "relation": "own",
+      "kind": "own committee",
+      "schedule_a_total": 500.0,
+      "schedule_a_rows": 1,
+      "first_date": "2024-06-28",
+      "last_date": "2024-06-28",
+      "givers_as_filed": [
+       "IFPTE Local 21"
+      ],
+      "filings": [
+       "212500210 (v2)"
+      ],
+      "rows": [
+       {
+        "date": "2024-06-28",
+        "amount": 500.0,
+        "filing": "212500210",
+        "version": "2",
+        "filing_date": "2024-11-05",
+        "giver": "IFPTE Local 21"
+       }
+      ],
+      "h24_repeats_not_counted": 0,
+      "h24_only_rows": 0,
+      "h24_only_total": 0
+     }
+    ],
+    "outside_spending_apart": [],
+    "tie": {
+     "by_id_rows": 1,
+     "by_name_rows": 0
+    },
+    "duplicates_dropped": 0
+   },
+   "reading": {
+    "in_common": "Both speak of the city's budget and of cutting jobs and services: the supervisor of a budget that 'closes a massive deficit without mass layoffs'; the union's president of cuts to jobs and services being 'a choice, it is not a necessity' (April 2026, about layoffs).",
+    "differs": "The union's words were said in April about the Mayor's proposed layoffs and are reported by Mission Local, not published by the union; the supervisor's words are about the budget before the Board on 21 July and carry no position on the union's. No agreement or disagreement is claimed.",
+    "match": "accept",
+    "hit": "specific",
+    "terms": [
+     "LAYOFFS"
+    ]
+   },
+   "judgement": []
+  }
+ ],
+ "metrics": {
+  "unique_passages": 34,
+  "credit_doubt_unique": {
+   "low": 14,
+   "medium": 17,
+   "high": 3
+  },
+  "reviewer_vs_rule_credit_unique": {
+   "low": {
+    "agree": 13,
+    "unclear": 1
+   },
+   "medium": {
+    "agree": 13,
+    "disagree": 2,
+    "unclear": 2
+   },
+   "high": {
+    "agree": 3
+   }
+  },
+  "unique_passages_in_meetings_with_minutes": 24,
+  "minutes_status_unique_with_minutes": {
+   "confirmed": 4,
+   "silent": 16,
+   "consistent": 4
+  },
+  "meetings_read": 11,
+  "meetings_sampled": 11,
+  "meetings_beyond_sample": 0,
+  "meetings_with_minutes": 1,
+  "funded_pairs": 62,
+  "funded_pairs_tied_committees": 60,
+  "tied_pairs_by_status": {
+   "no fitting remark": 47,
+   "fitting remark found": 8,
+   "same broad subject only": 5
+  },
+  "tied_pairs_with_any_candidate": 19,
+  "tied_pairs_with_specific_candidate": 14,
+  "tied_pairs_with_fitting_remark": 8,
+  "tied_pairs_with_fitting_or_broad": 13,
+  "candidates": 45,
+  "candidates_specific": 27,
+  "candidates_by_decision": {
+   "reject": 19,
+   "accept": 16,
+   "loose": 10
+  },
+  "credit_doubt_all": {
+   "low": 18,
+   "medium": 18,
+   "high": 9
+  },
+  "reviewer_vs_rule_credit_by_doubt": {
+   "low": {
+    "agree": 17,
+    "unclear": 1
+   },
+   "medium": {
+    "agree": 14,
+    "disagree": 2,
+    "unclear": 2
+   },
+   "high": {
+    "agree": 9
+   }
+  },
+  "minutes_status_all": {
+   "confirmed": 5,
+   "silent": 25,
+   "no_minutes": 10,
+   "consistent": 5
+  },
+  "minutes_status_accepted": {
+   "silent": 12,
+   "no_minutes": 1,
+   "consistent": 3
+  },
+  "pairings": 5,
+  "pairings_complete": 5
+ },
+ "judgement_steps": [
+  {
+   "step": "Recognise a giver as the donor",
+   "decides": "that the committee or name in the filing is the donor's own",
+   "done_by": "a person, once per donor, in the funding map (data/families.json); applied here by rule",
+   "items": "17 donor families; none added here",
+   "machine_seconds": 0.02,
+   "judgement_time": "not timed"
+  },
+  {
+   "step": "Read the donor's words into search terms",
+   "decides": "which measure names and phrases stand for the donor's subject",
+   "done_by": "the agent that wrote this hop (data/subjects.json)",
+   "items": "19 subjects",
+   "machine_seconds": null,
+   "judgement_time": "not timed"
+  },
+  {
+   "step": "Find candidate passages",
+   "decides": "nothing: every turn credited to the official is searched for the terms",
+   "done_by": "the program",
+   "items": "45 candidate passages",
+   "machine_seconds": 0.32,
+   "judgement_time": "none"
+  },
+  {
+   "step": "Say whether a passage is on the donor's subject",
+   "decides": "accept (the same measure or specific proposal), loose (the same broad subject), reject (a term in common by chance, or not the official's words)",
+   "done_by": "the agent that wrote this hop (data/reviews.json)",
+   "items": "45 passages: 16 accept, 10 loose, 19 reject",
+   "machine_seconds": null,
+   "judgement_time": "not timed"
+  },
+  {
+   "step": "Credit the passage to the official",
+   "decides": "whether the speaker is who the rule says, reading the words around the passage",
+   "done_by": "the program proposes a doubt level; the agent that wrote this hop agrees or disagrees",
+   "items": "45 judged: 40 agree, 2 disagree, 3 unclear",
+   "machine_seconds": 0.29,
+   "judgement_time": "not timed"
+  },
+  {
+   "step": "Set the credit against the minutes",
+   "decides": "when the minutes are silent or conflict, which vote or item the words are about",
+   "done_by": "the program checks vote, motion, sponsor and presence; the agent reads each conflict",
+   "items": "35 of 45 candidates have a minutes status other than 'no_minutes'",
+   "machine_seconds": 0.01,
+   "judgement_time": "not timed"
+  },
+  {
+   "step": "Cut the quote",
+   "decides": "where the quote begins and ends, as whole sentences, without altering a word",
+   "done_by": "the agent that wrote this hop; the program refuses a cut that is not word for word in the transcript",
+   "items": "20 cuts",
+   "machine_seconds": null,
+   "judgement_time": "not timed"
+  },
+  {
+   "step": "Write what the two have in common and where they differ",
+   "decides": "the reading shown beside the pair, with no cause claimed",
+   "done_by": "the agent that wrote this hop",
+   "items": "16 readings",
+   "machine_seconds": null,
+   "judgement_time": "not timed"
+  },
+  {
+   "step": "Watch the video at the stamp",
+   "decides": "that the words were said, by whom, as captioned",
+   "done_by": "nobody: no recording was played",
+   "items": "0",
+   "machine_seconds": null,
+   "judgement_time": "not done"
+  }
+ ],
+ "timings_seconds": {
+  "load data": 0.02,
+  "collect: minutes": 0.0,
+  "credit: find turns": 0.29,
+  "search and credit": 0.32,
+  "minutes check": 0.01,
+  "pairings": 0.02
+ }
+}

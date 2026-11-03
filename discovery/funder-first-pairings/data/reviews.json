@@ -1,0 +1,489 @@
+{
+ "about": "A person's reading of each candidate passage that run.py finds. decision: accept = the passage speaks to the same measure, specific proposal or position as the donor's statement; loose = the same broad subject only; reject = words in common by chance, or not the credited official's words. credit: agree / disagree / unclear = the reviewer's reading of the words around the passage against the rule's credit. trim = where the quote begins and ends (whole sentences; looked for in the transcript, never altered). donor_statements = the donor's words shown beside the quote. prefer = show this passage rather than another accepted one of the same pair. in_common / differs = the reading shown beside a pairing. Each review is keyed by meeting | first stamp | official | subject, so a run over more meetings leaves these in place and lists passages it finds that nobody has read as unreviewed.",
+ "reviewer": "The agent that wrote this hop (an AI model), working from the transcripts, the donors' pages in priorities.json and the minutes excerpts in data/minutes/. Not a reporter or a watchdog, and not timed: the key results that wait on timing people are not met by it.",
+ "reviews": [
+  {
+   "id": "52849|00:03:51|Daniel Lurie|AIRBNB-RULES",
+   "decision": "reject",
+   "credit": "agree",
+   "credit_note": "Inside the Mayor's opening remarks, introduced by the clerk and closed by 'THANK YOU, MAYOR LURIE'.",
+   "note": "The word is 'tourists' in a list of the city's results; Airbnb's statement is about home-sharing rules."
+  },
+  {
+   "id": "52849|01:40:05|Bilal Mahmood|GFC-C",
+   "decision": "accept",
+   "credit": "agree",
+   "credit_note": "The cue 'SUPERVISOR MAHMOOD THANK YOU PRESIDENT' opens the turn; the next speaker is named after it.",
+   "note": "Same package as Prop C (the inclusionary-fee changes paired with the Housing Trust Fund).",
+   "trim": {
+    "begin_at": "THE INCREASE IN THE THRESHOLD",
+    "end_at": "RISING RENTS FOR RESIDENTS ON THE OPEN MARKET."
+   },
+   "donor_statements": [
+    "GFC-C"
+   ],
+   "in_common": "Both speak of the inclusionary housing requirements and the Housing Trust Fund being traded against each other.",
+   "differs": "Govern For California's page says YES on Prop C and describes it as a compromise; the supervisor's words describe the paired changes as helping production and do not name Prop C or take a position on the ballot measure."
+  },
+  {
+   "id": "52849|01:40:34|Bilal Mahmood|GFC-C",
+   "decision": "accept",
+   "credit": "agree",
+   "credit_note": "Same turn as 01:40:05 (two '>>' marks inside one speech; the speaker is not named again).",
+   "note": "The supervisor uses the word 'exchange' for the same trade the donor's page calls an exchange.",
+   "trim": {
+    "begin_at": "AS WAS NOTED, THIS WAS DONE AS AN EXCHANGE",
+    "end_at": "COUPLE THOSE MEASURES."
+   },
+   "donor_statements": [
+    "GFC-C"
+   ],
+   "prefer": true,
+   "in_common": "Both describe the same trade: 'an exchange' between the Housing Trust Fund and the inclusionary requirements (the supervisor); a compromise that reduces certain inclusionary requirements 'in exchange for greater direct funding of affordable housing' (the donor's page).",
+   "differs": "The donor's page recommends YES on Prop C. The supervisor reports how the changes were made and that they were moved forward together; he does not name Prop C and says nothing here of the ballot measure's recommendation."
+  },
+  {
+   "id": "52849|01:41:07|Bilal Mahmood|GFC-C",
+   "decision": "loose",
+   "credit": "agree",
+   "credit_note": "Same turn.",
+   "note": "A fragment about the effect of the Mission amendment, not about the exchange."
+  },
+  {
+   "id": "52901|00:10:55|Jackie Fielder|IFPTE-SERVICES",
+   "decision": "accept",
+   "credit": "agree",
+   "credit_note": "'OH, SUPERVISOR FIELDER, THANK YOU, PRESIDENT' opens the turn; the passage follows within a few words.",
+   "note": "Same specific subject: the budget and layoffs.",
+   "trim": {
+    "begin_at": "COLLEAGUES, THIS BUDGET CLOSES",
+    "end_at": "SAN FRANCISCANS DEPEND ON."
+   },
+   "donor_statements": [
+    "IFPTE-RECOVERY",
+    "IFPTE-CHOICE"
+   ],
+   "in_common": "Both speak of the city's budget and of cutting jobs and services: the supervisor of a budget that 'closes a massive deficit without mass layoffs'; the union's president of cuts to jobs and services being 'a choice, it is not a necessity' (April 2026, about layoffs).",
+   "differs": "The union's words were said in April about the Mayor's proposed layoffs and are reported by Mission Local, not published by the union; the supervisor's words are about the budget before the Board on 21 July and carry no position on the union's. No agreement or disagreement is claimed."
+  },
+  {
+   "id": "52804|00:24:29|Myrna Melgar|IFPTE-SERVICES",
+   "decision": "reject",
+   "credit": "disagree",
+   "credit_note": "The turn after the cue 'SUPERVISOR MELGAR' ends before this passage: the next row thanks 'SUPERVISOR MELGAR' for her leadership, so the questioner is another member.",
+   "note": "The layoff asked about is at the Academy of Sciences, not the city's own workforce."
+  },
+  {
+   "id": "52849|02:37:13|Shamann Walton|IFPTE-SERVICES",
+   "decision": "reject",
+   "credit": "agree",
+   "credit_note": "Walton's own resolution on neighborhood access (cue at 02:36:50, 'DISTRICT TEN' in the words).",
+   "note": "'Essential services' here are services residents lack, not city jobs."
+  },
+  {
+   "id": "52849|02:37:33|Shamann Walton|IFPTE-SERVICES",
+   "decision": "reject",
+   "credit": "agree",
+   "credit_note": "Walton's own resolution on neighborhood access (cue at 02:36:50, 'DISTRICT TEN' in the words).",
+   "note": "'Essential services' here are services residents lack, not city jobs."
+  },
+  {
+   "id": "52901|01:35:14|Shamann Walton|IFPTE-SERVICES",
+   "decision": "reject",
+   "credit": "agree",
+   "credit_note": "First-person remarks on a Kaiser resolution after the cue at 01:34:28.",
+   "note": "City employees are mentioned as Kaiser's patients; the subject is a health plan's mental health care."
+  },
+  {
+   "id": "52901|01:35:56|Shamann Walton|IFPTE-SERVICES",
+   "decision": "reject",
+   "credit": "unclear",
+   "credit_note": "Closing remarks of a turn whose end is not marked.",
+   "note": "Same subject as the passage before."
+  },
+  {
+   "id": "52849|01:04:44|Jackie Fielder|LIUNA-DEF",
+   "decision": "reject",
+   "credit": "agree",
+   "credit_note": "Cue 'SUPERVISOR FIELDER ... I'M VOTING NO ON THIS CHARTER AMENDMENT' (01:04:36).",
+   "note": "'Proposition E in November of 2024' is the earlier measure on boards and commissions, not the 2026 Props D, E and F; the match is the measure's letter."
+  },
+  {
+   "id": "52849|01:04:44|Jackie Fielder|OE3-DEF",
+   "decision": "reject",
+   "credit": "agree",
+   "credit_note": "Cue 'SUPERVISOR FIELDER ... I'M VOTING NO ON THIS CHARTER AMENDMENT' (01:04:36).",
+   "note": "'Proposition E in November of 2024' is the earlier measure on boards and commissions, not the 2026 Props D, E and F; the match is the measure's letter."
+  },
+  {
+   "id": "52849|01:04:44|Jackie Fielder|SEIU2015-BALLOT",
+   "decision": "reject",
+   "credit": "agree",
+   "credit_note": "Cue 'SUPERVISOR FIELDER ... I'M VOTING NO ON THIS CHARTER AMENDMENT' (01:04:36).",
+   "note": "'Proposition E in November of 2024' is the earlier measure on boards and commissions, not the 2026 Props D, E and F; the match is the measure's letter."
+  },
+  {
+   "id": "52849|02:40:02|Shamann Walton|SEIU1021-DEF",
+   "decision": "accept",
+   "credit": "agree",
+   "credit_note": "No cue directly before: the turn opens at 02:36:50 ('SUPERVISOR WALTON THANK YOU, MADAM CLERK') with '>>' marks inside it. The words 'DISTRICT TEN RESIDENTS' (District 10 is Walton) and thanks to Supervisor Chen and Supervisor Fielder, and the chair's close at 02:42:48 ('THE REST I SUBMIT ... SUPERVISOR WALTON'), agree.",
+   "note": "The three measures by their content.",
+   "trim": {
+    "begin_at": "COLLEAGUES I AM ALSO REQUESTING",
+    "end_at": "RESIDENTS OF SAN FRANCISCO."
+   },
+   "donor_statements": [
+    "SEIU-D",
+    "SEIU-E",
+    "SEIU-F"
+   ],
+   "in_common": "Both are about the Mayor's three charter measures: the supervisor names 'THE CHARTER REFORM MEASURES PROPOSED BY MAYOR LURIE' and the City Administrator's term and authority over procurement (Prop E's subject) and the signature threshold (Prop D's); the donor's page lists Props D, E and F.",
+   "differs": "The supervisor asks for an analysis of their economic impact and says they 'SHIFT REAL POWER AWAY FROM THE BOARD OF SUPERVISORS'; he does not say how he will vote. The donor's page says to vote No on each."
+  },
+  {
+   "id": "52849|02:40:17|Shamann Walton|SEIU1021-DEF",
+   "decision": "accept",
+   "credit": "agree",
+   "credit_note": "Same turn as 02:40:02.",
+   "note": "Same remarks.",
+   "trim": {
+    "begin_at": "COLLEAGUES I AM ALSO REQUESTING",
+    "end_at": "RESIDENTS OF SAN FRANCISCO."
+   },
+   "donor_statements": [
+    "SEIU-D",
+    "SEIU-E",
+    "SEIU-F"
+   ],
+   "in_common": "Both are about the Mayor's three charter measures: the supervisor names 'THE CHARTER REFORM MEASURES PROPOSED BY MAYOR LURIE' and the City Administrator's term and authority over procurement (Prop E's subject) and the signature threshold (Prop D's); the donor's page lists Props D, E and F.",
+   "differs": "The supervisor asks for an analysis of their economic impact and says they 'SHIFT REAL POWER AWAY FROM THE BOARD OF SUPERVISORS'; he does not say how he will vote. The donor's page says to vote No on each."
+  },
+  {
+   "id": "52849|02:41:28|Shamann Walton|SEIU1021-DEF",
+   "decision": "accept",
+   "credit": "agree",
+   "credit_note": "Same turn as 02:40:02.",
+   "note": "Same remarks.",
+   "trim": {
+    "begin_at": "COLLEAGUES I AM ALSO REQUESTING",
+    "end_at": "RESIDENTS OF SAN FRANCISCO."
+   },
+   "donor_statements": [
+    "SEIU-D",
+    "SEIU-E",
+    "SEIU-F"
+   ],
+   "in_common": "Both are about the Mayor's three charter measures: the supervisor names 'THE CHARTER REFORM MEASURES PROPOSED BY MAYOR LURIE' and the City Administrator's term and authority over procurement (Prop E's subject) and the signature threshold (Prop D's); the donor's page lists Props D, E and F.",
+   "differs": "The supervisor asks for an analysis of their economic impact and says they 'SHIFT REAL POWER AWAY FROM THE BOARD OF SUPERVISORS'; he does not say how he will vote. The donor's page says to vote No on each."
+  },
+  {
+   "id": "52849|02:40:02|Shamann Walton|LIUNA-DEF",
+   "decision": "accept",
+   "credit": "agree",
+   "credit_note": "Same turn as for SEIU 1021.",
+   "note": "Same remarks; the donor's side is the Mayor's claim, reported by the Examiner, that the union supports Props D, E and F.",
+   "trim": {
+    "begin_at": "COLLEAGUES I AM ALSO REQUESTING",
+    "end_at": "RESIDENTS OF SAN FRANCISCO."
+   },
+   "donor_statements": [
+    "LIUNA-MAYOR-CLAIM"
+   ],
+   "in_common": "Both are about the Mayor's three charter measures (Props D, E and F).",
+   "differs": "The union's support is the Mayor's claim as reported by the Examiner (March 2026), not the union's own statement. The supervisor asks for an analysis of the measures and says they 'SHIFT REAL POWER AWAY FROM THE BOARD OF SUPERVISORS'."
+  },
+  {
+   "id": "52849|02:40:17|Shamann Walton|LIUNA-DEF",
+   "decision": "accept",
+   "credit": "agree",
+   "credit_note": "Same turn.",
+   "note": "Same remarks.",
+   "trim": {
+    "begin_at": "COLLEAGUES I AM ALSO REQUESTING",
+    "end_at": "RESIDENTS OF SAN FRANCISCO."
+   },
+   "donor_statements": [
+    "LIUNA-MAYOR-CLAIM"
+   ],
+   "in_common": "Both are about the Mayor's three charter measures (Props D, E and F).",
+   "differs": "See the first passage of the turn."
+  },
+  {
+   "id": "52849|02:41:28|Shamann Walton|LIUNA-DEF",
+   "decision": "accept",
+   "credit": "agree",
+   "credit_note": "Same turn.",
+   "note": "Same remarks.",
+   "trim": {
+    "begin_at": "COLLEAGUES I AM ALSO REQUESTING",
+    "end_at": "RESIDENTS OF SAN FRANCISCO."
+   },
+   "donor_statements": [
+    "LIUNA-MAYOR-CLAIM"
+   ],
+   "in_common": "Both are about the Mayor's three charter measures (Props D, E and F).",
+   "differs": "See the first passage of the turn."
+  },
+  {
+   "id": "52849|02:40:02|Shamann Walton|OE3-DEF",
+   "decision": "accept",
+   "credit": "agree",
+   "credit_note": "Same turn as for SEIU 1021.",
+   "note": "Same remarks; the donor's side is the Mayor's claim, reported by the Examiner, that the union supports Props D, E and F.",
+   "trim": {
+    "begin_at": "COLLEAGUES I AM ALSO REQUESTING",
+    "end_at": "RESIDENTS OF SAN FRANCISCO."
+   },
+   "donor_statements": [
+    "OE3-MAYOR-CLAIM"
+   ],
+   "in_common": "Both are about the Mayor's three charter measures (Props D, E and F).",
+   "differs": "The union's support is the Mayor's claim as reported by the Examiner (March 2026), not the union's own statement. The supervisor asks for an analysis of the measures and says they 'SHIFT REAL POWER AWAY FROM THE BOARD OF SUPERVISORS'."
+  },
+  {
+   "id": "52849|02:40:17|Shamann Walton|OE3-DEF",
+   "decision": "accept",
+   "credit": "agree",
+   "credit_note": "Same turn.",
+   "note": "Same remarks.",
+   "trim": {
+    "begin_at": "COLLEAGUES I AM ALSO REQUESTING",
+    "end_at": "RESIDENTS OF SAN FRANCISCO."
+   },
+   "donor_statements": [
+    "OE3-MAYOR-CLAIM"
+   ],
+   "in_common": "Both are about the Mayor's three charter measures (Props D, E and F).",
+   "differs": "See the first passage of the turn."
+  },
+  {
+   "id": "52849|02:41:28|Shamann Walton|OE3-DEF",
+   "decision": "accept",
+   "credit": "agree",
+   "credit_note": "Same turn.",
+   "note": "Same remarks.",
+   "trim": {
+    "begin_at": "COLLEAGUES I AM ALSO REQUESTING",
+    "end_at": "RESIDENTS OF SAN FRANCISCO."
+   },
+   "donor_statements": [
+    "OE3-MAYOR-CLAIM"
+   ],
+   "in_common": "Both are about the Mayor's three charter measures (Props D, E and F).",
+   "differs": "See the first passage of the turn."
+  },
+  {
+   "id": "52849|01:12:24|Alan Wong|POA-C",
+   "decision": "accept",
+   "credit": "agree",
+   "credit_note": "'SUPERVISOR WONG. >> COLLEAGUES, I'M PROUD TO CO-SPONSOR THIS MEASURE': the cue is spelled as the roster has it, the speaker thanks Supervisor Melgar for the measure, and the chair calls the roll on the item next.",
+   "note": "The measure is the Housing Trust Fund charter amendment, which the donor's page calls Prop C.",
+   "trim": {
+    "begin_at": "COLLEAGUES, I'M PROUD TO CO-SPONSOR THIS MEASURE",
+    "end_at": "NEIGHBORHOOD STABILITY."
+   },
+   "donor_statements": [
+    "POA-I-C"
+   ],
+   "in_common": "Both are about the Housing Trust Fund measure on the November ballot: the supervisor co-sponsors it ('this measure will strengthen that fund'); the association urges a YES vote on Proposition C.",
+   "differs": "The association's page is a recommendation to voters on a ballot measure and joins it to NO on Proposition I; the supervisor speaks at the Board's vote to place the measure on the ballot and does not name Prop C or Prop I. That Prop C is this charter amendment is read from the Govern For California and GrowSF pages (Prop C: Housing Trust Fund) and the minutes' title."
+  },
+  {
+   "id": "52849|01:12:24|Alan Wong|SFAA-I-C",
+   "decision": "accept",
+   "credit": "agree",
+   "credit_note": "As for the same passage under POA-C.",
+   "note": "The measure is the Housing Trust Fund charter amendment (Prop C), which the reports say the Apartment Association's money backs.",
+   "trim": {
+    "begin_at": "COLLEAGUES, I'M PROUD TO CO-SPONSOR THIS MEASURE",
+    "end_at": "NEIGHBORHOOD STABILITY."
+   },
+   "donor_statements": [
+    "SFAA-I-PROPC"
+   ],
+   "in_common": "Both are about the Housing Trust Fund measure (Prop C): the supervisor co-sponsors it; the reports say the association's donation flows through a committee that backs it.",
+   "differs": "The association's side is a reporter's statement about where $211,000 went (The Real Deal, 29 October 2026), not the association's own words; the supervisor says nothing of Prop I or of the committee."
+  },
+  {
+   "id": "52849|01:40:14|Bilal Mahmood|SFAA-I-C",
+   "decision": "loose",
+   "credit": "agree",
+   "credit_note": "Same turn as 01:40:05.",
+   "note": "The words are about the paired inclusionary and Housing Trust Fund changes; the association's reported subject is Prop I and Prop C as ballot measures."
+  },
+  {
+   "id": "52849|01:40:34|Bilal Mahmood|SFAA-I-C",
+   "decision": "loose",
+   "credit": "agree",
+   "credit_note": "Same turn as 01:40:05.",
+   "note": "As above."
+  },
+  {
+   "id": "52849|02:03:58|Matt Dorsey|SFAA-LANDLORD",
+   "decision": "reject",
+   "credit": "agree",
+   "credit_note": "'CHAIR DORSEY THANK YOU PRESIDENT' opens the turn at 02:01:58; the sponsor presents his own ordinance.",
+   "note": "'Residential tenants' appears in a comparison; the ordinance is about drug-free supportive housing."
+  },
+  {
+   "id": "52849|02:04:57|Matt Dorsey|SFAA-LANDLORD",
+   "decision": "loose",
+   "credit": "agree",
+   "credit_note": "Same turn.",
+   "note": "Evictions from supportive housing under a city ordinance: the same words (tenancy, eviction) as landlord-tenant law, but not the private rental market the association speaks of."
+  },
+  {
+   "id": "52849|02:05:36|Matt Dorsey|SFAA-LANDLORD",
+   "decision": "reject",
+   "credit": "agree",
+   "credit_note": "Same turn.",
+   "note": "Alternative housing offered before an eviction from city-funded housing."
+  },
+  {
+   "id": "52849|02:06:02|Matt Dorsey|SFAA-LANDLORD",
+   "decision": "loose",
+   "credit": "agree",
+   "credit_note": "Same turn; the minutes record that Supervisor Dorsey, seconded by Supervisor Sherrill, moved an amendment adding 'evictions and' on page 8, line 23, as the words say.",
+   "note": "As above.",
+   "trim": {
+    "begin_at": "ACCORDINGLY I WOULD LIKE TO MOVE AN AMENDMENT",
+    "end_at": "PAGE EIGHT LINE 24"
+   }
+  },
+  {
+   "id": "52849|02:17:23|Matt Dorsey|SFAA-LANDLORD",
+   "decision": "reject",
+   "credit": "unclear",
+   "credit_note": "Cue at 02:16:11 opens a turn that has no closing cue.",
+   "note": "Describes services in supportive housing."
+  },
+  {
+   "id": "52804|00:27:21|Myrna Melgar|SFAA-LANDLORD",
+   "decision": "reject",
+   "credit": "unclear",
+   "credit_note": "Four '>>' marks between the cue and the passage.",
+   "note": "The Gateway tenants' association is thanked for support of another project."
+  },
+  {
+   "id": "52849|01:08:00|Myrna Melgar|SFAA-I-C",
+   "decision": "accept",
+   "credit": "agree",
+   "credit_note": "'SUPERVISOR MELGAR THANK YOU MR. PRESIDENT. COLLEAGUES, I AM SO EXCITED' opens the turn; no '>>' mark before the passage; the minutes list her as the measure's primary sponsor.",
+   "note": "The sponsor introduces the Housing Trust Fund charter amendment (Prop C).",
+   "trim": {
+    "begin_at": "COLLEAGUES, I AM SO EXCITED",
+    "end_at": "FUTURE GROWTH OF PROPERTY VALUES IN SAN FRANCISCO."
+   },
+   "donor_statements": [
+    "SFAA-I-PROPC"
+   ],
+   "in_common": "Both are about the Housing Trust Fund measure (Prop C), which the supervisor sponsors and asks the Board to send to the ballot.",
+   "differs": "The association's side is a reporter's statement about where $211,000 went, not the association's own words; the supervisor does not speak of Prop I or of the committee."
+  },
+  {
+   "id": "52849|01:11:24|Myrna Melgar|SFAA-I-C",
+   "decision": "reject",
+   "credit": "disagree",
+   "credit_note": "Walton speaks here: the turn follows 'THANK YOU VERY MUCH COLLEAGUE SUPERVISOR WALTON', and the speaker says he will support the measure while objecting to the inclusionary vote; the rule credited the earlier cue for Melgar across four '>>' marks.",
+   "note": "Right words, wrong official."
+  },
+  {
+   "id": "52849|01:44:02|Myrna Melgar|SFAA-I-C",
+   "decision": "accept",
+   "credit": "agree",
+   "credit_note": "'SUPERVISOR MELGAR. THANK YOU SO MUCH. PRESIDENT MANDELMAN. I WANTED TO EXPLAIN MY CO-SPONSORSHIP OF THIS ITEM' (01:41:32) opens the turn.",
+   "note": "The sponsor explains how the Housing Trust Fund (Prop C) relates to the inclusionary rate.",
+   "trim": {
+    "begin_at": "SO NOW AS IT RELATES TO THE HOUSING TRUST FUND",
+    "end_at": "VERSUS A THREE YEAR RESETTING OF THE FEE BASED ON THE MARKET."
+   },
+   "donor_statements": [
+    "SFAA-I-PROPC"
+   ],
+   "in_common": "Both concern the Housing Trust Fund measure (Prop C).",
+   "differs": "The association's side is a reporter's statement about where $211,000 went; the supervisor describes the fund as a 30-year commitment against a three-year reset of the inclusionary fee and does not speak of Prop I."
+  },
+  {
+   "id": "52849|00:03:42|Daniel Lurie|CHAMBER-H",
+   "decision": "loose",
+   "credit": "agree",
+   "credit_note": "Inside the Mayor's opening remarks, introduced by the clerk and closed by 'THANK YOU, MAYOR LURIE'; the minutes summarise the Mayor addressing the Board.",
+   "note": "The same subject (Muni), not the same proposal.",
+   "trim": {
+    "begin_at": "MUNI WEEKEND RIDERSHIP",
+    "end_at": "THAN IN 2025."
+   }
+  },
+  {
+   "id": "52849|00:03:42|Daniel Lurie|TWU-TRANSIT",
+   "decision": "loose",
+   "credit": "agree",
+   "credit_note": "As above.",
+   "note": "The listing of the union as a supporter does not show which measure.",
+   "trim": {
+    "begin_at": "MUNI WEEKEND RIDERSHIP",
+    "end_at": "THAN IN 2025."
+   }
+  },
+  {
+   "id": "52251|01:54:39|Alan Wong|POA-I",
+   "decision": "reject",
+   "credit": "agree",
+   "credit_note": "Commendation remarks after the cue at 01:52:31.",
+   "note": "'Public safety agencies' in a tribute."
+  },
+  {
+   "id": "52816|00:25:17|Alan Wong|POA-I",
+   "decision": "reject",
+   "credit": "agree",
+   "credit_note": "Sponsor of the fireworks ordinance, after the cue at 00:23:28.",
+   "note": "'First responders' in a fireworks ordinance."
+  },
+  {
+   "id": "52816|00:28:05|Alan Wong|POA-I",
+   "decision": "reject",
+   "credit": "agree",
+   "credit_note": "Same turn.",
+   "note": "Fireworks ordinance; the Police Department consulted."
+  },
+  {
+   "id": "52901|00:27:07|Alan Wong|POA-I",
+   "decision": "reject",
+   "credit": "agree",
+   "credit_note": "Same sponsor on 21 July.",
+   "note": "Fireworks ordinance; the committee's approval."
+  },
+  {
+   "id": "52901|00:29:48|Alan Wong|POA-I",
+   "decision": "reject",
+   "credit": "agree",
+   "credit_note": "Same turn.",
+   "note": "Thanks the Police Department for working on the ordinance."
+  },
+  {
+   "id": "52849|01:54:04|Alan Wong|POA-C",
+   "decision": "loose",
+   "credit": "agree",
+   "credit_note": "'THANK YOU. SUPERVISOR WONG COLLEAGUES' (01:53:47) opens the turn; the next speaker follows '>> THANK YOU.'",
+   "note": "The ordinance cutting inclusionary requirements, which the same Board voted on together with the Housing Trust Fund measure; the donor's page speaks of Prop C."
+  },
+  {
+   "id": "52849|01:54:27|Alan Wong|POA-C",
+   "decision": "loose",
+   "credit": "agree",
+   "credit_note": "Same turn.",
+   "note": "As above."
+  },
+  {
+   "id": "52849|01:47:22|Matt Dorsey|POA-C",
+   "decision": "loose",
+   "credit": "agree",
+   "credit_note": "'SUPERVISOR DORSEY THANK YOU PRESIDENT MANDOLIN' (01:47:15) opens the turn; 'SUPERVISOR CHEN. THANK YOU MR. PRESIDENT' (01:48:28) closes it; the minutes list Dorsey on the Noes of the vote on Supervisor Fielder's amendment, as the words say.",
+   "note": "The vote on the fee ordinance that the Board took together with the Prop C measure; the donor's page speaks of Prop C.",
+   "trim": {
+    "begin_at": "COLLEAGUES, I WILL RESPECTFULLY BE VOTING NO",
+    "end_at": "MAKING HOUSING PRODUCTION FEASIBLE."
+   }
+  }
+ ]
+}

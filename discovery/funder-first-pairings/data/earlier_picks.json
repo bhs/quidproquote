@@ -1,0 +1,60 @@
+{
+ "about": "The five pairings of the Official funding map hop (its pairings.md), reduced to where each quote sits: used by run.py to ask how many of them the rule-based search finds again, and where it fails. `doubt` is the earlier hop's own reading of the speaker credit.",
+ "pairings": [
+  {
+   "id": 1,
+   "slug": "lurie-chamber-muni",
+   "official": "Daniel Lurie",
+   "family": "sf-chamber",
+   "subject": "Muni and the Prop H parcel tax",
+   "meeting_id": 52849,
+   "start": "00:03:46",
+   "end": "00:03:59",
+   "doubt": "low"
+  },
+  {
+   "id": 2,
+   "slug": "lurie-poa-budget",
+   "official": "Daniel Lurie",
+   "family": "sf-poa",
+   "subject": "The city budget and the general fund",
+   "meeting_id": 52849,
+   "start": "00:04:36",
+   "end": "00:05:01",
+   "doubt": "low"
+  },
+  {
+   "id": 3,
+   "slug": "dorsey-poa-inclusionary",
+   "official": "Matt Dorsey",
+   "family": "sf-poa",
+   "subject": "The inclusionary housing fee vote and the Prop C package",
+   "meeting_id": 52849,
+   "start": "01:47:19",
+   "end": "01:48:25",
+   "doubt": "low"
+  },
+  {
+   "id": 4,
+   "slug": "mahmood-gfc-prop-j",
+   "official": "Bilal Mahmood",
+   "family": "govern-for-california",
+   "subject": "Prop J, the foreclosure exemption in the transfer tax",
+   "meeting_id": 52853,
+   "start": "02:52:31",
+   "end": "02:52:42",
+   "doubt": "high"
+  },
+  {
+   "id": 5,
+   "slug": "walton-seiu1021-charter",
+   "official": "Shamann Walton",
+   "family": "seiu-1021",
+   "subject": "The Mayor's three charter measures (Props D, E and F)",
+   "meeting_id": 52849,
+   "start": "02:39:58",
+   "end": "02:40:56",
+   "doubt": "low"
+  }
+ ]
+}
