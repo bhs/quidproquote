@@ -127,6 +127,12 @@ class Sources(unittest.TestCase):
         self.assertIn("18402(c)(1)", self.map_md)
         self.assertIn("Form 410", self.map_md)
 
+    def test_mayors_measure_committees_control_read_from_form_460_cover_pages(self):
+        for fid in ("217514736", "217516412"):
+            self.assertIn("netfile.com/Connect2/api/public/image/" + fid, self.map_md)
+        self.assertIn("Controlled", self.map_md)
+        self.assertIn("a measure committee a supervisor controls under a name without the surname is not excluded", self.map_md)
+
 
 class Cards(unittest.TestCase):
     @classmethod
