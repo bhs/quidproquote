@@ -1,0 +1,533 @@
+{
+ "about": "Current officials and the committees tied to them, copied from ../campaign-finance-survey/data-profile.json (section 5; roster and committee matching as described in that survey's findings). match=strong: the filer's candidate_name is the official's; weak: only the committee's own name mentions the official.",
+ "officials": [
+  {
+   "name": "Daniel Lurie",
+   "office": "Mayor",
+   "district": "",
+   "surname": "Lurie",
+   "committees": [
+    {
+     "filer_nid": "216006060",
+     "filer_name": "Mayor Lurie's Yes on D, E & F Committee",
+     "filer_type": "Primarily Formed Measure",
+     "status": "ACTIVE",
+     "match": "weak",
+     "role": "ballot-measure committee naming the official"
+    },
+    {
+     "filer_nid": "214099226",
+     "filer_name": "Mayor Lurie's Yes on H Committee",
+     "filer_type": "Primarily Formed Measure",
+     "status": "ACTIVE",
+     "match": "weak",
+     "role": "ballot-measure committee naming the official"
+    },
+    {
+     "filer_nid": "209443649",
+     "filer_name": "Daniel Lurie for Prop E",
+     "filer_type": "Primarily Formed Measure",
+     "status": "TERMINATED",
+     "match": "weak",
+     "role": "ballot-measure committee naming the official"
+    },
+    {
+     "filer_nid": "208769508",
+     "filer_name": "Believe in SF, Lurie for Mayor 2024",
+     "filer_type": "Primarily Formed Candidate",
+     "status": "ACTIVE",
+     "match": "strong",
+     "role": "primarily formed committee supporting the official (or unspecified)"
+    },
+    {
+     "filer_nid": "208599394",
+     "filer_name": "Daniel Lurie for Mayor 2024",
+     "filer_type": "Candidate or Officeholder",
+     "status": "ACTIVE",
+     "match": "strong",
+     "role": "official's own committee for Mayor/Supervisor"
+    }
+   ]
+  },
+  {
+   "name": "Connie Chan",
+   "office": "Supervisor",
+   "district": "1",
+   "surname": "Chan",
+   "committees": [
+    {
+     "filer_nid": "208675413",
+     "filer_name": "Connie Chan for Democratic County Central Committee 2028",
+     "filer_type": "Candidate or Officeholder",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "official's committee for another office"
+    },
+    {
+     "filer_nid": "206871404",
+     "filer_name": "Connie Chan for Supervisor 2024",
+     "filer_type": "Candidate or Officeholder",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "official's own committee for Mayor/Supervisor"
+    },
+    {
+     "filer_nid": "205627644",
+     "filer_name": "Coalition to Grow San Francisco - Grow SF PAC Opposing Chan for Supervisor 2024",
+     "filer_type": "Primarily Formed Candidate",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "primarily formed committee opposing the official"
+    },
+    {
+     "filer_nid": "185408350",
+     "filer_name": "Connie Chan for Supervisor 2020",
+     "filer_type": "Candidate or Officeholder",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "official's own committee for Mayor/Supervisor"
+    }
+   ]
+  },
+  {
+   "name": "Stephen Sherrill",
+   "office": "Supervisor",
+   "district": "2",
+   "surname": "Sherrill",
+   "committees": [
+    {
+     "filer_nid": "215838066",
+     "filer_name": "Committee to Support Supervisor Stephen Sherrill 2026",
+     "filer_type": "Primarily Formed Candidate",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "primarily formed committee supporting the official (or unspecified)"
+    },
+    {
+     "filer_nid": "216673030",
+     "filer_name": "Working Families for Stephen Sherrill for Supervisor 2026, Sponsored by International Union of Operating Engineers Local 3",
+     "filer_type": "Primarily Formed Candidate",
+     "status": "ACTIVE",
+     "match": "strong",
+     "role": "primarily formed committee supporting the official (or unspecified)"
+    },
+    {
+     "filer_nid": "214918275",
+     "filer_name": "GrowSF Supporting Stephen Sherrill for Supervisor 2026",
+     "filer_type": "Primarily Formed Candidate",
+     "status": "ACTIVE",
+     "match": "strong",
+     "role": "primarily formed committee supporting the official (or unspecified)"
+    },
+    {
+     "filer_nid": "214620516",
+     "filer_name": "Stephen Sherrill for Supervisor 2026 General",
+     "filer_type": "Candidate or Officeholder",
+     "status": "ACTIVE",
+     "match": "strong",
+     "role": "official's own committee for Mayor/Supervisor"
+    },
+    {
+     "filer_nid": "213987622",
+     "filer_name": "Stephen Sherrill for Supervisor 2026",
+     "filer_type": "Candidate or Officeholder",
+     "status": "ACTIVE",
+     "match": "strong",
+     "role": "official's own committee for Mayor/Supervisor"
+    }
+   ]
+  },
+  {
+   "name": "Danny Sauter",
+   "office": "Supervisor",
+   "district": "3",
+   "surname": "Sauter",
+   "committees": [
+    {
+     "filer_nid": "208713856",
+     "filer_name": "Danny Sauter for Supervisor 2024 Officerholder Committee",
+     "filer_type": "Candidate or Officeholder",
+     "status": "ACTIVE",
+     "match": "strong",
+     "role": "official's own committee for Mayor/Supervisor"
+    },
+    {
+     "filer_nid": "186293982",
+     "filer_name": "Danny Sauter for Supervisor 2020",
+     "filer_type": "Candidate or Officeholder",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "official's own committee for Mayor/Supervisor"
+    }
+   ]
+  },
+  {
+   "name": "Alan Wong",
+   "office": "Supervisor",
+   "district": "4",
+   "surname": "Wong",
+   "committees": [
+    {
+     "filer_nid": "216198377",
+     "filer_name": "Alan Wong for Supervisor 2026 General",
+     "filer_type": "Candidate or Officeholder",
+     "status": "ACTIVE",
+     "match": "strong",
+     "role": "official's own committee for Mayor/Supervisor"
+    },
+    {
+     "filer_nid": "215852865",
+     "filer_name": "GrowSF Supporting Alan Wong for Supervisor 2026",
+     "filer_type": "Primarily Formed Candidate",
+     "status": "ACTIVE",
+     "match": "strong",
+     "role": "primarily formed committee supporting the official (or unspecified)"
+    },
+    {
+     "filer_nid": "208761647",
+     "filer_name": "ALAN WONG FOR COLLEGE BOARD 2024",
+     "filer_type": "Candidate or Officeholder",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "official's committee for another office"
+    },
+    {
+     "filer_nid": "215112140",
+     "filer_name": "Alan Wong for Supervisor 2026",
+     "filer_type": "Candidate or Officeholder",
+     "status": "ACTIVE",
+     "match": "strong",
+     "role": "official's own committee for Mayor/Supervisor"
+    },
+    {
+     "filer_nid": "185325367",
+     "filer_name": "Alan Wong for College Board 2020",
+     "filer_type": "Candidate or Officeholder",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "official's committee for another office"
+    },
+    {
+     "filer_nid": "149050021",
+     "filer_name": "Friends of Alan S. Wong for Community College Board",
+     "filer_type": "General Purpose",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "official's committee for another office"
+    }
+   ]
+  },
+  {
+   "name": "Bilal Mahmood",
+   "office": "Supervisor",
+   "district": "5",
+   "surname": "Mahmood",
+   "committees": [
+    {
+     "filer_nid": "208655996",
+     "filer_name": "Bilal Mahmood for DCCC Member 2024",
+     "filer_type": "Candidate or Officeholder",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "official's committee for another office"
+    },
+    {
+     "filer_nid": "209865652",
+     "filer_name": "Bilal Mahmood for Supervisor 2024",
+     "filer_type": "Candidate or Officeholder",
+     "status": "ACTIVE",
+     "match": "strong",
+     "role": "official's own committee for Mayor/Supervisor"
+    }
+   ]
+  },
+  {
+   "name": "Matt Dorsey",
+   "office": "Supervisor",
+   "district": "6",
+   "surname": "Dorsey",
+   "committees": [
+    {
+     "filer_nid": "215579031",
+     "filer_name": "Matt Dorsey for Supervisor 2026",
+     "filer_type": "Candidate or Officeholder",
+     "status": "ACTIVE",
+     "match": "strong",
+     "role": "official's own committee for Mayor/Supervisor"
+    },
+    {
+     "filer_nid": "203924838",
+     "filer_name": "Matt Dorsey for Supervisor 2022",
+     "filer_type": "Candidate or Officeholder",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "official's own committee for Mayor/Supervisor"
+    },
+    {
+     "filer_nid": "208697921",
+     "filer_name": "Matt Dorsey for DCCC Member 2024 Officeholder Committee",
+     "filer_type": "Candidate or Officeholder",
+     "status": "ACTIVE",
+     "match": "strong",
+     "role": "official's committee for another office"
+    },
+    {
+     "filer_nid": "128797285",
+     "filer_name": "Matt Dorsey for Democratic County Central Committee 2012",
+     "filer_type": "Candidate or Officeholder",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "official's committee for another office"
+    },
+    {
+     "filer_nid": "158287639",
+     "filer_name": "Matt Dorsey for San Francisco Democratic County Central Committee 2016",
+     "filer_type": "Candidate or Officeholder",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "official's committee for another office"
+    }
+   ]
+  },
+  {
+   "name": "Myrna Melgar",
+   "office": "Supervisor",
+   "district": "7",
+   "surname": "Melgar",
+   "committees": [
+    {
+     "filer_nid": "208194309",
+     "filer_name": "Re-Elect Myrna Melgar for Supervisor 2024",
+     "filer_type": "Candidate or Officeholder",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "official's own committee for Mayor/Supervisor"
+    },
+    {
+     "filer_nid": "204210736",
+     "filer_name": "Myrna Melgar [Officeholder Board of Supervisors District 7]",
+     "filer_type": "470 [Officeholder]",
+     "status": "TERMINATED",
+     "match": "weak",
+     "role": "officeholder committee naming the official"
+    },
+    {
+     "filer_nid": "186079773",
+     "filer_name": "Myrna Melgar for Supervisor 2020",
+     "filer_type": "Candidate or Officeholder",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "official's own committee for Mayor/Supervisor"
+    },
+    {
+     "filer_nid": "159911091",
+     "filer_name": "Myrna Melgar for Democratic County Central Committee AD 19 2016",
+     "filer_type": "Candidate or Officeholder",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "official's committee for another office"
+    }
+   ]
+  },
+  {
+   "name": "Rafael Mandelman",
+   "office": "Supervisor",
+   "district": "8",
+   "surname": "Mandelman",
+   "committees": [
+    {
+     "filer_nid": "200878648",
+     "filer_name": "Rafael Mandelman for Supervisor 2022",
+     "filer_type": "Candidate or Officeholder",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "official's own committee for Mayor/Supervisor"
+    },
+    {
+     "filer_nid": "182919585",
+     "filer_name": "Rafael Mandelman for Democratic County Central Committee 2024",
+     "filer_type": "Candidate or Officeholder",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "official's committee for another office"
+    },
+    {
+     "filer_nid": "205793642",
+     "filer_name": "Mandelman, Rafael [Democratic County Central Committee 2024",
+     "filer_type": "Person",
+     "status": "ACTIVE",
+     "match": "strong",
+     "role": "official's committee for another office"
+    },
+    {
+     "filer_nid": "164729133",
+     "filer_name": "Rafael Mandelman for Supervisor 2018 General",
+     "filer_type": "Candidate or Officeholder",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "official's own committee for Mayor/Supervisor"
+    },
+    {
+     "filer_nid": "164723772",
+     "filer_name": "Rafael Mandelman for Supervisor 2018 Primary",
+     "filer_type": "Candidate or Officeholder",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "official's own committee for Mayor/Supervisor"
+    },
+    {
+     "filer_nid": "6667441",
+     "filer_name": "Rafael Mandelman for DCCC - 1262118",
+     "filer_type": "Candidate or Officeholder",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "official's committee for another office"
+    },
+    {
+     "filer_nid": "158383297",
+     "filer_name": "Rafael Mandelman for College Board 2016 Officeholder Account",
+     "filer_type": "Candidate or Officeholder",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "official's committee for another office"
+    },
+    {
+     "filer_nid": "158383905",
+     "filer_name": "Rafael Mandelman for the Democratic County Central Committee 2016",
+     "filer_type": "Candidate or Officeholder",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "official's committee for another office"
+    },
+    {
+     "filer_nid": "134025580",
+     "filer_name": "Rafael Mandelman for San Francisco Community College District Board 2012",
+     "filer_type": "Candidate or Officeholder",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "official's committee for another office"
+    },
+    {
+     "filer_nid": "6685950",
+     "filer_name": "Mandelman for Supervisor 2010",
+     "filer_type": "Candidate or Officeholder",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "official's own committee for Mayor/Supervisor"
+    },
+    {
+     "filer_nid": "6680481",
+     "filer_name": "Rafael Mandelman for Democratic County Central Committee - 2010",
+     "filer_type": "Candidate or Officeholder",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "official's committee for another office"
+    },
+    {
+     "filer_nid": "129712945",
+     "filer_name": "Rafael Mandelman for Democratic County Central Committee 2012",
+     "filer_type": "Candidate or Officeholder",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "official's committee for another office"
+    },
+    {
+     "filer_nid": "10992373",
+     "filer_name": "Teachers, Nurses, Muni riders, neighbors and working families supporting Mandelman for Supervisor 2010 sponsored by labor organizations",
+     "filer_type": "Primarily Formed Candidate",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "primarily formed committee supporting the official (or unspecified)"
+    }
+   ]
+  },
+  {
+   "name": "Jackie Fielder",
+   "office": "Supervisor",
+   "district": "9",
+   "surname": "Fielder",
+   "committees": [
+    {
+     "filer_nid": "208038450",
+     "filer_name": "Jackie Fielder for Supervisor 2024",
+     "filer_type": "Candidate or Officeholder",
+     "status": "ACTIVE",
+     "match": "strong",
+     "role": "official's own committee for Mayor/Supervisor"
+    }
+   ]
+  },
+  {
+   "name": "Shamann Walton",
+   "office": "Supervisor",
+   "district": "10",
+   "surname": "Walton",
+   "committees": [
+    {
+     "filer_nid": "197031455",
+     "filer_name": "Shamann Walton for Supervisor  2022",
+     "filer_type": "Candidate or Officeholder",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "official's own committee for Mayor/Supervisor"
+    },
+    {
+     "filer_nid": "163932080",
+     "filer_name": "Shamann Walton for Supervisor 2018",
+     "filer_type": "Candidate or Officeholder",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "official's own committee for Mayor/Supervisor"
+    },
+    {
+     "filer_nid": "183835609",
+     "filer_name": "Shamann Walton for Democratic Central Committee 2020",
+     "filer_type": "Candidate or Officeholder",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "official's committee for another office"
+    },
+    {
+     "filer_nid": "174388788",
+     "filer_name": "United Democratic Club Supporting Shamann Walton for D10 Supervisor 2018",
+     "filer_type": "Primarily Formed Candidate",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "primarily formed committee supporting the official (or unspecified)"
+    },
+    {
+     "filer_nid": "147120072",
+     "filer_name": "Shamann Walton for School Board 2014",
+     "filer_type": "Candidate or Officeholder",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "official's committee for another office"
+    },
+    {
+     "filer_nid": "130665917",
+     "filer_name": "Committee to Elect Shamann Walton for SF Board of Education 2012",
+     "filer_type": "Candidate or Officeholder",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "official's committee for another office"
+    }
+   ]
+  },
+  {
+   "name": "Chyanne Chen",
+   "office": "Supervisor",
+   "district": "11",
+   "surname": "Chen",
+   "committees": [
+    {
+     "filer_nid": "210823617",
+     "filer_name": "Chyanne Chen for Supervisor 2024",
+     "filer_type": "Candidate or Officeholder",
+     "status": "TERMINATED",
+     "match": "strong",
+     "role": "official's own committee for Mayor/Supervisor"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,212 @@
+import os
+import sys
+import unittest
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+
+import build_map as bm  # noqa: E402
+import fmap_lib as fl  # noqa: E402
+import pairing_cards as pc  # noqa: E402
+
+
+class Names(unittest.TestCase):
+    def setUp(self):
+        self.fams = bm.jload("families.json")["families"]
+
+    def test_bare_sf_forward_is_the_chambers_by_id(self):
+        key, how = fl.family_of(self.fams, "SF Forward", "891575")
+        self.assertEqual((key, how), ("sf-chamber", "id"))
+
+    def test_sponsor_words(self):
+        self.assertEqual(fl.sponsor_of("San Francisco Forward sponsored by San Francisco Chamber of Commerce"),
+                         "SAN FRANCISCO CHAMBER OF COMMERCE")
+        self.assertIsNone(fl.sponsor_of("Daniel Lurie for Mayor 2024"))
+
+    def test_other_union_local_is_excluded(self):
+        key, _ = fl.family_of(self.fams, "Operating Engineers Stationary Engineers Local 39")
+        self.assertIsNone(key)
+
+    def test_same_surname_other_given_name(self):
+        self.assertTrue(fl.names_official("Chen", "Chen", "Chyanne"))
+        self.assertFalse(fl.names_official("Mike Chen", "Chen", "Chyanne"))
+
+    def test_relations(self):
+        rel = lambda t, n: fl.relation_of({"filer_type": t, "filer_name": n})[0]
+        self.assertEqual(rel("Primarily Formed Measure", "Mayor Lurie's Yes on H Committee"), "measure")
+        self.assertEqual(rel("Primarily Formed Candidate", "GrowSF Opposing Chan for Supervisor"), "opposing")
+        self.assertEqual(rel("Candidate or Officeholder", "Matt Dorsey for Supervisor 2026"), "own")
+        self.assertEqual(rel("Candidate or Officeholder", "Matt Dorsey for DCCC Member 2024"), "own-other")
+
+
+class Money(unittest.TestCase):
+    def test_repeat_not_counted(self):
+        snap = {"committees": [{"filer_nid": "1"}], "a_summary": [], "unitemized": [],
+                "a_for_match": [{"filer_nid": "1", "calculated_date": "2026-01-01T00:00:00", "calculated_amount": "1000"}],
+                "f497": [{"filer_nid": "1", "calculated_date": "2026-01-01T00:00:00", "calculated_amount": "1000"},
+                         {"filer_nid": "1", "calculated_date": "2026-01-02T00:00:00", "calculated_amount": "2000"}]}
+        st = bm.committee_stats(snap)["1"]
+        self.assertEqual((st["h24_repeat_n"], st["h24_only_n"], st["h24_only_sum"]), (1, 1, 2000.0))
+
+
+class Pairings(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.data = bm.load_all()
+        cls.indep = bm.independent_for(cls.data)
+        cls.pairs = bm.build_pairings(cls.data, cls.indep)
+
+    def test_at_least_five_complete_pairings(self):
+        self.assertGreaterEqual(len(self.pairs), 5)
+        for p in self.pairs:
+            self.assertTrue(p["quote"]["text"])
+            self.assertTrue(p["statements"])
+            for s in p["statements"]:
+                self.assertTrue(s["url"].startswith("http") and s["retrieved"])
+            self.assertTrue(p["money"]["per"])
+            self.assertTrue(p["cues"])
+
+    def test_quotes_verbatim(self):
+        for p in self.pairs:
+            rows = fl.load_rows(bm.DATA, p["pk"]["meeting_id"])
+            self.assertTrue(fl.is_verbatim(rows, p["quote"]["text"]))
+
+    def test_no_causal_words_in_text(self):
+        text = bm.render_pairings_md(self.pairs, self.data["snap"]).lower()
+        for w in ("because of the money", "in return", "bought", "paid for", "caused", "quid pro quo", "payback"):
+            self.assertNotIn(w, text)
+
+
+class Sources(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.data = bm.load_all()
+        cls.map_md = open(os.path.join(bm.HERE, "funding-map.md"), encoding="utf-8").read()
+
+    def test_every_statement_has_link_and_date(self):
+        for s in self.data["prio"].values():
+            self.assertTrue(s["url"].startswith("http") and s["retrieved"] and s["text"])
+
+    def test_families_with_statements_include_blueprint_realtors_and_apartment_association(self):
+        fams = {s["family"] for s in self.data["prio"].values()}
+        for key in ("blueprint", "sf-realtors", "sf-apartment-association"):
+            self.assertIn(key, fams)
+
+    def test_every_family_has_an_own_statement_or_a_reported_priority(self):
+        own = {s["family"] for s in self.data["prio"].values()}
+        reported = {s["family"] for s in self.data["reported"]}
+        for f in self.data["fams"]:
+            self.assertIn(f["key"], own | reported, f["key"])
+
+    def test_reported_priorities_are_sourced_short_and_kept_apart(self):
+        keys = {f["key"] for f in self.data["fams"]}
+        ids = set()
+        for r in self.data["reported"]:
+            self.assertIn(r["family"], keys)
+            self.assertNotIn(r["id"], ids)
+            ids.add(r["id"])
+            self.assertTrue(r["url"].startswith("http") and r["retrieved"] and r["outlet"] and r["speaker"] and r["read"])
+            self.assertTrue(r["quote"] and len(r["quote"].split()) < 25, r["id"])
+            self.assertNotIn(r["id"], self.data["prio"])
+        self.assertIn("### 4a. Priorities reported by others", self.map_md)
+
+    def test_reported_quote_check_ignores_spacing_and_punctuation(self):
+        import collect_pages as cp
+        self.assertEqual(cp.plain("San Francisco, Proposition H\u00a0 Yes on Prop H"), cp.plain("San Francisco, Proposition HYes on Prop H"))
+
+    def test_govern_for_california_tie_names_its_sources(self):
+        fam = next(f for f in self.data["fams"] if f["key"] == "govern-for-california")
+        for url in ("governforcalifornia.org/who-we-are", "transparencyusa.org", "missionlocal.org"):
+            self.assertIn(url, fam["link_note"])
+        self.assertIn("Form 410", fam["link_note"])
+
+    def test_commission_vote_cited_to_the_commission(self):
+        self.assertIn("sfethics.org/ethics/2026/08/meeting-summary", self.map_md)
+        self.assertNotIn("growsf.org/news", self.map_md)
+
+    def test_committee_control_basis_stated(self):
+        self.assertIn("18402(c)(1)", self.map_md)
+        self.assertIn("Form 410", self.map_md)
+
+    def test_mayors_measure_committees_control_read_from_form_460_cover_pages(self):
+        for fid in ("217514736", "217516412"):
+            self.assertIn("netfile.com/Connect2/api/public/image/" + fid, self.map_md)
+        self.assertIn("Controlled", self.map_md)
+        self.assertIn("a measure committee a supervisor controls under a name without the surname is not excluded", self.map_md)
+
+
+class Cards(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.data = bm.load_all()
+        cls.indep = bm.independent_for(cls.data)
+        cls.pairs = bm.build_pairings(cls.data, cls.indep)
+        cls.cards = pc.build_cards(cls.pairs, cls.data["snap"], cls.data["fams"])
+
+    def test_one_card_per_pairing_with_money(self):
+        self.assertEqual(len(self.cards), len(self.pairs))
+        self.assertEqual([c["id"] for c in self.cards], [p["pk"]["id"] for p in self.pairs])
+
+    def test_pairing_without_money_is_not_a_card(self):
+        empty = dict(self.pairs[0], money={"per": {}, "outside": []})
+        self.assertEqual(pc.build_cards([empty], self.data["snap"], self.data["fams"]), [])
+
+    def test_money_lines_are_per_committee_and_never_summed(self):
+        for card, p in zip(self.cards, self.pairs):
+            lines = card["money"]["committees"]
+            self.assertEqual(len(lines), len(p["money"]["per"]))
+            for line, c in zip(lines, p["money"]["per"].values()):
+                self.assertEqual(line["schedule_a_total"], c["a_sum"])
+                self.assertTrue(line["kind"] and line["rows"] and line["first"] and line["givers_as_filed"])
+            self.assertNotIn("total", card["money"])
+        md = "\n".join(pc.render_cards_md(self.cards))
+        self.assertNotIn(fl.dollars(sum(c["schedule_a_total"] for c in self.cards[3]["money"]["committees"])).replace("$", "&#36;"), md)
+
+    def test_highlights_are_literal_in_quote_and_donor_words(self):
+        for card in self.cards:
+            donor = " ".join(s["section"] + " " + s["text"] for s in card["donor"]["statements"])
+            for term in card["highlight"]:
+                self.assertTrue(pc.term_regex([term]).search(card["quote"]["text"]), term)
+                self.assertTrue(pc.term_regex([term]).search(donor), term)
+
+    def test_highlight_not_in_both_is_refused(self):
+        with self.assertRaises(ValueError):
+            pc.check_terms(["Prop H"], "MUNI WEEKEND RIDERSHIP", ["Prop H would introduce a parcel tax"], "x")
+
+    def test_marking_adds_tags_only(self):
+        out = pc.marked("MUNI WEEKEND, MUNICIPAL", ["Muni"], pc.esc_html)
+        self.assertEqual(out, "<mark>MUNI</mark> WEEKEND, MUNICIPAL")
+
+    def test_quote_in_cards_is_the_transcripts_text(self):
+        import re
+        for card, p in zip(self.cards, self.pairs):
+            self.assertEqual(card["quote"]["text"], p["quote"]["text"])
+            md = "\n".join(pc.card_md(card))
+            plain = re.sub(r"</?mark>", "", md)
+            self.assertIn(pc.esc_md('"%s"' % card["quote"]["text"]), plain)
+
+    def test_card_carries_credit_badge_sources_and_retrieval_date(self):
+        for card in self.cards:
+            md = "\n".join(pc.card_md(card))
+            self.assertIn("SPEAKER-CREDIT DOUBT: %s" % card["speaker_credit"]["doubt"].upper(), md)
+            self.assertIn(card["sources"]["transcript"], md)
+            self.assertIn(card["sources"]["money_retrieved"], md)
+            for u in card["sources"]["donor_pages"]:
+                self.assertIn(u, md)
+            for fid in card["sources"]["filing_ids"]:
+                self.assertIn(fid, md)
+            self.assertIn("Reading, not a finding", md)
+
+    def test_chapter_givers_are_one_donor_bubble_with_a_tie_note(self):
+        gfc = next(c for c in self.cards if c["donor"]["name"] == "Govern For California")
+        self.assertGreater(gfc["donor"]["tie"]["giver_names"], 1)
+        self.assertIn("by name only", gfc["donor"]["tie"]["text"])
+
+    def test_no_causal_words_in_cards(self):
+        text = ("\n".join(pc.render_cards_md(self.cards)) + pc.render_cards_html(self.cards)).lower()
+        for w in bm.CAUSAL:
+            if w != "influence":
+                self.assertNotIn(w, text)
+
+
+if __name__ == "__main__":
+    unittest.main()
