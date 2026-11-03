@@ -27,7 +27,7 @@ Offline run: nothing beyond the sample was requested.
 Funded pairs (a donor family with Schedule A money in a committee of the official): 62, of which 60 reached a committee that is the official's own or a measure committee carrying the official's name (the other 2 reached only a committee formed to support or oppose the official). Counts below are over the 60.
 
 
-### Funded pairs, over the 11 sampled meetings (every passage in them has been read by a person)
+### Funded pairs, over the 11 sampled meetings (every passage in them has been read by a person) (Peradapt could not verify this: the 'person' who judged fit was the run)
 
 - Funded pairs counted (those that reached a committee of the official's own or a measure committee carrying the official's name): 60.
 - Pairs with at least one passage that hit the donor's subject terms: 19 of 60 (32%).
