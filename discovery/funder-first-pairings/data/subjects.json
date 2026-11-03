@@ -19,7 +19,7 @@
    "anchor": ["HOME SHARING", "SHORT TERM RENTAL*", "SHORT-TERM RENTAL*", "AIRBNB"], "topic": ["TOURISM", "TOURISTS"]},
   {"id": "SFAA-LANDLORD", "family": "sf-apartment-association", "label": "Landlord-tenant and rental housing law", "statements": ["SFAA-ADVOCACY"],
    "anchor": ["LANDLORD*", "RENTAL HOUSING PROVIDER*", "RENT CONTROL", "RENT BOARD"], "topic": ["TENANT*", "EVICTION*"]},
-  {"id": "SFAA-I-C", "family": "sf-apartment-association", "label": "Opposing Prop I and backing Prop C (reported)", "statements": ["SFAA-I-AMOUNT", "SFAA-I-PROPC"],
+  {"id": "SFAA-I-C", "family": "sf-apartment-association", "label": "Prop C, backed by the committee that carries the Association's Prop I money (reported)", "statements": ["SFAA-I-AMOUNT", "SFAA-I-RD-AMOUNT", "SFAA-I-PROPC"],
    "anchor": ["PROP I", "PROPOSITION I", "SOCIAL HOUSING", "PROP C", "PROPOSITION C", "HOUSING TRUST FUND"], "topic": []},
   {"id": "SFAR-HOMEOWNERS", "family": "sf-realtors", "label": "The rights of homeowners and legislation supporting realtors", "statements": ["SFAR-ABOUT", "SFAR-ADVOCACY"],
    "anchor": ["HOMEOWNER*", "REALTOR*", "PROPERTY OWNER*"], "topic": ["HOME OWNERSHIP", "HOMEOWNERSHIP"]},

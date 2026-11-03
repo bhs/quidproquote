@@ -123,7 +123,8 @@
    "minutes_parsed": {
     "present": 11,
     "votes": 5,
-    "motions": 2
+    "motions": 2,
+    "usable": true
    }
   },
   {
@@ -242,6 +243,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "1 passage(s) hit the subject's terms; each was judged not to be on the donor's subject",
+   "statement_kinds": [
+    "own"
+   ],
    "candidates": 1,
    "specific": 0,
    "decisions": {
@@ -262,6 +266,9 @@
    "tied": false,
    "status": "no fitting remark",
    "reason": "no passage in the 5533 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "own"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -280,6 +287,9 @@
    "tied": false,
    "status": "no fitting remark",
    "reason": "no passage in the 3161 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "own"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -298,6 +308,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 507 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -322,6 +335,9 @@
    "tied": true,
    "status": "fitting remark found",
    "reason": "2 passage(s) judged on the donor's subject",
+   "statement_kinds": [
+    "own"
+   ],
    "candidates": 3,
    "specific": 3,
    "decisions": {
@@ -349,6 +365,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 1153 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "own"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -367,6 +386,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 4214 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "own"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -391,6 +413,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 5533 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -409,6 +434,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 8528 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -427,6 +455,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 3161 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -457,6 +488,9 @@
    "tied": true,
    "status": "fitting remark found",
    "reason": "1 passage(s) judged on the donor's subject",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 1,
    "specific": 1,
    "decisions": {
@@ -477,6 +511,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "1 passage(s) hit the subject's terms; each was judged not to be on the donor's subject",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 1,
    "specific": 1,
    "decisions": {
@@ -503,6 +540,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no turn of the official was credited in the meetings read",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -533,6 +573,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "4 passage(s) hit the subject's terms; each was judged not to be on the donor's subject",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 4,
    "specific": 2,
    "decisions": {
@@ -553,6 +596,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 5533 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -583,6 +629,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 3472 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -601,6 +650,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 3161 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -619,6 +671,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 507 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -637,6 +692,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 1153 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -655,6 +713,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "1 passage(s) hit the subject's terms; each was judged not to be on the donor's subject",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 1,
    "specific": 1,
    "decisions": {
@@ -675,6 +736,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 7503 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -693,6 +757,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 7597 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -717,6 +784,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no turn of the official was credited in the meetings read",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -771,6 +841,9 @@
    "tied": true,
    "status": "fitting remark found",
    "reason": "3 passage(s) judged on the donor's subject",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 3,
    "specific": 3,
    "decisions": {
@@ -809,6 +882,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 4214 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -833,6 +909,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 5533 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -863,6 +942,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 3472 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -881,6 +963,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 3161 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -905,6 +990,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 507 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -923,6 +1011,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 1153 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -941,6 +1032,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "1 passage(s) hit the subject's terms; each was judged not to be on the donor's subject",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 1,
    "specific": 1,
    "decisions": {
@@ -961,6 +1055,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 7503 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -991,6 +1088,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 7597 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -1015,6 +1115,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no turn of the official was credited in the meetings read",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -1045,6 +1148,9 @@
    "tied": true,
    "status": "fitting remark found",
    "reason": "3 passage(s) judged on the donor's subject",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 3,
    "specific": 3,
    "decisions": {
@@ -1077,6 +1183,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 4214 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -1101,6 +1210,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 3161 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "own"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -1125,6 +1237,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no turn of the official was credited in the meetings read",
+   "statement_kinds": [
+    "own"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -1167,6 +1282,9 @@
    "tied": true,
    "status": "fitting remark found",
    "reason": "3 passage(s) judged on the donor's subject",
+   "statement_kinds": [
+    "own"
+   ],
    "candidates": 3,
    "specific": 3,
    "decisions": {
@@ -1193,6 +1311,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 5533 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -1211,6 +1332,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 8528 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -1229,6 +1353,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 3161 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -1247,6 +1374,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "1 passage(s) hit the subject's terms; each was judged not to be on the donor's subject",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 1,
    "specific": 1,
    "decisions": {
@@ -1267,6 +1397,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 7597 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -1291,6 +1424,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no turn of the official was credited in the meetings read",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -1309,6 +1445,10 @@
    "tied": true,
    "status": "fitting remark found",
    "reason": "1 passage(s) judged on the donor's subject",
+   "statement_kinds": [
+    "own",
+    "reported"
+   ],
    "candidates": 1,
    "specific": 1,
    "decisions": {
@@ -1335,6 +1475,10 @@
    "tied": true,
    "status": "same broad subject only",
    "reason": "2 passage(s) on the same broad subject, none on the donor's specific one",
+   "statement_kinds": [
+    "own",
+    "reported"
+   ],
    "candidates": 2,
    "specific": 2,
    "decisions": {
@@ -1355,6 +1499,10 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 1153 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "own",
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -1373,6 +1521,10 @@
    "tied": true,
    "status": "same broad subject only",
    "reason": "2 passage(s) on the same broad subject, none on the donor's specific one",
+   "statement_kinds": [
+    "own",
+    "reported"
+   ],
    "candidates": 5,
    "specific": 0,
    "decisions": {
@@ -1406,6 +1558,10 @@
    "tied": true,
    "status": "fitting remark found",
    "reason": "2 passage(s) judged on the donor's subject",
+   "statement_kinds": [
+    "own",
+    "reported"
+   ],
    "candidates": 4,
    "specific": 3,
    "decisions": {
@@ -1427,6 +1583,10 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no turn of the official was credited in the meetings read",
+   "statement_kinds": [
+    "own",
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -1445,6 +1605,10 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 4214 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "own",
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -1463,6 +1627,9 @@
    "tied": true,
    "status": "same broad subject only",
    "reason": "1 passage(s) on the same broad subject, none on the donor's specific one",
+   "statement_kinds": [
+    "own"
+   ],
    "candidates": 1,
    "specific": 0,
    "decisions": {
@@ -1483,6 +1650,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 3161 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -1507,6 +1677,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 7597 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -1525,6 +1698,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no turn of the official was credited in the meetings read",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -1549,6 +1725,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 5803 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -1573,6 +1752,9 @@
    "tied": true,
    "status": "fitting remark found",
    "reason": "1 passage(s) judged on the donor's subject",
+   "statement_kinds": [
+    "own"
+   ],
    "candidates": 8,
    "specific": 2,
    "decisions": {
@@ -1601,6 +1783,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 507 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "own"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -1619,6 +1804,9 @@
    "tied": true,
    "status": "same broad subject only",
    "reason": "1 passage(s) on the same broad subject, none on the donor's specific one",
+   "statement_kinds": [
+    "own"
+   ],
    "candidates": 1,
    "specific": 0,
    "decisions": {
@@ -1645,6 +1833,9 @@
    "tied": true,
    "status": "no fitting remark",
    "reason": "no passage in the 7503 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "own"
+   ],
    "candidates": 0,
    "specific": 0,
    "decisions": {},
@@ -1663,6 +1854,1645 @@
    "tied": true,
    "status": "same broad subject only",
    "reason": "1 passage(s) on the same broad subject, none on the donor's specific one",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 1,
+   "specific": 0,
+   "decisions": {
+    "loose": 1
+   },
+   "committees": [
+    {
+     "committee": "Mayor Lurie's Yes on H Committee",
+     "kind": "ballot-measure committee carrying the official's name",
+     "schedule_a_total": 50000.0,
+     "rows": 1
+    }
+   ]
+  }
+ ],
+ "pairs_sampled": [
+  {
+   "official": "Daniel Lurie",
+   "family": "airbnb",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "1 passage(s) hit the subject's terms; each was judged not to be on the donor's subject",
+   "statement_kinds": [
+    "own"
+   ],
+   "candidates": 1,
+   "specific": 0,
+   "decisions": {
+    "reject": 1
+   },
+   "committees": [
+    {
+     "committee": "Mayor Lurie's Yes on H Committee",
+     "kind": "ballot-measure committee carrying the official's name",
+     "schedule_a_total": 500000.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Alan Wong",
+   "family": "boma-sf",
+   "tied": false,
+   "status": "no fitting remark",
+   "reason": "no passage in the 5533 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "own"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "GrowSF Supporting Alan Wong for Supervisor 2026",
+     "kind": "committee formed to support the official (not the official's own)",
+     "schedule_a_total": 9999.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Connie Chan",
+   "family": "boma-sf",
+   "tied": false,
+   "status": "no fitting remark",
+   "reason": "no passage in the 3161 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "own"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Coalition to Grow San Francisco - Grow SF PAC Opposing Chan for Supervisor 2024",
+     "kind": "committee formed to oppose the official (not the official's own)",
+     "schedule_a_total": 20000.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Daniel Lurie",
+   "family": "emerson-collective",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 507 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Mayor Lurie's Yes on D, E & F Committee",
+     "kind": "ballot-measure committee carrying the official's name",
+     "schedule_a_total": 500000.0,
+     "rows": 1
+    },
+    {
+     "committee": "Mayor Lurie's Yes on H Committee",
+     "kind": "ballot-measure committee carrying the official's name",
+     "schedule_a_total": 200000.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Bilal Mahmood",
+   "family": "govern-for-california",
+   "tied": true,
+   "status": "fitting remark found",
+   "reason": "2 passage(s) judged on the donor's subject",
+   "statement_kinds": [
+    "own"
+   ],
+   "candidates": 3,
+   "specific": 3,
+   "decisions": {
+    "accept": 2,
+    "loose": 1
+   },
+   "committees": [
+    {
+     "committee": "Bilal Mahmood for DCCC Member 2024",
+     "kind": "own committee, for another office (Democratic County Central Committee)",
+     "schedule_a_total": 10500.0,
+     "rows": 4
+    },
+    {
+     "committee": "Bilal Mahmood for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 7500.0,
+     "rows": 15
+    }
+   ]
+  },
+  {
+   "official": "Danny Sauter",
+   "family": "govern-for-california",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 1153 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "own"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Danny Sauter for Supervisor 2024 Officerholder Committee",
+     "kind": "own committee",
+     "schedule_a_total": 4500.0,
+     "rows": 9
+    }
+   ]
+  },
+  {
+   "official": "Stephen Sherrill",
+   "family": "govern-for-california",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 4214 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "own"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Stephen Sherrill for Supervisor 2026 General",
+     "kind": "own committee",
+     "schedule_a_total": 1000.0,
+     "rows": 2
+    },
+    {
+     "committee": "Stephen Sherrill for Supervisor 2026",
+     "kind": "own committee",
+     "schedule_a_total": 1500.0,
+     "rows": 3
+    }
+   ]
+  },
+  {
+   "official": "Alan Wong",
+   "family": "ifpte-21",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 5533 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Alan Wong for College Board 2020",
+     "kind": "own committee, for another office (Community College Board)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Chyanne Chen",
+   "family": "ifpte-21",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 8528 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Chyanne Chen for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Connie Chan",
+   "family": "ifpte-21",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 3161 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Connie Chan for Democratic County Central Committee 2028",
+     "kind": "own committee, for another office (Democratic County Central Committee)",
+     "schedule_a_total": 25750.0,
+     "rows": 3
+    },
+    {
+     "committee": "Connie Chan for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Connie Chan for Supervisor 2020",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Jackie Fielder",
+   "family": "ifpte-21",
+   "tied": true,
+   "status": "fitting remark found",
+   "reason": "1 passage(s) judged on the donor's subject",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 1,
+   "specific": 1,
+   "decisions": {
+    "accept": 1
+   },
+   "committees": [
+    {
+     "committee": "Jackie Fielder for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Myrna Melgar",
+   "family": "ifpte-21",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "1 passage(s) hit the subject's terms; each was judged not to be on the donor's subject",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 1,
+   "specific": 1,
+   "decisions": {
+    "reject": 1
+   },
+   "committees": [
+    {
+     "committee": "Re-Elect Myrna Melgar for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Myrna Melgar for Supervisor 2020",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Rafael Mandelman",
+   "family": "ifpte-21",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no turn of the official was credited in the meetings read",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Rafael Mandelman for Supervisor 2018 General",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Rafael Mandelman for College Board 2016 Officeholder Account",
+     "kind": "officeholder committee, for another office (Community College Board)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Mandelman for Supervisor 2010",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Shamann Walton",
+   "family": "ifpte-21",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "4 passage(s) hit the subject's terms; each was judged not to be on the donor's subject",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 4,
+   "specific": 2,
+   "decisions": {
+    "reject": 4
+   },
+   "committees": [
+    {
+     "committee": "Shamann Walton for Supervisor 2018",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Alan Wong",
+   "family": "laborers-261",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 5533 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "ALAN WONG FOR COLLEGE BOARD 2024",
+     "kind": "own committee, for another office (Community College Board)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Alan Wong for Supervisor 2026",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Alan Wong for College Board 2020",
+     "kind": "own committee, for another office (Community College Board)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Bilal Mahmood",
+   "family": "laborers-261",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 3472 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Bilal Mahmood for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Connie Chan",
+   "family": "laborers-261",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 3161 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Connie Chan for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Daniel Lurie",
+   "family": "laborers-261",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 507 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Mayor Lurie's Yes on H Committee",
+     "kind": "ballot-measure committee carrying the official's name",
+     "schedule_a_total": 10000.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Danny Sauter",
+   "family": "laborers-261",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 1153 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Danny Sauter for Supervisor 2024 Officerholder Committee",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Jackie Fielder",
+   "family": "laborers-261",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "1 passage(s) hit the subject's terms; each was judged not to be on the donor's subject",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 1,
+   "specific": 1,
+   "decisions": {
+    "reject": 1
+   },
+   "committees": [
+    {
+     "committee": "Jackie Fielder for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Matt Dorsey",
+   "family": "laborers-261",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 7503 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Matt Dorsey for Supervisor 2022",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Myrna Melgar",
+   "family": "laborers-261",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 7597 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Re-Elect Myrna Melgar for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Myrna Melgar for Supervisor 2020",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Rafael Mandelman",
+   "family": "laborers-261",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no turn of the official was credited in the meetings read",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Rafael Mandelman for Democratic County Central Committee 2024",
+     "kind": "own committee, for another office (Democratic County Central Committee)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Rafael Mandelman for Supervisor 2018 General",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Rafael Mandelman for College Board 2016 Officeholder Account",
+     "kind": "officeholder committee, for another office (Community College Board)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Rafael Mandelman for the Democratic County Central Committee 2016",
+     "kind": "own committee, for another office (Democratic County Central Committee)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Rafael Mandelman for San Francisco Community College District Board 2012",
+     "kind": "own committee, for another office (Community College Board)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Mandelman for Supervisor 2010",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Rafael Mandelman for Democratic County Central Committee - 2010",
+     "kind": "own committee, for another office (Democratic County Central Committee)",
+     "schedule_a_total": 2000.0,
+     "rows": 2
+    }
+   ]
+  },
+  {
+   "official": "Shamann Walton",
+   "family": "laborers-261",
+   "tied": true,
+   "status": "fitting remark found",
+   "reason": "3 passage(s) judged on the donor's subject",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 3,
+   "specific": 3,
+   "decisions": {
+    "accept": 3
+   },
+   "committees": [
+    {
+     "committee": "Shamann Walton for Supervisor  2022",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Shamann Walton for Supervisor 2018",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Shamann Walton for Democratic Central Committee 2020",
+     "kind": "own committee, for another office (Democratic County Central Committee)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Shamann Walton for School Board 2014",
+     "kind": "own committee, for another office (School Board)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Stephen Sherrill",
+   "family": "laborers-261",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 4214 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Working Families for Stephen Sherrill for Supervisor 2026, Sponsored by International Union of Operating Engineers Local 3",
+     "kind": "committee formed to support the official (not the official's own)",
+     "schedule_a_total": 10000.0,
+     "rows": 1
+    },
+    {
+     "committee": "Stephen Sherrill for Supervisor 2026",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Alan Wong",
+   "family": "operating-engineers-3",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 5533 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Alan Wong for Supervisor 2026 General",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Alan Wong for Supervisor 2026",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Alan Wong for College Board 2020",
+     "kind": "own committee, for another office (Community College Board)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Bilal Mahmood",
+   "family": "operating-engineers-3",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 3472 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Bilal Mahmood for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Connie Chan",
+   "family": "operating-engineers-3",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 3161 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Connie Chan for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Connie Chan for Supervisor 2020",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Daniel Lurie",
+   "family": "operating-engineers-3",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 507 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Mayor Lurie's Yes on H Committee",
+     "kind": "ballot-measure committee carrying the official's name",
+     "schedule_a_total": 25000.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Danny Sauter",
+   "family": "operating-engineers-3",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 1153 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Danny Sauter for Supervisor 2024 Officerholder Committee",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Jackie Fielder",
+   "family": "operating-engineers-3",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "1 passage(s) hit the subject's terms; each was judged not to be on the donor's subject",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 1,
+   "specific": 1,
+   "decisions": {
+    "reject": 1
+   },
+   "committees": [
+    {
+     "committee": "Jackie Fielder for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Matt Dorsey",
+   "family": "operating-engineers-3",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 7503 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Matt Dorsey for Supervisor 2026",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Matt Dorsey for Supervisor 2022",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Matt Dorsey for DCCC Member 2024 Officeholder Committee",
+     "kind": "officeholder committee, for another office (Democratic County Central Committee)",
+     "schedule_a_total": 1000.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Myrna Melgar",
+   "family": "operating-engineers-3",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 7597 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Re-Elect Myrna Melgar for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Myrna Melgar for Supervisor 2020",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Rafael Mandelman",
+   "family": "operating-engineers-3",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no turn of the official was credited in the meetings read",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Rafael Mandelman for Supervisor 2022",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Rafael Mandelman for Democratic County Central Committee 2024",
+     "kind": "own committee, for another office (Democratic County Central Committee)",
+     "schedule_a_total": 100.0,
+     "rows": 1
+    },
+    {
+     "committee": "Rafael Mandelman for Supervisor 2018 General",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Shamann Walton",
+   "family": "operating-engineers-3",
+   "tied": true,
+   "status": "fitting remark found",
+   "reason": "3 passage(s) judged on the donor's subject",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 3,
+   "specific": 3,
+   "decisions": {
+    "accept": 3
+   },
+   "committees": [
+    {
+     "committee": "Shamann Walton for Supervisor  2022",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Shamann Walton for Supervisor 2018",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Shamann Walton for School Board 2014",
+     "kind": "own committee, for another office (School Board)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Stephen Sherrill",
+   "family": "operating-engineers-3",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 4214 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Working Families for Stephen Sherrill for Supervisor 2026, Sponsored by International Union of Operating Engineers Local 3",
+     "kind": "committee formed to support the official (not the official's own)",
+     "schedule_a_total": 20000.0,
+     "rows": 1
+    },
+    {
+     "committee": "Stephen Sherrill for Supervisor 2026",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Connie Chan",
+   "family": "seiu-1021",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 3161 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "own"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Connie Chan for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Connie Chan for Supervisor 2020",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Rafael Mandelman",
+   "family": "seiu-1021",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no turn of the official was credited in the meetings read",
+   "statement_kinds": [
+    "own"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Rafael Mandelman for Supervisor 2018 General",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Rafael Mandelman for Supervisor 2018 Primary",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Rafael Mandelman for College Board 2016 Officeholder Account",
+     "kind": "officeholder committee, for another office (Community College Board)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Rafael Mandelman for San Francisco Community College District Board 2012",
+     "kind": "own committee, for another office (Community College Board)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Teachers, Nurses, Muni riders, neighbors and working families supporting Mandelman for Supervisor 2010 sponsored by labor organizations",
+     "kind": "committee formed to support the official (not the official's own)",
+     "schedule_a_total": 100000.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Shamann Walton",
+   "family": "seiu-1021",
+   "tied": true,
+   "status": "fitting remark found",
+   "reason": "3 passage(s) judged on the donor's subject",
+   "statement_kinds": [
+    "own"
+   ],
+   "candidates": 3,
+   "specific": 3,
+   "decisions": {
+    "accept": 3
+   },
+   "committees": [
+    {
+     "committee": "Shamann Walton for School Board 2014",
+     "kind": "own committee, for another office (School Board)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Committee to Elect Shamann Walton for SF Board of Education 2012",
+     "kind": "own committee, for another office (School Board)",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Alan Wong",
+   "family": "seiu-2015",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 5533 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Alan Wong for Supervisor 2026 General",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Chyanne Chen",
+   "family": "seiu-2015",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 8528 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Chyanne Chen for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Connie Chan",
+   "family": "seiu-2015",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 3161 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Connie Chan for Democratic County Central Committee 2028",
+     "kind": "own committee, for another office (Democratic County Central Committee)",
+     "schedule_a_total": 2500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Jackie Fielder",
+   "family": "seiu-2015",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "1 passage(s) hit the subject's terms; each was judged not to be on the donor's subject",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 1,
+   "specific": 1,
+   "decisions": {
+    "reject": 1
+   },
+   "committees": [
+    {
+     "committee": "Jackie Fielder for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Myrna Melgar",
+   "family": "seiu-2015",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 7597 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Re-Elect Myrna Melgar for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Myrna Melgar for Supervisor 2020",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Rafael Mandelman",
+   "family": "seiu-2015",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no turn of the official was credited in the meetings read",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Rafael Mandelman for Supervisor 2022",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Alan Wong",
+   "family": "sf-apartment-association",
+   "tied": true,
+   "status": "fitting remark found",
+   "reason": "1 passage(s) judged on the donor's subject",
+   "statement_kinds": [
+    "own",
+    "reported"
+   ],
+   "candidates": 1,
+   "specific": 1,
+   "decisions": {
+    "accept": 1
+   },
+   "committees": [
+    {
+     "committee": "Alan Wong for Supervisor 2026 General",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Alan Wong for Supervisor 2026",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Bilal Mahmood",
+   "family": "sf-apartment-association",
+   "tied": true,
+   "status": "same broad subject only",
+   "reason": "2 passage(s) on the same broad subject, none on the donor's specific one",
+   "statement_kinds": [
+    "own",
+    "reported"
+   ],
+   "candidates": 2,
+   "specific": 2,
+   "decisions": {
+    "loose": 2
+   },
+   "committees": [
+    {
+     "committee": "Bilal Mahmood for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Danny Sauter",
+   "family": "sf-apartment-association",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 1153 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "own",
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Danny Sauter for Supervisor 2024 Officerholder Committee",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Matt Dorsey",
+   "family": "sf-apartment-association",
+   "tied": true,
+   "status": "same broad subject only",
+   "reason": "2 passage(s) on the same broad subject, none on the donor's specific one",
+   "statement_kinds": [
+    "own",
+    "reported"
+   ],
+   "candidates": 5,
+   "specific": 0,
+   "decisions": {
+    "reject": 3,
+    "loose": 2
+   },
+   "committees": [
+    {
+     "committee": "Matt Dorsey for Supervisor 2026",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Matt Dorsey for Supervisor 2022",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Matt Dorsey for DCCC Member 2024 Officeholder Committee",
+     "kind": "officeholder committee, for another office (Democratic County Central Committee)",
+     "schedule_a_total": 10000.0,
+     "rows": 3
+    }
+   ]
+  },
+  {
+   "official": "Myrna Melgar",
+   "family": "sf-apartment-association",
+   "tied": true,
+   "status": "fitting remark found",
+   "reason": "2 passage(s) judged on the donor's subject",
+   "statement_kinds": [
+    "own",
+    "reported"
+   ],
+   "candidates": 4,
+   "specific": 3,
+   "decisions": {
+    "reject": 2,
+    "accept": 2
+   },
+   "committees": [
+    {
+     "committee": "Myrna Melgar for Supervisor 2020",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Rafael Mandelman",
+   "family": "sf-apartment-association",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no turn of the official was credited in the meetings read",
+   "statement_kinds": [
+    "own",
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Rafael Mandelman for Supervisor 2018 Primary",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Stephen Sherrill",
+   "family": "sf-apartment-association",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 4214 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "own",
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Stephen Sherrill for Supervisor 2026",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Daniel Lurie",
+   "family": "sf-chamber",
+   "tied": true,
+   "status": "same broad subject only",
+   "reason": "1 passage(s) on the same broad subject, none on the donor's specific one",
+   "statement_kinds": [
+    "own"
+   ],
+   "candidates": 1,
+   "specific": 0,
+   "decisions": {
+    "loose": 1
+   },
+   "committees": [
+    {
+     "committee": "Mayor Lurie's Yes on H Committee",
+     "kind": "ballot-measure committee carrying the official's name",
+     "schedule_a_total": 499000.0,
+     "rows": 4
+    }
+   ]
+  },
+  {
+   "official": "Connie Chan",
+   "family": "sf-labor-council",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 3161 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Connie Chan for Democratic County Central Committee 2028",
+     "kind": "own committee, for another office (Democratic County Central Committee)",
+     "schedule_a_total": 5000.0,
+     "rows": 1
+    },
+    {
+     "committee": "Connie Chan for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Myrna Melgar",
+   "family": "sf-labor-council",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 7597 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Re-Elect Myrna Melgar for Supervisor 2024",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Rafael Mandelman",
+   "family": "sf-labor-council",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no turn of the official was credited in the meetings read",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Rafael Mandelman for Supervisor 2022",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Teachers, Nurses, Muni riders, neighbors and working families supporting Mandelman for Supervisor 2010 sponsored by labor organizations",
+     "kind": "committee formed to support the official (not the official's own)",
+     "schedule_a_total": 39000.0,
+     "rows": 2
+    }
+   ]
+  },
+  {
+   "official": "Shamann Walton",
+   "family": "sf-labor-council",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 5803 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "reported"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Shamann Walton for Supervisor  2022",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Shamann Walton for Supervisor 2018",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Alan Wong",
+   "family": "sf-poa",
+   "tied": true,
+   "status": "fitting remark found",
+   "reason": "1 passage(s) judged on the donor's subject",
+   "statement_kinds": [
+    "own"
+   ],
+   "candidates": 8,
+   "specific": 2,
+   "decisions": {
+    "reject": 5,
+    "accept": 1,
+    "loose": 2
+   },
+   "committees": [
+    {
+     "committee": "Alan Wong for Supervisor 2026 General",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Alan Wong for Supervisor 2026",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Daniel Lurie",
+   "family": "sf-poa",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 507 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "own"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Mayor Lurie's Yes on D, E & F Committee",
+     "kind": "ballot-measure committee carrying the official's name",
+     "schedule_a_total": 10000.0,
+     "rows": 1
+    }
+   ]
+  },
+  {
+   "official": "Matt Dorsey",
+   "family": "sf-poa",
+   "tied": true,
+   "status": "same broad subject only",
+   "reason": "1 passage(s) on the same broad subject, none on the donor's specific one",
+   "statement_kinds": [
+    "own"
+   ],
+   "candidates": 1,
+   "specific": 0,
+   "decisions": {
+    "loose": 1
+   },
+   "committees": [
+    {
+     "committee": "Matt Dorsey for Supervisor 2022",
+     "kind": "own committee",
+     "schedule_a_total": 500.0,
+     "rows": 1
+    },
+    {
+     "committee": "Matt Dorsey for DCCC Member 2024 Officeholder Committee",
+     "kind": "officeholder committee, for another office (Democratic County Central Committee)",
+     "schedule_a_total": 7500.0,
+     "rows": 3
+    }
+   ]
+  },
+  {
+   "official": "Matt Dorsey",
+   "family": "sf-realtors",
+   "tied": true,
+   "status": "no fitting remark",
+   "reason": "no passage in the 7503 words credited to the official hit the donor's subject terms",
+   "statement_kinds": [
+    "own"
+   ],
+   "candidates": 0,
+   "specific": 0,
+   "decisions": {},
+   "committees": [
+    {
+     "committee": "Matt Dorsey for DCCC Member 2024 Officeholder Committee",
+     "kind": "officeholder committee, for another office (Democratic County Central Committee)",
+     "schedule_a_total": 20000.0,
+     "rows": 2
+    }
+   ]
+  },
+  {
+   "official": "Daniel Lurie",
+   "family": "twu-250a",
+   "tied": true,
+   "status": "same broad subject only",
+   "reason": "1 passage(s) on the same broad subject, none on the donor's specific one",
+   "statement_kinds": [
+    "reported"
+   ],
    "candidates": 1,
    "specific": 0,
    "decisions": {
@@ -2816,16 +4646,17 @@
     "decision": "accept",
     "credit": "agree",
     "credit_note": "As for the same passage under POA-C.",
-    "note": "The measure is the Housing Trust Fund charter amendment (Prop C), which the reports say the Apartment Association's money backs.",
+    "note": "The measure is the Housing Trust Fund charter amendment (Prop C), which The Real Deal reports the committee carrying the opposition to Prop I, the Apartment Association's $211,000 among it, also backs.",
     "trim": {
      "begin_at": "COLLEAGUES, I'M PROUD TO CO-SPONSOR THIS MEASURE",
      "end_at": "NEIGHBORHOOD STABILITY."
     },
     "donor_statements": [
+     "SFAA-I-RD-AMOUNT",
      "SFAA-I-PROPC"
     ],
-    "in_common": "Both are about the Housing Trust Fund measure (Prop C): the supervisor co-sponsors it; the reports say the association's donation flows through a committee that backs it.",
-    "differs": "The association's side is a reporter's statement about where $211,000 went (The Real Deal, 29 October 2026), not the association's own words; the supervisor says nothing of Prop I or of the committee."
+    "in_common": "Both are about the Housing Trust Fund measure (Prop C): the supervisor co-sponsors it; the reporter says the committee that carries the Association's Prop I money backs it.",
+    "differs": "The reporter's sentence is about an unnamed committee, not the Association's own words, and the article does not give the Association's own position on Prop C. The $211,000 was spent in the 2026 campaign; the Association's gift to this supervisor's committee is a separate, earlier one. The supervisor says nothing of Prop I or of the committee."
    },
    "decision": "accept",
    "final_text": "COLLEAGUES, I'M PROUD TO CO-SPONSOR THIS MEASURE. THANK YOU TO SUPERVISOR MELGAR AND HER OFFICE FOR THEIR LEADERSHIP AND HARD WORK ON THIS AND BRINGING PEOPLE TOGETHER. WE ALL AGREE THAT SAN FRANCISCO NEEDS TO BUILD MORE HOUSING BUT AS WE WORK TO MAKE IT EASIER TO BUILD WE ALSO NEED TO MAKE SURE THAT WORKING FAMILIES, SENIORS AND YOUNG PEOPLE CAN AFFORD TO REMAIN PART OF OUR CITY. THE HOUSING TRUST FUND HAS HELPED CREATE AND PRESERVE AFFORDABLE HOMES AND SUPPORT OPPORTUNITIES FOR FIRST TIME HOMEBUYERS. THIS MEASURE WILL STRENGTHEN THAT FUND OVER TIME WHILE INCLUDING REASONABLE PROTECTIONS WHEN THE CITY FACES A SERIOUS BUDGET SHORTFALL. THIS IS A BALANCED APPROACH. IT SUPPORTS MORE HOUSING PRODUCTION WHILE MAKING A LONG TERM COMMITMENT TO AFFORDABILITY AND NEIGHBORHOOD STABILITY.",
@@ -3246,10 +5077,11 @@
      "end_at": "FUTURE GROWTH OF PROPERTY VALUES IN SAN FRANCISCO."
     },
     "donor_statements": [
+     "SFAA-I-RD-AMOUNT",
      "SFAA-I-PROPC"
     ],
-    "in_common": "Both are about the Housing Trust Fund measure (Prop C), which the supervisor sponsors and asks the Board to send to the ballot.",
-    "differs": "The association's side is a reporter's statement about where $211,000 went, not the association's own words; the supervisor does not speak of Prop I or of the committee."
+    "in_common": "Both concern the Housing Trust Fund measure (Prop C): the supervisor sponsors it and asks the Board to send it to the ballot; the reporter says the committee that carries the Association's Prop I money backs it.",
+    "differs": "The reporter's sentence is about an unnamed committee, not the Association's own words, and the article does not give the Association's own position on Prop C. The $211,000 was spent in the 2026 campaign; the Association's gift to this supervisor's committee is $500 in 2020. The supervisor does not speak of Prop I or of the committee."
    },
    "decision": "accept",
    "final_text": "COLLEAGUES, I AM SO EXCITED FOR THE OPPORTUNITY TO SEND THIS MEASURE TO THE BALLOT TODAY AND ASK FOR YOUR SUPPORT. IT WILL SECURE A STEADY FUND OF SORT OF A STEADY SOURCE OF FUNDING FOR AFFORDABLE HOUSING AND PRESERVATION THROUGH THE EXPANSION AND THE EXTENSION OF THE EXISTING HOUSING TRUST FUND TO EVENTUALLY REACH $125 MILLION BY DEDICATING A PORTION OF FUTURE GROWTH OF PROPERTY VALUES IN SAN FRANCISCO.",
@@ -3347,10 +5179,11 @@
      "end_at": "VERSUS A THREE YEAR RESETTING OF THE FEE BASED ON THE MARKET."
     },
     "donor_statements": [
+     "SFAA-I-RD-AMOUNT",
      "SFAA-I-PROPC"
     ],
-    "in_common": "Both concern the Housing Trust Fund measure (Prop C).",
-    "differs": "The association's side is a reporter's statement about where $211,000 went; the supervisor describes the fund as a 30-year commitment against a three-year reset of the inclusionary fee and does not speak of Prop I."
+    "in_common": "Both concern the Housing Trust Fund measure (Prop C): the reporter says the committee that carries the Association's Prop I money backs it.",
+    "differs": "The reporter's sentence is about an unnamed committee, not the Association's own words, and the article does not give the Association's own position on Prop C. The supervisor describes the fund as a 30-year commitment against a three-year reset of the inclusionary fee and does not speak of Prop I."
    },
    "decision": "accept",
    "final_text": "SO NOW AS IT RELATES TO THE HOUSING TRUST FUND BECAUSE WE SET THE INCLUSIONARY RATE EVERY THREE YEARS WE ARE ALSO PUTTING TOGETHER THE HOUSING TRUST FUND FOR 30 YEARS. IT IS A 30 YEAR COMMITMENT THAT IS PERMANENT 30 YEARS VERSUS A THREE YEAR RESETTING OF THE FEE BASED ON THE MARKET.",
@@ -4445,7 +6278,7 @@
    "district": "7",
    "donor": "San Francisco Apartment Association",
    "donor_kind": "trade association",
-   "subject": "Opposing Prop I and backing Prop C (reported)",
+   "subject": "Prop C, backed by the committee that carries the Association's Prop I money (reported)",
    "candidate_id": "52849|01:08:00|Myrna Melgar|SFAA-I-C",
    "quote": {
     "text": "COLLEAGUES, I AM SO EXCITED FOR THE OPPORTUNITY TO SEND THIS MEASURE TO THE BALLOT TODAY AND ASK FOR YOUR SUPPORT. IT WILL SECURE A STEADY FUND OF SORT OF A STEADY SOURCE OF FUNDING FOR AFFORDABLE HOUSING AND PRESERVATION THROUGH THE EXPANSION AND THE EXTENSION OF THE EXISTING HOUSING TRUST FUND TO EVENTUALLY REACH $125 MILLION BY DEDICATING A PORTION OF FUTURE GROWTH OF PROPERTY VALUES IN SAN FRANCISCO.",
@@ -4477,18 +6310,32 @@
    },
    "donor_words": [
     {
+     "id": "SFAA-I-RD-AMOUNT",
+     "kind": "reported by others, not the donor's own words",
+     "section": "The Real Deal",
+     "text": "The San Francisco Apartment Association landlord lobbying group was the biggest opposition contributor, spending $211,000 to fight the proposition.",
+     "url": "https://therealdeal.com/san-francisco/2026/10/29/real-estate-players-pay-big-bucks-to-fight-prop-i/",
+     "page_date": "2026-10-29 (page's own metadata; modified 2026-11-02)",
+     "retrieved": "2026-11-03",
+     "source_kind": "news report",
+     "speaker": "Reporter's statement of fact (The Real Deal staff)",
+     "suggests": "Opposes Prop I; the largest contributor to the campaign against it.",
+     "caveat": "The $211,000 is spent in the 2026 campaign against Prop I; it is not a gift to any official's committee.",
+     "read": "page read in full"
+    },
+    {
      "id": "SFAA-I-PROPC",
      "kind": "reported by others, not the donor's own words",
      "section": "The Real Deal",
      "text": "The money flows through a committee opposing Prop I while backing a separate affordable housing measure, Prop C.",
      "url": "https://therealdeal.com/san-francisco/2026/10/29/real-estate-players-pay-big-bucks-to-fight-prop-i/",
-     "page_date": "2026-10-29",
-     "retrieved": "2026-10-30",
+     "page_date": "2026-10-29 (page's own metadata; modified 2026-11-02)",
+     "retrieved": "2026-11-03",
      "source_kind": "news report",
-     "speaker": "Reporter's statement of fact",
-     "suggests": "Opposes Prop I and backs Prop C.",
-     "caveat": "The same $211,000; the committee is not named in the extract.",
-     "read": "search-result extract of the page read; page not read in full"
+     "speaker": "Reporter's statement of fact (The Real Deal staff)",
+     "suggests": "The committee through which the opposition to Prop I is funded, the Association's $211,000 among it, also backs Prop C. The article does not give the Association's own position on Prop C.",
+     "caveat": "The sentence is about an unnamed committee, not about the Association, and is not in the Association's words. The article names the Association as the largest contributor against Prop I, at $211,000, in the 2026 campaign; that is not a gift to any official's committee and is not the $500 the Association gave Melgar's 2020 committee.",
+     "read": "page read in full"
     }
    ],
    "money": {
@@ -4534,8 +6381,8 @@
     "duplicates_dropped": 0
    },
    "reading": {
-    "in_common": "Both are about the Housing Trust Fund measure (Prop C), which the supervisor sponsors and asks the Board to send to the ballot.",
-    "differs": "The association's side is a reporter's statement about where $211,000 went, not the association's own words; the supervisor does not speak of Prop I or of the committee.",
+    "in_common": "Both concern the Housing Trust Fund measure (Prop C): the supervisor sponsors it and asks the Board to send it to the ballot; the reporter says the committee that carries the Association's Prop I money backs it.",
+    "differs": "The reporter's sentence is about an unnamed committee, not the Association's own words, and the article does not give the Association's own position on Prop C. The $211,000 was spent in the 2026 campaign; the Association's gift to this supervisor's committee is $500 in 2020. The supervisor does not speak of Prop I or of the committee.",
     "match": "accept",
     "hit": "specific",
     "terms": [
@@ -4693,6 +6540,7 @@
   "meetings_sampled": 11,
   "meetings_beyond_sample": 0,
   "meetings_with_minutes": 1,
+  "meetings_with_minutes_unparsed": 0,
   "funded_pairs": 62,
   "funded_pairs_tied_committees": 60,
   "tied_pairs_by_status": {
@@ -4744,6 +6592,439 @@
   "pairings": 5,
   "pairings_complete": 5
  },
+ "scopes": {
+  "sampled": {
+   "tied_pairs": 60,
+   "pairs_by_status": {
+    "no fitting remark": 47,
+    "fitting remark found": 8,
+    "same broad subject only": 5
+   },
+   "pairs_with_any_candidate": 19,
+   "pairs_with_specific_candidate": 14,
+   "pairs_fitting": 8,
+   "pairs_fitting_or_broad": 13,
+   "by_statement_kind": {
+    "own": {
+     "pairs": 19,
+     "fitting": 3,
+     "broad_only": 3
+    },
+    "reported": {
+     "pairs": 48,
+     "fitting": 5,
+     "broad_only": 2
+    }
+   },
+   "fitting_pairs": [
+    {
+     "official": "Bilal Mahmood",
+     "family": "govern-for-california",
+     "subjects": [
+      "GFC-C"
+     ],
+     "statement_kinds": [
+      "own"
+     ]
+    },
+    {
+     "official": "Jackie Fielder",
+     "family": "ifpte-21",
+     "subjects": [
+      "IFPTE-SERVICES"
+     ],
+     "statement_kinds": [
+      "reported"
+     ]
+    },
+    {
+     "official": "Shamann Walton",
+     "family": "laborers-261",
+     "subjects": [
+      "LIUNA-DEF"
+     ],
+     "statement_kinds": [
+      "reported"
+     ]
+    },
+    {
+     "official": "Shamann Walton",
+     "family": "operating-engineers-3",
+     "subjects": [
+      "OE3-DEF"
+     ],
+     "statement_kinds": [
+      "reported"
+     ]
+    },
+    {
+     "official": "Shamann Walton",
+     "family": "seiu-1021",
+     "subjects": [
+      "SEIU1021-DEF"
+     ],
+     "statement_kinds": [
+      "own"
+     ]
+    },
+    {
+     "official": "Alan Wong",
+     "family": "sf-apartment-association",
+     "subjects": [
+      "SFAA-I-C"
+     ],
+     "statement_kinds": [
+      "reported"
+     ]
+    },
+    {
+     "official": "Myrna Melgar",
+     "family": "sf-apartment-association",
+     "subjects": [
+      "SFAA-I-C"
+     ],
+     "statement_kinds": [
+      "reported"
+     ]
+    },
+    {
+     "official": "Alan Wong",
+     "family": "sf-poa",
+     "subjects": [
+      "POA-C"
+     ],
+     "statement_kinds": [
+      "own"
+     ]
+    }
+   ],
+   "fitting_pairs_by_statement_kind": {
+    "own": 3,
+    "reported": 5
+   },
+   "hits_as_passage_and_donor_combinations": {
+    "specific/accept": 16,
+    "specific/loose": 3,
+    "specific/reject": 8,
+    "topic/loose": 7,
+    "topic/reject": 11
+   },
+   "passage_and_donor_combinations": 45,
+   "hits_as_distinct_passages": {
+    "specific/accept": 9,
+    "specific/loose": 2,
+    "specific/reject": 6,
+    "topic/loose": 6,
+    "topic/reject": 11
+   },
+   "distinct_passages": 34,
+   "distinct_fitting_passages": 9,
+   "fitting_passages_official_meeting_combinations": 5
+  },
+  "all": {
+   "tied_pairs": 60,
+   "pairs_by_status": {
+    "no fitting remark": 47,
+    "fitting remark found": 8,
+    "same broad subject only": 5
+   },
+   "pairs_with_any_candidate": 19,
+   "pairs_with_specific_candidate": 14,
+   "pairs_fitting": 8,
+   "pairs_fitting_or_broad": 13,
+   "by_statement_kind": {
+    "own": {
+     "pairs": 19,
+     "fitting": 3,
+     "broad_only": 3
+    },
+    "reported": {
+     "pairs": 48,
+     "fitting": 5,
+     "broad_only": 2
+    }
+   },
+   "fitting_pairs": [
+    {
+     "official": "Bilal Mahmood",
+     "family": "govern-for-california",
+     "subjects": [
+      "GFC-C"
+     ],
+     "statement_kinds": [
+      "own"
+     ]
+    },
+    {
+     "official": "Jackie Fielder",
+     "family": "ifpte-21",
+     "subjects": [
+      "IFPTE-SERVICES"
+     ],
+     "statement_kinds": [
+      "reported"
+     ]
+    },
+    {
+     "official": "Shamann Walton",
+     "family": "laborers-261",
+     "subjects": [
+      "LIUNA-DEF"
+     ],
+     "statement_kinds": [
+      "reported"
+     ]
+    },
+    {
+     "official": "Shamann Walton",
+     "family": "operating-engineers-3",
+     "subjects": [
+      "OE3-DEF"
+     ],
+     "statement_kinds": [
+      "reported"
+     ]
+    },
+    {
+     "official": "Shamann Walton",
+     "family": "seiu-1021",
+     "subjects": [
+      "SEIU1021-DEF"
+     ],
+     "statement_kinds": [
+      "own"
+     ]
+    },
+    {
+     "official": "Alan Wong",
+     "family": "sf-apartment-association",
+     "subjects": [
+      "SFAA-I-C"
+     ],
+     "statement_kinds": [
+      "reported"
+     ]
+    },
+    {
+     "official": "Myrna Melgar",
+     "family": "sf-apartment-association",
+     "subjects": [
+      "SFAA-I-C"
+     ],
+     "statement_kinds": [
+      "reported"
+     ]
+    },
+    {
+     "official": "Alan Wong",
+     "family": "sf-poa",
+     "subjects": [
+      "POA-C"
+     ],
+     "statement_kinds": [
+      "own"
+     ]
+    }
+   ],
+   "fitting_pairs_by_statement_kind": {
+    "own": 3,
+    "reported": 5
+   },
+   "hits_as_passage_and_donor_combinations": {
+    "specific/accept": 16,
+    "specific/loose": 3,
+    "specific/reject": 8,
+    "topic/loose": 7,
+    "topic/reject": 11
+   },
+   "passage_and_donor_combinations": 45,
+   "hits_as_distinct_passages": {
+    "specific/accept": 9,
+    "specific/loose": 2,
+    "specific/reject": 6,
+    "topic/loose": 6,
+    "topic/reject": 11
+   },
+   "distinct_passages": 34,
+   "distinct_fitting_passages": 9,
+   "fitting_passages_official_meeting_combinations": 5
+  }
+ },
+ "weekly": [
+  {
+   "week_of": "2026-01-05",
+   "meetings": 1,
+   "caption_words": 18170,
+   "credited_words": 5598,
+   "passages": 0,
+   "specific_passages": 0,
+   "fitting_passages": 0,
+   "awaiting_review": 0,
+   "pairs_with_specific_hit": 0,
+   "pairs_with_fitting_remark": 0
+  },
+  {
+   "week_of": "2026-04-20",
+   "meetings": 1,
+   "caption_words": 15813,
+   "credited_words": 6387,
+   "passages": 1,
+   "specific_passages": 0,
+   "fitting_passages": 0,
+   "awaiting_review": 0,
+   "pairs_with_specific_hit": 0,
+   "pairs_with_fitting_remark": 0
+  },
+  {
+   "week_of": "2026-07-06",
+   "meetings": 3,
+   "caption_words": 45974,
+   "credited_words": 7992,
+   "passages": 4,
+   "specific_passages": 2,
+   "fitting_passages": 0,
+   "awaiting_review": 0,
+   "pairs_with_specific_hit": 2,
+   "pairs_with_fitting_remark": 0
+  },
+  {
+   "week_of": "2026-07-13",
+   "meetings": 5,
+   "caption_words": 97691,
+   "credited_words": 22120,
+   "passages": 24,
+   "specific_passages": 12,
+   "fitting_passages": 8,
+   "awaiting_review": 0,
+   "pairs_with_specific_hit": 11,
+   "pairs_with_fitting_remark": 7
+  },
+  {
+   "week_of": "2026-07-20",
+   "meetings": 1,
+   "caption_words": 44825,
+   "credited_words": 10361,
+   "passages": 5,
+   "specific_passages": 3,
+   "fitting_passages": 1,
+   "awaiting_review": 0,
+   "pairs_with_specific_hit": 2,
+   "pairs_with_fitting_remark": 1
+  }
+ ],
+ "minutes_by_meeting": [
+  {
+   "id": 51452,
+   "body": "Board of Supervisors",
+   "date": "2026-01-06",
+   "minutes": "not read",
+   "source": "offline: no minutes read",
+   "passages": 0,
+   "status": {}
+  },
+  {
+   "id": 52251,
+   "body": "Board of Supervisors",
+   "date": "2026-04-21",
+   "minutes": "not read",
+   "source": "offline: no minutes read",
+   "passages": 1,
+   "status": {
+    "no_minutes": 1
+   }
+  },
+  {
+   "id": 52800,
+   "body": "Board of Supervisors",
+   "date": "2026-07-07",
+   "minutes": "not read",
+   "source": "offline: no minutes read",
+   "passages": 0,
+   "status": {}
+  },
+  {
+   "id": 52804,
+   "body": "Budget and Finance Committee",
+   "date": "2026-07-08",
+   "minutes": "not read",
+   "source": "offline: no minutes read",
+   "passages": 2,
+   "status": {
+    "no_minutes": 2
+   }
+  },
+  {
+   "id": 52816,
+   "body": "Public Safety and Neighborhood Services Committee",
+   "date": "2026-07-09",
+   "minutes": "not read",
+   "source": "offline: no minutes read",
+   "passages": 2,
+   "status": {
+    "no_minutes": 2
+   }
+  },
+  {
+   "id": 52831,
+   "body": "Rules Committee",
+   "date": "2026-07-13",
+   "minutes": "not read",
+   "source": "offline: no minutes read",
+   "passages": 0,
+   "status": {}
+  },
+  {
+   "id": 52838,
+   "body": "Land Use and Transportation Committee",
+   "date": "2026-07-13",
+   "minutes": "not read",
+   "source": "offline: no minutes read",
+   "passages": 0,
+   "status": {}
+  },
+  {
+   "id": 52849,
+   "body": "Board of Supervisors",
+   "date": "2026-07-14",
+   "minutes": "read and parsed",
+   "source": "excerpts typed from the minutes (data/minutes/52849.txt)",
+   "passages": 24,
+   "status": {
+    "confirmed": 4,
+    "silent": 16,
+    "consistent": 4
+   }
+  },
+  {
+   "id": 52853,
+   "body": "Budget and Finance Committee",
+   "date": "2026-07-15",
+   "minutes": "not read",
+   "source": "offline: no minutes read",
+   "passages": 0,
+   "status": {}
+  },
+  {
+   "id": 52871,
+   "body": "Government Audit and Oversight Committee",
+   "date": "2026-07-16",
+   "minutes": "not read",
+   "source": "offline: no minutes read",
+   "passages": 0,
+   "status": {}
+  },
+  {
+   "id": 52901,
+   "body": "Board of Supervisors",
+   "date": "2026-07-21",
+   "minutes": "not read",
+   "source": "offline: no minutes read",
+   "passages": 5,
+   "status": {
+    "no_minutes": 5
+   }
+  }
+ ],
  "judgement_steps": [
   {
    "step": "Recognise a giver as the donor",
@@ -4766,7 +7047,7 @@
    "decides": "nothing: every turn credited to the official is searched for the terms",
    "done_by": "the program",
    "items": "45 candidate passages",
-   "machine_seconds": 0.32,
+   "machine_seconds": 0.31,
    "judgement_time": "none"
   },
   {
@@ -4782,14 +7063,14 @@
    "decides": "whether the speaker is who the rule says, reading the words around the passage",
    "done_by": "the program proposes a doubt level; the agent that wrote this hop agrees or disagrees",
    "items": "45 judged: 40 agree, 2 disagree, 3 unclear",
-   "machine_seconds": 0.29,
+   "machine_seconds": 0.3,
    "judgement_time": "not timed"
   },
   {
    "step": "Set the credit against the minutes",
    "decides": "when the minutes are silent or conflict, which vote or item the words are about",
    "done_by": "the program checks vote, motion, sponsor and presence; the agent reads each conflict",
-   "items": "35 of 45 candidates have a minutes status other than 'no_minutes'",
+   "items": "35 of 45 candidates have a minutes status other than 'no_minutes' or 'unparsed'",
    "machine_seconds": 0.01,
    "judgement_time": "not timed"
   },
@@ -4821,8 +7102,8 @@
  "timings_seconds": {
   "load data": 0.02,
   "collect: minutes": 0.0,
-  "credit: find turns": 0.29,
-  "search and credit": 0.32,
+  "credit: find turns": 0.3,
+  "search and credit": 0.31,
   "minutes check": 0.01,
   "pairings": 0.02
  }

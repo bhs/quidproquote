@@ -105,6 +105,11 @@ class Minutes(unittest.TestCase):
     def test_no_minutes_is_said(self):
         self.assertEqual(ff.check_minutes(None, "Alan Wong", "X")["status"], "no_minutes")
 
+    def test_text_with_nothing_recognised_is_unparsed_not_silent(self):
+        mn = ff.parse_minutes("Page one of a document with no attendance list, no vote and no motion in it at all.")
+        self.assertFalse(ff.minutes_usable(mn))
+        self.assertEqual(ff.check_minutes(mn, "Alan Wong", "ANYTHING AT ALL HERE")["status"], "unparsed")
+
     def test_names_wrapping_over_lines(self):
         self.assertEqual(ff.read_names("Chan, Chen, Dorsey, \nWong\n\nNoes: 4 - Chan", 4), ["Chan", "Chen", "Dorsey", "Wong"])
 
@@ -221,6 +226,32 @@ class Pairings(unittest.TestCase):
     def test_no_two_pairings_share_a_quote(self):
         keys = [(p["quote"]["meeting_id"], p["official"], p["quote"]["first_stamp"]) for p in self.res["pairings"]]
         self.assertEqual(len(keys), len(set(keys)))
+
+    def test_the_split_by_statement_kind_and_the_distinct_passage_counts_add_up(self):
+        f = self.res["scopes"]["sampled"]
+        fitting = f["fitting_pairs"]
+        self.assertEqual(len(fitting), f["pairs_fitting"])
+        self.assertEqual(sum(f["fitting_pairs_by_statement_kind"].values()), len(fitting))
+        self.assertEqual(sum(f["hits_as_passage_and_donor_combinations"].values()), f["passage_and_donor_combinations"])
+        self.assertEqual(sum(f["hits_as_distinct_passages"].values()), f["distinct_passages"])
+        self.assertLessEqual(f["distinct_passages"], f["passage_and_donor_combinations"])
+        for kind in ("own", "reported"):
+            self.assertLessEqual(f["by_statement_kind"][kind]["fitting"], f["by_statement_kind"][kind]["pairs"])
+
+    def test_the_weeks_cover_every_meeting_and_every_distinct_passage(self):
+        self.assertEqual(sum(w["meetings"] for w in self.res["weekly"]), self.res["metrics"]["meetings_read"])
+        self.assertEqual(sum(w["passages"] for w in self.res["weekly"]), self.res["metrics"]["unique_passages"])
+        self.assertEqual(sum(x["passages"] for x in self.res["minutes_by_meeting"]), self.res["metrics"]["unique_passages"])
+
+    def test_the_donor_words_of_a_reported_pairing_are_read_in_full_pages(self):
+        for p in self.res["pairings"]:
+            for d in p["donor_words"]:
+                if d["kind"].startswith("reported"):
+                    self.assertTrue(d["text"] and d["url"])
+        with open(os.path.join(ff.DATA, "priorities_reported.json"), encoding="utf-8") as f:
+            entries = {e["id"]: e for e in json.load(f)["entries"]}
+        self.assertEqual(entries["SFAA-I-PROPC"]["read"], "page read in full")
+        self.assertIn("unnamed committee", entries["SFAA-I-PROPC"]["caveat"])
 
     def test_the_earlier_pairings_are_all_accounted_for(self):
         self.assertEqual(len(self.res["earlier_pairings_check"]), 5)

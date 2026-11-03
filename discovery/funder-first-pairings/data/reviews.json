@@ -293,16 +293,17 @@
    "decision": "accept",
    "credit": "agree",
    "credit_note": "As for the same passage under POA-C.",
-   "note": "The measure is the Housing Trust Fund charter amendment (Prop C), which the reports say the Apartment Association's money backs.",
+   "note": "The measure is the Housing Trust Fund charter amendment (Prop C), which The Real Deal reports the committee carrying the opposition to Prop I, the Apartment Association's $211,000 among it, also backs.",
    "trim": {
     "begin_at": "COLLEAGUES, I'M PROUD TO CO-SPONSOR THIS MEASURE",
     "end_at": "NEIGHBORHOOD STABILITY."
    },
    "donor_statements": [
+    "SFAA-I-RD-AMOUNT",
     "SFAA-I-PROPC"
    ],
-   "in_common": "Both are about the Housing Trust Fund measure (Prop C): the supervisor co-sponsors it; the reports say the association's donation flows through a committee that backs it.",
-   "differs": "The association's side is a reporter's statement about where $211,000 went (The Real Deal, 29 October 2026), not the association's own words; the supervisor says nothing of Prop I or of the committee."
+   "in_common": "Both are about the Housing Trust Fund measure (Prop C): the supervisor co-sponsors it; the reporter says the committee that carries the Association's Prop I money backs it.",
+   "differs": "The reporter's sentence is about an unnamed committee, not the Association's own words, and the article does not give the Association's own position on Prop C. The $211,000 was spent in the 2026 campaign; the Association's gift to this supervisor's committee is a separate, earlier one. The supervisor says nothing of Prop I or of the committee."
   },
   {
    "id": "52849|01:40:14|Bilal Mahmood|SFAA-I-C",
@@ -375,10 +376,11 @@
     "end_at": "FUTURE GROWTH OF PROPERTY VALUES IN SAN FRANCISCO."
    },
    "donor_statements": [
+    "SFAA-I-RD-AMOUNT",
     "SFAA-I-PROPC"
    ],
-   "in_common": "Both are about the Housing Trust Fund measure (Prop C), which the supervisor sponsors and asks the Board to send to the ballot.",
-   "differs": "The association's side is a reporter's statement about where $211,000 went, not the association's own words; the supervisor does not speak of Prop I or of the committee."
+   "in_common": "Both concern the Housing Trust Fund measure (Prop C): the supervisor sponsors it and asks the Board to send it to the ballot; the reporter says the committee that carries the Association's Prop I money backs it.",
+   "differs": "The reporter's sentence is about an unnamed committee, not the Association's own words, and the article does not give the Association's own position on Prop C. The $211,000 was spent in the 2026 campaign; the Association's gift to this supervisor's committee is $500 in 2020. The supervisor does not speak of Prop I or of the committee."
   },
   {
    "id": "52849|01:11:24|Myrna Melgar|SFAA-I-C",
@@ -398,10 +400,11 @@
     "end_at": "VERSUS A THREE YEAR RESETTING OF THE FEE BASED ON THE MARKET."
    },
    "donor_statements": [
+    "SFAA-I-RD-AMOUNT",
     "SFAA-I-PROPC"
    ],
-   "in_common": "Both concern the Housing Trust Fund measure (Prop C).",
-   "differs": "The association's side is a reporter's statement about where $211,000 went; the supervisor describes the fund as a 30-year commitment against a three-year reset of the inclusionary fee and does not speak of Prop I."
+   "in_common": "Both concern the Housing Trust Fund measure (Prop C): the reporter says the committee that carries the Association's Prop I money backs it.",
+   "differs": "The reporter's sentence is about an unnamed committee, not the Association's own words, and the article does not give the Association's own position on Prop C. The supervisor describes the fund as a 30-year commitment against a three-year reset of the inclusionary fee and does not speak of Prop I."
   },
   {
    "id": "52849|00:03:42|Daniel Lurie|CHAMBER-H",

@@ -269,18 +269,32 @@
    "caveat": "The $211,000 is a gift to a measure committee, not to any official's committee."
   },
   {
+   "id": "SFAA-I-RD-AMOUNT",
+   "family": "sf-apartment-association",
+   "tier": "news report",
+   "url": "https://therealdeal.com/san-francisco/2026/10/29/real-estate-players-pay-big-bucks-to-fight-prop-i/",
+   "outlet": "The Real Deal",
+   "published": "2026-10-29 (page's own metadata; modified 2026-11-02)",
+   "retrieved": "2026-11-03",
+   "read": "page read in full",
+   "speaker": "Reporter's statement of fact (The Real Deal staff)",
+   "quote": "The San Francisco Apartment Association landlord lobbying group was the biggest opposition contributor, spending $211,000 to fight the proposition.",
+   "suggests": "Opposes Prop I; the largest contributor to the campaign against it.",
+   "caveat": "The $211,000 is spent in the 2026 campaign against Prop I; it is not a gift to any official's committee."
+  },
+  {
    "id": "SFAA-I-PROPC",
    "family": "sf-apartment-association",
    "tier": "news report",
    "url": "https://therealdeal.com/san-francisco/2026/10/29/real-estate-players-pay-big-bucks-to-fight-prop-i/",
    "outlet": "The Real Deal",
-   "published": "2026-10-29",
-   "retrieved": "2026-10-30",
-   "read": "search-result extract of the page read; page not read in full",
-   "speaker": "Reporter's statement of fact",
+   "published": "2026-10-29 (page's own metadata; modified 2026-11-02)",
+   "retrieved": "2026-11-03",
+   "read": "page read in full",
+   "speaker": "Reporter's statement of fact (The Real Deal staff)",
    "quote": "The money flows through a committee opposing Prop I while backing a separate affordable housing measure, Prop C.",
-   "suggests": "Opposes Prop I and backs Prop C.",
-   "caveat": "The same $211,000; the committee is not named in the extract."
+   "suggests": "The committee through which the opposition to Prop I is funded, the Association's $211,000 among it, also backs Prop C. The article does not give the Association's own position on Prop C.",
+   "caveat": "The sentence is about an unnamed committee, not about the Association, and is not in the Association's words. The article names the Association as the largest contributor against Prop I, at $211,000, in the 2026 campaign; that is not a gift to any official's committee and is not the $500 the Association gave Melgar's 2020 committee."
   }
  ]
 }

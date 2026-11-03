@@ -3,12 +3,15 @@ the pairings laid out as leads for a reporter to check. Nothing here claims a ca
 Standard library only."""
 
 import collections
+import datetime
 
 import fmap_lib as fl
 
 NO_CAUSE = ("A lead, not a finding. The two are shown side by side for a reader to check. Nothing here says why "
             "anyone said or gave anything, and the order of the dates is not an explanation.")
 DOUBT_WORDS = {"low": "low doubt", "medium": "medium doubt", "high": "high doubt"}
+UNCHECKED = ("no_minutes", "unparsed")  # minutes statuses that say nothing about the credit
+DECISION_RANK = {"accept": 0, "loose": 1, "reject": 2, "unreviewed": 3}
 
 
 def pct(n, d):
@@ -44,7 +47,7 @@ def metrics(table, cands, per_meeting, pairings, reviews_doc):
     for c in u:
         if c["decision"] != "unreviewed":
             u_agree[c["credit"]["doubt"]][(c["review"] or {}).get("credit", "not judged")] += 1
-    with_minutes = [c for c in u if c["minutes"]["status"] != "no_minutes"]
+    with_minutes = [c for c in u if c["minutes"]["status"] not in UNCHECKED]
     return {
         "unique_passages": len(u), "credit_doubt_unique": dict(collections.Counter(c["credit"]["doubt"] for c in u)),
         "reviewer_vs_rule_credit_unique": {k: dict(v) for k, v in u_agree.items()},
@@ -53,7 +56,8 @@ def metrics(table, cands, per_meeting, pairings, reviews_doc):
         "meetings_read": len(per_meeting),
         "meetings_sampled": sum(1 for m in per_meeting if m["source"] == "sampled"),
         "meetings_beyond_sample": sum(1 for m in per_meeting if m["source"] != "sampled"),
-        "meetings_with_minutes": sum(1 for m in per_meeting if m["minutes_parsed"]),
+        "meetings_with_minutes": sum(1 for m in per_meeting if m["minutes_parsed"] and m["minutes_parsed"]["usable"]),
+        "meetings_with_minutes_unparsed": sum(1 for m in per_meeting if m["minutes_parsed"] and not m["minutes_parsed"]["usable"]),
         "funded_pairs": len(table), "funded_pairs_tied_committees": len(tied),
         "tied_pairs_by_status": dict(status),
         "tied_pairs_with_any_candidate": sum(1 for r in tied if r["candidates"]),
@@ -66,6 +70,137 @@ def metrics(table, cands, per_meeting, pairings, reviews_doc):
         "reviewer_vs_rule_credit_by_doubt": {k: dict(v) for k, v in agree.items()},
         "minutes_status_all": dict(minutes_all), "minutes_status_accepted": dict(minutes_acc),
         "pairings": len(pairings), "pairings_complete": sum(1 for p in pairings if complete(p))}
+
+
+def subject_kinds(subjects, prio):
+    """subject id -> 'own' (every statement is the donor's own words), 'reported' (every statement is a report by
+    others) or 'mixed'."""
+    out = {}
+    for s in subjects:
+        k = {"own" if sid in prio else "reported" for sid in s["statements"]}
+        out[s["id"]] = k.pop() if len(k) == 1 else "mixed"
+    return out
+
+
+def distinct_passages(cands):
+    """One entry per passage (meeting, official, first stamp): the candidates that share it, one for each donor
+    subject it hit."""
+    u = collections.OrderedDict()
+    for c in cands:
+        u.setdefault((c["meeting_id"], c["official"], c["first_stamp"]), []).append(c)
+    return u
+
+
+def scope_figures(table, cands, kinds):
+    """The Question 1 figures over one set of meetings: the pair outcomes, the split by whether the donor's statement
+    is its own words or a report, and the hits by kind of term, counted as passage-and-donor combinations and as
+    distinct passages. `table` and `cands` must cover the same meetings."""
+    tied = [r for r in table if r["tied"]]
+    fig = {"tied_pairs": len(tied), "pairs_by_status": dict(collections.Counter(r["status"] for r in tied)),
+           "pairs_with_any_candidate": sum(1 for r in tied if r["candidates"]),
+           "pairs_with_specific_candidate": sum(1 for r in tied if r["specific"]),
+           "pairs_fitting": sum(1 for r in tied if r["decisions"].get("accept")),
+           "pairs_fitting_or_broad": sum(1 for r in tied if r["decisions"].get("accept") or r["decisions"].get("loose"))}
+    by_pair = collections.defaultdict(list)
+    for c in cands:
+        by_pair[(c["official"], c["family"])].append(c)
+    split = {}
+    for kind in ("own", "reported"):
+        rows = []
+        for r in tied:
+            if kind not in r["statement_kinds"]:
+                continue
+            cs = [c for c in by_pair[(r["official"], r["family"])] if kinds[c["subject"]] == kind]
+            dec = {c["decision"] for c in cs}
+            rows.append("accept" if "accept" in dec else "loose" if "loose" in dec else "other")
+        split[kind] = {"pairs": len(rows), "fitting": rows.count("accept"), "broad_only": rows.count("loose")}
+    fig["by_statement_kind"] = split
+    fitting = []
+    for r in tied:
+        acc = [c for c in by_pair[(r["official"], r["family"])] if c["decision"] == "accept"]
+        if acc:
+            fitting.append({"official": r["official"], "family": r["family"],
+                            "subjects": sorted({c["subject"] for c in acc}),
+                            "statement_kinds": sorted({kinds[c["subject"]] for c in acc})})
+    fig["fitting_pairs"] = fitting
+    fig["fitting_pairs_by_statement_kind"] = dict(collections.Counter(
+        "+".join(f["statement_kinds"]) for f in fitting))
+    combos = collections.Counter((c["tier"], c["decision"]) for c in cands)
+    fig["hits_as_passage_and_donor_combinations"] = {"%s/%s" % k: v for k, v in sorted(combos.items())}
+    fig["passage_and_donor_combinations"] = len(cands)
+    dist = collections.Counter()
+    fit_turns = set()
+    for key, cs in distinct_passages(cands).items():
+        tier = "specific" if any(c["tier"] == "specific" for c in cs) else "topic"
+        best = min((c["decision"] for c in cs if c["tier"] == tier), key=lambda d: DECISION_RANK[d])
+        dist[(tier, best)] += 1
+        if best == "accept":
+            fit_turns.add((key[0], key[1]))
+    fig["hits_as_distinct_passages"] = {"%s/%s" % k: v for k, v in sorted(dist.items())}
+    fig["distinct_passages"] = sum(dist.values())
+    fig["distinct_fitting_passages"] = sum(v for (t, d), v in dist.items() if d == "accept")
+    fig["fitting_passages_official_meeting_combinations"] = len(fit_turns)
+    return fig
+
+
+def week_of(date):
+    d = datetime.date.fromisoformat(date)
+    return (d - datetime.timedelta(days=d.weekday())).isoformat()
+
+
+def weekly(per_meeting, cands, table):
+    """Week by week (Monday-dated weeks of the meeting date): meetings read, caption words credited, distinct
+    passages that hit a term, how many hit a specific term, how many a person judged fitting, how many still await a
+    person, and the funded pairs they come from."""
+    tied = {(r["official"], r["family"]) for r in table if r["tied"]}
+    weeks = collections.OrderedDict()
+    meeting_week = {}
+    for m in sorted(per_meeting, key=lambda m: m["date"]):
+        w = week_of(m["date"])
+        meeting_week[m["id"]] = w
+        e = weeks.setdefault(w, {"week_of": w, "meetings": 0, "caption_words": 0, "credited_words": 0, "passages": 0,
+                                 "specific_passages": 0, "fitting_passages": 0, "awaiting_review": 0,
+                                 "pairs_with_specific_hit": set(), "pairs_with_fitting_remark": set()})
+        e["meetings"] += 1
+        e["caption_words"] += m["caption_words"]
+        e["credited_words"] += m["credited_words"]
+    for key, cs in distinct_passages(cands).items():
+        e = weeks[meeting_week[key[0]]]
+        e["passages"] += 1
+        if any(c["tier"] == "specific" for c in cs):
+            e["specific_passages"] += 1
+        if any(c["decision"] == "accept" for c in cs):
+            e["fitting_passages"] += 1
+        if any(c["decision"] == "unreviewed" for c in cs):
+            e["awaiting_review"] += 1
+        for c in cs:
+            pk = (c["official"], c["family"])
+            if pk in tied and c["tier"] == "specific":
+                e["pairs_with_specific_hit"].add(pk)
+            if pk in tied and c["decision"] == "accept":
+                e["pairs_with_fitting_remark"].add(pk)
+    out = []
+    for e in weeks.values():
+        e["pairs_with_specific_hit"] = len(e["pairs_with_specific_hit"])
+        e["pairs_with_fitting_remark"] = len(e["pairs_with_fitting_remark"])
+        out.append(e)
+    return out
+
+
+def minutes_by_meeting(per_meeting, cands):
+    """For each meeting: whether its minutes were read and parsed, and the minutes status of the distinct passages
+    credited in it."""
+    by = collections.defaultdict(list)
+    for key, cs in distinct_passages(cands).items():
+        by[key[0]].append(cs[0])
+    out = []
+    for m in per_meeting:
+        mp = m["minutes_parsed"]
+        state = "not read" if not mp else ("read and parsed" if mp["usable"] else "read, nothing recognised")
+        out.append({"id": m["id"], "body": m["body"], "date": m["date"], "minutes": state, "source": m["minutes"],
+                    "passages": len(by[m["id"]]),
+                    "status": dict(collections.Counter(c["minutes"]["status"] for c in by[m["id"]]))})
+    return out
 
 
 def judgement_steps(reviews_doc, subjects, cands, pairings, timings):
@@ -94,7 +229,7 @@ def judgement_steps(reviews_doc, subjects, cands, pairings, timings):
          "machine_seconds": timings.get("credit: find turns"), "judgement_time": "not timed"},
         {"step": "Set the credit against the minutes", "decides": "when the minutes are silent or conflict, which vote or item the words are about",
          "done_by": "the program checks vote, motion, sponsor and presence; the agent reads each conflict",
-         "items": "%d of %d candidates have a minutes status other than 'no_minutes'" % (sum(1 for c in cands if c["minutes"]["status"] != "no_minutes"), len(cands)),
+         "items": "%d of %d candidates have a minutes status other than 'no_minutes' or 'unparsed'" % (sum(1 for c in cands if c["minutes"]["status"] not in UNCHECKED), len(cands)),
          "machine_seconds": timings.get("minutes check"), "judgement_time": "not timed"},
         {"step": "Cut the quote", "decides": "where the quote begins and ends, as whole sentences, without altering a word",
          "done_by": "the agent that wrote this hop; the program refuses a cut that is not word for word in the transcript",
@@ -113,6 +248,48 @@ def money_line(c):
         "" if c["schedule_a_rows"] == 1 else "s", rng)
 
 
+def render_scope(label, f):
+    t = f["tied_pairs"]
+    L = ["", "### Funded pairs, over %s" % label, "",
+         "- Funded pairs counted (those that reached a committee of the official's own or a measure committee carrying the official's name): %d." % t,
+         "- Pairs with at least one passage that hit the donor's subject terms: %s." % pct(f["pairs_with_any_candidate"], t),
+         "- Pairs with a passage that hit a specific term (a measure name or a phrase particular to the proposal): %s." % pct(f["pairs_with_specific_candidate"], t),
+         "- Pairs with a passage a person judged on the donor's subject (accept): %s." % pct(f["pairs_fitting"], t),
+         "- Pairs with an accepted or a broad-subject (loose) passage: %s." % pct(f["pairs_fitting_or_broad"], t),
+         "- Outcome of the pairs: %s." % f["pairs_by_status"], "",
+         "**Donor's own words or a report by others.** A statement is the donor's own words when it is in data/priorities.json and a "
+         "report by others when it is in data/priorities_reported.json; each subject is searched on one kind or the other. A donor "
+         "with both kinds appears in both rows, so the two rows add to more than the pairs above.", "",
+         "| Statement searched on | Funded pairs with a statement of this kind | Pairs with a fitting remark | Pairs with only a broad-subject remark |",
+         "|---|---|---|---|"]
+    for kind, name in (("own", "the donor's own words"), ("reported", "a report by others")):
+        x = f["by_statement_kind"][kind]
+        L.append("| %s | %d | %d (%d%%) | %d |" % (name, x["pairs"], x["fitting"],
+                                                   round(100.0 * x["fitting"] / x["pairs"]) if x["pairs"] else 0, x["broad_only"]))
+    L += ["", "Pairs with a fitting remark, and the kind of statement each rests on:", ""]
+    for x in f["fitting_pairs"]:
+        L.append("- %s and %s: %s (subject %s)" % (x["official"], x["family"], " and ".join(x["statement_kinds"]),
+                                                  ", ".join(x["subjects"])))
+    if f["fitting_pairs"]:
+        L.append("")
+        L.append("Fitting pairs by statement kind: %s." % f["fitting_pairs_by_statement_kind"])
+    L += ["", "**Hits by kind of term.** A specific term is a measure's name or a phrase particular to the proposal (the `anchor` terms "
+          "of data/subjects.json); a topic term is a broad subject word. One passage can hit several donors' subjects, so it is "
+          "counted two ways: once for each donor subject it hit, and once as a distinct passage (taking, for a passage with "
+          "several donors, the best decision among the subjects that hit it on its kind of term).", "",
+          "| Kind of term | Decision | Passage-and-donor combinations | Distinct passages |", "|---|---|---|---|"]
+    keys = sorted(set(f["hits_as_passage_and_donor_combinations"]) | set(f["hits_as_distinct_passages"]))
+    for k in keys:
+        tier, dec = k.split("/")
+        L.append("| %s | %s | %d | %d |" % (tier, dec, f["hits_as_passage_and_donor_combinations"].get(k, 0),
+                                              f["hits_as_distinct_passages"].get(k, 0)))
+    L.append("| total | | %d | %d |" % (f["passage_and_donor_combinations"], f["distinct_passages"]))
+    L.append("")
+    L.append("%d distinct passages were judged fitting; they come from %d combinations of an official and a meeting." % (
+        f["distinct_fitting_passages"], f["fitting_passages_official_meeting_combinations"]))
+    return L
+
+
 def render_results(res):
     m, ext = res["metrics"], res["extension"]
     L = ["# Funder-first pairings: results of the run", ""]
@@ -121,8 +298,10 @@ def render_results(res):
     L.append("")
     L.append("## Meetings read")
     L.append("")
-    L.append("%d meetings: %d sampled in earlier hops, %d beyond the sample; minutes parsed for %d." % (
-        m["meetings_read"], m["meetings_sampled"], m["meetings_beyond_sample"], m["meetings_with_minutes"]))
+    L.append("%d meetings: %d sampled in earlier hops, %d beyond the sample; minutes read and parsed for %d, read but nothing "
+             "recognised in them for %d." % (
+                 m["meetings_read"], m["meetings_sampled"], m["meetings_beyond_sample"], m["meetings_with_minutes"],
+                 m["meetings_with_minutes_unparsed"]))
     if ext["attempted"]:
         L.append("")
         L.append("Beyond the sample: read the %s for %s; the calendar listed %d meetings of the Board and its standing "
@@ -149,14 +328,26 @@ def render_results(res):
                  m["funded_pairs"], m["funded_pairs_tied_committees"], m["funded_pairs"] - m["funded_pairs_tied_committees"],
                  m["funded_pairs_tied_committees"]))
     L.append("")
-    t = m["funded_pairs_tied_committees"]
-    L.append("- Pairs with at least one passage that hit the donor's subject terms: %s." % pct(m["tied_pairs_with_any_candidate"], t))
-    L.append("- Pairs with a passage that hit a specific term (a measure name or a phrase particular to the proposal): %s." % pct(m["tied_pairs_with_specific_candidate"], t))
-    L.append("- Pairs with a passage a person judged on the donor's subject (accept): %s." % pct(m["tied_pairs_with_fitting_remark"], t))
-    L.append("- Pairs with an accepted or a broad-subject (loose) passage: %s." % pct(m["tied_pairs_with_fitting_or_broad"], t))
-    L.append("- Candidate passages: %d (%d specific); decisions: %s." % (m["candidates"], m["candidates_specific"], m["candidates_by_decision"]))
-    L.append("- Status of the pairs: %s." % m["tied_pairs_by_status"])
-    L += ["", "### Every funded pair, with the outcome", "",
+    L += render_scope("the %d sampled meetings (every passage in them has been read by a person)" % m["meetings_sampled"],
+                      res["scopes"]["sampled"])
+    if m["meetings_beyond_sample"]:
+        L += render_scope("all %d meetings read (passages in the meetings beyond the sample await a person: they count as "
+                          "candidates, never as fitting)" % m["meetings_read"], res["scopes"]["all"])
+    L += ["", "### Week by week", "",
+          "Weeks are Monday-dated, by the date of the meeting. A passage counts once however many donors' subjects it hit. "
+          "'Specific hits' is what the program finds without a person; 'fitting' is what a person has judged, so it is zero "
+          "for any meeting a person has not read.", "",
+          "| Week of | Meetings | Caption words credited to a named official | Passages with a term hit | Specific hits | Judged fitting | Awaiting a person | Funded pairs with a specific hit | Funded pairs with a fitting remark |",
+          "|---|---|---|---|---|---|---|---|---|"]
+    for w in res["weekly"]:
+        L.append("| %s | %d | %d of %d | %d | %d | %d | %d | %d | %d |" % (
+            w["week_of"], w["meetings"], w["credited_words"], w["caption_words"], w["passages"], w["specific_passages"],
+            w["fitting_passages"], w["awaiting_review"], w["pairs_with_specific_hit"], w["pairs_with_fitting_remark"]))
+    weeks_with = sum(1 for w in res["weekly"] if w["pairs_with_fitting_remark"])
+    L.append("")
+    L.append("%d of the %d weeks read have a funded pair with a fitting remark; %d have a funded pair with a specific hit." % (
+        weeks_with, len(res["weekly"]), sum(1 for w in res["weekly"] if w["pairs_with_specific_hit"])))
+    L += ["", "### Every funded pair, with the outcome (all meetings read)", "",
           "| Official | Donor | Money by committee (Schedule A, not added across committees) | Outcome | Why |", "|---|---|---|---|---|"]
     for r in res["pairs"]:
         money = "<br>".join("%s %s (%s)" % (fl.dollars(c["schedule_a_total"]), c["committee"], c["kind"]) for c in r["committees"])
@@ -179,7 +370,12 @@ def render_results(res):
     L.append("- Where the reviewer judged the credit (rule doubt: reviewer's judgement): %s." % m["reviewer_vs_rule_credit_by_doubt"])
     L.append("- Minutes status of all candidates: %s; of the accepted ones: %s." % (m["minutes_status_all"], m["minutes_status_accepted"]))
     L.append("")
-    L.append("Minutes status: `confirmed` = the minutes record an act by the credited official that fits (a vote on the side the words state, a motion, a summary of addressing the Board); `consistent` = the minutes list the official as a sponsor of the item the words are about (fits, but does not say who spoke); `conflict` = the minutes put the official on the other side of the best-matching vote or do not name them; `silent` = nothing recorded (ordinary for floor remarks; the minutes are action minutes); `no_minutes` = none read.")
+    L.append("Minutes status: `confirmed` = the minutes record an act by the credited official that fits (a vote on the side the words state, a motion, a summary of addressing the Board); `consistent` = the minutes list the official as a sponsor of the item the words are about (fits, but does not say who spoke); `conflict` = the minutes put the official on the other side of the best-matching vote or do not name them; `silent` = nothing recorded (ordinary for floor remarks; the minutes are action minutes); `unparsed` = minutes text was read but the parser recognised no attendance, vote, motion, sponsor or summary in it, so the credit was not checked; `no_minutes` = none read.")
+    L += ["", "### Minutes, meeting by meeting", "",
+          "| Meeting | Date | Minutes | Distinct passages | Minutes status of those passages |", "|---|---|---|---|---|"]
+    for x in res["minutes_by_meeting"]:
+        L.append("| %s (%s) | %s | %s | %d | %s |" % (x["body"], x["id"], x["date"], x["minutes"], x["passages"],
+                                                    ", ".join("%s %d" % kv for kv in sorted(x["status"].items())) or "none"))
     L += ["", "### The earlier hop's five pairings, searched for again", "",
           "| Pairing | Meeting | Quote | Earlier doubt | Rule doubt | Outcome |", "|---|---|---|---|---|---|"]
     for e in res["earlier_pairings_check"]:

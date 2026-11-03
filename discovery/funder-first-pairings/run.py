@@ -10,7 +10,7 @@ person made of those passages (data/reviews.json); and writes results.json, resu
 Every funded pair with no fitting remark is recorded, with the reason.
 
 Settings (environment): FF_YEAR (calendar year to read, default 2026), FF_MAX_NEW_MEETINGS (meetings beyond the
-sampled ones, default 40), FF_TIME_BUDGET_S (seconds each of the two collecting steps may take, default 900),
+sampled ones, default 60), FF_TIME_BUDGET_S (seconds each of the two collecting steps may take, default 300),
 FF_CACHE_DIR (where fetched transcripts and minutes are kept between runs).
 A meeting or minutes document that cannot be fetched is recorded with the error; it is never replaced by an
 empty answer, and the figures say how many meetings they rest on.
@@ -63,7 +63,7 @@ def read_excerpt(mid):
 
 
 def over_budget(t0):
-    return time.perf_counter() - t0 > float(os.environ.get("FF_TIME_BUDGET_S", "900"))
+    return time.perf_counter() - t0 > float(os.environ.get("FF_TIME_BUDGET_S", "300"))
 
 
 def load_meetings(offline, timer):
@@ -82,7 +82,7 @@ def load_meetings(offline, timer):
     by_id = {m["id"]: m for m in meetings}
     if not offline:
         year = int(os.environ.get("FF_YEAR", "2026"))
-        max_new = int(os.environ.get("FF_MAX_NEW_MEETINGS", "40"))
+        max_new = int(os.environ.get("FF_MAX_NEW_MEETINGS", "60"))
         ext["year"], ext["wanted"] = year, max_new
         with timer.step("collect: calendar"):
             try:
@@ -269,7 +269,7 @@ def build_pairings(cands, pairs, subjects_by_id, meetings, snap, fams, prio, rep
     return out
 
 
-def pair_table(pairs, cands, words_by_official):
+def pair_table(pairs, cands, words_by_official, family_kinds):
     rows = []
     for (off, fam), m in pairs.items():
         cs = [c for c in cands if c["official"] == off and c["family"] == fam]
@@ -291,6 +291,7 @@ def pair_table(pairs, cands, words_by_official):
             reason = "no passage in the %d words credited to the official hit the donor's subject terms" % words_by_official[off]
         per = ff.money_summary(m)
         rows.append({"official": off, "family": fam, "tied": m["tied"], "status": status, "reason": reason,
+                     "statement_kinds": sorted(family_kinds.get(fam, ())),
                      "candidates": len(cs), "specific": sum(1 for c in cs if c["tier"] == "specific"),
                      "decisions": dict(dec), "committees": [
                          {"committee": p["committee"], "kind": p["kind"], "schedule_a_total": p["schedule_a_total"],
@@ -354,23 +355,34 @@ def main(argv=None):
     cands = candidates_for(pairs, subjects, meetings, regions, reviews, timer)
     stale = sorted(set(reviews) - {c["id"] for c in cands})
     subjects_by_id = {s["id"]: s for s in subjects}
-    words, covered, per_meeting = collections.Counter(), collections.Counter(), []
+    words, words_sampled, per_meeting = collections.Counter(), collections.Counter(), []
     for m in meetings:
         total = len(m["doc"].text.split())
         cw = 0
         for r in regions[m["id"]]:
             n = len(m["doc"].text[r["start"]:r["end"]].split())
             words[r["official"]] += n
+            if m["source"] == "sampled":
+                words_sampled[r["official"]] += n
             cw += n
         per_meeting.append({"id": m["id"], "body": m["body"], "date": m["date"], "source": m["source"],
                             "caption_rows": len(m["doc"].rows), "caption_words": total, "credited_words": cw,
                             "turns_credited": len(regions[m["id"]]), "transcript_url": TRANSCRIPT_URL % m["id"],
                             "minutes": m["minutes_source"] or m["minutes_note"],
                             "minutes_parsed": ({"present": len(m["minutes"]["present"]), "votes": len(m["minutes"]["votes"]),
-                                                "motions": len(m["minutes"]["motions"])} if m["minutes"] else None)})
+                                                "motions": len(m["minutes"]["motions"]),
+                                                "usable": ff.minutes_usable(m["minutes"])}
+                                               if m["minutes"] else None)})
     with timer.step("pairings"):
         pairings = build_pairings(cands, pairs, subjects_by_id, meetings, snap, fams, prio, reported, reviews)
-    table = pair_table(pairs, cands, words)
+    kinds = report.subject_kinds(subjects, prio)
+    family_kinds = collections.defaultdict(set)
+    for sub in subjects:
+        family_kinds[sub["family"]].add(kinds[sub["id"]])
+    table = pair_table(pairs, cands, words, family_kinds)
+    sampled_ids = {m["id"] for m in meetings if m["source"] == "sampled"}
+    cands_sampled = [c for c in cands if c["meeting_id"] in sampled_ids]
+    table_sampled = pair_table(pairs, cands_sampled, words_sampled, family_kinds)
     for c in cands:
         c.pop("_pos")
     results = {
@@ -381,8 +393,13 @@ def main(argv=None):
         "extension": ext, "meetings": per_meeting,
         "credited_words_by_official": dict(sorted(words.items())),
         "earlier_pairings_check": earlier_check(meetings, regions, cands),
-        "pairs": table, "candidates": cands, "stale_reviews": stale, "pairings": pairings,
+        "pairs": table, "pairs_sampled": table_sampled, "candidates": cands, "stale_reviews": stale,
+        "pairings": pairings,
         "metrics": report.metrics(table, cands, per_meeting, pairings, reviews_doc),
+        "scopes": {"sampled": report.scope_figures(table_sampled, cands_sampled, kinds),
+                   "all": report.scope_figures(table, cands, kinds)},
+        "weekly": report.weekly(per_meeting, cands, table),
+        "minutes_by_meeting": report.minutes_by_meeting(per_meeting, cands),
         "judgement_steps": report.judgement_steps(reviews_doc, subjects, cands, pairings, timer.t),
         "timings_seconds": dict(timer.t)}
     with timer.step("write"):

@@ -4,7 +4,7 @@ Mode: offline (sampled meetings and minutes excerpts only). Money retrieved 2026
 
 ## Meetings read
 
-11 meetings: 11 sampled in earlier hops, 0 beyond the sample; minutes parsed for 1.
+11 meetings: 11 sampled in earlier hops, 0 beyond the sample; minutes read and parsed for 1, read but nothing recognised in them for 0.
 
 Offline run: nothing beyond the sample was requested.
 
@@ -26,14 +26,64 @@ Offline run: nothing beyond the sample was requested.
 
 Funded pairs (a donor family with Schedule A money in a committee of the official): 62, of which 60 reached a committee that is the official's own or a measure committee carrying the official's name (the other 2 reached only a committee formed to support or oppose the official). Counts below are over the 60.
 
+
+### Funded pairs, over the 11 sampled meetings (every passage in them has been read by a person)
+
+- Funded pairs counted (those that reached a committee of the official's own or a measure committee carrying the official's name): 60.
 - Pairs with at least one passage that hit the donor's subject terms: 19 of 60 (32%).
 - Pairs with a passage that hit a specific term (a measure name or a phrase particular to the proposal): 14 of 60 (23%).
 - Pairs with a passage a person judged on the donor's subject (accept): 8 of 60 (13%).
 - Pairs with an accepted or a broad-subject (loose) passage: 13 of 60 (22%).
-- Candidate passages: 45 (27 specific); decisions: {'reject': 19, 'accept': 16, 'loose': 10}.
-- Status of the pairs: {'no fitting remark': 47, 'fitting remark found': 8, 'same broad subject only': 5}.
+- Outcome of the pairs: {'no fitting remark': 47, 'fitting remark found': 8, 'same broad subject only': 5}.
 
-### Every funded pair, with the outcome
+**Donor's own words or a report by others.** A statement is the donor's own words when it is in data/priorities.json and a report by others when it is in data/priorities_reported.json; each subject is searched on one kind or the other. A donor with both kinds appears in both rows, so the two rows add to more than the pairs above.
+
+| Statement searched on | Funded pairs with a statement of this kind | Pairs with a fitting remark | Pairs with only a broad-subject remark |
+|---|---|---|---|
+| the donor's own words | 19 | 3 (16%) | 3 |
+| a report by others | 48 | 5 (10%) | 2 |
+
+Pairs with a fitting remark, and the kind of statement each rests on:
+
+- Bilal Mahmood and govern-for-california: own (subject GFC-C)
+- Jackie Fielder and ifpte-21: reported (subject IFPTE-SERVICES)
+- Shamann Walton and laborers-261: reported (subject LIUNA-DEF)
+- Shamann Walton and operating-engineers-3: reported (subject OE3-DEF)
+- Shamann Walton and seiu-1021: own (subject SEIU1021-DEF)
+- Alan Wong and sf-apartment-association: reported (subject SFAA-I-C)
+- Myrna Melgar and sf-apartment-association: reported (subject SFAA-I-C)
+- Alan Wong and sf-poa: own (subject POA-C)
+
+Fitting pairs by statement kind: {'own': 3, 'reported': 5}.
+
+**Hits by kind of term.** A specific term is a measure's name or a phrase particular to the proposal (the `anchor` terms of data/subjects.json); a topic term is a broad subject word. One passage can hit several donors' subjects, so it is counted two ways: once for each donor subject it hit, and once as a distinct passage (taking, for a passage with several donors, the best decision among the subjects that hit it on its kind of term).
+
+| Kind of term | Decision | Passage-and-donor combinations | Distinct passages |
+|---|---|---|---|
+| specific | accept | 16 | 9 |
+| specific | loose | 3 | 2 |
+| specific | reject | 8 | 6 |
+| topic | loose | 7 | 6 |
+| topic | reject | 11 | 11 |
+| total | | 45 | 34 |
+
+9 distinct passages were judged fitting; they come from 5 combinations of an official and a meeting.
+
+### Week by week
+
+Weeks are Monday-dated, by the date of the meeting. A passage counts once however many donors' subjects it hit. 'Specific hits' is what the program finds without a person; 'fitting' is what a person has judged, so it is zero for any meeting a person has not read.
+
+| Week of | Meetings | Caption words credited to a named official | Passages with a term hit | Specific hits | Judged fitting | Awaiting a person | Funded pairs with a specific hit | Funded pairs with a fitting remark |
+|---|---|---|---|---|---|---|---|---|
+| 2026-01-05 | 1 | 5598 of 18170 | 0 | 0 | 0 | 0 | 0 | 0 |
+| 2026-04-20 | 1 | 6387 of 15813 | 1 | 0 | 0 | 0 | 0 | 0 |
+| 2026-07-06 | 3 | 7992 of 45974 | 4 | 2 | 0 | 0 | 2 | 0 |
+| 2026-07-13 | 5 | 22120 of 97691 | 24 | 12 | 8 | 0 | 11 | 7 |
+| 2026-07-20 | 1 | 10361 of 44825 | 5 | 3 | 1 | 0 | 2 | 1 |
+
+2 of the 5 weeks read have a funded pair with a fitting remark; 3 have a funded pair with a specific hit.
+
+### Every funded pair, with the outcome (all meetings read)
 
 | Official | Donor | Money by committee (Schedule A, not added across committees) | Outcome | Why |
 |---|---|---|---|---|
@@ -114,7 +164,23 @@ Credit comes from the caption text: a cue that names the official as about to sp
 - Where the reviewer judged the credit (rule doubt: reviewer's judgement): {'low': {'agree': 17, 'unclear': 1}, 'medium': {'agree': 14, 'disagree': 2, 'unclear': 2}, 'high': {'agree': 9}}.
 - Minutes status of all candidates: {'confirmed': 5, 'silent': 25, 'no_minutes': 10, 'consistent': 5}; of the accepted ones: {'silent': 12, 'no_minutes': 1, 'consistent': 3}.
 
-Minutes status: `confirmed` = the minutes record an act by the credited official that fits (a vote on the side the words state, a motion, a summary of addressing the Board); `consistent` = the minutes list the official as a sponsor of the item the words are about (fits, but does not say who spoke); `conflict` = the minutes put the official on the other side of the best-matching vote or do not name them; `silent` = nothing recorded (ordinary for floor remarks; the minutes are action minutes); `no_minutes` = none read.
+Minutes status: `confirmed` = the minutes record an act by the credited official that fits (a vote on the side the words state, a motion, a summary of addressing the Board); `consistent` = the minutes list the official as a sponsor of the item the words are about (fits, but does not say who spoke); `conflict` = the minutes put the official on the other side of the best-matching vote or do not name them; `silent` = nothing recorded (ordinary for floor remarks; the minutes are action minutes); `unparsed` = minutes text was read but the parser recognised no attendance, vote, motion, sponsor or summary in it, so the credit was not checked; `no_minutes` = none read.
+
+### Minutes, meeting by meeting
+
+| Meeting | Date | Minutes | Distinct passages | Minutes status of those passages |
+|---|---|---|---|---|
+| Board of Supervisors (51452) | 2026-01-06 | not read | 0 | none |
+| Board of Supervisors (52251) | 2026-04-21 | not read | 1 | no_minutes 1 |
+| Board of Supervisors (52800) | 2026-07-07 | not read | 0 | none |
+| Budget and Finance Committee (52804) | 2026-07-08 | not read | 2 | no_minutes 2 |
+| Public Safety and Neighborhood Services Committee (52816) | 2026-07-09 | not read | 2 | no_minutes 2 |
+| Rules Committee (52831) | 2026-07-13 | not read | 0 | none |
+| Land Use and Transportation Committee (52838) | 2026-07-13 | not read | 0 | none |
+| Board of Supervisors (52849) | 2026-07-14 | read and parsed | 24 | confirmed 4, consistent 4, silent 16 |
+| Budget and Finance Committee (52853) | 2026-07-15 | not read | 0 | none |
+| Government Audit and Oversight Committee (52871) | 2026-07-16 | not read | 0 | none |
+| Board of Supervisors (52901) | 2026-07-21 | not read | 5 | no_minutes 5 |
 
 ### The earlier hop's five pairings, searched for again
 
@@ -132,15 +198,15 @@ Minutes status: `confirmed` = the minutes record an act by the credited official
 |---|---|---|---|---|---|
 | Recognise a giver as the donor | that the committee or name in the filing is the donor's own | a person, once per donor, in the funding map (data/families.json); applied here by rule | 17 donor families; none added here | 0.02 | not timed |
 | Read the donor's words into search terms | which measure names and phrases stand for the donor's subject | the agent that wrote this hop (data/subjects.json) | 19 subjects |  | not timed |
-| Find candidate passages | nothing: every turn credited to the official is searched for the terms | the program | 45 candidate passages | 0.32 | none |
+| Find candidate passages | nothing: every turn credited to the official is searched for the terms | the program | 45 candidate passages | 0.31 | none |
 | Say whether a passage is on the donor's subject | accept (the same measure or specific proposal), loose (the same broad subject), reject (a term in common by chance, or not the official's words) | the agent that wrote this hop (data/reviews.json) | 45 passages: 16 accept, 10 loose, 19 reject |  | not timed |
-| Credit the passage to the official | whether the speaker is who the rule says, reading the words around the passage | the program proposes a doubt level; the agent that wrote this hop agrees or disagrees | 45 judged: 40 agree, 2 disagree, 3 unclear | 0.29 | not timed |
-| Set the credit against the minutes | when the minutes are silent or conflict, which vote or item the words are about | the program checks vote, motion, sponsor and presence; the agent reads each conflict | 35 of 45 candidates have a minutes status other than 'no_minutes' | 0.01 | not timed |
+| Credit the passage to the official | whether the speaker is who the rule says, reading the words around the passage | the program proposes a doubt level; the agent that wrote this hop agrees or disagrees | 45 judged: 40 agree, 2 disagree, 3 unclear | 0.3 | not timed |
+| Set the credit against the minutes | when the minutes are silent or conflict, which vote or item the words are about | the program checks vote, motion, sponsor and presence; the agent reads each conflict | 35 of 45 candidates have a minutes status other than 'no_minutes' or 'unparsed' | 0.01 | not timed |
 | Cut the quote | where the quote begins and ends, as whole sentences, without altering a word | the agent that wrote this hop; the program refuses a cut that is not word for word in the transcript | 20 cuts |  | not timed |
 | Write what the two have in common and where they differ | the reading shown beside the pair, with no cause claimed | the agent that wrote this hop | 16 readings |  | not timed |
 | Watch the video at the stamp | that the words were said, by whom, as captioned | nobody: no recording was played | 0 |  | not done |
 
-Timings of the whole run, in seconds: {'load data': 0.02, 'collect: minutes': 0.0, 'credit: find turns': 0.29, 'search and credit': 0.32, 'minutes check': 0.01, 'pairings': 0.02}.
+Timings of the whole run, in seconds: {'load data': 0.02, 'collect: minutes': 0.0, 'credit: find turns': 0.3, 'search and credit': 0.31, 'minutes check': 0.01, 'pairings': 0.02}.
 
 ## Candidate passages
 

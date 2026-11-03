@@ -95,7 +95,7 @@ Minutes (excerpts typed from the minutes (data/minutes/52849.txt)): **silent.** 
 
 To check: play the recording of the meeting at the stamp (captions trail speech and can misspell names); read the donor's page; open the filings.
 
-## Pairing 4: Myrna Melgar and San Francisco Apartment Association on Opposing Prop I and backing Prop C (reported)
+## Pairing 4: Myrna Melgar and San Francisco Apartment Association on Prop C, backed by the committee that carries the Association's Prop I money (reported)
 
 **The official's exact words** (Board of Supervisors, 2026-07-14, transcript time 01:07:48 to 01:08:14; [transcript](https://sfgov.legistar.com/Transcript.aspx?ID1=52849)):
 
@@ -107,9 +107,13 @@ Minutes (excerpts typed from the minutes (data/minutes/52849.txt)): **consistent
 
 **The donor's words** (San Francisco Apartment Association):
 
+> "The San Francisco Apartment Association landlord lobbying group was the biggest opposition contributor, spending $211,000 to fight the proposition."
+>
+> The Real Deal; reported by others, not the donor's own words; page date 2026-10-29 (page's own metadata; modified 2026-11-02), retrieved 2026-11-03; [source](https://therealdeal.com/san-francisco/2026/10/29/real-estate-players-pay-big-bucks-to-fight-prop-i/); The $211,000 is spent in the 2026 campaign against Prop I; it is not a gift to any official's committee.
+
 > "The money flows through a committee opposing Prop I while backing a separate affordable housing measure, Prop C."
 >
-> The Real Deal; reported by others, not the donor's own words; page date 2026-10-29, retrieved 2026-10-30; [source](https://therealdeal.com/san-francisco/2026/10/29/real-estate-players-pay-big-bucks-to-fight-prop-i/); The same $211,000; the committee is not named in the extract.
+> The Real Deal; reported by others, not the donor's own words; page date 2026-10-29 (page's own metadata; modified 2026-11-02), retrieved 2026-11-03; [source](https://therealdeal.com/san-francisco/2026/10/29/real-estate-players-pay-big-bucks-to-fight-prop-i/); The sentence is about an unnamed committee, not about the Association, and is not in the Association's words. The article names the Association as the largest contributor against Prop I, at $211,000, in the 2026 campaign; that is not a gift to any official's committee and is not the $500 the Association gave Melgar's 2020 committee.
 
 **The money** (retrieved 2026-10-30, data loaded through 2026-10-30; one line per receiving committee, never added across committees):
 
@@ -117,7 +121,7 @@ Minutes (excerpts typed from the minutes (data/minutes/52849.txt)): **consistent
   - Giver(s) as filed: San Francisco Apartment Association. Filings: 196565476 (v1).
 - The tie of the giver to the donor: 0 row(s) by an FPPC id the Filers dataset resolves, 1 by name as filed.
 
-**Reading, not a finding.** In common: Both are about the Housing Trust Fund measure (Prop C), which the supervisor sponsors and asks the Board to send to the ballot. Where they differ: The association's side is a reporter's statement about where $211,000 went, not the association's own words; the supervisor does not speak of Prop I or of the committee. No cause is claimed.
+**Reading, not a finding.** In common: Both concern the Housing Trust Fund measure (Prop C): the supervisor sponsors it and asks the Board to send it to the ballot; the reporter says the committee that carries the Association's Prop I money backs it. Where they differ: The reporter's sentence is about an unnamed committee, not the Association's own words, and the article does not give the Association's own position on Prop C. The $211,000 was spent in the 2026 campaign; the Association's gift to this supervisor's committee is $500 in 2020. The supervisor does not speak of Prop I or of the committee. No cause is claimed.
 
 To check: play the recording of the meeting at the stamp (captions trail speech and can misspell names); read the donor's page; open the filings.
 

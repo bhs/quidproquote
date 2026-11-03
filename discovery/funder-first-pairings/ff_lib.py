@@ -329,6 +329,13 @@ def stance_of(passage):
     return "no" if no else "yes"
 
 
+def minutes_usable(minutes):
+    """True when the parser recognised something in the minutes text (attendance, a vote, a motion, a sponsor or a
+    summary of speakers); false means silence in them proves nothing."""
+    return bool(minutes and (minutes["present"] or minutes["votes"] or minutes["motions"]
+                             or minutes["sponsors"] or minutes["spoke"]))
+
+
 def check_minutes(minutes, official, passage):
     """Set one credit against the minutes. Returns {status, checks, ...}.
 
@@ -337,9 +344,14 @@ def check_minutes(minutes, official, passage):
     an item the passage is about, which fits but does not show who spoke),
     'conflict' (they record the official on the other side of the best-matching vote, or as not present: a
     person must decide which vote the words are about), 'silent' (the minutes record nothing on it; ordinary
-    for floor remarks), 'no_minutes' (none read)."""
+    for floor remarks), 'unparsed' (minutes text was read but holds no attendance, vote, motion, sponsor or
+    summary the parser recognises, so silence would mean nothing), 'no_minutes' (none read)."""
     if not minutes:
         return {"status": "no_minutes", "checks": []}
+    if not minutes_usable(minutes):
+        return {"status": "unparsed", "checks": ["Minutes text of %d characters was read, but no attendance list, vote, "
+                                                 "motion, sponsor or summary of speakers was recognised in it, so "
+                                                 "the credit was not checked against it." % minutes["length"]]}
     sn = SURNAMES[official]
     checks, status = [], "silent"
     if official != "Daniel Lurie" and minutes["present"] and sn not in minutes["present"]:
