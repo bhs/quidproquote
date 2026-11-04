@@ -1,0 +1,16 @@
+#!/bin/sh
+# /mendel/phase: reports the persistent stores of this application.
+#
+# This application keeps no durable state: it has no database, no volume and no
+# external store of record. Its only files are results it regenerates on every run
+# and a fetch cache (FF_CACHE_DIR) it rebuilds from the network. So there is
+# nothing to find, nothing to connect to, and every sandbox or production step is
+# not implemented.
+
+if [ "$#" -eq 1 ] && [ "$1" = "probe" ]; then
+    printf '{"stores": []}\n'
+    exit 0
+fi
+
+echo "phase: does not implement: $*" >&2
+exit 2
