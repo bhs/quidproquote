@@ -2,3 +2,4 @@ version: 1
 service: app
 test_command: python -m unittest discover -s tests
 startup_timeout: 120
+seed_command: python -m pairing_site.seed --reset

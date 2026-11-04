@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% from "_card.html" import card_article %}
+{% block title %}Review queue{% endblock %}
+{% block content %}
+<h1>Review queue</h1>
+{% if done %}<p class="notice">Done: {{ done }}</p>{% endif %}
+{% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
+<p class="lede">Each pair below passed the shortlist and the AI filter. Approving publishes the card. You must tick the
+recording check: play the meeting recording at the transcript time and confirm the words are as the card shows them.
+Every decision is written to the log at the foot of this page. <a href="/review/dropped">{{ dropped_count }} dropped pair{{ '' if dropped_count == 1 else 's' }}</a>
+are kept with their reasons.</p>
+<div id="queue">
+{% for row in pending %}
+  {% include "_queue_item.html" %}
+{% else %}
+  <p>The queue is empty.</p>
+{% endfor %}
+</div>
+{% if decided %}
+<h2>Recently decided</h2>
+<ul>{% for d in decided %}<li>{{ d.status }}: <a href="/pairings/{{ d.slug }}">{{ d.official }} &times; {{ d.donor_name }}</a>, {{ d.decided_at.strftime('%Y-%m-%d %H:%M:%S UTC') }}{% if d.decision_note %} ({{ d.decision_note }}){% endif %}</li>{% endfor %}</ul>
+{% endif %}
+<h2>Log</h2>
+<table class="rows" id="audit-log">
+  <thead><tr><th>Time (UTC)</th><th>Who</th><th>Action</th><th>Pairing</th><th>Detail</th></tr></thead>
+  <tbody>
+  {% for e in log %}
+  <tr><td>{{ e.at.strftime('%Y-%m-%d %H:%M:%S') }}</td><td>{{ e.actor }}</td><td>{{ e.action }}</td>
+    <td>{% if e.slug %}<a href="/pairings/{{ e.slug }}">{{ e.slug }}</a>{% endif %}</td><td>{{ e.detail }}</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

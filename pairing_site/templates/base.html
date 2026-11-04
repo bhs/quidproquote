@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block title %}Pairings{% endblock %} - San Francisco officials, donors' priorities and money</title>
+<link rel="stylesheet" href="/static/style.css">
+<script src="https://unpkg.com/htmx.org@2.0.4/dist/htmx.min.js" defer></script>
+<script src="/static/app.js" defer></script>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="/">Pairings</a>
+  <nav>
+    <a href="/">Cards</a>
+    {% if is_admin %}
+    <a href="/review">Review queue</a>
+    <a href="/review/dropped">Dropped pairs</a>
+    <a href="/priority">Add a priority</a>
+    {% endif %}
+    <a href="/status">Worker status</a>
+    {% if is_admin %}
+    <form method="post" action="/logout" class="inline"><button type="submit" class="link">Sign out</button></form>
+    {% else %}
+    <a href="/login">Sign in</a>
+    {% endif %}
+  </nav>
+</header>
+<main>
+{% block content %}{% endblock %}
+</main>
+<footer>
+  <p>Each card is a reading, not a finding. It shows what an official said in a city meeting, what a donor says it
+  cares about, and what that donor gave through committees tied to the official. Nothing here says why anyone said or
+  gave anything.</p>
+</footer>
+</body>
+</html>

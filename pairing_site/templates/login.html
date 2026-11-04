@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Sign in{% endblock %}
+{% block content %}
+<h1>Sign in</h1>
+<p>The maintainer signs in with the site's admin token to reach the review queue and the priority form.</p>
+{% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
+<form method="post" action="/login" class="stack">
+  <input type="hidden" name="next" value="{{ next }}">
+  <label>Admin token <input type="password" name="token" autocomplete="current-password" required autofocus></label>
+  <button type="submit">Sign in</button>
+</form>
+{% endblock %}
