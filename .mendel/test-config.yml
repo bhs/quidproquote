@@ -1,4 +1,5 @@
 version: 1
 service: app
-test_command: python -m unittest discover -s tests
+test_command: npm test
 startup_timeout: 120
+seed_command: npm run seed

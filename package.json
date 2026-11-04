@@ -1,0 +1,20 @@
+{
+  "name": "pairing-site",
+  "version": "0.1.0",
+  "description": "San Francisco pairing cards: an official's exact words, a donor's own priority and the money through committees tied to the official. Static card pages, rebuilt when a pairing is approved or unpublished.",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.3"
+  },
+  "scripts": {
+    "start": "node src/server.ts",
+    "seed": "node src/seed.ts",
+    "test": "node --test test/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.0",
+    "typescript": "^7.0.2"
+  }
+}

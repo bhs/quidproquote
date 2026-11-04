@@ -7,6 +7,39 @@
       "console_url": "https://platform.claude.com/settings/keys",
       "provider": "anthropic",
       "needed_by": ["results"]
+    },
+    {
+      "kind": "secret",
+      "name": "DATA_DIR",
+      "description": "The directory on the application's own disk where the site keeps its JSON records (candidates, pairings, priorities, reviews, the fetch log) and the static pages it generates. Peradapt attaches a persistent disk at /data in production, so everything under it survives restarts and deploys.",
+      "hermetic_alternate": "/data/records",
+      "datastore": {
+        "data_path": "/data",
+        "value": "/data/records",
+        "capacity_gb": 1,
+        "capacity_basis": "A few hundred small JSON records, a handful of cached caption transcripts (about 200 KB each, a few new ones a week), one money snapshot of about 1 MB and the generated pages come to well under 1 GB in a year."
+      }
+    },
+    {
+      "kind": "setting",
+      "name": "ADMIN_TOKEN",
+      "description": "The secret the site's maintainer enters to sign in to the review queue and priority form.",
+      "demo_value": "demo-admin-token"
+    },
+    {
+      "kind": "setting",
+      "name": "FETCH_CONTACT_EMAIL",
+      "description": "The contact email put in the user agent of the site's fetching, so the sources can reach the maintainer.",
+      "demo_value": "maintainer@example.org"
+    },
+    {
+      "kind": "secret",
+      "name": "DATASF_APP_TOKEN",
+      "description": "A DataSF app token for the campaign finance queries. The site reads the public datasets without it; the token only lifts the rate limit.",
+      "console_url": "https://data.sf.gov/profile/edit/developer_settings",
+      "provider": "datasf",
+      "optional": true,
+      "needed_by": ["serving"]
     }
   ]
 }

@@ -1,0 +1,145 @@
+[
+ {
+  "id": "CHAMBER-H",
+  "family": "sf-chamber",
+  "section": "Proposition H - Parcel Tax to Fund Public Muni Operations",
+  "text": "Prop H would introduce a parcel tax from 2027-2042 to assist in funding San Francisco Municipal Transportation Agency operations. The anticipated revenue generated from this tax would be about $177 million. The Chamber supports Prop H as public transit is a critical driver of the San Francisco economy, helping workers, residents, and businesses stay connected.",
+  "url": "https://sfchamber.com/november-2026-voter-guide/",
+  "kind": "voter guide on the organisation's own site",
+  "pageDate": "2026-10-08",
+  "retrieved": "2026-10-30",
+  "phrases": [
+   "Muni"
+  ],
+  "measures": [
+   "H"
+  ]
+ },
+ {
+  "id": "POA-I-TIMING",
+  "family": "sf-poa",
+  "section": "Mayor Lurie Joined by Firefighters and Police Officers in Strong Opposition to Proposition I",
+  "text": "The timing of the special-interest led Proposition I could not be worse. San Francisco is in the middle of its most aggressive first-responder hiring push in years.",
+  "url": "https://sfpoa.org/mayor-lurie-joined-by-firefighters-and-police-officers-in-strong-opposition-to-proposition-i/",
+  "kind": "article by the association's president, on its own site",
+  "pageDate": "2026-09-01",
+  "retrieved": "2026-10-30",
+  "phrases": [
+   "budget",
+   "deficit"
+  ],
+  "measures": [
+   "I"
+  ]
+ },
+ {
+  "id": "POA-I-WONG",
+  "family": "sf-poa",
+  "section": "Quoted words of SFPOA President Louis Wong",
+  "text": "\"We are finally turning the corner on staffing after years of losing officers, and this is exactly the wrong moment to drain the fund that's paying for that comeback,\" said Louis Wong, President of the San Francisco Police Officers Association.",
+  "url": "https://sfpoa.org/mayor-lurie-joined-by-firefighters-and-police-officers-in-strong-opposition-to-proposition-i/",
+  "kind": "article by the association's president, on its own site",
+  "pageDate": "2026-09-01",
+  "retrieved": "2026-10-30",
+  "phrases": [
+   "budget",
+   "deficit"
+  ],
+  "measures": [
+   "I"
+  ]
+ },
+ {
+  "id": "POA-I-C",
+  "family": "sf-poa",
+  "section": "Closing paragraph",
+  "text": "San Francisco Firefighters Local 798, SFPOA, and Mayor Lurie urge San Franciscans to vote NO on Proposition I and YES on Proposition C this November - and to protect the budget that keeps this city safe.",
+  "url": "https://sfpoa.org/mayor-lurie-joined-by-firefighters-and-police-officers-in-strong-opposition-to-proposition-i/",
+  "kind": "article by the association's president, on its own site",
+  "pageDate": "2026-09-01",
+  "retrieved": "2026-10-30",
+  "phrases": [
+   "inclusionary"
+  ],
+  "measures": [
+   "I",
+   "C"
+  ]
+ },
+ {
+  "id": "GFC-J",
+  "family": "govern-for-california",
+  "section": "Proposition J, Foreclosure Transfer Tax: NO",
+  "text": "San Francisco's commercial real estate market is already under tremendous stress, and adding transfer taxes to foreclosures and distressed property workouts would make matters worse. The city should be encouraging capital to return to its struggling real estate market, not making it more expensive to invest.",
+  "url": "https://www.governforcalifornia.org/news/2026/10/21/sf-voter-guide",
+  "kind": "voter guide on the organisation's own site",
+  "pageDate": "2026-10-21",
+  "retrieved": "2026-10-30",
+  "phrases": [
+   "transfer tax"
+  ],
+  "measures": [
+   "J"
+  ]
+ },
+ {
+  "id": "SEIU-STANDS",
+  "family": "seiu-1021",
+  "section": "Election Endorsements: Nov 3, 2026",
+  "text": "Each election, SEIU 1021 members endorse candidates who will stand with us as we fight to win strong contracts and protect working standards.",
+  "url": "https://www.seiu1021.org/post/election-endorsements-nov-3-2026",
+  "kind": "endorsement list on the organisation's own site",
+  "pageDate": "2026-09-28",
+  "retrieved": "2026-10-30",
+  "phrases": [],
+  "measures": []
+ },
+ {
+  "id": "SEIU-D",
+  "family": "seiu-1021",
+  "section": "San Francisco, local ballot measures",
+  "text": "Proposition D - Changes to Ballot Measure Process - Vote NO",
+  "url": "https://www.seiu1021.org/post/election-endorsements-nov-3-2026",
+  "kind": "endorsement list on the organisation's own site",
+  "pageDate": "2026-09-28",
+  "retrieved": "2026-10-30",
+  "phrases": [
+   "charter reform"
+  ],
+  "measures": [
+   "D"
+  ]
+ },
+ {
+  "id": "SEIU-E",
+  "family": "seiu-1021",
+  "section": "San Francisco, local ballot measures",
+  "text": "Proposition E - City Administrator's Authority and Changes to City Contracting - Vote NO",
+  "url": "https://www.seiu1021.org/post/election-endorsements-nov-3-2026",
+  "kind": "endorsement list on the organisation's own site",
+  "pageDate": "2026-09-28",
+  "retrieved": "2026-10-30",
+  "phrases": [
+   "charter reform"
+  ],
+  "measures": [
+   "E"
+  ]
+ },
+ {
+  "id": "SEIU-F",
+  "family": "seiu-1021",
+  "section": "San Francisco, local ballot measures",
+  "text": "Proposition F - Changes to Executive Branch Management - Vote NO",
+  "url": "https://www.seiu1021.org/post/election-endorsements-nov-3-2026",
+  "kind": "endorsement list on the organisation's own site",
+  "pageDate": "2026-09-28",
+  "retrieved": "2026-10-30",
+  "phrases": [
+   "charter reform"
+  ],
+  "measures": [
+   "F"
+  ]
+ }
+]
