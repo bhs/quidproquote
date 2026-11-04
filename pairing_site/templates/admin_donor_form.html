@@ -1,0 +1,21 @@
+{% extends "admin_base.html" %}
+{% block title %}Add a donor{% endblock %}
+{% block body %}
+<h1>Add a donor</h1>
+{% if errors %}<div class="errors"><b>Not saved.</b><ul>{% for e in errors %}<li>{{ e }}</li>{% endfor %}</ul></div>{% endif %}
+<form method="post" action="{{ url_for('admin_donor_new') }}">
+  <label for="name">Name</label>
+  <input type="text" id="name" name="name" value="{{ form.get('name', '') }}">
+  <label for="kind">Kind (union, company, business association...)</label>
+  <input type="text" id="kind" name="kind" value="{{ form.get('kind', '') }}">
+  <label for="patterns">Names as filed, one per line. A giver is the donor's when all the words of one line are in its name.</label>
+  <textarea id="patterns" name="patterns">{{ form.get('patterns', '') }}</textarea>
+  <label for="exclude">Words that rule a giver out, one per line (optional)</label>
+  <textarea id="exclude" name="exclude">{{ form.get('exclude', '') }}</textarea>
+  <label for="committee_ids">FPPC ids of the donor's own committees, separated by commas (optional)</label>
+  <input type="text" id="committee_ids" name="committee_ids" value="{{ form.get('committee_ids', '') }}">
+  <label for="link_note">How the names are tied to the donor (optional)</label>
+  <textarea id="link_note" name="link_note">{{ form.get('link_note', '') }}</textarea>
+  <p><button type="submit">Save the donor</button></p>
+</form>
+{% endblock %}

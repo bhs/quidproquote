@@ -1,0 +1,84 @@
+{
+ "about": "The five pairings the Pairings end to end hop showed, as the approvals a maintainer would make in the queue: the words the quote begins and ends at, the doubt level and the reading notes. Taken from discovery/official-funding-map/picks.json; the seed applies them through review.approve.",
+ "approvals": [
+  {
+   "id": 1,
+   "official": "Daniel Lurie",
+   "donor": "sf-chamber",
+   "meeting_id": 52849,
+   "begin_at": "MUNI WEEKEND RIDERSHIP",
+   "end_at": "THAN IN 2025.",
+   "doubt": "low",
+   "doubt_note": "The clerk reads the special order as 'THE APPEARANCE BY THE HONORABLE MAYOR DANIEL LURIE' (00:02:16); the presiding officer says 'WELCOME, MR. MAYOR. DO YOU HAVE ANY OPENING REMARKS?' and the answer is 'I DO.' (00:02:28 to 00:02:31); the remarks begin 'GOOD AFTERNOON. BOARD PRESIDENT ... AND MEMBERS OF THE BOARD OF SUPERVISORS' and the presiding officer closes them with 'THANK YOU, MAYOR LURIE.' (00:06:11). The quoted rows sit inside that unbroken turn, between 00:02:34 and 00:06:06. The transcript itself names the speaker as the Mayor before and after the turn; only the captions' rendering of the Board President's name ('MANAGEMENT') is garbled. The roster has one Mayor.",
+   "in_common": "Same subject: Muni. The Mayor's words report Muni weekend ridership; the Chamber's statement is its position on the Muni parcel tax (Prop H).",
+   "differs": "Different kinds of statement: the Mayor's sentence reports ridership and does not mention Prop H; the Chamber's statement supports Prop H. No agreement or disagreement is claimed. (My reading.)",
+   "priorities": [
+    "CHAMBER-H"
+   ]
+  },
+  {
+   "id": 2,
+   "official": "Daniel Lurie",
+   "donor": "sf-poa",
+   "meeting_id": 52849,
+   "begin_at": "I'M CONFIDENT THAT THE UPCOMING",
+   "end_at": "$642 MILLION DEFICIT.",
+   "doubt": "low",
+   "doubt_note": "As for pairing 1: the clerk announces 'THE APPEARANCE BY THE HONORABLE MAYOR DANIEL LURIE' (00:02:16), the presiding officer asks 'DO YOU HAVE ANY OPENING REMARKS?' and the answer is 'I DO.' (00:02:28 to 00:02:31), and 'THANK YOU, MAYOR LURIE.' closes the turn (00:06:11). The quoted rows (00:04:36 to 00:05:01) are inside it. The transcript names the speaker as the Mayor on both sides of the turn.",
+   "in_common": "Same subject: the city's budget and what it pays for. The Mayor describes the coming budget, core services and the deficit; the association's page is about the general fund that pays for police officers and firefighters.",
+   "differs": "No position of the Mayor on a measure is in the quote, and the association's statement is about Proposition I, which the quote does not name. The association's page also reports the Mayor opposing Proposition I (a different occasion, August 2026). (My reading.)",
+   "priorities": [
+    "POA-I-TIMING",
+    "POA-I-WONG",
+    "POA-I-C"
+   ]
+  },
+  {
+   "id": 3,
+   "official": "Matt Dorsey",
+   "donor": "sf-poa",
+   "meeting_id": 52849,
+   "begin_at": "COLLEAGUES, I WILL RESPECTFULLY BE VOTING NO",
+   "end_at": "MAKING HOUSING PRODUCTION FEASIBLE.",
+   "doubt": "low",
+   "doubt_note": "The row at 01:47:15 opens the turn with the member's name, spelled correctly: 'SUPERVISOR DORSEY THANK YOU PRESIDENT MANDOLIN.' (the Board President's name is garbled). The next turn opens at 01:48:28 with 'SUPERVISOR CHEN. THANK YOU MR. PRESIDENT.' The speaker refers to the land use chair in the third person ('AS LAND USE CHAIR MELGAR JUST EXPLAINED'), so is not Melgar. Name spelled correctly in the cue that opens the turn, and the next speaker is named.",
+   "in_common": "Same package: the Board's 14 July vote to cut the inclusionary housing fee, which the speaker before Dorsey ties to the Housing Trust Fund expansion ('SIT ON TOP OF THE HOUSING TRUST FUND THAT HAS BEEN EXPANDED SO THAT WE HAVE BOTH', 01:46:56 to 01:47:00); the association's page urges a Yes vote on Prop C, the Housing Trust Fund measure. The quote itself does not name Prop C.",
+   "differs": "Not comparable on the text: the quote explains a vote on an amendment to the fee ordinance; the association's statement is a vote recommendation on a ballot measure. (My reading.)",
+   "priorities": [
+    "POA-I-C"
+   ]
+  },
+  {
+   "id": 4,
+   "official": "Bilal Mahmood",
+   "donor": "govern-for-california",
+   "meeting_id": 52853,
+   "begin_at": "THIS MEASURE GIVES SAN",
+   "end_at": "DECADES AGO.",
+   "doubt": "high",
+   "doubt_note": "The chair is told at 02:52:22 'TODAY WE HAVE SUPERVISOR' and the next row reads 'BALA MAMU HERE'; the captions render the name phonetically. The speaker then thanks 'MY CO SPONSORS SUPERVISOR DORSEY MELGAR, CHEN WANG AND WALTON' (02:53:17 to 02:53:24), naming others and not himself. The text alone does not spell the surname; the credit rests on the sponsor record outside the transcript. No caption cue spells the speaker's surname. Two pages read on 2026-10-30 name Supervisor Mahmood as the measure's introducer, which the sponsor list in the speaker's thanks fits. Outside the transcript (read 2026-10-30): https://www.sfpublicpress.org/proposition-j-would-close-tax-loophole-on-large-foreclosed-properties/: San Francisco Public Press says Mayor Lurie and Supervisor Bilal Mahmood introduced Proposition J. Outside the transcript (read 2026-10-30): https://growsf.org/voter-guide/san-francisco-voter-guide-november-2026-election/measures/prop-j/: GrowSF's page for Prop J lists the sponsors as Supervisor Mahmood, joined by Supervisors Dorsey, Melgar, Chen, Wong, Walton and Mandelman.",
+   "in_common": "Same measure: Prop J, the foreclosure exemption in the real property transfer tax.",
+   "differs": "Different positions on the text: the quote presents the measure as bringing the transfer tax code up to date; the donor's page says NO on Prop J. (My reading of the quote; the donor's side is its own words.)",
+   "priorities": [
+    "GFC-J"
+   ]
+  },
+  {
+   "id": 5,
+   "official": "Shamann Walton",
+   "donor": "seiu-1021",
+   "meeting_id": 52849,
+   "begin_at": "COLLEAGUES I AM ALSO REQUESTING",
+   "end_at": "RESIDENTS OF SAN FRANCISCO.",
+   "doubt": "low",
+   "doubt_note": "Walton is called at 02:36:50 ('SUPERVISOR WALTON THANK YOU, MADAM CLERK'), says 'I AM INTRODUCING A RESOLUTION AND ALSO A BILL A REQUEST', and the request here is the 'also'. The remarks say 'DISTRICT TEN RESIDENTS' and 'DISTRICT TEN WILL SOON FACE' (District 10 is Walton on the roster) and thank 'SUPERVISOR CHEN AS WELL AS SUPERVISOR FIELDER', so the speaker is neither of those. The chair moves on at 02:42:48 ('THE REST I SUBMIT ... SUPERVISOR WALTON'). No name cue directly before the passage (the cue is three minutes earlier, with '>>' marks between); the speaker's own 'District Ten' and the chair's closing agree with Walton.",
+   "in_common": "Same measures: the quote names 'THE CHARTER REFORM MEASURES PROPOSED BY MAYOR LURIE' (a spending ... mayoral hiring and firing authority, the City Administrator's term and procurement, and the signature threshold for initiatives); the union's page lists Props D, E and F with a recommendation on each.",
+   "differs": "The quote asks for a cost analysis and says the measures 'SHIFT REAL POWER AWAY FROM THE BOARD OF SUPERVISORS'; the union's page says Vote NO on each. Both are critical of the measures on their face. (My reading.)",
+   "priorities": [
+    "SEIU-D",
+    "SEIU-E",
+    "SEIU-F"
+   ]
+  }
+ ]
+}

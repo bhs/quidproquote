@@ -1,0 +1,57 @@
+{# One pairing card. `card` is built by pairing_cards.build_card; `linked` makes the title a link to the card's own URL. #}
+{% set T = card.highlight %}
+<li class="card" id="card-{{ card.slug }}">
+<h2>{% if linked %}<a href="{{ url_for('pairing', slug=card.slug) }}">{{ card.title }}</a>{% else %}{{ card.title }}{% endif %}</h2>
+<div class="zones">
+  <div class="zone zone-money">
+    <h3>Money in, then the donor's priority</h3>
+    {% for m in card.money.committees %}
+    <div class="money"><span class="amt">{{ m.schedule_a_total_text }}</span> Schedule A to <b>{{ m.committee }}</b> <span class="small">(filer {{ m.filer }})</span>
+      <div class="small">{{ m.kind }}; {{ m.rows }} row{{ '' if m.rows == 1 else 's' }}, {{ m.first }}{% if m.last != m.first %} to {{ m.last }}{% endif %}</div>
+      <div class="small">Giver{{ '' if m.givers_as_filed|length == 1 else 's' }} as filed: {{ m.givers_as_filed|join('; ') }}</div>
+      {% if m.h24_only_rows %}<div class="small"><i>Also on 24-hour reports with no Schedule A row yet, apart and not in the total: {{ m.h24_only_total_text }}.</i></div>{% endif %}
+      {% if m.repeats_not_counted %}<div class="small"><i>{{ m.repeats_not_counted }} 24-hour repeat{{ '' if m.repeats_not_counted == 1 else 's' }} of a Schedule A row, listed in the filing, not counted.</i></div>{% endif %}
+      <details><summary class="small">By filing</summary>
+        <table><tr><th>Contribution date</th><th>Filing (version)</th><th>Filing date</th><th>Amount</th><th>Kind</th><th>Giver as filed</th></tr>
+        {% for r in m.filing_rows %}<tr><td>{{ r.date }}</td><td>{{ r.filing }} (v{{ r.version }})</td><td>{{ r.filing_date }}</td><td class="amount">{{ r.amount }}</td><td>{{ r.kind }}</td><td>{{ r.giver }}</td></tr>{% endfor %}
+        </table></details>
+    </div>
+    {% endfor %}
+    <div class="small">One line per receiving committee; totals are never summed across committees.</div>
+    {% for o in card.money.outside_spending %}
+    <div class="money outside"><b>Outside spending, kept apart</b> (form 496; not a gift to any committee above): {{ o.spender }}, {{ o.stance }}, {{ o.amount_text }}, {{ o.filings }} filing{{ '' if o.filings == 1 else 's' }}, {{ o.first }} to {{ o.last }}</div>
+    {% else %}
+    <div class="small">Outside spending, kept apart: no form 496 report naming this official was filed by a committee this donor's names take.</div>
+    {% endfor %}
+    <div class="bubble"><b>{{ card.donor.name }}: stated priority</b>
+      <div class="small"><i>{{ card.donor.tie }}</i></div>
+      {% for s in card.donor.statements %}
+      {% if s.section %}<div class="small">{{ s.section|mark(T) }}</div>{% endif %}
+      <blockquote>&ldquo;{{ s.text|mark(T) }}&rdquo;</blockquote>
+      <div class="small">{{ s.kind }}; {% if s.page_date %}page dated {{ s.page_date }}{% else %}page undated{% endif %}; <a href="{{ s.url }}">source page</a>; retrieved {{ s.retrieved }}</div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="zone official"><h3>The official</h3><div class="name">{{ card.official.name }}</div><div>{{ card.official.role }}</div></div>
+  <div class="zone zone-words"><h3>The official's exact words</h3>
+    <div class="quote">&ldquo;{{ card.quote.text|mark(T) }}&rdquo;</div>
+    <div class="small">{{ card.quote.meeting }}, {{ card.quote.date }}, transcript time {{ card.quote.first_stamp }}{% if card.quote.last_stamp != card.quote.first_stamp %} to {{ card.quote.last_stamp }}{% endif %}</div>
+  </div>
+</div>
+<div class="strip"><span class="badge {{ card.speaker_credit.doubt }}">SPEAKER-CREDIT DOUBT: {{ card.speaker_credit.doubt|upper }}</span><b>Reading, not a finding.</b>
+  {% if card.reading.in_common %}In common: {{ card.reading.in_common }}{% else %}In common: {% if T %}the words highlighted below appear in both the official's words and the donor's.{% else %}no words of substance are shared, so nothing is highlighted.{% endif %}{% endif %}
+  Where they differ: {% if card.reading.differs %}{{ card.reading.differs }}{% else %}the site does not compare positions; read the two statements for yourself.{% endif %}
+  {{ card.reading.cause }}
+  <div class="small">Highlighted: words literally in both the quote and the donor's words ({% if T %}{% for t in T %}&ldquo;{{ t }}&rdquo;{% if not loop.last %}, {% endif %}{% endfor %}{% else %}none of substance, so nothing is highlighted{% endif %}).</div>
+  <details><summary class="small">Speaker credit: {{ card.speaker_credit.official }}, {{ card.speaker_credit.role }}. How the transcript supports it</summary>
+    <table class="lines"><tr><th>Transcript time</th><th>Caption row holding the cue</th></tr>
+    {% for stamp, text in card.speaker_credit.cue_lines %}<tr><td class="stamp">{{ stamp }}</td><td class="text">{{ text }}</td></tr>{% endfor %}
+    </table>
+    <div class="small">The cue: {{ card.speaker_credit.cue }} ({{ card.speaker_credit.cue_stamp }}).{% for w in card.speaker_credit.why %} {{ w|sentence }}.{% endfor %}</div>
+    {% if card.speaker_credit.note %}<div class="small">Reviewer's note: {{ card.speaker_credit.note }}</div>{% endif %}
+  </details>
+</div>
+<div class="sources"><b>Sources:</b> <a href="{{ card.sources.transcript }}">transcript</a> ({{ card.sources.meeting }}, {{ card.sources.date }}, retrieved {{ card.quote.retrieved }});
+  donor page{{ '' if card.sources.donor_pages|length == 1 else 's' }}: {% for u in card.sources.donor_pages %}<a href="{{ u }}">{{ u.split('//', 1)[-1].split('/')[0] }}</a>{% if not loop.last %}, {% endif %}{% endfor %};
+  filing ids, <a href="{{ card.sources.dataset_url }}">Transactions dataset</a>: {{ card.sources.filing_ids|join(', ') }}; money retrieved {{ card.sources.money_retrieved or 'on a date not recorded' }}.</div>
+</li>

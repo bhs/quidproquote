@@ -1,0 +1,26 @@
+{% extends "admin_base.html" %}
+{% block title %}Donors and priorities{% endblock %}
+{% block body %}
+<h1>Donors and priorities</h1>
+<p class="lede">A priority is a donor's stated position in the donor's own words, with where it was read. The finder looks for remarks of officials the donor funded that name one of its measures or phrases.</p>
+<p><a class="button" href="{{ url_for('admin_priority_new') }}">Add a priority</a> <a class="button" href="{{ url_for('admin_donor_new') }}">Add a donor</a></p>
+{% for d in donors %}
+<div class="panel">
+  <h2>{{ d.row['name'] }} <span class="small muted">({{ d.row['kind'] }})</span></h2>
+  <p class="small">{{ d.rows }} filing row{{ '' if d.rows == 1 else 's' }} in committees tied to officials; {{ d.funded }} official{{ '' if d.funded == 1 else 's' }} funded.
+    <a href="{{ url_for('admin_priority_new', donor=d.row['id']) }}">Add a priority for this donor</a></p>
+  {% for p in d.priorities %}
+  <div class="bubble">
+    {% if p.section %}<div class="small">{{ p.section }}</div>{% endif %}
+    <blockquote>&ldquo;{{ p.words }}&rdquo;</blockquote>
+    <div class="small">{{ p.source_type }}; {% if p.page_date %}page dated {{ p.page_date }}{% else %}page undated{% endif %}; <a href="{{ p.url }}">source page</a>; retrieved {{ p.retrieved }}</div>
+    <div class="small">Looks for: {{ (p.measure_list + p.phrase_list)|join('; ') or 'nothing' }}</div>
+  </div>
+  {% else %}
+  <p class="small muted">No priority entered; nothing is looked for.</p>
+  {% endfor %}
+</div>
+{% else %}
+<p>No donors yet. <a href="{{ url_for('admin_donor_new') }}">Add a donor</a> first.</p>
+{% endfor %}
+{% endblock %}

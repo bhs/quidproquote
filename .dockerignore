@@ -1,0 +1,5 @@
+.git
+.mendel
+discovery
+**/__pycache__
+**/*.pyc

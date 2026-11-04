@@ -1,0 +1,72 @@
+{% extends "admin_base.html" %}
+{% block title %}Candidate {{ c.id }}{% endblock %}
+{% block body %}
+<p class="small"><a href="{{ url_for('admin_queue') }}">&larr; Review queue</a></p>
+<h1>{{ c.official['name'] }} and {{ c.donor['name'] }}</h1>
+{% if errors %}<div class="errors"><b>Not saved.</b><ul>{% for e in errors %}<li>{{ e }}</li>{% endfor %}</ul></div>{% endif %}
+<div class="panel">
+<dl class="facts">
+  <dt>Status</dt><dd>{{ c.status }}{% if c.status == 'approved' %}: <a href="{{ url_for('pairing', slug=c.slug) }}">see the card</a>{% endif %}</dd>
+  <dt>Meeting</dt><dd>{{ c.meeting['body'] }}, {{ c.meeting['date'] }} (<a href="{{ c.meeting['url'] }}">transcript</a>, retrieved {{ c.meeting['retrieved'] }})</dd>
+  <dt>Speaker</dt><dd>{{ c.official['name'] }}, {{ c.official['office'] }}{% if c.official['district'] %}, District {{ c.official['district'] }}{% endif %}</dd>
+  <dt>Doubt level</dt><dd><span class="badge {{ c.doubt }}">{{ c.doubt|upper }}</span>
+    {% for w in c.why %}{{ w|sentence }}. {% endfor %}</dd>
+  <dt>Credited from</dt><dd>
+    <table class="lines">{% for stamp, text in c.cue %}<tr><td class="stamp">{{ stamp }}</td><td class="text">{{ text }}</td></tr>{% endfor %}</table></dd>
+  <dt>Matched</dt><dd>{{ c.hit_list|join(', ') }}</dd>
+</dl>
+</div>
+<div class="panel">
+<h2>The exact caption lines, with context</h2>
+<p class="small">The flagged rows hold the remark; the others are the lines before and after it, exactly as published.</p>
+{% with lines = c.lines, hits = c.hit_list %}{% include "_lines.html" %}{% endwith %}
+</div>
+
+{% if c.status == 'pending' %}
+<div class="panel">
+<h2>Approve</h2>
+<form method="post" action="{{ url_for('admin_approve', cid=c.id) }}">
+  <label for="begin_at">Quote begins at these words (optional; they are looked for in this speaker's turn and the quote is cut from the transcript, never retyped)</label>
+  <input type="text" id="begin_at" name="begin_at" value="{{ form.get('begin_at', '') }}">
+  <label for="end_at">Quote ends with these words (optional)</label>
+  <input type="text" id="end_at" name="end_at" value="{{ form.get('end_at', '') }}">
+  <p class="small">Left empty, the quote is the flagged rows.</p>
+  <label for="doubt">Speaker-credit doubt level</label>
+  <select id="doubt" name="doubt">{% for d in doubts %}<option value="{{ d }}" {{ 'selected' if (form.get('doubt') or c.doubt) == d else '' }}>{{ d }}</option>{% endfor %}</select>
+  <label for="doubt_note">Why that doubt level (optional)</label>
+  <textarea id="doubt_note" name="doubt_note">{{ form.get('doubt_note', '') }}</textarea>
+  <fieldset><legend><b>Show these of the donor's priorities</b></legend>
+  {% for p in c.priorities %}
+    <label style="font-weight:400"><input type="checkbox" name="statements" value="{{ p.id }}" {{ 'checked' if (p.named if not form else (p.id|string) in form.getlist('statements')) else '' }}>
+      {{ p.label or ('Priority ' ~ p.id) }}{% if p.named %} (named in the remark){% endif %}: &ldquo;{{ p.words }}&rdquo; <span class="small">({{ p.source_type }}, retrieved {{ p.retrieved }})</span></label>
+  {% endfor %}
+  </fieldset>
+  <label for="in_common">What the two have in common (optional)</label>
+  <textarea id="in_common" name="in_common">{{ form.get('in_common', '') }}</textarea>
+  <label for="differs">Where they differ (optional)</label>
+  <textarea id="differs" name="differs">{{ form.get('differs', '') }}</textarea>
+  <p><button type="submit">Approve and publish as a card</button></p>
+</form>
+</div>
+<div class="panel">
+<h2>Reject</h2>
+<form method="post" action="{{ url_for('admin_reject', cid=c.id) }}">
+  <label for="reject_note">Why (optional)</label>
+  <input type="text" id="reject_note" name="reject_note">
+  <p><button type="submit" class="danger">Reject this candidate</button></p>
+</form>
+</div>
+{% endif %}
+{% if c.status != 'rejected' %}
+<div class="panel">
+<h2>Edit the doubt level</h2>
+<form method="post" action="{{ url_for('admin_doubt', cid=c.id) }}">
+  <label for="doubt2">Speaker-credit doubt level</label>
+  <select id="doubt2" name="doubt">{% for d in doubts %}<option value="{{ d }}" {{ 'selected' if c.doubt == d else '' }}>{{ d }}</option>{% endfor %}</select>
+  <label for="doubt_note2">Why (optional)</label>
+  <textarea id="doubt_note2" name="doubt_note">{{ c.doubt_note }}</textarea>
+  <p><button type="submit" class="plain">Save the doubt level</button></p>
+</form>
+</div>
+{% endif %}
+{% endblock %}

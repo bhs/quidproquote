@@ -1,0 +1,4 @@
+{# caption rows, the flagged ones marked, with the matched words highlighted #}
+<table class="lines">
+{% for l in lines %}<tr class="{{ 'flagged' if l.flagged else '' }}"><td class="stamp">{{ l.stamp }}</td><td class="text">{% if l.flagged %}{{ l.text|mark(hits) }}{% else %}{{ l.text }}{% endif %}</td></tr>{% endfor %}
+</table>

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block title %}Pairing cards{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="site"><div class="inner">
+  <a href="{{ url_for('index') }}">Pairing cards</a>
+  <span class="spacer"></span>
+  {% block nav %}<a href="{{ url_for('admin_status') }}">Maintainer sign-in</a>{% endblock %}
+</div></header>
+<main>
+{% block body %}{% endblock %}
+</main>
+<footer class="site">San Francisco officials' exact words from the city's caption transcripts, a donor's own stated priority and the money the donor gave through committees tied to the official. Each card is a reading, not a finding.</footer>
+</body>
+</html>

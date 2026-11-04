@@ -1,0 +1,20 @@
+{% extends "admin_base.html" %}
+{% block title %}Review queue{% endblock %}
+{% block body %}
+<h1>Review queue</h1>
+<p class="lede">A candidate is a remark of an official the donor gave money to, that names a measure or distinctive phrase from a priority you entered. Each shows the exact caption lines (the flagged rows are shaded) with the lines around them. Nothing is published until you approve it.</p>
+<p>{{ total }} candidate{{ '' if total == 1 else 's' }} waiting{% if pages > 1 %}; page {{ page }} of {{ pages }}{% endif %}.</p>
+{% for c in items %}
+<div class="panel" id="candidate-{{ c.id }}">
+  <h2><a href="{{ url_for('admin_candidate', cid=c.id) }}">{{ c.official['name'] }} and {{ c.donor['name'] }}</a></h2>
+  <p class="small">{{ c.meeting['body'] }}, {{ c.meeting['date'] }}, transcript time {{ c.first_stamp }}{% if c.last_stamp != c.first_stamp %} to {{ c.last_stamp }}{% endif %}.
+     Matched: {{ c.hit_list|join(', ') }}. <span class="badge {{ c.doubt }}">SPEAKER-CREDIT DOUBT: {{ c.doubt|upper }}</span>
+     Credited from the cue &ldquo;{{ c.cue_text }}&rdquo; ({{ c.cue_stamp }}).</p>
+  {% with lines = c.lines, hits = c.hit_list %}{% include "_lines.html" %}{% endwith %}
+  <p><a class="button" href="{{ url_for('admin_candidate', cid=c.id) }}">Review</a></p>
+</div>
+{% else %}
+<p>The queue is empty.</p>
+{% endfor %}
+{% if pages > 1 %}<p>{% if page > 1 %}<a href="{{ url_for('admin_queue', page=page-1) }}">Newer page</a>{% endif %} {% if page < pages %}<a href="{{ url_for('admin_queue', page=page+1) }}">Next page</a>{% endif %}</p>{% endif %}
+{% endblock %}

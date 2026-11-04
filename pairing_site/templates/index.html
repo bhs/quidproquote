@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Pairing cards: San Francisco officials, a donor's priority and the money{% endblock %}
+{% block body %}
+<h1>Pairing cards</h1>
+<p class="lede">One card per pairing. Each shows the money a donor gave through committees tied to an official, the donor's own stated priority, and the official's exact words from the city's caption transcript, side by side. Each card is a reading, not a finding: nothing here says why anyone said or gave anything.</p>
+{% if cards %}
+<p class="small">{{ cards|length }} pairing{{ '' if cards|length == 1 else 's' }}. Each card has its own address.</p>
+<ol class="cards">
+{% for card in cards %}{% with linked = true %}{% include "_card.html" %}{% endwith %}{% endfor %}
+</ol>
+{% else %}
+<p>No pairings are published yet. Nothing is published until a maintainer approves a candidate in the review queue.</p>
+{% endif %}
+{% endblock %}

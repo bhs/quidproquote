@@ -1,5 +1,17 @@
 services:
   app:
     build:
-      context: ../discovery/funder-first-pairings
-    command: ["sleep", "infinity"]
+      context: ..
+      dockerfile: Dockerfile
+    environment:
+      ADMIN_PASSWORD: pairing-demo
+      FETCH_CONTACT_EMAIL: maintainer@example.org
+      DATABASE_PATH: /data/pairings.db
+    expose:
+      - "8080"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/', timeout=4)"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 5s

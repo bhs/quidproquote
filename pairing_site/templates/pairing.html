@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}{{ card.title }}{% endblock %}
+{% block body %}
+<p class="small"><a href="{{ url_for('index') }}">&larr; All pairings</a></p>
+<ol class="cards">{% with linked = false %}{% include "_card.html" %}{% endwith %}</ol>
+{% endblock %}

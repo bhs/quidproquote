@@ -7,6 +7,40 @@
       "console_url": "https://platform.claude.com/settings/keys",
       "provider": "anthropic",
       "needed_by": ["results"]
+    },
+    {
+      "kind": "secret",
+      "name": "DATABASE_PATH",
+      "description": "Path of the SQLite file that keeps every record of the pairing site (donors, priorities, filings, transcripts, candidates and what was approved). It sits on the application's own disk, which Peradapt attaches at /data and keeps between restarts and deploys.",
+      "instructions": "Nothing to set up: the application creates and migrates the file on its first start. It runs on one instance only.",
+      "hermetic_alternate": "/data/pairings.db",
+      "datastore": {
+        "data_path": "/data",
+        "value": "/data/pairings.db",
+        "capacity_gb": 1,
+        "capacity_basis": "The site stores a few hundred caption lines per minute of a few new Board and committee meetings a week (about 150 KB of text each) plus a few thousand filing rows, which comes to well under 100 MB in a year."
+      }
+    },
+    {
+      "kind": "secret",
+      "name": "DATASF_APP_TOKEN",
+      "description": "Optional DataSF (Socrata) app token sent with the daily campaign finance queries; it only lifts the anonymous rate limit.",
+      "console_url": "https://data.sf.gov/profile/edit/developer_settings",
+      "provider": "datasf",
+      "optional": true,
+      "needed_by": ["serving"]
+    },
+    {
+      "kind": "setting",
+      "name": "ADMIN_PASSWORD",
+      "description": "The password the site's maintainer uses to open the review queue and priority form.",
+      "demo_value": "pairing-demo"
+    },
+    {
+      "kind": "setting",
+      "name": "FETCH_CONTACT_EMAIL",
+      "description": "The contact email put in the user agent of the site's fetching, so the sources can reach the maintainer.",
+      "demo_value": "maintainer@example.org"
     }
   ]
 }

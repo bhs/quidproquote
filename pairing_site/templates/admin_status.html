@@ -1,0 +1,39 @@
+{% extends "admin_base.html" %}
+{% block title %}Status{% endblock %}
+{% block body %}
+<h1>Status</h1>
+<div class="panel">
+<h2>Fetching</h2>
+{% if running %}<p class="notice">A fetch run is in progress. Reload this page to see its result.</p>{% endif %}
+{% set last = runs[0] if runs else none %}
+{% if last %}
+<dl class="facts">
+  <dt>Last run</dt><dd>{{ last.kind }}, started {{ last.started_at }} UTC{% if last.finished_at %}, finished {{ last.finished_at }} UTC{% else %}, not finished{% endif %}</dd>
+  <dt>Result</dt><dd>{% if last.finished_at is none %}running{% elif last.ok %}ok{% else %}failed{% endif %}</dd>
+  {% if last.summary %}<dt>What it did</dt><dd>{{ last.summary }}</dd>{% endif %}
+  {% if last.error %}<dt>Errors</dt><dd>{{ last.error }}</dd>{% endif %}
+  <dt>Next scheduled run</dt><dd>{{ next_run }}{% if next_run[:1].isdigit() %} UTC{% endif %}</dd>
+</dl>
+{% else %}
+<p>No fetch has run yet. Next scheduled run: {{ next_run }}.</p>
+{% endif %}
+<p class="small">The site fetches new Legistar caption transcripts and DataSF filings once every {{ '%g' % interval }} hours, one request at a time, with a user agent that names {{ contact }}. Money was last retrieved {{ money_retrieved or 'never' }}{% if loaded_through %} (the dataset was loaded through {{ loaded_through }}){% endif %}.</p>
+<form method="post" action="{{ url_for('admin_fetch') }}"><button type="submit">Fetch now</button></form>
+</div>
+<div class="panel">
+<h2>What the site holds</h2>
+<dl class="facts">
+  <dt>Donors</dt><dd>{{ stats.donors }}</dd>
+  <dt>Stated priorities</dt><dd>{{ stats.priorities }}</dd>
+  <dt>Transcripts</dt><dd>{{ stats.meetings }} ({{ stats.lines }} caption lines)</dd>
+  <dt>Filing rows</dt><dd>{{ stats.filings }}</dd>
+  <dt>Candidates</dt><dd><a href="{{ url_for('admin_queue') }}">{{ stats.pending }} waiting</a>, {{ stats.approved }} approved, {{ stats.rejected }} rejected</dd>
+</dl>
+</div>
+{% if runs|length > 1 %}
+<div class="panel"><h2>Recent runs</h2>
+<table><tr><th>Started (UTC)</th><th>Kind</th><th>Result</th><th>Summary or error</th></tr>
+{% for r in runs %}<tr><td>{{ r.started_at }}</td><td>{{ r.kind }}</td><td>{% if r.finished_at is none %}running{% elif r.ok %}ok{% else %}failed{% endif %}</td><td>{{ r.error or r.summary }}</td></tr>{% endfor %}
+</table></div>
+{% endif %}
+{% endblock %}
