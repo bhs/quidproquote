@@ -6,19 +6,9 @@
       "description": "API key for the AI judge that reads each quote and donor priority pair (and confirms the embedding shortlist).",
       "console_url": "https://platform.claude.com/settings/keys",
       "provider": "anthropic",
-      "needed_by": ["results"]
-    },
-    {
-      "kind": "secret",
-      "name": "DATA_DIR",
-      "description": "The directory on the application's own disk where the site keeps its JSON records (candidates, pairings, priorities, reviews, the fetch log) and the static pages it generates. Peradapt attaches a persistent disk at /data in production, so everything under it survives restarts and deploys.",
-      "hermetic_alternate": "/data/records",
-      "datastore": {
-        "data_path": "/data",
-        "value": "/data/records",
-        "capacity_gb": 1,
-        "capacity_basis": "A few hundred small JSON records, a handful of cached caption transcripts (about 200 KB each, a few new ones a week), one money snapshot of about 1 MB and the generated pages come to well under 1 GB in a year."
-      }
+      "needed_by": [
+        "results"
+      ]
     },
     {
       "kind": "setting",
@@ -39,7 +29,9 @@
       "console_url": "https://data.sf.gov/profile/edit/developer_settings",
       "provider": "datasf",
       "optional": true,
-      "needed_by": ["serving"]
+      "needed_by": [
+        "serving"
+      ]
     }
   ]
 }

@@ -11,8 +11,11 @@ export interface Config {
   refreshDelayMs: number;
 }
 
+/** Where the site keeps its JSON records and generated pages: a fixed place on the application disk, not a setting. */
+export const DATA_DIRECTORY = "/data/records";
+
 export function loadConfig(env: Record<string, string | undefined> = process.env): Config {
-  const missing = ["DATA_DIR", "ADMIN_TOKEN", "FETCH_CONTACT_EMAIL"].filter((name) => !env[name]?.trim());
+  const missing = ["ADMIN_TOKEN", "FETCH_CONTACT_EMAIL"].filter((name) => !env[name]?.trim());
   if (missing.length) throw new Error(`missing settings: ${missing.join(", ")}`);
   const port = Number(env.PORT || 8080);
   if (!Number.isInteger(port) || port <= 0) throw new Error(`PORT is not a port number: ${env.PORT}`);
@@ -20,7 +23,7 @@ export function loadConfig(env: Record<string, string | undefined> = process.env
   if (!Number.isFinite(delay) || delay < 0) throw new Error(`REFRESH_START_DELAY_SECONDS is not a number: ${env.REFRESH_START_DELAY_SECONDS}`);
   return {
     port,
-    dataDir: env.DATA_DIR!.trim(),
+    dataDir: DATA_DIRECTORY,
     adminToken: env.ADMIN_TOKEN!.trim(),
     contactEmail: env.FETCH_CONTACT_EMAIL!.trim(),
     dataSfAppToken: (env.DATASF_APP_TOKEN || "").trim(),

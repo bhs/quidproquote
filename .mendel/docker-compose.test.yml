@@ -6,7 +6,6 @@ services:
     command: ["node", "src/server.ts"]
     environment:
       PORT: "8080"
-      DATA_DIR: /data/records
       ADMIN_TOKEN: demo-admin-token
       FETCH_CONTACT_EMAIL: maintainer@example.org
       REFRESH_START_DELAY_SECONDS: "86400"
