@@ -371,7 +371,7 @@ A reader sees what was given through each committee and any outside spending and
 
 The form of one committee's line: its Schedule A total, kind, row count, date range and the giver names as filed. Exclusive: a product takes one.
 
-*Two of the five built cards have two committees and the Mayor has three measure committees, so what a second line looks like decides whether a total is invited.*
+*Three of the five built cards (3, 4 and 5) have two committees each, and the Mayor's two cards have one measure committee each; the funding map (`../official-funding-map/funding-map.md`, Daniel Lurie table) lists three ballot-measure committees carrying his name, of which the third, Daniel Lurie for Prop E, is terminated and has no card. What a second line looks like decides whether a total is invited.*
 
 Options: [One block per committee](#one-block-per-committee), [A ledger table](#a-ledger-table), [One compact line per committee in lists](#one-compact-line-per-committee-in-lists).
 
