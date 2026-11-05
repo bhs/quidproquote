@@ -1,0 +1,295 @@
+{
+ "problems": [
+  {
+   "name": "See the words, priority and money together",
+   "summary": "A reader can say, without scrolling or reading a paragraph, what the official said, what the donor says it wants and what was given, and which words the two share.",
+   "section": "design-space.md#see-the-words-priority-and-money-together"
+  },
+  {
+   "name": "Show doubt and caveats without implying cause",
+   "summary": "A reader sees the speaker-credit doubt, which words are shared and that the card is a reading, and cannot take the card as saying the money caused the words.",
+   "section": "design-space.md#show-doubt-and-caveats-without-implying-cause"
+  },
+  {
+   "name": "Show money without inviting a sum",
+   "summary": "A reader sees what was given through each committee and any outside spending and is never offered, or led toward, a total across committees or outside spending.",
+   "section": "design-space.md#show-money-without-inviting-a-sum"
+  },
+  {
+   "name": "Serve scanning, reading and checking",
+   "summary": "A reader scanning many cards, one reading a card closely and one checking its sources each get what they need without the others' clutter.",
+   "section": "design-space.md#serve-scanning-reading-and-checking"
+  }
+ ],
+ "dimensions": [
+  {
+   "problem": "See the words, priority and money together",
+   "name": "How the card is laid out",
+   "section": "design-space.md#how-the-card-is-laid-out",
+   "exclusive": true,
+   "options": [
+    {
+     "name": "Three zones side by side",
+     "description": "Money then the donor's priority on the left, the official in the middle, the official's exact words on the right; stacked in that order on a phone (mockup option A).",
+     "section": "design-space.md#three-zones-side-by-side"
+    },
+    {
+     "name": "Words first",
+     "description": "The official's name and exact words are the headline; the donor's priority and the money sit under them, side by side on a computer, stacked on a phone (mockup option B).",
+     "section": "design-space.md#words-first"
+    },
+    {
+     "name": "Matched pair with a money ledger",
+     "description": "The words and the donor's priority face each other in two columns with the shared words listed between them; the money is a ledger in its own box beneath (mockup option C).",
+     "section": "design-space.md#matched-pair-with-a-money-ledger"
+    },
+    {
+     "name": "Glance row that opens",
+     "description": "In a list each card is a short row: names, shared words, the first words cut at a word boundary with the cut marked, one line per committee, the doubt badge and a flag when outside spending exists; the whole card opens in place or on its own page (mockup option D).",
+     "section": "design-space.md#glance-row-that-opens"
+    }
+   ],
+   "why_it_matters": "The layout decides which of the three a reader meets first and whether the shared words are seen across two texts or inside one; it is worth seeing built more than one way because it is judged by readers, not by the data."
+  },
+  {
+   "problem": "See the words, priority and money together",
+   "name": "What a phone does with the zones",
+   "section": "design-space.md#what-a-phone-does-with-the-zones",
+   "exclusive": true,
+   "options": [
+    {
+     "name": "Stack in zone order",
+     "description": "On a phone the zones stack as on a computer: money, donor priority, official, words.",
+     "section": "design-space.md#stack-in-zone-order"
+    },
+    {
+     "name": "Words first on a phone",
+     "description": "On a phone the words and the official come first, then the priority, then the money.",
+     "section": "design-space.md#words-first-on-a-phone"
+    },
+    {
+     "name": "Fold zones behind headings",
+     "description": "On a phone each zone is a heading that opens (money, donor's priority, words), with the shared words and the doubt badge always visible above them.",
+     "section": "design-space.md#fold-zones-behind-headings"
+    }
+   ],
+   "why_it_matters": "Most of the layouts above are really three phone orderings; choosing the order is choosing what a thumb meets first."
+  },
+  {
+   "problem": "Show doubt and caveats without implying cause",
+   "name": "Where the reading strip sits",
+   "section": "design-space.md#where-the-reading-strip-sits",
+   "exclusive": true,
+   "options": [
+    {
+     "name": "Under the three zones",
+     "description": "The strip is a full-width dashed band between the zones and the sources row, labelled 'Reading, not a finding.'",
+     "section": "design-space.md#under-the-three-zones"
+    },
+    {
+     "name": "Between the words and the money",
+     "description": "The strip sits between the words-and-priority block and the money block, so the two are never read side by side without it.",
+     "section": "design-space.md#between-the-words-and-the-money"
+    },
+    {
+     "name": "As a label at the top",
+     "description": "The card opens with a one-line label, the doubt badge and 'Reading, not a finding. No cause is claimed.'; the in-common and differs sentences stay under the zones.",
+     "section": "design-space.md#as-a-label-at-the-top"
+    }
+   ],
+   "why_it_matters": "The strip is the card's only statement of what the pairing is; where it sits decides whether a reader meets it before or after the money."
+  },
+  {
+   "problem": "Show doubt and caveats without implying cause",
+   "name": "How speaker-credit doubt is shown",
+   "section": "design-space.md#how-speaker-credit-doubt-is-shown",
+   "exclusive": true,
+   "options": [
+    {
+     "name": "Badge with the level only",
+     "description": "A coloured badge reads 'SPEAKER-CREDIT DOUBT: HIGH' and nothing more.",
+     "section": "design-space.md#badge-with-the-level-only"
+    },
+    {
+     "name": "Badge with the reason on the card",
+     "description": "The badge and the reason sentences sit together in the reading strip (as mocked in A to D).",
+     "section": "design-space.md#badge-with-the-reason-on-the-card"
+    },
+    {
+     "name": "Badge that opens its reason",
+     "description": "The badge is a control that opens the reason beside it; in a list only the badge shows.",
+     "section": "design-space.md#badge-that-opens-its-reason"
+    }
+   ],
+   "why_it_matters": "The doubt is about whether the words are the official's at all; on card 4 (high) the caption names the speaker only phonetically."
+  },
+  {
+   "problem": "Show doubt and caveats without implying cause",
+   "name": "How shared words are marked",
+   "section": "design-space.md#how-shared-words-are-marked",
+   "exclusive": false,
+   "options": [
+    {
+     "name": "Highlight in both texts",
+     "description": "The shared words are wrapped in a highlight in the official's words and in the donor's bubble (mocked in A to D).",
+     "section": "design-space.md#highlight-in-both-texts"
+    },
+    {
+     "name": "Shared-word chips",
+     "description": "The shared words are also listed as chips between or above the texts (mocked in C and D).",
+     "section": "design-space.md#shared-word-chips"
+    },
+    {
+     "name": "A plain line when nothing is shared",
+     "description": "A card with no literally shared words says 'none of substance, so nothing is highlighted' and shows no chips.",
+     "section": "design-space.md#a-plain-line-when-nothing-is-shared"
+    }
+   ],
+   "why_it_matters": "Highlights are the card's strongest visual claim of a link, so how far they reach decides how much a reader thinks the two texts agree."
+  },
+  {
+   "problem": "Show money without inviting a sum",
+   "name": "How committee lines are laid out",
+   "section": "design-space.md#how-committee-lines-are-laid-out",
+   "exclusive": true,
+   "options": [
+    {
+     "name": "One block per committee",
+     "description": "Each committee is its own block with its total as the largest text, labelled 'Schedule A, this committee only', and a note after the last: none is added to another (mocked in A, B, D).",
+     "section": "design-space.md#one-block-per-committee"
+    },
+    {
+     "name": "A ledger table",
+     "description": "A table with one row per committee and columns for total, committee, kind, rows and dates, and giver as filed (mocked in C).",
+     "section": "design-space.md#a-ledger-table"
+    },
+    {
+     "name": "One compact line per committee in lists",
+     "description": "In a list each committee is one line, amount first, with 'this committee only' and the committee name; kind, rows and dates are on the card (mocked in D).",
+     "section": "design-space.md#one-compact-line-per-committee-in-lists"
+    }
+   ],
+   "why_it_matters": "Two of the five built cards have two committees and the Mayor has three measure committees, so what a second line looks like decides whether a total is invited."
+  },
+  {
+   "problem": "Show money without inviting a sum",
+   "name": "How outside spending is kept apart",
+   "section": "design-space.md#how-outside-spending-is-kept-apart",
+   "exclusive": true,
+   "options": [
+    {
+     "name": "A separate dashed box below the gifts",
+     "description": "Outside spending is a box with a different border and colour, headed 'Outside spending, kept apart', saying it is not a gift to any committee above and not added to one; each report line stands alone (mocked in A to C).",
+     "section": "design-space.md#a-separate-dashed-box-below-the-gifts"
+    },
+    {
+     "name": "A flag in the list and a box on the card",
+     "description": "In a list the row carries a flag, 'Outside spending, kept apart: open the card', and no amount; the box is on the card (mocked in D).",
+     "section": "design-space.md#a-flag-in-the-list-and-a-box-on-the-card"
+    },
+    {
+     "name": "Left off the card and linked",
+     "description": "The card shows gifts only, with a line saying outside spending also exists and linking to the funding map section that lists it.",
+     "section": "design-space.md#left-off-the-card-and-linked"
+    }
+   ],
+   "why_it_matters": "The earlier worked pairings found outside spending, not gifts, for the one donor with money, so a card must show it without its reading as a gift."
+  },
+  {
+   "problem": "Show money without inviting a sum",
+   "name": "How a many-to-one donor is shown",
+   "section": "design-space.md#how-a-many-to-one-donor-is-shown",
+   "exclusive": true,
+   "options": [
+    {
+     "name": "One bubble with a tie note",
+     "description": "One donor bubble, with an italic line saying how the tie is recognised, by Filers id or by name only (mocked in every option).",
+     "section": "design-space.md#one-bubble-with-a-tie-note"
+    },
+    {
+     "name": "Giver names as a count that opens",
+     "description": "The money line shows '15 giver names as filed' and the count opens to the full list in place (mocked in A to D when a line has more than three names).",
+     "section": "design-space.md#giver-names-as-a-count-that-opens"
+    },
+    {
+     "name": "Giver names listed as filed",
+     "description": "Every giver name is listed in the money line.",
+     "section": "design-space.md#giver-names-listed-as-filed"
+    }
+   ],
+   "why_it_matters": "A bubble that holds many names must say how each is tied, or a reader takes a name match for a fact."
+  },
+  {
+   "problem": "Serve scanning, reading and checking",
+   "name": "What the list shows of each card",
+   "section": "design-space.md#what-the-list-shows-of-each-card",
+   "exclusive": true,
+   "options": [
+    {
+     "name": "The whole card",
+     "description": "Every card in the list is the whole card (mocked in A to C).",
+     "section": "design-space.md#the-whole-card"
+    },
+    {
+     "name": "A row that opens",
+     "description": "Each card is a row of names, shared words, cut words, one line per committee and the badge; it opens in place to the whole card (mocked in D).",
+     "section": "design-space.md#a-row-that-opens"
+    },
+    {
+     "name": "The words cut with the card a click away",
+     "description": "Each card shows only the official and the words (cut if long) and the doubt badge; money and priority are on the card's page.",
+     "section": "design-space.md#the-words-cut-with-the-card-a-click-away"
+    }
+   ],
+   "why_it_matters": "The list is how most readers meet the cards, so what it omits is what most readers never see."
+  },
+  {
+   "problem": "Serve scanning, reading and checking",
+   "name": "What the card's own page adds",
+   "section": "design-space.md#what-the-cards-own-page-adds",
+   "exclusive": false,
+   "options": [
+    {
+     "name": "Row-level filing table",
+     "description": "Under each committee line, a table of each Schedule A row with date, filing id and version, filing date, amount and giver as filed, with 24-hour repeats listed apart (the built site's card already does this).",
+     "section": "design-space.md#row-level-filing-table"
+    },
+    {
+     "name": "Recording and transcript links",
+     "description": "The words carry a link to the city transcript at its time stamp and, where there is one, to the meeting recording.",
+     "section": "design-space.md#recording-and-transcript-links"
+    },
+    {
+     "name": "A copyable link and a printable view",
+     "description": "The page has its own address that can be copied, and prints as a single card without navigation.",
+     "section": "design-space.md#a-copyable-link-and-a-printable-view"
+    }
+   ],
+   "why_it_matters": "The page is where a reporter verifies a pairing, so what it adds sets how long verification takes."
+  },
+  {
+   "problem": "Serve scanning, reading and checking",
+   "name": "Where sources sit",
+   "section": "design-space.md#where-sources-sit",
+   "exclusive": true,
+   "options": [
+    {
+     "name": "One sources row at the bottom",
+     "description": "A single row at the bottom links the transcript, the donor page and the filing ids and gives the money retrieval date (as the maintainer described, mocked in A to D).",
+     "section": "design-space.md#one-sources-row-at-the-bottom"
+    },
+    {
+     "name": "A source link beside each element",
+     "description": "Each part carries its own link: the words a transcript link, the priority a source link, the money its dataset link (the mockups include the first two in the words and the priority and keep the row).",
+     "section": "design-space.md#a-source-link-beside-each-element"
+    },
+    {
+     "name": "Both",
+     "description": "Links beside each element and a sources row that collects them with the retrieval date.",
+     "section": "design-space.md#both"
+    }
+   ],
+   "why_it_matters": "Sources are what makes a card checkable, and a source far from the claim it supports is slower to check."
+  }
+ ]
+}

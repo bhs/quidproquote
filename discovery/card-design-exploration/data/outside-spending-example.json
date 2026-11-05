@@ -1,0 +1,100 @@
+{
+ "source": "discovery/worked-pairing-examples/pairings.json, pairing 3 (GrowSF and Bilal Mahmood); the only pairing in the earlier worked examples with money beside it, and that money is outside spending, not a gift to the official's committees",
+ "official": {
+  "name": "Bilal Mahmood",
+  "role": "Supervisor, District 5"
+ },
+ "quote": {
+  "text": "THIS MEASURE GIVES SAN FRANCISCO VOTERS THE OPPORTUNITY TO DECIDE WHETHER A TRANSFER TAX CODE SHOULD REFLECT THE WAY TODAY'S REAL ESTATE MARKET OPERATES RATHER THAN THE MARKET THAT EXISTED DECADES AGO.",
+  "meeting": "Budget and Finance Committee",
+  "date": "2026-07-15",
+  "first_stamp": "02:52:31",
+  "last_stamp": "02:52:42",
+  "transcript_url": "https://sfgov.legistar.com/Transcript.aspx?ID1=52853"
+ },
+ "donor": {
+  "name": "GrowSF",
+  "statement": {
+   "section": "Proposition J — Removal of Foreclosure Exemption for Real Property Transfer Tax",
+   "text": "The exemption was written in 1967 for a bank stuck with a building it never wanted, and for decades it mostly covered homes. Then investors learned to buy the loan instead of the building, and the Assessor now counts $450M in foreclosure exemptions claimed in the last three years, against $50M in the fifteen years before that. The tax they skip is the one every ordinary buyer pays, and homes and small buildings keep the exemption either way.",
+   "url": "https://growsf.org/voter-guide/san-francisco-voter-guide-november-2026-election/measures/prop-j/",
+   "page_date": "2026-09-24",
+   "retrieved": "2026-10-29",
+   "kind": "voter guide (Yes)"
+  },
+  "name_words": "GROWSF; GROW SF"
+ },
+ "reading": {
+  "in_common": "Same measure and same subject: the foreclosure exemption in the real property transfer tax (Prop J) and how the market has changed since the exemption was written.",
+  "differs": "Same side on the text: the quote presents the measure as bringing the transfer tax code up to date, and the donor's statement is on its page for Prop J, labelled 'Yes'. (My reading of the quote; the label is on the donor's page.)"
+ },
+ "speaker_credit": {
+  "doubt": "high",
+  "reason": "The speaker's name is captioned phonetically ('BALA MAMU'), so no cue spells a roster surname. The cue rule's own proposal rests on another cue, the committee chair ('CHAIR CHIN'), and names the wrong person. Credit rests on the item reading, the co-sponsor list and the sponsor record outside the transcript, and the donor's own page naming Supervisor Mahmood as the measure's sponsor."
+ },
+ "independent_expenditures": [
+  {
+   "filer_nid": "201619433",
+   "filer_name": "Coalition to Grow San Francisco - Grow SF PAC",
+   "office": "Board Member",
+   "district": "17",
+   "rows_24_hour": 6,
+   "total_24_hour": 2379.28,
+   "rows_listed_apart": 0,
+   "total_listed_apart": 0,
+   "stance": "supports",
+   "first_filed": "2024-01-31",
+   "last_filed": "2024-01-31",
+   "filing_ids": [
+    "209989944"
+   ]
+  },
+  {
+   "filer_nid": "201619433",
+   "filer_name": "Coalition to Grow San Francisco - Grow SF PAC",
+   "office": "SUPERVISOR",
+   "district": "5",
+   "rows_24_hour": 9,
+   "total_24_hour": 14939.79,
+   "rows_listed_apart": 0,
+   "total_listed_apart": 0,
+   "stance": "supports",
+   "first_filed": "2024-09-30",
+   "last_filed": "2024-10-29",
+   "filing_ids": [
+    "212211516",
+    "212232415",
+    "212259496",
+    "212453813"
+   ]
+  },
+  {
+   "filer_nid": "205575753",
+   "filer_name": "Coalition to Grow San Francisco - Grow SF PAC Opposing Preston for Supervisor 2024",
+   "office": "Supervisor",
+   "district": "5",
+   "rows_24_hour": 17,
+   "total_24_hour": 131170.23,
+   "rows_listed_apart": 0,
+   "total_listed_apart": 0,
+   "stance": "supports",
+   "first_filed": "2024-09-21",
+   "last_filed": "2024-10-20",
+   "filing_ids": [
+    "212128086",
+    "212139607",
+    "212242874",
+    "212249096",
+    "212255368",
+    "212271053",
+    "212343992"
+   ]
+  }
+ ],
+ "committees_searched": [
+  "Bilal Mahmood for DCCC Member 2024",
+  "Bilal Mahmood for Supervisor 2024"
+ ],
+ "money_retrieved": "2026-10-30",
+ "schedule_a_rows_found_for_donor": 0
+}

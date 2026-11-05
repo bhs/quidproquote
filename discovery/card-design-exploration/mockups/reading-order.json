@@ -1,0 +1,157 @@
+{
+ "unit": "characters of visible text before the item, in one card of the list view; null = not shown in the list",
+ "options": {
+  "a": {
+   "1": {
+    "total_chars": 2570,
+    "first_amount": 103,
+    "words": 1321,
+    "priority": 576
+   },
+   "2": {
+    "total_chars": 2970,
+    "first_amount": 111,
+    "words": 1480,
+    "priority": 573
+   },
+   "3": {
+    "total_chars": 3739,
+    "first_amount": 110,
+    "words": 1360,
+    "priority": 797
+   },
+   "4": {
+    "total_chars": 2633,
+    "first_amount": 92,
+    "words": 1405,
+    "priority": 707
+   },
+   "5": {
+    "total_chars": 3651,
+    "first_amount": 87,
+    "words": 1559,
+    "priority": 624
+   },
+   "6": {
+    "total_chars": 3611,
+    "first_amount": 487,
+    "words": 2001,
+    "priority": 1216
+   }
+  },
+  "b": {
+   "1": {
+    "total_chars": 2511,
+    "first_amount": 1108,
+    "words": 87,
+    "priority": 406
+   },
+   "2": {
+    "total_chars": 2911,
+    "first_amount": 1522,
+    "words": 95,
+    "priority": 658
+   },
+   "3": {
+    "total_chars": 3680,
+    "first_amount": 1939,
+    "words": 110,
+    "priority": 1435
+   },
+   "4": {
+    "total_chars": 2574,
+    "first_amount": 1044,
+    "words": 94,
+    "priority": 407
+   },
+   "5": {
+    "total_chars": 3592,
+    "first_amount": 1927,
+    "words": 91,
+    "priority": 1055
+   },
+   "6": {
+    "total_chars": 3552,
+    "first_amount": 1526,
+    "words": 123,
+    "priority": 436
+   }
+  },
+  "c": {
+   "1": {
+    "total_chars": 2531,
+    "first_amount": 1271,
+    "words": 110,
+    "priority": 458
+   },
+   "2": {
+    "total_chars": 2944,
+    "first_amount": 1708,
+    "words": 118,
+    "priority": 710
+   },
+   "3": {
+    "total_chars": 3674,
+    "first_amount": 2125,
+    "words": 133,
+    "priority": 1487
+   },
+   "4": {
+    "total_chars": 2590,
+    "first_amount": 1234,
+    "words": 117,
+    "priority": 459
+   },
+   "5": {
+    "total_chars": 3714,
+    "first_amount": 2111,
+    "words": 114,
+    "priority": 1107
+   },
+   "6": {
+    "total_chars": 3658,
+    "first_amount": 1632,
+    "words": 146,
+    "priority": 488
+   }
+  },
+  "d": {
+   "1": {
+    "total_chars": 491,
+    "first_amount": 408,
+    "words": 111,
+    "priority": null
+   },
+   "2": {
+    "total_chars": 541,
+    "first_amount": 448,
+    "words": 142,
+    "priority": null
+   },
+   "3": {
+    "total_chars": 610,
+    "first_amount": 452,
+    "words": 158,
+    "priority": null
+   },
+   "4": {
+    "total_chars": 599,
+    "first_amount": 457,
+    "words": 145,
+    "priority": null
+   },
+   "5": {
+    "total_chars": 600,
+    "first_amount": 430,
+    "words": 134,
+    "priority": null
+   },
+   "6": {
+    "total_chars": 569,
+    "first_amount": null,
+    "words": 155,
+    "priority": null
+   }
+  }
+ }
+}
