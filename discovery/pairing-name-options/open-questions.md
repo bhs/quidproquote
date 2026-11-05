@@ -7,7 +7,10 @@ What was looked for and not found, what is worth asking and of whom, and which c
 - **Any shared name for the three-part unit.** Digital Democracy, the SF Ethics Commission's dashboards, three San Francisco newsrooms, MapLight and ProPublica were read (`comparable-sites.md`); none gives one noun to words, priority and money together.
 - **Evidence on how readers take "pairing", "alignment", "overlap", "side by side" or "connection".** No study or reader test was found, and none has been run. `reader-check.md` is the instrument for a small check.
 - **Reporters' style-guide rules** for wording a contribution next to a quote. None found.
-- **OpenSecrets, Voter's Edge, MapLight's own site, Follow the Money, Sunlight's Influence Explorer and LittleSis pages** were not read. Their naming is not described here except where marked "(recalled)".
+- **Any page on opensecrets.org.** How OpenSecrets labels a donor-and-official connection is not known; its scope comes from Ballotpedia and its use of "outside spending" from a Statista chart that credits it (`comparable-sites.md`, sections 7 and 8).
+- **Follow the Money, Sunlight's Influence Explorer, LittleSis and votersedge.org itself.** Their naming is not described here except where marked "(recalled)". Voter's Edge is described from MapLight's and the League's posts, and the product has ended.
+- **A study of how readers take a denial on a money-and-speech display.** None found; the research read concerns retracted claims (`comparable-sites.md`, section 9).
+- **A single usual word for Form 496 spending in San Francisco.** Three words are in use (independent expenditure, third-party spending, outside spending); none of the pages read calls one usual.
 - **The full text of the Robertson et al. experiment** could not be opened; only the abstract-level snippet was read.
 
 ## What would be worth asking, and of whom
@@ -26,10 +29,9 @@ For later work, from the evidence: whether reporters read the strip's guard sent
 
 Marked here once; the same claim is marked where it is made.
 
-- (recalled) That "outside spending" is the usual newsroom and watchdog term for form 496 spending; no page read in this run uses it.
 - (recalled) That "linked to" is how a headline insinuates a relationship that the data does not show.
 - (recalled) That the phrase "follow the money" comes from a Watergate-era line and suggests a trail that leads somewhere.
-- (recalled) That a card which names the idea it denies ("no cause is claimed") can plant it, from communication research on correcting claims; not read in this run.
+- (my reading) That the correction research (Lewandowsky and colleagues, 2012, read as the authors' in-press manuscript) applies to a card line such as "no cause is claimed". The review's findings are about retractions of claims readers have already taken in, mostly in laboratory tasks; applying them to a disclaimer on a display is by analogy. Later work on backfire effects was not read.
 - (recalled) That "special interests", "big money" and "dark money" read as one side's words about the other. The cards' own sources do use "special-interest" as an attack (read, in `../official-funding-map/pairing-cards.md`, Card 2), which supports the point for that phrase only.
 - (unverified) The Robertson et al. result that connecting spending to policy produced quid pro quo findings nearly as often as outright bribery: read only as a search snippet.
 - (unverified) The characterisation of MapLight's positions and of ProPublica's studies-based reporting: read only as search snippets, cut off before the results.

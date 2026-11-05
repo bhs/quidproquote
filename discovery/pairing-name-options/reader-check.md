@@ -27,6 +27,8 @@ Show the card with one candidate in the unit slot. Use the pairs below, one per 
 | C | Words and money | Money given to committees tied to the official | In its own words | On the record | Our comparison, not a conclusion |
 | D | Overlap | Donations | Public statement | Words credited to the official | How to read this card |
 
+The strip's closing sentence is the other thing to vary between people: one hears "No cause is claimed", another "What was said, what was given and when, nothing about why" (`name-options.md`, slot 5). Research on denials suggests the first can raise the idea it names (`comparable-sites.md`, section 9); question 5 below is how to see whether it does here.
+
 Ask, after each:
 
 4. "What does the word on top tell you this is?"

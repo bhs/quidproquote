@@ -66,7 +66,9 @@ The zone now reads "Money in, then the donor's priority".
 | **Gifts** | A legal category in Form 700 disclosures (read in the Digital Democracy methodology), a personal gift to the official. | R, C | Wrong word for committee contributions. |
 | **Payments** | A purchase of something. ProPublica's physician pages use it where the payments were for talks and consulting. | C (strong) | Not accurate here: nothing is bought, and payment implies a service. |
 | **Backing / support / bankrolling** | The donor is behind the official. | C, P | See "Words that fail the tests". |
-| **Outside spending** (a separate line) | Money spent without being given to the official's committees. | none | The usual newsroom and watchdog term for form 496 spending (recalled); the card keeps it apart. |
+| **Independent expenditures** (a separate line) | The filing's own word for spending that is not given to the official's committees; Form 496 is titled "Independent Expenditure Report". A first-time reader will not know it. | J (mild) | Exact, and what a reporter will search the filings for. Needs the plain words beside it (`comparable-sites.md`, section 8). |
+| **Third-party spending** (a separate line) | Someone other than the candidate or the donor's own committee spent it. | none | The SF Ethics Commission's umbrella word, and Mission Local uses it for its own totals. |
+| **Outside spending** (a separate line) | Money spent without being given to the official's committees. | none | Used by Mission Local in October 2026 beside "independent committees" and by a federal chart credited to OpenSecrets; no page read calls it the usual term, and San Francisco sources use three words (`comparable-sites.md`, section 8). The card keeps it apart. |
 
 ### Slot 3. The donor's side (heading of the donor's bubble)
 
@@ -107,7 +109,7 @@ The strip now opens "Reading, not a finding."
 | **What the two share, and where they differ** | The content of the strip. | none | Describes rather than warns; says no more than it shows. |
 | **Our comparison, not a conclusion** | A comparison that stops short of a verdict. | A (mild) | "Conclusion" is plainer than "finding". |
 | **How to read this card** | An instruction. | none | The strip would need to say what to take from it. |
-| **No cause is claimed** (the sentence that ends the strip now) | That someone might think there is one. | C (own goal, mild) | Naming the cause idea in the card puts it in the reader's head. A sentence of what the card does show ("what was said, what was given and when, nothing about why") carries the same guard without naming it (recalled, from communication research on correcting claims; not read in this run). |
+| **No cause is claimed** (the sentence that ends the strip now) | That someone might think there is one. | C (own goal, mild) | Naming the cause idea in the card repeats it. Research on corrections finds that denials which repeat a claim can raise its familiarity, and that a strengthened denial backfired in one laboratory study; the authors advise emphasising the facts rather than the myth (`comparable-sites.md`, section 9). That research is about retracting claims people have already taken in, so for this card it is a risk by analogy (my reading), not a tested result. A sentence of what the card does show ("what was said, what was given and when, nothing about why") avoids naming the idea; whether it reads better is a question for `reader-check.md`. |
 
 ### Slot 6. The giver ("donor") and the whole-site tagline
 
@@ -143,11 +145,11 @@ Time-order words the card cannot support: **then, after, before, following, sinc
 
 ## Candidates that pass all three tests
 
-Plain, descriptive words pass the causation and partisan tests: **side by side**, **record**, **words and money**, **donor**, **contributor**, **giver**, **contributions**, **donations**, **money given to committees tied to the official**, **exact words**, **stated priority**, **what the two share**. Each is either short and vague (needs explanation) or accurate and long. "Pairing" passes the causation and partisan tests and carries only the mild agreement hint above. It is a word the site invented, so the short explanation in the lede is what carries the meaning; no source read in this run uses it for this connection (see `comparable-sites.md`).
+Plain, descriptive words pass the causation and partisan tests: **side by side**, **record**, **words and money**, **donor**, **contributor**, **giver**, **contributions**, **donations**, **money given to committees tied to the official**, **exact words**, **stated priority**, **what the two share**. Each is either short and vague (needs explanation) or accurate and long. "Pairing" passes the causation and partisan tests and carries only the mild agreement hint above. It is a word the site invented, so the short explanation in the lede is what carries the meaning; no source read uses it for this connection (see `comparable-sites.md`).
 
 ## What this leaves for the card redesign
 
 - Whether to keep **pairing** with its lede, or pick one of the descriptive words and carry **side by side** as the verb in the lede. The choice is the maintainer's; reader-check is a way to inform it.
-- Every heading with "then" or an arrow, and every "no cause is claimed" sentence, can be replaced without choosing a name at all.
+- Every heading with "then" or an arrow, and every "no cause is claimed" sentence, can be replaced without choosing a name at all. For the separate spending line the choice is between the filing's word (independent expenditures), the Ethics Commission's (third-party spending) and the newsroom's (outside spending), with a gloss either way.
 - Slots 2, 3 and 4 are independent of slot 1: any unit name can keep "stated priority" and "exact words".
 - If the donor's side admits news reports, its heading needs a form that works for both ("{Donor}: stated priority" with the source type, or "reported by {outlet}").
