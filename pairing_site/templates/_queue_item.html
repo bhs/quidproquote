@@ -1,0 +1,17 @@
+{% from "_card.html" import card_article %}
+<section class="qitem" id="queue-{{ row.id }}">
+  {{ card_article(row, row.card, queue=True) }}
+  {% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
+  <div class="decide">
+    <form method="post" action="/review/{{ row.id }}/approve" hx-post="/review/{{ row.id }}/approve" hx-target="closest .qitem" hx-swap="outerHTML">
+      <label><input type="checkbox" name="recording_checked" required>
+        I played the <a href="{{ row.recording_url }}">recording</a> at {{ row.first_stamp }} and the words match.</label>
+      <input type="text" name="note" placeholder="Note (optional)" maxlength="500">
+      <button type="submit" class="approve">Approve and publish</button>
+    </form>
+    <form method="post" action="/review/{{ row.id }}/reject" hx-post="/review/{{ row.id }}/reject" hx-target="closest .qitem" hx-swap="outerHTML">
+      <input type="text" name="note" placeholder="Why reject (optional)" maxlength="500">
+      <button type="submit" class="reject">Reject</button>
+    </form>
+  </div>
+</section>

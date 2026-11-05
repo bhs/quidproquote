@@ -49,7 +49,10 @@ def query(dataset, params, timeout=120, retries=3):
     last = None
     for attempt in range(retries):
         try:
-            req = urllib.request.Request(url, headers={"Accept": "application/json", "User-Agent": UA})
+            headers = {"Accept": "application/json", "User-Agent": UA}
+            if os.environ.get("DATASF_APP_TOKEN"):  # optional: only raises the rate limit
+                headers["X-App-Token"] = os.environ["DATASF_APP_TOKEN"]
+            req = urllib.request.Request(url, headers=headers)
             with urllib.request.urlopen(req, timeout=timeout) as resp:
                 rows = json.loads(resp.read().decode("utf-8"))
             if not isinstance(rows, list):

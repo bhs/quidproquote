@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% from "_card.html" import card_article %}
+{% block title %}Cards{% endblock %}
+{% block content %}
+<h1>Pairings</h1>
+<p class="lede">Each card puts three things side by side: an official's exact words from the city's transcript, a donor's own
+stated priority with its source link and retrieval date, and the money that donor gave through committees tied to that
+official, by committee and filing. A card says what is shown, not why.</p>
+<div class="filters" id="filters">
+  <label>Official
+    <select id="filter-official"><option value="">All officials</option>
+    {% for o in officials %}<option value="{{ o }}">{{ o }}</option>{% endfor %}</select></label>
+  <label>Donor
+    <select id="filter-donor"><option value="">All donors</option>
+    {% for d in donors %}<option value="{{ d }}">{{ d }}</option>{% endfor %}</select></label>
+  <button type="button" id="toggle-highlight" aria-pressed="true">Highlight shared words: on</button>
+  <span id="shown-count" class="small" aria-live="polite">{{ rows|length }} card{{ '' if rows|length == 1 else 's' }} shown</span>
+</div>
+<div id="cards">
+{% for row in rows %}
+  {{ card_article(row, row.card) }}
+{% else %}
+  <p>No pairing has been approved yet.</p>
+{% endfor %}
+</div>
+<p id="no-match" class="small" hidden>No card matches this official and donor.</p>
+{% endblock %}

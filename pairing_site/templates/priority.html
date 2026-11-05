@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Add a priority{% endblock %}
+{% block content %}
+<h1>Add a donor's priority</h1>
+<p class="lede">Paste the donor's own words and the link to the page that shows them. The page is fetched now and the
+words must appear on it, word for word, or nothing is saved. The retrieval date is the day of the check; you do not enter it.</p>
+{% if saved %}<p class="notice" id="priority-saved">Saved. The words were found verbatim on {{ saved.url }} and recorded as retrieved {{ saved.retrieved }}. The worker uses them from its next run.</p>{% endif %}
+{% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
+<form method="post" action="/priority" class="stack">
+  <label>Donor
+    <select name="family" required>
+      <option value="">Choose a donor</option>
+      {% for f in families %}<option value="{{ f.key }}" {{ 'selected' if form.family == f.key }}>{{ f.name }}</option>{% endfor %}
+    </select></label>
+  <label>Link to the donor's page <input type="url" name="url" value="{{ form.url or '' }}" required placeholder="https://"></label>
+  <label>The donor's words, exactly as the page shows them
+    <textarea name="words" rows="5" required>{{ form.words or '' }}</textarea></label>
+  <label>Section heading on the page (optional) <input type="text" name="section" value="{{ form.section or '' }}"></label>
+  <label>Date the page shows (optional) <input type="text" name="page_date" value="{{ form.page_date or '' }}" placeholder="2026-10-08"></label>
+  <button type="submit">Fetch the page and check the words</button>
+</form>
+<h2>Donor statements on file</h2>
+<ul>{% for r in recent %}<li><b>{{ r.donor }}</b>: {{ r.text[:140] }}{{ '...' if r.text|length > 140 }} (<a href="{{ r.url }}">source</a>, retrieved {{ r.retrieved }}, added by {{ r.added_by }})</li>{% endfor %}</ul>
+{% endblock %}

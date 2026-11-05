@@ -1,0 +1,88 @@
+{% macro card_article(row, card, queue=False) %}
+{% set q = card.quote %}
+{% set T = card.highlight %}
+{% set credit = card.speaker_credit %}
+<article class="card" id="card-{{ row.slug }}" data-official="{{ card.official.name }}" data-donor="{{ card.donor.name }}">
+  <h2><a href="/pairings/{{ row.slug }}">{{ card.title }}</a></h2>
+  <p class="meta">
+    {% if row.published_at %}Published {{ row.published_at }}{% else %}Not published yet{% endif %}
+    &middot; Official's words: {{ q.meeting }}, {{ q.date }}, transcript time {{ q.first_stamp }}{% if q.last_stamp != q.first_stamp %} to {{ q.last_stamp }}{% endif %}
+    &middot; <a href="{{ q.transcript_url }}">City transcript</a>
+    &middot; <a href="{{ q.recording_url }}">Meeting recording</a>
+    <button type="button" class="copy-link" data-path="/pairings/{{ row.slug }}">Copy link</button>
+  </p>
+  <p class="small recording-state">
+    {% if row.recording_checked %}Checked against the recording by the maintainer on {{ row.recording_checked_at.date() }}.
+    {% else %}Wording is the city's caption transcript, re-read word for word; it has not been checked against the recording.{% endif %}
+  </p>
+  <div class="zones">
+    <div class="zone">
+      <h3>Money in, then the donor's priority</h3>
+      {% for m in card.money.committees %}
+      <div class="money">
+        <span class="amt">{{ m.schedule_a_total_text }}</span> Schedule A to <b>{{ m.committee }}</b> <span class="small">(filer {{ m.filer }})</span>
+        <div class="small">{{ m.kind }}; {{ m.rows }} row{{ '' if m.rows == 1 else 's' }}, {{ m.first }}{% if m.last != m.first %} to {{ m.last }}{% endif %}</div>
+        <table class="rows">
+          <thead><tr><th>Given</th><th>Filing (version)</th><th>Filed</th><th>Amount</th><th>Giver as filed</th></tr></thead>
+          <tbody>
+          {% for r in m.rows_detail or [] %}
+          <tr><td>{{ r.contribution_date }}</td><td>{{ r.filing_id }} (v{{ r.version }})</td><td>{{ r.filing_date }}</td><td class="num">{{ r.amount_text }}</td><td>{{ r.giver }}</td></tr>
+          {% endfor %}
+          {% for r in m.h24_only_detail or [] %}
+          <tr class="apart"><td>{{ r.contribution_date }}</td><td>{{ r.filing_id }} (v{{ r.version }})</td><td>{{ r.filing_date }}</td><td class="num">{{ r.amount_text }}</td><td>{{ r.giver }} <i>({{ r.kind }})</i></td></tr>
+          {% endfor %}
+          {% for r in m.repeats_detail or [] %}
+          <tr class="repeat"><td>{{ r.contribution_date }}</td><td>{{ r.filing_id }} (v{{ r.version }})</td><td>{{ r.filing_date }}</td><td class="num">{{ r.amount_text }}</td><td>{{ r.giver }} <i>({{ r.kind }})</i></td></tr>
+          {% endfor %}
+          </tbody>
+        </table>
+        <div class="small">Schedule A total for this committee: <b>{{ m.schedule_a_total_text }}</b> in {{ m.rows }} row{{ '' if m.rows == 1 else 's' }}.
+          {% if m.repeats_not_counted %}{{ m.repeats_not_counted }} 24-hour repeat{{ '' if m.repeats_not_counted == 1 else 's' }} of a Schedule A row, listed, not counted.{% endif %}
+          {% if m.h24_only_rows %}Also on 24-hour reports with no Schedule A row yet, apart and not in the total: ${{ '{:,.0f}'.format(m.h24_only_total) }}.{% endif %}</div>
+      </div>
+      {% endfor %}
+      <div class="small">One line per receiving committee; totals are never summed across committees. Retrieved {{ card.money.retrieved }} from the Ethics Commission's <a href="{{ card.money.dataset_url }}">Transactions dataset</a> (data loaded through {{ card.money.data_loaded_at }}).</div>
+      {% for o in card.money.outside_spending %}
+      <div class="money outside"><b>Outside spending, kept apart</b> (form 496; not a gift to any committee above): {{ o.spender }}, {{ o.stance }}, {{ o.amount_text }}, {{ o.filings }} filings, {{ o.first }} to {{ o.last }}</div>
+      {% endfor %}
+      <div class="bubble">
+        <b>{{ card.donor.name }}: stated priority</b>
+        <div class="small"><i>{{ card.donor.tie.text }}</i></div>
+        {% for s in card.donor.statements %}
+        <div class="small">{{ s.section|marked(T) }}</div>
+        <blockquote>{{ (s.text|quoted)|marked(T) }}</blockquote>
+        <div class="small">{% if s.page_date %}page dated {{ s.page_date }}{% else %}page undated{% endif %}; <a href="{{ s.url }}">source page</a>; retrieved {{ s.retrieved }}</div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="zone official">
+      <h3>The official</h3>
+      <div class="name">{{ card.official.name }}</div>
+      <div>{{ card.official.role }}</div>
+      <p class="small">San Francisco official, as the city's roster has them.</p>
+    </div>
+    <div class="zone">
+      <h3>The official's exact words</h3>
+      <div class="quote">{{ ('"' ~ q.text ~ '"')|marked(T) }}</div>
+      <div class="small">{{ q.meeting }}, {{ q.date }}, transcript time {{ q.first_stamp }}{% if q.last_stamp != q.first_stamp %} to {{ q.last_stamp }}{% endif %}</div>
+    </div>
+  </div>
+  <div class="strip">
+    <span class="badge {{ credit.doubt }}">SPEAKER-CREDIT DOUBT: {{ credit.doubt|upper }}</span>
+    <b>Reading, not a finding.</b>
+    In common: {{ card.reading.in_common }} Where they differ: {{ card.reading.differs }} {{ card.reading.cause }}
+    <div class="small"><b>Who is speaking:</b> {{ credit.official }}, {{ credit.role }}. {{ credit.support }}
+      Doubt in the credit: {{ credit.reason }}</div>
+    {% if credit.cue_rows %}
+    <details class="small"><summary>Caption rows that name the speaker</summary>
+      <ul class="cue">{% for stamp, text in credit.cue_rows %}<li><code>{{ stamp }}</code> {{ text }}</li>{% endfor %}</ul>
+    </details>
+    {% endif %}
+    <div class="small">Highlighted: words literally in both the quote and the donor's words ({% if T %}{% for t in T %}"{{ t }}"{{ ', ' if not loop.last }}{% endfor %}{% else %}none of substance, so nothing is highlighted{% endif %}).</div>
+  </div>
+  <div class="sources"><b>Sources:</b> <a href="{{ card.sources.transcript }}">transcript</a> ({{ q.meeting }}, {{ q.date }}, retrieved {{ q.retrieved }});
+    donor page{{ '' if card.sources.donor_pages|length == 1 else 's' }}:
+    {% for u in card.sources.donor_pages %}<a href="{{ u }}">{{ u.split('//')[-1].split('/')[0] }}</a>{{ ', ' if not loop.last }}{% endfor %};
+    filing ids, <a href="{{ card.sources.dataset_url }}">Transactions dataset</a>: {{ card.sources.filing_ids|join(', ') }}; money retrieved {{ card.sources.money_retrieved }}.</div>
+</article>
+{% endmacro %}

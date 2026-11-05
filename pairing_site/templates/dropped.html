@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Dropped pairs{% endblock %}
+{% block content %}
+<h1>Dropped pairs</h1>
+<p class="lede">Pairs that did not reach the queue, each with the reason. The AI filter drops a pair that shares only topic
+words with the donor's priority, or whose positions oppose, or whose words do not read as an official speaking.
+Pairs dropped by an earlier hand reading say so.</p>
+{% for r in rows %}
+<article class="dropped" id="dropped-{{ r.id }}">
+  <h2>{{ r.official }} &times; {{ r.donor_name }}
+    <span class="badge kind-{{ r.reason_kind }}">{{ r.reason_kind }}</span></h2>
+  <p class="small">{{ r.meeting_body }}, {{ r.meeting_date }}, transcript time {{ r.first_stamp }} to {{ r.last_stamp }}
+    &middot; {{ r.stage }}{% if r.model %} ({{ r.model }}){% endif %}</p>
+  <p><b>Why dropped:</b> {{ r.reason }}</p>
+  <div class="small">The official's words</div><blockquote>{{ r.quote_text }}</blockquote>
+  <div class="small">The donor's words (<a href="{{ r.priority_url }}">source</a>)</div><blockquote>{{ r.priority_text }}</blockquote>
+</article>
+{% else %}
+<p>Nothing has been dropped yet.</p>
+{% endfor %}
+{% endblock %}

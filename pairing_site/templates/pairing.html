@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% from "_card.html" import card_article %}
+{% block title %}{{ row.card.title }}{% endblock %}
+{% block content %}
+{% if row.status != 'approved' %}<p class="notice">This pairing is {{ row.status }}; only you can see it.</p>{% endif %}
+<div class="filters"><button type="button" id="toggle-highlight" aria-pressed="true">Highlight shared words: on</button>
+  <a href="/">All cards</a></div>
+{{ card_article(row, row.card) }}
+{% endblock %}
