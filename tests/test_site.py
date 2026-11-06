@@ -127,9 +127,11 @@ class Admin(SiteCase):
         page = "<p>%s, helping workers.</p>" % words
         with mock.patch.object(priorities, "check_public_url"), mock.patch.object(priorities.fl, "fetch_page", return_value=page):
             res = self.client.post("/priority", data={"family": "sf-chamber", "url": "https://example.org/guide",
-                                                       "words": words, "retrieved": "1999-01-01"})
+                                                       "words": words, "retrieved": "1999-01-01", "kind": "news",
+                                                       "outlet": "Example News", "page_date": "2026-10-08"})
             bad = self.client.post("/priority", data={"family": "sf-chamber", "url": "https://example.org/guide",
-                                                       "words": "Words that are not anywhere on that page at all"})
+                                                       "words": "Words that are not anywhere on that page at all",
+                                                       "kind": "own"})
         self.assertEqual(res.status_code, 200)
         self.assertIn("recorded as retrieved", res.text)
         self.assertEqual(bad.status_code, 422)

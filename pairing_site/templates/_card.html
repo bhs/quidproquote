@@ -1,6 +1,7 @@
 {% macro card_article(row, card, queue=False) %}
 {% set q = card.quote %}
-{% set T = card.highlight %}
+{% set shown = row.quote_shown if row.quote_shown is defined else q.text %}
+{% set T = shared_terms(shown, card) %}
 {% set credit = card.speaker_credit %}
 <article class="card" id="card-{{ row.slug }}" data-official="{{ card.official.name }}" data-donor="{{ card.donor.name }}">
   <h2><a href="/pairings/{{ row.slug }}">{{ card.title }}</a></h2>
@@ -49,6 +50,7 @@
         <b>{{ card.donor.name }}: stated priority</b>
         <div class="small"><i>{{ card.donor.tie.text }}</i></div>
         {% for s in card.donor.statements %}
+        {% if s.kind == 'news report' %}<div class="small"><span class="badge reported">News report: {{ s.outlet }}</span> the words are the outlet's report, not the donor's own.</div>{% endif %}
         <div class="small">{{ s.section|marked(T) }}</div>
         <blockquote>{{ (s.text|quoted)|marked(T) }}</blockquote>
         <div class="small">{% if s.page_date %}page dated {{ s.page_date }}{% else %}page undated{% endif %}; <a href="{{ s.url }}">source page</a>; retrieved {{ s.retrieved }}</div>
@@ -63,7 +65,9 @@
     </div>
     <div class="zone">
       <h3>The official's exact words</h3>
-      <div class="quote">{{ ('"' ~ q.text ~ '"')|marked(T) }}</div>
+      <div class="quote">{{ ('"' ~ shown ~ '"')|marked(T) }}</div>
+      {% if row.quote_status == 'mismatch' %}<div class="small quote-note mismatch">The card's saved quote differed from the stored transcript, so the transcript's text is shown, from {{ q.first_stamp }} to {{ q.last_stamp }}.</div>
+      {% elif row.quote_status == 'unavailable' %}<div class="small quote-note">This quote could not be compared with the stored transcript.</div>{% endif %}
       <div class="small">{{ q.meeting }}, {{ q.date }}, transcript time {{ q.first_stamp }}{% if q.last_stamp != q.first_stamp %} to {{ q.last_stamp }}{% endif %}</div>
     </div>
   </div>

@@ -2,8 +2,12 @@
 <section class="qitem" id="queue-{{ row.id }}">
   {{ card_article(row, row.card, queue=True) }}
   {% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
+  <p class="small sources-kind">Priority wording:
+    {% for s in row.card.donor.statements %}{% if s.kind == 'news report' %}<span class="badge reported">News report: {{ s.outlet }}</span> (the outlet's words about the donor){% else %}<span class="badge own">Donor's own words</span>{% endif %}{{ '; ' if not loop.last }}{% endfor %}.</p>
   <div class="decide">
     <form method="post" action="/review/{{ row.id }}/approve" hx-post="/review/{{ row.id }}/approve" hx-target="closest .qitem" hx-swap="outerHTML">
+      {% if row.quote_status == 'matches' %}<span class="tick" id="quote-match-{{ row.id }}">&#10003; matches transcript</span>
+      {% else %}<span class="tick bad">&#10007; quote does not match the stored transcript ({{ row.quote_status }})</span>{% endif %}
       <label><input type="checkbox" name="recording_checked" required>
         I played the <a href="{{ row.recording_url }}">recording</a> at {{ row.first_stamp }} and the words match.</label>
       <input type="text" name="note" placeholder="Note (optional)" maxlength="500">

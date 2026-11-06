@@ -141,6 +141,8 @@ def migrate(path=None):
     return applied
 
 
-def audit(conn, actor, action, pairing_id=None, detail=""):
-    conn.execute("INSERT INTO audit_log (actor, action, pairing_id, detail) VALUES (?, ?, ?, ?)",
-                 (actor, action, pairing_id, detail))
+def audit(conn, actor, action, pairing_id=None, detail="", priority_id=None, snapshot=None):
+    """One audit entry. `snapshot` is a dict written whole as JSON (the earlier row of an edited priority)."""
+    conn.execute("INSERT INTO audit_log (actor, action, pairing_id, detail, priority_id, snapshot) VALUES (?, ?, ?, ?, ?, ?)",
+                 (actor, action, pairing_id, detail, priority_id,
+                  json.dumps(snapshot, default=str) if snapshot is not None else None))

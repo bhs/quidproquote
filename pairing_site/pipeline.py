@@ -221,6 +221,36 @@ def highlight_terms(quote, statements, hits):
     return out
 
 
+def shared_terms(quote, card):
+    """The terms to highlight when a card is drawn: of the terms the card was built with, those still literally in
+    both the quote as shown and the priority text as shown on the card. Only a list of terms comes out; the
+    texts themselves are never touched (the template wraps matches in markup)."""
+    return highlight_terms(quote, card["donor"]["statements"], card.get("highlight") or [])
+
+
+def quote_span(rows, first_stamp, last_stamp):
+    """The stored transcript text from the caption row stamped first_stamp to the last row stamped last_stamp,
+    rows joined by one space as the transcript is stored; None when either stamp is not in the transcript."""
+    stamps = [s for s, _ in rows]
+    if first_stamp not in stamps or last_stamp not in stamps:
+        return None
+    i = stamps.index(first_stamp)
+    j = len(stamps) - 1 - stamps[::-1].index(last_stamp)
+    return " ".join(t for _, t in rows[i:j + 1]) if j >= i else None
+
+
+def check_quote(rows, quote_text, first_stamp, last_stamp):
+    """Compares a card's quote with the stored transcript: (status, stored). 'matches' when the quote is, byte for
+    byte, a stretch of the stored text between its stamps; 'mismatch' when it is not (stored is then that text,
+    for the card to show instead); 'unavailable' when the transcript or the stamps are not stored."""
+    span = quote_span(rows, first_stamp, last_stamp) if rows else None
+    if span is None:
+        return "unavailable", ""
+    if quote_text and quote_text in span:
+        return "matches", span
+    return "mismatch", span
+
+
 def speaker_support(region, official, roster_line, rows):
     """How the captions support the credit: the cue that opens the turn, matched to the roster."""
     cue_rows = [[s, t] for s, t in fl.cue_rows(rows, [region["cue_stamp"]])]
@@ -276,6 +306,8 @@ def build_card(c, record, snap, fams, family, reading=None):
                         for st in sts],
          "family": family, "money": money_for_pair(snap, fams, off, family["key"])}
     card = pc.build_cards([p], snap, fams)[0]
+    for shown, st in zip(card["donor"]["statements"], sts):  # pairing_cards keeps no outlet: a news report's badge needs it
+        shown["outlet"] = st.get("outlet") or ""
     return extend_card(card, p, support, cue_rows, m["recording_url"]), slug
 
 

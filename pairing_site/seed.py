@@ -17,7 +17,7 @@ import json
 import os
 import sys
 
-from . import db, pipeline, reference, sources
+from . import db, pipeline, priorities, reference, sources
 
 import build_map as bm  # noqa: E402
 import ff_lib as ff  # noqa: E402
@@ -53,6 +53,15 @@ def _trim(tr, p, trim):
     text = window[b:e].strip()
     pos = lo + b
     return dict(p, text=text, first_stamp=doc.stamp(pos), last_stamp=doc.stamp(pos + len(text) - 1))
+
+
+def news_statement(entry):
+    """A news report of the donor survey's reported priorities, in the shape of a donor statement: its kind is
+    'news report' and it names its outlet. The words are the outlet's, not the donor's own."""
+    day = str(entry.get("published") or "")[:10]
+    return {"id": entry["id"], "family": entry["family"], "url": entry["url"], "kind": priorities.KIND_NEWS,
+            "outlet": entry["outlet"], "section": "", "page_date": day if priorities.ISO_DAY.fullmatch(day) else "",
+            "retrieved": entry["retrieved"], "text": entry["quote"]}
 
 
 def build():
@@ -94,6 +103,7 @@ def build():
 
     subjects = {s["id"]: s for s in _ffp("subjects.json")["subjects"]}
     reported = {e["id"]: e for e in data["reported"]}
+    news = {e["id"]: news_statement(e) for e in data["reported"] if e.get("tier") == "news report"}
     reviews = _ffp("reviews.json")["reviews"]
     pending, dropped, skipped = [], [], collections.Counter()
     for r in reviews:
@@ -120,15 +130,15 @@ def build():
             if (official, family["key"], mid) in shown:
                 skipped["already one of the five"] += 1
                 continue
-            if not all(i in data["prio"] for i in ids):
-                skipped["donor words are reported by others, not its own"] += 1
+            if not all(i in data["prio"] or i in news for i in ids):
+                skipped["donor words are a city record or league guide, not its own or a news report"] += 1
                 continue
             money = ff.pair_money(snap, official, family["key"])
             if not money["tied"]:
                 skipped["no money through a committee tied to the official"] += 1
                 continue
             p2 = _trim(tr, p, r.get("trim"))
-            sts = [dict(data["prio"][i], url=data["prio"][i]["url"]) for i in ids]
+            sts = [dict(data["prio"].get(i) or news[i]) for i in ids]
             c = {"key": r["id"], "official": official, "family": family["key"], "meeting": m, "transcript": tr,
                  "passage": p2, "region": reg, "doubt": doubt, "why": why, "statement": sts[0], "statements": sts}
             record = {"stance": "no_position", "reason": r.get("in_common", "")}
@@ -158,7 +168,8 @@ def build():
                                        else "Words in common by chance, or not the official's words: ") + r.get("note", ""),
                             "stage": "hand reading in the earlier hop", "model": ""})
     return {"data": data, "snap": snap, "meetings": list(meetings.values()), "published": published,
-            "pending": pending, "dropped": dropped, "skipped": dict(skipped)}
+            "pending": pending, "dropped": dropped, "skipped": dict(skipped),
+            "news_priorities": [n for n in news.values() if n["page_date"] and n["family"] in fam_by]}
 
 
 def store_snapshot(conn, snap):
@@ -168,6 +179,25 @@ def store_snapshot(conn, snap):
     reference.put_source(conn, "filers_lookup", snap["filers_lookup"], datetime.date.fromisoformat(snap["retrieved"]))
     reference.put_source(conn, "meta", {"retrieved": snap["retrieved"], "data_loaded_at": snap["data_loaded_at"]},
                          datetime.date.fromisoformat(snap["retrieved"]))
+
+
+def store_news_priorities(conn, built):
+    """The news reports as donor priorities with their outlet, as the priority form saves them. One of them is
+    filed first with the wrong page date and then corrected through the same edit the form uses, so its
+    'Earlier wording' page has a superseded version to show. Returns how many were stored."""
+    fams = {f["key"]: f for f in built["data"]["fams"]}
+    for n, st in enumerate(built["news_priorities"]):
+        fam = fams[st["family"]]
+        found = {"url": st["url"], "text": st["text"], "retrieved": st["retrieved"]}
+        source = {"kind": priorities.KIND_NEWS, "outlet": st["outlet"], "page_date": st["page_date"]}
+        key = "reported-" + st["id"].lower()
+        if n == 0:
+            first = dict(source, page_date=(datetime.date.fromisoformat(st["page_date"]) - datetime.timedelta(days=1)).isoformat())
+            pid = priorities.add(conn, fam, key, found, first, SEED_ACTOR)
+            priorities.update(conn, pid, found, source, SEED_ACTOR)
+        else:
+            priorities.add(conn, fam, key, found, source, SEED_ACTOR)
+    return len(built["news_priorities"])
 
 
 def insert_pairing(conn, row):
@@ -196,6 +226,7 @@ def run(reset=False):
                 conn.execute("DELETE FROM " + table)
         loaded = reference.ensure(conn)
         store_snapshot(conn, built["snap"])
+        news_stored = store_news_priorities(conn, built)
         for m in built["meetings"]:
             conn.execute(
                 "INSERT INTO meetings (id, body, meeting_date, url, recording_url, retrieved, row_count, captions) "
@@ -216,8 +247,9 @@ def run(reset=False):
                 ":priority_text, :priority_url, :reason_kind, :reason, :stage, :model) "
                 "ON CONFLICT DO NOTHING", d)
     print("Seeded: %d meetings with transcripts, %d published pairings, %d pairs waiting in the review queue, "
-          "%d pairs dropped with reasons; loaded %s. Left out: %s." % (
-              len(built["meetings"]), len(built["published"]), len(built["pending"]), len(built["dropped"]),
+          "%d pairs dropped with reasons; %d news-report priorities (one with an earlier wording kept); loaded %s. "
+          "Left out: %s." % (
+              len(built["meetings"]), len(built["published"]), len(built["pending"]), len(built["dropped"]), news_stored,
               ", ".join(loaded) or "nothing new", built["skipped"] or "nothing"))
     return 0
 

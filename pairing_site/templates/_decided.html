@@ -1,5 +1,6 @@
 <section class="qitem decided" id="queue-{{ row.id }}">
   <p class="notice">{{ row.status|capitalize }} at {{ row.decided_at.strftime('%Y-%m-%d %H:%M:%S UTC') }}:
   <a href="/pairings/{{ row.slug }}">{{ row.card.title }}</a>{% if row.status == 'approved' %}, published {{ row.published_at }}{% endif %}.
+  {% if row.status == 'approved' and row.quote_status == 'matches' %}<span class="tick">&#10003; matches transcript</span>{% endif %}
   The decision is in the log below.</p>
 </section>

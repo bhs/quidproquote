@@ -6,15 +6,20 @@ Public:  /               approved pairings as cards, filterable by official or d
 Sign-in: /login           the ADMIN_TOKEN sets a signed session cookie
 Admin:   /review          the queue: approve (needs the recording check ticked) or reject, inline through HTMX
          /review/dropped  pairs the AI filter dropped, with reasons
-         /priority        add a donor's priority: the page is fetched and the pasted words must be on it
+         /priority        add a donor's priority from a link: the page is fetched for its outlet and date, then the
+                          pasted words must be on it. /priority/<id>/edit re-checks an edit the same way, and
+                          /priority/<id>/history shows the current wording beside the earlier ones
 
-Every approval, rejection, sign-in and priority added is written to the audit log with its time and action.
+Every approval, rejection, sign-in, priority added and priority edited is written to the audit log with its time and
+action; an edit keeps the old row whole in its entry. A card's quote is compared with the stored transcript each time
+it is drawn, and again at approval.
 """
 
 import contextlib
 import datetime
 import html
 import os
+import secrets
 import time
 import urllib.parse
 
@@ -24,7 +29,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from markupsafe import Markup
 
-from . import auth, config, db, logs, priorities, sources, status  # noqa: F401  (sources: discovery libraries on the path)
+from . import auth, config, db, logs, pipeline, priorities, sources, status  # noqa: F401  (sources: discovery libraries on the path)
 
 import pairing_cards as pc  # noqa: E402
 
@@ -56,6 +61,29 @@ def quoted(text):
     return pc.quoted(text)
 
 
+def check_cards(conn, rows):
+    """Compares each pairing's card quote with the transcript stored in `meetings` and notes the result on the row:
+    quote_status ('matches', 'mismatch' or 'unavailable') and quote_shown, the words the card shows. On a mismatch
+    that is the stored text, never the card's own copy; every result but a match is logged."""
+    rows = [r for r in rows if "quote_status" not in r]
+    ids = sorted({r["meeting_id"] for r in rows})
+    transcripts = {}
+    if ids:
+        for m in conn.execute("SELECT id, captions FROM meetings WHERE id IN (%s)" % ",".join("?" * len(ids)), ids):
+            transcripts[m["id"]] = pipeline.parse_captions(m["captions"])
+    for r in rows:
+        q = r["card"]["quote"]
+        first = q.get("first_stamp") or r["first_stamp"]
+        status_, stored = pipeline.check_quote(transcripts.get(r["meeting_id"]), q["text"], first, q.get("last_stamp") or first)
+        r["quote_status"] = status_
+        r["quote_shown"] = stored if status_ == "mismatch" else q["text"]
+        if status_ != "matches":
+            logs.emit("warn", "card quote does not match the stored transcript" if status_ == "mismatch"
+                      else "card quote cannot be compared: transcript or stamps not stored",
+                      slug=r["slug"], meeting_id=r["meeting_id"], first_stamp=first, status=status_)
+    return rows
+
+
 def create_app():
     @contextlib.asynccontextmanager
     async def lifespan(app):
@@ -69,6 +97,7 @@ def create_app():
     templates = Jinja2Templates(directory=os.path.join(HERE, "templates"))
     templates.env.filters["marked"] = marked
     templates.env.filters["quoted"] = quoted
+    templates.env.globals["shared_terms"] = pipeline.shared_terms
 
     def admin(request):
         try:
@@ -101,8 +130,9 @@ def create_app():
     def index(request: Request):
         with db.session() as conn:
             rows = conn.execute("SELECT id, slug, official, donor_name, card, published_at, recording_checked, "
-                                "recording_checked_at FROM pairings WHERE status = 'approved' "
+                                "recording_checked_at, meeting_id, first_stamp FROM pairings WHERE status = 'approved' "
                                 "ORDER BY published_at DESC, id").fetchall()
+            check_cards(conn, rows)
         return render(request, "index.html", rows=rows,
                       officials=sorted({r["official"] for r in rows}), donors=sorted({r["donor_name"] for r in rows}))
 
@@ -110,8 +140,9 @@ def create_app():
     def pairing(request: Request, slug: str):
         with db.session() as conn:
             row = conn.execute("SELECT * FROM pairings WHERE slug = ?", (slug,)).fetchone()
-        if not row or (row["status"] != "approved" and not admin(request)):
-            raise HTTPException(404, "No such pairing")
+            if not row or (row["status"] != "approved" and not admin(request)):
+                raise HTTPException(404, "No such pairing")
+            check_cards(conn, [row])
         return render(request, "pairing.html", row=row)
 
     @app.get("/status")
@@ -160,6 +191,7 @@ def create_app():
         log = conn.execute("SELECT a.at, a.actor, a.action, a.detail, a.pairing_id, p.slug FROM audit_log a "
                            "LEFT JOIN pairings p ON p.id = a.pairing_id ORDER BY a.id DESC LIMIT 30").fetchall()
         dropped = conn.execute("SELECT count(*) AS n FROM dropped_pairs").fetchone()["n"]
+        check_cards(conn, pending)
         return {"pending": pending, "decided": decided, "log": log, "dropped_count": dropped}
 
     @app.get("/review", response_class=HTMLResponse)
@@ -181,12 +213,19 @@ def create_app():
             if action == "approve":
                 if not checked:
                     return row, "Tick the recording check first: play the recording at the transcript time and confirm the words."
+                check_cards(conn, [row])
+                if row["quote_status"] != "matches":  # nothing is published on words the stored transcript does not hold
+                    db.audit(conn, auth.ACTOR, "approval refused", pairing_id,
+                             "the card's quote does not match the stored transcript (%s)" % row["quote_status"])
+                    return row, ("The card's quote does not match the stored transcript (%s), so nothing was published. "
+                                 "The stored text is shown above." % row["quote_status"])
                 stamp = db.now()
                 conn.execute("UPDATE pairings SET status = 'approved', recording_checked = 1, "
                              "recording_checked_at = ?, published_at = ?, decided_at = ?, "
                              "decision_note = ? WHERE id = ?", (stamp, db.today(), stamp, note, pairing_id))
                 db.audit(conn, auth.ACTOR, "approved", pairing_id,
-                         "recording checked at transcript time %s" % row["first_stamp"] + ("; " + note if note else ""))
+                         "recording checked at transcript time %s; quote matches the stored transcript" % row["first_stamp"]
+                         + ("; " + note if note else ""))
             else:
                 conn.execute("UPDATE pairings SET status = 'rejected', decided_at = ?, decision_note = ? WHERE id = ?",
                              (db.now(), note, pairing_id))
@@ -195,6 +234,8 @@ def create_app():
 
     def decision_response(request, row, error):
         if is_htmx(request):
+            with db.session() as conn:
+                check_cards(conn, [row])
             if error:
                 return render(request, "_queue_item.html", row=row, card=row["card"], error=error)
             return render(request, "_decided.html", row=row)
@@ -228,46 +269,117 @@ def create_app():
 
     def priority_context(conn):
         fams = conn.execute("SELECT payload FROM source_data WHERE name = 'families'").fetchone()
-        rows = conn.execute("SELECT * FROM donor_priorities ORDER BY added_at DESC, id DESC LIMIT 12").fetchall()
-        return {"families": fams["payload"]["families"] if fams else [], "recent": rows}
+        rows = conn.execute("SELECT * FROM donor_priorities ORDER BY COALESCE(updated_at, added_at) DESC, id DESC "
+                            "LIMIT 30").fetchall()
+        return {"families": fams["payload"]["families"] if fams else [], "recent": rows,
+                "edits": priorities.edit_counts(conn)}
+
+    def form_of(priority_id, version, family, url, words, outlet, page_date, kind):
+        return {"priority_id": priority_id.strip(), "version": version.strip(), "family": family, "url": url,
+                "words": words, "outlet": outlet, "page_date": page_date, "kind": kind}
+
+    def priority_row(conn, priority_id):
+        """The priority being edited (None for a new one); 404 when the id is not one."""
+        if not priority_id.strip():
+            return None
+        row = conn.execute("SELECT * FROM donor_priorities WHERE id = ?",
+                           (int(priority_id) if priority_id.strip().isdigit() else -1,)).fetchone()
+        if not row:
+            raise HTTPException(404, "No such priority")
+        return row
+
+    def priority_render(request, form, error="", saved=None, notice="", editing=None):
+        with db.session() as conn:
+            ctx = priority_context(conn)
+        return render(request, "priority.html", status_code=422 if error else 200, form=form, error=error,
+                      saved=saved, notice=notice, editing=editing, **ctx)
 
     @app.get("/priority", response_class=HTMLResponse)
     def priority_page(request: Request):
         require_admin(request)
-        with db.session() as conn:
-            return render(request, "priority.html", form={}, error="", saved=None, **priority_context(conn))
+        return priority_render(request, {"kind": "news"})
 
-    @app.post("/priority", response_class=HTMLResponse)
-    def priority_save(request: Request, family: str = Form(""), url: str = Form(""), words: str = Form(""),
-                      section: str = Form(""), page_date: str = Form("")):
+    @app.get("/priority/{priority_id}/edit", response_class=HTMLResponse)
+    def priority_edit(request: Request, priority_id: str):
+        require_admin(request)
+        with db.session() as conn:
+            row = priority_row(conn, priority_id)
+        form = form_of(str(row["id"]), str(row["version"]), row["family"], row["url"], row["text"], row["outlet"],
+                       row["page_date"], priorities.kind_key(row["kind"]))
+        return priority_render(request, form, editing=row)
+
+    @app.get("/priority/{priority_id}/history", response_class=HTMLResponse)
+    def priority_history(request: Request, priority_id: str):
+        require_admin(request)
+        with db.session() as conn:
+            current, earlier = priorities.history(conn, int(priority_id) if priority_id.isdigit() else -1)
+        if not current:
+            raise HTTPException(404, "No such priority")
+        return render(request, "priority_history.html", current=current, earlier=earlier,
+                      news_kind=priorities.KIND_NEWS)
+
+    @app.post("/priority/lookup", response_class=HTMLResponse)
+    def priority_lookup(request: Request, priority_id: str = Form(""), version: str = Form(""), family: str = Form(""),
+                        url: str = Form(""), words: str = Form(""), outlet: str = Form(""), page_date: str = Form(""),
+                        kind: str = Form("news")):
+        """Fetches the pasted link and fills in the outlet and the date the page shows, for the maintainer to confirm."""
         require_admin(request)
         same_origin(request)
-        form = {"family": family, "url": url, "words": words, "section": section, "page_date": page_date}
+        form = form_of(priority_id, version, family, url, words, outlet, page_date, kind)
         with db.session() as conn:
-            ctx = priority_context(conn)
-        fam = next((f for f in ctx["families"] if f["key"] == family), None)
+            editing = priority_row(conn, priority_id)
+        error, notice = "", ""
+        try:
+            found = priorities.lookup(url)
+            form["url"] = found["url"]
+            form["outlet"] = found["outlet"]
+            if found["page_date"]:
+                form["page_date"] = found["page_date"]
+                notice = "Read from the page: outlet %s, dated %s. Confirm them or correct them." % (found["outlet"], found["page_date"])
+            else:
+                notice = ("Read from the page: outlet %s. The page gives no date: enter the date the article shows." %
+                          found["outlet"])
+        except priorities.PriorityError as exc:
+            error = str(exc)
+        return priority_render(request, form, error=error, notice=notice, editing=editing)
+
+    @app.post("/priority", response_class=HTMLResponse)
+    def priority_save(request: Request, priority_id: str = Form(""), version: str = Form(""), family: str = Form(""),
+                      url: str = Form(""), words: str = Form(""), outlet: str = Form(""), page_date: str = Form(""),
+                      kind: str = Form("news")):
+        require_admin(request)
+        same_origin(request)
+        form = form_of(priority_id, version, family, url, words, outlet, page_date, kind)
+        with db.session() as conn:
+            editing = priority_row(conn, priority_id)
+            fams = priority_context(conn)["families"]
+        fam = next((f for f in fams if f["key"] == (editing["family"] if editing else family)), None)
         error, saved = "", None
         if not fam:
             error = "Choose the donor this priority belongs to."
         else:
             try:
+                source = priorities.clean_source(outlet, page_date, kind)
+                if editing:
+                    source = priorities.keep_own_kind(editing, source)
+                    if priorities.unchanged(editing, url, words, source):
+                        raise priorities.PriorityError("Nothing was changed, so nothing was saved.")
                 found = priorities.verify(url, words)  # fetches the page: done before the write lock is taken
-                key = "form-%s-%s" % (family, int(time.time()))
                 with db.session(write=True) as conn:
-                    conn.execute(
-                        "INSERT INTO donor_priorities (key, family, donor, url, section, text, page_date, retrieved, kind, "
-                        "added_by) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                        (key, family, fam["name"], found["url"], section.strip()[:200], found["text"],
-                         page_date.strip()[:40], found["retrieved"], "page on the organisation's own site", auth.ACTOR))
-                    db.audit(conn, auth.ACTOR, "priority added", None,
-                             "%s: %s (words found verbatim on the page; retrieved %s)" % (fam["name"], found["url"], found["retrieved"]))
-                    ctx = priority_context(conn)
-                saved = found
-                form = {}
+                    if editing:
+                        priorities.update(conn, editing["id"], found, source, auth.ACTOR,
+                                          expected_version=int(version) if version.strip().isdigit() else None)
+                        pid = editing["id"]
+                    else:
+                        pid = priorities.add(conn, fam, "form-%s-%s-%s" % (fam["key"], int(time.time()), secrets.token_hex(3)),
+                                             found, source, auth.ACTOR)
+                    new_version = conn.execute("SELECT version FROM donor_priorities WHERE id = ?", (pid,)).fetchone()["version"]
+                saved = dict(found, id=pid, edited=bool(editing), version=new_version, outlet=source["outlet"],
+                             kind=source["kind"])
+                form, editing = {"kind": "news"}, None
             except priorities.PriorityError as exc:
                 error = str(exc)
-        return render(request, "priority.html", status_code=422 if error else 200, form=form, error=error,
-                      saved=saved, **ctx)
+        return priority_render(request, form, error=error, saved=saved, editing=editing)
 
     return app
 

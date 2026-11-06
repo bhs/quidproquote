@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Earlier wording{% endblock %}
+{% block content %}
+{% macro version_block(r, label) %}
+<section class="version {{ 'current' if label == 'Current' else 'superseded' }}">
+  <h2><span class="badge {{ 'low' if label == 'Current' else '' }}">{{ label }}</span> Version {{ r.version }}</h2>
+  <p>{% if r.kind == news_kind %}<span class="badge reported">News report: {{ r.outlet }}</span>{% else %}<span class="badge own">Donor's own page</span>{% endif %}</p>
+  <blockquote>{{ r.text }}</blockquote>
+  <p class="small"><a href="{{ r.url }}">{{ r.url }}</a>; {% if r.page_date %}page dated {{ r.page_date }}{% else %}page undated{% endif %};
+    retrieved {{ r.retrieved }}.
+    {% if label == 'Current' %}{% if r.updated_at %}Written {{ r.updated_at.strftime('%Y-%m-%d %H:%M:%S UTC') }}.{% else %}Never edited.{% endif %}
+    {% else %}Replaced {{ r.superseded_at.strftime('%Y-%m-%d %H:%M:%S UTC') }} by {{ r.superseded_by }}.{% endif %}</p>
+</section>
+{% endmacro %}
+<h1>Earlier wording: {{ current.donor }}</h1>
+<p class="lede">The current wording and source come first. Each earlier version below was kept whole when it was replaced.
+Cards already published keep the wording they were approved with.</p>
+{{ version_block(current, 'Current') }}
+{% for e in earlier %}{{ version_block(e, 'Superseded') }}{% else %}<p>This priority has not been edited.</p>{% endfor %}
+<p><a href="/priority/{{ current.id }}/edit">Edit</a> &middot; <a href="/priority">Back to priorities</a></p>
+{% endblock %}

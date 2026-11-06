@@ -1,24 +1,57 @@
 {% extends "base.html" %}
-{% block title %}Add a priority{% endblock %}
+{% block title %}{{ 'Edit a priority' if form.priority_id else 'Add a priority' }}{% endblock %}
 {% block content %}
+{% if form.priority_id %}
+<h1>Edit a donor's priority</h1>
+<p class="lede">You are changing {{ editing.donor }}'s priority (now version {{ editing.version }}). The page is fetched again and the
+words must still be on it, word for word, or nothing is saved. The wording and source it has now are kept: they stay under
+<a href="/priority/{{ form.priority_id }}/history">Earlier wording</a>. Cards already published keep the wording they were approved with.</p>
+{% else %}
 <h1>Add a donor's priority</h1>
-<p class="lede">Paste the donor's own words and the link to the page that shows them. The page is fetched now and the
-words must appear on it, word for word, or nothing is saved. The retrieval date is the day of the check; you do not enter it.</p>
-{% if saved %}<p class="notice" id="priority-saved">Saved. The words were found verbatim on {{ saved.url }} and recorded as retrieved {{ saved.retrieved }}. The worker uses them from its next run.</p>{% endif %}
+<p class="lede">Paste the link to the article first and the page is read for its outlet and date, for you to confirm or
+correct. Then paste the words exactly as the page shows them: they must appear on the page, word for word, or nothing is
+saved. The retrieval date is the day of the check; you do not enter it.</p>
+{% endif %}
+{% if saved %}<p class="notice" id="priority-saved">Saved{% if saved.edited %} as version {{ saved.version }}; the earlier wording is kept
+  (<a href="/priority/{{ saved.id }}/history">Earlier wording</a>){% endif %}. The words were found verbatim on {{ saved.url }}{% if saved.kind == 'news report' %}
+  ({{ 'News report: ' ~ saved.outlet }}){% endif %} and recorded as retrieved {{ saved.retrieved }}. The worker uses them from its next run.</p>{% endif %}
+{% if notice %}<p class="notice" id="priority-lookup">{{ notice }}</p>{% endif %}
 {% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
-<form method="post" action="/priority" class="stack">
+<form method="post" action="/priority" class="stack" id="priority-form">
+  <input type="hidden" name="priority_id" value="{{ form.priority_id or '' }}">
+  <input type="hidden" name="version" value="{{ form.version or '' }}">
+  <button type="submit" hidden tabindex="-1" aria-hidden="true"></button><!-- Enter saves; it never re-reads the page over what was typed -->
+  <label>Link to the page <input type="url" name="url" value="{{ form.url or '' }}" required placeholder="https://"></label>
+  <button type="submit" formaction="/priority/lookup" formnovalidate>Fetch outlet and date from the link</button>
+  <label>Outlet (a news report needs it) <input type="text" name="outlet" value="{{ form.outlet or '' }}" maxlength="120"></label>
+  <label>Date the page shows, as year-month-day <input type="text" name="page_date" value="{{ form.page_date or '' }}" placeholder="2026-10-08" pattern="\d{4}-\d{2}-\d{2}"></label>
+  <label>The page is
+    <select name="kind">
+      <option value="news" {{ 'selected' if (form.kind or 'news') == 'news' }}>A news report</option>
+      <option value="own" {{ 'selected' if form.kind == 'own' }}>The donor's own page</option>
+    </select></label>
+  {% if form.priority_id %}
+  <p>Donor: <b>{{ editing.donor if editing else '' }}</b></p>
+  <input type="hidden" name="family" value="{{ form.family or '' }}">
+  {% else %}
   <label>Donor
     <select name="family" required>
       <option value="">Choose a donor</option>
       {% for f in families %}<option value="{{ f.key }}" {{ 'selected' if form.family == f.key }}>{{ f.name }}</option>{% endfor %}
     </select></label>
-  <label>Link to the donor's page <input type="url" name="url" value="{{ form.url or '' }}" required placeholder="https://"></label>
-  <label>The donor's words, exactly as the page shows them
+  {% endif %}
+  <label>The words, exactly as the page shows them
     <textarea name="words" rows="5" required>{{ form.words or '' }}</textarea></label>
-  <label>Section heading on the page (optional) <input type="text" name="section" value="{{ form.section or '' }}"></label>
-  <label>Date the page shows (optional) <input type="text" name="page_date" value="{{ form.page_date or '' }}" placeholder="2026-10-08"></label>
-  <button type="submit">Fetch the page and check the words</button>
+  <button type="submit">{{ 'Fetch the page again and save the edit' if form.priority_id else 'Fetch the page and check the words' }}</button>
+  {% if form.priority_id %}<a href="/priority">Cancel</a>{% endif %}
 </form>
 <h2>Donor statements on file</h2>
-<ul>{% for r in recent %}<li><b>{{ r.donor }}</b>: {{ r.text[:140] }}{{ '...' if r.text|length > 140 }} (<a href="{{ r.url }}">source</a>, retrieved {{ r.retrieved }}, added by {{ r.added_by }})</li>{% endfor %}</ul>
+<ul class="priorities">{% for r in recent %}<li id="priority-{{ r.id }}">
+  {% if r.kind == 'news report' %}<span class="badge reported">News report: {{ r.outlet }}</span>{% else %}<span class="badge own">Donor's own page</span>{% endif %}
+  <b>{{ r.donor }}</b>: {{ r.text[:140] }}{{ '...' if r.text|length > 140 }}
+  (<a href="{{ r.url }}">source</a>{% if r.page_date %}, page dated {{ r.page_date }}{% endif %}, retrieved {{ r.retrieved }}, added by {{ r.added_by }};
+  version {{ r.version }}{% if r.updated_at %}, edited {{ r.updated_at.strftime('%Y-%m-%d') }}{% endif %})
+  <a href="/priority/{{ r.id }}/edit">Edit</a>{% if edits.get(r.id) %}
+  <a href="/priority/{{ r.id }}/history">Earlier wording ({{ edits[r.id] }})</a>{% endif %}
+</li>{% endfor %}</ul>
 {% endblock %}
