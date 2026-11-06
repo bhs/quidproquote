@@ -106,6 +106,7 @@ def build():
     news = {e["id"]: news_statement(e) for e in data["reported"] if e.get("tier") == "news report"}
     reviews = _ffp("reviews.json")["reviews"]
     pending, dropped, skipped = [], [], collections.Counter()
+    queued = {p["slug"] for p in published}
     for r in reviews:
         mid_s, stamp, official, subject_id = r["id"].split("|")
         mid, subj = int(mid_s), subjects[subject_id]
@@ -144,6 +145,10 @@ def build():
             record = {"stance": "no_position", "reason": r.get("in_common", "")}
             card, slug = pipeline.build_card(c, record, snap, fams, family, reading=(
                 "Same subject, in a person's reading: " + r.get("in_common", ""), r.get("differs", "") + " (A person's reading.)"))
+            if slug in queued:  # reviews of overlapping windows trimmed to the same words: one queue item
+                skipped["same trimmed passage already queued"] += 1
+                continue
+            queued.add(slug)
             pending.append({"slug": slug, "candidate_key": r["id"], "status": "pending", "source": "seed",
                             "official": official, "donor_key": family["key"], "donor_name": family["name"],
                             "meeting_id": mid, "meeting_date": m["meeting_date"], "first_stamp": p2["first_stamp"],

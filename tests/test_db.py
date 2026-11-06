@@ -43,7 +43,7 @@ class FreshFile(unittest.TestCase):
                 self.assertTrue(TABLES <= names)
                 self.assertEqual([r["id"] for r in conn.execute("SELECT id FROM worker_state")], [1])
                 self.assertEqual(conn.execute("PRAGMA journal_mode").fetchone()["journal_mode"], "wal")
-                self.assertEqual(conn.execute("SELECT count(*) AS n FROM schema_migrations").fetchone()["n"], 1)
+                self.assertEqual(conn.execute("SELECT count(*) AS n FROM schema_migrations").fetchone()["n"], 2)
 
     def test_worker_state_holds_one_row_only(self):
         with temp_database():
