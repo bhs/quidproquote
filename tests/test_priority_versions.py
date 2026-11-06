@@ -280,10 +280,10 @@ class Priorities(SiteCase):
     def test_edit_swaps_a_row_for_a_prefilled_form_and_back_and_keeps_the_earlier_wording(self):
         old = self.one("SELECT * FROM donor_priorities WHERE key = 'POA-I-TIMING'")
         form = self.client.get("/priority/%d/edit" % old["id"], headers=HX).text
+        wording = old["text"][:40]  # plain characters, so escaping cannot change how it appears on the page
         self.assertIn('hx-post="/priority/%d/edit"' % old["id"], form)
         self.assertIn(wording, form)
         new_words = priorities.fl.squash(old["text"].split(". ")[0] + ".")
-        wording = old["text"][:40]  # plain characters, so escaping cannot change how it appears on the page
         page = "<p>%s</p>" % html.escape(old["text"])
         with mock.patch.object(priorities, "check_public_url"), mock.patch.object(priorities.fl, "fetch_page", return_value=page):
             bad = self.client.post("/priority/%d/edit" % old["id"], headers=HX, data={
