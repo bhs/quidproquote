@@ -1,30 +1,34 @@
 #!/usr/local/bin/python
 """/mendel/phase: reports this application's persistent stores and rehearses, applies and withdraws migrations.
 
-The application's only store is its Postgres database. It is found the way the application finds it: the
-DATABASE_URL environment variable, read by pairing_site.config.database_url() and opened with
-pairing_site.db.connect(). Migrations are the tool's own: db.migrate() applies SQL files and records each in
-schema_migrations. Stdout carries only the JSON documents; everything for a person goes to stderr.
+The application's only store is its SQLite file. It is found the way the application finds it: the DATABASE_PATH
+environment variable, read by pairing_site.config.database_path() (db.connect opens that path). Migrations are the
+tool's own: db.migrate() applies numbered SQL files and records each in schema_migrations. Stdout carries only the
+JSON documents; everything for a person goes to stderr.
+
+SQLite has no server, no databases beside one another and no grants. A sandbox is therefore a second file in the
+folder that holds the application's file, named <name>.db, and the rights it needs are the file system's.
 """
 
 import json
 import os
+import pwd
 import re
+import sqlite3
 import sys
 import tempfile
+import urllib.parse
 
 sys.path.insert(0, "/app")
-
-import psycopg  # noqa: E402
-from psycopg import sql  # noqa: E402
-from psycopg.conninfo import conninfo_to_dict, make_conninfo  # noqa: E402
 
 from pairing_site import config, db  # noqa: E402
 
 STORE = "pairing_site"
 PREFIX = "mendel_sandbox_"
 NAME_RE = r"^[0-9]{3}_[a-z0-9_]+\.sql$"
+SANDBOX_NAME_RE = re.compile(r"^" + PREFIX + r"[A-Za-z0-9_-]+$")
 REFERENCE = ("schema_migrations",)  # the tool's record of applied migrations: a sandbox needs it whole
+SIDE_FILES = ("", "-wal", "-shm", "-journal")
 
 
 class Failure(Exception):
@@ -50,7 +54,8 @@ CONTRACT = {
                              "description": "File name of the new migration, a three-digit number then a "
                                             "lower-case name, ending in .sql, as in pairing_site/migrations/."},
                     "sql": {"type": "string",
-                            "description": "The SQL of the migration file: the statements that apply the change."},
+                            "description": "The SQLite SQL of the migration file: the statements that apply the "
+                                           "change."},
                 },
             },
             "down": {
@@ -61,23 +66,24 @@ CONTRACT = {
                     "name": {"type": "string", "pattern": NAME_RE,
                              "description": "The name of the up migration this reverses, exactly as in up."},
                     "sql": {"type": "string",
-                            "description": "SQL statements that reverse everything the up migration's SQL did."},
+                            "description": "SQLite SQL statements that reverse everything the up migration's SQL "
+                                           "did."},
                 },
             },
         },
     },
     "description": (
         "A migration is {up, down}. up is {name, sql}: a new numbered SQL migration file for "
-        "pairing_site/migrations/, named like 002_add_something.sql, holding the SQL that applies the change. "
-        "It is run by the application's own migration function, which executes the file in one transaction and "
-        "records its name in the schema_migrations table; a name already recorded there is refused. "
-        "down is {name, sql}: name repeats the up's name and sql holds statements that reverse the up "
+        "pairing_site/migrations/, named like 002_add_something.sql, holding the SQLite SQL that applies the "
+        "change. It is run by the application's own migration function, which executes the file's statements in "
+        "one transaction and records its name in the schema_migrations table; a name already recorded there is "
+        "refused. down is {name, sql}: name repeats the up's name and sql holds statements that reverse the up "
         "completely. They run in one transaction, and then the row for that name is deleted from "
         "schema_migrations so a later apply runs the up again. Nothing is repaired, skipped or retried: "
-        "a statement that fails fails the step and the database's message is returned."),
+        "a statement that fails fails the step and SQLite's message is returned."),
     "example": {
         "up": {"name": "002_add_pairings_reviewer_note.sql",
-               "sql": "ALTER TABLE pairings ADD COLUMN reviewer_note text;"},
+               "sql": "ALTER TABLE pairings ADD COLUMN reviewer_note TEXT;"},
         "down": {"name": "002_add_pairings_reviewer_note.sql",
                  "sql": "ALTER TABLE pairings DROP COLUMN reviewer_note;"},
     },
@@ -89,291 +95,352 @@ def say(msg):
 
 
 def message(exc):
-    return (str(exc).strip() or exc.__class__.__name__)
+    return str(exc).strip() or exc.__class__.__name__
 
 
-def url():
-    return config.database_url()
+def production_path():
+    return os.path.abspath(config.database_path())
 
 
-def url_for(dbname):
-    d = conninfo_to_dict(url())
-    d["dbname"] = dbname
-    return make_conninfo(**d)
-
-
-def app_database():
-    d = conninfo_to_dict(url())
-    return d.get("dbname") or d.get("user") or ""
+def sandbox_path(name):
+    return os.path.join(os.path.dirname(production_path()), name + ".db")
 
 
 def check_sandbox_name(name):
-    if not name.startswith(PREFIX) or name in (STORE, app_database()):
+    """A sandbox is only ever a file called <name>.db beside the application's file."""
+    prod = production_path()
+    own = {STORE, os.path.basename(prod), os.path.splitext(os.path.basename(prod))[0]}
+    if not name.startswith(PREFIX) or name in own or sandbox_path(name) == prod:
         raise Failure("refusing %r: a sandbox name must begin with %s and not be a store of the application"
                       % (name, PREFIX))
-    if len(name.encode()) > 63 or "\x00" in name:
-        raise Failure("refusing %r: not a usable database name" % name)
+    if not SANDBOX_NAME_RE.match(name):
+        raise Failure("refusing %r: after %s a sandbox name may only hold letters, digits, _ and -" % (name, PREFIX))
+    return sandbox_path(name)
+
+
+def open_readonly(path):
+    uri = "file:%s?mode=ro" % urllib.parse.quote(path)
+    conn = sqlite3.connect(uri, uri=True, timeout=db.BUSY_TIMEOUT_S, isolation_level=None)
+    conn.row_factory = sqlite3.Row
+    return conn
+
+
+def account():
+    try:
+        return pwd.getpwuid(os.geteuid()).pw_name
+    except KeyError:
+        return str(os.geteuid())
+
+
+def shell_quote(text):
+    return "'" + text.replace("'", "'\\''") + "'"
+
+
+def grant_text(why):
+    folder = os.path.dirname(production_path())
+    acct = account()
+    return ("the account %s cannot do what the sandbox needs (%s). SQLite has no database grants; the right is a "
+            "file system one, and POSIX file systems cannot limit it to names. The narrowest grant, to run as root, "
+            "is one on the folder that holds the application's file, which is where the sandbox files "
+            "(whose names all begin with the literal prefix %s) are created, altered and removed, and on the "
+            "application's file, which is only read: "
+            "setfacl -m u:%s:rwx %s && setfacl -m u:%s:r %s"
+            % (acct, why, PREFIX, acct, shell_quote(folder), acct, shell_quote(production_path())))
+
+
+def need_rights(read_production=True, write_folder=True):
+    prod = production_path()
+    folder = os.path.dirname(prod)
+    if read_production and not os.access(prod, os.R_OK, effective_ids=True):
+        raise Failure(grant_text("it cannot read %s" % prod))
+    if write_folder and not os.access(folder, os.W_OK | os.X_OK, effective_ids=True):
+        raise Failure(grant_text("it cannot create or remove files in %s" % folder))
+
+
+def need_production():
+    prod = production_path()
+    if not os.path.exists(prod):
+        raise Failure("the application's database %s does not exist" % prod)
+    return prod
 
 
 def probe():
-    with psycopg.connect(url(), connect_timeout=10, row_factory=db.dict_row) as conn:
-        version = conn.execute("SHOW server_version").fetchone()["server_version"]
+    prod = production_path()
+    if os.path.exists(prod):
+        conn = open_readonly(prod)
+        try:
+            conn.execute("PRAGMA schema_version").fetchone()  # fails unless the file is a database
+            version = conn.execute("SELECT sqlite_version()").fetchone()[0]
+        finally:
+            conn.close()
+    else:
+        # The application creates the file on its first start; there is nothing to read yet but the engine itself.
+        say("phase: %s does not exist yet; the application creates it on first start" % prod)
+        conn = sqlite3.connect(":memory:")
+        try:
+            version = conn.execute("SELECT sqlite_version()").fetchone()[0]
+        finally:
+            conn.close()
     if not version:
-        raise Failure("the server did not report a version")
-    json.dump({"stores": [{"name": STORE, "engine": "postgresql", "version": version, "role": "record"}],
+        raise Failure("the engine did not report a version")
+    json.dump({"stores": [{"name": STORE, "engine": "sqlite", "version": version, "role": "record"}],
                "migration_contract": CONTRACT}, sys.stdout)
     print()
 
 
 # ---- describing structure ---------------------------------------------------------------------------------
 
-USER_REL = ("n.nspname NOT IN ('pg_catalog', 'information_schema') AND n.nspname NOT LIKE 'pg\\_toast%' "
-            "AND n.nspname NOT LIKE 'pg\\_temp%'")
+def tokens(text):
+    """(kind, text) pairs of SQL text, kind being word, quoted or punct; blanks and comments are left out."""
+    i, n = 0, len(text)
+    while i < n:
+        ch = text[i]
+        if ch.isspace():
+            i += 1
+        elif text.startswith("--", i):
+            j = text.find("\n", i)
+            i = n if j < 0 else j + 1
+        elif text.startswith("/*", i):
+            j = text.find("*/", i + 2)
+            i = n if j < 0 else j + 2
+        elif ch in "'\"`":
+            j = i + 1
+            while j < n:
+                if text[j] == ch:
+                    if j + 1 < n and text[j + 1] == ch:
+                        j += 2
+                        continue
+                    break
+                j += 1
+            yield "quoted", text[i:j + 1]
+            i = j + 1
+        elif ch == "[":
+            j = text.find("]", i)
+            j = n - 1 if j < 0 else j
+            yield "quoted", text[i:j + 1]
+            i = j + 1
+        elif ch.isalnum() or ch == "_":
+            j = i
+            while j < n and (text[j].isalnum() or text[j] == "_"):
+                j += 1
+            yield "word", text[i:j]
+            i = j
+        else:
+            yield "punct", ch
+            i += 1
+
+
+def unquote(token):
+    if token and token[0] in "'\"`[":
+        return token[1:-1].replace(token[0] * 2, token[0]) if token[0] != "[" else token[1:-1]
+    return token
+
+
+def squash(text):
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def check_constraints(create_sql):
+    """The CHECK constraints of a CREATE TABLE statement, by name (unnamed ones are check:1, check:2, ...)."""
+    toks = list(tokens(create_sql))
+    found, i = {}, 0
+    while i < len(toks):
+        kind, text = toks[i]
+        if kind == "word" and text.upper() == "CHECK" and i + 1 < len(toks) and toks[i + 1] == ("punct", "("):
+            name = None
+            if i >= 2 and toks[i - 2][0] == "word" and toks[i - 2][1].upper() == "CONSTRAINT":
+                name = unquote(toks[i - 1][1])
+            depth, j, parts = 0, i + 1, []
+            while j < len(toks):
+                parts.append(toks[j][1])
+                depth += (toks[j] == ("punct", "(")) - (toks[j] == ("punct", ")"))
+                j += 1
+                if depth == 0:
+                    break
+            expr = " ".join(parts).replace("( ", "(").replace(" )", ")").replace(" ,", ",")
+            found[name or "check:%d" % (len(found) + 1)] = "CHECK " + expr
+            i = j
+        else:
+            i += 1
+    return found
+
+
+def quote_ident(name):
+    return '"%s"' % name.replace('"', '""')
 
 
 def describe(conn):
-    """The structure of the database the connection is to, the same text every time. Collections are tables,
-    views and materialized views (schema-qualified unless in public). Besides constraints, a collection's
-    "constraints" lists its triggers as "trigger:<name>", and each column's nullability and default as
-    "not_null:<column>" and "default:<column>", so that a change to any of them changes the text."""
+    """The structure of the database the connection is to, the same text every time. Collections are tables and
+    views. Besides constraints, a collection's "constraints" lists its triggers as "trigger:<name>", its view
+    definition as "view_definition", and each column's nullability, default and generated expression as
+    "not_null:<column>", "default:<column>" and "generated:<column>", so that a change to any of them changes the
+    text. Columns come in table order, and everything else is ordered by name."""
     out = {}
-
-    def key(schema, rel):
-        return rel if schema == "public" else "%s.%s" % (schema, rel)
-
-    rels = conn.execute(
-        "SELECT c.oid, n.nspname AS s, c.relname AS r FROM pg_class c JOIN pg_namespace n ON n.oid = c.relnamespace "
-        "WHERE c.relkind IN ('r', 'p', 'v', 'm') AND " + USER_REL + " ORDER BY n.nspname COLLATE \"C\", "
-        "c.relname COLLATE \"C\"").fetchall()
-    oids = {}
-    for r in rels:
-        oids[r["oid"]] = key(r["s"], r["r"])
-        out[oids[r["oid"]]] = {"fields": {}, "identity": [], "indexes": {}, "constraints": {}}
-    for r in conn.execute(
-            "SELECT a.attrelid AS o, a.attname AS n, format_type(a.atttypid, a.atttypmod) AS t, a.attnotnull AS nn, "
-            "pg_get_expr(d.adbin, d.adrelid) AS dflt FROM pg_attribute a "
-            "LEFT JOIN pg_attrdef d ON d.adrelid = a.attrelid AND d.adnum = a.attnum "
-            "WHERE a.attnum > 0 AND NOT a.attisdropped AND a.attrelid = ANY(%s) ORDER BY a.attrelid, a.attnum",
-            (list(oids),)).fetchall():
-        c = out[oids[r["o"]]]
-        c["fields"][r["n"]] = r["t"]
-        if r["nn"]:
-            c["constraints"]["not_null:" + r["n"]] = "NOT NULL"
-        if r["dflt"] is not None:
-            c["constraints"]["default:" + r["n"]] = r["dflt"]
-    for r in conn.execute(
-            "SELECT c.conrelid AS o, a.attname AS n FROM pg_constraint c CROSS JOIN LATERAL unnest(c.conkey) WITH ORDINALITY k(num, ord) "
-            "JOIN pg_attribute a ON a.attrelid = c.conrelid AND a.attnum = k.num "
-            "WHERE c.contype = 'p' AND c.conrelid = ANY(%s) ORDER BY c.conrelid, k.ord", (list(oids),)).fetchall():
-        out[oids[r["o"]]]["identity"].append(r["n"])
-    for r in conn.execute(
-            "SELECT conrelid AS o, conname AS n, pg_get_constraintdef(oid) AS d FROM pg_constraint "
-            "WHERE contype NOT IN ('p', 'n') AND conrelid = ANY(%s) ORDER BY conname COLLATE \"C\"",
-            (list(oids),)).fetchall():
-        out[oids[r["o"]]]["constraints"][r["n"]] = r["d"]
-    for r in conn.execute(
-            "SELECT tgrelid AS o, tgname AS n, pg_get_triggerdef(oid) AS d FROM pg_trigger "
-            "WHERE NOT tgisinternal AND tgrelid = ANY(%s) ORDER BY tgname COLLATE \"C\"", (list(oids),)).fetchall():
-        out[oids[r["o"]]]["constraints"]["trigger:" + r["n"]] = r["d"]
-    for r in conn.execute(
-            "SELECT i.indrelid AS o, ic.relname AS n, pg_get_indexdef(i.indexrelid) AS d FROM pg_index i "
-            "JOIN pg_class ic ON ic.oid = i.indexrelid WHERE NOT i.indisprimary AND i.indrelid = ANY(%s) "
-            "ORDER BY ic.relname COLLATE \"C\"", (list(oids),)).fetchall():
-        out[oids[r["o"]]]["indexes"][r["n"]] = r["d"]
+    conn.execute("BEGIN")
+    try:
+        objs = conn.execute(
+            "SELECT type, name, tbl_name, sql FROM sqlite_master WHERE name NOT LIKE 'sqlite\\_%' ESCAPE '\\' "
+            "ORDER BY name COLLATE BINARY").fetchall()
+        options = {}
+        try:
+            for r in conn.execute("PRAGMA table_list"):
+                options[(r["schema"], r["name"])] = r
+        except sqlite3.DatabaseError:
+            pass
+        for o in objs:
+            if o["type"] not in ("table", "view"):
+                continue
+            c = {"fields": {}, "identity": [], "indexes": {}, "constraints": {}}
+            out[o["name"]] = c
+            pk = []
+            for col in conn.execute("PRAGMA table_xinfo(%s)" % quote_ident(o["name"])):
+                c["fields"][col["name"]] = col["type"]
+                if col["pk"]:
+                    pk.append((col["pk"], col["name"]))
+                if col["notnull"]:
+                    c["constraints"]["not_null:" + col["name"]] = "NOT NULL"
+                if col["hidden"] in (2, 3):
+                    c["constraints"]["generated:" + col["name"]] = "%s: %s" % (
+                        "STORED" if col["hidden"] == 3 else "VIRTUAL", squash(col["dflt_value"] or ""))
+                elif col["dflt_value"] is not None:
+                    c["constraints"]["default:" + col["name"]] = squash(col["dflt_value"])
+            c["identity"] = [name for _, name in sorted(pk)]
+            if o["type"] == "view":
+                c["constraints"]["view_definition"] = squash(o["sql"] or "")
+                continue
+            opt = options.get(("main", o["name"]))
+            if opt is not None:
+                if opt["wr"]:
+                    c["constraints"]["table_option:without_rowid"] = "WITHOUT ROWID"
+                if opt["strict"]:
+                    c["constraints"]["table_option:strict"] = "STRICT"
+            for name, definition in check_constraints(o["sql"] or "").items():
+                c["constraints"][name] = definition
+            fks = {}
+            for fk in conn.execute("PRAGMA foreign_key_list(%s)" % quote_ident(o["name"])):
+                fks.setdefault(fk["id"], []).append(fk)
+            for rows in fks.values():
+                rows.sort(key=lambda r: r["seq"])
+                cols = ", ".join(r["from"] for r in rows)
+                refs = ", ".join(r["to"] or "" for r in rows)
+                c["constraints"]["foreign_key:" + cols + " -> " + rows[0]["table"]] = (
+                    "FOREIGN KEY (%s) REFERENCES %s (%s) ON UPDATE %s ON DELETE %s MATCH %s"
+                    % (cols, rows[0]["table"], refs, rows[0]["on_update"], rows[0]["on_delete"], rows[0]["match"]))
+            sql_of = {x["name"]: x["sql"] for x in objs if x["type"] == "index"}
+            for ix in conn.execute("PRAGMA index_list(%s)" % quote_ident(o["name"])).fetchall():
+                if ix["origin"] == "pk":
+                    continue
+                keys = []
+                for k in conn.execute("PRAGMA index_xinfo(%s)" % quote_ident(ix["name"])):
+                    if k["key"]:
+                        keys.append("%s%s%s" % (k["name"] if k["cid"] >= 0 else "<expression>",
+                                                " COLLATE " + k["coll"] if k["coll"] not in (None, "BINARY") else "",
+                                                " DESC" if k["desc"] else ""))
+                if sql_of.get(ix["name"]):
+                    definition = squash(sql_of[ix["name"]])
+                else:
+                    definition = "%s (%s)" % ("UNIQUE" if ix["unique"] else "INDEX", ", ".join(keys))
+                c["indexes"][ix["name"]] = definition
+        for o in objs:
+            if o["type"] == "trigger" and o["tbl_name"] in out:
+                out[o["tbl_name"]]["constraints"]["trigger:" + o["name"]] = squash(o["sql"])
+    finally:
+        conn.execute("ROLLBACK")
     for c in out.values():  # a stable order for everything that lists several things
         c["constraints"] = dict(sorted(c["constraints"].items()))
         c["indexes"] = dict(sorted(c["indexes"].items()))
     return {"collections": out}
 
 
-def print_description(conninfo):
-    with psycopg.connect(conninfo, connect_timeout=10, row_factory=db.dict_row) as conn:
-        conn.execute("SET TRANSACTION READ ONLY")
+def print_description(path):
+    conn = open_readonly(path)
+    try:
         doc = describe(conn)
+    finally:
+        conn.close()
     json.dump(doc, sys.stdout)
     print()
 
 
-# ---- the sandbox: a database beside production, named by the caller -------------------------------------------
+# ---- the sandbox: a file beside the application's, named by the caller ------------------------------------
 
-def q(*parts):
-    return sql.Identifier(*parts).as_string()
-
-
-def grant_text(account):
-    return ("the account %s lacks the right to create and drop databases. The narrowest grant, to run as a "
-            "superuser: ALTER ROLE %s CREATEDB; "
-            "(PostgreSQL cannot limit CREATEDB to a name pattern. The role then owns only the databases it "
-            "creates, so it may create, alter and drop the tables, columns, indexes, constraints, views, triggers "
-            "and sequences inside those and in no other database; this command only ever creates or drops "
-            "databases whose names begin with the literal prefix mendel_sandbox_, the underscores being literal.)"
-            % (q(account), q(account)))
-
-
-def admin():
-    return psycopg.connect(url(), autocommit=True, connect_timeout=10, row_factory=db.dict_row)
-
-
-def account(conn):
-    return conn.execute("SELECT current_user AS u").fetchone()["u"]
-
-
-def need_createdb(conn):
-    r = conn.execute("SELECT rolcreatedb OR rolsuper AS ok FROM pg_roles WHERE rolname = current_user").fetchone()
-    if not (r and r["ok"]):
-        raise Failure(grant_text(account(conn)))
-
-
-def drop_database(conn, name):
+def remove_files(path):
     try:
-        conn.execute(sql.SQL("DROP DATABASE IF EXISTS {} WITH (FORCE)").format(sql.Identifier(name)))
-    except psycopg.errors.InsufficientPrivilege:
-        raise Failure(grant_text(account(conn)))
+        for suffix in SIDE_FILES:
+            if os.path.lexists(path + suffix):
+                os.unlink(path + suffix)
+    except PermissionError:
+        raise Failure(grant_text("it cannot remove %s" % path))
 
 
-def not_extension(alias, catalog):
-    return ("NOT EXISTS (SELECT 1 FROM pg_depend x WHERE x.classid = '%s'::regclass AND x.objid = %s.oid "
-            "AND x.deptype = 'e')" % (catalog, alias))
-
-
-def structure(conn):
-    """DDL that rebuilds the structure of the database the connection is to (read from the catalogue, no rows)."""
-    stmts = ["SET check_function_bodies = off"]
-    for r in conn.execute("SELECT extname FROM pg_extension WHERE extname <> 'plpgsql' ORDER BY extname").fetchall():
-        stmts.append("CREATE EXTENSION IF NOT EXISTS " + q(r["extname"]))
-    for r in conn.execute(
-            "SELECT nspname FROM pg_namespace n WHERE nspname <> 'public' AND " + USER_REL.replace("n.nspname", "nspname")
-            + " ORDER BY nspname").fetchall():
-        stmts.append("CREATE SCHEMA " + q(r["nspname"]))
-    for r in conn.execute(
-            "SELECT t.oid, t.typtype, n.nspname AS s, t.typname AS n FROM pg_type t JOIN pg_namespace n ON n.oid = t.typnamespace "
-            "LEFT JOIN pg_class c ON c.oid = t.typrelid WHERE " + USER_REL + " AND " + not_extension("t", "pg_type")
-            + " AND (t.typtype IN ('e', 'd', 'r', 'm') OR (t.typtype = 'c' AND c.relkind = 'c')) ORDER BY t.oid").fetchall():
-        if r["typtype"] != "e":
-            raise Failure("cannot copy the structure: %s.%s is a type this command does not rebuild" % (r["s"], r["n"]))
-        labels = [x["enumlabel"] for x in conn.execute(
-            "SELECT enumlabel FROM pg_enum WHERE enumtypid = %s ORDER BY enumsortorder", (r["oid"],)).fetchall()]
-        stmts.append("CREATE TYPE %s AS ENUM (%s)" % (q(r["s"], r["n"]), ", ".join(sql.Literal(x).as_string() for x in labels)))
-    if conn.execute(
-            "SELECT 1 FROM pg_proc p JOIN pg_namespace n ON n.oid = p.pronamespace WHERE p.prokind IN ('a', 'w') AND "
-            + USER_REL + " AND " + not_extension("p", "pg_proc") + " LIMIT 1").fetchone():
-        raise Failure("cannot copy the structure: the database has aggregate or window functions")
-    seqs = conn.execute(
-        "SELECT n.nspname AS s, c.relname AS n, sq.seqtypid::regtype::text AS typ, sq.seqstart AS st, sq.seqincrement AS inc, "
-        "sq.seqmin AS mn, sq.seqmax AS mx, sq.seqcache AS cache, sq.seqcycle AS cyc, dep.deptype AS dt, "
-        "dep.refobjid::regclass::text AS tbl, (SELECT attname FROM pg_attribute WHERE attrelid = dep.refobjid "
-        "AND attnum = dep.refobjsubid) AS col FROM pg_class c JOIN pg_namespace n ON n.oid = c.relnamespace "
-        "JOIN pg_sequence sq ON sq.seqrelid = c.oid LEFT JOIN pg_depend dep ON dep.classid = 'pg_class'::regclass "
-        "AND dep.objid = c.oid AND dep.refclassid = 'pg_class'::regclass AND dep.deptype IN ('a', 'i') "
-        "WHERE c.relkind = 'S' AND " + USER_REL + " AND " + not_extension("c", "pg_class") + " ORDER BY c.oid").fetchall()
-    owned = []
-    for s in seqs:
-        if s["dt"] == "i":  # created with its identity column
-            continue
-        stmts.append("CREATE SEQUENCE %s AS %s START %d INCREMENT %d MINVALUE %d MAXVALUE %d CACHE %d %s"
-                     % (q(s["s"], s["n"]), s["typ"], s["st"], s["inc"], s["mn"], s["mx"], s["cache"],
-                        "CYCLE" if s["cyc"] else "NO CYCLE"))
-        if s["dt"] == "a":
-            owned.append("ALTER SEQUENCE %s OWNED BY %s.%s" % (q(s["s"], s["n"]), s["tbl"], q(s["col"])))
-    for r in conn.execute(
-            "SELECT pg_get_functiondef(p.oid) AS d FROM pg_proc p JOIN pg_namespace n ON n.oid = p.pronamespace "
-            "WHERE p.prokind IN ('f', 'p') AND " + USER_REL + " AND " + not_extension("p", "pg_proc") + " ORDER BY p.oid").fetchall():
-        stmts.append(r["d"])
-    rels = conn.execute(
-        "SELECT c.oid, c.relkind, c.relpersistence AS pers, c.relispartition AS part, n.nspname AS s, c.relname AS n "
-        "FROM pg_class c JOIN pg_namespace n ON n.oid = c.relnamespace WHERE c.relkind IN ('r', 'p', 'v', 'm') AND "
-        + USER_REL + " AND " + not_extension("c", "pg_class") + " ORDER BY c.oid").fetchall()
-    ids = [r["oid"] for r in rels]
-    for r in rels:
-        if r["relkind"] == "p" or r["part"]:
-            raise Failure("cannot copy the structure: %s.%s is partitioned, which this command does not rebuild" % (r["s"], r["n"]))
-        if r["relkind"] != "r":
-            continue
-        cols = []
-        for a in conn.execute(
-                "SELECT a.attname AS n, format_type(a.atttypid, a.atttypmod) AS t, a.attnotnull AS nn, a.attidentity AS idn, "
-                "a.attgenerated AS gen, pg_get_expr(d.adbin, d.adrelid) AS dflt, "
-                "CASE WHEN a.attcollation <> t.typcollation THEN co.collname END AS coll, cn.nspname AS collns "
-                "FROM pg_attribute a JOIN pg_type t ON t.oid = a.atttypid "
-                "LEFT JOIN pg_attrdef d ON d.adrelid = a.attrelid AND d.adnum = a.attnum "
-                "LEFT JOIN pg_collation co ON co.oid = a.attcollation LEFT JOIN pg_namespace cn ON cn.oid = co.collnamespace "
-                "WHERE a.attrelid = %s AND a.attnum > 0 AND NOT a.attisdropped ORDER BY a.attnum", (r["oid"],)).fetchall():
-            c = "%s %s" % (q(a["n"]), a["t"])
-            if a["coll"]:
-                c += " COLLATE " + q(a["collns"], a["coll"])
-            if a["gen"] == "s":
-                c += " GENERATED ALWAYS AS (%s) STORED" % a["dflt"]
-            elif a["idn"] == "a":
-                c += " GENERATED ALWAYS AS IDENTITY"
-            elif a["idn"] == "d":
-                c += " GENERATED BY DEFAULT AS IDENTITY"
-            elif a["dflt"] is not None:
-                c += " DEFAULT " + a["dflt"]
-            if a["nn"]:
-                c += " NOT NULL"
-            cols.append(c)
-        stmts.append("CREATE %sTABLE %s (%s)" % ("UNLOGGED " if r["pers"] == "u" else "", q(r["s"], r["n"]), ", ".join(cols)))
-    cons = conn.execute(
-        "SELECT conrelid::regclass::text AS t, conname AS n, contype AS k, pg_get_constraintdef(oid) AS d FROM pg_constraint "
-        "WHERE contype IN ('p', 'u', 'c', 'x', 'f') AND conrelid = ANY(%s) ORDER BY (contype = 'f'), oid", (ids,)).fetchall()
-    stmts += ["ALTER TABLE %s ADD CONSTRAINT %s %s" % (c["t"], q(c["n"]), c["d"]) for c in cons]
-    stmts += owned
-    for r in rels:
-        if r["relkind"] in ("v", "m"):
-            body = conn.execute("SELECT pg_get_viewdef(%s, true) AS d", (r["oid"],)).fetchone()["d"].strip().rstrip(";")
-            stmts.append("CREATE %s %s AS %s%s" % ("VIEW" if r["relkind"] == "v" else "MATERIALIZED VIEW",
-                                                  q(r["s"], r["n"]), body, "" if r["relkind"] == "v" else " WITH NO DATA"))
-    stmts += [r["d"] for r in conn.execute(
-        "SELECT pg_get_indexdef(i.indexrelid) AS d FROM pg_index i JOIN pg_class ic ON ic.oid = i.indexrelid "
-        "WHERE i.indrelid = ANY(%s) AND NOT EXISTS (SELECT 1 FROM pg_constraint k WHERE k.conindid = i.indexrelid "
-        "AND k.contype IN ('p', 'u', 'x') AND k.conrelid = i.indrelid) ORDER BY ic.oid", (ids,)).fetchall()]
-    stmts += [r["d"] for r in conn.execute(
-        "SELECT pg_get_triggerdef(oid) AS d FROM pg_trigger WHERE NOT tgisinternal AND tgrelid = ANY(%s) ORDER BY oid",
-        (ids,)).fetchall()]
-    return stmts
+def structure(prod):
+    """DDL that rebuilds the structure of the database the connection is to (read from sqlite_master, no rows)."""
+    rows = prod.execute("SELECT type, name, sql FROM sqlite_master WHERE sql IS NOT NULL "
+                        "AND name NOT LIKE 'sqlite\\_%' ESCAPE '\\' ORDER BY rowid").fetchall()
+    for r in rows:
+        if (r["sql"] or "").lstrip().upper().startswith("CREATE VIRTUAL"):
+            raise Failure("cannot copy the structure: %s is a virtual table, which this command does not rebuild"
+                          % r["name"])
+    order = {"table": 0, "view": 1, "index": 2, "trigger": 3}
+    return sorted(rows, key=lambda r: order.get(r["type"], 4))
 
 
 def sandbox_build(name):
-    check_sandbox_name(name)
-    with admin() as a:
-        need_createdb(a)
-        drop_database(a, name)
-        try:
-            a.execute(sql.SQL("CREATE DATABASE {}").format(sql.Identifier(name)))
-        except psycopg.errors.InsufficientPrivilege:
-            raise Failure(grant_text(account(a)))
+    path = check_sandbox_name(name)
+    prod_path = need_production()
+    need_rights()
+    remove_files(path)
     copied = []
-    with psycopg.connect(url(), connect_timeout=10, row_factory=db.dict_row) as prod:
-        prod.isolation_level = psycopg.IsolationLevel.REPEATABLE_READ
-        prod.read_only = True
-        stmts = structure(prod)
-        with psycopg.connect(url_for(name), connect_timeout=10, row_factory=db.dict_row) as box:
-            for s in stmts:
+    box = None
+    try:
+        prod = open_readonly(prod_path)
+        try:
+            prod.execute("BEGIN")  # one snapshot for the structure and the reference rows
+            ddl = structure(prod)
+            version = prod.execute("PRAGMA user_version").fetchone()[0]
+            box = sqlite3.connect(path, isolation_level=None)
+            box.row_factory = sqlite3.Row
+            box.execute("BEGIN")
+            for r in ddl:
                 try:
-                    box.execute(s)
-                except psycopg.Error as e:
-                    raise Failure("building the sandbox failed at: %s\n%s" % (s, message(e)))
+                    box.execute(r["sql"])
+                except sqlite3.Error as e:
+                    raise Failure("building the sandbox failed at: %s\n%s" % (r["sql"], message(e)))
             for table in REFERENCE:
-                if not prod.execute("SELECT to_regclass(%s) AS t", ("public." + table,)).fetchone()["t"]:
+                if not prod.execute("SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = ?",
+                                    (table,)).fetchone():
                     continue
-                cur = prod.execute(sql.SQL("SELECT * FROM public.{}").format(sql.Identifier(table)))
-                cols = [c.name for c in cur.description]
-                rows = [tuple(r[c] for c in cols) for r in cur.fetchall()]
-                if not rows:
+                cur = prod.execute("SELECT * FROM %s" % quote_ident(table))
+                cols = [d[0] for d in cur.description]
+                data = [tuple(r) for r in cur.fetchall()]
+                if not data:
                     continue
-                with box.cursor() as w:
-                    w.executemany(sql.SQL("INSERT INTO public.{} ({}) VALUES ({})").format(
-                        sql.Identifier(table), sql.SQL(", ").join(map(sql.Identifier, cols)),
-                        sql.SQL(", ").join([sql.Placeholder()] * len(cols))), rows)
-                copied.append({"collection": table, "records": len(rows)})
+                box.executemany("INSERT INTO %s (%s) VALUES (%s)" % (
+                    quote_ident(table), ", ".join(quote_ident(c) for c in cols), ", ".join("?" * len(cols))), data)
+                copied.append({"collection": table, "records": len(data)})
+            box.execute("COMMIT")
+            box.execute("PRAGMA user_version = %d" % version)
+        finally:
+            prod.close()
+            if box is not None:
+                box.close()
+    except BaseException:
+        remove_files(path)
+        raise
     json.dump({"reference_collections": copied}, sys.stdout)
     print()
 
 
 def sandbox_drop(name):
-    check_sandbox_name(name)
-    with admin() as a:
-        drop_database(a, name)
+    path = check_sandbox_name(name)
+    remove_files(path)
+
+
+def need_sandbox(name):
+    path = check_sandbox_name(name)
+    if not os.path.exists(path):
+        raise Failure("there is no sandbox called %s" % name)
+    return path
 
 
 # ---- running one part of a migration -----------------------------------------------------------------------
@@ -386,22 +453,23 @@ def read_part():
     return part
 
 
-def run_up(conninfo):
+def run_up(path):
     part = read_part()
     with tempfile.TemporaryDirectory() as d:  # the tool's own function, applying just this file
         with open(os.path.join(d, part["name"]), "w", encoding="utf-8") as f:
             f.write(part["sql"])
         db.MIGRATIONS = d
-        applied = db.migrate(conninfo)
+        applied = db.migrate(path)
     if part["name"] not in applied:
         raise Failure("migration %s is already recorded in schema_migrations; it was not run" % part["name"])
 
 
-def run_down(conninfo):
+def run_down(path):
     part = read_part()
-    with db.session(conninfo) as conn:
-        conn.execute(part["sql"])
-        conn.execute("DELETE FROM schema_migrations WHERE name = %s", (part["name"],))
+    with db.session(path, write=True) as conn:
+        for statement in db.statements(part["sql"]):
+            conn.execute(statement)
+        conn.execute("DELETE FROM schema_migrations WHERE name = ?", (part["name"],))
 
 
 def main(argv):
@@ -413,21 +481,22 @@ def main(argv):
             sandbox_build(args[0])
         elif cmd == "sandbox-drop" and len(args) == 1:
             sandbox_drop(args[0])
-        elif cmd in ("sandbox-describe", "sandbox-up", "sandbox-down") and len(args) == 1:
-            check_sandbox_name(args[0])
-            conninfo = url_for(args[0])
-            {"sandbox-describe": print_description, "sandbox-up": lambda c: run_up(c),
-             "sandbox-down": lambda c: run_down(c)}[cmd](conninfo)
+        elif cmd == "sandbox-describe" and len(args) == 1:
+            print_description(need_sandbox(args[0]))
+        elif cmd == "sandbox-up" and len(args) == 1:
+            run_up(need_sandbox(args[0]))
+        elif cmd == "sandbox-down" and len(args) == 1:
+            run_down(need_sandbox(args[0]))
         elif cmd == "production-describe" and not args:
-            print_description(url())
+            print_description(need_production())
         elif cmd == "production-up" and not args:
-            run_up(url())
+            run_up(production_path())
         elif cmd == "production-down" and not args:
-            run_down(url())
+            run_down(need_production())
         else:
             say("phase: does not implement: %s" % " ".join(argv))
             return 2
-    except (Failure, config.ConfigError, psycopg.Error, OSError, ValueError) as e:
+    except (Failure, config.ConfigError, sqlite3.Error, OSError, ValueError) as e:
         say("phase: " + message(e))
         return 1
     return 0
