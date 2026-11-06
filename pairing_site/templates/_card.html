@@ -1,3 +1,4 @@
+{% from "_source.html" import source_label %}
 {% macro card_article(row, card, queue=False) %}
 {% set q = card.quote %}
 {% set T = card.highlight %}
@@ -49,6 +50,7 @@
         <b>{{ card.donor.name }}: stated priority</b>
         <div class="small"><i>{{ card.donor.tie.text }}</i></div>
         {% for s in card.donor.statements %}
+        <div class="small">{{ source_label(s.kind, s.outlet, s.whose_words) }}</div>
         <div class="small">{{ s.section|marked(T) }}</div>
         <blockquote>{{ (s.text|quoted)|marked(T) }}</blockquote>
         <div class="small">{% if s.page_date %}page dated {{ s.page_date }}{% else %}page undated{% endif %}; <a href="{{ s.url }}">source page</a>; retrieved {{ s.retrieved }}</div>

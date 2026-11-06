@@ -33,6 +33,7 @@ mark{background:#ffe066;padding:0 .1em}
 body.hl-off mark{background:none}
 .strip{margin-top:.8rem;background:#f7f7f7;border:1px dashed #999;padding:.5rem .7rem}
 .badge{display:inline-block;border-radius:3px;padding:.05rem .45rem;font-weight:700;font-size:.8rem;color:#fff;margin-right:.4rem;background:#555}
+.badge.news{background:#1f5f99}
 .badge.low{background:#2f6f4f}.badge.medium{background:#b07a00}.badge.high{background:#a33}
 .sources{margin-top:.6rem;font-size:.85rem;color:#333;border-top:1px solid #ddd;padding-top:.4rem}
 .notice{background:#e8f3ea;border:1px solid #9bc8a5;padding:.4rem .7rem;border-radius:6px}
@@ -48,3 +49,5 @@ button.reject{background:#a33;color:#fff;border:0;border-radius:4px}
 .dropped{background:#fff;border:1px solid #bbb;border-radius:8px;margin:1rem 0;padding:.6rem 1rem}
 .dropped h2{font-size:1rem}
 .cue{margin:.3rem 0;padding-left:1.2rem}
+.superseded{background:#f4f4f4;border-left:4px solid #aaa;color:#444;margin:.4rem 0;padding:.4rem .6rem}
+fieldset[hidden]{display:none}

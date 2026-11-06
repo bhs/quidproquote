@@ -1,0 +1,1 @@
+{% macro source_label(kind, outlet, whose) %}{% if kind == NEWS_KIND %}<span class="badge news">News report: {{ outlet }}</span> <span class="small">{{ WHOSE_WORDS.get(whose, 'Whose words: not recorded') }}.</span>{% else %}<span class="small own-site">{{ kind or "Organisation's own site" }}.</span>{% endif %}{% endmacro %}
