@@ -1,0 +1,21 @@
+{# One priority in force. r is a donor_priorities row; just_edited says it was saved a moment ago as an edit. #}
+<li class="prow {{ 'reported' if r.whose_words }}" id="priority-{{ r.id }}">
+  <div><b>{{ r.donor }}</b>{% if r.section %} <span class="small">({{ r.section }})</span>{% endif %}: {{ r.text }}</div>
+  {% if r.whose_words %}<div class="small provenance">Reported by {{ r.outlet }}; words are {{ r.whose_words|whose }}</div>{% endif %}
+  <div class="small">
+    <a href="{{ r.url }}">source</a>,
+    {% if r.page_date %}page dated {{ r.page_date }}{% else %}page undated{% endif %},
+    {% if r.page_checked %}retrieved {{ r.retrieved }}{% else %}saved {{ r.retrieved }}{% endif %},
+    added by {{ r.added_by }}
+    {% if not r.page_checked %}<span class="unchecked">not checked against page</span>{% endif %}
+  </div>
+  {% if just_edited %}<div class="small notice">Saved as a new version; the earlier wording is kept.</div>{% endif %}
+  <div class="small actions">
+    <a class="button" href="/priority/{{ r.id }}/edit" hx-get="/priority/{{ r.id }}/edit" hx-target="#priority-{{ r.id }}" hx-swap="outerHTML">Edit</a>
+    {% if r.supersedes_key %}
+    <a href="/priority/{{ r.id }}/history" hx-get="/priority/{{ r.id }}/history" hx-target="#history-{{ r.id }}" hx-swap="innerHTML">Earlier wording</a>
+    <span>(edited {{ r.added_at.date() }})</span>
+    {% endif %}
+  </div>
+  <div id="history-{{ r.id }}"></div>
+</li>

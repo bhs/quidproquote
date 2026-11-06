@@ -1,24 +1,28 @@
 {% extends "base.html" %}
-{% block title %}Add a priority{% endblock %}
+{% block title %}Donor priorities{% endblock %}
 {% block content %}
-<h1>Add a donor's priority</h1>
-<p class="lede">Paste the donor's own words and the link to the page that shows them. The page is fetched now and the
-words must appear on it, word for word, or nothing is saved. The retrieval date is the day of the check; you do not enter it.</p>
-{% if saved %}<p class="notice" id="priority-saved">Saved. The words were found verbatim on {{ saved.url }} and recorded as retrieved {{ saved.retrieved }}. The worker uses them from its next run.</p>{% endif %}
-{% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
-<form method="post" action="/priority" class="stack">
-  <label>Donor
-    <select name="family" required>
-      <option value="">Choose a donor</option>
-      {% for f in families %}<option value="{{ f.key }}" {{ 'selected' if form.family == f.key }}>{{ f.name }}</option>{% endfor %}
-    </select></label>
-  <label>Link to the donor's page <input type="url" name="url" value="{{ form.url or '' }}" required placeholder="https://"></label>
-  <label>The donor's words, exactly as the page shows them
-    <textarea name="words" rows="5" required>{{ form.words or '' }}</textarea></label>
-  <label>Section heading on the page (optional) <input type="text" name="section" value="{{ form.section or '' }}"></label>
-  <label>Date the page shows (optional) <input type="text" name="page_date" value="{{ form.page_date or '' }}" placeholder="2026-10-08"></label>
-  <button type="submit">Fetch the page and check the words</button>
-</form>
+<h1>Donor priorities</h1>
+<p class="lede">Add a donor's stated priority from the donor's own site or from a news report, or correct one in the list
+below. The retrieval date is the day of the check; you do not enter it. A correction never overwrites: the earlier
+wording stays on record behind "Earlier wording".</p>
+{% if saved %}<p class="notice" id="priority-saved">
+  {% if saved.checked %}Saved. The words were found verbatim on {{ saved.url }} and recorded as retrieved {{ saved.retrieved }}.
+  {% else %}Saved, <b>not checked against page</b>: {{ saved.why }}. The words are kept as you entered them and marked that way everywhere.{% endif %}
+  The worker uses them from its next run.</p>{% endif %}
+{% if done %}<p class="notice">{{ done }}</p>{% endif %}
+<div class="addbar">
+  <form method="get" action="/priority" hx-get="/priority/form" hx-target="#form-slot" hx-swap="innerHTML">
+    <input type="hidden" name="type" value="own"><button type="submit" id="add-own">Add from the donor's own site</button></form>
+  <form method="get" action="/priority" hx-get="/priority/form" hx-target="#form-slot" hx-swap="innerHTML">
+    <input type="hidden" name="type" value="reported"><button type="submit" id="add-reported">Add from a news report</button></form>
+</div>
+<div id="form-slot">{% if form_type %}{% include "_priority_form.html" %}{% endif %}</div>
 <h2>Donor statements on file</h2>
-<ul>{% for r in recent %}<li><b>{{ r.donor }}</b>: {{ r.text[:140] }}{{ '...' if r.text|length > 140 }} (<a href="{{ r.url }}">source</a>, retrieved {{ r.retrieved }}, added by {{ r.added_by }})</li>{% endfor %}</ul>
+<ul class="priorities" id="priority-list">
+{% for r in recent %}
+  {% if editing and editing.id == r.id %}{% include "_priority_edit.html" %}{% else %}{% include "_priority_row.html" %}{% endif %}
+{% else %}
+  <li>No priorities yet.</li>
+{% endfor %}
+</ul>
 {% endblock %}

@@ -48,3 +48,17 @@ button.reject{background:#a33;color:#fff;border:0;border-radius:4px}
 .dropped{background:#fff;border:1px solid #bbb;border-radius:8px;margin:1rem 0;padding:.6rem 1rem}
 .dropped h2{font-size:1rem}
 .cue{margin:.3rem 0;padding-left:1.2rem}
+.stmt{margin:.4rem 0}
+.stmt.reported,.prow.reported{border:2px dashed #7a8fc4;border-radius:10px;padding:.3rem .5rem}
+.provenance{font-weight:600;color:#33415f}
+.unchecked{color:#8a5a00;font-weight:600}
+.quote-note{margin-top:.2rem;font-style:italic}
+.addbar{display:flex;gap:.8rem;flex-wrap:wrap;margin:1rem 0}.addbar form{margin:0}
+.priorities{list-style:none;padding:0}
+.prow{background:#fff;border:1px solid #ccc;border-radius:8px;margin:.5rem 0;padding:.5rem .7rem}
+.prow.editing{background:#fffbea}
+.prow .actions{display:flex;gap:.8rem;align-items:center;margin-top:.3rem}
+a.button{display:inline-block;font:inherit;padding:.15rem .7rem;border:1px solid #888;border-radius:4px;background:#f3f3f3;color:#222;text-decoration:none}
+.priority-form{background:#fff;border:1px solid #bbb;border-radius:8px;padding:.7rem 1rem}
+.priority-form.reported{border-style:dashed}
+ol.history{margin:.4rem 0;padding-left:1.4rem;background:#f7f7f7;border-radius:6px}

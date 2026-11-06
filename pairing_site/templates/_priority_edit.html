@@ -1,0 +1,25 @@
+{# A priority row swapped for a small prefilled form. editing: {id, form, error}; r is the row being edited. #}
+<li class="prow editing {{ 'reported' if r.whose_words }}" id="priority-{{ r.id }}">
+  <form method="post" action="/priority/{{ r.id }}/edit" class="stack priority-form"
+        hx-post="/priority/{{ r.id }}/edit" hx-target="#priority-{{ r.id }}" hx-swap="outerHTML">
+    <b>Edit this priority of {{ r.donor }}</b>
+    <span class="small">Saving keeps the wording below as it is now under "Earlier wording" and makes your changes the current version.</span>
+    {% if editing.error %}<p class="error" role="alert">{{ editing.error }}</p>{% endif %}
+    {% set f = editing.form %}
+    <label>Link <input type="url" name="url" value="{{ f.url or '' }}" required></label>
+    {% if r.whose_words %}
+    <label>Outlet <input type="text" name="outlet" value="{{ f.outlet or '' }}" required maxlength="120"></label>
+    <label>Whose words these are
+      <select name="whose_words" required>
+        {% for k, label in whose_options.items() %}<option value="{{ k }}" {{ 'selected' if f.whose_words == k }}>{{ label|capitalize }}</option>{% endfor %}
+      </select></label>
+    {% endif %}
+    <label>The words <textarea name="words" rows="4" required>{{ f.words or '' }}</textarea></label>
+    <label>Section heading (optional) <input type="text" name="section" value="{{ f.section or '' }}" maxlength="200"></label>
+    <label>Page date {{ '' if r.whose_words else '(optional)' }} <input type="date" name="page_date" value="{{ f.page_date or '' }}" {{ 'required' if r.whose_words }}></label>
+    <span>
+      <button type="submit">Save as a new version</button>
+      <a class="button" href="/priority" hx-get="/priority/{{ r.id }}/row" hx-target="#priority-{{ r.id }}" hx-swap="outerHTML">Cancel</a>
+    </span>
+  </form>
+</li>

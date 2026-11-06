@@ -6,9 +6,11 @@ Public:  /               approved pairings as cards, filterable by official or d
 Sign-in: /login           the ADMIN_TOKEN sets a signed session cookie
 Admin:   /review          the queue: approve (needs the recording check ticked) or reject, inline through HTMX
          /review/dropped  pairs the AI filter dropped, with reasons
-         /priority        add a donor's priority: the page is fetched and the pasted words must be on it
+         /priority        add a donor's priority from its own site (the pasted words must be on the page) or from a
+                          news report (outlet, date and whose words are required); edit one in place, and read the
+                          earlier wording of an edited one
 
-Every approval, rejection, sign-in and priority added is written to the audit log with its time and action.
+Every approval, rejection, sign-in and priority added or edited is written to the audit log with its time and action.
 """
 
 import contextlib
@@ -24,7 +26,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from markupsafe import Markup
 
-from . import auth, config, db, logs, priorities, sources, status  # noqa: F401  (sources: discovery libraries on the path)
+from . import auth, cards, config, db, logs, priorities, sources, status  # noqa: F401  (sources: discovery libraries on the path)
 
 import pairing_cards as pc  # noqa: E402
 
@@ -69,6 +71,7 @@ def create_app():
     templates = Jinja2Templates(directory=os.path.join(HERE, "templates"))
     templates.env.filters["marked"] = marked
     templates.env.filters["quoted"] = quoted
+    templates.env.filters["whose"] = priorities.whose_label
 
     def admin(request):
         try:
@@ -100,9 +103,11 @@ def create_app():
     @app.get("/", response_class=HTMLResponse)
     def index(request: Request):
         with db.session() as conn:
-            rows = conn.execute("SELECT id, slug, official, donor_name, card, published_at, recording_checked, "
-                                "recording_checked_at FROM pairings WHERE status = 'approved' "
+            rows = conn.execute("SELECT id, slug, official, donor_key, donor_name, meeting_id, quote_text, card, published_at, "
+                                "recording_checked, recording_checked_at FROM pairings WHERE status = 'approved' "
                                 "ORDER BY published_at DESC, id").fetchall()
+            cache = {}
+            rows = [cards.live_row(conn, r, cache) for r in rows]
         return render(request, "index.html", rows=rows,
                       officials=sorted({r["official"] for r in rows}), donors=sorted({r["donor_name"] for r in rows}))
 
@@ -110,6 +115,8 @@ def create_app():
     def pairing(request: Request, slug: str):
         with db.session() as conn:
             row = conn.execute("SELECT * FROM pairings WHERE slug = ?", (slug,)).fetchone()
+            if row:
+                row = cards.live_row(conn, row)
         if not row or (row["status"] != "approved" and not admin(request)):
             raise HTTPException(404, "No such pairing")
         return render(request, "pairing.html", row=row)
@@ -154,6 +161,8 @@ def create_app():
 
     def queue_context(conn):
         pending = conn.execute("SELECT * FROM pairings WHERE status = 'pending' ORDER BY meeting_date DESC, id").fetchall()
+        cache = {}
+        pending = [cards.live_row(conn, r, cache) for r in pending]
         pending.sort(key=lambda r: DOUBT_ORDER.get(r["card"].get("speaker_credit", {}).get("doubt"), len(DOUBT_ORDER)))  # stable
         decided = conn.execute("SELECT id, slug, official, donor_name, status, decided_at, decision_note FROM pairings "
                                "WHERE status <> 'pending' AND source <> 'seed' ORDER BY decided_at DESC LIMIT 10").fetchall()
@@ -196,6 +205,8 @@ def create_app():
     def decision_response(request, row, error):
         if is_htmx(request):
             if error:
+                with db.session() as conn:
+                    row = cards.live_row(conn, row)
                 return render(request, "_queue_item.html", row=row, card=row["card"], error=error)
             return render(request, "_decided.html", row=row)
         if error:
@@ -224,50 +235,129 @@ def create_app():
             rows = conn.execute("SELECT * FROM dropped_pairs ORDER BY reason_kind, meeting_date DESC, id").fetchall()
         return render(request, "dropped.html", rows=rows)
 
-    # ------------------------------------------------------------------ the priority form
+    # ------------------------------------------------------------------ priorities: add, edit in place, history
 
-    def priority_context(conn):
+    PRIORITY_TYPES = ("own", "reported")
+
+    def priority_context(conn, **extra):
         fams = conn.execute("SELECT payload FROM source_data WHERE name = 'families'").fetchone()
-        rows = conn.execute("SELECT * FROM donor_priorities ORDER BY added_at DESC, id DESC LIMIT 12").fetchall()
-        return {"families": fams["payload"]["families"] if fams else [], "recent": rows}
+        ctx = {"families": fams["payload"]["families"] if fams else [], "recent": priorities.current_rows(conn),
+               "form_type": "", "form": {}, "error": "", "saved": None, "done": "", "editing": None,
+               "whose_options": priorities.WHOSE}
+        ctx.update(extra)
+        return ctx
+
+    def edit_form(row, form=None, error=""):
+        """The values of the edit form of a priority: its own, or the ones just submitted."""
+        return {"id": row["id"], "error": error, "form": form or {
+            "url": row["url"], "words": row["text"], "section": row["section"], "page_date": row["page_date"],
+            "outlet": row["outlet"], "whose_words": row["whose_words"]}}
+
+    def get_priority(conn, priority_id):
+        row = priorities.get(conn, priority_id)
+        if not row:
+            raise HTTPException(404, "No such priority")
+        return row
 
     @app.get("/priority", response_class=HTMLResponse)
-    def priority_page(request: Request):
+    def priority_page(request: Request, type: str = "", done: str = ""):
         require_admin(request)
         with db.session() as conn:
-            return render(request, "priority.html", form={}, error="", saved=None, **priority_context(conn))
+            return render(request, "priority.html", **priority_context(
+                conn, form_type=type if type in PRIORITY_TYPES else "", done=done))
+
+    @app.get("/priority/form", response_class=HTMLResponse)
+    def priority_form(request: Request, type: str = "own"):
+        """The short form for one type, swapped in under the two buttons."""
+        require_admin(request)
+        if type not in PRIORITY_TYPES:
+            raise HTTPException(404, "No such kind of priority")
+        if not is_htmx(request):
+            return RedirectResponse("/priority?type=" + type, status_code=303)
+        with db.session() as conn:
+            return render(request, "_priority_form.html", **priority_context(conn, form_type=type))
 
     @app.post("/priority", response_class=HTMLResponse)
     def priority_save(request: Request, family: str = Form(""), url: str = Form(""), words: str = Form(""),
-                      section: str = Form(""), page_date: str = Form("")):
+                      section: str = Form(""), page_date: str = Form(""), type: str = Form("own"),
+                      outlet: str = Form(""), whose_words: str = Form("")):
         require_admin(request)
         same_origin(request)
-        form = {"family": family, "url": url, "words": words, "section": section, "page_date": page_date}
+        ptype = type if type in PRIORITY_TYPES else "own"
+        form = {"family": family, "url": url, "words": words, "section": section, "page_date": page_date,
+                "outlet": outlet, "whose_words": whose_words}
         with db.session() as conn:
-            ctx = priority_context(conn)
+            ctx = priority_context(conn, form_type=ptype)
         fam = next((f for f in ctx["families"] if f["key"] == family), None)
         error, saved = "", None
         if not fam:
             error = "Choose the donor this priority belongs to."
         else:
             try:
-                found = priorities.verify(url, words)  # fetches the page: done before the write lock is taken
-                key = "form-%s-%s" % (family, int(time.time()))
-                with db.session(write=True) as conn:
-                    conn.execute(
-                        "INSERT INTO donor_priorities (key, family, donor, url, section, text, page_date, retrieved, kind, "
-                        "added_by) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                        (key, family, fam["name"], found["url"], section.strip()[:200], found["text"],
-                         page_date.strip()[:40], found["retrieved"], "page on the organisation's own site", auth.ACTOR))
-                    db.audit(conn, auth.ACTOR, "priority added", None,
-                             "%s: %s (words found verbatim on the page; retrieved %s)" % (fam["name"], found["url"], found["retrieved"]))
-                    ctx = priority_context(conn)
-                saved = found
+                _, saved = priorities.add(ptype, fam, form, auth.ACTOR)  # fetches the page before any write lock
                 form = {}
+                with db.session() as conn:
+                    ctx = priority_context(conn)
             except priorities.PriorityError as exc:
                 error = str(exc)
-        return render(request, "priority.html", status_code=422 if error else 200, form=form, error=error,
-                      saved=saved, **ctx)
+        ctx.update(form=form, error=error, saved=saved)
+        return render(request, "priority.html", status_code=422 if error else 200, **ctx)
+
+    @app.get("/priority/{priority_id}/row", response_class=HTMLResponse)
+    def priority_row(request: Request, priority_id: int):
+        """The row as listed: where Cancel and the history's Hide put it back."""
+        require_admin(request)
+        if not is_htmx(request):
+            return RedirectResponse("/priority", status_code=303)
+        with db.session() as conn:
+            return render(request, "_priority_row.html", r=get_priority(conn, priority_id))
+
+    @app.get("/priority/{priority_id}/edit", response_class=HTMLResponse)
+    def priority_edit_page(request: Request, priority_id: int):
+        require_admin(request)
+        with db.session() as conn:
+            row = get_priority(conn, priority_id)
+            if row["replaced_at"]:
+                return RedirectResponse("/priority", status_code=303)
+            if is_htmx(request):
+                return render(request, "_priority_edit.html", r=row, editing=edit_form(row),
+                              whose_options=priorities.WHOSE)
+            return render(request, "priority.html", **priority_context(conn, editing=edit_form(row)))
+
+    @app.post("/priority/{priority_id}/edit", response_class=HTMLResponse)
+    def priority_edit_save(request: Request, priority_id: int, url: str = Form(""), words: str = Form(""),
+                           section: str = Form(""), page_date: str = Form(""), outlet: str = Form(""),
+                           whose_words: str = Form("")):
+        require_admin(request)
+        same_origin(request)
+        form = {"url": url, "words": words, "section": section, "page_date": page_date, "outlet": outlet,
+                "whose_words": whose_words}
+        try:
+            new = priorities.edit(priority_id, form, auth.ACTOR)
+        except priorities.PriorityError as exc:
+            with db.session() as conn:
+                row = get_priority(conn, priority_id)
+                if is_htmx(request) and isinstance(exc, priorities.PriorityGone):
+                    return render(request, "_priority_row.html", r=priorities.current_version(conn, row))
+                if is_htmx(request):  # htmx swaps only a 200: the error is part of the small form
+                    return render(request, "_priority_edit.html", r=row, editing=edit_form(row, form, str(exc)),
+                                  whose_options=priorities.WHOSE)
+                return render(request, "priority.html", status_code=422,
+                              **priority_context(conn, editing=edit_form(row, form, str(exc))))
+        if is_htmx(request):
+            return render(request, "_priority_row.html", r=new, just_edited=True)
+        return RedirectResponse("/priority?done=" + urllib.parse.quote("Saved as a new version; the earlier wording is kept."),
+                                status_code=303)
+
+    @app.get("/priority/{priority_id}/history", response_class=HTMLResponse)
+    def priority_history(request: Request, priority_id: int):
+        """The earlier wording of an edited priority, newest first, each with the date it was replaced."""
+        require_admin(request)
+        with db.session() as conn:
+            row = get_priority(conn, priority_id)
+            versions = priorities.earlier_versions(conn, row)
+        return render(request, "_priority_history.html" if is_htmx(request) else "priority_history.html",
+                      r=row, versions=versions)
 
     return app
 

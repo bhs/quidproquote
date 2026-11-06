@@ -117,7 +117,7 @@ def load_state():
     with db.session() as conn:
         src = reference.get_sources(conn)
         meetings = conn.execute("SELECT * FROM meetings ORDER BY meeting_date, id").fetchall()
-        prios = conn.execute("SELECT * FROM donor_priorities ORDER BY id").fetchall()
+        prios = conn.execute("SELECT * FROM donor_priorities WHERE replaced_at IS NULL ORDER BY id").fetchall()
         seen = {r["k"] for r in conn.execute("SELECT candidate_key AS k FROM pairings WHERE candidate_key IS NOT NULL "
                                              "UNION SELECT candidate_key FROM dropped_pairs")}
     return src, meetings, prios, seen

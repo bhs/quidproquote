@@ -49,9 +49,14 @@
         <b>{{ card.donor.name }}: stated priority</b>
         <div class="small"><i>{{ card.donor.tie.text }}</i></div>
         {% for s in card.donor.statements %}
-        <div class="small">{{ s.section|marked(T) }}</div>
-        <blockquote>{{ (s.text|quoted)|marked(T) }}</blockquote>
-        <div class="small">{% if s.page_date %}page dated {{ s.page_date }}{% else %}page undated{% endif %}; <a href="{{ s.url }}">source page</a>; retrieved {{ s.retrieved }}</div>
+        <div class="stmt{{ ' reported' if s.reported }}">
+          <div class="small">{{ s.section|marked(T) }}</div>
+          <blockquote>{{ (s.text|quoted)|marked(T) }}</blockquote>
+          <div class="small">{% if s.page_date %}page dated {{ s.page_date }}{% else %}page undated{% endif %}; <a href="{{ s.url }}">source page</a>; {{ 'saved' if s.page_checked is defined and not s.page_checked else 'retrieved' }} {{ s.retrieved }}</div>
+          {% if s.reported %}<div class="small provenance">Reported by {{ s.outlet }}; words are {{ s.whose }}</div>{% endif %}
+          {% if s.page_checked is defined and not s.page_checked %}<div class="small unchecked">not checked against page</div>{% endif %}
+          {% if s.updated %}<div class="small">priority updated {{ s.updated }}</div>{% endif %}
+        </div>
         {% endfor %}
       </div>
     </div>
@@ -64,6 +69,8 @@
     <div class="zone">
       <h3>The official's exact words</h3>
       <div class="quote">{{ ('"' ~ q.text ~ '"')|marked(T) }}</div>
+      {% if row.quote_note == 'replaced' %}<div class="small quote-note">Shown as the stored transcript has it: the card's own copy of these words differed.</div>
+      {% elif row.quote_note == 'unverified' %}<div class="small quote-note">These words could not be found in the stored transcript.</div>{% endif %}
       <div class="small">{{ q.meeting }}, {{ q.date }}, transcript time {{ q.first_stamp }}{% if q.last_stamp != q.first_stamp %} to {{ q.last_stamp }}{% endif %}</div>
     </div>
   </div>

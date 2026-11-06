@@ -7,7 +7,10 @@ It loads the roster, donor families and donors' own statements (reference.ensure
 and the eleven caption transcripts of the survey, the five pairings the earlier hop showed (published, with the
 quote re-read word for word from the transcript and the money by committee and filing), and, from the earlier
 hop's hand readings of the same transcripts, passages waiting in the review queue and pairs dropped with their
-reasons. Everything is read from files under discovery/; nothing is fetched and no model is called. Never run at
+reasons. Three priorities reported by Mission Local (two checked against the page by the survey, one only from a
+search extract, so shown as not checked) are added to the donors' priorities, and one of them is a card waiting in the
+queue; one donor's own priority is shown edited once, so a card says it was updated and its earlier wording is kept.
+Everything is read from files under discovery/; nothing is fetched and no model is called. Never run at
 startup.
 """
 
@@ -15,9 +18,10 @@ import collections
 import datetime
 import json
 import os
+import re
 import sys
 
-from . import db, pipeline, reference, sources
+from . import db, pipeline, priorities, reference, sources
 
 import build_map as bm  # noqa: E402
 import ff_lib as ff  # noqa: E402
@@ -25,6 +29,8 @@ import fmap_lib as fl  # noqa: E402
 import pairing_cards as pc  # noqa: E402
 
 SEED_ACTOR = "seed"
+SEED_REPORTED = ("IFPTE-RECOVERY", "IFPTE-CHOICE", "IFPTE-PERMIT")  # reported priorities the demo starts with
+SEED_EDITED = "CHAMBER-H"  # a donor's own priority the demo shows edited once
 DATA_TABLES = ("audit_log", "progress", "dropped_pairs", "pairings", "donor_priorities", "meetings", "source_data")
 
 
@@ -53,6 +59,18 @@ def _trim(tr, p, trim):
     text = window[b:e].strip()
     pos = lo + b
     return dict(p, text=text, first_stamp=doc.stamp(pos), last_stamp=doc.stamp(pos + len(text) - 1))
+
+
+def reported_row(e, fam_by):
+    """A reported priority of the survey (priorities_reported.json) as a donor_priorities row. The survey says
+    whether the page was read in full; the seed fetches nothing, so that is what page_checked records."""
+    day = (e.get("published") or "")[:10]
+    return {"id": e["id"], "key": e["id"], "family": e["family"], "donor": fam_by[e["family"]]["name"],
+            "url": e["url"], "kind": e["tier"], "section": "",
+            "page_date": day if re.fullmatch(r"\d{4}-\d{2}-\d{2}", day) else "", "retrieved": e["retrieved"],
+            "text": e["quote"], "outlet": e["outlet"],
+            "whose_words": "donor_person" if "quoted" in e["speaker"] else "reporter",
+            "page_checked": e["read"] == "page read in full"}
 
 
 def build():
@@ -94,6 +112,8 @@ def build():
 
     subjects = {s["id"]: s for s in _ffp("subjects.json")["subjects"]}
     reported = {e["id"]: e for e in data["reported"]}
+    seeded_reported = {i: reported_row(reported[i], fam_by) for i in SEED_REPORTED if i in reported}
+    usable = dict(data["prio"], **seeded_reported)  # the priorities a card may be built from
     reviews = _ffp("reviews.json")["reviews"]
     pending, dropped, skipped = [], [], collections.Counter()
     for r in reviews:
@@ -120,7 +140,7 @@ def build():
             if (official, family["key"], mid) in shown:
                 skipped["already one of the five"] += 1
                 continue
-            if not all(i in data["prio"] for i in ids):
+            if not all(i in usable for i in ids):
                 skipped["donor words are reported by others, not its own"] += 1
                 continue
             money = ff.pair_money(snap, official, family["key"])
@@ -128,7 +148,7 @@ def build():
                 skipped["no money through a committee tied to the official"] += 1
                 continue
             p2 = _trim(tr, p, r.get("trim"))
-            sts = [dict(data["prio"][i], url=data["prio"][i]["url"]) for i in ids]
+            sts = [dict(usable[i]) for i in ids]
             c = {"key": r["id"], "official": official, "family": family["key"], "meeting": m, "transcript": tr,
                  "passage": p2, "region": reg, "doubt": doubt, "why": why, "statement": sts[0], "statements": sts}
             record = {"stance": "no_position", "reason": r.get("in_common", "")}
@@ -158,7 +178,8 @@ def build():
                                        else "Words in common by chance, or not the official's words: ") + r.get("note", ""),
                             "stage": "hand reading in the earlier hop", "model": ""})
     return {"data": data, "snap": snap, "meetings": list(meetings.values()), "published": published,
-            "pending": pending, "dropped": dropped, "skipped": dict(skipped)}
+            "pending": pending, "dropped": dropped, "skipped": dict(skipped),
+            "reported": list(seeded_reported.values())}
 
 
 def store_snapshot(conn, snap):
@@ -183,6 +204,27 @@ def insert_pairing(conn, row):
     return cur.lastrowid
 
 
+def seed_priorities(conn, reported):
+    """The reported priorities, and one own-site priority edited once (the sentence that states the position kept,
+    the whole earlier wording kept behind it). Returns (reported added, edits made)."""
+    for r in reported:
+        conn.execute(
+            "INSERT INTO donor_priorities (key, family, donor, url, section, text, page_date, retrieved, kind, added_by, "
+            "outlet, whose_words, page_checked) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT (key) DO NOTHING",
+            (r["key"], r["family"], r["donor"], r["url"], r["section"], r["text"], r["page_date"], r["retrieved"],
+             r["kind"], SEED_ACTOR, r["outlet"], r["whose_words"], 1 if r["page_checked"] else 0))
+    old = conn.execute("SELECT * FROM donor_priorities WHERE key = ? AND replaced_at IS NULL", (SEED_EDITED,)).fetchone()
+    edits = 0
+    if old:
+        fields = {"section": old["section"], "page_date": old["page_date"], "outlet": "", "whose_words": ""}
+        found = {"url": old["url"], "text": old["text"].split(". ")[-1], "retrieved": old["retrieved"], "checked": True}
+        new = priorities.supersede(conn, old, fields, found, SEED_ACTOR)
+        db.audit(conn, SEED_ACTOR, "priority edited", None,
+                 "%s: %s replaced by %s; changed: words; the earlier wording is kept" % (old["donor"], old["key"], new["key"]))
+        edits = 1
+    return len(reported), edits
+
+
 def run(reset=False):
     db.migrate()
     built = build()
@@ -195,6 +237,7 @@ def run(reset=False):
             for table in DATA_TABLES:
                 conn.execute("DELETE FROM " + table)
         loaded = reference.ensure(conn)
+        n_reported, n_edits = seed_priorities(conn, built["reported"])
         store_snapshot(conn, built["snap"])
         for m in built["meetings"]:
             conn.execute(
@@ -216,9 +259,10 @@ def run(reset=False):
                 ":priority_text, :priority_url, :reason_kind, :reason, :stage, :model) "
                 "ON CONFLICT DO NOTHING", d)
     print("Seeded: %d meetings with transcripts, %d published pairings, %d pairs waiting in the review queue, "
-          "%d pairs dropped with reasons; loaded %s. Left out: %s." % (
+          "%d pairs dropped with reasons; %d reported priorities and %d edited priority with its earlier wording; "
+          "loaded %s. Left out: %s." % (
               len(built["meetings"]), len(built["published"]), len(built["pending"]), len(built["dropped"]),
-              ", ".join(loaded) or "nothing new", built["skipped"] or "nothing"))
+              n_reported, n_edits, ", ".join(loaded) or "nothing new", built["skipped"] or "nothing"))
     return 0
 
 

@@ -1,0 +1,35 @@
+{# The short form for a new priority: form_type is "own" or "reported". Only the fields that type needs. #}
+<form method="post" action="/priority" class="stack priority-form {{ 'reported' if form_type == 'reported' }}" id="priority-form">
+  <h2>{{ "Add from a news report" if form_type == 'reported' else "Add from the donor's own site" }}</h2>
+  {% if form_type == 'reported' %}
+  <p class="small">The words are someone else's reading or quoting of the donor. The page is fetched and the words must
+  be on it; if it cannot be fetched the priority is still saved, marked <b>not checked against page</b>.</p>
+  {% else %}
+  <p class="small">The page is fetched now and the words must appear on it, word for word, or nothing is saved.</p>
+  {% endif %}
+  {% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
+  <input type="hidden" name="type" value="{{ form_type }}">
+  <label>Donor
+    <select name="family" required>
+      <option value="">Choose a donor</option>
+      {% for f in families %}<option value="{{ f.key }}" {{ 'selected' if form.family == f.key }}>{{ f.name }}</option>{% endfor %}
+    </select></label>
+  <label>{{ "Link to the news report" if form_type == 'reported' else "Link to the donor's page" }}
+    <input type="url" name="url" value="{{ form.url or '' }}" required placeholder="https://"></label>
+  {% if form_type == 'reported' %}
+  <label>Outlet that published it <input type="text" name="outlet" value="{{ form.outlet or '' }}" required maxlength="120" placeholder="Mission Local"></label>
+  <label>Whose words these are
+    <select name="whose_words" required>
+      <option value="">Choose</option>
+      {% for k, label in whose_options.items() %}<option value="{{ k }}" {{ 'selected' if form.whose_words == k }}>{{ label|capitalize }}</option>{% endfor %}
+    </select></label>
+  <label>Date the article was published <input type="date" name="page_date" value="{{ form.page_date or '' }}" required></label>
+  {% endif %}
+  <label>{{ "The words, exactly as the article shows them" if form_type == 'reported' else "The donor's words, exactly as the page shows them" }}
+    <textarea name="words" rows="5" required>{{ form.words or '' }}</textarea></label>
+  <label>Section heading on the page (optional) <input type="text" name="section" value="{{ form.section or '' }}" maxlength="200"></label>
+  {% if form_type != 'reported' %}
+  <label>Date the page shows (optional) <input type="date" name="page_date" value="{{ form.page_date or '' }}"></label>
+  {% endif %}
+  <button type="submit">{{ "Save the report" if form_type == 'reported' else "Fetch the page and check the words" }}</button>
+</form>

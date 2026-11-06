@@ -1,0 +1,19 @@
+{# The versions a priority replaced, newest first. r is the version in force. #}
+<ol class="history" id="history-list-{{ r.id }}">
+  {% for v in versions %}
+  <li>
+    <div>{{ v.text }}</div>
+    <div class="small">
+      {% if v.section %}section "{{ v.section }}"; {% endif %}<a href="{{ v.url }}">source</a>,
+      {% if v.page_date %}page dated {{ v.page_date }}{% else %}page undated{% endif %},
+      {% if v.page_checked %}retrieved {{ v.retrieved }}{% else %}saved {{ v.retrieved }}, not checked against page{% endif %}
+      {% if v.whose_words %}; reported by {{ v.outlet }}, words are {{ v.whose_words|whose }}{% endif %};
+      added by {{ v.added_by }} on {{ v.added_at.date() }};
+      <b>replaced {{ v.replaced_at.date() }}</b>
+    </div>
+  </li>
+  {% else %}
+  <li class="small">No earlier wording: this priority has not been edited.</li>
+  {% endfor %}
+  <li class="small"><a href="/priority" hx-get="/priority/{{ r.id }}/row" hx-target="#priority-{{ r.id }}" hx-swap="outerHTML">Hide earlier wording</a></li>
+</ol>

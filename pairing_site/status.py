@@ -33,7 +33,7 @@ def summary(conn, now=None):
         counts["pairings_" + row["status"]] = row["n"]
     for key, sql in (("meetings_stored", "SELECT count(*) AS n FROM meetings"),
                      ("dropped_pairs_kept_with_reasons", "SELECT count(*) AS n FROM dropped_pairs"),
-                     ("donor_statements", "SELECT count(*) AS n FROM donor_priorities"),
+                     ("donor_statements", "SELECT count(*) AS n FROM donor_priorities WHERE replaced_at IS NULL"),
                      ("approvals_logged", "SELECT count(*) AS n FROM audit_log")):
         counts[key] = conn.execute(sql).fetchone()["n"]
     nxt = state.get("next_run_at")

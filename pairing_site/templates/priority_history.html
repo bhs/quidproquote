@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}Earlier wording{% endblock %}
+{% block content %}
+<h1>Earlier wording</h1>
+<p><b>{{ r.donor }}</b>, current wording: {{ r.text }}</p>
+{% include "_priority_history.html" %}
+<p><a href="/priority">Back to the priorities</a></p>
+{% endblock %}
