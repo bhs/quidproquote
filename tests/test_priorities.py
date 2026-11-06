@@ -198,6 +198,9 @@ class Site(SiteCase):
 
     def test_lookup_prefills_outlet_and_date_from_the_link(self):
         self.sign_in()
+        count = "SELECT count(*) AS n FROM donor_priorities"
+        with db.session() as conn:
+            before = conn.execute(count).fetchone()["n"]
         with mock.patch.object(priorities, "check_public_url"), mock.patch.object(priorities.fl, "fetch_page", return_value=PAGE):
             res = self.client.post("/priority/lookup", data={"url": "https://example.org/guide", "kind": "news", "words": "kept words"})
         self.assertEqual(res.status_code, 200)
@@ -205,7 +208,7 @@ class Site(SiteCase):
         self.assertIn('value="2026-10-08"', res.text)
         self.assertIn("kept words", res.text)
         with db.session() as conn:
-            self.assertEqual(conn.execute("SELECT count(*) AS n FROM donor_priorities WHERE url = 'https://example.org/guide'").fetchone()["n"], 0)
+            self.assertEqual(conn.execute(count).fetchone()["n"], before)  # a lookup saves nothing
 
     def test_lookup_of_a_private_address_is_refused(self):
         self.sign_in()
