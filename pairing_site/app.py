@@ -31,6 +31,9 @@ import pairing_cards as pc  # noqa: E402
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 
+DOUBT_ORDER = {"low": 0, "medium": 1, "high": 2}  # the queue lists the least doubtful speaker credit first
+
+
 class LoginRequired(Exception):
     def __init__(self, next_path):
         self.next_path = next_path
@@ -106,7 +109,7 @@ def create_app():
     @app.get("/pairings/{slug}", response_class=HTMLResponse)
     def pairing(request: Request, slug: str):
         with db.session() as conn:
-            row = conn.execute("SELECT * FROM pairings WHERE slug = %s", (slug,)).fetchone()
+            row = conn.execute("SELECT * FROM pairings WHERE slug = ?", (slug,)).fetchone()
         if not row or (row["status"] != "approved" and not admin(request)):
             raise HTTPException(404, "No such pairing")
         return render(request, "pairing.html", row=row)
@@ -132,7 +135,7 @@ def create_app():
             time.sleep(0.5)
             return render(request, "login.html", status_code=401, next=local_path(next),
                           error="That token is not right.")
-        with db.session() as conn:
+        with db.session(write=True) as conn:
             db.audit(conn, auth.ACTOR, "signed in")
         response = RedirectResponse(local_path(next), status_code=303)
         secure = request.url.scheme == "https" or request.headers.get("x-forwarded-proto") == "https"
@@ -150,9 +153,8 @@ def create_app():
     # ------------------------------------------------------------------ the review queue
 
     def queue_context(conn):
-        pending = conn.execute("SELECT * FROM pairings WHERE status = 'pending' ORDER BY "
-                               "(card->'speaker_credit'->>'doubt') = 'high', (card->'speaker_credit'->>'doubt') = 'medium', "
-                               "meeting_date DESC, id").fetchall()
+        pending = conn.execute("SELECT * FROM pairings WHERE status = 'pending' ORDER BY meeting_date DESC, id").fetchall()
+        pending.sort(key=lambda r: DOUBT_ORDER.get(r["card"].get("speaker_credit", {}).get("doubt"), len(DOUBT_ORDER)))  # stable
         decided = conn.execute("SELECT id, slug, official, donor_name, status, decided_at, decision_note FROM pairings "
                                "WHERE status <> 'pending' AND source <> 'seed' ORDER BY decided_at DESC LIMIT 10").fetchall()
         log = conn.execute("SELECT a.at, a.actor, a.action, a.detail, a.pairing_id, p.slug FROM audit_log a "
@@ -168,9 +170,10 @@ def create_app():
         return render(request, "review.html", done=done, error=error, **ctx)
 
     def decide(request, pairing_id, action, checked, note):
-        """Records a decision. Returns (row, error): error is a sentence when nothing was changed."""
-        with db.session() as conn:
-            row = conn.execute("SELECT * FROM pairings WHERE id = %s FOR UPDATE", (pairing_id,)).fetchone()
+        """Records a decision. Returns (row, error): error is a sentence when nothing was changed. The write lock
+        is held from the read of the row to the audit entry, so two decisions on one pairing cannot both apply."""
+        with db.session(write=True) as conn:
+            row = conn.execute("SELECT * FROM pairings WHERE id = ?", (pairing_id,)).fetchone()
             if not row:
                 raise HTTPException(404, "No such pairing")
             if row["status"] != "pending":
@@ -178,16 +181,17 @@ def create_app():
             if action == "approve":
                 if not checked:
                     return row, "Tick the recording check first: play the recording at the transcript time and confirm the words."
-                conn.execute("UPDATE pairings SET status = 'approved', recording_checked = true, "
-                             "recording_checked_at = now(), published_at = current_date, decided_at = now(), "
-                             "decision_note = %s WHERE id = %s", (note, pairing_id))
+                stamp = db.now()
+                conn.execute("UPDATE pairings SET status = 'approved', recording_checked = 1, "
+                             "recording_checked_at = ?, published_at = ?, decided_at = ?, "
+                             "decision_note = ? WHERE id = ?", (stamp, db.today(), stamp, note, pairing_id))
                 db.audit(conn, auth.ACTOR, "approved", pairing_id,
                          "recording checked at transcript time %s" % row["first_stamp"] + ("; " + note if note else ""))
             else:
-                conn.execute("UPDATE pairings SET status = 'rejected', decided_at = now(), decision_note = %s WHERE id = %s",
-                             (note, pairing_id))
+                conn.execute("UPDATE pairings SET status = 'rejected', decided_at = ?, decision_note = ? WHERE id = ?",
+                             (db.now(), note, pairing_id))
                 db.audit(conn, auth.ACTOR, "rejected", pairing_id, note)
-            return conn.execute("SELECT * FROM pairings WHERE id = %s", (pairing_id,)).fetchone(), ""
+            return conn.execute("SELECT * FROM pairings WHERE id = ?", (pairing_id,)).fetchone(), ""
 
     def decision_response(request, row, error):
         if is_htmx(request):
@@ -241,28 +245,29 @@ def create_app():
         form = {"family": family, "url": url, "words": words, "section": section, "page_date": page_date}
         with db.session() as conn:
             ctx = priority_context(conn)
-            fam = next((f for f in ctx["families"] if f["key"] == family), None)
-            error, saved = "", None
-            if not fam:
-                error = "Choose the donor this priority belongs to."
-            else:
-                try:
-                    found = priorities.verify(url, words)
-                    key = "form-%s-%s" % (family, int(time.time()))
+        fam = next((f for f in ctx["families"] if f["key"] == family), None)
+        error, saved = "", None
+        if not fam:
+            error = "Choose the donor this priority belongs to."
+        else:
+            try:
+                found = priorities.verify(url, words)  # fetches the page: done before the write lock is taken
+                key = "form-%s-%s" % (family, int(time.time()))
+                with db.session(write=True) as conn:
                     conn.execute(
                         "INSERT INTO donor_priorities (key, family, donor, url, section, text, page_date, retrieved, kind, "
-                        "added_by) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+                        "added_by) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                         (key, family, fam["name"], found["url"], section.strip()[:200], found["text"],
                          page_date.strip()[:40], found["retrieved"], "page on the organisation's own site", auth.ACTOR))
                     db.audit(conn, auth.ACTOR, "priority added", None,
                              "%s: %s (words found verbatim on the page; retrieved %s)" % (fam["name"], found["url"], found["retrieved"]))
-                    saved = found
-                    form = {}
                     ctx = priority_context(conn)
-                except priorities.PriorityError as exc:
-                    error = str(exc)
-            return render(request, "priority.html", status_code=422 if error else 200, form=form, error=error,
-                          saved=saved, **ctx)
+                saved = found
+                form = {}
+            except priorities.PriorityError as exc:
+                error = str(exc)
+        return render(request, "priority.html", status_code=422 if error else 200, form=form, error=error,
+                      saved=saved, **ctx)
 
     return app
 

@@ -17,7 +17,7 @@ def summary(conn, now=None):
     steps = []
     if run_id:
         steps = conn.execute("SELECT step, status, detail, counts, started_at, finished_at FROM progress "
-                             "WHERE run_id = %s ORDER BY id", (run_id,)).fetchall()
+                             "WHERE run_id = ? ORDER BY id", (run_id,)).fetchall()
     running = [s for s in steps if s["status"] == "running"]
     failed = [s for s in steps if s["status"] == "error"]
     last_run = None
