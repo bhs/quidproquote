@@ -17,8 +17,9 @@ COPY pairing_site ./pairing_site
 COPY tests ./tests
 COPY start.sh ./start.sh
 
-RUN useradd --create-home app && chown -R app /app
-USER app
+# The site and the worker keep everything in one SQLite file under /data. The container starts as root only so
+# that start.sh can hand an attached disk mounted there to the app user, then runs everything as that user.
+RUN useradd --create-home app && mkdir -p /data && chown -R app /app /data
 EXPOSE 8080
 HEALTHCHECK --interval=10s --timeout=5s --start-period=30s --retries=6 \
   CMD python -c "import os,urllib.request; urllib.request.urlopen('http://127.0.0.1:%s/' % os.environ.get('PORT','8080'), timeout=4)"

@@ -16,7 +16,7 @@ def lines(buf):
 
 class RequestLog(unittest.TestCase):
     def setUp(self):
-        env = mock.patch.dict(os.environ, {"ADMIN_TOKEN": "t", "DATABASE_URL": "postgresql://unused/unused"})
+        env = mock.patch.dict(os.environ, {"ADMIN_TOKEN": "t", "DATABASE_PATH": "/nonexistent/unused.db"})
         env.start()
         self.addCleanup(env.stop)
         self.app = app_module.create_app()

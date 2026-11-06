@@ -15,8 +15,8 @@ def required(name):
     return value
 
 
-def database_url():
-    return required("DATABASE_URL")
+def database_path():
+    return required("DATABASE_PATH")
 
 
 def admin_token():

@@ -19,9 +19,9 @@ def _load(name):
 
 def put_source(conn, name, payload, retrieved=None):
     conn.execute(
-        "INSERT INTO source_data (name, retrieved, payload) VALUES (%s, %s, %s) "
+        "INSERT INTO source_data (name, retrieved, payload) VALUES (?, ?, ?) "
         "ON CONFLICT (name) DO UPDATE SET retrieved = EXCLUDED.retrieved, payload = EXCLUDED.payload",
-        (name, retrieved or datetime.date.today(), db.json_value(payload)))
+        (name, retrieved or db.today(), db.json_value(payload)))
 
 
 def get_sources(conn):
@@ -45,7 +45,7 @@ def ensure(conn):
     for s in statements:
         cur = conn.execute(
             "INSERT INTO donor_priorities (key, family, donor, url, section, text, page_date, retrieved, kind, added_by) "
-            "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, 'survey') ON CONFLICT (key) DO NOTHING",
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'survey') ON CONFLICT (key) DO NOTHING",
             (s["id"], s["family"], fams[s["family"]]["name"], s["url"], s.get("section") or "", s["text"],
              s.get("page_date") or "", s["retrieved"], s["kind"]))
         n += cur.rowcount

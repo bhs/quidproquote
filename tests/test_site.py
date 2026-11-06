@@ -1,4 +1,4 @@
-"""The site and the worker against a real Postgres (a throwaway database on the server DATABASE_URL names)."""
+"""The site and the worker against a real SQLite file (a temporary one that DATABASE_PATH points at)."""
 
 import json
 import os
@@ -90,13 +90,13 @@ class Admin(SiteCase):
         self.assertEqual(res.status_code, 200)
         self.assertIn("Tick the recording check first", res.text)
         with db.session() as conn:
-            self.assertEqual(conn.execute("SELECT status FROM pairings WHERE id = %s", (pid,)).fetchone()["status"], "pending")
+            self.assertEqual(conn.execute("SELECT status FROM pairings WHERE id = ?", (pid,)).fetchone()["status"], "pending")
         res = self.client.post("/review/%d/approve" % pid, data={"recording_checked": "on"}, headers=hx)
         self.assertEqual(res.status_code, 200)
         self.assertIn("Approved at", res.text)
         with db.session() as conn:
-            row = conn.execute("SELECT status, recording_checked, published_at FROM pairings WHERE id = %s", (pid,)).fetchone()
-            log = conn.execute("SELECT action, at, pairing_id FROM audit_log WHERE pairing_id = %s AND action = 'approved'", (pid,)).fetchall()
+            row = conn.execute("SELECT status, recording_checked, published_at FROM pairings WHERE id = ?", (pid,)).fetchone()
+            log = conn.execute("SELECT action, at, pairing_id FROM audit_log WHERE pairing_id = ? AND action = 'approved'", (pid,)).fetchall()
         self.assertEqual((row["status"], row["recording_checked"]), ("approved", True))
         self.assertIsNotNone(row["published_at"])
         self.assertEqual(len(log), 1)
@@ -110,7 +110,7 @@ class Admin(SiteCase):
         res = self.client.post("/review/%d/reject" % pid, data={"note": "not the same measure"}, headers={"HX-Request": "true"})
         self.assertIn("Rejected at", res.text)
         with db.session() as conn:
-            log = conn.execute("SELECT detail FROM audit_log WHERE pairing_id = %s AND action = 'rejected'", (pid,)).fetchall()
+            log = conn.execute("SELECT detail FROM audit_log WHERE pairing_id = ? AND action = 'rejected'", (pid,)).fetchall()
         self.assertEqual([r["detail"] for r in log], ["not the same measure"])
 
     def test_review_and_dropped_pages_render_for_the_maintainer(self):

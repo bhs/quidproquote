@@ -4,7 +4,7 @@ writes progress rows as it goes. It also answers 200 on / with a JSON summary of
     python -m pairing_site.worker            # loops; the first run is WORKER_INITIAL_DELAY_S after start
     python -m pairing_site.worker --once     # one run now, then exit
 
-Settings (environment): DATABASE_URL, FETCH_CONTACT_EMAIL (named in the user agent of every fetch),
+Settings (environment): DATABASE_PATH (the SQLite file the site shares), FETCH_CONTACT_EMAIL (named in the user agent of every fetch),
 ANTHROPIC_API_KEY and MATCH_JUDGE_MODEL (the filter; see judge.py), DATASF_APP_TOKEN (optional),
 WORKER_INTERVAL_S (default 86400), WORKER_INITIAL_DELAY_S (default 60), WORKER_PAUSE_S (seconds between fetches,
 default 5), WORKER_MAX_TRANSCRIPTS (new transcripts per run, default 3), WORKER_MAX_CANDIDATES (pairs sent to the
@@ -42,16 +42,16 @@ class Progress:
         self.run_id = run_id
 
     def start(self, step, detail=""):
-        with db.session() as conn:
-            row = conn.execute("INSERT INTO progress (run_id, step, status, detail) VALUES (%s, %s, 'running', %s) "
-                               "RETURNING id", (self.run_id, step, detail)).fetchone()
+        with db.session(write=True) as conn:
+            cur = conn.execute("INSERT INTO progress (run_id, step, status, detail) VALUES (?, ?, 'running', ?)",
+                               (self.run_id, step, detail))
         logs.emit("info", "worker step started", run_id=self.run_id, step=step)
-        return row["id"]
+        return cur.lastrowid
 
     def finish(self, row_id, status_, detail="", counts=None):
-        with db.session() as conn:
-            conn.execute("UPDATE progress SET status = %s, detail = %s, counts = %s, finished_at = now() WHERE id = %s",
-                         (status_, detail, db.json_value(counts or {}), row_id))
+        with db.session(write=True) as conn:
+            conn.execute("UPDATE progress SET status = ?, detail = ?, counts = ?, finished_at = ? WHERE id = ?",
+                         (status_, detail, db.json_value(counts or {}), db.now(), row_id))
         logs.emit("error" if status_ == "error" else "info", "worker step finished", run_id=self.run_id,
                   status=status_, detail=detail[:300], counts=counts or {})
 
@@ -83,10 +83,10 @@ def step_meetings(cfg):
         except lg.FetchError as exc:
             problems.append("transcript %s (%s %s): %s" % (r["transcript_id"], r["body"], r["date"], exc))
             continue
-        with db.session() as conn:
+        with db.session(write=True) as conn:
             conn.execute(
                 "INSERT INTO meetings (id, body, meeting_date, url, recording_url, retrieved, row_count, captions) "
-                "VALUES (%s, %s, %s, %s, %s, %s, %s, %s) ON CONFLICT (id) DO NOTHING",
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT (id) DO NOTHING",
                 (r["transcript_id"], r["body"], r["date"], pipeline.transcript_url(r["transcript_id"]),
                  pipeline.recording_url(r["transcript_id"], r["body"]), fl.today(), len(rows),
                  pipeline.captions_text(rows)))
@@ -101,13 +101,13 @@ def step_money(cfg):
     with db.session() as conn:
         src = reference.get_sources(conn)
         meta = conn.execute("SELECT retrieved FROM source_data WHERE name = 'meta'").fetchone()
-    if meta and (datetime.date.today() - meta["retrieved"]).days < cfg["money_max_age_days"]:
+    if meta and (db.today() - meta["retrieved"]).days < cfg["money_max_age_days"]:
         return "skipped", "campaign finance rows retrieved %s are newer than %d days" % (
             meta["retrieved"], cfg["money_max_age_days"]), {}
     pieces = {}
     counts = money.refresh(src["committees"], src["families"]["families"], cfg["pause_s"],
                            lambda name, payload: pieces.__setitem__(name, payload))
-    with db.session() as conn:  # stored together, so a failed query leaves the earlier rows whole
+    with db.session(write=True) as conn:  # stored together, so a failed query leaves the earlier rows whole
         for name, payload in pieces.items():
             reference.put_source(conn, name, payload)
     return "ok", "campaign finance rows retrieved %s" % fl.today(), counts
@@ -167,12 +167,12 @@ def step_filter(cfg, found):
                 counts["undecided_errors"] += 1
                 errors.append("%s: %s" % (c["key"], exc))
                 continue
-        with db.session() as conn:
+        with db.session(write=True) as conn:
             if keep:
                 conn.execute(
                     "INSERT INTO pairings (slug, candidate_key, status, source, official, donor_key, donor_name, "
                     "meeting_id, meeting_date, first_stamp, quote_text, card, ai, recording_url) "
-                    "VALUES (%s, %s, 'pending', 'worker', %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) "
+                    "VALUES (?, ?, 'pending', 'worker', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) "
                     "ON CONFLICT DO NOTHING",
                     (slug, c["key"], c["official"], family["key"], family["name"], m["id"], m["meeting_date"],
                      p["first_stamp"], p["text"], db.json_value(card), db.json_value(rec), m["recording_url"]))
@@ -181,8 +181,8 @@ def step_filter(cfg, found):
                 conn.execute(
                     "INSERT INTO dropped_pairs (candidate_key, official, donor_key, donor_name, meeting_id, "
                     "meeting_body, meeting_date, first_stamp, last_stamp, quote_text, priority_text, priority_url, "
-                    "reason_kind, reason, stage, model) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, "
-                    "%s, 'AI filter', %s) ON CONFLICT DO NOTHING",
+                    "reason_kind, reason, stage, model) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, "
+                    "?, 'AI filter', ?) ON CONFLICT DO NOTHING",
                     (c["key"], c["official"], family["key"], family["name"], m["id"], m["body"], m["meeting_date"],
                      p["first_stamp"], p["last_stamp"], p["text"], c["statement"]["text"], c["statement"]["url"],
                      kind, reason, rec.get("model", "")))
@@ -199,8 +199,8 @@ def step_filter(cfg, found):
 def run_cycle(cfg):
     run_id = uuid.uuid4().hex[:12]
     progress = Progress(run_id)
-    with db.session() as conn:
-        conn.execute("UPDATE worker_state SET last_run_id = %s, updated_at = now() WHERE id = 1", (run_id,))
+    with db.session(write=True) as conn:
+        conn.execute("UPDATE worker_state SET last_run_id = ?, updated_at = ? WHERE id = 1", (run_id, db.now()))
         reference.ensure(conn)
     found, errors = {}, []
     plan = (("meetings", lambda: step_meetings(cfg)), ("money", lambda: step_money(cfg)),
@@ -216,15 +216,15 @@ def run_cycle(cfg):
         if outcome == "error":
             errors.append("%s: %s" % (name, detail))
         progress.finish(row, outcome, detail, counts)
-    with db.session() as conn:
-        conn.execute("UPDATE worker_state SET last_error = %s, updated_at = now() WHERE id = 1",
-                     ("; ".join(errors)[:1000],))
+    with db.session(write=True) as conn:
+        conn.execute("UPDATE worker_state SET last_error = ?, updated_at = ? WHERE id = 1",
+                     ("; ".join(errors)[:1000], db.now()))
     return run_id, errors
 
 
 def schedule(next_run):
-    with db.session() as conn:
-        conn.execute("UPDATE worker_state SET next_run_at = %s, updated_at = now() WHERE id = 1", (next_run,))
+    with db.session(write=True) as conn:
+        conn.execute("UPDATE worker_state SET next_run_at = ?, updated_at = ? WHERE id = 1", (next_run, db.now()))
 
 
 def loop(cfg):

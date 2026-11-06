@@ -17,7 +17,7 @@ import json
 import os
 import sys
 
-from . import pipeline, reference, sources
+from . import db, pipeline, reference, sources
 
 import build_map as bm  # noqa: E402
 import ff_lib as ff  # noqa: E402
@@ -171,37 +171,36 @@ def store_snapshot(conn, snap):
 
 
 def insert_pairing(conn, row):
-    from . import db
     cur = conn.execute(
         "INSERT INTO pairings (slug, candidate_key, status, source, official, donor_key, donor_name, meeting_id, "
         "meeting_date, first_stamp, quote_text, card, ai, recording_url, published_at, decided_at, decision_note) "
-        "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) RETURNING id",
+        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
         (row["slug"], row["candidate_key"], row["status"], row["source"], row["official"], row["donor_key"],
          row["donor_name"], row["meeting_id"], row["meeting_date"], row["first_stamp"], row["quote_text"],
          db.json_value(row["card"]), db.json_value(row["ai"]) if row["ai"] is not None else None,
          row["recording_url"], row["published_at"],
-         datetime.datetime.now(datetime.timezone.utc) if row["status"] != "pending" else None, row["decision_note"]))
-    return cur.fetchone()["id"]
+         db.now() if row["status"] != "pending" else None, row["decision_note"]))
+    return cur.lastrowid
 
 
 def run(reset=False):
-    from . import db
     db.migrate()
     built = build()
-    with db.session() as conn:
+    with db.session(write=True) as conn:
         if conn.execute("SELECT count(*) AS n FROM pairings").fetchone()["n"]:
             if not reset:
                 print("The database already holds pairings; run with --reset to empty it first.", file=sys.stderr)
                 return 1
-        if reset:
-            conn.execute("TRUNCATE %s RESTART IDENTITY" % ", ".join(DATA_TABLES))
+        if reset:  # ids start again from 1: nothing is AUTOINCREMENT, so an emptied table reuses its keys
+            for table in DATA_TABLES:
+                conn.execute("DELETE FROM " + table)
         loaded = reference.ensure(conn)
         store_snapshot(conn, built["snap"])
         for m in built["meetings"]:
             conn.execute(
                 "INSERT INTO meetings (id, body, meeting_date, url, recording_url, retrieved, row_count, captions) "
-                "VALUES (%(id)s, %(body)s, %(meeting_date)s, %(url)s, %(recording_url)s, %(retrieved)s, %(row_count)s, "
-                "%(captions)s)", m)
+                "VALUES (:id, :body, :meeting_date, :url, :recording_url, :retrieved, :row_count, "
+                ":captions)", m)
         for row in built["published"]:
             pid = insert_pairing(conn, row)
             db.audit(conn, SEED_ACTOR, "published from the earlier hop's hand-shown pairings", pid,
@@ -212,9 +211,9 @@ def run(reset=False):
             conn.execute(
                 "INSERT INTO dropped_pairs (candidate_key, official, donor_key, donor_name, meeting_id, meeting_body, "
                 "meeting_date, first_stamp, last_stamp, quote_text, priority_text, priority_url, reason_kind, reason, "
-                "stage, model) VALUES (%(candidate_key)s, %(official)s, %(donor_key)s, %(donor_name)s, %(meeting_id)s, "
-                "%(meeting_body)s, %(meeting_date)s, %(first_stamp)s, %(last_stamp)s, %(quote_text)s, "
-                "%(priority_text)s, %(priority_url)s, %(reason_kind)s, %(reason)s, %(stage)s, %(model)s) "
+                "stage, model) VALUES (:candidate_key, :official, :donor_key, :donor_name, :meeting_id, "
+                ":meeting_body, :meeting_date, :first_stamp, :last_stamp, :quote_text, "
+                ":priority_text, :priority_url, :reason_kind, :reason, :stage, :model) "
                 "ON CONFLICT DO NOTHING", d)
     print("Seeded: %d meetings with transcripts, %d published pairings, %d pairs waiting in the review queue, "
           "%d pairs dropped with reasons; loaded %s. Left out: %s." % (
