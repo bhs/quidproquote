@@ -15,8 +15,9 @@ def required(name):
     return value
 
 
-def database_url():
-    return required("DATABASE_URL")
+def database_path():
+    """The SQLite file both the site and the worker open: it lives on the application's attached disk."""
+    return required("DATABASE_PATH")
 
 
 def admin_token():

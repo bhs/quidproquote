@@ -1,78 +1,97 @@
-"""Postgres access: a connection per unit of work, and the migrations (the numbered SQL files beside this
-module) applied in order under an advisory lock, so the site and the worker can both start safely."""
+"""SQLite access through SQLAlchemy Core: one file, shared by the site and the worker (two processes on one
+disk).
+
+* WAL journal, so readers never wait for the writer and the writer never waits for readers; a 30 second busy
+  timeout, so a second writer waits its turn instead of failing.
+* session() is a write transaction that takes the write lock when it begins (BEGIN IMMEDIATE), so a
+  read-then-write block, such as a decision on a pairing, can never find its read gone stale. reader() is a
+  plain snapshot for pages that only read. Keep a session short: never fetch or call a model inside one.
+* setup() creates the file's directory, the file and its tables when they are absent, and does nothing to a
+  file that already has them. The site and the worker both call it at start; the write lock makes that safe.
+"""
 
 import contextlib
 import os
-import time
+import threading
 
-import psycopg
-from psycopg.rows import dict_row
-from psycopg.types.json import Jsonb
+import sqlalchemy as sa
+from sqlalchemy import event
+from sqlalchemy.dialects.sqlite import insert
 
 from . import config
+from .tables import audit_log, metadata, worker_state
 
-MIGRATIONS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "migrations")
-LOCK_KEY = 7340211
+BUSY_TIMEOUT_MS = 30000
+
+_engines = {}
+_engines_lock = threading.Lock()
 
 
-def json_value(value):
-    return Jsonb(value)
+def _make_engine(path, begin_sql):
+    engine = sa.create_engine(sa.engine.URL.create("sqlite", database=path),
+                              connect_args={"timeout": BUSY_TIMEOUT_MS / 1000, "check_same_thread": False})
+
+    @event.listens_for(engine, "connect")
+    def on_connect(dbapi_conn, record):
+        dbapi_conn.isolation_level = None  # the driver starts no transaction of its own; begin() below does
+        cur = dbapi_conn.cursor()
+        cur.execute("PRAGMA busy_timeout = %d" % BUSY_TIMEOUT_MS)  # before the journal mode: switching it locks
+        cur.execute("PRAGMA journal_mode = WAL")
+        cur.execute("PRAGMA synchronous = NORMAL")
+        cur.close()
+
+    @event.listens_for(engine, "begin")
+    def on_begin(conn):
+        conn.exec_driver_sql(begin_sql)
+
+    return engine
 
 
-def connect(url=None):
-    return psycopg.connect(url or config.database_url(), row_factory=dict_row)
+def _engine(path, write):
+    path = os.path.abspath(path or config.database_path())
+    key = (path, write)
+    with _engines_lock:
+        if key not in _engines:
+            _engines[key] = _make_engine(path, "BEGIN IMMEDIATE" if write else "BEGIN")
+        return _engines[key]
+
+
+def dispose(path=None):
+    """Closes every pooled connection to the file (a test removing its file calls this first)."""
+    path = os.path.abspath(path or config.database_path())
+    with _engines_lock:
+        for key in [k for k in _engines if k[0] == path]:
+            _engines.pop(key).dispose()
 
 
 @contextlib.contextmanager
-def session(url=None):
-    """A connection that commits when the block ends and rolls back when it raises."""
-    conn = connect(url)
-    try:
+def session(path=None):
+    """A write transaction: the write lock is taken at once, the block commits when it ends and rolls back when
+    it raises."""
+    with _engine(path, True).begin() as conn:
         yield conn
-        conn.commit()
-    except Exception:
-        conn.rollback()
-        raise
-    finally:
-        conn.close()
 
 
-def wait_for_database(url=None, seconds=30):
-    """Connects, retrying for a while: the database may still be starting. Raises when it never answers."""
-    deadline = time.time() + seconds
-    while True:
-        try:
-            connect(url).close()
-            return
-        except psycopg.OperationalError:
-            if time.time() > deadline:
-                raise
-            time.sleep(1)
+@contextlib.contextmanager
+def reader(path=None):
+    """A read-only snapshot of the file; it never blocks, and is never blocked by, a writer."""
+    with _engine(path, False).connect() as conn:
+        yield conn
 
 
-def migration_files():
-    return sorted(f for f in os.listdir(MIGRATIONS) if f.endswith(".sql"))
-
-
-def migrate(url=None):
-    """Applies each migration file not yet recorded. Returns the names applied."""
-    wait_for_database(url)
-    applied = []
-    with session(url) as conn:
-        conn.execute("SELECT pg_advisory_xact_lock(%s)", (LOCK_KEY,))
-        conn.execute("CREATE TABLE IF NOT EXISTS schema_migrations (name text PRIMARY KEY, "
-                     "applied_at timestamptz NOT NULL DEFAULT now())")
-        done = {r["name"] for r in conn.execute("SELECT name FROM schema_migrations")}
-        for name in migration_files():
-            if name in done:
-                continue
-            with open(os.path.join(MIGRATIONS, name), encoding="utf-8") as f:
-                conn.execute(f.read())
-            conn.execute("INSERT INTO schema_migrations (name) VALUES (%s)", (name,))
-            applied.append(name)
-    return applied
+def setup(path=None):
+    """Creates the database file and any table it lacks. Returns the names of the tables created, empty when
+    the file was already complete. The single worker_state row is inserted when it is not there."""
+    path = path or config.database_path()
+    os.makedirs(os.path.dirname(os.path.abspath(path)), exist_ok=True)
+    with session(path) as conn:
+        have = set(sa.inspect(conn).get_table_names())
+        missing = [t for t in metadata.sorted_tables if t.name not in have]
+        if missing:
+            metadata.create_all(conn, tables=missing)
+        conn.execute(insert(worker_state).values(id=1).on_conflict_do_nothing())
+    return [t.name for t in missing]
 
 
 def audit(conn, actor, action, pairing_id=None, detail=""):
-    conn.execute("INSERT INTO audit_log (actor, action, pairing_id, detail) VALUES (%s, %s, %s, %s)",
-                 (actor, action, pairing_id, detail))
+    conn.execute(insert(audit_log).values(actor=actor, action=action, pairing_id=pairing_id, detail=detail))

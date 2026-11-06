@@ -3,7 +3,10 @@ serves it at /, and the site serves it at /status."""
 
 import datetime
 
-from . import db
+import sqlalchemy as sa
+
+from . import db, lease
+from .tables import audit_log, donor_priorities, dropped_pairs, meetings, pairings, progress, worker_state
 
 
 def _iso(value):
@@ -12,12 +15,13 @@ def _iso(value):
 
 def summary(conn, now=None):
     now = now or datetime.datetime.now(datetime.timezone.utc)
-    state = conn.execute("SELECT * FROM worker_state WHERE id = 1").fetchone() or {}
+    state = conn.execute(sa.select(worker_state).where(worker_state.c.id == 1)).mappings().first() or {}
     run_id = state.get("last_run_id")
     steps = []
     if run_id:
-        steps = conn.execute("SELECT step, status, detail, counts, started_at, finished_at FROM progress "
-                             "WHERE run_id = %s ORDER BY id", (run_id,)).fetchall()
+        steps = conn.execute(sa.select(progress.c.step, progress.c.status, progress.c.detail, progress.c.counts,
+                                       progress.c.started_at, progress.c.finished_at)
+                             .where(progress.c.run_id == run_id).order_by(progress.c.id)).mappings().all()
     running = [s for s in steps if s["status"] == "running"]
     failed = [s for s in steps if s["status"] == "error"]
     last_run = None
@@ -29,13 +33,11 @@ def summary(conn, now=None):
             "steps": [{"step": s["step"], "status": s["status"], "detail": s["detail"], "counts": s["counts"]}
                       for s in steps]}
     counts = {}
-    for row in conn.execute("SELECT status, count(*) AS n FROM pairings GROUP BY status"):
-        counts["pairings_" + row["status"]] = row["n"]
-    for key, sql in (("meetings_stored", "SELECT count(*) AS n FROM meetings"),
-                     ("dropped_pairs_kept_with_reasons", "SELECT count(*) AS n FROM dropped_pairs"),
-                     ("donor_statements", "SELECT count(*) AS n FROM donor_priorities"),
-                     ("approvals_logged", "SELECT count(*) AS n FROM audit_log")):
-        counts[key] = conn.execute(sql).fetchone()["n"]
+    for row in conn.execute(sa.select(pairings.c.status, sa.func.count().label("n")).group_by(pairings.c.status)):
+        counts["pairings_" + row.status] = row.n
+    for key, table in (("meetings_stored", meetings), ("dropped_pairs_kept_with_reasons", dropped_pairs),
+                       ("donor_statements", donor_priorities), ("approvals_logged", audit_log)):
+        counts[key] = conn.execute(sa.select(sa.func.count()).select_from(table)).scalar_one()
     nxt = state.get("next_run_at")
     return {
         "service": "pairing worker",
@@ -49,10 +51,11 @@ def summary(conn, now=None):
         "next_run_in_seconds": max(0, int((nxt - now).total_seconds())) if nxt else None,
         "next": ("a run of the steps meetings, money, shortlist, filter" if nxt else "waiting for the worker to schedule its first run"),
         "last_error": state.get("last_error") or None,
+        "lease": lease.holder(conn, now),
         "counts": counts,
     }
 
 
 def current():
-    with db.session() as conn:
+    with db.reader() as conn:
         return summary(conn)

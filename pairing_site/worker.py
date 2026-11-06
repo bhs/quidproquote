@@ -4,7 +4,11 @@ writes progress rows as it goes. It also answers 200 on / with a JSON summary of
     python -m pairing_site.worker            # loops; the first run is WORKER_INITIAL_DELAY_S after start
     python -m pairing_site.worker --once     # one run now, then exit
 
-Settings (environment): DATABASE_URL, FETCH_CONTACT_EMAIL (named in the user agent of every fetch),
+Only one worker runs the cycle at a time: it takes the lease kept in the worker_state row (see lease.py), refreshes
+it while it lives, and a second worker waits (still answering on its port) until the first lets it go or stops
+refreshing. The site shares the same SQLite file and needs no lease.
+
+Settings (environment): DATABASE_PATH, FETCH_CONTACT_EMAIL (named in the user agent of every fetch),
 ANTHROPIC_API_KEY and MATCH_JUDGE_MODEL (the filter; see judge.py), DATASF_APP_TOKEN (optional),
 WORKER_INTERVAL_S (default 86400), WORKER_INITIAL_DELAY_S (default 60), WORKER_PAUSE_S (seconds between fetches,
 default 5), WORKER_MAX_TRANSCRIPTS (new transcripts per run, default 3), WORKER_MAX_CANDIDATES (pairs sent to the
@@ -18,13 +22,18 @@ and are tried again on the next run.
 import datetime
 import http.server
 import json
+import signal
 import sys
 import threading
 import time
 import traceback
 import uuid
 
-from . import config, db, logs, money, pipeline, reference, sources, status
+import sqlalchemy as sa
+from sqlalchemy.dialects.sqlite import insert
+
+from . import config, db, lease as lease_mod, logs, money, pipeline, reference, sources, status
+from .tables import donor_priorities, dropped_pairs, meetings, now as db_now, pairings, progress, source_data, worker_state
 
 import fmap_lib as fl  # noqa: E402
 import judge as judge_mod  # noqa: E402
@@ -43,15 +52,15 @@ class Progress:
 
     def start(self, step, detail=""):
         with db.session() as conn:
-            row = conn.execute("INSERT INTO progress (run_id, step, status, detail) VALUES (%s, %s, 'running', %s) "
-                               "RETURNING id", (self.run_id, step, detail)).fetchone()
+            row_id = conn.execute(sa.insert(progress).values(run_id=self.run_id, step=step, status="running",
+                                                             detail=detail)).inserted_primary_key[0]
         logs.emit("info", "worker step started", run_id=self.run_id, step=step)
-        return row["id"]
+        return row_id
 
     def finish(self, row_id, status_, detail="", counts=None):
         with db.session() as conn:
-            conn.execute("UPDATE progress SET status = %s, detail = %s, counts = %s, finished_at = now() WHERE id = %s",
-                         (status_, detail, db.json_value(counts or {}), row_id))
+            conn.execute(sa.update(progress).where(progress.c.id == row_id).values(
+                status=status_, detail=detail, counts=counts or {}, finished_at=db_now()))
         logs.emit("error" if status_ == "error" else "info", "worker step finished", run_id=self.run_id,
                   status=status_, detail=detail[:300], counts=counts or {})
 
@@ -72,8 +81,8 @@ def settings():
 
 def step_meetings(cfg):
     """New transcripts from the Legistar calendar, a few per run, with a pause between fetches."""
-    with db.session() as conn:
-        known = {r["id"] for r in conn.execute("SELECT id FROM meetings")}
+    with db.reader() as conn:
+        known = set(conn.execute(sa.select(meetings.c.id)).scalars())
     _, new, notes, seen, with_t, route = lg.discover(known, cfg["year"], cfg["max_transcripts"])
     added, problems = 0, []
     for r in new:
@@ -84,12 +93,11 @@ def step_meetings(cfg):
             problems.append("transcript %s (%s %s): %s" % (r["transcript_id"], r["body"], r["date"], exc))
             continue
         with db.session() as conn:
-            conn.execute(
-                "INSERT INTO meetings (id, body, meeting_date, url, recording_url, retrieved, row_count, captions) "
-                "VALUES (%s, %s, %s, %s, %s, %s, %s, %s) ON CONFLICT (id) DO NOTHING",
-                (r["transcript_id"], r["body"], r["date"], pipeline.transcript_url(r["transcript_id"]),
-                 pipeline.recording_url(r["transcript_id"], r["body"]), fl.today(), len(rows),
-                 pipeline.captions_text(rows)))
+            conn.execute(insert(meetings).values(
+                id=r["transcript_id"], body=r["body"], meeting_date=r["date"],
+                url=pipeline.transcript_url(r["transcript_id"]),
+                recording_url=pipeline.recording_url(r["transcript_id"], r["body"]), retrieved=fl.today(),
+                row_count=len(rows), captions=pipeline.captions_text(rows)).on_conflict_do_nothing())
         added += 1
     counts = {"calendar_rows": seen, "with_transcript": with_t, "already_stored": len(known), "added": added,
               "route": route}
@@ -98,12 +106,12 @@ def step_meetings(cfg):
 
 
 def step_money(cfg):
-    with db.session() as conn:
+    with db.reader() as conn:
         src = reference.get_sources(conn)
-        meta = conn.execute("SELECT retrieved FROM source_data WHERE name = 'meta'").fetchone()
-    if meta and (datetime.date.today() - meta["retrieved"]).days < cfg["money_max_age_days"]:
+        retrieved = conn.execute(sa.select(source_data.c.retrieved).where(source_data.c.name == "meta")).scalar_one_or_none()
+    if retrieved and (datetime.date.today() - retrieved).days < cfg["money_max_age_days"]:
         return "skipped", "campaign finance rows retrieved %s are newer than %d days" % (
-            meta["retrieved"], cfg["money_max_age_days"]), {}
+            retrieved, cfg["money_max_age_days"]), {}
     pieces = {}
     counts = money.refresh(src["committees"], src["families"]["families"], cfg["pause_s"],
                            lambda name, payload: pieces.__setitem__(name, payload))
@@ -114,26 +122,27 @@ def step_money(cfg):
 
 
 def load_state():
-    with db.session() as conn:
+    with db.reader() as conn:
         src = reference.get_sources(conn)
-        meetings = conn.execute("SELECT * FROM meetings ORDER BY meeting_date, id").fetchall()
-        prios = conn.execute("SELECT * FROM donor_priorities ORDER BY id").fetchall()
-        seen = {r["k"] for r in conn.execute("SELECT candidate_key AS k FROM pairings WHERE candidate_key IS NOT NULL "
-                                             "UNION SELECT candidate_key FROM dropped_pairs")}
-    return src, meetings, prios, seen
+        stored = conn.execute(sa.select(meetings).order_by(meetings.c.meeting_date, meetings.c.id)).mappings().all()
+        prios = conn.execute(sa.select(donor_priorities).order_by(donor_priorities.c.id)).mappings().all()
+        seen = set(conn.execute(sa.union(
+            sa.select(pairings.c.candidate_key).where(pairings.c.candidate_key.is_not(None)),
+            sa.select(dropped_pairs.c.candidate_key))).scalars())
+    return src, stored, prios, seen
 
 
 def step_shortlist(cfg, found):
-    src, meetings, prios, seen = load_state()
+    src, stored, prios, seen = load_state()
     if "family_rows:sf-chamber" not in src:
         return "skipped", "no campaign finance rows stored yet, so no donor has money to pair", {}
     snap = pipeline.load_snapshot(src, src["families"])
     pairs = pipeline.funded_pairs(snap)
-    transcripts = [pipeline.Transcript(m) for m in meetings]
+    transcripts = [pipeline.Transcript(m) for m in stored]
     cands, total, capped = pipeline.shortlist(transcripts, pairs, pipeline.group_priorities(prios), seen,
                                               cfg["max_candidates"])
     found.update(cands=cands, snap=snap, fams=src["families"]["families"])
-    counts = {"meetings_read": len(meetings), "funded_pairs": len(pairs), "new_candidates": total,
+    counts = {"meetings_read": len(stored), "funded_pairs": len(pairs), "new_candidates": total,
               "sent_to_filter": len(cands), "left_for_next_run": total - len(cands) if capped else 0}
     return "ok", "%d new passages hit a donor's stated priority" % total, counts
 
@@ -169,23 +178,19 @@ def step_filter(cfg, found):
                 continue
         with db.session() as conn:
             if keep:
-                conn.execute(
-                    "INSERT INTO pairings (slug, candidate_key, status, source, official, donor_key, donor_name, "
-                    "meeting_id, meeting_date, first_stamp, quote_text, card, ai, recording_url) "
-                    "VALUES (%s, %s, 'pending', 'worker', %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) "
-                    "ON CONFLICT DO NOTHING",
-                    (slug, c["key"], c["official"], family["key"], family["name"], m["id"], m["meeting_date"],
-                     p["first_stamp"], p["text"], db.json_value(card), db.json_value(rec), m["recording_url"]))
+                conn.execute(insert(pairings).values(
+                    slug=slug, candidate_key=c["key"], status="pending", source="worker", official=c["official"],
+                    donor_key=family["key"], donor_name=family["name"], meeting_id=m["id"],
+                    meeting_date=m["meeting_date"], first_stamp=p["first_stamp"], quote_text=p["text"], card=card,
+                    ai=rec, recording_url=m["recording_url"]).on_conflict_do_nothing())
                 counts["kept_for_review"] += 1
             else:
-                conn.execute(
-                    "INSERT INTO dropped_pairs (candidate_key, official, donor_key, donor_name, meeting_id, "
-                    "meeting_body, meeting_date, first_stamp, last_stamp, quote_text, priority_text, priority_url, "
-                    "reason_kind, reason, stage, model) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, "
-                    "%s, 'AI filter', %s) ON CONFLICT DO NOTHING",
-                    (c["key"], c["official"], family["key"], family["name"], m["id"], m["body"], m["meeting_date"],
-                     p["first_stamp"], p["last_stamp"], p["text"], c["statement"]["text"], c["statement"]["url"],
-                     kind, reason, rec.get("model", "")))
+                conn.execute(insert(dropped_pairs).values(
+                    candidate_key=c["key"], official=c["official"], donor_key=family["key"], donor_name=family["name"],
+                    meeting_id=m["id"], meeting_body=m["body"], meeting_date=m["meeting_date"],
+                    first_stamp=p["first_stamp"], last_stamp=p["last_stamp"], quote_text=p["text"],
+                    priority_text=c["statement"]["text"], priority_url=c["statement"]["url"], reason_kind=kind,
+                    reason=reason, stage="AI filter", model=rec.get("model", "")).on_conflict_do_nothing())
                 counts["dropped"] += 1
     if judge.fatal:
         raise judge.fatal
@@ -196,17 +201,22 @@ def step_filter(cfg, found):
 
 # --------------------------------------------------------------------------- the run and the loop
 
-def run_cycle(cfg):
+def run_cycle(cfg, lease=None):
+    """One run of the steps. With a lease, the run stops between steps once the lease has been lost: another
+    worker may be running by then."""
     run_id = uuid.uuid4().hex[:12]
-    progress = Progress(run_id)
+    prog = Progress(run_id)
     with db.session() as conn:
-        conn.execute("UPDATE worker_state SET last_run_id = %s, updated_at = now() WHERE id = 1", (run_id,))
+        conn.execute(sa.update(worker_state).where(worker_state.c.id == 1).values(last_run_id=run_id, updated_at=db_now()))
         reference.ensure(conn)
     found, errors = {}, []
     plan = (("meetings", lambda: step_meetings(cfg)), ("money", lambda: step_money(cfg)),
             ("shortlist", lambda: step_shortlist(cfg, found)), ("filter", lambda: step_filter(cfg, found)))
     for name, fn in plan:
-        row = progress.start(name)
+        if lease and not lease.held():
+            errors.append("%s: not run, the worker lease was lost to another worker" % name)
+            break
+        row = prog.start(name)
         try:
             outcome, detail, counts = fn()
         except Exception as exc:  # recorded, never turned into an ordinary answer
@@ -215,30 +225,41 @@ def run_cycle(cfg):
                       stack=traceback.format_exc())
         if outcome == "error":
             errors.append("%s: %s" % (name, detail))
-        progress.finish(row, outcome, detail, counts)
+        prog.finish(row, outcome, detail, counts)
     with db.session() as conn:
-        conn.execute("UPDATE worker_state SET last_error = %s, updated_at = now() WHERE id = 1",
-                     ("; ".join(errors)[:1000],))
+        conn.execute(sa.update(worker_state).where(worker_state.c.id == 1).values(
+            last_error="; ".join(errors)[:1000], updated_at=db_now()))
     return run_id, errors
 
 
 def schedule(next_run):
     with db.session() as conn:
-        conn.execute("UPDATE worker_state SET next_run_at = %s, updated_at = now() WHERE id = 1", (next_run,))
+        conn.execute(sa.update(worker_state).where(worker_state.c.id == 1).values(next_run_at=next_run,
+                                                                                  updated_at=db_now()))
 
 
-def loop(cfg):
-    next_run = now() + datetime.timedelta(seconds=cfg["initial_delay_s"])
+def loop(cfg, lease):
+    """Waits for the lease, then runs once the schedule says so, again every interval. A worker that loses the
+    lease goes back to waiting for it and plans its next run afresh."""
+    next_run = None
     while True:
-        schedule(next_run)
-        while now() < next_run:
+        if not lease.held():
+            lease.wait()
+            next_run = None
+        if next_run is None:
+            next_run = now() + datetime.timedelta(seconds=cfg["initial_delay_s"])
+            schedule(next_run)
+        while now() < next_run and lease.held():
             time.sleep(min(5.0, max(0.1, (next_run - now()).total_seconds())))
+        if not lease.held():
+            continue
         try:
-            run_id, errors = run_cycle(cfg)
+            run_id, errors = run_cycle(cfg, lease)
             logs.emit("error" if errors else "info", "worker run finished", run_id=run_id, errors=len(errors))
         except Exception as exc:
             logs.emit("error", "worker run failed", error=str(exc), stack=traceback.format_exc())
         next_run = now() + datetime.timedelta(seconds=cfg["interval_s"])
+        schedule(next_run)
 
 
 # --------------------------------------------------------------------------- the summary on /
@@ -280,14 +301,22 @@ def serve_summary(port):
 def main(argv=None):
     argv = list(sys.argv[1:] if argv is None else argv)
     sources.identify_fetcher(config.fetch_contact_email())
-    db.migrate()
+    db.setup()
     cfg = settings()
-    if "--once" in argv:
-        _, errors = run_cycle(cfg)
-        return 1 if errors else 0
-    serve_summary(config.port("WORKER_PORT" if config.optional("WORKER_PORT") else "PORT", 8080))
-    loop(cfg)
-    return 0
+    lease = lease_mod.Lease()
+    signal.signal(signal.SIGTERM, lambda *_: sys.exit(0))  # so the lease is given up when the container stops
+    try:
+        if "--once" in argv:
+            if not lease.try_acquire():
+                logs.emit("error", "another worker holds the lease; no run started", owner=lease.owner)
+                return 1
+            _, errors = run_cycle(cfg, lease)
+            return 1 if errors else 0
+        serve_summary(config.port("WORKER_PORT" if config.optional("WORKER_PORT") else "PORT", 8080))
+        loop(cfg, lease)
+        return 0
+    finally:
+        lease.close()
 
 
 if __name__ == "__main__":

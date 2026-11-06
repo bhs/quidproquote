@@ -7,7 +7,11 @@ import datetime
 import json
 import os
 
-from . import db, sources
+import sqlalchemy as sa
+from sqlalchemy.dialects.sqlite import insert
+
+from . import sources
+from .tables import donor_priorities, source_data
 
 import collect  # noqa: E402  (discovery/official-funding-map: the roster table of officials' committees)
 
@@ -18,19 +22,20 @@ def _load(name):
 
 
 def put_source(conn, name, payload, retrieved=None):
-    conn.execute(
-        "INSERT INTO source_data (name, retrieved, payload) VALUES (%s, %s, %s) "
-        "ON CONFLICT (name) DO UPDATE SET retrieved = EXCLUDED.retrieved, payload = EXCLUDED.payload",
-        (name, retrieved or datetime.date.today(), db.json_value(payload)))
+    stmt = insert(source_data).values(name=name, retrieved=retrieved or datetime.date.today(), payload=payload)
+    conn.execute(stmt.on_conflict_do_update(
+        index_elements=[source_data.c.name],
+        set_={"retrieved": stmt.excluded.retrieved, "payload": stmt.excluded.payload}))
 
 
 def get_sources(conn):
-    return {r["name"]: r["payload"] for r in conn.execute("SELECT name, payload FROM source_data")}
+    return {r.name: r.payload for r in conn.execute(sa.select(source_data.c.name, source_data.c.payload))}
 
 
 def ensure(conn):
     """Loads the roster, the families and the donors' statements when absent. Returns what it loaded."""
-    have = {r["name"] for r in conn.execute("SELECT name FROM source_data WHERE name IN ('committees', 'families')")}
+    have = set(conn.execute(sa.select(source_data.c.name)
+                            .where(source_data.c.name.in_(("committees", "families")))).scalars())
     loaded = []
     if "committees" not in have:
         seed = _load("committees_seed.json")
@@ -43,11 +48,11 @@ def ensure(conn):
     fams = {f["key"]: f for f in _load("families.json")["families"]}
     n = 0
     for s in statements:
-        cur = conn.execute(
-            "INSERT INTO donor_priorities (key, family, donor, url, section, text, page_date, retrieved, kind, added_by) "
-            "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, 'survey') ON CONFLICT (key) DO NOTHING",
-            (s["id"], s["family"], fams[s["family"]]["name"], s["url"], s.get("section") or "", s["text"],
-             s.get("page_date") or "", s["retrieved"], s["kind"]))
+        cur = conn.execute(insert(donor_priorities).values(
+            key=s["id"], family=s["family"], donor=fams[s["family"]]["name"], url=s["url"],
+            section=s.get("section") or "", text=s["text"], page_date=s.get("page_date") or "",
+            retrieved=s["retrieved"], kind=s["kind"], added_by="survey").on_conflict_do_nothing(
+                index_elements=[donor_priorities.c.key]))
         n += cur.rowcount
     if n:
         loaded.append("%d donor statements" % n)

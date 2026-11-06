@@ -6,21 +6,21 @@
       "description": "API key for the AI that reads each quote and donor priority pair: the worker's filter drops pairs that share only topic words or take opposing positions, and the discovery judge confirms the embedding shortlist.",
       "console_url": "https://platform.claude.com/settings/keys",
       "provider": "anthropic",
-      "needed_by": ["serving", "results"]
+      "needed_by": [
+        "serving",
+        "results"
+      ]
     },
     {
       "kind": "secret",
-      "name": "DATABASE_URL",
-      "description": "Connection to the Postgres database that holds every record of the pairing site: transcripts, donors' priorities, campaign finance rows, pairings, dropped pairs, the audit log and the worker's progress. Production's value is the project's own database.",
-      "instructions": "Create a Postgres database for the site and an account the site connects as. For example, as a superuser: CREATE ROLE app LOGIN PASSWORD '<a long random password>'; CREATE DATABASE app OWNER app; then ALTER ROLE app CREATEDB; so that the account app may also create, change and drop databases whose names begin with the literal prefix mendel_sandbox_ (the underscores are literal) and nothing else beyond its own database app; it owns only what it creates, so it cannot touch other databases. Put the connection in the form postgresql://app:<password>@<host>:5432/app. The site applies its own migrations when it starts.",
-      "hermetic_alternate": "postgresql://app:app@{{host:db}}/app",
+      "name": "DATABASE_PATH",
+      "description": "Path of the SQLite file that holds every record of the pairing site: transcripts, donors' priorities, campaign finance rows, pairings, dropped pairs, the audit log and the worker's progress. The site and the worker open the same file on the application's attached disk, which survives restarts and deploys; the site creates the file and its tables when they are absent.",
+      "hermetic_alternate": "/data/app.db",
       "datastore": {
-        "service": "db",
-        "data_path": "/var/lib/postgresql/data",
-        "credential_env": "POSTGRES_PASSWORD",
-        "value": "postgresql://app:{{credential:db}}@{{host:db}}/app",
-        "capacity_gb": 2,
-        "capacity_basis": "About ten Board and committee transcripts of roughly 150 KB each are stored a week (about 80 MB a year), plus a few MB of campaign finance rows refreshed weekly and a few hundred cards, dropped pairs and log rows, so a year stays well under 1 GB and 2 GB leaves headroom."
+        "data_path": "/data",
+        "value": "/data/app.db",
+        "capacity_gb": 1,
+        "capacity_basis": "About ten Board and committee transcripts of roughly 150 KB each are stored a week (about 80 MB a year), plus a few MB of campaign finance rows refreshed weekly and a few hundred cards, dropped pairs and log rows, so a year stays well under 1 GB."
       }
     },
     {
@@ -30,7 +30,9 @@
       "console_url": "https://data.sf.gov/profile/edit/developer_settings",
       "provider": "datasf",
       "optional": true,
-      "needed_by": ["serving"]
+      "needed_by": [
+        "serving"
+      ]
     },
     {
       "kind": "setting",

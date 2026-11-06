@@ -1,14 +1,17 @@
-"""The site and the worker against a real Postgres (a throwaway database on the server DATABASE_URL names)."""
+"""The site and the worker against a real SQLite file (a temporary one per test class)."""
 
+import datetime
 import json
 import os
 import unittest
 import urllib.request
 from unittest import mock
 
+import sqlalchemy as sa
 from fastapi.testclient import TestClient
 
 from pairing_site import app as app_module, db, priorities, seed, status, worker
+from pairing_site.tables import audit_log, donor_priorities, dropped_pairs, pairings
 
 from helpers import temp_database
 
@@ -37,8 +40,9 @@ class SiteCase(unittest.TestCase):
         self.assertEqual(res.status_code, 303)
 
     def pending_ids(self):
-        with db.session() as conn:
-            return [r["id"] for r in conn.execute("SELECT id FROM pairings WHERE status = 'pending' ORDER BY id")]
+        with db.reader() as conn:
+            return list(conn.execute(sa.select(pairings.c.id).where(pairings.c.status == "pending")
+                                     .order_by(pairings.c.id)).scalars())
 
 
 class Public(SiteCase):
@@ -59,8 +63,8 @@ class Public(SiteCase):
         self.assertEqual(self.client.get("/pairings/nothing-here").status_code, 404)
 
     def test_pending_cards_are_not_public(self):
-        with db.session() as conn:
-            slug = conn.execute("SELECT slug FROM pairings WHERE status = 'pending' LIMIT 1").fetchone()["slug"]
+        with db.reader() as conn:
+            slug = conn.execute(sa.select(pairings.c.slug).where(pairings.c.status == "pending").limit(1)).scalar_one()
         self.assertEqual(self.client.get("/pairings/" + slug).status_code, 404)
 
     def test_status_is_json(self):
@@ -89,16 +93,21 @@ class Admin(SiteCase):
         res = self.client.post("/review/%d/approve" % pid, data={}, headers=hx)
         self.assertEqual(res.status_code, 200)
         self.assertIn("Tick the recording check first", res.text)
-        with db.session() as conn:
-            self.assertEqual(conn.execute("SELECT status FROM pairings WHERE id = %s", (pid,)).fetchone()["status"], "pending")
+        with db.reader() as conn:
+            self.assertEqual(conn.execute(sa.select(pairings.c.status).where(pairings.c.id == pid)).scalar_one(), "pending")
         res = self.client.post("/review/%d/approve" % pid, data={"recording_checked": "on"}, headers=hx)
         self.assertEqual(res.status_code, 200)
         self.assertIn("Approved at", res.text)
-        with db.session() as conn:
-            row = conn.execute("SELECT status, recording_checked, published_at FROM pairings WHERE id = %s", (pid,)).fetchone()
-            log = conn.execute("SELECT action, at, pairing_id FROM audit_log WHERE pairing_id = %s AND action = 'approved'", (pid,)).fetchall()
+        with db.reader() as conn:
+            row = conn.execute(sa.select(pairings.c.status, pairings.c.recording_checked, pairings.c.published_at,
+                                         pairings.c.recording_checked_at, pairings.c.decided_at)
+                               .where(pairings.c.id == pid)).mappings().one()
+            log = conn.execute(sa.select(audit_log.c.action, audit_log.c.at, audit_log.c.pairing_id)
+                               .where(audit_log.c.pairing_id == pid, audit_log.c.action == "approved")).mappings().all()
         self.assertEqual((row["status"], row["recording_checked"]), ("approved", True))
-        self.assertIsNotNone(row["published_at"])
+        self.assertEqual(row["published_at"], datetime.datetime.now(datetime.timezone.utc).date())
+        self.assertIsNotNone(row["recording_checked_at"])
+        self.assertIsNotNone(row["decided_at"])
         self.assertEqual(len(log), 1)
         self.assertIsNotNone(log[0]["at"])
         again = self.client.post("/review/%d/approve" % pid, data={"recording_checked": "on"}, headers=hx)
@@ -109,8 +118,9 @@ class Admin(SiteCase):
         pid = self.pending_ids()[-1]
         res = self.client.post("/review/%d/reject" % pid, data={"note": "not the same measure"}, headers={"HX-Request": "true"})
         self.assertIn("Rejected at", res.text)
-        with db.session() as conn:
-            log = conn.execute("SELECT detail FROM audit_log WHERE pairing_id = %s AND action = 'rejected'", (pid,)).fetchall()
+        with db.reader() as conn:
+            log = conn.execute(sa.select(audit_log.c.detail).where(audit_log.c.pairing_id == pid,
+                                                                   audit_log.c.action == "rejected")).mappings().all()
         self.assertEqual([r["detail"] for r in log], ["not the same measure"])
 
     def test_review_and_dropped_pages_render_for_the_maintainer(self):
@@ -133,8 +143,9 @@ class Admin(SiteCase):
         self.assertEqual(res.status_code, 200)
         self.assertIn("recorded as retrieved", res.text)
         self.assertEqual(bad.status_code, 422)
-        with db.session() as conn:
-            row = conn.execute("SELECT retrieved, text FROM donor_priorities WHERE added_by = 'maintainer'").fetchone()
+        with db.reader() as conn:
+            row = conn.execute(sa.select(donor_priorities.c.retrieved, donor_priorities.c.text)
+                               .where(donor_priorities.c.added_by == "maintainer")).mappings().one()
         self.assertEqual(str(row["retrieved"]), priorities.fl.today())
         self.assertEqual(row["text"], words)
 
@@ -163,9 +174,11 @@ class Worker(SiteCase):
         self.assertEqual(outcome, "ok")
         self.assertGreater(counts["kept_for_review"], 0)
         self.assertGreater(counts["dropped"], 0)
-        with db.session() as conn:
-            kinds = {r["reason_kind"] for r in conn.execute("SELECT reason_kind FROM dropped_pairs WHERE stage = 'AI filter'")}
-            kept = conn.execute("SELECT status, card FROM pairings WHERE source = 'worker'").fetchall()
+        with db.reader() as conn:
+            kinds = set(conn.execute(sa.select(dropped_pairs.c.reason_kind)
+                                     .where(dropped_pairs.c.stage == "AI filter")).scalars())
+            kept = conn.execute(sa.select(pairings.c.status, pairings.c.card)
+                                .where(pairings.c.source == "worker")).mappings().all()
         self.assertTrue(kinds <= {"topic-only", "opposing"} and kinds)
         self.assertTrue(all(r["status"] == "pending" and r["card"]["speaker_credit"]["doubt"] for r in kept))
 
@@ -181,7 +194,7 @@ class Worker(SiteCase):
             run_id, errors = worker.run_cycle(worker.settings())
         self.assertEqual(len(errors), 1)
         self.assertIn("ANTHROPIC_API_KEY", errors[0])
-        with db.session() as conn:
+        with db.reader() as conn:
             summary = status.summary(conn)
         self.assertEqual(summary["last_run"]["status"], "finished with errors")
         self.assertIn("ANTHROPIC_API_KEY", summary["last_error"])
