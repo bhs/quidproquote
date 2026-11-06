@@ -298,7 +298,7 @@ def create_app():
                         (form["family"], fam["name"], found["url"], section, found["text"], src["page_date"],
                          found["retrieved"], kind, src["outlet"], src["whose_words"], key))
                 return RedirectResponse("/priority?edited=" + urllib.parse.quote(key), status_code=303)
-            new_key = "form-%s-%s" % (form["family"], int(time.time()))
+            new_key = "form-%s-%s" % (form["family"], time.time_ns())
             with db.session(write=True) as conn:
                 conn.execute(
                     "INSERT INTO donor_priorities (key, family, donor, url, section, text, page_date, retrieved, kind, "

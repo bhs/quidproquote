@@ -94,6 +94,8 @@ def verify(url, words, fetch=None):
     words = fl.squash(words)
     if len(words.split()) < MIN_WORDS:
         raise PriorityError("Paste the donor's sentence or two, at least %d words, exactly as the page shows them." % MIN_WORDS)
+    if not (url or "").strip():
+        raise PriorityError("Give the link to the page that shows the words.")
     check_public_url(url)
     try:
         raw = (fetch or fl.fetch_page)(url.strip())
