@@ -12,9 +12,10 @@
     &middot; <a href="{{ q.recording_url }}">Meeting recording</a>
     <button type="button" class="copy-link" data-path="/pairings/{{ row.slug }}">Copy link</button>
   </p>
-  <p class="small recording-state">
-    {% if row.recording_checked %}Checked against the recording by the maintainer on {{ row.recording_checked_at.date() }}.
-    {% else %}Wording is the city's caption transcript, re-read word for word; it has not been checked against the recording.{% endif %}
+  <p class="review-label {{ 'verified' if row.recording_checked else 'unverified' }}">
+    {% if row.recording_checked %}<b>Reviewed and verified by a human against the recording on {{ row.recording_checked_at.date() if row.recording_checked_at else 'an unrecorded date' }}</b>
+    {% else %}<b>Not yet reviewed by a person: automated match</b>
+    <span class="small">Wording is the city's caption transcript, re-read word for word; it has not been checked against the recording.</span>{% endif %}
   </p>
   <div class="zones">
     <div class="zone">
