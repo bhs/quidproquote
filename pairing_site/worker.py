@@ -31,6 +31,9 @@ import judge as judge_mod  # noqa: E402
 import legistar as lg  # noqa: E402
 
 
+AUTO_ACTOR = "auto"
+
+
 def now():
     return datetime.datetime.now(datetime.timezone.utc)
 
@@ -146,7 +149,7 @@ def step_filter(cfg, found):
     fams = {f["key"]: f for f in found["fams"]}
     prompts = {c["key"]: pipeline.prompt_for(c, fams[c["family"]]["name"]) for c in cands}
     records = judge.judge_many(prompts)
-    counts = {"judged": 0, "kept_for_review": 0, "dropped": 0, "undecided_errors": 0}
+    counts = {"judged": 0, "auto_approved": 0, "held_for_review": 0, "dropped": 0, "undecided_errors": 0}
     errors = []
     for c in cands:
         rec = records[c["key"]]
@@ -159,6 +162,7 @@ def step_filter(cfg, found):
         family = fams[c["family"]]
         m, p = c["meeting"], c["passage"]
         card = slug = None
+        publish, publish_reason = False, ""
         if keep:
             try:
                 card, slug = pipeline.build_card(c, rec, found["snap"], found["fams"], family)
@@ -167,16 +171,24 @@ def step_filter(cfg, found):
                 counts["undecided_errors"] += 1
                 errors.append("%s: %s" % (c["key"], exc))
                 continue
+            publish, publish_reason = pipeline.auto_publish(card, rec)
         with db.session(write=True) as conn:
             if keep:
-                conn.execute(
+                stamp = db.now()
+                cur = conn.execute(
                     "INSERT INTO pairings (slug, candidate_key, status, source, official, donor_key, donor_name, "
-                    "meeting_id, meeting_date, first_stamp, quote_text, card, ai, recording_url) "
-                    "VALUES (?, ?, 'pending', 'worker', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) "
+                    "meeting_id, meeting_date, first_stamp, quote_text, card, ai, recording_url, recording_checked, "
+                    "published_at, decided_at) "
+                    "VALUES (?, ?, ?, 'worker', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, ?, ?) "
                     "ON CONFLICT DO NOTHING",
-                    (slug, c["key"], c["official"], family["key"], family["name"], m["id"], m["meeting_date"],
-                     p["first_stamp"], p["text"], db.json_value(card), db.json_value(rec), m["recording_url"]))
-                counts["kept_for_review"] += 1
+                    (slug, c["key"], "approved" if publish else "pending", c["official"], family["key"],
+                     family["name"], m["id"], m["meeting_date"], p["first_stamp"], p["text"], db.json_value(card),
+                     db.json_value(rec), m["recording_url"], db.today() if publish else None,
+                     stamp if publish else None))
+                if publish and cur.rowcount == 1:
+                    db.audit(conn, AUTO_ACTOR, "auto-approved", cur.lastrowid,
+                             "published without a person's review: " + publish_reason)
+                counts["auto_approved" if publish else "held_for_review"] += 1
             else:
                 conn.execute(
                     "INSERT INTO dropped_pairs (candidate_key, official, donor_key, donor_name, meeting_id, "
@@ -191,7 +203,8 @@ def step_filter(cfg, found):
         raise judge.fatal
     if errors:
         return "error", "; ".join(errors)[:600], counts
-    return "ok", "%d kept for review, %d dropped with reasons" % (counts["kept_for_review"], counts["dropped"]), counts
+    return "ok", "%d published automatically, %d held for review, %d dropped with reasons" % (
+        counts["auto_approved"], counts["held_for_review"], counts["dropped"]), counts
 
 
 # --------------------------------------------------------------------------- the run and the loop

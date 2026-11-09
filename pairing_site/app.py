@@ -4,13 +4,14 @@ Public:  /               approved pairings as cards, filterable by official or d
          /pairings/<slug>  one card at its own URL
          /status          the worker's summary as JSON
 Sign-in: /login           the ADMIN_TOKEN sets a signed session cookie
-Admin:   /review          the queue: approve (needs the recording check ticked) or reject, inline through HTMX
+Admin:   /review          cards held for review: approve (needs the recording check ticked) or reject, inline through HTMX;
+                          and cards published automatically: mark verified (same recording check) or unpublish
          /review/dropped  pairs the AI filter dropped, with reasons
          /priority        add a donor's priority from its own site (the pasted words must be on the page) or from a
                           news report (outlet, date and whose words are required); edit one in place, and read the
                           earlier wording of an edited one
 
-Every approval, rejection, sign-in and priority added or edited is written to the audit log with its time and action.
+Every automatic approval, approval, verification, rejection, sign-in and priority added or edited is written to the audit log with its time and action.
 """
 
 import contextlib
@@ -168,8 +169,11 @@ def create_app():
                                "WHERE status <> 'pending' AND source <> 'seed' ORDER BY decided_at DESC LIMIT 10").fetchall()
         log = conn.execute("SELECT a.at, a.actor, a.action, a.detail, a.pairing_id, p.slug FROM audit_log a "
                            "LEFT JOIN pairings p ON p.id = a.pairing_id ORDER BY a.id DESC LIMIT 30").fetchall()
+        unverified = conn.execute("SELECT * FROM pairings WHERE status = 'approved' AND recording_checked = 0 "
+                                  "ORDER BY published_at DESC, id").fetchall()
         dropped = conn.execute("SELECT count(*) AS n FROM dropped_pairs").fetchone()["n"]
-        return {"pending": pending, "decided": decided, "log": log, "dropped_count": dropped}
+        return {"pending": pending, "unverified": unverified, "decided": decided, "log": log,
+                "dropped_count": dropped}
 
     @app.get("/review", response_class=HTMLResponse)
     def review(request: Request, done: str = "", error: str = ""):
@@ -179,27 +183,35 @@ def create_app():
         return render(request, "review.html", done=done, error=error, **ctx)
 
     def decide(request, pairing_id, action, checked, note):
-        """Records a decision. Returns (row, error): error is a sentence when nothing was changed. The write lock
-        is held from the read of the row to the audit entry, so two decisions on one pairing cannot both apply."""
+        """Records a decision: approve a held card, verify a published card against the recording, or reject (which
+        also unpublishes). Returns (row, error): error is a sentence when nothing was changed. The write lock is held
+        from the read of the row to the audit entry, so two decisions on one pairing cannot both apply."""
         with db.session(write=True) as conn:
             row = conn.execute("SELECT * FROM pairings WHERE id = ?", (pairing_id,)).fetchone()
             if not row:
                 raise HTTPException(404, "No such pairing")
-            if row["status"] != "pending":
+            if action == "verify":
+                if row["status"] != "approved":
+                    return row, "Only a published card can be marked verified; this pairing is %s." % row["status"]
+                if row["recording_checked"]:
+                    return row, "This pairing was already verified against the recording."
+            elif action == "reject" and row["status"] == "approved":
+                pass  # unpublishes a card that was published
+            elif row["status"] != "pending":
                 return row, "This pairing was already %s." % row["status"]
-            if action == "approve":
+            if action in ("approve", "verify"):
                 if not checked:
                     return row, "Tick the recording check first: play the recording at the transcript time and confirm the words."
                 stamp = db.now()
                 conn.execute("UPDATE pairings SET status = 'approved', recording_checked = 1, "
-                             "recording_checked_at = ?, published_at = ?, decided_at = ?, "
+                             "recording_checked_at = ?, published_at = coalesce(published_at, ?), decided_at = ?, "
                              "decision_note = ? WHERE id = ?", (stamp, db.today(), stamp, note, pairing_id))
-                db.audit(conn, auth.ACTOR, "approved", pairing_id,
+                db.audit(conn, auth.ACTOR, "verified" if action == "verify" else "approved", pairing_id,
                          "recording checked at transcript time %s" % row["first_stamp"] + ("; " + note if note else ""))
             else:
                 conn.execute("UPDATE pairings SET status = 'rejected', decided_at = ?, decision_note = ? WHERE id = ?",
                              (db.now(), note, pairing_id))
-                db.audit(conn, auth.ACTOR, "rejected", pairing_id, note)
+                db.audit(conn, auth.ACTOR, "rejected" if row["status"] == "pending" else "unpublished", pairing_id, note)
             return conn.execute("SELECT * FROM pairings WHERE id = ?", (pairing_id,)).fetchone(), ""
 
     def decision_response(request, row, error):
@@ -207,7 +219,8 @@ def create_app():
             if error:
                 with db.session() as conn:
                     row = cards.live_row(conn, row)
-                return render(request, "_queue_item.html", row=row, card=row["card"], error=error)
+                template = "_queue_item.html" if row["status"] == "pending" else "_published_item.html"
+                return render(request, template, row=row, card=row["card"], error=error)
             return render(request, "_decided.html", row=row)
         if error:
             return RedirectResponse("/review?error=" + urllib.parse.quote(error), status_code=303)
@@ -219,6 +232,13 @@ def create_app():
         require_admin(request)
         same_origin(request)
         row, error = decide(request, pairing_id, "approve", recording_checked == "on", note.strip()[:500])
+        return decision_response(request, row, error)
+
+    @app.post("/review/{pairing_id}/verify")
+    def verify(request: Request, pairing_id: int, recording_checked: str = Form(""), note: str = Form("")):
+        require_admin(request)
+        same_origin(request)
+        row, error = decide(request, pairing_id, "verify", recording_checked == "on", note.strip()[:500])
         return decision_response(request, row, error)
 
     @app.post("/review/{pairing_id}/reject")

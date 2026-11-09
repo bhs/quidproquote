@@ -83,6 +83,29 @@ class Decide(unittest.TestCase):
         self.assertEqual(pipeline.decide(self.rec(speaker_type="public_comment"))[:2], (False, "not-an-official"))
 
 
+class AutoPublish(unittest.TestCase):
+    def card(self, doubt="low"):
+        return {"speaker_credit": {"doubt": doubt}}
+
+    def rec(self, stance="agrees"):
+        return {"overlap": "real", "speaker_type": "official", "stance": stance}
+
+    def test_ordinary_pairs_are_published(self):
+        for doubt in ("low", "medium"):
+            publish, why = pipeline.auto_publish(self.card(doubt), self.rec())
+            self.assertTrue(publish)
+            self.assertIn("automated match", why)
+
+    def test_high_doubt_in_the_speaker_credit_is_held(self):
+        publish, why = pipeline.auto_publish(self.card("high"), self.rec())
+        self.assertFalse(publish)
+        self.assertIn("high doubt", why)
+
+    def test_mixed_or_absent_position_is_held(self):
+        for stance in ("mixed", "no_position"):
+            self.assertFalse(pipeline.auto_publish(self.card("low"), self.rec(stance))[0])
+
+
 class Terms(unittest.TestCase):
     def test_measure_names_and_named_things_become_anchors(self):
         st = [{"section": "Proposition H - Parcel Tax to Fund Public Muni Operations",
