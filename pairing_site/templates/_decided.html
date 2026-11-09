@@ -1,5 +1,5 @@
 <section class="qitem decided" id="queue-{{ row.id }}">
-  <p class="notice">{{ row.status|capitalize }} at {{ row.decided_at.strftime('%Y-%m-%d %H:%M:%S UTC') }}:
+  <p class="notice">{{ row.status|capitalize }}{% if row.status == 'approved' and row.recording_checked %} and verified{% endif %} at {{ row.decided_at.strftime('%Y-%m-%d %H:%M:%S UTC') }}:
   <a href="/pairings/{{ row.slug }}">{{ row.card.title }}</a>{% if row.status == 'approved' %}, published {{ row.published_at }}{% endif %}.
   The decision is in the log below.</p>
 </section>
