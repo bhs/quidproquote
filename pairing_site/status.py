@@ -43,7 +43,8 @@ def summary(conn, now=None):
         "does": ("Once a day, slowly: fetches new Board and committee transcripts from Legistar and the officials' "
                  "campaign filings from DataSF, shortlists passages that touch a donor's stated priority, asks the "
                  "AI filter to drop pairs that share only topic words or take opposing positions (kept with "
-                 "reasons), and puts what is left in the review queue."),
+                 "reasons), publishes the rest at once labelled as not reviewed by a person, and holds low-confidence pairs "
+                 "for review."),
         "last_run": last_run,
         "next_run_at": _iso(nxt),
         "next_run_in_seconds": max(0, int((nxt - now).total_seconds())) if nxt else None,

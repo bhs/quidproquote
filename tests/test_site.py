@@ -54,6 +54,7 @@ class Public(SiteCase):
         res = self.client.get("/pairings/lurie-chamber-muni")
         self.assertEqual(res.status_code, 200)
         self.assertIn("Published", res.text)
+        self.assertIn(UNVERIFIED, res.text)
         self.assertIn("499,000", res.text)
         self.assertIn("<mark>", res.text)
         self.assertEqual(self.client.get("/pairings/nothing-here").status_code, 404)
@@ -139,6 +140,120 @@ class Admin(SiteCase):
         self.assertEqual(row["text"], words)
 
 
+VERIFIED = "Reviewed and verified by a human against the recording on"
+UNVERIFIED = "Not yet reviewed by a person: automated match"
+
+
+class FakeJudge:
+    """Reads every pair as a real overlap, the official agreeing, unless the test says otherwise."""
+    fatal = None
+    stances = {}
+
+    def judge_many(self, prompts):
+        return {k: {"overlap": "real", "speaker_type": "official", "stance": self.stances.get(k, "agrees"),
+                    "reason": "Same measure.", "model": "fake"} for k in prompts}
+
+
+class AutoApprove(SiteCase):
+    """Kept pairs are published at once, labelled as not human-verified; low-confidence pairs wait for an admin."""
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.found = {}
+        outcome, _, _ = worker.step_shortlist(dict(worker.settings(), max_candidates=6), cls.found)
+        assert outcome == "ok" and len(cls.found["cands"]) >= 3
+        low, high, mixed = cls.found["cands"][:3]
+        low["doubt"], high["doubt"], mixed["doubt"] = "low", "high", "low"
+        cls.keys = {"low": low["key"], "high": high["key"], "mixed": mixed["key"]}
+        judge = type("J", (FakeJudge,), {"stances": {mixed["key"]: "mixed"}})
+        with mock.patch.object(worker.judge_mod, "Judge", judge):
+            cls.outcome, cls.detail, cls.counts = worker.step_filter(dict(worker.settings()), cls.found)
+
+    def row(self, which):
+        with db.session() as conn:
+            return conn.execute("SELECT * FROM pairings WHERE candidate_key = ?", (self.keys[which],)).fetchone()
+
+    def test_a_low_doubt_pair_is_published_unverified_and_on_the_front_page(self):
+        row = self.row("low")
+        self.assertEqual(row["status"], "approved")
+        self.assertFalse(row["recording_checked"])
+        self.assertIsNotNone(row["published_at"])
+        self.assertIsNotNone(row["decided_at"])
+        page = self.client.get("/")
+        self.assertIn('id="card-%s"' % row["slug"], page.text)
+        self.assertIn(UNVERIFIED, page.text)
+        self.assertNotIn(VERIFIED, page.text)
+        self.assertEqual(self.client.get("/pairings/" + row["slug"]).status_code, 200)
+
+    def test_a_high_doubt_pair_is_held_and_not_public(self):
+        row = self.row("high")
+        self.assertEqual(row["status"], "pending")
+        self.assertFalse(row["recording_checked"])
+        self.assertNotIn('id="card-%s"' % row["slug"], self.client.get("/").text)
+        self.assertEqual(self.client.get("/pairings/" + row["slug"]).status_code, 404)
+        with db.session() as conn:
+            self.assertEqual(conn.execute("SELECT count(*) AS n FROM audit_log WHERE pairing_id = ? AND actor = 'auto'",
+                                          (row["id"],)).fetchone()["n"], 0)
+
+    def test_a_mixed_reading_is_held(self):
+        self.assertEqual(self.row("mixed")["status"], "pending")
+
+    def test_counts_and_detail_say_held_for_review(self):
+        self.assertGreaterEqual(self.counts["auto_approved"], 1)
+        self.assertGreaterEqual(self.counts["held_for_review"], 2)
+        self.assertIn("held for review", self.detail)
+        self.assertNotIn("kept for review", self.detail)
+
+    def test_each_auto_approval_is_in_the_audit_log(self):
+        row = self.row("low")
+        with db.session() as conn:
+            log = conn.execute("SELECT actor, detail FROM audit_log WHERE pairing_id = ? AND action = 'auto-approved'",
+                               (row["id"],)).fetchall()
+        self.assertEqual([r["actor"] for r in log], ["auto"])
+        self.assertIn("without a person's review", log[0]["detail"])
+
+    def test_admin_approval_of_a_held_card_shows_the_verified_label(self):
+        self.sign_in()
+        row = self.row("high")
+        res = self.client.post("/review/%d/approve" % row["id"], data={"recording_checked": "on"})
+        self.assertEqual(res.status_code, 303)
+        page = self.client.get("/pairings/" + row["slug"])
+        self.assertIn(VERIFIED, page.text)
+        self.assertNotIn(UNVERIFIED, page.text)
+        self.assertIn(VERIFIED, self.client.get("/").text)
+
+    def test_an_auto_approved_card_can_be_verified_after_the_recording_check(self):
+        self.sign_in()
+        row = self.row("low")
+        hx = {"HX-Request": "true"}
+        res = self.client.post("/review/%d/verify" % row["id"], data={}, headers=hx)
+        self.assertIn("Tick the recording check first", res.text)
+        self.assertFalse(self.row("low")["recording_checked"])
+        res = self.client.post("/review/%d/verify" % row["id"], data={"recording_checked": "on"}, headers=hx)
+        self.assertEqual(res.status_code, 200)
+        after = self.row("low")
+        self.assertEqual((after["status"], after["recording_checked"]), ("approved", True))
+        self.assertEqual(after["published_at"], row["published_at"])
+        self.assertIn(VERIFIED, self.client.get("/pairings/" + row["slug"]).text)
+        again = self.client.post("/review/%d/verify" % row["id"], data={"recording_checked": "on"}, headers=hx)
+        self.assertIn("already verified", again.text)
+
+    def test_rejecting_an_auto_approved_card_hides_it(self):
+        self.sign_in()
+        row = self.row("low")
+        self.assertIn('id="card-%s"' % row["slug"], self.client.get("/").text)
+        res = self.client.post("/review/%d/reject" % row["id"], data={"note": "wrong measure"}, headers={"HX-Request": "true"})
+        self.assertIn("Rejected at", res.text)
+        self.assertEqual(self.row("low")["status"], "rejected")
+        self.assertNotIn('id="card-%s"' % row["slug"], self.client.get("/").text)
+        anon = TestClient(self.client.app, follow_redirects=False)
+        self.assertEqual(anon.get("/pairings/" + row["slug"]).status_code, 404)
+        with db.session() as conn:
+            log = conn.execute("SELECT detail FROM audit_log WHERE pairing_id = ? AND action = 'unpublished'", (row["id"],)).fetchall()
+        self.assertEqual([r["detail"] for r in log], ["wrong measure"])
+
+
 class Worker(SiteCase):
     def test_filter_keeps_drops_and_records_reasons(self):
         found = {}
@@ -161,13 +276,13 @@ class Worker(SiteCase):
         with mock.patch.object(worker.judge_mod, "Judge", FakeJudge):
             outcome, _, counts = worker.step_filter(cfg, found)
         self.assertEqual(outcome, "ok")
-        self.assertGreater(counts["kept_for_review"], 0)
+        self.assertGreater(counts["auto_approved"] + counts["held_for_review"], 0)
         self.assertGreater(counts["dropped"], 0)
         with db.session() as conn:
             kinds = {r["reason_kind"] for r in conn.execute("SELECT reason_kind FROM dropped_pairs WHERE stage = 'AI filter'")}
             kept = conn.execute("SELECT status, card FROM pairings WHERE source = 'worker'").fetchall()
         self.assertTrue(kinds <= {"topic-only", "opposing"} and kinds)
-        self.assertTrue(all(r["status"] == "pending" and r["card"]["speaker_credit"]["doubt"] for r in kept))
+        self.assertTrue(all(r["status"] in ("approved", "pending") and r["card"]["speaker_credit"]["doubt"] for r in kept))
 
     def test_a_failed_model_is_an_error_row_not_an_answer(self):
         def no_key(*a, **k):
