@@ -2,7 +2,7 @@
 
 ## Looked for and not found
 
-- **Any usage record of the site's first version.** Looked in the repository (application code, logs module, migrations, earlier discovery findings): no analytics, no feedback or contact route, no stored visits. The request log keeps path, status and timing only.
+- **Any usage record of the site's first version.** Looked in the repository (application code, logs module, migrations, earlier discovery findings): no analytics, no feedback or contact route, no stored visits. The app's request log keeps path, status and timing only, and no proxy configuration is in the repository.
 - **Any words from a reporter who has used the first version.** None exist: the maintainer says no reporter has used it. None in the repository or in the earlier findings, whose last open questions ask for "two or three reporters or watchdogs" to verify the six worked pairings, which has not happened.
 - **A baseline for a one-person local site** (returns, citations or corrections in the first weeks): none found; the comparable figures are from newsrooms with staff (Digital Democracy) or from large surveys of big sites (mySociety).
 - **Corrections as a published value measure:** none of the impact schemes read mentions them.
@@ -25,7 +25,7 @@
 - That the Ethics Commission's reporters use its dashboards as the closest substitute for the money half of this site is an inference from its own statements (my reading).
 - That a first reading from one person will be interviews and counts of tens, not statistics, is an inference from mySociety's sample difficulties and the size of the local reporter pool (my reading).
 - That stories take weeks to follow a visit is an inference; no source read gives a lag.
-- That the request log omits referrers and visitor identifiers was read from `pairing_site/logs.py`; a proxy in front of the site may keep more, which was not checked.
+- That the site's own records omit referrers and visitor identifiers is read from `pairing_site/logs.py` (one JSON line per request: request id, method, path, status, duration), from `start.sh` (uvicorn runs with `--no-access-log`, so its default access line is off) and from `pairing_site/worker.py` (its default access log is replaced by the same request line). The `Dockerfile` and `.mendel/docker-compose.test.yml` start the app directly on its port with no proxy service, and no proxy or server configuration file exists in the repository. The only proxy header the app reads is `x-forwarded-proto`, in `pairing_site/app.py`, to decide whether a cookie is secure. What any network layer in front of the deployed site records is not stated anywhere in the repository and was not read (unverified).
 
 ## What would settle the rest
 

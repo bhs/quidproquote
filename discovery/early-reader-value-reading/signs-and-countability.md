@@ -6,7 +6,7 @@
 
 **What the first version records today** (read from `pairing_site/`):
 
-- Every request is logged as one JSON line with request id, method, path, status and duration (`pairing_site/logs.py`). No IP, visitor identifier, referrer or user agent is kept.
+- Every request is logged as one JSON line with request id, method, path, status and duration (`pairing_site/logs.py`). No IP, visitor identifier, referrer or user agent is kept by the app, and `start.sh` turns off uvicorn's own access line. The repository holds no proxy or server configuration; what a network layer in front of the deployed site records is not stated in it.
 - Each approved card has a stable address, `/pairings/{slug}`, and a "Copy link" button (`pairing_site/templates/_card.html`). Clicks on that button, and on the outbound transcript, recording, donor page and filing links, are not recorded.
 - There is no contact or correction route, no sign-up and no account. The audit log records the maintainer's review decisions, not readers' actions.
 
