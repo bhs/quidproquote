@@ -5,15 +5,28 @@
 <h1>Review queue</h1>
 {% if done %}<p class="notice">Done: {{ done }}</p>{% endif %}
 {% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
-<p class="lede">Each pair below passed the shortlist and the AI filter. Approving publishes the card. You must tick the
+<p class="lede">Most pairs that pass the shortlist and the AI filter are published at once, labelled as not yet reviewed by
+a person. The pairs below are held for review because they are low-confidence: the speaker credit is in high doubt, or
+the model read the official's position as mixed or absent. Approving publishes the card as verified. You must tick the
 recording check: play the meeting recording at the transcript time and confirm the words are as the card shows them.
 Every decision is written to the log at the foot of this page. <a href="/review/dropped">{{ dropped_count }} dropped pair{{ '' if dropped_count == 1 else 's' }}</a>
 are kept with their reasons.</p>
+<h2>Held for review</h2>
 <div id="queue">
 {% for row in pending %}
   {% include "_queue_item.html" %}
 {% else %}
-  <p>The queue is empty.</p>
+  <p>No pair is held for review.</p>
+{% endfor %}
+</div>
+<h2>Published, not yet verified</h2>
+<p class="small">These cards are public with the label "Not yet reviewed by a person: automated match". After checking one
+against the recording, mark it verified; or unpublish it to remove it from the public pages.</p>
+<div id="unverified">
+{% for row in unverified %}
+  {% include "_published_item.html" %}
+{% else %}
+  <p>Every published card has been verified.</p>
 {% endfor %}
 </div>
 {% if decided %}

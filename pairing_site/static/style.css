@@ -36,6 +36,11 @@ body.hl-off mark{background:none}
 .badge.news{background:#1f5f99}
 .badge.low{background:#2f6f4f}.badge.medium{background:#b07a00}.badge.high{background:#a33}
 .sources{margin-top:.6rem;font-size:.85rem;color:#333;border-top:1px solid #ddd;padding-top:.4rem}
+.review-label{margin:.2rem 0;padding:.25rem .6rem;border-radius:6px;border:1px solid #bbb;background:#f4f4f4}
+.review-label.verified{background:#e8f3ea;border-color:#9bc8a5}
+.review-label.unverified{background:#fff6dd;border-color:#e0c36a}
+.published-decide{display:flex;gap:1.5rem;flex-wrap:wrap;align-items:flex-start;margin-bottom:1rem}
+.published-decide form{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
 .notice{background:#e8f3ea;border:1px solid #9bc8a5;padding:.4rem .7rem;border-radius:6px}
 .error{background:#fbe9e9;border:1px solid #d99;padding:.4rem .7rem;border-radius:6px}
 .stack{display:flex;flex-direction:column;gap:.7rem;max-width:42rem}

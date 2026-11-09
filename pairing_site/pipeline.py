@@ -2,8 +2,9 @@
 
 shortlist()   passages in turns credited to an official that hit the measure names, phrases and named things
               of a donor's stated priority (a wide net: topic words count too);
-decide()      what the model's reading of a pair means: kept for a person to review, or dropped with a reason
+decide()      what the model's reading of a pair means: kept, or dropped with a reason
               (it shares only topic words, or takes the opposite position, or is not an official speaking);
+auto_publish() whether a kept pair is published at once (labelled as not reviewed by a person) or held for review;
 build_card()  one card from a kept pair: the exact words with meeting, date and transcript time, the speaker
               credit with how the captions support it, the donor's own words with link and retrieval date, and
               the money by committee and filing, 24-hour repeats listed and not counted.
@@ -168,6 +169,22 @@ def decide(record):
     if record["stance"] == "opposes":
         return False, "opposing", "The official's words take the opposite position to the donor's: %s" % why
     return True, "kept", why
+
+
+HOLD_STANCES = ("mixed", "no_position")  # the model could not read a clear position for the official
+
+
+def auto_publish(card, record):
+    """(publish, reason) for a kept pair. A card is published at once, labelled as not reviewed by a person, unless
+    it is low-confidence: the speaker credit is in high doubt, or the model read the official's position as mixed or
+    absent. A held card waits in the review queue for an admin."""
+    doubt = card.get("speaker_credit", {}).get("doubt")
+    if doubt == "high":
+        return False, "the speaker credit is in high doubt"
+    if record.get("stance") in HOLD_STANCES:
+        return False, "the model read the official's position as %s" % record["stance"].replace("_", " ")
+    return True, "automated match: speaker-credit doubt %s, the model read the positions as %s" % (
+        doubt or "not stated", record.get("stance", "not stated").replace("_", " "))
 
 
 # --------------------------------------------------------------------------- money
