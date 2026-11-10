@@ -55,6 +55,61 @@
   });
 })();
 
+// Each card is closed: tapping a confidence chip shows or hides its reason, and "Show detail" fetches the card's
+// detail section (htmx does the request; a plain fetch stands in when the htmx script did not load) and shows or
+// hides it. A failed fetch says so and the next tap tries again.
+(function () {
+  function setOpen(btn, open) {
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    var target = document.getElementById(btn.getAttribute('aria-controls'));
+    if (target) target.hidden = !open;
+    return target;
+  }
+
+  function loadDetail(btn, panel) {
+    panel.setAttribute('aria-busy', 'true');
+    panel.textContent = 'Loading the detail\u2026';
+    if (window.htmx) { window.htmx.trigger(btn, 'show-detail'); return; }
+    fetch(btn.getAttribute('hx-get'), { headers: { 'HX-Request': 'true' } }).then(function (res) {
+      if (!res.ok) throw new Error(res.status);
+      return res.text();
+    }).then(function (html) {
+      panel.innerHTML = html;
+      panel.dataset.loaded = 'true';
+      panel.removeAttribute('aria-busy');
+    }, function () { failed(panel); });
+  }
+
+  function failed(panel) {
+    panel.textContent = 'The detail could not be loaded. Tap Hide detail, then Show detail, to try again.';
+    panel.removeAttribute('aria-busy');
+  }
+
+  document.addEventListener('click', function (event) {
+    var target = event.target.closest && event.target.closest('.chip-btn, .detail-toggle');
+    if (!target) return;
+    var open = target.getAttribute('aria-expanded') !== 'true';
+    var panel = setOpen(target, open);
+    if (!target.classList.contains('detail-toggle')) return;
+    target.textContent = open ? 'Hide detail' : 'Show detail';
+    if (open && panel && panel.dataset.loaded !== 'true') loadDetail(target, panel);
+  });
+
+  document.addEventListener('htmx:afterSwap', function (event) {
+    var panel = event.target;
+    if (panel.classList && panel.classList.contains('detail')) {
+      panel.dataset.loaded = 'true';
+      panel.removeAttribute('aria-busy');
+    }
+  });
+  ['htmx:responseError', 'htmx:sendError'].forEach(function (name) {
+    document.addEventListener(name, function (event) {
+      var panel = event.detail && event.detail.target;
+      if (panel && panel.classList && panel.classList.contains('detail')) failed(panel);
+    });
+  });
+})();
+
 // The priority form: the outlet and whose-words fields belong to a news report only.
 (function () {
   var type = document.getElementById('source-type');

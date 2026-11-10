@@ -47,8 +47,9 @@ class Public(SiteCase):
         self.assertEqual(res.status_code, 200)
         self.assertEqual(res.text.count('<article class="card"'), 5)
         for needle in ("Daniel Lurie", "Matt Dorsey", "Bilal Mahmood", "Shamann Walton", 'id="filter-official"',
-                       'id="filter-donor"', "Copy link", "Meeting recording", "No cause is claimed."):
+                       'id="filter-donor"', "Copy link", "Meeting recording", "Show detail"):
             self.assertIn(needle, res.text)
+        self.assertNotIn("No cause is claimed.", res.text)  # the detail is fetched on tap, so every card starts closed
 
     def test_a_card_has_its_own_url(self):
         res = self.client.get("/pairings/lurie-chamber-muni")
@@ -58,6 +59,31 @@ class Public(SiteCase):
         self.assertIn("499,000", res.text)
         self.assertIn("<mark>", res.text)
         self.assertEqual(self.client.get("/pairings/nothing-here").status_code, 404)
+
+    def test_every_card_shows_the_four_chips_and_starts_closed(self):
+        for path in ("/", "/pairings/lurie-chamber-muni"):
+            page = self.client.get(path).text
+            for label in ("Speaker credit", "Topic match", "Donor priority", "Money tie"):
+                self.assertIn(label, page)
+            self.assertEqual(page.count('class="detail"'), page.count('<article class="card'))
+            self.assertEqual(page.count("hidden></div>"), page.count('<article class="card'))
+            self.assertNotIn('aria-expanded="true"', page)
+            self.assertIn('aria-controls="detail-', page)
+            self.assertIn("this committee only", page)
+
+    def test_the_detail_fragment_holds_what_the_closed_card_does_not(self):
+        res = self.client.get("/pairings/lurie-chamber-muni/detail")
+        self.assertEqual(res.status_code, 200)
+        self.assertNotIn("<html", res.text)
+        for needle in ("What each check rests on", "No cause is claimed.", "Caption rows that name the speaker",
+                       "Giver as filed", "never summed across committees", "Sources:", "The donor's own words"):
+            self.assertIn(needle, res.text)
+        self.assertEqual(self.client.get("/pairings/nothing-here/detail").status_code, 404)
+
+    def test_pending_detail_is_for_the_maintainer_only(self):
+        with db.session() as conn:
+            slug = conn.execute("SELECT slug FROM pairings WHERE status = 'pending' LIMIT 1").fetchone()["slug"]
+        self.assertEqual(self.client.get("/pairings/%s/detail" % slug).status_code, 404)
 
     def test_pending_cards_are_not_public(self):
         with db.session() as conn:
@@ -102,6 +128,12 @@ class Admin(SiteCase):
         self.assertIsNotNone(row["published_at"])
         self.assertEqual(len(log), 1)
         self.assertIsNotNone(log[0]["at"])
+        with db.session() as conn:
+            card = conn.execute("SELECT card FROM pairings WHERE id = ?", (pid,)).fetchone()["card"]
+            chips = conn.execute("SELECT detail FROM audit_log WHERE pairing_id = ? AND action = 'chips verified'", (pid,)).fetchall()
+        self.assertEqual({c["key"] for c in card["chips"] if c["verified"]}, {"speaker_credit", "topic_match"})
+        self.assertEqual(len(chips), 1)
+        self.assertIn("speaker credit and topic match marked VERIFIED", chips[0]["detail"])
         again = self.client.post("/review/%d/approve" % pid, data={"recording_checked": "on"}, headers=hx)
         self.assertIn("already approved", again.text)
 

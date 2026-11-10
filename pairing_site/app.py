@@ -1,7 +1,8 @@
 """The pairing site: FastAPI with Jinja templates and HTMX.
 
 Public:  /               approved pairings as cards, filterable by official or donor (a little JavaScript)
-         /pairings/<slug>  one card at its own URL
+         /pairings/<slug>  one card at its own URL (closed, like every card)
+         /pairings/<slug>/detail  the card's detail section as an HTML fragment, fetched when "Show detail" is tapped
          /status          the worker's summary as JSON
 Sign-in: /login           the ADMIN_TOKEN sets a signed session cookie
 Admin:   /review          cards held for review: approve (needs the recording check ticked) or reject, inline through HTMX;
@@ -10,7 +11,7 @@ Admin:   /review          cards held for review: approve (needs the recording ch
          /priority        add a donor's priority (own site or news report): the page is fetched and the pasted words must be on it
          /priority/<key>/edit  correct one: prefilled and checked against the page again; the old row goes to the log
 
-Every automatic approval, approval, verification, rejection, sign-in and priority added or edited is written to the audit log with its time and action.
+Every automatic approval, approval, verification (and the chips it marks VERIFIED), rejection, sign-in and priority added or edited is written to the audit log with its time and action.
 """
 
 import contextlib
@@ -27,7 +28,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from markupsafe import Markup
 
-from . import auth, config, db, logs, priorities, sources, spotcheck, status  # noqa: F401  (sources: discovery libraries on the path)
+from . import auth, config, db, glance, logs, pipeline, priorities, sources, spotcheck, status  # noqa: F401  (sources: discovery libraries on the path)
 
 import pairing_cards as pc  # noqa: E402
 
@@ -72,7 +73,8 @@ def create_app():
     templates = Jinja2Templates(directory=os.path.join(HERE, "templates"))
     templates.env.filters["marked"] = marked
     templates.env.filters["quoted"] = quoted
-    templates.env.globals.update(NEWS_KIND=priorities.NEWS, WHOSE_WORDS=priorities.WHOSE_WORDS)
+    templates.env.globals.update(NEWS_KIND=priorities.NEWS, WHOSE_WORDS=priorities.WHOSE_WORDS,
+                                 quote_window=glance.window, shorten=glance.shorten, topic_label=glance.topic_label)
 
     def admin(request):
         try:
@@ -110,13 +112,22 @@ def create_app():
         return render(request, "index.html", rows=rows,
                       officials=sorted({r["official"] for r in rows}), donors=sorted({r["donor_name"] for r in rows}))
 
-    @app.get("/pairings/{slug}", response_class=HTMLResponse)
-    def pairing(request: Request, slug: str):
+    def visible_pairing(request, slug):
+        """The pairing row of a slug: an approved one for anyone, any other only for the maintainer."""
         with db.session() as conn:
             row = conn.execute("SELECT * FROM pairings WHERE slug = ?", (slug,)).fetchone()
         if not row or (row["status"] != "approved" and not admin(request)):
             raise HTTPException(404, "No such pairing")
-        return render(request, "pairing.html", row=row)
+        return row
+
+    @app.get("/pairings/{slug}", response_class=HTMLResponse)
+    def pairing(request: Request, slug: str):
+        return render(request, "pairing.html", row=visible_pairing(request, slug))
+
+    @app.get("/pairings/{slug}/detail", response_class=HTMLResponse)
+    def pairing_detail(request: Request, slug: str):
+        row = visible_pairing(request, slug)
+        return render(request, "_detail.html", row=row, card=row["card"])
 
     @app.get("/status")
     def worker_status():
@@ -202,11 +213,17 @@ def create_app():
                     db.audit(conn, auth.ACTOR, "approval blocked by the spot check", pairing_id, "; ".join(failed))
                     return row, reason
                 stamp = db.now()
+                card = row["card"]
+                verified = pipeline.mark_verified(card)  # the recording check stands behind these two chips
                 conn.execute("UPDATE pairings SET status = 'approved', recording_checked = 1, "
                              "recording_checked_at = ?, published_at = coalesce(published_at, ?), decided_at = ?, "
-                             "decision_note = ? WHERE id = ?", (stamp, db.today(), stamp, note, pairing_id))
+                             "decision_note = ?, card = ? WHERE id = ?",
+                             (stamp, db.today(), stamp, note, db.json_value(card), pairing_id))
                 db.audit(conn, auth.ACTOR, "verified" if action == "verify" else "approved", pairing_id,
                          "recording checked at transcript time %s" % row["first_stamp"] + ("; " + note if note else ""))
+                db.audit(conn, auth.ACTOR, "chips verified", pairing_id,
+                         "%s marked VERIFIED after the recording check at transcript time %s" % (
+                             " and ".join(verified), row["first_stamp"]))
             else:
                 conn.execute("UPDATE pairings SET status = 'rejected', decided_at = ?, decision_note = ? WHERE id = ?",
                              (db.now(), note, pairing_id))

@@ -7,7 +7,9 @@ decide()      what the model's reading of a pair means: kept, or dropped with a 
 auto_publish() whether a kept pair is published at once (labelled as not reviewed by a person) or held for review;
 build_card()  one card from a kept pair: the exact words with meeting, date and transcript time, the speaker
               credit with how the captions support it, the donor's own words with link and retrieval date, and
-              the money by committee and filing, 24-hour repeats listed and not counted.
+              the money by committee and filing, 24-hour repeats listed and not counted; and the four confidence
+              chips (speaker credit, topic match, donor priority, money tie), each a level with the one-line
+              evidence it was read from.
 
 Nothing here says why anyone said or gave anything.
 """
@@ -15,7 +17,7 @@ Nothing here says why anyone said or gave anything.
 import collections
 import re
 
-from . import sources  # noqa: F401  (puts the discovery libraries on the path)
+from . import priorities, sources  # noqa: F401  (sources puts the discovery libraries on the path)
 
 import ff_lib as ff  # noqa: E402
 import fmap_lib as fl  # noqa: E402
@@ -250,9 +252,99 @@ def speaker_support(region, official, roster_line, rows):
     return text, cue_rows
 
 
+# --------------------------------------------------------------------------- confidence chips
+
+LEVELS = ("low", "medium", "high")  # the bars of a chip filled: one, two or three
+CHIP_LABELS = (("speaker_credit", "Speaker credit"), ("topic_match", "Topic match"),
+               ("donor_priority", "Donor priority"), ("money_tie", "Money tie"))
+CREDIT_FROM_DOUBT = {"low": "high", "medium": "medium", "high": "low"}  # the more doubt, the less confidence
+OWN_COMMITTEE = ("own committee", "officeholder committee")  # the start of a committee line's kind (pairing_cards)
+VERIFIED_CHIPS = ("speaker_credit", "topic_match")  # what a person's recording check stands behind
+DONOR_WORDS_LEVEL = {"donor-quoted": "medium", "reporter": "low", "third-party": "low"}  # a news report's words
+
+
+def credit_chip(card):
+    """Confidence in the speaker credit is the doubt turned round: low doubt, high confidence."""
+    credit = card["speaker_credit"]
+    return CREDIT_FROM_DOUBT[credit["doubt"]], "Doubt in the credit is %s: %s" % (credit["doubt"], credit["reason"])
+
+
+def topic_chip(card):
+    """From the words literally in both the quote and the donor's words (card.highlight): a phrase or two words
+    is high, one word medium, none low."""
+    terms = card.get("highlight") or []
+    strength = sum(2 if " " in t else 1 for t in terms)
+    level = LEVELS[min(strength, 2)]
+    if not terms:
+        return level, "No word of substance is literally in both the quote and the donor's words."
+    return level, "In both the quote and the donor's words: %s." % ", ".join('"%s"' % t for t in terms)
+
+
+def donor_chip(card):
+    """From where the donor's words were found: its own site is high; a news report depends on whose words they
+    are (the donor's, quoted: medium; the reporter's or someone else's: low). The best statement counts."""
+    statements = card["donor"]["statements"]
+    best = None
+    for s in statements:
+        if s.get("kind") == priorities.NEWS:
+            level = DONOR_WORDS_LEVEL.get(s.get("whose_words") or "", "low")
+            why = "A news report (%s): %s." % (s.get("outlet") or "outlet not recorded",
+                                              priorities.WHOSE_WORDS.get(s.get("whose_words"), "whose words: not recorded").lower())
+        else:
+            level, why = "high", "The donor's own words on %s." % (s.get("kind") or "its own site")
+        if best is None or LEVELS.index(level) > LEVELS.index(best[0]):
+            best = (level, why)
+    if best is None:
+        return "low", "The card holds no statement of the donor's."
+    if len(statements) > 1:
+        best = (best[0], best[1] + " Best of %d statements." % len(statements))
+    return best
+
+
+def money_chip(card):
+    """From how each receiving committee is tied to the official, the weakest tie counting: the official's own or
+    officeholder committee is high; a ballot-measure committee carrying the name, or a committee for another
+    office, is medium; no committee at all (outside spending only) is low."""
+    committees = card["money"]["committees"]
+    if not committees:
+        return "low", "No committee tied to the official received a gift; outside spending is kept apart."
+    levels = ["high" if m["kind"].startswith(OWN_COMMITTEE) and "for another office" not in m["kind"] else "medium"
+              for m in committees]
+    weakest = min(levels, key=LEVELS.index)
+    return weakest, "Weakest tie of %d committee%s: %s." % (
+        len(committees), "" if len(committees) == 1 else "s", "; ".join("%s (%s)" % (m["committee"], m["kind"]) for m in committees))
+
+
+CHIP_RULES = {"speaker_credit": credit_chip, "topic_match": topic_chip, "donor_priority": donor_chip,
+              "money_tie": money_chip}
+
+
+def confidence(card):
+    """The four chips of a card, always all four and always in this order. Each is read from what the card already
+    holds (doubt, shared words, the donor's source, the committee's tie); none changes the pairing."""
+    chips = []
+    for key, label in CHIP_LABELS:
+        level, reason = CHIP_RULES[key](card)
+        chips.append({"key": key, "label": label, "level": level, "reason": reason, "verified": False})
+    return chips
+
+
+def mark_verified(card):
+    """After a person has played the recording and confirmed the words: the speaker credit and the topic match are
+    VERIFIED. Chips are made first when the card has none. Returns the labels marked."""
+    card["chips"] = card.get("chips") or confidence(card)
+    marked = []
+    for chip in card["chips"]:
+        if chip["key"] in VERIFIED_CHIPS:
+            chip["verified"] = True
+            marked.append(chip["label"].lower())
+    return marked
+
+
 def extend_card(card, p, support, cue_rows, recording):
     """Adds to a built card what its reader needs beyond pairing_cards' summary: each Schedule A row with its
-    filing date, the 24-hour rows apart, how the transcript supports the speaker credit and the recording."""
+    filing date, the 24-hour rows apart, how the transcript supports the speaker credit, the recording and the
+    confidence chips (read last, from everything above)."""
     for line, c in zip(card["money"]["committees"], p["money"]["per"].values()):
         line["rows_detail"] = [row_detail(r, "Schedule A") for r in c["a"]]
         line["repeats_detail"] = [row_detail(r, "24-hour report repeating a Schedule A row (not counted)") for r in c["repeat"]]
@@ -261,6 +353,7 @@ def extend_card(card, p, support, cue_rows, recording):
     card["speaker_credit"].update({"support": support, "cue_rows": cue_rows, "official": card["official"]["name"],
                                    "role": card["official"]["role"]})
     card["quote"]["recording_url"] = recording
+    card["chips"] = confidence(card)
     return card
 
 
