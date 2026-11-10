@@ -50,6 +50,17 @@ class Public(SiteCase):
                        'id="filter-donor"', "Copy link", "Meeting recording", "No cause is claimed."):
             self.assertIn(needle, res.text)
 
+    def test_cards_are_closed_rows_with_four_chips_and_a_toggle(self):
+        for path in ("/", "/pairings/lurie-chamber-muni"):
+            text = self.client.get(path).text
+            self.assertIn('class="detail-toggle open-detail" aria-expanded="false" aria-controls="detail-lurie-chamber-muni"', text)
+            self.assertIn('<div class="detail" id="detail-lurie-chamber-muni" hidden>', text)
+            for area in ("Speaker credit", "Topic match", "Donor priority", "Money tie"):
+                self.assertIn("%s: <b>" % area, text)
+            for label in ("Who", "Said", "Donor", "Money"):
+                self.assertIn("<dt>%s</dt>" % label, text)
+        self.assertNotIn("SPEAKER-CREDIT DOUBT", text)
+
     def test_a_card_has_its_own_url(self):
         res = self.client.get("/pairings/lurie-chamber-muni")
         self.assertEqual(res.status_code, 200)

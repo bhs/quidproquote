@@ -7,7 +7,9 @@ decide()      what the model's reading of a pair means: kept, or dropped with a 
 auto_publish() whether a kept pair is published at once (labelled as not reviewed by a person) or held for review;
 build_card()  one card from a kept pair: the exact words with meeting, date and transcript time, the speaker
               credit with how the captions support it, the donor's own words with link and retrieval date, and
-              the money by committee and filing, 24-hour repeats listed and not counted.
+              the money by committee and filing, 24-hour repeats listed and not counted;
+glance()      the four facts of a card's list row, and confidence_chips() its four chips, both worked out at render
+              from the stored card.
 
 Nothing here says why anyone said or gave anything.
 """
@@ -15,7 +17,7 @@ Nothing here says why anyone said or gave anything.
 import collections
 import re
 
-from . import sources  # noqa: F401  (puts the discovery libraries on the path)
+from . import priorities, sources  # noqa: F401  (sources puts the discovery libraries on the path)
 
 import ff_lib as ff  # noqa: E402
 import fmap_lib as fl  # noqa: E402
@@ -312,3 +314,113 @@ def group_priorities(rows):
     for r in rows:
         out[r["family"]].append(r)
     return out
+
+
+# --------------------------------------------------------------------------- the glance row and its chips
+# Worked out at render from what a stored card already holds; nothing here is stored or changes a card, a pairing or
+# its caveats.
+
+EXCERPT_WORDS = 22  # the first words of the exact quote shown in the list row
+DONOR_WORDS = 16  # the first words of the donor's own statement shown in the list row
+GLANCE_COMMITTEES = 2  # receiving committees named in the row; the rest are a count that opens the detail
+LABEL_CHARS = 32  # a committee's name cut to this in the row (the whole name is the label's title and in the detail)
+REASON_CHARS = 150
+
+CHIP_LEVELS = ("low", "medium", "high")
+INVERTED = {"low": "high", "medium": "medium", "high": "low"}  # doubt in the credit is the opposite of confidence
+
+
+def excerpt(text, words):
+    """(the first `words` words of text as written, whether anything was cut)."""
+    spans = [m.end() for m in re.finditer(r"\S+", text)]
+    if len(spans) <= words:
+        return text.strip(), False
+    return text[:spans[words - 1]], True
+
+
+def one_line(text, limit=REASON_CHARS):
+    """The first sentence of text, cut at a word boundary with an ellipsis when it is still longer than limit."""
+    first = re.split(r"(?<=[.;!?])\s", " ".join(text.split()), maxsplit=1)[0]
+    if len(first) <= limit:
+        return first
+    return first[:limit].rsplit(" ", 1)[0].rstrip(",;:") + "\u2026"
+
+
+def short_label(name):
+    return name if len(name) <= LABEL_CHARS else name[:LABEL_CHARS].rsplit(" ", 1)[0].rstrip(",;:") + "\u2026"
+
+
+def glance(card):
+    """The four facts of the list row, each taken from the card as stored: the official and role; the first words of
+    the exact quote (shared words marked only when they fall inside it) with the topic label from the donor's page;
+    the donor with the first words of its own statement and its source; and the largest committees' own Schedule A
+    totals, outside spending apart. No amount is added to another."""
+    quote, shared = card["quote"], card["highlight"]
+    cut, was_cut = excerpt(quote["text"], EXCERPT_WORDS)
+    inside = [t for t in shared if pc.term_regex([t]).search(cut)]
+    if inside:
+        nothing = ""
+    elif shared:
+        nothing = "Nothing shared in this excerpt; shared in the full quote: %s." % ", ".join('"%s"' % t for t in shared)
+    else:
+        nothing = "Nothing shared: no words of substance are in both texts."
+    st = card["donor"]["statements"][0]
+    said, said_cut = excerpt(st["text"], DONOR_WORDS)
+    committees = sorted(card["money"]["committees"], key=lambda m: -m["schedule_a_total"])
+    return {
+        "quote": cut, "quote_cut": was_cut, "shared": inside, "nothing_shared": nothing,
+        "topic": st.get("section") or "", "statement": st, "donor_words": said, "donor_cut": said_cut,
+        "committees": [{"label": short_label(m["committee"]), "name": m["committee"], "amount": m["schedule_a_total_text"]}
+                       for m in committees[:GLANCE_COMMITTEES]],
+        "more_committees": max(len(committees) - GLANCE_COMMITTEES, 0),
+        "outside": [{"spender": short_label(o["spender"]), "stance": o["stance"], "amount": o["amount_text"]}
+                    for o in card["money"]["outside_spending"]],
+    }
+
+
+def _statement_level(st):
+    """How close a donor statement is to the donor itself: a page on its own site, a news report quoting the donor,
+    or a news report describing it (or quoting someone else)."""
+    if st.get("kind") != priorities.NEWS:
+        return "high", "The donor's own words, not a report of them (source: %s)." % (st.get("kind") or "page on the organisation's own site")
+    if st.get("whose_words") == "donor-quoted":
+        return "medium", "A news report (%s) quoting the donor's own words." % (st.get("outlet") or "outlet not recorded")
+    return "low", "A news report (%s): %s." % (st.get("outlet") or "outlet not recorded",
+                                              priorities.WHOSE_WORDS.get(st.get("whose_words"), "whose words is not recorded").lower())
+
+
+def _tie_level(kind):
+    """The committee's tie to the official, from the kind the card names: the official's own committee, a
+    ballot-measure committee carrying the official's name, or a committee for another office."""
+    if "for another office" in kind:
+        return "low"
+    return "medium" if kind.startswith("ballot-measure") else "high"
+
+
+def confidence_chips(card, verified=False):
+    """The four chips every card carries, as [{area, level, word, reason}]. Speaker credit inverts the card's doubt (or
+    reads VERIFIED once a person has played the recording); topic match comes from how many words both texts share;
+    donor priority from the kind of source of the donor's words; money tie from the kind of committee that received
+    the money. Each reason says what the level was read from."""
+    credit = card["speaker_credit"]
+    level = INVERTED[credit["doubt"]]
+    reason = "Doubt in the credit is %s: %s" % (credit["doubt"], one_line(credit["reason"]))
+    if verified:
+        level, reason = "verified", "A person played the recording and confirmed the words. " + reason
+    shared = card["highlight"]
+    topic = CHIP_LEVELS[min(len(shared), 2)]
+    topic_reason = ("%d shared word%s or phrase%s: %s." % (len(shared), "" if len(shared) == 1 else "s", "" if len(shared) == 1 else "s",
+                                                           ", ".join('"%s"' % t for t in shared))
+                    if shared else "No word of substance is in both the quote and the donor's words.")
+    statements = [_statement_level(s) for s in card["donor"]["statements"]]
+    donor_level, donor_reason = min(statements, key=lambda s: CHIP_LEVELS.index(s[0]))
+    committees = card["money"]["committees"]
+    if committees:
+        tie_level, weakest = min(((_tie_level(m["kind"]), m) for m in committees), key=lambda t: CHIP_LEVELS.index(t[0]))
+        tie_reason = "%s: %s%s." % (short_label(weakest["committee"]), weakest["kind"],
+                                    "" if len(committees) == 1 else " (the weakest of %d committees)" % len(committees))
+    else:
+        tie_level, tie_reason = "low", "No gift to a committee tied to the official was found; outside spending only."
+    chips = [("Speaker credit", level, reason), ("Topic match", topic, topic_reason),
+             ("Donor priority", donor_level, donor_reason), ("Money tie", tie_level, tie_reason)]
+    return [{"area": a, "level": lv, "word": lv.upper() if lv == "verified" else lv, "reason": r} for a, lv, r in chips]

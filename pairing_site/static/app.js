@@ -1,5 +1,5 @@
-// Filtering by official or donor, the highlight toggle and the copy-link button. The cards are rendered on the
-// server; this only hides, marks and copies.
+// Filtering by official or donor, the highlight toggle, the copy-link button and the button that opens a card's
+// detail in place. The cards are rendered on the server; this only hides, marks, copies and shows.
 (function () {
   function cards() { return Array.prototype.slice.call(document.querySelectorAll('#cards .card')); }
 
@@ -52,6 +52,24 @@
     var url = window.location.origin + btn.dataset.path;
     copyText(url).then(function () { btn.textContent = 'Copied'; }, function () { btn.textContent = url; });
     setTimeout(function () { if (btn.textContent === 'Copied') btn.textContent = 'Copy link'; }, 2000);
+  });
+
+  // Opens or closes the detail a card's buttons name in aria-controls. Every button for that detail follows its
+  // state, and the page is moved back so the button that was pressed stays where it was on the screen.
+  document.addEventListener('click', function (event) {
+    var btn = event.target.closest && event.target.closest('.detail-toggle');
+    if (!btn) return;
+    var detail = document.getElementById(btn.getAttribute('aria-controls'));
+    if (!detail) return;
+    var before = btn.getBoundingClientRect().top;
+    var open = detail.hidden;
+    detail.hidden = !open;
+    Array.prototype.forEach.call(document.querySelectorAll('.detail-toggle'), function (other) {
+      if (other.getAttribute('aria-controls') !== detail.id) return;
+      other.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (other.dataset.show) other.textContent = open ? other.dataset.hide : other.dataset.show;
+    });
+    window.scrollBy(0, btn.getBoundingClientRect().top - before);
   });
 })();
 

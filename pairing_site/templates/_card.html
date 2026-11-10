@@ -1,25 +1,77 @@
 {% from "_source.html" import source_label %}
+{#- One card: a glance row (who, said, donor, money), four confidence chips and a button that opens the detail in place. #}
 {% macro card_article(row, card, queue=False) %}
 {% set q = card.quote %}
 {% set T = card.highlight %}
 {% set credit = card.speaker_credit %}
+{% set g = glance(card) %}
+{% set chips = confidence_chips(card, row.recording_checked) %}
+{% set detail_id = 'detail-' ~ row.slug %}
 <article class="card" id="card-{{ row.slug }}" data-official="{{ card.official.name }}" data-donor="{{ card.donor.name }}">
-  <h2><a href="/pairings/{{ row.slug }}">{{ card.title }}</a></h2>
-  <p class="meta">
-    {% if row.published_at %}Published {{ row.published_at }}{% else %}Not published yet{% endif %}
-    &middot; Official's words: {{ q.meeting }}, {{ q.date }}, transcript time {{ q.first_stamp }}{% if q.last_stamp != q.first_stamp %} to {{ q.last_stamp }}{% endif %}
-    &middot; <a href="{{ q.transcript_url }}">City transcript</a>
-    &middot; <a href="{{ q.recording_url }}">Meeting recording</a>
-    <button type="button" class="copy-link" data-path="/pairings/{{ row.slug }}">Copy link</button>
-  </p>
-  <p class="review-label {{ 'verified' if row.recording_checked else 'unverified' }}">
-    {% if row.recording_checked %}<b>Reviewed and verified by a human against the recording on {{ row.recording_checked_at.date() if row.recording_checked_at else 'an unrecorded date' }}</b>
-    {% else %}<b>Not yet reviewed by a person: automated match</b>
-    <span class="small">Wording is the city's caption transcript, re-read word for word; it has not been checked against the recording.</span>{% endif %}
-  </p>
-  <div class="zones">
+  <dl class="glance">
+    <dt>Who</dt>
+    <dd><h2><a href="/pairings/{{ row.slug }}">{{ card.official.name }}</a></h2> <span class="role">{{ card.official.role }}</span>
+      {% if row.recording_checked %}<span class="tag verified">&#10003; Verified by a person</span>{% else %}<span class="tag">Automated match, not yet reviewed</span>{% endif %}</dd>
+    <dt>Said</dt>
+    <dd><div class="quote">{{ ('"' ~ g.quote ~ '"')|marked(g.shared) }}{% if g.quote_cut %} &hellip;{% endif %}</div>
+      {% if g.topic %}<div class="small">Topic: <a href="{{ g.statement.url }}">{{ g.topic }}</a></div>{% endif %}
+      {% if not g.shared %}<div class="small">{{ g.nothing_shared }}</div>{% endif %}</dd>
+    <dt>Donor</dt>
+    <dd><b>{{ card.donor.name }}</b> {{ source_label(g.statement.kind, g.statement.outlet, g.statement.whose_words) }}
+      <div class="small">&ldquo;{{ g.donor_words }}&rdquo;{% if g.donor_cut %} &hellip;{% endif %} <a href="{{ g.statement.url }}">source</a></div></dd>
+    <dt>Money</dt>
+    <dd>{% for m in g.committees %}<div class="gift"><span class="amt">{{ m.amount }}</span> to <span title="{{ m.name }}">{{ m.label }}</span></div>{% endfor %}
+      {% if g.more_committees %}<button type="button" class="detail-toggle more-link" aria-expanded="false" aria-controls="{{ detail_id }}">+{{ g.more_committees }} more committee{{ '' if g.more_committees == 1 else 's' }}</button>{% endif %}
+      {% if g.committees %}<div class="small">Schedule A; each committee's own total, never summed.</div>{% endif %}
+      {% for o in g.outside %}<div class="gift outside-line"><b>Outside spending, kept apart:</b> {{ o.spender }}, {{ o.stance }}, <span class="amt">{{ o.amount }}</span></div>{% endfor %}</dd>
+  </dl>
+  <ul class="chips" aria-label="Confidence in this pairing">
+    {% for c in chips %}<li class="chip {{ c.level }}" title="{{ c.reason }}"><span class="dot" aria-hidden="true">{{ '&#10003;'|safe if c.level == 'verified' }}</span>{{ c.area }}: <b>{{ c.word }}</b></li>{% endfor %}
+  </ul>
+  <button type="button" class="detail-toggle open-detail" aria-expanded="false" aria-controls="{{ detail_id }}" data-show="Show details" data-hide="Hide details">Show details</button>
+  <div class="detail" id="{{ detail_id }}" hidden>
     <div class="zone">
-      <h3>Money in, then the donor's priority</h3>
+      <h3>Why these confidence levels</h3>
+      <ul class="reasons">{% for c in chips %}<li><b>{{ c.area }}: {{ c.word }}.</b> {{ c.reason }}</li>{% endfor %}</ul>
+    </div>
+    <p class="meta">
+      {% if row.published_at %}Published {{ row.published_at }}{% else %}Not published yet{% endif %}
+      &middot; Official's words: {{ q.meeting }}, {{ q.date }}, transcript time {{ q.first_stamp }}{% if q.last_stamp != q.first_stamp %} to {{ q.last_stamp }}{% endif %}
+      &middot; <a href="{{ q.transcript_url }}">City transcript</a>
+      &middot; <a href="{{ q.recording_url }}">Meeting recording</a>
+      <button type="button" class="copy-link" data-path="/pairings/{{ row.slug }}">Copy link</button>
+    </p>
+    <p class="review-label {{ 'verified' if row.recording_checked else 'unverified' }}">
+      {% if row.recording_checked %}<b>Reviewed and verified by a human against the recording on {{ row.recording_checked_at.date() if row.recording_checked_at else 'an unrecorded date' }}</b>
+      {% else %}<b>Not yet reviewed by a person: automated match</b>
+      <span class="small">Wording is the city's caption transcript, re-read word for word; it has not been checked against the recording.</span>{% endif %}
+    </p>
+    <div class="zone official">
+      <h3>The official</h3>
+      <div class="name">{{ card.official.name }}</div>
+      <div>{{ card.official.role }}</div>
+      <p class="small">San Francisco official, as the city's roster has them.</p>
+    </div>
+    <div class="zone">
+      <h3>The official's exact words</h3>
+      <div class="quote">{{ ('"' ~ q.text ~ '"')|marked(T) }}</div>
+      <div class="small">{{ q.meeting }}, {{ q.date }}, transcript time {{ q.first_stamp }}{% if q.last_stamp != q.first_stamp %} to {{ q.last_stamp }}{% endif %}</div>
+    </div>
+    <div class="zone">
+      <h3>The donor's priority</h3>
+      <div class="bubble">
+        <b>{{ card.donor.name }}: stated priority</b>
+        <div class="small"><i>{{ card.donor.tie.text }}</i></div>
+        {% for s in card.donor.statements %}
+        <div class="small">{{ source_label(s.kind, s.outlet, s.whose_words) }}</div>
+        <div class="small">{{ s.section|marked(T) }}</div>
+        <blockquote>{{ (s.text|quoted)|marked(T) }}</blockquote>
+        <div class="small">{% if s.page_date %}page dated {{ s.page_date }}{% else %}page undated{% endif %}; <a href="{{ s.url }}">source page</a>; retrieved {{ s.retrieved }}</div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="zone">
+      <h3>Money in</h3>
       {% for m in card.money.committees %}
       <div class="money">
         <span class="amt">{{ m.schedule_a_total_text }}</span> Schedule A to <b>{{ m.committee }}</b> <span class="small">(filer {{ m.filer }})</span>
@@ -47,45 +99,23 @@
       {% for o in card.money.outside_spending %}
       <div class="money outside"><b>Outside spending, kept apart</b> (form 496; not a gift to any committee above): {{ o.spender }}, {{ o.stance }}, {{ o.amount_text }}, {{ o.filings }} filings, {{ o.first }} to {{ o.last }}</div>
       {% endfor %}
-      <div class="bubble">
-        <b>{{ card.donor.name }}: stated priority</b>
-        <div class="small"><i>{{ card.donor.tie.text }}</i></div>
-        {% for s in card.donor.statements %}
-        <div class="small">{{ source_label(s.kind, s.outlet, s.whose_words) }}</div>
-        <div class="small">{{ s.section|marked(T) }}</div>
-        <blockquote>{{ (s.text|quoted)|marked(T) }}</blockquote>
-        <div class="small">{% if s.page_date %}page dated {{ s.page_date }}{% else %}page undated{% endif %}; <a href="{{ s.url }}">source page</a>; retrieved {{ s.retrieved }}</div>
-        {% endfor %}
-      </div>
     </div>
-    <div class="zone official">
-      <h3>The official</h3>
-      <div class="name">{{ card.official.name }}</div>
-      <div>{{ card.official.role }}</div>
-      <p class="small">San Francisco official, as the city's roster has them.</p>
+    <div class="strip">
+      <b>Reading, not a finding.</b> <b>Speaker-credit doubt: {{ credit.doubt }}.</b>
+      In common: {{ card.reading.in_common }} Where they differ: {{ card.reading.differs }} {{ card.reading.cause }}
+      <div class="small"><b>Who is speaking:</b> {{ credit.official }}, {{ credit.role }}. {{ credit.support }}
+        Doubt in the credit: {{ credit.reason }}</div>
+      {% if credit.cue_rows %}
+      <details class="small"><summary>Caption rows that name the speaker</summary>
+        <ul class="cue">{% for stamp, text in credit.cue_rows %}<li><code>{{ stamp }}</code> {{ text }}</li>{% endfor %}</ul>
+      </details>
+      {% endif %}
+      <div class="small">Highlighted: words literally in both the quote and the donor's words ({% if T %}{% for t in T %}"{{ t }}"{{ ', ' if not loop.last }}{% endfor %}{% else %}none of substance, so nothing is highlighted{% endif %}).</div>
     </div>
-    <div class="zone">
-      <h3>The official's exact words</h3>
-      <div class="quote">{{ ('"' ~ q.text ~ '"')|marked(T) }}</div>
-      <div class="small">{{ q.meeting }}, {{ q.date }}, transcript time {{ q.first_stamp }}{% if q.last_stamp != q.first_stamp %} to {{ q.last_stamp }}{% endif %}</div>
-    </div>
+    <div class="sources"><b>Sources:</b> <a href="{{ card.sources.transcript }}">transcript</a> ({{ q.meeting }}, {{ q.date }}, retrieved {{ q.retrieved }});
+      donor page{{ '' if card.sources.donor_pages|length == 1 else 's' }}:
+      {% for u in card.sources.donor_pages %}<a href="{{ u }}">{{ u.split('//')[-1].split('/')[0] }}</a>{{ ', ' if not loop.last }}{% endfor %};
+      filing ids, <a href="{{ card.sources.dataset_url }}">Transactions dataset</a>: {{ card.sources.filing_ids|join(', ') }}; money retrieved {{ card.sources.money_retrieved }}.</div>
   </div>
-  <div class="strip">
-    <span class="badge {{ credit.doubt }}">SPEAKER-CREDIT DOUBT: {{ credit.doubt|upper }}</span>
-    <b>Reading, not a finding.</b>
-    In common: {{ card.reading.in_common }} Where they differ: {{ card.reading.differs }} {{ card.reading.cause }}
-    <div class="small"><b>Who is speaking:</b> {{ credit.official }}, {{ credit.role }}. {{ credit.support }}
-      Doubt in the credit: {{ credit.reason }}</div>
-    {% if credit.cue_rows %}
-    <details class="small"><summary>Caption rows that name the speaker</summary>
-      <ul class="cue">{% for stamp, text in credit.cue_rows %}<li><code>{{ stamp }}</code> {{ text }}</li>{% endfor %}</ul>
-    </details>
-    {% endif %}
-    <div class="small">Highlighted: words literally in both the quote and the donor's words ({% if T %}{% for t in T %}"{{ t }}"{{ ', ' if not loop.last }}{% endfor %}{% else %}none of substance, so nothing is highlighted{% endif %}).</div>
-  </div>
-  <div class="sources"><b>Sources:</b> <a href="{{ card.sources.transcript }}">transcript</a> ({{ q.meeting }}, {{ q.date }}, retrieved {{ q.retrieved }});
-    donor page{{ '' if card.sources.donor_pages|length == 1 else 's' }}:
-    {% for u in card.sources.donor_pages %}<a href="{{ u }}">{{ u.split('//')[-1].split('/')[0] }}</a>{{ ', ' if not loop.last }}{% endfor %};
-    filing ids, <a href="{{ card.sources.dataset_url }}">Transactions dataset</a>: {{ card.sources.filing_ids|join(', ') }}; money retrieved {{ card.sources.money_retrieved }}.</div>
 </article>
 {% endmacro %}

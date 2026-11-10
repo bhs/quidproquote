@@ -117,5 +117,70 @@ class Terms(unittest.TestCase):
         self.assertTrue(terms["topic"])
 
 
+class Glance(unittest.TestCase):
+    def card(self, **kw):
+        card = {"quote": {"text": " ".join("word%d" % i for i in range(40)) + " Muni"}, "highlight": ["Muni"],
+                "official": {"name": "A. Official", "role": "Mayor"},
+                "donor": {"name": "Donor", "statements": [{"section": "Prop H", "text": "The donor supports Prop H.",
+                                                           "url": "https://example.org/g", "kind": "voter guide on the organisation's own site"}]},
+                "money": {"committees": [{"committee": "Committee %d with a rather long name indeed" % i, "kind": "officeholder committee",
+                                          "schedule_a_total": 100.0 * i, "schedule_a_total_text": "$%d" % (100 * i)} for i in (1, 3, 2, 4)],
+                          "outside_spending": [{"spender": "A PAC", "stance": "supporting", "amount_text": "$9"}]},
+                "speaker_credit": {"doubt": "low", "reason": "The cue names the speaker. A second sentence."}}
+        card.update(kw)
+        return card
+
+    def test_excerpt_is_the_first_words_with_a_cut_flag(self):
+        self.assertEqual(pipeline.excerpt("a  b c", 2), ("a  b", True))
+        self.assertEqual(pipeline.excerpt("a b", 2), ("a b", False))
+
+    def test_shared_words_are_marked_only_inside_the_excerpt(self):
+        g = pipeline.glance(self.card())
+        self.assertEqual(g["shared"], [])
+        self.assertTrue(g["quote_cut"])
+        self.assertIn("Nothing shared in this excerpt", g["nothing_shared"])
+        self.assertEqual(pipeline.glance(self.card(highlight=[]))["nothing_shared"][:15], "Nothing shared:")
+        short = self.card(quote={"text": "Muni rides are up"})
+        self.assertEqual(pipeline.glance(short)["shared"], ["Muni"])
+
+    def test_largest_committees_first_with_a_count_and_nothing_summed(self):
+        g = pipeline.glance(self.card())
+        self.assertEqual([m["amount"] for m in g["committees"]], ["$400", "$300"])
+        self.assertEqual(g["more_committees"], 2)
+        self.assertTrue(all(len(m["label"]) <= pipeline.LABEL_CHARS + 1 for m in g["committees"]))
+        self.assertEqual(g["outside"][0]["amount"], "$9")
+
+    def test_four_chips_invert_doubt_and_cite_their_evidence(self):
+        chips = pipeline.confidence_chips(self.card())
+        self.assertEqual([c["area"] for c in chips], ["Speaker credit", "Topic match", "Donor priority", "Money tie"])
+        self.assertEqual([c["level"] for c in chips], ["high", "medium", "high", "high"])
+        self.assertTrue(all(c["reason"] for c in chips))
+        self.assertNotIn("second sentence", chips[0]["reason"])
+        for doubt, level in (("medium", "medium"), ("high", "low")):
+            self.assertEqual(pipeline.confidence_chips(self.card(speaker_credit={"doubt": doubt, "reason": "x"}))[0]["level"], level)
+
+    def test_verified_replaces_the_speaker_level_only(self):
+        chips = pipeline.confidence_chips(self.card(), verified=True)
+        self.assertEqual((chips[0]["level"], chips[0]["word"]), ("verified", "VERIFIED"))
+        self.assertEqual(chips[1]["level"], "medium")
+
+    def test_levels_from_shared_words_source_kind_and_committee_tie(self):
+        none = pipeline.confidence_chips(self.card(highlight=[]))[1]
+        two = pipeline.confidence_chips(self.card(highlight=["Muni", "Prop H"]))[1]
+        self.assertEqual((none["level"], two["level"]), ("low", "high"))
+        news = {"section": "", "text": "x", "url": "u", "kind": priorities.NEWS, "outlet": "Daily", "whose_words": "reporter"}
+        card = self.card()
+        card["donor"]["statements"].append(news)
+        self.assertEqual(pipeline.confidence_chips(card)[2]["level"], "low")
+        news["whose_words"] = "donor-quoted"
+        self.assertEqual(pipeline.confidence_chips(card)[2]["level"], "medium")
+        card["money"]["committees"][0]["kind"] = "ballot-measure committee carrying the official's name"
+        self.assertEqual(pipeline.confidence_chips(card)[3]["level"], "medium")
+        card["money"]["committees"][1]["kind"] = "own committee, for another office (School Board)"
+        self.assertEqual(pipeline.confidence_chips(card)[3]["level"], "low")
+        card["money"]["committees"] = []
+        self.assertEqual(pipeline.confidence_chips(card)[3]["level"], "low")
+
+
 if __name__ == "__main__":
     unittest.main()
