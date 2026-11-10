@@ -12,7 +12,7 @@
 {% set topic = topic_label(card) %}
 {% set stance = card.donor.statements[0] %}
 {% set stance_text, stance_cut = shorten(stance.text) %}
-<article class="card glance" id="card-{{ row.slug }}" data-official="{{ card.official.name }}" data-donor="{{ card.donor.name }}" aria-labelledby="title-{{ row.slug }}">
+<article class="card" id="card-{{ row.slug }}" data-official="{{ card.official.name }}" data-donor="{{ card.donor.name }}" aria-labelledby="title-{{ row.slug }}">
   <h2 id="title-{{ row.slug }}"><a href="/pairings/{{ row.slug }}">{{ card.title }}</a></h2>
   <div class="facts">
     <div class="fact official">
