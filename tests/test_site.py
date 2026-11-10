@@ -46,6 +46,8 @@ class Public(SiteCase):
         res = self.client.get("/")
         self.assertEqual(res.status_code, 200)
         self.assertEqual(res.text.count('<article class="card"'), 5)
+        self.assertEqual(res.text.count('<details class="detail">'), 5)
+        self.assertEqual(res.text.count('<li class="chip '), 20)
         for needle in ("Daniel Lurie", "Matt Dorsey", "Bilal Mahmood", "Shamann Walton", 'id="filter-official"',
                        'id="filter-donor"', "Copy link", "Meeting recording", "No cause is claimed."):
             self.assertIn(needle, res.text)
@@ -57,6 +59,7 @@ class Public(SiteCase):
         self.assertIn(UNVERIFIED, res.text)
         self.assertIn("499,000", res.text)
         self.assertIn("<mark>", res.text)
+        self.assertIn('<details class="detail" open>', res.text)
         self.assertEqual(self.client.get("/pairings/nothing-here").status_code, 404)
 
     def test_pending_cards_are_not_public(self):

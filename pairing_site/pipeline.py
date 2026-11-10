@@ -15,7 +15,7 @@ Nothing here says why anyone said or gave anything.
 import collections
 import re
 
-from . import sources  # noqa: F401  (puts the discovery libraries on the path)
+from . import priorities as donor_priorities, sources  # noqa: F401  (sources puts the discovery libraries on the path)
 
 import ff_lib as ff  # noqa: E402
 import fmap_lib as fl  # noqa: E402
@@ -312,3 +312,87 @@ def group_priorities(rows):
     for r in rows:
         out[r["family"]].append(r)
     return out
+
+
+# --------------------------------------------------------------------------- the glance row
+
+LEVELS = ("low", "med", "high")
+SENTENCE_END = re.compile(r"(?<=[.!?])\s+")
+CREDIT_LEVEL = {"high": "low", "medium": "med", "low": "high"}  # the stored value is doubt: confidence is its inverse
+COMMITTEE_LABELS = (("ballot-measure committee", "Ballot-measure committee"),
+                    ("officeholder committee", "Officeholder committee"), ("own committee", "Own committee"))
+RESOLVES = re.compile(r"that resolves? in the Filers dataset")
+
+
+def best_sentence(text, terms):
+    """The sentence of `text` that holds the most distinct shared terms, cut at its own boundaries (the first on a
+    tie). Returns {"text", "before", "after", "found"}: before and after say that words were left out on that side.
+    With no shared term, or one that is in no single sentence, the first sentence stands and found is 0."""
+    parts = [s for s in SENTENCE_END.split(text.strip()) if s]
+    if not parts:
+        return {"text": text, "before": False, "after": False, "found": 0}
+    rxs = [pc.term_regex([t]) for t in terms]
+    counts = [sum(1 for rx in rxs if rx.search(s)) for s in parts]
+    at = counts.index(max(counts))
+    return {"text": parts[at], "before": at > 0, "after": at < len(parts) - 1, "found": counts[at]}
+
+
+def committee_label(kind):
+    """A short label for the card's committee kind (the long wording stays in the detail)."""
+    label = next((short for long, short in COMMITTEE_LABELS if kind.startswith(long)), kind.capitalize())
+    return label + (", other office" if "for another office" in kind else "")
+
+
+def tie_level(tie_text):
+    """How firmly the givers are recognised as the donor's, read from the card's tie text: every giver by Filers id
+    is high; a mix, or names whose FPPC ids resolve in the Filers dataset, is med; names alone are low."""
+    by_id, by_name = "by Filers id" in tie_text, "by name only" in tie_text
+    if by_id and not by_name:
+        return "high"
+    return "med" if by_id or RESOLVES.search(tie_text) else "low"
+
+
+def confidence(card, recording_checked=False):
+    """The four chips of a card, always in this order: speaker credit, topic match, donor priority, money tie.
+    Each is {"key", "label", "level", "text", "reason"}; level is low, med or high, and the speaker credit's is
+    "verified" once a person has checked the recording. Computed from what the card already holds."""
+    credit = card["speaker_credit"]
+    doubt = credit["doubt"]
+    speaker = {"key": "speaker", "label": "Speaker credit", "level": CREDIT_LEVEL[doubt],
+               "reason": "Stored doubt in the credit is %s: %s" % (doubt, credit.get("reason") or "no reason recorded")}
+    if recording_checked:
+        speaker.update(level="verified", reason="A person played the recording and confirmed the words; "
+                       "the stored doubt in the credit is %s." % doubt)
+    shared = card["highlight"]
+    topic = {"key": "topic", "label": "Topic match", "level": "high" if len(shared) >= 2 else "med" if shared else "low",
+             "reason": ("%d word%s in both the quote and the donor's words: %s." % (
+                 len(shared), "" if len(shared) == 1 else "s", ", ".join(shared))) if shared
+             else "No word of substance is in both the quote and the donor's words."}
+    statements = card["donor"]["statements"]
+    own = [s for s in statements if s["kind"] != donor_priorities.NEWS]
+    if own:
+        prio = ("high", "Stated on a %s." % own[0]["kind"])
+    elif any(s.get("whose_words") == "donor-quoted" for s in statements):
+        prio = ("med", "A news report quoting the donor's own words.")
+    else:
+        prio = ("low", "A news report in someone else's words, not the donor's own page.")
+    tie = card["donor"]["tie"]["text"]
+    money = {"key": "money", "label": "Money tie", "level": tie_level(tie), "reason": tie.rstrip(".") + "."}
+    chips = [speaker, topic, {"key": "priority", "label": "Donor priority", "level": prio[0], "reason": prio[1]}, money]
+    for chip in chips:
+        chip["text"] = chip["level"].upper()
+    return chips
+
+
+def glance(card, recording_checked=False):
+    """What the glance row of a card shows, from the card alone: the chips; the quote cut at its best sentence; the
+    donor statement that shares most with the quote, cut the same way; and one money line per committee with a
+    short label. Nothing is summed and no value is made up."""
+    shared = card["highlight"]
+    quote = best_sentence(card["quote"]["text"], shared)
+    statement = best_statement(card["quote"]["text"], card["donor"]["statements"])
+    donor = best_sentence(statement["text"], shared)
+    money = [{"label": committee_label(m["kind"]), "committee": m["committee"], "amount": m["schedule_a_total_text"]}
+             for m in card["money"]["committees"]]
+    return {"chips": confidence(card, recording_checked), "quote": quote, "statement": statement, "donor": donor,
+            "money": money}
