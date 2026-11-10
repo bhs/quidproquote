@@ -54,3 +54,13 @@
     setTimeout(function () { if (btn.textContent === 'Copied') btn.textContent = 'Copy link'; }, 2000);
   });
 })();
+
+// The priority form: the outlet and whose-words fields belong to a news report only.
+(function () {
+  var type = document.getElementById('source-type');
+  var news = document.getElementById('news-fields');
+  if (!type || !news) return;
+  function sync() { news.hidden = type.value !== 'news report'; }
+  type.addEventListener('change', sync);
+  sync();
+})();

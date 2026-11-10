@@ -1,24 +1,57 @@
 {% extends "base.html" %}
-{% block title %}Add a priority{% endblock %}
+{% from "_source.html" import source_label %}
+{% block title %}{{ 'Edit a priority' if editing else 'Add a priority' }}{% endblock %}
 {% block content %}
+{% if editing %}
+<h1>Edit a donor's priority</h1>
+<p class="lede">Change the fields below and save. The page is fetched again and the words must still appear on it, word for word, or nothing
+is changed. The retrieval date becomes the day of this check. The version being replaced is kept in the log, in full.
+<a href="/priority">Back to adding a priority</a></p>
+{% else %}
 <h1>Add a donor's priority</h1>
 <p class="lede">Paste the donor's own words and the link to the page that shows them. The page is fetched now and the
 words must appear on it, word for word, or nothing is saved. The retrieval date is the day of the check; you do not enter it.</p>
+{% endif %}
 {% if saved %}<p class="notice" id="priority-saved">Saved. The words were found verbatim on {{ saved.url }} and recorded as retrieved {{ saved.retrieved }}. The worker uses them from its next run.</p>{% endif %}
+{% if edited %}<p class="notice" id="priority-edited">Saved the change to {{ edited }}. The words were found on the page again; the earlier version is in the log.</p>{% endif %}
 {% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
-<form method="post" action="/priority" class="stack">
+<form method="post" action="{{ '/priority/%s/edit'|format(editing.key|urlencode) if editing else '/priority' }}" class="stack" id="priority-form">
   <label>Donor
     <select name="family" required>
       <option value="">Choose a donor</option>
       {% for f in families %}<option value="{{ f.key }}" {{ 'selected' if form.family == f.key }}>{{ f.name }}</option>{% endfor %}
     </select></label>
-  <label>Link to the donor's page <input type="url" name="url" value="{{ form.url or '' }}" required placeholder="https://"></label>
-  <label>The donor's words, exactly as the page shows them
+  <label>Source type
+    <select name="source_type" id="source-type">
+      <option value="own-site" {{ 'selected' if form.source_type != 'news report' }}>Organisation's own site</option>
+      <option value="news report" {{ 'selected' if form.source_type == 'news report' }}>News report</option>
+    </select></label>
+  <fieldset id="news-fields" class="stack">
+    <legend>News report</legend>
+    <label>Outlet that published it <input type="text" name="outlet" value="{{ form.outlet or '' }}" maxlength="120" placeholder="e.g. the newspaper's name"></label>
+    <label>Whose words are they?
+      <select name="whose_words">
+        <option value="">Choose</option>
+        {% for k, label in whose_words.items() %}<option value="{{ k }}" {{ 'selected' if form.whose_words == k }}>{{ label }}</option>{% endfor %}
+      </select></label>
+  </fieldset>
+  <label>Link to the page <input type="url" name="url" value="{{ form.url or '' }}" required placeholder="https://"></label>
+  <label>The words, exactly as the page shows them
     <textarea name="words" rows="5" required>{{ form.words or '' }}</textarea></label>
   <label>Section heading on the page (optional) <input type="text" name="section" value="{{ form.section or '' }}"></label>
-  <label>Date the page shows (optional) <input type="text" name="page_date" value="{{ form.page_date or '' }}" placeholder="2026-10-08"></label>
+  <label>Date the page shows (required for a news report) <input type="text" name="page_date" value="{{ form.page_date or '' }}" placeholder="2026-10-08"></label>
   <button type="submit">Fetch the page and check the words</button>
 </form>
+{% if editing %}
+<h2>Current version and earlier versions</h2>
+<p class="small">The form above holds the <b>current</b> version. Earlier versions were replaced by an edit and are kept in the log.</p>
+{% for e in earlier %}
+<div class="superseded"><b>Superseded {{ e.replaced_at.strftime('%Y-%m-%d %H:%M:%S') }} UTC</b>: {{ source_label(e.kind, e.outlet, e.whose_words) }}
+  &ldquo;{{ e.text }}&rdquo; (<a href="{{ e.url }}">source</a>, page date {{ e.page_date or 'none' }}, retrieved {{ e.retrieved }})</div>
+{% else %}<p class="small">No earlier versions: this priority has not been edited.</p>{% endfor %}
+{% endif %}
 <h2>Donor statements on file</h2>
-<ul>{% for r in recent %}<li><b>{{ r.donor }}</b>: {{ r.text[:140] }}{{ '...' if r.text|length > 140 }} (<a href="{{ r.url }}">source</a>, retrieved {{ r.retrieved }}, added by {{ r.added_by }})</li>{% endfor %}</ul>
+<ul id="priority-list">{% for r in recent %}<li><b>{{ r.donor }}</b> {{ source_label(r.kind, r.outlet, r.whose_words) }}
+  {{ r.text[:140] }}{{ '...' if r.text|length > 140 }} (<a href="{{ r.url }}">source</a>, retrieved {{ r.retrieved }}, added by {{ r.added_by }}{% if edits.get(r.key) %}, edited {{ edits[r.key] }} time{{ '' if edits[r.key] == 1 else 's' }}{% endif %})
+  <a href="/priority/{{ r.key|urlencode }}/edit">Edit</a></li>{% endfor %}</ul>
 {% endblock %}

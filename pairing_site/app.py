@@ -7,14 +7,16 @@ Sign-in: /login           the ADMIN_TOKEN sets a signed session cookie
 Admin:   /review          cards held for review: approve (needs the recording check ticked) or reject, inline through HTMX;
                           and cards published automatically: mark verified (same recording check) or unpublish
          /review/dropped  pairs the AI filter dropped, with reasons
-         /priority        add a donor's priority: the page is fetched and the pasted words must be on it
+         /priority        add a donor's priority (own site or news report): the page is fetched and the pasted words must be on it
+         /priority/<key>/edit  correct one: prefilled and checked against the page again; the old row goes to the log
 
-Every automatic approval, approval, verification, rejection, sign-in and priority added is written to the audit log with its time and action.
+Every automatic approval, approval, verification, rejection, sign-in and priority added or edited is written to the audit log with its time and action.
 """
 
 import contextlib
 import datetime
 import html
+import json
 import os
 import time
 import urllib.parse
@@ -25,7 +27,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from markupsafe import Markup
 
-from . import auth, config, db, logs, priorities, sources, status  # noqa: F401  (sources: discovery libraries on the path)
+from . import auth, config, db, logs, priorities, sources, spotcheck, status  # noqa: F401  (sources: discovery libraries on the path)
 
 import pairing_cards as pc  # noqa: E402
 
@@ -70,6 +72,7 @@ def create_app():
     templates = Jinja2Templates(directory=os.path.join(HERE, "templates"))
     templates.env.filters["marked"] = marked
     templates.env.filters["quoted"] = quoted
+    templates.env.globals.update(NEWS_KIND=priorities.NEWS, WHOSE_WORDS=priorities.WHOSE_WORDS)
 
     def admin(request):
         try:
@@ -193,6 +196,11 @@ def create_app():
             if action in ("approve", "verify"):
                 if not checked:
                     return row, "Tick the recording check first: play the recording at the transcript time and confirm the words."
+                failed = spotcheck.problems(conn, row)
+                if failed:
+                    reason = "Not approved: the card's quote does not match the stored transcript (%s)." % "; ".join(failed)
+                    db.audit(conn, auth.ACTOR, "approval blocked by the spot check", pairing_id, "; ".join(failed))
+                    return row, reason
                 stamp = db.now()
                 conn.execute("UPDATE pairings SET status = 'approved', recording_checked = 1, "
                              "recording_checked_at = ?, published_at = coalesce(published_at, ?), decided_at = ?, "
@@ -249,45 +257,116 @@ def create_app():
     def priority_context(conn):
         fams = conn.execute("SELECT payload FROM source_data WHERE name = 'families'").fetchone()
         rows = conn.execute("SELECT * FROM donor_priorities ORDER BY added_at DESC, id DESC LIMIT 12").fetchall()
-        return {"families": fams["payload"]["families"] if fams else [], "recent": rows}
+        edits = {r["k"]: r["n"] for r in conn.execute(
+            "SELECT json_extract(detail, '$.key') AS k, count(*) AS n FROM audit_log "
+            "WHERE action = 'priority edited' GROUP BY k")}
+        return {"families": fams["payload"]["families"] if fams else [], "recent": rows, "edits": edits,
+                "whose_words": priorities.WHOSE_WORDS, "editing": None, "earlier": []}
+
+    def form_of(row):
+        news = row["kind"] == priorities.NEWS
+        return {"family": row["family"], "url": row["url"], "words": row["text"], "section": row["section"],
+                "page_date": row["page_date"], "source_type": priorities.NEWS if news else priorities.OWN_SITE,
+                "outlet": row["outlet"], "whose_words": row["whose_words"]}
+
+    def earlier_versions(conn, key):
+        """The superseded versions of one priority, newest first: each edit wrote the row as it was before."""
+        out = []
+        for r in conn.execute("SELECT at, detail FROM audit_log WHERE action = 'priority edited' "
+                              "AND json_extract(detail, '$.key') = ? ORDER BY id DESC", (key,)):
+            out.append(dict(json.loads(r["detail"])["before"], replaced_at=r["at"]))
+        return out
 
     @app.get("/priority", response_class=HTMLResponse)
-    def priority_page(request: Request):
+    def priority_page(request: Request, edited: str = ""):
         require_admin(request)
         with db.session() as conn:
-            return render(request, "priority.html", form={}, error="", saved=None, **priority_context(conn))
+            return render(request, "priority.html", form={"source_type": priorities.OWN_SITE}, error="",
+                          saved=None, edited=edited, **priority_context(conn))
+
+    def get_priority(conn, key):
+        row = conn.execute("SELECT * FROM donor_priorities WHERE key = ?", (key,)).fetchone()
+        if not row:
+            raise HTTPException(404, "No such priority")
+        return row
+
+    def priority_submit(request, form, key=None):
+        """Checks the form and saves it: a new row, or (key given) an update of that row after writing the old row in
+        full to the audit log. The page is fetched before the write lock is taken. Returns the page to show."""
+        with db.session() as conn:
+            ctx = priority_context(conn)
+            if key:
+                ctx["editing"] = get_priority(conn, key)
+                ctx["earlier"] = earlier_versions(conn, key)
+        fam = next((f for f in ctx["families"] if f["key"] == form["family"]), None)
+        error, saved = "", None
+        try:
+            if not fam:
+                raise priorities.PriorityError("Choose the donor this priority belongs to.")
+            src = priorities.check_source(form["source_type"], form["outlet"], form["whose_words"], form["page_date"])
+            found = priorities.verify(form["url"], form["words"])
+            section = form["section"].strip()[:200]
+            if key:
+                with db.session(write=True) as conn:
+                    old = get_priority(conn, key)
+                    kind = old["kind"] if src["kind"] == priorities.OWN_KIND and old["kind"] != priorities.NEWS else src["kind"]
+                    db.audit(conn, auth.ACTOR, "priority edited", None,
+                             json.dumps({"key": key, "before": old}, default=str, ensure_ascii=False))
+                    conn.execute(
+                        "UPDATE donor_priorities SET family = ?, donor = ?, url = ?, section = ?, text = ?, page_date = ?, "
+                        "retrieved = ?, kind = ?, outlet = ?, whose_words = ? WHERE key = ?",
+                        (form["family"], fam["name"], found["url"], section, found["text"], src["page_date"],
+                         found["retrieved"], kind, src["outlet"], src["whose_words"], key))
+                return RedirectResponse("/priority?edited=" + urllib.parse.quote(key), status_code=303)
+            new_key = "form-%s-%s" % (form["family"], time.time_ns())
+            with db.session(write=True) as conn:
+                conn.execute(
+                    "INSERT INTO donor_priorities (key, family, donor, url, section, text, page_date, retrieved, kind, "
+                    "outlet, whose_words, added_by) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                    (new_key, form["family"], fam["name"], found["url"], section, found["text"], src["page_date"],
+                     found["retrieved"], src["kind"], src["outlet"], src["whose_words"], auth.ACTOR))
+                db.audit(conn, auth.ACTOR, "priority added", None,
+                         "%s%s: %s (words found verbatim on the page; retrieved %s)" % (
+                             fam["name"], " [news report: %s]" % src["outlet"] if src["outlet"] else "",
+                             found["url"], found["retrieved"]))
+                ctx = priority_context(conn)
+            saved, form = found, {"source_type": form["source_type"]}
+        except priorities.PriorityError as exc:
+            error = str(exc)
+        return render(request, "priority.html", status_code=422 if error else 200, form=form, error=error,
+                      saved=saved, edited="", **ctx)
+
+    def priority_form(family, url, words, section, page_date, source_type, outlet, whose_words):
+        return {"family": family, "url": url, "words": words, "section": section, "page_date": page_date,
+                "source_type": source_type, "outlet": outlet, "whose_words": whose_words}
 
     @app.post("/priority", response_class=HTMLResponse)
     def priority_save(request: Request, family: str = Form(""), url: str = Form(""), words: str = Form(""),
-                      section: str = Form(""), page_date: str = Form("")):
+                      section: str = Form(""), page_date: str = Form(""), source_type: str = Form(priorities.OWN_SITE),
+                      outlet: str = Form(""), whose_words: str = Form("")):
         require_admin(request)
         same_origin(request)
-        form = {"family": family, "url": url, "words": words, "section": section, "page_date": page_date}
+        return priority_submit(request, priority_form(family, url, words, section, page_date, source_type, outlet,
+                                                      whose_words))
+
+    @app.get("/priority/{key}/edit", response_class=HTMLResponse)
+    def priority_edit_page(request: Request, key: str):
+        require_admin(request)
         with db.session() as conn:
             ctx = priority_context(conn)
-        fam = next((f for f in ctx["families"] if f["key"] == family), None)
-        error, saved = "", None
-        if not fam:
-            error = "Choose the donor this priority belongs to."
-        else:
-            try:
-                found = priorities.verify(url, words)  # fetches the page: done before the write lock is taken
-                key = "form-%s-%s" % (family, int(time.time()))
-                with db.session(write=True) as conn:
-                    conn.execute(
-                        "INSERT INTO donor_priorities (key, family, donor, url, section, text, page_date, retrieved, kind, "
-                        "added_by) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                        (key, family, fam["name"], found["url"], section.strip()[:200], found["text"],
-                         page_date.strip()[:40], found["retrieved"], "page on the organisation's own site", auth.ACTOR))
-                    db.audit(conn, auth.ACTOR, "priority added", None,
-                             "%s: %s (words found verbatim on the page; retrieved %s)" % (fam["name"], found["url"], found["retrieved"]))
-                    ctx = priority_context(conn)
-                saved = found
-                form = {}
-            except priorities.PriorityError as exc:
-                error = str(exc)
-        return render(request, "priority.html", status_code=422 if error else 200, form=form, error=error,
-                      saved=saved, **ctx)
+            ctx["editing"] = row = get_priority(conn, key)
+            ctx["earlier"] = earlier_versions(conn, key)
+        return render(request, "priority.html", form=form_of(row), error="", saved=None, edited="", **ctx)
+
+    @app.post("/priority/{key}/edit", response_class=HTMLResponse)
+    def priority_edit_save(request: Request, key: str, family: str = Form(""), url: str = Form(""),
+                           words: str = Form(""), section: str = Form(""), page_date: str = Form(""),
+                           source_type: str = Form(priorities.OWN_SITE), outlet: str = Form(""),
+                           whose_words: str = Form("")):
+        require_admin(request)
+        same_origin(request)
+        return priority_submit(request, priority_form(family, url, words, section, page_date, source_type, outlet,
+                                                      whose_words), key)
 
     return app
 

@@ -17,7 +17,7 @@ import json
 import os
 import sys
 
-from . import db, pipeline, reference, sources
+from . import db, pipeline, priorities, reference, sources
 
 import build_map as bm  # noqa: E402
 import ff_lib as ff  # noqa: E402
@@ -170,6 +170,28 @@ def store_snapshot(conn, snap):
                          datetime.date.fromisoformat(snap["retrieved"]))
 
 
+DEMO_REPORT = {  # a made-up news report entry, so the priority list shows the badge and an edit's history at once
+    "key": "demo-report-sf-chamber", "family": "sf-chamber", "url": "https://example.org/news/demo-report",
+    "section": "", "page_date": "2026-10-02", "kind": priorities.NEWS, "outlet": "Example Daily",
+    "whose_words": "reporter",
+    "text": "Demo entry, not a real report: the outlet describes the chamber as backing a measure to fund transit service.",
+}
+DEMO_REPORT_BEFORE = "Demo entry, not a real report: the outlet describes the chamber as backing a transit measure."
+
+
+def add_demo_report(conn):
+    """One news-report priority, edited once, so the demo shows the badge, the edit link and the kept earlier wording."""
+    fam = next(f for f in conn.execute("SELECT payload FROM source_data WHERE name = 'families'").fetchone()["payload"]["families"]
+               if f["key"] == DEMO_REPORT["family"])
+    row = dict(DEMO_REPORT, donor=fam["name"], retrieved=datetime.date.today())
+    conn.execute(
+        "INSERT INTO donor_priorities (key, family, donor, url, section, text, page_date, retrieved, kind, outlet, "
+        "whose_words, added_by) VALUES (:key, :family, :donor, :url, :section, :text, :page_date, :retrieved, :kind, "
+        ":outlet, :whose_words, 'seed')", row)
+    before = dict(row, text=DEMO_REPORT_BEFORE, added_by="seed", added_at=str(db.now()))
+    db.audit(conn, SEED_ACTOR, "priority edited", None, json.dumps({"key": row["key"], "before": before}, default=str))
+
+
 def insert_pairing(conn, row):
     cur = conn.execute(
         "INSERT INTO pairings (slug, candidate_key, status, source, official, donor_key, donor_name, meeting_id, "
@@ -195,6 +217,7 @@ def run(reset=False):
             for table in DATA_TABLES:
                 conn.execute("DELETE FROM " + table)
         loaded = reference.ensure(conn)
+        add_demo_report(conn)
         store_snapshot(conn, built["snap"])
         for m in built["meetings"]:
             conn.execute(
@@ -216,7 +239,7 @@ def run(reset=False):
                 ":priority_text, :priority_url, :reason_kind, :reason, :stage, :model) "
                 "ON CONFLICT DO NOTHING", d)
     print("Seeded: %d meetings with transcripts, %d published pairings, %d pairs waiting in the review queue, "
-          "%d pairs dropped with reasons; loaded %s. Left out: %s." % (
+          "%d pairs dropped with reasons, 1 news-report priority edited once; loaded %s. Left out: %s." % (
               len(built["meetings"]), len(built["published"]), len(built["pending"]), len(built["dropped"]),
               ", ".join(loaded) or "nothing new", built["skipped"] or "nothing"))
     return 0

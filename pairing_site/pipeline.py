@@ -293,6 +293,8 @@ def build_card(c, record, snap, fams, family, reading=None):
                         for st in sts],
          "family": family, "money": money_for_pair(snap, fams, off, family["key"])}
     card = pc.build_cards([p], snap, fams)[0]
+    for shown, st in zip(card["donor"]["statements"], sts):  # pairing_cards keeps no outlet: add it beside the kind
+        shown["outlet"], shown["whose_words"] = st.get("outlet") or "", st.get("whose_words") or ""
     return extend_card(card, p, support, cue_rows, m["recording_url"]), slug
 
 
