@@ -27,7 +27,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from markupsafe import Markup
 
-from . import auth, config, db, logs, priorities, sources, spotcheck, status  # noqa: F401  (sources: discovery libraries on the path)
+from . import auth, config, db, logs, pipeline, priorities, sources, spotcheck, status  # noqa: F401  (sources: discovery libraries on the path)
 
 import pairing_cards as pc  # noqa: E402
 
@@ -72,7 +72,7 @@ def create_app():
     templates = Jinja2Templates(directory=os.path.join(HERE, "templates"))
     templates.env.filters["marked"] = marked
     templates.env.filters["quoted"] = quoted
-    templates.env.globals.update(NEWS_KIND=priorities.NEWS, WHOSE_WORDS=priorities.WHOSE_WORDS)
+    templates.env.globals.update(NEWS_KIND=priorities.NEWS, WHOSE_WORDS=priorities.WHOSE_WORDS, glance=pipeline.glance)
 
     def admin(request):
         try:

@@ -117,5 +117,61 @@ class Terms(unittest.TestCase):
         self.assertTrue(terms["topic"])
 
 
+class Glance(unittest.TestCase):
+    def card(self, doubt="low", shared=("Prop H", "transit"), kind="policy page on the organisation's own site",
+             tie="Tie to the donor recognised by Filers id: A1 (Chamber).", whose=""):
+        return {"speaker_credit": {"doubt": doubt, "reason": "the cue names the surname"}, "highlight": list(shared),
+                "quote": {"text": "We met on Tuesday. I support Prop H and transit service. Thank you all."},
+                "donor": {"name": "Chamber", "tie": {"text": tie},
+                          "statements": [{"section": "Prop H", "text": "The Chamber backs Prop H. Transit matters.",
+                                          "kind": kind, "whose_words": whose, "url": "https://example.org"}]},
+                "money": {"committees": [{"kind": "officeholder committee", "committee": "Friends of A",
+                                          "schedule_a_total_text": "$10,000"}]}}
+
+    def levels(self, card, checked=False):
+        return {c["key"]: c["level"] for c in pipeline.confidence(card, checked)}
+
+    def test_four_chips_always_in_order_each_with_a_reason(self):
+        chips = pipeline.confidence(self.card(shared=()))
+        self.assertEqual([c["key"] for c in chips], ["speaker", "topic", "priority", "money"])
+        self.assertTrue(all(c["reason"] for c in chips))
+
+    def test_speaker_credit_inverts_the_stored_doubt(self):
+        for doubt, level in (("high", "low"), ("medium", "med"), ("low", "high")):
+            self.assertEqual(self.levels(self.card(doubt))["speaker"], level)
+
+    def test_verified_only_when_the_recording_is_checked(self):
+        self.assertEqual(self.levels(self.card("high"), True)["speaker"], "verified")
+        self.assertNotEqual(self.levels(self.card("low"))["speaker"], "verified")
+
+    def test_topic_match_follows_the_shared_words(self):
+        self.assertEqual(self.levels(self.card(shared=()))["topic"], "low")
+        self.assertEqual(self.levels(self.card(shared=("Prop H",)))["topic"], "med")
+        self.assertEqual(self.levels(self.card())["topic"], "high")
+
+    def test_donor_priority_follows_the_statement_kind(self):
+        self.assertEqual(self.levels(self.card())["priority"], "high")
+        news = pipeline.donor_priorities.NEWS
+        self.assertEqual(self.levels(self.card(kind=news, whose="donor-quoted"))["priority"], "med")
+        self.assertEqual(self.levels(self.card(kind=news, whose="reporter"))["priority"], "low")
+
+    def test_money_tie_follows_the_tie_text(self):
+        by_name = "Tie to the donor recognised by name only (1 giver name as filed)"
+        self.assertEqual(self.levels(self.card(tie=by_name + "; the rows carry no FPPC id."))["money"], "low")
+        self.assertEqual(self.levels(self.card(tie=by_name + "; FPPC id that resolves in the Filers dataset: 1 ('X')."))["money"], "med")
+        self.assertEqual(self.levels(self.card(tie=by_name + "; the FPPC ids on those rows do not resolve in the Filers dataset."))["money"], "low")
+
+    def test_the_excerpt_is_the_sentence_with_most_shared_words_and_is_cut_with_ellipses(self):
+        cut = pipeline.best_sentence(self.card()["quote"]["text"], ["Prop H", "transit"])
+        self.assertEqual(cut, {"text": "I support Prop H and transit service.", "before": True, "after": True, "found": 2})
+
+    def test_nothing_shared_is_reported(self):
+        self.assertEqual(pipeline.best_sentence("One. Two.", [])["found"], 0)
+
+    def test_money_lines_are_per_committee_with_a_short_label(self):
+        g = pipeline.glance(self.card())
+        self.assertEqual(g["money"], [{"label": "Officeholder committee", "committee": "Friends of A", "amount": "$10,000"}])
+
+
 if __name__ == "__main__":
     unittest.main()
